@@ -2,8 +2,10 @@
 // 사용법: node life/tools/jobs_expand.mjs          → 분류별 개수
 //         node life/tools/jobs_expand.mjs --list   → 전체 목록
 import { readFileSync, existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const DATA = new URL('../data/', import.meta.url).pathname;
+const DATA = fileURLToPath(new URL('../data/', import.meta.url));
 const read = (f) => JSON.parse(readFileSync(DATA + f, 'utf8'));
 
 export function loadMatrix() {
@@ -49,7 +51,7 @@ export function expandJobs(m = loadMatrix()) {
   return jobs;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
   const jobs = expandJobs();
   if (process.argv.includes('--list')) {
     for (const j of jobs) console.log(`${j.since}  ${j.group}  ${j.name}  (${j.id})`);
