@@ -1,166 +1,319 @@
-// 화면 렌더링 (담당: Claude)
-// state를 읽어 DOM의 텍스트·data-속성만 바꿉니다. 모양·색·애니메이션은 전부 CSS(GPT 담당)에서 합니다.
+// 화면 렌더링과 조작 (담당: Claude)
+// state를 읽어 DOM의 텍스트·data-속성·CSS 변수만 바꿉니다. 모양은 전부 CSS(GPT 담당)에서 합니다.
 // 여기서 쓰는 id/class/data-속성 목록은 docs/UI_CONTRACT.md 에 있습니다. 바꾸면 그 문서도 같이 고쳐주세요.
 
-import { STATIONS, ACHIEVEMENTS } from './data.js';
-import {
-  derive, upgradeCost, unlockCost, nextMilestone, stationRate,
-  tapInput, unlockStation, upgradeStation, tapEvent, prestige,
-} from './engine.js';
-import { won, pct, lotsPerSec, duration } from './format.js';
+import { PROCESSES, PROCESS_INDEX, GRID, STOCKER, ACHIEVEMENTS, ENGINEER, FOUP } from './data.js';
+import * as E from './engine.js';
+import { won, pct, duration } from './format.js';
 
 const $ = sel => document.querySelector(sel);
-const FEED_MAX = 6;
+const FEED_MAX = 4;
 
-export function mountUI(state, emit) {
-  buildStations();
+// 화면 전용 상태 (저장 안 함)
+const ui = {
+  selected: null,          // 선택한 장비 id
+  mode: null,              // null | { kind: 'buy', type } | { kind: 'move', id }
+  els: { tools: new Map(), foups: new Map(), engineers: new Map() },
+};
+
+export function mountUI(s, emit) {
+  buildShop();
   buildAchievements();
 
-  $('#tap-btn').addEventListener('click', () => tapInput(state, emit));
-
-  $('#station-list').addEventListener('click', e => {
-    const btn = e.target.closest('.station__action');
-    if (!btn) return;
-    const li = btn.closest('.station');
-    const id = li.dataset.id;
-    const st = li.dataset.state;
-    if (st === 'down') tapEvent(state, emit);
-    else if (st === 'locked') unlockStation(state, id, emit);
-    else upgradeStation(state, id, emit);
+  // 바닥 탭: 좌표 → 칸으로 바꿔서 처리
+  $('#floor').addEventListener('click', e => {
+    const r = $('#floor').getBoundingClientRect();
+    const cell = r.width / GRID.cols;
+    const x = Math.floor((e.clientX - r.left) / cell);
+    const y = Math.floor((e.clientY - r.top) / cell);
+    onCellTap(s, x, y, emit);
   });
 
-  $('#event-action').addEventListener('click', () => tapEvent(state, emit));
+  $('#mode-cancel').addEventListener('click', () => setMode(null));
+
+  $('#panel-close').addEventListener('click', () => select(null));
+  $('#panel-upgrade').addEventListener('click', () => ui.selected && E.upgradeTool(s, ui.selected, emit));
+  $('#panel-pm').addEventListener('click', () => ui.selected && E.orderPm(s, ui.selected, emit));
+  $('#panel-move').addEventListener('click', () => ui.selected && setMode({ kind: 'move', id: ui.selected }));
+
+  $('#shop').addEventListener('click', e => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    if (b.id === 'buy-foup') E.buyFoup(s, emit);
+    else if (b.id === 'buy-expand') E.expandRows(s, emit);
+    else if (b.id === 'buy-engineer') E.hireEngineer(s, emit);
+    else if (b.dataset.type) {
+      if (s.money < E.buyToolCost(s, b.dataset.type)) return;
+      select(null);
+      setMode({ kind: 'buy', type: b.dataset.type });
+      $('#floor').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+
+  $('#event-action').addEventListener('click', () => E.tapEvent(s, emit));
 
   const pBtn = $('#prestige-btn');
   pBtn.addEventListener('click', () => {
-    if (pBtn.dataset.confirm === 'true') {
-      delete pBtn.dataset.confirm;
-      prestige(state, emit);
-    } else if (derive(state).canPrestige) {
+    if (pBtn.dataset.confirm === 'true') { delete pBtn.dataset.confirm; select(null); E.prestige(s, emit); }
+    else if (E.canPrestige(s)) {
       pBtn.dataset.confirm = 'true';
       setTimeout(() => { delete pBtn.dataset.confirm; }, 4000);
     }
   });
 
   $('#modal-close').addEventListener('click', () => { $('#modal').hidden = true; });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { setMode(null); select(null); } });
+}
+
+function onCellTap(s, x, y, emit) {
+  if (x < 0 || y < 0 || x >= GRID.cols || y >= s.rows) return;
+  if (ui.mode) {
+    if (!E.cellFree(s, x, y)) { toast('빈 칸을 골라주세요', 'bad'); return; }
+    if (ui.mode.kind === 'buy') {
+      const t = E.buyTool(s, ui.mode.type, x, y, emit);
+      if (t) { setMode(null); select(t.id); }
+      else toast('돈이 모자라요', 'bad');
+    } else if (ui.mode.kind === 'move') {
+      if (E.moveTool(s, ui.mode.id, x, y, emit)) { const id = ui.mode.id; setMode(null); select(id); }
+    }
+    return;
+  }
+  const t = E.toolAt(s, x, y);
+  select(t ? (ui.selected === t.id ? null : t.id) : null);
+}
+
+function select(id) {
+  ui.selected = id;
+  $('#tool-panel').hidden = !id;
+}
+
+function setMode(mode) {
+  ui.mode = mode;
+  const bar = $('#mode-bar');
+  bar.hidden = !mode;
+  $('#floor').dataset.mode = mode?.kind ?? '';
+  if (mode) {
+    const name = mode.kind === 'buy' ? PROCESSES[PROCESS_INDEX[mode.type]].name : '';
+    $('#mode-text').textContent = mode.kind === 'buy' ? `${name} 장비를 놓을 빈 칸을 누르세요` : '옮길 빈 칸을 누르세요';
+  }
 }
 
 // ---------- 최초 1회 생성 ----------
 
-function buildStations() {
-  const list = $('#station-list');
+function buildShop() {
+  const list = $('#shop-tools');
   list.innerHTML = '';
-  STATIONS.forEach((st, i) => {
-    const li = document.createElement('li');
-    li.className = 'station';
-    li.dataset.id = st.id;
-    li.dataset.index = String(i + 1);
-    li.innerHTML = `
-      <div class="station__icon" aria-hidden="true">${i + 1}</div>
-      <div class="station__body">
-        <div class="station__head">
-          <span class="station__name">${st.name}</span>
-          <span class="station__level"></span>
-        </div>
-        <div class="station__equip">${st.equip}</div>
-        <div class="station__rate"></div>
-        <div class="station__bar"><span></span></div>
-      </div>
-      <button class="station__action" type="button">
-        <span class="station__action-label"></span>
-        <span class="station__cost"></span>
-      </button>`;
-    list.appendChild(li);
-  });
+  for (const p of PROCESSES) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'shop-tool';
+    b.dataset.type = p.id;
+    b.innerHTML = `<span class="shop-tool__icon" aria-hidden="true">${p.short}</span><span class="shop-tool__name">${p.name}</span><span class="shop-tool__cost"></span>`;
+    list.appendChild(b);
+  }
 }
 
 function buildAchievements() {
   const list = $('#achievement-list');
   list.innerHTML = '';
-  ACHIEVEMENTS.forEach(a => {
+  for (const a of ACHIEVEMENTS) {
     const li = document.createElement('li');
     li.className = 'achievement';
     li.dataset.id = a.id;
     li.innerHTML = `<span class="achievement__name">${a.name}</span><span class="achievement__desc">${a.desc}</span>`;
     list.appendChild(li);
-  });
+  }
 }
 
 // ---------- 매 프레임 갱신 ----------
 
-export function render(state) {
-  const d = derive(state);
+export function render(s) {
+  const d = E.derive(s);
 
   setText('#node-name', d.node.name);
-  setText('#money', won(state.money));
+  setText('#money', won(s.money));
   setText('#rate', won(d.incomePerSec) + '/초');
-  setText('#yield-avg', pct(state.yieldAvg));
-  setText('#throughput', lotsPerSec(d.throughput));
+  setText('#yield-avg', pct(s.yieldAvg));
+  setText('#lots-rate', (d.lotsPerSec * 60).toFixed(1) + ' Lot/분');
   setText('#lot-value', won(d.lotValue));
-  document.body.dataset.fullLine = String(d.fullLine);
-  document.body.dataset.event = state.event?.type ?? '';
+  setText('#bottleneck', PROCESSES[PROCESS_INDEX[d.bottleneck]].name);
+  document.body.dataset.event = s.event?.type ?? '';
 
-  // 컨베이어 속도: Lot 하나가 나오는 간격(초). CSS에서 var(--lot-interval)로 씁니다.
-  const line = $('#conveyor');
-  // 멈췄을 때는 마지막 속도를 그대로 두고 data-running=false로 애니메이션만 멈춥니다
-  if (d.throughput > 0) line.style.setProperty('--lot-interval', Math.max(0.15, 1 / d.throughput).toFixed(2) + 's');
-  line.dataset.running = String(d.throughput > 0);
-
-  renderStations(state, d);
-  renderEvent(state);
-  renderPrestige(state, d);
-  renderAchievements(state);
+  renderFloor(s, d);
+  renderPanel(s, d);
+  renderShop(s);
+  renderEngineerList(s);
+  renderEvent(s);
+  renderPrestige(s, d);
+  renderAchievements(s);
 }
 
-function renderStations(state, d) {
-  const nextLocked = STATIONS.findIndex(st => !state.stations[st.id].unlocked);
-  STATIONS.forEach((st, i) => {
-    const li = document.querySelector(`.station[data-id="${st.id}"]`);
-    const s = state.stations[st.id];
-    const isDown = state.event?.type === 'down' && state.event.stationId === st.id;
+function renderFloor(s, d) {
+  const floor = $('#floor');
+  floor.style.setProperty('--cols', GRID.cols);
+  floor.style.setProperty('--rows', s.rows);
+  floor.style.setProperty('--cell', (floor.clientWidth / GRID.cols).toFixed(2) + 'px');
 
-    let st8, label, cost, costNum;
-    if (!s.unlocked) {
-      st8 = i === nextLocked ? 'locked' : 'hidden';
-      label = '오픈';
-      costNum = unlockCost(state, i);
-      cost = won(costNum);
-    } else if (isDown) {
-      st8 = 'down';
-      label = '살리기!';
-      cost = `${state.event.tapsLeft}번 더`;
-      costNum = 0;
-    } else {
-      st8 = d.bottleneckId === st.id && d.unlockedCount > 1 ? 'bottleneck' : 'running';
-      label = '증설';
-      costNum = upgradeCost(state, i, s.level);
-      cost = won(costNum);
-    }
+  const st = $('#stocker');
+  st.style.setProperty('--x', STOCKER.x);
+  st.style.setProperty('--y', STOCKER.y);
 
-    setData(li, 'state', st8);
-    setData(li, 'affordable', String(state.money >= costNum));
-    setText(li.querySelector('.station__level'), s.unlocked ? `Lv.${s.level}` : '');
-    const ms = nextMilestone(s.level);
-    setText(li.querySelector('.station__rate'),
-      s.unlocked ? `${lotsPerSec(isDown ? 0 : stationRate(s.level))}${ms ? ` · Lv.${ms}에 속도 2배` : ''}` : `Lot당 +${won(st.lotValue)}`);
-    setText(li.querySelector('.station__action-label'), label);
-    setText(li.querySelector('.station__cost'), cost);
-    const rate = d.rates[st.id];
-    li.style.setProperty('--cycle', rate ? Math.max(0.15, 1 / rate).toFixed(2) + 's' : '0s');
+  // 장비
+  sync(ui.els.tools, s.tools, t => {
+    const el = document.createElement('div');
+    el.className = 'tool';
+    el.dataset.type = t.type;
+    el.innerHTML = `
+      <span class="tool__icon" aria-hidden="true">${PROCESSES[PROCESS_INDEX[t.type]].short}</span>
+      <span class="tool__lv"></span>
+      <span class="tool__queue"></span>
+      <span class="tool__progress"><span></span></span>
+      <span class="tool__health"><span></span></span>`;
+    return el;
+  }, (el, t) => {
+    el.style.setProperty('--x', t.x);
+    el.style.setProperty('--y', t.y);
+    el.style.setProperty('--progress', t.foup ? Math.min(1, t.progress).toFixed(3) : '0');
+    el.style.setProperty('--health', (t.health / 100).toFixed(3));
+    const state = t.down ? 'down' : t.health < 30 ? 'warn' : t.foup ? 'busy' : 'idle';
+    setData(el, 'state', state);
+    setData(el, 'bottleneck', String(t.type === d.bottleneck));
+    setData(el, 'selected', String(ui.selected === t.id));
+    setData(el, 'job', jobFor(s, t.id));
+    setText(el.querySelector('.tool__lv'), `Lv${t.level}`);
+    setText(el.querySelector('.tool__queue'), t.queue.length ? String(t.queue.length) : '');
   });
+
+  // FOUP (장비 안에서 처리·대기 중이면 숨김. 장비의 대기열 숫자로 보임)
+  sync(ui.els.foups, s.foups, () => {
+    const el = document.createElement('div');
+    el.className = 'foup';
+    return el;
+  }, (el, f) => {
+    el.style.setProperty('--x', f.x.toFixed(3));
+    el.style.setProperty('--y', f.y.toFixed(3));
+    setData(el, 'phase', f.phase);
+    setData(el, 'step', String(f.step));
+    el.hidden = f.phase !== 'move';
+  });
+
+  // 엔지니어
+  sync(ui.els.engineers, s.engineers, e => {
+    const el = document.createElement('div');
+    el.className = 'engineer';
+    el.innerHTML = `<span class="engineer__body" aria-hidden="true"></span><span class="engineer__name">${e.name}</span>`;
+    return el;
+  }, (el, e) => {
+    el.style.setProperty('--x', e.x.toFixed(3));
+    el.style.setProperty('--y', e.y.toFixed(3));
+    setData(el, 'phase', e.phase);
+    setData(el, 'job', e.job?.type ?? '');
+    setData(el, 'auto', String(e.auto));
+  });
+
+  // 배치 모드: 놓을 수 있는 칸 표시
+  const hints = $('#floor-hints');
+  if (ui.mode) {
+    const want = [];
+    for (let y = 0; y < s.rows; y++) for (let x = 0; x < GRID.cols; x++) if (E.cellFree(s, x, y)) want.push(`${x},${y}`);
+    const key = want.join(';');
+    if (hints.dataset.key !== key) {
+      hints.dataset.key = key;
+      hints.innerHTML = want.map(k => { const [x, y] = k.split(','); return `<span class="cell-hint" style="--x:${x};--y:${y}"></span>`; }).join('');
+    }
+  } else if (hints.dataset.key) { hints.dataset.key = ''; hints.innerHTML = ''; }
 }
 
-function renderEvent(state) {
+function jobFor(s, toolId) {
+  const e = s.engineers.find(x => x.job?.toolId === toolId);
+  if (e) return e.phase === 'work' ? 'working' : 'coming';
+  return s.jobs.some(j => j.toolId === toolId) ? 'queued' : '';
+}
+
+function renderPanel(s, d) {
+  if (!ui.selected) return;
+  const t = E.toolById(s, ui.selected);
+  if (!t) { select(null); return; }
+  const p = PROCESSES[PROCESS_INDEX[t.type]];
+  const panel = $('#tool-panel');
+  setData(panel, 'type', t.type);
+  setData(panel, 'state', t.down ? 'down' : t.health < 30 ? 'warn' : 'ok');
+  setText('#panel-name', `${p.name} · Lv${t.level}`);
+  setText('#panel-equip', p.equip);
+  panel.style.setProperty('--health', (t.health / 100).toFixed(3));
+  setText('#panel-health', t.down ? '고장' : `${Math.round(t.health)}%`);
+  const sp = E.toolSpeed(s, t);
+  setText('#panel-speed', sp ? `${(sp * 60).toFixed(1)} Lot/분` : '정지');
+  setText('#panel-queue', `${t.queue.length + (t.foup ? 1 : 0)}개`);
+  const bay = E.baySize(s, t);
+  setText('#panel-bay', bay ? `+${Math.round(bay * 15)}%` : '없음');
+  const ms = E.nextMilestone(t.level);
+  setText('#panel-hint', t.type === d.bottleneck
+    ? '이 공정이 라인 병목이에요. 증설하거나 같은 장비를 옆에 붙여 놓으세요.'
+    : ms ? `Lv${ms}에 속도 2배` : '');
+
+  const uc = E.upgradeCost(s, t);
+  const up = $('#panel-upgrade');
+  setText(up.querySelector('.btn__cost'), won(uc));
+  setData(up, 'affordable', String(s.money >= uc));
+
+  const job = jobFor(s, t.id);
+  const pm = $('#panel-pm');
+  pm.disabled = !!job || (!t.down && t.health >= 99.5);
+  setText(pm.querySelector('.btn__label'), t.down ? '수리 시키기' : 'PM 시키기');
+  setText(pm.querySelector('.btn__cost'),
+    job === 'working' ? '작업 중' : job === 'coming' ? '가는 중' : job === 'queued' ? '대기 중' : t.down ? '' : `헬스 ${Math.round(t.health)}%`);
+}
+
+function renderShop(s) {
+  const fc = E.foupCost(s), ec = E.expandCost(s), hc = E.hireCost(s);
+  shopBtn('#buy-foup', fc, s.foups.length >= FOUP.max, `${s.foups.length}개 보유`);
+  shopBtn('#buy-expand', ec, s.rows >= GRID.maxRows, `${GRID.cols}×${s.rows}`);
+  shopBtn('#buy-engineer', hc, s.engineers.length >= ENGINEER.max, `${s.engineers.length}명`);
+  for (const b of document.querySelectorAll('.shop-tool')) {
+    const c = E.buyToolCost(s, b.dataset.type);
+    setText(b.querySelector('.shop-tool__cost'), won(c));
+    setData(b, 'affordable', String(s.money >= c));
+    setData(b, 'active', String(ui.mode?.kind === 'buy' && ui.mode.type === b.dataset.type));
+  }
+  function shopBtn(sel, cost, maxed, note) {
+    const b = $(sel);
+    b.disabled = maxed;
+    setText(b.querySelector('.btn__cost'), maxed ? '최대' : won(cost));
+    setText(b.querySelector('.btn__note'), note);
+    setData(b, 'affordable', String(!maxed && s.money >= cost));
+  }
+}
+
+function renderEngineerList(s) {
+  const list = $('#engineer-list');
+  if (list.children.length !== s.engineers.length) {
+    list.innerHTML = s.engineers.map(e => `<li class="engineer-row" data-id="${e.id}"><span class="engineer-row__name">${e.name}</span><span class="engineer-row__status"></span></li>`).join('');
+  }
+  s.engineers.forEach((e, i) => {
+    const li = list.children[i];
+    const t = e.job ? E.toolById(s, e.job.toolId) : null;
+    const tn = t ? PROCESSES[PROCESS_INDEX[t.type]].name : '';
+    const what = e.job?.type === 'fix' ? '수리' : 'PM';
+    const text = e.phase === 'walk' ? `${tn} ${what}하러 가는 중`
+      : e.phase === 'work' ? `${tn} ${what} 중`
+      : e.auto ? '순찰 중 (헬스 낮은 장비 자동 PM)' : '대기 중 · 장비를 눌러 일을 시키세요';
+    setData(li, 'phase', e.phase);
+    setText(li.querySelector('.engineer-row__status'), text);
+  });
+  const waiting = s.jobs.length;
+  setText('#job-count', waiting ? `밀린 일 ${waiting}건` : '');
+}
+
+function renderEvent(s) {
   const box = $('#event-banner');
-  const ev = state.event;
+  const ev = s.event;
   box.hidden = !ev;
   if (!ev) return;
   setData(box, 'type', ev.type);
-  const st = ev.stationId ? STATIONS.find(s => s.id === ev.stationId) : null;
   const copy = {
-    down:     { title: `${st?.name} 장비 다운!`, desc: '라인이 멈췄어요. 빨리 살려주세요', btn: `리셋 (${ev.tapsLeft})` },
     particle: { title: '파티클 폭주', desc: '수율이 떨어지고 있어요. 클린 작업!', btn: `클린 (${ev.tapsLeft})` },
-    rush:     { title: '고객사 긴급 오더', desc: `${ev.progress ?? 0} / ${ev.target} Lot · 보상 ${won(ev.reward)}`, btn: '' },
+    rush: { title: '고객사 긴급 오더', desc: `${ev.progress ?? 0} / ${ev.target} Lot · 보상 ${won(ev.reward)}`, btn: '' },
   }[ev.type];
   setText('#event-title', copy.title);
   setText('#event-desc', copy.desc);
@@ -171,33 +324,25 @@ function renderEvent(state) {
   box.style.setProperty('--time-left', String(Math.max(0, ev.timeLeft / ev.duration)));
 }
 
-function renderPrestige(state, d) {
+function renderPrestige(s, d) {
   const box = $('#prestige');
-  const ratio = Math.min(1, state.runEarnings / d.prestigeTarget);
-  box.style.setProperty('--progress', ratio.toFixed(3));
+  box.style.setProperty('--progress', Math.min(1, s.runEarnings / d.prestigeTarget).toFixed(3));
   setData(box, 'ready', String(d.canPrestige));
-  setText('#tech-points', `${state.techPoints}`);
-  if (!d.nextNode) {
-    setText('#prestige-info', '최종 노드 도달! 무한 생산 모드');
-    $('#prestige-btn').hidden = true;
-    return;
-  }
-  const needLine = !d.fullLine ? ' · 8공정을 모두 열어야 해요' : '';
-  setText('#prestige-info',
-    `${d.nextNode.name}까지 ${won(state.runEarnings)} / ${won(d.prestigeTarget)}${needLine}`);
+  setText('#tech-points', String(s.techPoints));
   const btn = $('#prestige-btn');
+  if (!d.nextNode) { setText('#prestige-info', '최종 노드 도달!'); btn.hidden = true; return; }
+  setText('#prestige-info', `${d.nextNode.name}까지 ${won(s.runEarnings)} / ${won(d.prestigeTarget)}`);
   btn.disabled = !d.canPrestige;
   setText(btn, btn.dataset.confirm === 'true'
-    ? `정말 전환? 돈·설비 초기화, 기술포인트 +${d.prestigeGain}`
+    ? `정말 전환? 팹이 초기화되고 기술포인트 +${d.prestigeGain}`
     : d.canPrestige ? `${d.nextNode.short}로 전환 (+${d.prestigeGain} 기술포인트)` : '노드 전환');
 }
 
-function renderAchievements(state) {
+function renderAchievements(s) {
   for (const a of ACHIEVEMENTS) {
-    const li = document.querySelector(`.achievement[data-id="${a.id}"]`);
-    setData(li, 'unlocked', String(state.achievements.includes(a.id)));
+    setData(document.querySelector(`.achievement[data-id="${a.id}"]`), 'unlocked', String(s.achievements.includes(a.id)));
   }
-  setText('#achievement-count', `${state.achievements.length} / ${ACHIEVEMENTS.length}`);
+  setText('#achievement-count', `${s.achievements.length} / ${ACHIEVEMENTS.length}`);
 }
 
 // ---------- 일회성 알림 ----------
@@ -207,19 +352,18 @@ export function pushLot(lot) {
   const li = document.createElement('li');
   li.className = 'lot';
   li.dataset.kind = lot.kind;
-  const tag = lot.kind === 'golden' ? '골든 Lot!' : lot.kind === 'scrap' ? '스크랩' : '수율';
+  const tag = lot.kind === 'golden' ? '골든 Lot!' : lot.kind === 'scrap' ? '스크랩' : 'Lot 아웃';
   li.innerHTML = `<span class="lot__tag">${tag}</span><span class="lot__yield">${pct(lot.yield)}</span><span class="lot__value">+${won(lot.value)}</span>`;
   feed.prepend(li);
   while (feed.children.length > FEED_MAX) feed.lastChild.remove();
 }
 
 export function toast(text, kind = 'info') {
-  const stack = $('#toast-stack');
   const el = document.createElement('div');
   el.className = 'toast';
   el.dataset.kind = kind;
   el.textContent = text;
-  stack.appendChild(el);
+  $('#toast-stack').appendChild(el);
   setTimeout(() => el.remove(), 3200);
 }
 
@@ -229,7 +373,22 @@ export function showModal(title, body) {
   $('#modal').hidden = false;
 }
 
-// ---------- 헬퍼: 바뀐 것만 건드려 깜빡임 방지 ----------
+export function clearSelection() { select(null); setMode(null); }
+
+// ---------- 헬퍼 ----------
+
+// 엔티티 목록과 DOM 요소를 id 기준으로 맞춤
+function sync(map, items, create, update) {
+  const layer = $('#floor-entities');
+  const alive = new Set();
+  for (const it of items) {
+    alive.add(it.id);
+    let el = map.get(it.id);
+    if (!el) { el = create(it); el.dataset.id = it.id; layer.appendChild(el); map.set(it.id, el); }
+    update(el, it);
+  }
+  for (const [id, el] of map) if (!alive.has(id)) { el.remove(); map.delete(id); }
+}
 
 function setText(target, text) {
   const el = typeof target === 'string' ? $(target) : target;
@@ -238,4 +397,3 @@ function setText(target, text) {
 function setData(el, key, val) {
   if (el && el.dataset[key] !== val) el.dataset[key] = val;
 }
-

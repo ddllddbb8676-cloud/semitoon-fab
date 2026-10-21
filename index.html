@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>세미툰 FAB</title>
-  <meta name="description" content="웨이퍼가 끝없이 흘러가는 귀여운 반도체 팹 방치형 게임">
+  <meta name="description" content="장비를 깔고 FOUP을 굴리는 귀여운 반도체 팹 타이쿤">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap">
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body data-event="" data-full-line="false">
+<body data-event="">
   <!--
     id / class / data-속성은 js/ui.js 가 읽고 씁니다. 목록: docs/UI_CONTRACT.md
     장식용 요소는 자유롭게 추가해도 되지만, 계약서에 있는 id와 class는 지우거나 이름을 바꾸지 마세요.
@@ -23,7 +23,8 @@
     <div class="hud__money"><span class="hud__label">보유 자금</span><span id="money">0원</span></div>
     <div class="hud__stats">
       <span class="hud__stat"><span class="hud__label">매출</span><span id="rate">0원/초</span></span>
-      <span class="hud__stat"><span class="hud__label">평균 수율</span><span id="yield-avg">86.0%</span></span>
+      <span class="hud__stat"><span class="hud__label">생산</span><span id="lots-rate">0 Lot/분</span></span>
+      <span class="hud__stat"><span class="hud__label">수율</span><span id="yield-avg">86.0%</span></span>
     </div>
   </header>
 
@@ -38,28 +39,61 @@
       <div class="event__gauge" aria-hidden="true"></div>
     </section>
 
-    <section class="line" aria-label="생산 라인">
-      <div id="conveyor" class="conveyor" data-running="false" aria-hidden="true">
-        <span class="wafer"></span><span class="wafer"></span><span class="wafer"></span>
-        <span class="wafer"></span><span class="wafer"></span><span class="wafer"></span>
+    <section class="cleanroom" aria-label="클린룸">
+      <div class="cleanroom__head">
+        <h2 class="section-title">클린룸</h2>
+        <span class="cleanroom__meta">병목 <b id="bottleneck">-</b> · Lot 가치 <b id="lot-value">0원</b></span>
       </div>
-      <div class="line__stats">
-        <span><span class="hud__label">라인 처리량</span> <span id="throughput">0</span></span>
-        <span><span class="hud__label">Lot 가치</span> <span id="lot-value">0원</span></span>
+      <div id="mode-bar" class="mode-bar" hidden>
+        <span id="mode-text"></span>
+        <button id="mode-cancel" class="mode-bar__cancel" type="button">취소</button>
       </div>
-    </section>
-
-    <section class="tap">
-      <button id="tap-btn" class="tap__btn" type="button">
-        <span class="tap__wafer" aria-hidden="true"></span>
-        <span class="tap__label">웨이퍼 투입</span>
-      </button>
+      <!-- 바닥: JS가 --cols, --rows, --cell 을 넣고, 모든 엔티티는 --x, --y 칸 좌표로 배치됩니다 -->
+      <div id="floor" class="floor" data-mode="">
+        <div id="stocker" class="stocker" aria-label="스토커"><span class="stocker__label">스토커</span></div>
+        <div id="floor-hints" class="floor__hints" aria-hidden="true"></div>
+        <div id="floor-entities" class="floor__entities"></div>
+      </div>
       <ol id="lot-feed" class="lot-feed" aria-label="최근 Lot"></ol>
     </section>
 
-    <section class="stations">
-      <h2 class="section-title">생산 라인 <small>병목을 증설하면 라인 전체가 빨라져요</small></h2>
-      <ol id="station-list" class="station-list"></ol>
+    <section id="tool-panel" class="panel" data-type="" data-state="ok" hidden aria-live="polite">
+      <div class="panel__head">
+        <div class="panel__icon" aria-hidden="true"></div>
+        <div class="panel__title">
+          <strong id="panel-name"></strong>
+          <span id="panel-equip"></span>
+        </div>
+        <button id="panel-close" class="panel__close" type="button" aria-label="닫기">✕</button>
+      </div>
+      <dl class="panel__stats">
+        <div><dt>헬스</dt><dd><span class="panel__health" aria-hidden="true"><span></span></span><span id="panel-health"></span></dd></div>
+        <div><dt>처리 속도</dt><dd id="panel-speed"></dd></div>
+        <div><dt>대기 FOUP</dt><dd id="panel-queue"></dd></div>
+        <div><dt>Bay 보너스</dt><dd id="panel-bay"></dd></div>
+      </dl>
+      <p id="panel-hint" class="panel__hint"></p>
+      <div class="panel__actions">
+        <button id="panel-upgrade" class="btn btn--primary" type="button"><span class="btn__label">증설</span><span class="btn__cost"></span></button>
+        <button id="panel-pm" class="btn" type="button"><span class="btn__label">PM 시키기</span><span class="btn__cost"></span></button>
+        <button id="panel-move" class="btn" type="button"><span class="btn__label">옮기기</span><span class="btn__cost">무료</span></button>
+      </div>
+    </section>
+
+    <section class="crew">
+      <h2 class="section-title">엔지니어 <small id="job-count"></small></h2>
+      <ul id="engineer-list" class="engineer-list"></ul>
+    </section>
+
+    <section id="shop" class="shop">
+      <h2 class="section-title">구매</h2>
+      <div class="shop__row">
+        <button id="buy-foup" class="btn shop__item" type="button"><span class="btn__label">FOUP 추가</span><span class="btn__note"></span><span class="btn__cost"></span></button>
+        <button id="buy-expand" class="btn shop__item" type="button"><span class="btn__label">클린룸 확장</span><span class="btn__note"></span><span class="btn__cost"></span></button>
+        <button id="buy-engineer" class="btn shop__item" type="button"><span class="btn__label">엔지니어 고용</span><span class="btn__note"></span><span class="btn__cost"></span></button>
+      </div>
+      <h3 class="shop__sub">장비 추가 <small>누르고 빈 칸에 놓기 · 같은 장비끼리 붙이면 Bay 보너스</small></h3>
+      <div id="shop-tools" class="shop__tools"></div>
     </section>
 
     <section id="prestige" class="prestige" data-ready="false">
@@ -76,7 +110,7 @@
 
     <footer class="footer">
       <button id="reset-btn" class="footer__reset" type="button">처음부터 다시</button>
-      <span class="footer__ver">v0.1 프로토타입</span>
+      <span class="footer__ver">v0.2 프로토타입</span>
     </footer>
   </main>
 
