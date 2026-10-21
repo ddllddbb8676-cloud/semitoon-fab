@@ -30,7 +30,7 @@
 |---|---|
 | **Claude** (로직·규격) | `life/js/` (`life/js/fx.js` 제외), `life/data/` (아래 GPT 콘텐츠 제외), `life/docs/` (아래 GPT 문서 제외), `life/tools/`, `life/tasks/` |
 | **GPT** (디자인) | `life/css/`, `life/js/fx.js`, `life/assets/`, `life/mockups/`, `life/docs/DESIGN_BRIEF.md` |
-| **GPT** (콘텐츠·검토) | `life/data/events/gpt/`, `life/data/achievements.json`, `life/data/names.json`, `life/data/news_general.json`, `life/data/jobs_extra.json`, `life/data/review_text.json`, `life/data/job_matrix_text.json`, `life/data/job_matrix_extra.json`, `life/docs/reviews/` |
+| **GPT** (콘텐츠·검토) | `life/data/events/gpt/`, `life/data/achievements.json`, `life/data/names.json`, `life/data/news_general.json`, `life/data/jobs_extra.json`, `life/data/review_text.json`, `life/data/job_matrix_text.json`, `life/data/job_matrix_extra.json`, `life/data/future_news.json`, `life/docs/FUTURE_WORLD.md`, `life/docs/reviews/` |
 | 공동 (조율 필요) | `life/index.html`, `life/docs/UI_CONTRACT.md`, `life/docs/REQUESTS.md` |
 
 GPT 작업 지시서는 `life/tasks/gpt/`에 있습니다. 데이터는 커밋 전에 `node life/tools/validate.mjs`로 검사합니다.

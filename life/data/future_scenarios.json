@@ -1,0 +1,2029 @@
+{
+ "_note": "세미툰 라이프 2027~2150 충격·분기 시나리오와 시황 모델 상수, 세계 경로, 한국 사회 기준표, 시황 헤드라인 틀(FUTURE.md 4~6장). yearly_probability는 숫자 또는 {시작연도: 확률} 계단표. effects.market 값은 {delta, years, lag?} 하나 또는 그 배열. phase는 사이클 국면 강제, trend는 추세 성장률(%p) 가감, econ은 ECONOMY에 넘기는 거시 가감, delay_nodes는 아직 안 나온 노드를 n년 미룸. fiction=true는 2060년 이후 근거를 이어 붙인 가상(basis_ko에 근거 실마리).",
+ "model": {
+  "_note": "FUTURE.md 4장의 상수. life/tools/future_sim.mjs와 게임 엔진이 같이 읽는다.",
+  "start_year": 2027,
+  "end_year": 2150,
+  "base_year": 2026,
+  "base_sales_busd": 1655,
+  "base_yoy_pct": 108.1,
+  "trend": {
+   "level_2027_busd": 1700,
+   "growth_pct": [
+    [
+     2027,
+     6
+    ],
+    [
+     2035,
+     4.5
+    ],
+    [
+     2050,
+     3.5
+    ],
+    [
+     2060,
+     2.5
+    ]
+   ]
+  },
+  "anchor_2027": {
+   "yoy_mean_pct": 26,
+   "yoy_sd_pct": 3,
+   "yoy_min_pct": 20,
+   "yoy_max_pct": 33
+  },
+  "base_excess_pct": 12,
+  "cycle": {
+   "p_down": 0.19,
+   "p_down_overheat": 0.5,
+   "overheat_yoy_pct": 15,
+   "overheat_years": 2,
+   "p_down_gap_coef": 0.6,
+   "min_up_years": 2,
+   "down_years": [
+    [
+     1,
+     0.8
+    ],
+    [
+     2,
+     0.2
+    ]
+   ],
+   "depth": {
+    "mild": {
+     "p": 0.72,
+     "excess_pct": [
+      -8,
+      -18
+     ]
+    },
+    "medium": {
+     "p": 0.2,
+     "excess_pct": [
+      -16,
+      -24
+     ]
+    },
+    "severe": {
+     "p": 0.08,
+     "excess_pct": [
+      -22,
+      -36
+     ]
+    }
+   },
+   "second_down_year_scale": 0.5,
+   "up_kinds": {
+    "flat": {
+     "p": 0.47,
+     "excess_pct": [
+      -5,
+      4
+     ]
+    },
+    "normal": {
+     "p": 0.3,
+     "excess_pct": [
+      4,
+      15
+     ]
+    },
+    "strong": {
+     "p": 0.23,
+     "excess_pct": [
+      15,
+      27
+     ]
+    }
+   },
+   "rebound_excess_pct": [
+    0,
+    26
+   ],
+   "super_excess_pct": [
+    24,
+    36
+   ],
+   "p_super": 0.06,
+   "super_min_gap_years": 8,
+   "mean_reversion": 0.25,
+   "amp_post_2060": 0.85
+  },
+  "sectors": {
+   "cycle": {
+    "unit_pct": 12,
+    "offset_pct": 3
+   },
+   "memory": {
+    "unit_pct": 28,
+    "beta": 3,
+    "noise_pct": 10,
+    "share_drift_pct": [
+     [
+      2028,
+      -6
+     ],
+     [
+      2033,
+      0
+     ]
+    ]
+   },
+   "logic_foundry": {
+    "unit_pct": 11,
+    "beta": 0.7,
+    "noise_pct": 3,
+    "bias_steps": 0
+   },
+   "equipment": {
+    "unit_pct": 25,
+    "beta": 2.5,
+    "lag_weight": 0.5,
+    "noise_pct": 6
+   },
+   "korea": {
+    "mix_memory": 0.5,
+    "mix_cycle": 0.3,
+    "noise_steps": 0.25
+   }
+  },
+  "effects": {
+   "node_delta_weight": 0.5,
+   "scenario_delta_weight": 1,
+   "delta_cap": 2,
+   "score_cap": 2
+  },
+  "jobs": {
+   "ramp_years": 5,
+   "temp_boost_cap": 0.6,
+   "min": 0.05,
+   "max": 3
+  },
+  "world_path": {
+   "decide_year": 2060,
+   "reroll_year": 2100,
+   "reroll_keep": 0.6,
+   "tilt_cap": 0.6
+  },
+  "econ": {
+   "_note": "ECONOMY.md 11.1 행 계약을 채우는 미래 거시 입력. 공식은 FUTURE.md 6.4. 2060년 이후는 세계 경로 값이 기준선을 대신한다.",
+   "korea_real_growth_pct": [
+    [
+     2027,
+     1.9
+    ],
+    [
+     2031,
+     1.6
+    ],
+    [
+     2036,
+     1.3
+    ],
+    [
+     2041,
+     0.9
+    ],
+    [
+     2046,
+     0.4
+    ],
+    [
+     2051,
+     0
+    ],
+    [
+     2056,
+     -0.2
+    ]
+   ],
+   "growth_per_korea_score": 0.3,
+   "inflation_target_pct": 2,
+   "inflation_persistence": 0.5,
+   "inflation_noise_pct": 0.8,
+   "real_wage_pct": [
+    [
+     2027,
+     1.3
+    ],
+    [
+     2041,
+     1
+    ],
+    [
+     2051,
+     0.6
+    ]
+   ],
+   "real_wage_macro": 0.3,
+   "real_wage_noise_pct": 0.8,
+   "automation_wage_drag": {
+    "flag": "tech_half_work_automated",
+    "pct": -0.4,
+    "years": 25
+   },
+   "r_star_pct": [
+    [
+     2027,
+     0.8
+    ],
+    [
+     2060,
+     0
+    ]
+   ],
+   "rate_adjust": 0.5,
+   "rate_noise_pct": 0.3,
+   "rate_floor_pct": 0.25,
+   "rate_cap_pct": 8,
+   "mortgage_spread_pct": [
+    1.4,
+    0.2
+   ],
+   "deposit_spread_pct": 0.3,
+   "house": {
+    "pir_target": {
+     "seoul": 25,
+     "local": 6
+    },
+    "pir_coef": 0.15,
+    "rate_coef": 0.8,
+    "pop_coef": {
+     "seoul": 0.2,
+     "local": 0.6
+    },
+    "noise": {
+     "seoul": 0.06,
+     "local": 0.04
+    },
+    "pir_fence": {
+     "seoul": [
+      6,
+      45
+     ],
+     "local": [
+      2.5,
+      12
+     ]
+    }
+   },
+   "kospi": {
+    "premium": 0.045,
+    "macro": 0.08,
+    "korea": 0.04,
+    "noise": 0.2,
+    "min_pct": -60,
+    "max_pct": 90
+   },
+   "min_wage_extra_pct": [
+    0.3,
+    0.8
+   ],
+   "min_wage_ratio_fence": [
+    0.4,
+    0.65
+   ],
+   "dividend_yield_pct": 2,
+   "jeonse_ratio": 0.55,
+   "ltv_capital": 0.6,
+   "ltv_local": 0.7,
+   "semis_wage_per_korea_score": 1.5,
+   "denomination_krw": 100000000000000
+  },
+  "rng": "mulberry32. 노드 연도 스트림 (imul(seed, 0x9E3779B1)+1)>>>0, 연도 스트림 (imul(seed, 0x9E3779B1)+2)>>>0. 뽑는 순서는 FUTURE.md 3.4"
+ },
+ "world_paths": [
+  {
+   "id": "abundance",
+   "name_ko": "풍요",
+   "desc_ko": "AI와 로봇이 일을 나눠 맡고 연산·에너지가 싸져요. 일은 점점 선택이 되고, 분배가 정치의 중심이 돼요.",
+   "base_weight": 0.25,
+   "trend_pct": 3.5,
+   "amp": 0.9,
+   "korea_real_growth_pct": 1.2,
+   "inflation_pct": 1.5,
+   "r_star_pct": 0.5,
+   "real_wage_pct": 1.4,
+   "kospi_adj": 0.01,
+   "korea_bias": 0.1,
+   "automation_scale": 1.25,
+   "jobs": {
+    "operator": 0.8,
+    "hr": 0.8,
+    "purchasing": 0.8,
+    "analyst": 0.85,
+    "cook": 0.9
+   },
+   "population_2150_mult": 1.15,
+   "headline_ko": "세계는 '풍요의 시대'로…AI·로봇이 일을 나눠 맡는다",
+   "fiction": true,
+   "basis_ko": "F4 beyond_2060 (a) 풍요 자동화 + Epoch GATE 조건부 고성장"
+  },
+  {
+   "id": "stagnation",
+   "name_ko": "정체",
+   "desc_ko": "규제와 인구 감소, 축소 한계가 겹쳐 성장이 느려져요. AI는 도구에 머물고 고용은 천천히 재편돼요.",
+   "base_weight": 0.3,
+   "trend_pct": 1.2,
+   "amp": 0.8,
+   "korea_real_growth_pct": -0.3,
+   "inflation_pct": 1,
+   "r_star_pct": -0.5,
+   "real_wage_pct": 0.2,
+   "kospi_adj": -0.015,
+   "korea_bias": -0.25,
+   "automation_scale": 0.6,
+   "jobs": {},
+   "population_2150_mult": 0.9,
+   "headline_ko": "'긴 정체'의 시대…규제와 인구 감소에 성장 엔진 식었다",
+   "fiction": true,
+   "basis_ko": "F4 beyond_2060 (b) 규제·정체 + F3 한국은행 2050년대 마이너스 성장 경고 + Acemoglu 보수적 생산성"
+  },
+  {
+   "id": "fragmentation",
+   "name_ko": "분열",
+   "desc_ko": "세계가 기술 블록으로 갈라져 같은 칩을 두 번 만들어요. 팹 건설은 많지만 물가와 시황이 거칠게 흔들려요.",
+   "base_weight": 0.2,
+   "trend_pct": 2,
+   "amp": 1.35,
+   "korea_real_growth_pct": 0.4,
+   "inflation_pct": 3,
+   "r_star_pct": 0.5,
+   "real_wage_pct": 0.5,
+   "kospi_adj": 0,
+   "korea_bias": 0.15,
+   "automation_scale": 0.9,
+   "jobs": {
+    "site_manager": 1.2,
+    "welder": 1.2,
+    "pipefitter": 1.2,
+    "security_gate": 1.3,
+    "official": 1.15
+   },
+   "population_2150_mult": 0.95,
+   "headline_ko": "블록 경제 고착…칩 공급망이 진영 따라 둘로 갈렸다",
+   "fiction": true,
+   "basis_ko": "F3 지정학 시나리오(대만·미중 기술전쟁·자급률) 2060년 이후 외삽"
+  },
+  {
+   "id": "transition",
+   "name_ko": "전환",
+   "desc_ko": "기후와 에너지가 상한이 되어 전력·물·소재를 아끼는 기술이 산업을 이끌어요. 초반엔 느리지만 뒤로 갈수록 빨라져요.",
+   "base_weight": 0.25,
+   "trend_pct": 2.5,
+   "trend_schedule": [
+    [
+     2060,
+     2
+    ],
+    [
+     2085,
+     3
+    ]
+   ],
+   "amp": 1.1,
+   "korea_real_growth_pct": 0.6,
+   "inflation_pct": 2.5,
+   "r_star_pct": 0,
+   "real_wage_pct": 0.9,
+   "kospi_adj": 0,
+   "korea_bias": 0,
+   "automation_scale": 1,
+   "jobs": {
+    "electrician": 1.3,
+    "environment_safety": 1.4,
+    "pipefitter": 1.15
+   },
+   "population_2150_mult": 1.1,
+   "headline_ko": "에너지·기후 '대전환' 본격화…칩도 와트당 성능으로 줄 세운다",
+   "fiction": true,
+   "basis_ko": "F4 beyond_2060 (c) 에너지·자원 제약 + F3 전력·용수 리스크 외삽"
+  }
+ ],
+ "cycle_headlines": {
+  "super": [
+   "반도체 슈퍼사이클 재림…세계 매출 {sales_t}조 달러, {yoy} 급증",
+   "없어서 못 판다…메모리·파운드리 동반 품귀, 시장 {yoy} 성장",
+   "반도체 '역대급 호황'…성과급 기사에 취업 준비생 몰려"
+  ],
+  "up": [
+   "반도체 경기 순항…세계 매출 {sales_t}조 달러, {yoy} 증가",
+   "주문 늘고 가동률 올라…반도체 업계 증설 다시 만지작",
+   "반도체 수출 늘자 채용 공고도 늘었다…업계 표정 밝아져",
+   "AI·데이터센터 수요 꾸준…반도체 시장 {yoy} 성장"
+  ],
+  "recovery": [
+   "바닥 찍고 반등…반도체 매출 {yoy} 회복",
+   "재고 소진에 가격 반등…'불황 끝났다' 신호",
+   "감산 효과 나타났다…메모리값 넉 분기 만에 오름세"
+  ],
+  "flat": [
+   "숨 고르는 반도체…세계 매출 {sales_t}조 달러, 제자리걸음",
+   "호황도 불황도 아닌 한 해…업계는 다음 사이클 준비",
+   "가격은 보합, 투자는 신중…반도체 '눈치 보기' 장세"
+  ],
+  "memory_boom": [
+   "메모리 값 급등…메모리 업체 실적 사상 최대, 시장은 {yoy}",
+   "D램 품귀에 메모리 슈퍼사이클…성과급 단톡방 들썩"
+  ],
+  "memory_weak": [
+   "메모리만 찬바람…D램 값 하락에 감산 논의",
+   "로직은 웃고 메모리는 울고…메모리 재고 쌓여"
+  ],
+  "down": [
+   "반도체 경기 꺾였다…세계 매출 {yoy} 감소, 채용 축소",
+   "재고 쌓이고 가격 하락…반도체 업계 비상경영",
+   "반도체 한파 시작…성과급 줄고 신규 채용 동결"
+  ],
+  "bust": [
+   "반도체 대불황…세계 매출 {yoy} 급감, 감산·구조조정 칼바람",
+   "반도체 매출 {sales_t}조 달러로 뚝…업계 비상 감산",
+   "팹 가동률 곤두박질…장비 발주 줄취소"
+  ],
+  "peak_warning": [
+   "사상 최대 실적 뒤 경고음…\"고점 신호\" 반도체 투자 속도 조절론",
+   "호황은 계속되지만…증설 경쟁에 공급 과잉 우려"
+  ]
+ },
+ "korea_society": {
+  "_note": "연도 사이는 선형 보간. population_m·working_age_m은 백만 명. 2072년 이후는 추세 연장(가상)이며 세계 경로별 population_2150_mult를 2072→2150에 걸쳐 선형으로 곱한다. retirement_age는 중앙 경로 값이고 실제 판에서는 FUTURE.md 6.2의 공식(korea_retirement_65 노드 연도)으로 계산한다.",
+  "rows": [
+   {
+    "year": 2022,
+    "population_m": 51.67,
+    "aged65_pct": 17.4,
+    "working_age_m": 36.74,
+    "tfr": 0.78,
+    "retirement_age": 60,
+    "pension_age": 63,
+    "pension_contrib_pct": 9,
+    "shrinking_regions": null,
+    "capital_share_pct": 50.5,
+    "basis": "kostat"
+   },
+   {
+    "year": 2026,
+    "population_m": 51.6,
+    "aged65_pct": 21.5,
+    "working_age_m": 35.5,
+    "tfr": 0.82,
+    "retirement_age": 60,
+    "pension_age": 63,
+    "pension_contrib_pct": 9.5,
+    "shrinking_regions": 135,
+    "capital_share_pct": 50.9,
+    "basis": "interp"
+   },
+   {
+    "year": 2030,
+    "population_m": 51.3,
+    "aged65_pct": 25.3,
+    "working_age_m": 34.2,
+    "tfr": 0.85,
+    "retirement_age": 61,
+    "pension_age": 64,
+    "pension_contrib_pct": 11.5,
+    "shrinking_regions": 148,
+    "capital_share_pct": 51.3,
+    "basis": "interp"
+   },
+   {
+    "year": 2035,
+    "population_m": 50.8,
+    "aged65_pct": 29.9,
+    "working_age_m": 31.7,
+    "tfr": 0.9,
+    "retirement_age": 64,
+    "pension_age": 65,
+    "pension_contrib_pct": 13,
+    "shrinking_regions": 160,
+    "capital_share_pct": 51.8,
+    "basis": "interp"
+   },
+   {
+    "year": 2040,
+    "population_m": 50.1,
+    "aged65_pct": 34.3,
+    "working_age_m": 29,
+    "tfr": 0.95,
+    "retirement_age": 65,
+    "pension_age": 65,
+    "pension_contrib_pct": 13,
+    "shrinking_regions": 170,
+    "capital_share_pct": 52.3,
+    "basis": "interp"
+   },
+   {
+    "year": 2045,
+    "population_m": 48.8,
+    "aged65_pct": 37.5,
+    "working_age_m": 26.6,
+    "tfr": 1,
+    "retirement_age": 65,
+    "pension_age": 65,
+    "pension_contrib_pct": 15,
+    "shrinking_regions": 178,
+    "capital_share_pct": 52.8,
+    "basis": "interp"
+   },
+   {
+    "year": 2050,
+    "population_m": 47.1,
+    "aged65_pct": 40.1,
+    "working_age_m": 24.2,
+    "tfr": 1.02,
+    "retirement_age": 66,
+    "pension_age": 66,
+    "pension_contrib_pct": 15,
+    "shrinking_regions": 185,
+    "capital_share_pct": 53.3,
+    "basis": "interp"
+   },
+   {
+    "year": 2055,
+    "population_m": 44.8,
+    "aged65_pct": 42.5,
+    "working_age_m": 22.4,
+    "tfr": 1.04,
+    "retirement_age": 66,
+    "pension_age": 67,
+    "pension_contrib_pct": 15,
+    "shrinking_regions": 190,
+    "capital_share_pct": 53.8,
+    "basis": "interp"
+   },
+   {
+    "year": 2060,
+    "population_m": 42.3,
+    "aged65_pct": 44.2,
+    "working_age_m": 20.7,
+    "tfr": 1.05,
+    "retirement_age": 67,
+    "pension_age": 67,
+    "pension_contrib_pct": 16,
+    "shrinking_regions": 195,
+    "capital_share_pct": 54.2,
+    "basis": "interp"
+   },
+   {
+    "year": 2065,
+    "population_m": 39.9,
+    "aged65_pct": 45.8,
+    "working_age_m": 19,
+    "tfr": 1.06,
+    "retirement_age": 67,
+    "pension_age": 68,
+    "pension_contrib_pct": 22,
+    "shrinking_regions": 198,
+    "capital_share_pct": 54.6,
+    "basis": "interp"
+   },
+   {
+    "year": 2072,
+    "population_m": 36.22,
+    "aged65_pct": 47.7,
+    "working_age_m": 16.58,
+    "tfr": 1.08,
+    "retirement_age": 68,
+    "pension_age": 68,
+    "pension_contrib_pct": 22,
+    "shrinking_regions": 200,
+    "capital_share_pct": 55,
+    "basis": "kostat"
+   },
+   {
+    "year": 2080,
+    "population_m": 32.5,
+    "aged65_pct": 48,
+    "working_age_m": 14.6,
+    "tfr": 1.1,
+    "retirement_age": 68,
+    "pension_age": 68,
+    "pension_contrib_pct": 22,
+    "shrinking_regions": 202,
+    "capital_share_pct": 55.3,
+    "basis": "ext"
+   },
+   {
+    "year": 2090,
+    "population_m": 27.5,
+    "aged65_pct": 48,
+    "working_age_m": 12.3,
+    "tfr": 1.1,
+    "retirement_age": 70,
+    "pension_age": 70,
+    "pension_contrib_pct": 22,
+    "shrinking_regions": 203,
+    "capital_share_pct": 55.6,
+    "basis": "ext"
+   },
+   {
+    "year": 2100,
+    "population_m": 22,
+    "aged65_pct": 47.5,
+    "working_age_m": 10,
+    "tfr": 1.1,
+    "retirement_age": 70,
+    "pension_age": 70,
+    "pension_contrib_pct": 22,
+    "shrinking_regions": 205,
+    "capital_share_pct": 56,
+    "basis": "un"
+   },
+   {
+    "year": 2125,
+    "population_m": 16,
+    "aged65_pct": 47,
+    "working_age_m": 7.4,
+    "tfr": 1.15,
+    "retirement_age": 70,
+    "pension_age": 70,
+    "pension_contrib_pct": 22,
+    "shrinking_regions": 205,
+    "capital_share_pct": 56,
+    "basis": "ext"
+   },
+   {
+    "year": 2150,
+    "population_m": 12,
+    "aged65_pct": 46,
+    "working_age_m": 5.6,
+    "tfr": 1.2,
+    "retirement_age": 70,
+    "pension_age": 70,
+    "pension_contrib_pct": 22,
+    "shrinking_regions": 205,
+    "capital_share_pct": 56,
+    "basis": "ext"
+   }
+  ],
+  "sources": [
+   "https://www.newsis.com/view/NISX20231214_0002558157",
+   "https://nocutnews.co.kr/news/6568252",
+   "https://mobile.newsis.com/view/NISX20250320_0003107056",
+   "https://weekly.khan.co.kr/article/202608291624001",
+   "https://m.seoul.co.kr/news/2023/12/04/20231204002003",
+   "https://www.nocutnews.co.kr/news/6360983",
+   "https://ourworldindata.org/south-koreas-population-is-set-to-shrink-what-would-it-take-to-stop-the-decline"
+  ]
+ },
+ "scenarios": [
+  {
+   "id": "ai_supercycle_extended",
+   "name_ko": "AI 슈퍼사이클 장기 연장",
+   "desc_ko": "2030년까지 조정 없이 AI 수요가 이어지는 판이에요. 2027년에 한 번만 판정해요.",
+   "window": [
+    2027,
+    2027
+   ],
+   "yearly_probability": 0.2,
+   "max_occurrences": 1,
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": 0.5,
+      "years": 4
+     },
+     "korea": {
+      "delta": 0.5,
+      "years": 4
+     }
+    },
+    "jobs": {
+     "welder": {
+      "mult": 1.15,
+      "years": 4
+     },
+     "electrician": {
+      "mult": 1.15,
+      "years": 4
+     },
+     "process_engineer": {
+      "mult": 1.1,
+      "years": 4
+     },
+     "recruiter": {
+      "mult": 1.2,
+      "years": 4
+     }
+    },
+    "flag": "scen_ai_supercycle_extended",
+    "phase": {
+     "set": "up",
+     "years": 4
+    }
+   },
+   "headline_ko": "'최소 2030년까지 호황'…AI 슈퍼사이클, 꺾일 줄 모른다",
+   "confidence": "low",
+   "fiction": false,
+   "sources": [
+    "https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-cost-of-compute-a-7-trillion-dollar-race-to-scale-data-centers",
+    "https://digg.com/tech/2osydu8m",
+    "https://www.igorslab.de/en/sk-hynix-warns-of-the-industrys-worst-memory-shortage-in-2027/"
+   ]
+  },
+  {
+   "id": "ai_overbuild_bust",
+   "name_ko": "AI 과잉투자 붕괴",
+   "desc_ko": "빅테크 설비투자가 1년 안에 20~40% 깎이고 HBM·D램 값이 반토막 나요. 회복에 2~4년이 걸려요.",
+   "window": [
+    2028,
+    2034
+   ],
+   "yearly_probability": {
+    "2028": 0.07,
+    "2030": 0.05,
+    "2032": 0.03
+   },
+   "max_occurrences": 1,
+   "prob_mult_flags": {
+    "scen_ai_supercycle_extended": 1.5
+   },
+   "excludes_active": [
+    "ai_supercycle_extended"
+   ],
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": -1,
+      "years": 2
+     },
+     "equipment": {
+      "delta": -1,
+      "years": 2
+     },
+     "korea": {
+      "delta": -1,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "welder": {
+      "mult": 0.8,
+      "years": 2
+     },
+     "electrician": {
+      "mult": 0.85,
+      "years": 2
+     },
+     "site_manager": {
+      "mult": 0.85,
+      "years": 2
+     },
+     "recruiter": {
+      "mult": 0.7,
+      "years": 2
+     },
+     "academy_teacher": {
+      "mult": 0.9,
+      "years": 2
+     }
+    },
+    "flag": "scen_ai_overbuild_bust",
+    "phase": {
+     "set": "down",
+     "years": 2,
+     "depth": "severe"
+    },
+    "econ": {
+     "korea_growth_pct": -1,
+     "years": 1
+    },
+    "world_path": {
+     "stagnation": 0.05
+    },
+    "delay_nodes": {
+     "yongin_national_fab1": 2,
+     "yongin_general_full": 2,
+     "yongin_cluster_full": 2,
+     "southwest_cluster_fab1": 2
+    }
+   },
+   "headline_ko": "AI 거품 꺼졌다…빅테크 설비투자 30% 삭감, 메모리값 반토막",
+   "confidence": "medium",
+   "fiction": false,
+   "sources": [
+    "https://www.theregister.com/2025/09/24/bain_ai_costs",
+    "https://cio.com/article/4236629/ai-datacenter-capex-will-far-exceed-forecast-revenue-through-2030-2.html",
+    "https://blocksandfiles.com/2026/01/21/the-memory-supercycle/",
+    "https://www.clearygottlieb.com/news-and-insights/publication-listing/financing-the-data-center-boom"
+   ]
+  },
+  {
+   "id": "china_memory_flood",
+   "name_ko": "중국 메모리 추격·가격 붕괴",
+   "desc_ko": "중국산 범용 D램·낸드가 쏟아져 값이 오래 떨어지고 한국 점유율이 5~10%p 줄어요.",
+   "window": [
+    2028,
+    2040
+   ],
+   "yearly_probability": 0.02,
+   "max_occurrences": 1,
+   "prob_mult_flags": {
+    "tech_china_dram_share_17": 2,
+    "scen_ai_overbuild_bust": 1.5
+   },
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": -1,
+      "years": 3
+     },
+     "korea": {
+      "delta": -1,
+      "years": 3
+     }
+    },
+    "jobs": {
+     "recruiter": {
+      "mult": 1.2,
+      "years": 3
+     }
+    },
+    "flag": "scen_china_memory_flood",
+    "skills": {
+     "dram_cell": -0.1,
+     "hbm_design": 0.1
+    }
+   },
+   "headline_ko": "중국산 D램 쏟아진다…범용 메모리값 바닥 모를 추락",
+   "confidence": "low",
+   "fiction": false,
+   "sources": [
+    "https://www.digitaltoday.co.kr/en/view/96439/cxmt-ymtc-supply-push-may-reshape-dram-nand-market",
+    "https://www.trendforce.com/news/2026/03/31/news-china-reportedly-targets-80-chip-self-sufficiency-by-2030-eyes-domestic-7nm-line/"
+   ]
+  },
+  {
+   "id": "taiwan_blockade",
+   "name_ko": "대만 봉쇄·격리",
+   "desc_ko": "대만 해상이 봉쇄돼 첨단 로직 공급이 끊겨요. 한국 파운드리·패키징에 대체 주문이 몰리지만 세계 수요는 줄어요.",
+   "window": [
+    2028,
+    2060
+   ],
+   "yearly_probability": 0.011,
+   "max_occurrences": 1,
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": -1,
+      "years": 1
+     },
+     "logic_foundry": [
+      {
+       "delta": -2,
+       "years": 1
+      },
+      {
+       "delta": 1,
+       "years": 2,
+       "lag": 1
+      }
+     ],
+     "memory": {
+      "delta": 1,
+      "years": 1
+     },
+     "korea": {
+      "delta": 1,
+      "years": 2
+     },
+     "equipment": {
+      "delta": 1,
+      "years": 3,
+      "lag": 1
+     }
+    },
+    "jobs": {
+     "process_engineer": {
+      "mult": 1.15,
+      "years": 3
+     },
+     "field_service": {
+      "mult": 1.2,
+      "years": 3
+     },
+     "welder": {
+      "mult": 1.2,
+      "years": 3
+     },
+     "official": {
+      "mult": 1.1,
+      "years": 3
+     }
+    },
+    "flag": "scen_taiwan_blockade",
+    "econ": {
+     "inflation_pct": 1.5,
+     "korea_growth_pct": -1,
+     "years": 1
+    },
+    "world_path": {
+     "fragmentation": 0.15
+    }
+   },
+   "headline_ko": "대만해협 봉쇄…첨단 칩 공급 끊겼다, 한국 팹에 주문 폭주",
+   "confidence": "low",
+   "fiction": false,
+   "sources": [
+    "https://chinapower.csis.org/surveying-experts-us-and-taiwan-views-china-approach-taiwan-2024/",
+    "https://www.taiwannews.com.tw/en/news/6301597",
+    "https://www.defenceconnect.com.au/geopolitics-and-policy/13414-assessing-the-true-cost-of-a-taiwan-conflict"
+   ]
+  },
+  {
+   "id": "taiwan_invasion",
+   "name_ko": "대만 전쟁",
+   "desc_ko": "대만에서 전쟁이 일어나 세계 첨단 로직이 1~3년 공백을 겪어요. 세계 반도체 지도가 다시 그려져요.",
+   "window": [
+    2028,
+    2060
+   ],
+   "yearly_probability": 0.004,
+   "max_occurrences": 1,
+   "prob_mult_flags": {
+    "scen_taiwan_blockade": 3
+   },
+   "effects": {
+    "market": {
+     "cycle": [
+      {
+       "delta": -2,
+       "years": 1
+      },
+      {
+       "delta": -1,
+       "years": 1,
+       "lag": 1
+      }
+     ],
+     "logic_foundry": [
+      {
+       "delta": -2,
+       "years": 2
+      },
+      {
+       "delta": 1,
+       "years": 3,
+       "lag": 2
+      }
+     ],
+     "memory": {
+      "delta": 1,
+      "years": 1,
+      "lag": 1
+     },
+     "equipment": {
+      "delta": 2,
+      "years": 3,
+      "lag": 1
+     },
+     "korea": [
+      {
+       "delta": -1,
+       "years": 1
+      },
+      {
+       "delta": 1,
+       "years": 3,
+       "lag": 1
+      }
+     ]
+    },
+    "jobs": {
+     "process_engineer": {
+      "mult": 1.3,
+      "years": 4
+     },
+     "equipment_engineer": {
+      "mult": 1.3,
+      "years": 4
+     },
+     "field_service": {
+      "mult": 1.3,
+      "years": 4
+     },
+     "site_manager": {
+      "mult": 1.3,
+      "years": 4
+     },
+     "welder": {
+      "mult": 1.3,
+      "years": 4
+     },
+     "official": {
+      "mult": 1.2,
+      "years": 4
+     }
+    },
+    "flag": "scen_taiwan_invasion",
+    "trend": {
+     "pct": -1,
+     "years": 5
+    },
+    "phase": {
+     "set": "down",
+     "years": 1,
+     "depth": "severe"
+    },
+    "econ": {
+     "inflation_pct": 3,
+     "korea_growth_pct": -3,
+     "years": 2
+    },
+    "world_path": {
+     "fragmentation": 0.3
+    }
+   },
+   "headline_ko": "대만해협 전쟁 발발…세계 첨단 반도체 생산 절반이 멈췄다",
+   "confidence": "low",
+   "fiction": false,
+   "sources": [
+    "https://chinapower.csis.org/surveying-experts-us-and-taiwan-views-china-approach-taiwan-2024/",
+    "https://www.taiwannews.com.tw/en/news/6301597",
+    "https://stimson.org/2024/us-china-taiwan-conflict-global-economy/"
+   ]
+  },
+  {
+   "id": "energy_crunch",
+   "name_ko": "전력 병목·에너지 위기",
+   "desc_ko": "전기가 모자라 AI 데이터센터와 팹 가동이 6~24개월 늦어져요. 수요가 꺼지기보다 뒤로 밀려요.",
+   "window": [
+    2027,
+    2045
+   ],
+   "yearly_probability": {
+    "2027": 0.08,
+    "2036": 0.04
+   },
+   "max_occurrences": 2,
+   "cooldown_years": 6,
+   "prob_mult_flags": {
+    "tech_dc_power_1000twh": 1.5,
+    "scen_ai_supercycle_extended": 1.5,
+    "tech_korea_smr_first": 0.6
+   },
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": -0.5,
+      "years": 2
+     },
+     "korea": {
+      "delta": -0.5,
+      "years": 2
+     },
+     "equipment": {
+      "delta": -0.5,
+      "years": 1
+     }
+    },
+    "jobs": {
+     "electrician": {
+      "mult": 1.2,
+      "years": 3
+     }
+    },
+    "flag": "scen_energy_crunch",
+    "skills": {
+     "power_cooling": 0.2,
+     "power_semis": 0.1
+    },
+    "econ": {
+     "inflation_pct": 0.8,
+     "years": 2
+    },
+    "world_path": {
+     "transition": 0.1
+    },
+    "delay_nodes": {
+     "yongin_national_fab1": 1,
+     "yongin_general_full": 1
+    }
+   },
+   "headline_ko": "전기가 모자라 팹이 멈칫…AI 데이터센터 가동 줄줄이 연기",
+   "confidence": "medium",
+   "fiction": false,
+   "sources": [
+    "https://www.iea.org/reports/energy-and-ai/executive-summary",
+    "https://eta-publications.lbl.gov/publications/united-states-data-center-energy-2025",
+    "https://weekly.khan.co.kr/article/202601120600021",
+    "https://asiae.co.kr/en/article/2025031717174507098"
+   ]
+  },
+  {
+   "id": "trade_war_escalation",
+   "name_ko": "미중 기술전쟁·관세 확전",
+   "desc_ko": "관세와 수출통제가 또 강화돼요. 한국 칩·장비 수출길이 좁아지고 미국 파견이 늘어요.",
+   "window": [
+    2027,
+    2060
+   ],
+   "yearly_probability": {
+    "2027": 0.25,
+    "2031": 0.06
+   },
+   "max_occurrences": 4,
+   "cooldown_years": 3,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": -1,
+      "years": 1
+     },
+     "equipment": {
+      "delta": -0.5,
+      "years": 1
+     }
+    },
+    "jobs": {
+     "sales": {
+      "mult": 0.9,
+      "years": 2
+     }
+    },
+    "flag": "scen_trade_war_escalation",
+    "econ": {
+     "inflation_pct": 0.3,
+     "years": 1
+    },
+    "world_path": {
+     "fragmentation": 0.05
+    }
+   },
+   "headline_ko": "관세 장벽 또 높아졌다…반도체·장비 수출길 좁아져",
+   "confidence": "medium",
+   "fiction": false,
+   "sources": [
+    "https://www.whitecase.com/insight-alert/president-trump-orders-narrowly-targeted-25-section-232-tariff-certain-advanced",
+    "https://pillsburylaw.com/en/news-and-insights/china-suspends-export-controls-certain-critical-minerals-related-items.html",
+    "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000052/nvda-20260426.htm"
+   ]
+  },
+  {
+   "id": "specialty_gas_shock",
+   "name_ko": "특수가스·소재 공급 충격",
+   "desc_ko": "헬륨·네온 같은 특수가스 공급이 3~9개월 끊겨요. 생산 차질은 제한적이지만 원가가 올라요.",
+   "window": [
+    2027,
+    2150
+   ],
+   "yearly_probability": 0.12,
+   "max_occurrences": 20,
+   "cooldown_years": 4,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": -0.5,
+      "years": 1
+     }
+    },
+    "jobs": {
+     "chemist": {
+      "mult": 1.1,
+      "years": 2
+     },
+     "environment_safety": {
+      "mult": 1.1,
+      "years": 2
+     }
+    },
+    "flag": "scen_specialty_gas_shock",
+    "skills": {
+     "specialty_chem": 0.1
+    }
+   },
+   "headline_ko": "헬륨·네온 수급 비상…팹마다 특수가스 아끼기 총력",
+   "confidence": "medium",
+   "fiction": false,
+   "sources": [
+    "https://www.datacenterdynamics.com/en/news/helium-supply-disruptions-linked-to-middle-east-conflict-could-impact-semiconductor-ai-and-data-center-supply-chains/",
+    "https://www.caixinglobal.com/2026-03-16/qatar-helium-shutdown-adds-new-risk-to-chip-supply-chain-102423361.html"
+   ]
+  },
+  {
+   "id": "drought_water_crisis",
+   "name_ko": "가뭄·용수 위기",
+   "desc_ko": "주요 생산지에 가뭄이 들어 공업용수가 10~15% 제한돼요. 2050년 이후 더 잦아져요.",
+   "window": [
+    2027,
+    2150
+   ],
+   "yearly_probability": {
+    "2027": 0.1,
+    "2050": 0.15
+   },
+   "max_occurrences": 30,
+   "cooldown_years": 3,
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": 0.5,
+      "years": 1
+     },
+     "korea": {
+      "delta": -0.5,
+      "years": 1
+     }
+    },
+    "jobs": {
+     "environment_safety": {
+      "mult": 1.2,
+      "years": 2
+     }
+    },
+    "flag": "scen_drought_water_crisis",
+    "skills": {
+     "specialty_chem": 0.1
+    },
+    "world_path": {
+     "transition": 0.03
+    }
+   },
+   "headline_ko": "가뭄에 공업용수 15% 제한…팹 가동률 비상",
+   "confidence": "medium",
+   "fiction": false,
+   "sources": [
+    "https://doaj.org/article/fbd865ec52374772948fd7971393ee4f",
+    "https://spglobal.com/ratings/en/research/articles/240226-sustainability-insights-tsmc-and-water-a-case-study-of-how-climate-is-becoming-a-credit-risk-factor-12992283",
+    "https://www.koreatimes.co.kr/business/companies/20260703/drought-risk-missing-in-water-supply-plan-for-new-chip-cluster",
+    "https://www.datacenterdynamics.com/en/news/taiwan-believes-it-will-have-enough-water-keep-chip-fabs-going-despite-worst-drought-56-years/"
+   ]
+  },
+  {
+   "id": "pandemic_supply_shock",
+   "name_ko": "팬데믹·물류 마비",
+   "desc_ko": "감염병 대유행으로 공장이 격리 운영되고, 이어 재택 수요 폭증·이중 주문으로 품귀가 온 뒤 2~3년 뒤 재고 과잉이 와요.",
+   "window": [
+    2028,
+    2150
+   ],
+   "yearly_probability": 0.02,
+   "max_occurrences": 3,
+   "cooldown_years": 15,
+   "effects": {
+    "market": {
+     "cycle": [
+      {
+       "delta": -1,
+       "years": 1
+      },
+      {
+       "delta": 1,
+       "years": 1,
+       "lag": 1
+      }
+     ],
+     "memory": [
+      {
+       "delta": -1,
+       "years": 1
+      },
+      {
+       "delta": 1,
+       "years": 2,
+       "lag": 1
+      },
+      {
+       "delta": -1,
+       "years": 1,
+       "lag": 3
+      }
+     ],
+     "logic_foundry": [
+      {
+       "delta": -1,
+       "years": 1
+      },
+      {
+       "delta": 2,
+       "years": 1,
+       "lag": 1
+      },
+      {
+       "delta": -1,
+       "years": 1,
+       "lag": 3
+      }
+     ],
+     "korea": [
+      {
+       "delta": -1,
+       "years": 1
+      },
+      {
+       "delta": 1,
+       "years": 1,
+       "lag": 1
+      },
+      {
+       "delta": -1,
+       "years": 1,
+       "lag": 3
+      }
+     ]
+    },
+    "jobs": {
+     "cook": {
+      "mult": 0.8,
+      "years": 1
+     },
+     "shuttle_driver": {
+      "mult": 0.8,
+      "years": 1
+     },
+     "chicken_shop": {
+      "mult": 0.75,
+      "years": 1
+     },
+     "youtuber": {
+      "mult": 1.3,
+      "years": 2
+     }
+    },
+    "flag": "scen_pandemic_supply_shock",
+    "econ": {
+     "korea_growth_pct": -2,
+     "years": 1
+    }
+   },
+   "headline_ko": "신종 감염병 대유행…공장은 격리 운영, 재택 수요는 폭발",
+   "confidence": "medium",
+   "fiction": false,
+   "sources": [
+    "https://www.alixpartners.com/newsroom/press-release-shortages-related-to-semiconductors-to-cost-the-auto-industry-210-billion-in-revenues-this-year-says-new-alixpartners-forecast/",
+    "https://www.pnas.org/doi/10.1073/pnas.2105482118"
+   ]
+  },
+  {
+   "id": "korea_talent_cliff",
+   "name_ko": "반도체 인력 절벽",
+   "desc_ko": "인구절벽으로 반도체 인력이 5만 명 넘게 모자라요. 엔지니어 몸값이 오르고 외국인 채용과 자동화가 빨라져요.",
+   "window": [
+    2030,
+    2060
+   ],
+   "yearly_probability": 0.15,
+   "max_occurrences": 1,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": -0.5,
+      "years": 3
+     }
+    },
+    "jobs": {
+     "process_engineer": {
+      "mult": 1.15,
+      "years": 10
+     },
+     "equipment_engineer": {
+      "mult": 1.2,
+      "years": 10
+     },
+     "operator": {
+      "mult": 1.1,
+      "years": 10
+     },
+     "recruiter": {
+      "mult": 1.3,
+      "years": 10
+     },
+     "academy_teacher": {
+      "mult": 1.1,
+      "years": 10
+     }
+    },
+    "flag": "scen_korea_talent_cliff",
+    "skills": {
+     "fab_ai": 0.2,
+     "robotics": 0.1
+    },
+    "econ": {
+     "semis_wage_pct": 2,
+     "years": 10
+    }
+   },
+   "headline_ko": "반도체 인력 5만 명 구멍…엔지니어 몸값 치솟고 외국인 채용 문 연다",
+   "confidence": "high",
+   "fiction": false,
+   "sources": [
+    "https://www.newsis.com/view/NISX20231214_0002558157",
+    "https://biz.newdaily.co.kr/site/data/html/2024/06/24/2024062400063.html",
+    "https://www.techrepublic.com/article/semiconductor-industry-talent-shortage-how-recruit-skilled-stem-talent/"
+   ]
+  },
+  {
+   "id": "korea_secular_stagnation",
+   "name_ko": "한국 장기 저성장 진입",
+   "desc_ko": "잠재성장률이 0%대 아래로 내려가 내수가 줄고, 반도체가 수출 1극 산업으로 남아요.",
+   "window": [
+    2045,
+    2075
+   ],
+   "yearly_probability": 0.05,
+   "max_occurrences": 1,
+   "not_flags": [
+    "scen_explosive_growth"
+   ],
+   "prob_mult_flags": {
+    "scen_demographic_rebound": 0.3
+   },
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": -1,
+      "years": 3
+     }
+    },
+    "jobs": {},
+    "flag": "scen_korea_secular_stagnation",
+    "econ": {
+     "korea_growth_pct": -1,
+     "years": 15
+    },
+    "world_path": {
+     "stagnation": 0.2
+    }
+   },
+   "headline_ko": "한국 경제 첫 '마이너스 잠재성장'…반도체만 남은 수출 1극 체제",
+   "confidence": "medium",
+   "fiction": false,
+   "sources": [
+    "https://m.seoul.co.kr/news/2023/12/04/20231204002003",
+    "https://www.newsis.com/view/NISX20250314_0003098601",
+    "https://mobile.newsis.com/view/NISX20250320_0003107056"
+   ]
+  },
+  {
+   "id": "agi_arrival",
+   "name_ko": "변혁적 AI 도래",
+   "desc_ko": "대부분의 인지 업무를 사람보다 잘하고 싸게 하는 AI가 공식 확인돼요. 시점은 판마다 2030~2050년대에 퍼져 있어요.",
+   "window": [
+    2029,
+    2150
+   ],
+   "yearly_probability": {
+    "2029": 0.04,
+    "2032": 0.07,
+    "2038": 0.09,
+    "2046": 0.09,
+    "2052": 0.05,
+    "2061": 0.025,
+    "2076": 0.01
+   },
+   "max_occurrences": 1,
+   "requires_flags": [
+    "tech_superhuman_coder"
+   ],
+   "prob_mult_flags": {
+    "scen_ai_plateau": 0.3
+   },
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": 1,
+      "years": 2
+     },
+     "memory": {
+      "delta": 1,
+      "years": 2
+     },
+     "logic_foundry": {
+      "delta": 1,
+      "years": 2
+     },
+     "equipment": {
+      "delta": 1,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "circuit_designer": 0.8,
+     "hr": 0.8,
+     "purchasing": 0.8,
+     "analyst": 0.75,
+     "journalist": 0.85,
+     "patent": 0.75,
+     "academy_teacher": 0.85,
+     "professor": 0.95,
+     "official": 0.9,
+     "developer": 0.8,
+     "office_worker": 0.85
+    },
+    "flag": "scen_agi_arrival",
+    "skills": {
+     "ai_systems": 0.3,
+     "eda_ai": 0.2
+    },
+    "trend": {
+     "pct": 1.5,
+     "years": 15
+    },
+    "econ": {
+     "korea_growth_pct": 0.8,
+     "years": 15
+    },
+    "world_path": {
+     "abundance": 0.3
+    },
+    "medical": {
+     "life_d": 1,
+     "cure_mult": 1.1
+    }
+   },
+   "headline_ko": "'사람 수준 AI' 공식 확인…연구·사무 업무 판이 바뀐다",
+   "confidence": "low",
+   "fiction": false,
+   "sources": [
+    "https://jair.org/index.php/jair/article/view/19087",
+    "https://www.aimultiple.com/future-of-ai/",
+    "https://forecastingresearch.substack.com/p/leap-wave-8-ai-timelines",
+    "https://dc.fortune.com/2025/04/15/ai-timelines-agi-safety/",
+    "https://futuresearch.ai/blog/ai-2027-one-year-later/"
+   ]
+  },
+  {
+   "id": "ai_plateau",
+   "name_ko": "AI 발전 정체",
+   "desc_ko": "규모를 키워도 AI 성능이 더 오르지 않는다는 판단이 공식화돼요. 'AI 거품' 논쟁이 다시 불붙어요.",
+   "window": [
+    2032,
+    2060
+   ],
+   "yearly_probability": 0.02,
+   "max_occurrences": 1,
+   "not_flags": [
+    "scen_agi_arrival"
+   ],
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": -1,
+      "years": 1
+     },
+     "memory": {
+      "delta": -1,
+      "years": 2
+     },
+     "equipment": {
+      "delta": -1,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "flag": "scen_ai_plateau",
+    "skills": {
+     "ai_systems": -0.2
+    },
+    "trend": {
+     "pct": -0.7,
+     "years": 10
+    },
+    "world_path": {
+     "stagnation": 0.25
+    }
+   },
+   "headline_ko": "AI 발전 정체 공식화…'스케일의 법칙' 멈췄다",
+   "confidence": "low",
+   "fiction": false,
+   "sources": [
+    "https://jair.org/index.php/jair/article/view/19087",
+    "https://www.aimultiple.com/future-of-ai/",
+    "https://forecastingresearch.substack.com/p/leap-wave-8-ai-timelines",
+    "https://dc.fortune.com/2025/04/15/ai-timelines-agi-safety/",
+    "https://www.nber.org/papers/w32487"
+   ]
+  },
+  {
+   "id": "explosive_growth",
+   "name_ko": "AI 주도 폭발적 성장",
+   "desc_ko": "AI와 로봇이 경제 전체를 자동화하며 세계 성장률이 역사적 평균의 몇 배로 뛰어요. 일어나지 않을 가능성도 커요.",
+   "window": [
+    2045,
+    2150
+   ],
+   "yearly_probability": 0.004,
+   "max_occurrences": 1,
+   "requires_flags": [
+    "scen_agi_arrival",
+    "tech_humanoid_mass"
+   ],
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": 2,
+      "years": 2
+     },
+     "memory": {
+      "delta": 1,
+      "years": 3
+     },
+     "logic_foundry": {
+      "delta": 1,
+      "years": 3
+     },
+     "equipment": {
+      "delta": 1,
+      "years": 3
+     },
+     "korea": {
+      "delta": 1,
+      "years": 3
+     }
+    },
+    "jobs": {},
+    "flag": "scen_explosive_growth",
+    "trend": {
+     "pct": 3,
+     "years": 20
+    },
+    "econ": {
+     "korea_growth_pct": 2,
+     "inflation_pct": 0.5,
+     "years": 20
+    },
+    "world_path": {
+     "abundance": 0.4
+    },
+    "medical": {
+     "life_d": 1
+    }
+   },
+   "headline_ko": "세계 성장률 두 자릿수…AI·로봇이 경제를 폭발시켰다",
+   "confidence": "low",
+   "fiction": false,
+   "sources": [
+    "https://epoch.ai/blog/announcing-gate",
+    "https://www.nber.org/papers/w32487"
+   ]
+  },
+  {
+   "id": "demographic_rebound",
+   "name_ko": "출산율 반등 정착",
+   "desc_ko": "합계출산율이 1.3 안팎까지 회복해 인구 감소 속도가 느려져요.",
+   "window": [
+    2035,
+    2100
+   ],
+   "yearly_probability": 0.015,
+   "max_occurrences": 1,
+   "prob_mult_flags": {
+    "scen_korea_secular_stagnation": 0.5
+   },
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": 0.5,
+      "years": 5
+     }
+    },
+    "jobs": {},
+    "flag": "scen_demographic_rebound",
+    "econ": {
+     "korea_growth_pct": 0.3,
+     "years": 30
+    },
+    "world_path": {
+     "abundance": 0.05,
+     "transition": 0.05
+    }
+   },
+   "headline_ko": "출생아 10년 연속 증가…'인구절벽' 끝이 보인다",
+   "confidence": "low",
+   "fiction": false,
+   "sources": [
+    "https://nocutnews.co.kr/news/6568252",
+    "https://www.newsis.com/view/NISX20231214_0002558157"
+   ]
+  },
+  {
+   "id": "ai_incident_regulation",
+   "name_ko": "대형 AI 사고와 공동 규제",
+   "desc_ko": "대형 AI 사고 뒤 세계가 함께 연산 사용에 허가제를 도입해요.",
+   "window": [
+    2045,
+    2150
+   ],
+   "yearly_probability": 0.01,
+   "max_occurrences": 1,
+   "requires_flags": [
+    "scen_agi_arrival"
+   ],
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": -1,
+      "years": 1
+     },
+     "memory": {
+      "delta": -0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "flag": "scen_ai_incident_regulation",
+    "skills": {
+     "ai_systems": 0.2
+    },
+    "trend": {
+     "pct": -0.5,
+     "years": 10
+    },
+    "world_path": {
+     "stagnation": 0.2
+    }
+   },
+   "headline_ko": "AI 사고 뒤 세계 공동 규제…연산 사용에 '허가제' 도입",
+   "confidence": "low",
+   "fiction": true,
+   "sources": [],
+   "basis_ko": "F4 고위험 AI 규제(한국 AI 기본법·EU AI Act) 강화 추세 외삽"
+  },
+  {
+   "id": "robot_tax_ubi",
+   "name_ko": "로봇세·기본소득 도입",
+   "desc_ko": "로봇과 AI가 번 돈에 세금을 매겨 국민에게 기본소득을 줘요.",
+   "window": [
+    2050,
+    2150
+   ],
+   "yearly_probability": 0.015,
+   "max_occurrences": 1,
+   "requires_flags": [
+    "tech_half_work_automated"
+   ],
+   "prob_mult_path": {
+    "abundance": 2,
+    "stagnation": 0.5
+   },
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": -0.5,
+      "years": 1
+     }
+    },
+    "jobs": {},
+    "flag": "scen_robot_tax_ubi",
+    "econ": {
+     "korea_growth_pct": -0.3,
+     "years": 3
+    }
+   },
+   "headline_ko": "로봇세 걷어 기본소득 준다…'일하지 않아도 되는 월급' 첫 지급",
+   "confidence": "low",
+   "fiction": true,
+   "sources": [],
+   "basis_ko": "F4 full_labor_automation '기본소득·로봇세 정책 이벤트' 외삽"
+  },
+  {
+   "id": "compute_glut",
+   "name_ko": "연산 수요 포화",
+   "desc_ko": "'연산은 이제 충분하다'는 말이 나올 만큼 칩 수요가 포화돼 처음으로 긴 공급 과잉이 와요.",
+   "window": [
+    2060,
+    2150
+   ],
+   "yearly_probability": 0.012,
+   "max_occurrences": 2,
+   "cooldown_years": 20,
+   "prob_mult_path": {
+    "abundance": 1.5,
+    "stagnation": 1.5
+   },
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": -1,
+      "years": 2
+     },
+     "memory": {
+      "delta": -1,
+      "years": 3
+     },
+     "equipment": {
+      "delta": -1,
+      "years": 3
+     }
+    },
+    "jobs": {},
+    "flag": "scen_compute_glut",
+    "trend": {
+     "pct": -0.8,
+     "years": 10
+    },
+    "world_path": {
+     "stagnation": 0.1
+    }
+   },
+   "headline_ko": "칩이 남아돈다…'연산은 이제 충분' 첫 장기 공급과잉",
+   "confidence": "low",
+   "fiction": true,
+   "sources": [],
+   "basis_ko": "F3 '컴퓨트가 GDP에서 차지하는 상한은 문헌 공백' — 포화 가능성을 분기로 둠"
+  },
+  {
+   "id": "bloc_split",
+   "name_ko": "기술 블록 완전 분리",
+   "desc_ko": "세계가 두 개의 반도체 표준과 공급망으로 갈라져요. 같은 칩을 두 번 만들어야 해요.",
+   "window": [
+    2060,
+    2150
+   ],
+   "yearly_probability": 0.008,
+   "max_occurrences": 1,
+   "prob_mult_path": {
+    "fragmentation": 3,
+    "abundance": 0.5
+   },
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": -1,
+      "years": 1
+     },
+     "equipment": {
+      "delta": 1,
+      "years": 3,
+      "lag": 1
+     },
+     "korea": {
+      "delta": 1,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "site_manager": {
+      "mult": 1.2,
+      "years": 4
+     },
+     "welder": {
+      "mult": 1.2,
+      "years": 4
+     },
+     "official": {
+      "mult": 1.15,
+      "years": 4
+     }
+    },
+    "flag": "scen_bloc_split",
+    "trend": {
+     "pct": -0.5,
+     "years": 10
+    },
+    "econ": {
+     "inflation_pct": 1,
+     "years": 3
+    },
+    "world_path": {
+     "fragmentation": 0.3
+    }
+   },
+   "headline_ko": "두 개의 반도체 표준…세계가 칩 블록으로 갈라졌다",
+   "confidence": "low",
+   "fiction": true,
+   "sources": [],
+   "basis_ko": "F3 미중 기술전쟁·중국 자급률 80%·미국 첨단로직 28% 추세의 2060년 이후 외삽"
+  },
+  {
+   "id": "climate_relocation",
+   "name_ko": "기후 재난과 팹 이전",
+   "desc_ko": "폭염·홍수·해수면 상승으로 연안 팹을 내륙으로 옮기는 공사가 시작돼요.",
+   "window": [
+    2060,
+    2150
+   ],
+   "yearly_probability": 0.012,
+   "max_occurrences": 3,
+   "cooldown_years": 15,
+   "prob_mult_path": {
+    "transition": 2
+   },
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 1,
+      "years": 2
+     },
+     "korea": {
+      "delta": -0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "welder": {
+      "mult": 1.3,
+      "years": 4
+     },
+     "pipefitter": {
+      "mult": 1.3,
+      "years": 4
+     },
+     "site_manager": {
+      "mult": 1.3,
+      "years": 4
+     },
+     "duct_worker": {
+      "mult": 1.2,
+      "years": 4
+     }
+    },
+    "flag": "scen_climate_relocation",
+    "skills": {
+     "uhp_piping": 0.1,
+     "specialty_chem": 0.1
+    },
+    "world_path": {
+     "transition": 0.1
+    }
+   },
+   "headline_ko": "폭염·홍수에 연안 팹 이전 시작…내륙 신도시에 클린룸 공사 붐",
+   "confidence": "low",
+   "fiction": true,
+   "sources": [],
+   "basis_ko": "F3 가뭄·용수(2050년 이후 빈도 1.5배)와 IPCC 폭염·가뭄 증가 언급 외삽"
+  },
+  {
+   "id": "solar_superstorm",
+   "name_ko": "초대형 태양폭풍",
+   "desc_ko": "백 년에 한 번 올 만한 태양폭풍이 위성과 전력망을 망가뜨려 반도체 교체 수요가 폭증해요.",
+   "window": [
+    2060,
+    2150
+   ],
+   "yearly_probability": 0.006,
+   "max_occurrences": 2,
+   "cooldown_years": 30,
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": -1,
+      "years": 1
+     },
+     "logic_foundry": {
+      "delta": 1,
+      "years": 2,
+      "lag": 1
+     },
+     "korea": {
+      "delta": -0.5,
+      "years": 1
+     }
+    },
+    "jobs": {
+     "electrician": {
+      "mult": 1.3,
+      "years": 2
+     },
+     "field_service": {
+      "mult": 1.2,
+      "years": 2
+     }
+    },
+    "flag": "scen_solar_superstorm"
+   },
+   "headline_ko": "백 년 만의 태양폭풍…위성·전력망 줄줄이 고장, 칩 교체 수요 폭증",
+   "confidence": "low",
+   "fiction": true,
+   "sources": [],
+   "basis_ko": "연구 파일 밖의 일반 상식(대형 태양폭풍 재현 주기)을 쓴 가상 충격"
+  },
+  {
+   "id": "orbital_debris_cascade",
+   "name_ko": "궤도 파편 연쇄 충돌",
+   "desc_ko": "궤도 파편이 연쇄 충돌을 일으켜 우주 결정 공장과 위성이 줄줄이 멈춰요.",
+   "window": [
+    2060,
+    2150
+   ],
+   "yearly_probability": 0.01,
+   "max_occurrences": 1,
+   "requires_flags": [
+    "tech_space_crystal_fab"
+   ],
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": -0.5,
+      "years": 1
+     }
+    },
+    "jobs": {},
+    "flag": "scen_orbital_debris_cascade",
+    "delay_nodes": {
+     "orbital_materials": 15
+    }
+   },
+   "headline_ko": "궤도 파편 연쇄 충돌…우주 결정 공장·위성 줄줄이 멈춰",
+   "confidence": "low",
+   "fiction": true,
+   "sources": [],
+   "basis_ko": "F2 우주 결정 성장(회수 능력 미검증) 노드의 위험 분기"
+  }
+ ]
+}
