@@ -7,20 +7,20 @@
 import { writeFileSync } from 'node:fs';
 import { SIZES, DIRS, cellsOf, exitPath, occupancy, solve, playGreedy } from '../../prototypes/bus-jam/core.js';
 
-const COLS = 7, ROWS = 8;
+const COLS = 8, ROWS = 9;
 
 // 레벨 설계표. winRate = '적당히 생각하는 플레이어'의 클리어 비율 목표 구간
 const PLAN = [
-  { n: 1,  colors: 2, count: 4,  sizes: { car: 1 },                   mystery: 0, window: 1, chunk: [4, 4],  winRate: [0.95, 1],    hard: false },
-  { n: 2,  colors: 3, count: 6,  sizes: { car: 1 },                   mystery: 0, window: 2, chunk: [2, 4],  winRate: [0.85, 1],    hard: false },
-  { n: 3,  colors: 3, count: 8,  sizes: { car: 3, van: 1 },           mystery: 0, window: 2, chunk: [2, 4],  winRate: [0.75, 0.97], hard: false },
-  { n: 4,  colors: 4, count: 10, sizes: { car: 3, van: 1 },           mystery: 0, window: 3, chunk: [2, 4],  winRate: [0.6, 0.9],   hard: false },
-  { n: 5,  colors: 4, count: 11, sizes: { car: 2, van: 1, bus: 1 },   mystery: 0, window: 4, chunk: [2, 3],  winRate: [0.2, 0.5],   hard: true  },
-  { n: 6,  colors: 4, count: 12, sizes: { car: 3, van: 1, bus: 1 },   mystery: 2, window: 3, chunk: [2, 4],  winRate: [0.55, 0.85], hard: false },
-  { n: 7,  colors: 5, count: 13, sizes: { car: 3, van: 2, bus: 1 },   mystery: 2, window: 3, chunk: [2, 4],  winRate: [0.5, 0.8],   hard: false },
-  { n: 8,  colors: 5, count: 14, sizes: { car: 3, van: 2, bus: 1 },   mystery: 4, window: 4, chunk: [2, 4],  winRate: [0.4, 0.7],   hard: false },
-  { n: 9,  colors: 5, count: 15, sizes: { car: 3, van: 2, bus: 1 },   mystery: 4, window: 4, chunk: [2, 3],  winRate: [0.35, 0.65], hard: false },
-  { n: 10, colors: 6, count: 16, sizes: { car: 3, van: 2, bus: 1 },   mystery: 5, window: 5, chunk: [2, 3],  winRate: [0.1, 0.35],  hard: true  },
+  { n: 1,  colors: 2, count: 6,  sizes: { car: 1 },                 mystery: 0, barriers: 0, window: 2, chunk: [4, 4], winRate: [0.9, 1],     hard: false },
+  { n: 2,  colors: 3, count: 10, sizes: { car: 3, van: 1 },         mystery: 0, barriers: 0, window: 3, chunk: [3, 5], winRate: [0.65, 0.9],  hard: false },
+  { n: 3,  colors: 4, count: 13, sizes: { car: 3, van: 2 },         mystery: 0, barriers: 0, window: 4, chunk: [3, 5], winRate: [0.5, 0.8],   hard: false },
+  { n: 4,  colors: 4, count: 15, sizes: { car: 3, van: 2, bus: 1 }, mystery: 2, barriers: 0, window: 4, chunk: [3, 5], winRate: [0.4, 0.7],   hard: false },
+  { n: 5,  colors: 5, count: 17, sizes: { car: 3, van: 2, bus: 1 }, mystery: 3, barriers: 0, window: 6, chunk: [2, 4], winRate: [0.08, 0.3],  hard: true  },
+  { n: 6,  colors: 5, count: 18, sizes: { car: 3, van: 2, bus: 1 }, mystery: 3, barriers: 1, window: 5, chunk: [3, 5], winRate: [0.3, 0.6],   hard: false },
+  { n: 7,  colors: 5, count: 20, sizes: { car: 3, van: 2, bus: 1 }, mystery: 4, barriers: 2, window: 5, chunk: [3, 5], winRate: [0.25, 0.55], hard: false },
+  { n: 8,  colors: 6, count: 21, sizes: { car: 3, van: 2, bus: 1 }, mystery: 5, barriers: 2, window: 6, chunk: [3, 5], winRate: [0.2, 0.5],   hard: false },
+  { n: 9,  colors: 6, count: 22, sizes: { car: 3, van: 2, bus: 1 }, mystery: 6, barriers: 2, window: 6, chunk: [2, 4], winRate: [0.15, 0.45], hard: false },
+  { n: 10, colors: 6, count: 24, sizes: { car: 3, van: 2, bus: 1 }, mystery: 8, barriers: 3, window: 7, chunk: [2, 4], winRate: [0.03, 0.2],  hard: true  },
 ];
 
 function mulberry(seed) {
@@ -41,7 +41,7 @@ function weighted(w, rng) {
 
 function placeVehicles(plan, rng) {
   const placed = [];
-  for (let tries = 0; placed.length < plan.count && tries < 4000; tries++) {
+  for (let tries = 0; placed.length < plan.count && tries < 20000; tries++) {
     const size = weighted(plan.sizes, rng);
     const dir = pick(Object.keys(DIRS), rng);
     const len = SIZES[size].len;
@@ -105,6 +105,17 @@ function buildLevel(plan, seed) {
     const v = blocked.splice(Math.floor(rng() * blocked.length), 1)[0];
     v.mystery = true;
   }
+  // 차단기: 누군가의 빠지는 길 위 빈칸에 놓고, 차가 n대 빠지면 열림
+  level.barriers = [];
+  const empty = [];
+  const grid2 = occupancy(vehicles, COLS, ROWS);
+  for (const v of vehicles) for (const [cx, cy] of exitPath(v, COLS, ROWS)) {
+    if (grid2[cy * COLS + cx] === -1 && !empty.some(([a, b]) => a === cx && b === cy)) empty.push([cx, cy]);
+  }
+  for (let k = 0; k < plan.barriers && empty.length; k++) {
+    const [bx, by] = empty.splice(Math.floor(rng() * empty.length), 1)[0];
+    level.barriers.push({ x: bx, y: by, n: 2 + Math.floor(rng() * 4) });
+  }
   return level;
 }
 
@@ -118,7 +129,7 @@ function measure(level, trials = 300) {
 const out = [];
 for (const plan of PLAN) {
   let best = null;
-  for (let seed = plan.n * 1000; seed < plan.n * 1000 + 3000; seed++) {
+  for (let seed = plan.n * 1000; seed < plan.n * 1000 + 6000; seed++) {
     const level = buildLevel(plan, seed);
     if (!level) continue;
     const sol = solve(level);
@@ -137,7 +148,7 @@ for (const plan of PLAN) {
   level.solution = solution; // 테스트용 정답 (게임에서는 안 씀)
   out.push(level);
   const pax = level.queue.length;
-  console.log(`레벨 ${String(plan.n).padStart(2)} | 시드 ${seed} | 차 ${level.vehicles.length}대 | 승객 ${pax}명 | 색 ${plan.colors} | 미스터리 ${plan.mystery} | 생각하는 플레이어 클리어율 ${(wr * 100).toFixed(0)}%${plan.hard ? ' | HARD' : ''}`);
+  console.log(`레벨 ${String(plan.n).padStart(2)} | 시드 ${seed} | 차 ${level.vehicles.length}대 | 승객 ${pax}명 | 색 ${plan.colors} | 미스터리 ${plan.mystery} | 차단기 ${level.barriers.length} | 생각하는 플레이어 클리어율 ${(wr * 100).toFixed(0)}%${plan.hard ? ' | HARD' : ''}`);
 }
 writeFileSync(new URL('../../prototypes/bus-jam/levels.json', import.meta.url), JSON.stringify(out));
 console.log('저장: prototypes/bus-jam/levels.json');

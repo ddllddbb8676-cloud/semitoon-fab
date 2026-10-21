@@ -10,25 +10,27 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap">
 <style>
 /* 장난감 같은 밝은 한 가지 세계로 고정 (라이트/다크 전환 없음)
-   레이아웃: 위 승객 행렬 → 주차칸 → 주차장 → 부스터 바, 폰 세로 한 화면 */
+   레이아웃: 위 광장과 갈고리 도로(승객 행렬) → 주차칸 → 주차장 → 부스터 바 */
 :root {
   color-scheme: light;
-  --bg: #dfe7f0;
-  --plaza: #eef2f7;
+  --bg: #d9e2ec;
+  --plaza: #e9eef4;
   --ink: #1f2a37;
   --muted: #6b7686;
-  --asphalt: #4a5361;
-  --asphalt-line: #6c7584;
-  --slot: #8a94a3;
-  --slot-empty: #6f7a8a;
+  --asphalt: #4b5461;
+  --asphalt-hi: #59616e;
+  --line: #7a8392;
+  --slotbar: #7d8797;
+  --slot-empty: #66707f;
   --vip: #f4b62a;
   --vip-ink: #6b4500;
   --panel: #ffffff;
   --accent: #2f7cf6;
   --good: #20b26b;
   --bad: #e5484d;
-  --c0: #ef4444; --c1: #3b82f6; --c2: #facc15; --c3: #22c55e; --c4: #a855f7; --c5: #22d3ee;
-  --d0: #b91c1c; --d1: #1d4ed8; --d2: #ca8a04; --d3: #15803d; --d4: #7e22ce; --d5: #0e7490;
+  --c0: #f04848; --c1: #3d86f5; --c2: #f7cb1f; --c3: #2cc45f; --c4: #a95af2; --c5: #26d0ee;
+  --l0: #ff8a8a; --l1: #8ab8ff; --l2: #ffe67a; --l3: #7ee39e; --l4: #cfa1ff; --l5: #8eeaf9;
+  --d0: #b42323; --d1: #1f55b8; --d2: #b78a00; --d3: #17883c; --d4: #6f2db5; --d5: #0e8aa3;
   --font-game: 'Jua', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
   --font-ui: -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
 }
@@ -45,8 +47,8 @@ button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
 #stage {
   position: relative; max-width: 440px; margin: 0 auto; min-height: 100%;
-  display: flex; flex-direction: column; gap: 10px;
-  padding-block: 10px 14px;
+  display: flex; flex-direction: column; gap: 8px;
+  padding-block: 8px 12px;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
@@ -54,129 +56,153 @@ button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 /* 상단 바 */
 .top { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; }
 .round {
-  width: 44px; height: 44px; border-radius: 50%;
+  width: 42px; height: 42px; border-radius: 50%;
   display: grid; place-items: center;
-  background: var(--accent); color: #fff; box-shadow: 0 3px 0 #1d58b8;
+  background: linear-gradient(#4a92ff, #2468e0); color: #fff; box-shadow: 0 3px 0 #1a4fb0, inset 0 2px 0 rgba(255,255,255,.35);
 }
-.round:active { translate: 0 2px; box-shadow: 0 1px 0 #1d58b8; }
+.round:active { translate: 0 2px; box-shadow: 0 1px 0 #1a4fb0; }
 .round svg { width: 22px; height: 22px; }
-.title { text-align: center; font-family: var(--font-game); line-height: 1.05; }
-.title .lv { font-size: 26px; }
-.title .tag { display: block; font-size: 15px; color: var(--bad); letter-spacing: .04em; min-height: 16px; }
+.title { text-align: center; font-family: var(--font-game); line-height: 1; }
+.title .lv { font-size: 26px; color: #fff; -webkit-text-stroke: 1px #3a4a60; text-shadow: 0 2px 0 #3a4a60; }
+.title .tag { display: block; font-size: 15px; color: var(--bad); letter-spacing: .04em; min-height: 16px; text-shadow: 0 1px 0 #fff; }
 .wallet { display: flex; gap: 6px; font-family: var(--font-game); font-size: 15px; }
-.chip { display: flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 999px; background: var(--panel); font-variant-numeric: tabular-nums; }
-.chip i { font-style: normal; }
+.chip { display: flex; align-items: center; gap: 4px; padding: 4px 9px; border-radius: 999px; background: var(--panel); font-variant-numeric: tabular-nums; box-shadow: 0 2px 0 rgba(0,0,0,.08); }
+.chip .heart { color: var(--bad); }
+.chip .coin { width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ffe680, #f2b400); box-shadow: inset 0 -1px 0 #b98600; }
 
-/* 승객 행렬 */
-.queue {
-  position: relative; height: 148px; border-radius: 18px;
-  background: var(--plaza); border: 2px solid #cfd8e3;
-}
-.queue::before { content: '탑승 순서: 아래 왼쪽부터'; position: absolute; left: 12px; top: 6px; font-size: 11px; color: var(--muted); }
-.queue .left { position: absolute; right: 10px; top: 6px; font-family: var(--font-game); font-size: 13px; color: var(--muted); }
+/* 광장 + 도로 (캔버스) */
+.plaza { position: relative; height: 170px; border-radius: 18px; overflow: hidden; background: var(--plaza); box-shadow: inset 0 0 0 2px #cdd6e1; }
+#crowd { position: absolute; inset: 0; width: 100%; height: 100%; }
+.plaza .left { position: absolute; right: 12px; bottom: 8px; font-family: var(--font-game); font-size: 13px; color: var(--muted); }
 
 /* 주차칸 */
-.slots { display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; padding: 8px; border-radius: 16px; background: var(--slot); }
-.slot { aspect-ratio: 5 / 8; border-radius: 9px; background: var(--slot-empty); display: grid; place-items: center; }
-.slot.vip { background: var(--vip); color: var(--vip-ink); font-family: var(--font-game); font-size: 13px; }
+.slots { display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; padding: 7px; border-radius: 16px; background: var(--slotbar); box-shadow: inset 0 3px 0 rgba(0,0,0,.12); }
+.slot { aspect-ratio: 5 / 8; border-radius: 9px; background: var(--slot-empty); display: grid; place-items: center; box-shadow: inset 0 2px 0 rgba(0,0,0,.15); }
+.slot.vip { background: linear-gradient(#ffd25a, #eaa50f); color: var(--vip-ink); font-family: var(--font-game); font-size: 13px; }
 .slot.vip span { rotate: -90deg; }
-.slot.locked { background: transparent; border: 2px dashed #c3cad5; color: #eef2f7; font-size: 22px; font-family: var(--font-game); }
+.slot.locked { background: transparent; box-shadow: none; border: 2px dashed #b5bfcc; color: #e8edf3; font-size: 22px; font-family: var(--font-game); }
 .slot.locked:active { scale: .95; }
 
 /* 주차장 */
-.lot { position: relative; border-radius: 18px; background: var(--asphalt); padding: 6px; }
+.lot { position: relative; border-radius: 18px; background: var(--asphalt); padding: 6px; box-shadow: inset 0 0 0 3px #3d4552, 0 4px 0 #a9b4c2; }
 .grid {
-  position: relative; width: 100%; aspect-ratio: 7 / 8;
+  position: relative; width: 100%; aspect-ratio: 8 / 9; border-radius: 10px;
+  background-color: var(--asphalt-hi);
   background-image:
-    linear-gradient(var(--asphalt-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--asphalt-line) 1px, transparent 1px);
-  background-size: calc(100% / 7) calc(100% / 8);
-  border-radius: 10px;
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: calc(100% / 8) calc(100% / 9);
 }
 
-/* 차: 무대(stage) 좌표로 절대 배치 */
+/* ---------- 차 ----------
+   바깥(.veh)은 무대 좌표 상자, 안쪽(.car)은 '오른쪽을 보는' 차 그림을 --a 각도로 돌립니다. */
 .veh {
   position: absolute; left: 0; top: 0; z-index: 3;
-  border-radius: 10px; background: var(--col); box-shadow: inset 0 -5px 0 var(--dark), 0 2px 0 rgba(0,0,0,.25);
-  transition: transform .26s ease-in, width .3s ease, height .3s ease, opacity .3s;
-  display: grid; place-items: center; color: #fff;
+  transition: transform .26s ease-in, width .32s ease, height .32s ease, opacity .3s;
 }
-.veh::before { /* 앞 유리: 머리 쪽 */
-  content: ''; position: absolute; background: rgba(255,255,255,.55); border-radius: 5px;
+.veh .car {
+  position: absolute; left: 50%; top: 50%;
+  width: var(--L); height: var(--S);
+  transform: translate(-50%, -50%) rotate(var(--a));
+  transition: transform .32s ease, width .32s ease, height .32s ease;
 }
-.veh[data-dir="R"]::before { right: 5px; top: 18%; bottom: 22%; width: 18%; }
-.veh[data-dir="L"]::before { left: 5px; top: 18%; bottom: 22%; width: 18%; }
-.veh[data-dir="U"]::before { top: 5px; left: 18%; right: 18%; height: 18%; }
-.veh[data-dir="D"]::before { bottom: 9px; left: 18%; right: 18%; height: 18%; }
-.veh .arrow { width: 20px; height: 20px; opacity: .95; filter: drop-shadow(0 1px 0 rgba(0,0,0,.3)); }
-.veh[data-dir="R"] .arrow { rotate: 0deg; } .veh[data-dir="D"] .arrow { rotate: 90deg; }
-.veh[data-dir="L"] .arrow { rotate: 180deg; } .veh[data-dir="U"] .arrow { rotate: 270deg; }
-.veh[data-size="bus"] { border-radius: 12px; }
-.veh.mystery { --col: #2b2f36; --dark: #15181d; }
-.veh.mystery .arrow { display: none; }
-.veh.mystery::after { content: '?'; font-family: var(--font-game); font-size: 24px; color: #e5e7eb; }
-.veh .seats { display: none; }
-.veh.parked { box-shadow: inset 0 -4px 0 var(--dark); }
-.veh.parked::before { top: 5px; left: 16%; right: 16%; height: 14%; bottom: auto; width: auto; }
+.car > i { position: absolute; display: block; }
+.car .shadow { inset: 3px -2px -4px 2px; border-radius: 10px; background: rgba(0,0,0,.28); filter: blur(1px); }
+.car .wheel { width: 18%; max-width: 12px; height: 4px; border-radius: 2px; background: #1b1f26; }
+.car .w1 { left: 14%; top: -2px; } .car .w2 { right: 14%; top: -2px; }
+.car .w3 { left: 14%; bottom: -2px; } .car .w4 { right: 14%; bottom: -2px; }
+.car .body {
+  inset: 0; border-radius: 9px;
+  background: linear-gradient(var(--hi) 0%, var(--col) 38%, var(--col) 70%, var(--dk) 100%);
+  box-shadow: inset 0 0 0 1.5px var(--dk), inset 0 2px 0 rgba(255,255,255,.35);
+}
+.car .roof {
+  top: 17%; bottom: 17%; left: 24%; right: 22%; border-radius: 7px;
+  background: linear-gradient(var(--hi), var(--col));
+  box-shadow: inset 0 0 0 1.5px var(--dk);
+}
+.car .glass { top: 20%; bottom: 20%; border-radius: 4px; background: linear-gradient(90deg, #cfeaff, #7fb8e8); box-shadow: inset 0 0 0 1px rgba(20,40,70,.35); }
+.car .front { right: 9%; width: 13%; }
+.car .back { left: 10%; width: 8%; opacity: .85; }
+.veh[data-size="van"] .roof { left: 14%; right: 24%; }
+.veh[data-size="van"] .front { right: 9%; width: 11%; }
+.veh[data-size="bus"] .body { border-radius: 8px; }
+.veh[data-size="bus"] .roof { left: 5%; right: 13%; top: 14%; bottom: 14%; border-radius: 5px;
+  background: repeating-linear-gradient(90deg, var(--hi) 0 14%, var(--col) 14% 17%); }
+.veh[data-size="bus"] .front { right: 3%; width: 8%; }
+.veh[data-size="bus"] .back { display: none; }
+.veh[data-size="bus"] .wheel { width: 9%; }
+.car .arrow { position: absolute; left: 50%; top: 50%; width: 18px; height: 18px; translate: -50% -50%; color: #fff; filter: drop-shadow(0 1px 0 rgba(0,0,0,.45)); }
+.veh .q { position: absolute; inset: 0; display: none; place-items: center; font-family: var(--font-game); font-size: 22px; color: #e8ebf0; text-shadow: 0 2px 0 #000; }
+.veh.mystery { --col: #2f343d; --hi: #4b525e; --dk: #15181d; }
+.veh.mystery .q { display: grid; }
+.veh.mystery .arrow { opacity: .45; }
+.veh .seats { position: absolute; left: 50%; bottom: 4px; translate: -50% 0; display: none; padding: 1px 5px; border-radius: 8px; background: rgba(0,0,0,.45); font-family: var(--font-game); font-size: 11px; color: #fff; white-space: nowrap; }
+.veh.parked .seats { display: block; }
 .veh.parked .arrow { display: none; }
-.veh.parked .seats { display: block; font-family: var(--font-game); font-size: 12px; color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,.35); margin-top: 10px; }
 .veh.flying { z-index: 6; }
-.veh.bump { animation: bump .28s ease-out; }
-.veh.blocker { animation: flash .5s ease-out; }
-.veh.full { animation: pulse .25s ease-out; }
+.veh.bump .car { animation: bump .28s ease-out; }
+.veh.blocker .car { animation: flash .5s ease-out; }
+.veh.full .car { animation: pulse .25s ease-out; }
 .veh.depart { opacity: 0; }
-.veh.hint { animation: hint 1s ease-in-out infinite; z-index: 4; }
-.veh.pickable { outline: 3px solid var(--vip); outline-offset: 1px; }
-@keyframes bump { 40% { translate: var(--bx) var(--by); } }
-@keyframes flash { 30% { filter: brightness(1.6); scale: 1.04; } }
+.veh.hint .car { animation: hint 1s ease-in-out infinite; }
+.veh.pickable .body { box-shadow: inset 0 0 0 3px var(--vip); }
+@keyframes bump { 40% { translate: var(--bx) 0; } }
+@keyframes flash { 30% { filter: brightness(1.7); } }
 @keyframes pulse { 50% { scale: 1.12; } }
-@keyframes hint { 50% { filter: brightness(1.25); scale: 1.05; } }
+@keyframes hint { 50% { filter: brightness(1.3); scale: 1.06; } }
 
-/* 승객 */
-.pax {
-  position: absolute; left: 0; top: 0; z-index: 2;
-  width: 16px; height: 16px; border-radius: 50%;
-  background: var(--col); box-shadow: inset 0 -3px 0 var(--dark);
-  transition: transform .18s ease-out;
-}
-.pax.board { z-index: 7; transition: transform .22s ease-in, scale .22s; scale: .6; }
+/* 차단기 */
+.barrier { position: absolute; left: 0; top: 0; z-index: 2; display: grid; place-items: center; transition: opacity .35s, transform .35s; }
+.barrier .bar { width: 86%; height: 30%; border-radius: 4px; background: repeating-linear-gradient(45deg, #e5484d 0 7px, #fff 7px 14px); box-shadow: 0 2px 0 rgba(0,0,0,.35); }
+.barrier .n { position: absolute; top: 4%; right: 4%; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px; background: #fff; color: #c2272c; font-family: var(--font-game); font-size: 12px; line-height: 18px; text-align: center; box-shadow: 0 1px 0 rgba(0,0,0,.3); }
+.barrier.open { opacity: 0; }
+.barrier.ping { animation: flash .5s ease-out; }
+
+/* 탑승하러 걸어가는 손님 */
+.walker { position: absolute; left: 0; top: 0; z-index: 7; width: 14px; height: 18px; pointer-events: none; transition: transform .28s ease-in, opacity .2s .26s; }
+.walker::before { content: ''; position: absolute; left: 2px; right: 2px; bottom: 0; height: 11px; border-radius: 6px 6px 4px 4px; background: linear-gradient(var(--hi), var(--col)); box-shadow: inset 0 -2px 0 var(--dk); }
+.walker::after { content: ''; position: absolute; left: 3px; top: 0; width: 8px; height: 8px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, var(--hi), var(--col)); }
+.walker.in { opacity: 0; }
 
 /* 부스터 */
-.boosters { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding-top: 2px; }
+.boosters { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 4px 6px 0; }
 .boost {
   position: relative; aspect-ratio: 1; border-radius: 50%;
-  background: #3b6fd8; color: #fff; display: grid; place-items: center;
-  box-shadow: 0 4px 0 #234a99;
+  background: radial-gradient(circle at 50% 30%, #5d9bff, #2c63d6); color: #fff; display: grid; place-items: center;
+  box-shadow: 0 4px 0 #1d469e, inset 0 -3px 0 rgba(0,0,0,.15), inset 0 2px 0 rgba(255,255,255,.3);
 }
-.boost:active { translate: 0 2px; box-shadow: 0 2px 0 #234a99; }
-.boost svg { width: 46%; height: 46%; }
+.boost:active { translate: 0 2px; box-shadow: 0 2px 0 #1d469e; }
+.boost svg { width: 46%; height: 46%; filter: drop-shadow(0 2px 0 rgba(0,0,0,.25)); }
 .boost .count {
   position: absolute; top: -4px; right: -4px; min-width: 26px; height: 26px; padding: 0 6px;
-  border-radius: 13px; background: #25b34f; border: 2px solid #fff;
+  border-radius: 13px; background: #25b34f; border: 2px solid #fff; color: #fff;
   font-family: var(--font-game); font-size: 15px; line-height: 22px; text-align: center;
 }
-.boost.shop { background: #f6c12b; color: #7a4b00; box-shadow: 0 4px 0 #b88200; }
-.boost.active { background: var(--vip); box-shadow: 0 4px 0 #b88200; }
+.boost.shop { background: radial-gradient(circle at 50% 30%, #ffd75a, #f0a800); color: #7a4b00; box-shadow: 0 4px 0 #b37b00, inset 0 2px 0 rgba(255,255,255,.4); }
+.boost.active { background: radial-gradient(circle at 50% 30%, #ffd75a, #f0a800); box-shadow: 0 4px 0 #b37b00; }
 .boost[data-empty="true"] .count { background: var(--muted); }
-.boost-label { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center; font-size: 11px; color: var(--muted); margin-top: -4px; }
+.boost-label { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center; font-size: 11px; color: var(--muted); margin-top: -2px; padding: 0 6px; }
 
-/* 안내 말풍선 */
-.tip {
-  position: absolute; left: 50%; translate: -50% 0; z-index: 8;
-  padding: 6px 12px; border-radius: 999px; background: var(--ink); color: #fff;
-  font-size: 13px; white-space: nowrap; pointer-events: none;
+/* 안내 */
+.tip { position: absolute; left: 50%; translate: -50% 0; z-index: 8; padding: 6px 12px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 13px; white-space: nowrap; pointer-events: none; }
+.toast {
+  position: fixed; left: 50%; top: calc(64px + env(safe-area-inset-top, 0px)); translate: -50% 0; z-index: 30;
+  max-width: calc(100% - 32px); white-space: nowrap;
+  padding: 8px 16px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 14px;
+  animation: drop .2s ease-out, fade .3s 2s forwards;
 }
+@keyframes drop { from { opacity: 0; transform: translateY(-8px); } }
+@keyframes fade { to { opacity: 0; } }
 
-/* 시트(팝업) */
+/* 시트 */
 .sheet-wrap {
   position: fixed; inset: 0; z-index: 20; display: grid; align-items: end;
   background: rgba(20, 28, 40, .45);
   padding: 0 max(12px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
 }
-.sheet {
-  width: min(420px, 100%); margin: 0 auto; padding: 20px 18px 16px; border-radius: 22px;
-  background: var(--panel); text-align: center; animation: rise .22s ease-out;
-}
+.sheet { width: min(420px, 100%); margin: 0 auto; padding: 20px 18px 16px; border-radius: 22px; background: var(--panel); text-align: center; animation: rise .22s ease-out; }
+@keyframes rise { from { transform: translateY(30px); opacity: 0; } }
 .sheet h2 { margin: 0 0 6px; font-family: var(--font-game); font-weight: 400; font-size: 26px; }
 .sheet p { margin: 0 0 14px; color: var(--muted); line-height: 1.5; }
 .sheet .btns { display: flex; flex-direction: column; gap: 8px; }
@@ -190,15 +216,6 @@ button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .levels button[data-state="cleared"] { background: var(--good); color: #fff; }
 .levels button[data-state="open"] { background: var(--accent); color: #fff; }
 .levels button:disabled { opacity: .35; }
-.toast {
-  position: fixed; left: 50%; top: calc(76px + env(safe-area-inset-top, 0px)); translate: -50% 0; z-index: 30; max-width: calc(100% - 32px); white-space: nowrap;
-  padding: 8px 16px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 14px;
-  animation: rise .2s ease-out, fade .3s 2s forwards;
-}
-@keyframes rise { from { translate: -50% 16px; opacity: 0; } }
-.sheet { animation-name: rise-s; }
-@keyframes rise-s { from { transform: translateY(30px); opacity: 0; } }
-@keyframes fade { to { opacity: 0; } }
 .confetti { position: fixed; z-index: 25; width: 8px; height: 12px; top: -12px; border-radius: 2px; animation: fall 1.4s ease-in forwards; pointer-events: none; }
 @keyframes fall { to { transform: translateY(105vh) rotate(540deg); } }
 @media (prefers-reduced-motion: reduce) {
@@ -219,12 +236,12 @@ button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
       <span class="lv" id="lv-title">레벨 1</span>
     </button>
     <div class="wallet">
-      <span class="chip" title="하트"><i>❤</i><span id="hearts">5</span></span>
-      <span class="chip" title="코인"><i>●</i><span id="coins">0</span></span>
+      <span class="chip" title="하트"><span class="heart">❤</span><span id="hearts">5</span></span>
+      <span class="chip" title="코인"><span class="coin"></span><span id="coins">0</span></span>
     </div>
   </div>
 
-  <div class="queue" id="queue"><span class="left" id="pax-left"></span></div>
+  <div class="plaza" id="plaza"><canvas id="crowd"></canvas><span class="left" id="pax-left"></span></div>
 
   <div class="slots" id="slots">
     <div class="slot vip" data-slot="0"><span>VIP</span></div>
@@ -258,13 +275,13 @@ button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
   </div>
   <div class="boost-label"><span>승객 정렬</span><span>차 섞기</span><span>VIP 빼기</span><span>상점</span></div>
 </div>
-<div id="layer"></div>
 
 <script>
 // 버스 잼 프로토타입 — 순수 규칙 (DOM 없음). 게임 화면과 레벨 생성기가 함께 씁니다.
 //
-// 좌표: 주차장은 cols × rows 격자. 차는 (x, y)부터 진행 방향 축으로 len칸을 차지합니다.
-// 방향 U/D/L/R. 차는 머리 방향으로만 빠지고, 머리 앞부터 격자 끝까지 다른 차가 없어야 합니다.
+// 좌표: 주차장은 cols × rows 격자. 차는 좌상단 칸 (x, y)부터 진행 방향 축으로 len칸을 차지합니다.
+// 방향 U/D/L/R. 차는 머리 방향으로만 빠지고, 머리 앞부터 격자 끝까지 막힌 칸이 없어야 합니다.
+// 차단기: 칸 하나를 막고 있다가 차가 n대 빠져나가면 열립니다.
 
 const SIZES = {
   car: { len: 2, cap: 4 },
@@ -275,8 +292,8 @@ const DIRS = {
   U: { dx: 0, dy: -1 }, D: { dx: 0, dy: 1 },
   L: { dx: -1, dy: 0 }, R: { dx: 1, dy: 0 },
 };
+const BARRIER = -2;
 
-// 차가 차지하는 칸 목록. (x, y)는 차의 '꼬리 쪽 위/왼쪽 끝'이 아니라 항상 좌상단 칸입니다.
 function cellsOf(v) {
   const len = SIZES[v.size].len;
   const horiz = v.dir === 'L' || v.dir === 'R';
@@ -285,13 +302,11 @@ function cellsOf(v) {
   return out;
 }
 
-// 머리 칸 (진행 방향 쪽 끝)
 function headOf(v) {
   const c = cellsOf(v);
   return v.dir === 'R' || v.dir === 'D' ? c[c.length - 1] : c[0];
 }
 
-// 머리 앞에서 격자 끝까지의 칸
 function exitPath(v, cols, rows) {
   const { dx, dy } = DIRS[v.dir];
   let [x, y] = headOf(v);
@@ -303,17 +318,16 @@ function exitPath(v, cols, rows) {
   }
 }
 
-function occupancy(vehicles, cols, rows, skipId = null) {
+// 칸마다: 차 id, 닫힌 차단기는 BARRIER, 빈칸 -1
+function occupancy(vehicles, cols, rows, barriers = [], exited = 0) {
   const grid = new Array(cols * rows).fill(-1);
-  for (const v of vehicles) {
-    if (v.id === skipId) continue;
-    for (const [x, y] of cellsOf(v)) grid[y * cols + x] = v.id;
-  }
+  for (const b of barriers) if (exited < b.n) grid[b.y * cols + b.x] = BARRIER;
+  for (const v of vehicles) for (const [x, y] of cellsOf(v)) grid[y * cols + x] = v.id;
   return grid;
 }
 
-// 빠질 수 있으면 null, 막혔으면 막은 차 id
-function blockerOf(v, vehicles, cols, rows, grid = occupancy(vehicles, cols, rows)) {
+// 빠질 수 있으면 null, 막혔으면 막은 차 id 또는 BARRIER
+function blockerOf(v, cols, rows, grid) {
   for (const [x, y] of exitPath(v, cols, rows)) {
     const id = grid[y * cols + x];
     if (id !== -1 && id !== v.id) return id;
@@ -322,9 +336,7 @@ function blockerOf(v, vehicles, cols, rows, grid = occupancy(vehicles, cols, row
 }
 
 // ---------- 탑승 규칙 ----------
-// slots: [{ id, color, cap, filled }] (빈 칸은 null). queue: 색 배열, qi: 맨 앞 승객 인덱스.
-// 맨 앞 승객 색과 같은 차가 칸에 있으면 (먼저 들어온 차부터) 탄다. 가득 차면 출발.
-// 이 함수는 한 명씩 태우는 대신 끝까지 한 번에 처리한 결과를 돌려줍니다 (풀이기용).
+// slots: [{ id, color, cap, filled }] (빈 칸은 null). 맨 앞 승객 색과 같은 차에 (먼저 들어온 차부터) 탄다.
 function settle(slots, queue, qi) {
   slots = slots.map(s => s && { ...s });
   for (;;) {
@@ -339,39 +351,34 @@ function settle(slots, queue, qi) {
 }
 
 // ---------- 풀이기 ----------
-// 일반 주차칸 slotCount개만으로 풀 수 있는지 깊이 우선 탐색. 풀리면 차를 빼는 순서를 돌려줍니다.
-function solve(level, slotCount = level.slots, nodeLimit = 200000) {
+function solve(level, slotCount = level.slots, nodeLimit = 150000) {
   const { cols, rows } = level;
   const all = level.vehicles;
+  const barriers = level.barriers ?? [];
   const n = all.length;
   const failed = new Set();
   let nodes = 0;
   const order = [];
 
-  function key(alive, slots, qi) {
-    return alive.join('') + '|' + qi + '|' + slots.map(s => s ? s.id + ':' + s.filled : '_').sort().join(',');
-  }
-
-  function dfs(alive, slots, qi) {
+  function dfs(alive, slots, qi, exited) {
     if (qi >= level.queue.length) return true;
     if (++nodes > nodeLimit) throw new Error('limit');
-    const k = key(alive, slots, qi);
+    const k = alive.join('') + '|' + qi + '|' + slots.map(s => s ? s.id + ':' + s.filled : '_').sort().join(',');
     if (failed.has(k)) return false;
     const free = slots.indexOf(null);
     if (free === -1) { failed.add(k); return false; }
     const live = all.filter((v, i) => alive[i]);
-    const grid = occupancy(live, cols, rows);
-    // 맨 앞 승객과 같은 색 차를 먼저 시도 (탐색 가속)
-    const front = level.queue[qi];
-    const cands = live.filter(v => blockerOf(v, live, cols, rows, grid) === null)
-      .sort((a, b) => (b.color === front) - (a.color === front));
+    const grid = occupancy(live, cols, rows, barriers, exited);
+    const soon = level.queue.slice(qi, qi + 20);
+    const rank = v => { const i = soon.indexOf(v.color); return i === -1 ? 99 : i; };
+    const cands = live.filter(v => blockerOf(v, cols, rows, grid) === null).sort((a, b) => rank(a) - rank(b));
     for (const v of cands) {
       const i = all.indexOf(v);
       const a2 = alive.slice(); a2[i] = 0;
       const s2 = slots.slice(); s2[free] = { id: v.id, color: v.color, cap: SIZES[v.size].cap, filled: 0 };
       const r = settle(s2, level.queue, qi);
       order.push(v.id);
-      if (dfs(a2, r.slots, r.qi)) return true;
+      if (dfs(a2, r.slots, r.qi, exited + 1)) return true;
       order.pop();
     }
     failed.add(k);
@@ -379,7 +386,7 @@ function solve(level, slotCount = level.slots, nodeLimit = 200000) {
   }
 
   try {
-    const ok = dfs(new Array(n).fill(1), new Array(slotCount).fill(null), 0);
+    const ok = dfs(new Array(n).fill(1), new Array(slotCount).fill(null), 0, 0);
     return { ok, order: ok ? order.slice() : null, nodes };
   } catch {
     return { ok: false, order: null, nodes, limit: true };
@@ -387,38 +394,48 @@ function solve(level, slotCount = level.slots, nodeLimit = 200000) {
 }
 
 // ---------- 난이도 측정용 플레이어 ----------
-// '적당히 생각하는' 플레이어: 빠질 수 있는 차 중 맨 앞 승객 색 → 다음 몇 명 색 순으로 선호, 나머지는 무작위.
-function playGreedy(level, rng, slotCount = level.slots, look = 12) {
+// '적당히 생각하는' 플레이어: 빠질 수 있는 차 중 곧 탈 손님 색을 선호, 나머지는 무작위. ? 차 색은 모른다고 가정.
+function playGreedy(level, rng, slotCount = level.slots, look = 10) {
   const { cols, rows } = level;
+  const barriers = level.barriers ?? [];
   let live = level.vehicles.slice();
   let slots = new Array(slotCount).fill(null);
-  let qi = 0;
+  let qi = 0, exited = 0;
   while (qi < level.queue.length) {
     const free = slots.indexOf(null);
     if (free === -1) return false;
-    const grid = occupancy(live, cols, rows);
-    const cands = live.filter(v => blockerOf(v, live, cols, rows, grid) === null);
+    const grid = occupancy(live, cols, rows, barriers, exited);
+    const cands = live.filter(v => blockerOf(v, cols, rows, grid) === null);
     if (!cands.length) return false;
     const soon = level.queue.slice(qi, qi + look);
     const score = v => {
+      if (v.mystery) return 2 + rng() * 4;
       const i = soon.indexOf(v.color);
       return (i === -1 ? 0 : look - i) + rng() * 4;
     };
     const v = cands.sort((a, b) => score(b) - score(a))[0];
     live = live.filter(o => o !== v);
+    exited++;
     slots[free] = { id: v.id, color: v.color, cap: SIZES[v.size].cap, filled: 0 };
     ({ slots, qi } = settle(slots, level.queue, qi));
   }
   return true;
 }
 
-const LEVELS = [{"n":1,"cols":7,"rows":8,"slots":4,"colors":2,"hard":false,"vehicles":[{"id":0,"x":4,"y":7,"dir":"R","size":"car","color":1},{"id":1,"x":2,"y":0,"dir":"D","size":"car","color":1},{"id":2,"x":5,"y":5,"dir":"U","size":"car","color":0},{"id":3,"x":0,"y":0,"dir":"U","size":"car","color":1}],"queue":[1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1]},{"n":2,"cols":7,"rows":8,"slots":4,"colors":3,"hard":false,"vehicles":[{"id":0,"x":4,"y":0,"dir":"U","size":"car","color":0},{"id":1,"x":4,"y":3,"dir":"D","size":"car","color":2},{"id":2,"x":0,"y":3,"dir":"U","size":"car","color":1},{"id":3,"x":5,"y":7,"dir":"L","size":"car","color":0},{"id":4,"x":5,"y":6,"dir":"R","size":"car","color":2},{"id":5,"x":1,"y":6,"dir":"U","size":"car","color":2}],"queue":[2,2,2,2,2,2,2,2,0,0,0,0,2,2,2,2,1,1,1,1,0,0,0,0]},{"n":3,"cols":7,"rows":8,"slots":4,"colors":3,"hard":false,"vehicles":[{"id":0,"x":2,"y":6,"dir":"R","size":"car","color":2},{"id":1,"x":4,"y":3,"dir":"D","size":"van","color":0},{"id":2,"x":3,"y":7,"dir":"R","size":"car","color":2},{"id":3,"x":3,"y":1,"dir":"U","size":"van","color":1},{"id":4,"x":1,"y":1,"dir":"D","size":"car","color":1},{"id":5,"x":0,"y":5,"dir":"L","size":"car","color":0},{"id":6,"x":0,"y":0,"dir":"U","size":"car","color":2},{"id":7,"x":5,"y":0,"dir":"R","size":"car","color":0}],"queue":[0,0,0,0,2,2,2,2,0,0,1,1,1,1,0,0,1,1,1,1,2,2,2,2,1,1,0,0,0,0,2,2,2,2,0,0]},{"n":4,"cols":7,"rows":8,"slots":4,"colors":4,"hard":false,"vehicles":[{"id":0,"x":4,"y":5,"dir":"U","size":"van","color":2},{"id":1,"x":4,"y":0,"dir":"L","size":"car","color":2},{"id":2,"x":2,"y":1,"dir":"U","size":"car","color":1},{"id":3,"x":6,"y":3,"dir":"D","size":"car","color":0},{"id":4,"x":1,"y":2,"dir":"D","size":"car","color":3},{"id":5,"x":1,"y":4,"dir":"L","size":"van","color":0},{"id":6,"x":0,"y":6,"dir":"U","size":"car","color":1},{"id":7,"x":0,"y":5,"dir":"L","size":"car","color":2},{"id":8,"x":5,"y":6,"dir":"D","size":"car","color":0},{"id":9,"x":1,"y":0,"dir":"U","size":"car","color":1}],"queue":[1,1,1,1,2,2,2,2,0,0,0,1,1,1,1,0,0,0,3,3,3,3,0,0,0,0,0,0,0,0,1,1,1,1,2,2,2,2,2,2,2,2,2,2]},{"n":5,"cols":7,"rows":8,"slots":4,"colors":4,"hard":true,"vehicles":[{"id":0,"x":0,"y":0,"dir":"R","size":"car","color":3},{"id":1,"x":1,"y":5,"dir":"L","size":"bus","color":1},{"id":2,"x":4,"y":2,"dir":"R","size":"car","color":1},{"id":3,"x":0,"y":3,"dir":"D","size":"bus","color":3},{"id":4,"x":2,"y":7,"dir":"R","size":"car","color":0},{"id":5,"x":2,"y":0,"dir":"U","size":"bus","color":1},{"id":6,"x":4,"y":6,"dir":"D","size":"car","color":2},{"id":7,"x":5,"y":4,"dir":"D","size":"bus","color":3},{"id":8,"x":5,"y":0,"dir":"U","size":"car","color":1},{"id":9,"x":6,"y":0,"dir":"D","size":"van","color":2},{"id":10,"x":4,"y":0,"dir":"U","size":"car","color":1}],"queue":[2,2,2,2,2,1,1,1,1,2,3,3,1,1,3,3,3,3,3,2,2,1,1,1,1,1,1,1,1,1,1,0,0,1,1,3,3,3,0,0,3,3,3,3,3,3,3,3,1,1,1,1,2,2,1,1,3,3,1,1,3,3,3,1,3,1,1,1,1,1]},{"n":6,"cols":7,"rows":8,"slots":4,"colors":4,"hard":false,"vehicles":[{"id":0,"x":5,"y":3,"dir":"D","size":"car","color":3,"mystery":true},{"id":1,"x":1,"y":5,"dir":"L","size":"bus","color":1},{"id":2,"x":6,"y":5,"dir":"D","size":"van","color":3},{"id":3,"x":1,"y":4,"dir":"L","size":"bus","color":0},{"id":4,"x":0,"y":6,"dir":"D","size":"car","color":3},{"id":5,"x":4,"y":2,"dir":"L","size":"van","color":3},{"id":6,"x":2,"y":0,"dir":"L","size":"van","color":0},{"id":7,"x":1,"y":3,"dir":"L","size":"van","color":2,"mystery":true},{"id":8,"x":4,"y":1,"dir":"L","size":"car","color":3},{"id":9,"x":5,"y":5,"dir":"D","size":"car","color":2},{"id":10,"x":0,"y":0,"dir":"U","size":"bus","color":1},{"id":11,"x":1,"y":1,"dir":"U","size":"car","color":1}],"queue":[1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,2,2,2,2,2,2,3,3,0,0,0,3,3,3,3,3,3,3,3,0,0,0,3,3,3,3,0,0,0,0,0,0,0,0,3,3,3,0,0,1,1,1,1,1,1,3,3,3,1,1,1,1,3,3,3,3]},{"n":7,"cols":7,"rows":8,"slots":4,"colors":5,"hard":false,"vehicles":[{"id":0,"x":0,"y":4,"dir":"R","size":"bus","color":1,"mystery":true},{"id":1,"x":5,"y":4,"dir":"R","size":"car","color":1},{"id":2,"x":4,"y":5,"dir":"U","size":"van","color":0},{"id":3,"x":1,"y":3,"dir":"R","size":"bus","color":2},{"id":4,"x":1,"y":5,"dir":"L","size":"car","color":1},{"id":5,"x":4,"y":0,"dir":"R","size":"car","color":2,"mystery":true},{"id":6,"x":6,"y":0,"dir":"U","size":"van","color":0},{"id":7,"x":0,"y":0,"dir":"U","size":"car","color":0},{"id":8,"x":2,"y":2,"dir":"L","size":"van","color":1},{"id":9,"x":1,"y":6,"dir":"L","size":"car","color":4},{"id":10,"x":1,"y":0,"dir":"U","size":"van","color":1},{"id":11,"x":1,"y":7,"dir":"L","size":"car","color":2},{"id":12,"x":5,"y":3,"dir":"R","size":"car","color":3}],"queue":[3,3,2,3,3,1,1,1,1,4,4,4,4,1,1,1,1,1,2,2,2,1,1,1,0,0,0,0,2,2,0,0,0,0,0,0,2,2,2,2,2,2,2,2,1,1,1,1,0,0,2,0,0,0,0,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,1]},{"n":8,"cols":7,"rows":8,"slots":4,"colors":5,"hard":false,"vehicles":[{"id":0,"x":0,"y":1,"dir":"R","size":"van","color":2,"mystery":true},{"id":1,"x":6,"y":1,"dir":"U","size":"bus","color":1,"mystery":true},{"id":2,"x":5,"y":1,"dir":"U","size":"car","color":0},{"id":3,"x":1,"y":7,"dir":"L","size":"van","color":1,"mystery":true},{"id":4,"x":4,"y":1,"dir":"U","size":"bus","color":1},{"id":5,"x":3,"y":2,"dir":"U","size":"car","color":0,"mystery":true},{"id":6,"x":2,"y":0,"dir":"R","size":"car","color":3},{"id":7,"x":2,"y":6,"dir":"R","size":"car","color":2},{"id":8,"x":4,"y":5,"dir":"D","size":"car","color":3},{"id":9,"x":4,"y":7,"dir":"R","size":"van","color":4},{"id":10,"x":0,"y":5,"dir":"L","size":"van","color":4},{"id":11,"x":0,"y":2,"dir":"L","size":"van","color":2},{"id":12,"x":0,"y":6,"dir":"D","size":"car","color":4},{"id":13,"x":5,"y":0,"dir":"R","size":"car","color":4}],"queue":[4,4,4,4,2,2,4,4,4,4,4,4,4,4,2,2,2,2,3,3,3,3,2,2,2,2,4,4,4,4,4,4,4,4,3,3,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,3,2,2,1,2,2,2,2,1,1]},{"n":9,"cols":7,"rows":8,"slots":4,"colors":5,"hard":false,"vehicles":[{"id":0,"x":4,"y":1,"dir":"L","size":"car","color":1,"mystery":true},{"id":1,"x":1,"y":0,"dir":"L","size":"car","color":3},{"id":2,"x":2,"y":5,"dir":"D","size":"van","color":0},{"id":3,"x":0,"y":0,"dir":"D","size":"van","color":1},{"id":4,"x":3,"y":4,"dir":"R","size":"car","color":0,"mystery":true},{"id":5,"x":3,"y":5,"dir":"D","size":"car","color":1},{"id":6,"x":6,"y":3,"dir":"D","size":"van","color":2},{"id":7,"x":0,"y":7,"dir":"L","size":"car","color":3},{"id":8,"x":1,"y":3,"dir":"L","size":"bus","color":2},{"id":9,"x":5,"y":3,"dir":"D","size":"van","color":3,"mystery":true},{"id":10,"x":3,"y":7,"dir":"R","size":"bus","color":2},{"id":11,"x":3,"y":2,"dir":"R","size":"car","color":4,"mystery":true},{"id":12,"x":4,"y":0,"dir":"R","size":"car","color":0},{"id":13,"x":4,"y":6,"dir":"R","size":"van","color":0},{"id":14,"x":6,"y":1,"dir":"U","size":"car","color":4}],"queue":[4,4,0,0,0,4,4,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,4,3,3,3,3,3,4,4,4,2,2,3,2,2,2,2,2,2,3,2,2,2,2,2,2,2,1,1,1,1,0,2,2,2,3,3,3,1,1,0,0,0,0,0,1,1,1,1,3,3,1,1,1,1,0,0,0,0,3,3]},{"n":10,"cols":7,"rows":8,"slots":4,"colors":6,"hard":true,"vehicles":[{"id":0,"x":2,"y":2,"dir":"D","size":"car","color":1,"mystery":true},{"id":1,"x":1,"y":4,"dir":"D","size":"car","color":2,"mystery":true},{"id":2,"x":0,"y":6,"dir":"L","size":"van","color":3},{"id":3,"x":2,"y":7,"dir":"L","size":"car","color":5,"mystery":true},{"id":4,"x":0,"y":7,"dir":"L","size":"car","color":1},{"id":5,"x":3,"y":0,"dir":"L","size":"bus","color":2,"mystery":true},{"id":6,"x":3,"y":1,"dir":"L","size":"van","color":4,"mystery":true},{"id":7,"x":0,"y":1,"dir":"L","size":"van","color":4},{"id":8,"x":6,"y":6,"dir":"D","size":"car","color":0},{"id":9,"x":5,"y":5,"dir":"D","size":"van","color":1},{"id":10,"x":3,"y":3,"dir":"R","size":"van","color":3},{"id":11,"x":3,"y":4,"dir":"R","size":"car","color":2},{"id":12,"x":0,"y":2,"dir":"L","size":"car","color":5},{"id":13,"x":1,"y":0,"dir":"L","size":"car","color":5},{"id":14,"x":0,"y":3,"dir":"L","size":"car","color":3},{"id":15,"x":5,"y":2,"dir":"R","size":"car","color":0}],"queue":[3,0,5,5,5,0,0,0,2,2,5,5,2,2,3,3,3,3,1,1,1,0,0,0,3,3,1,1,1,4,4,5,5,5,3,3,3,4,4,4,4,4,4,4,2,2,2,2,2,0,2,2,2,1,2,2,4,4,4,5,1,1,1,3,3,2,2,5,5,5,3,3,1,1,3,3,2,2,1,1]}];
+const LEVELS = [{"n":1,"cols":8,"rows":9,"slots":4,"colors":2,"hard":false,"vehicles":[{"id":0,"x":4,"y":7,"dir":"R","size":"car","color":1},{"id":1,"x":2,"y":0,"dir":"D","size":"car","color":1},{"id":2,"x":6,"y":6,"dir":"U","size":"car","color":0},{"id":3,"x":2,"y":8,"dir":"R","size":"car","color":0},{"id":4,"x":0,"y":5,"dir":"U","size":"car","color":1},{"id":5,"x":0,"y":7,"dir":"L","size":"car","color":0}],"queue":[0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1],"barriers":[]},{"n":2,"cols":8,"rows":9,"slots":4,"colors":3,"hard":false,"vehicles":[{"id":0,"x":3,"y":4,"dir":"D","size":"car","color":2},{"id":1,"x":1,"y":3,"dir":"D","size":"car","color":0},{"id":2,"x":0,"y":3,"dir":"U","size":"car","color":1},{"id":3,"x":5,"y":3,"dir":"D","size":"car","color":0},{"id":4,"x":2,"y":2,"dir":"U","size":"car","color":1},{"id":5,"x":7,"y":4,"dir":"U","size":"van","color":0},{"id":6,"x":0,"y":7,"dir":"D","size":"car","color":1},{"id":7,"x":1,"y":8,"dir":"R","size":"car","color":2},{"id":8,"x":3,"y":8,"dir":"R","size":"car","color":0},{"id":9,"x":1,"y":5,"dir":"L","size":"car","color":0}],"queue":[0,2,2,2,2,0,0,0,0,1,1,1,0,0,0,1,0,1,1,1,1,0,0,0,0,1,1,1,1,2,2,2,2,0,0,0,0,0,0,0,0,0],"barriers":[]},{"n":3,"cols":8,"rows":9,"slots":4,"colors":4,"hard":false,"vehicles":[{"id":0,"x":7,"y":4,"dir":"U","size":"car","color":3},{"id":1,"x":5,"y":0,"dir":"L","size":"car","color":3},{"id":2,"x":3,"y":8,"dir":"L","size":"car","color":3},{"id":3,"x":0,"y":7,"dir":"U","size":"car","color":0},{"id":4,"x":3,"y":1,"dir":"R","size":"van","color":1},{"id":5,"x":0,"y":1,"dir":"U","size":"van","color":3},{"id":6,"x":5,"y":6,"dir":"D","size":"car","color":0},{"id":7,"x":1,"y":4,"dir":"D","size":"van","color":1},{"id":8,"x":1,"y":0,"dir":"L","size":"car","color":2},{"id":9,"x":6,"y":5,"dir":"D","size":"van","color":0},{"id":10,"x":1,"y":7,"dir":"D","size":"car","color":0},{"id":11,"x":2,"y":7,"dir":"D","size":"car","color":1},{"id":12,"x":4,"y":2,"dir":"R","size":"van","color":2}],"queue":[0,0,0,2,2,0,2,2,2,2,2,2,2,2,0,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,3,3,3,3,3,3,1,1,1,1,3,3,3,3,0,0,0,0,1,1,3,3,3,0,0,0,0,3,3,3,3,3],"barriers":[]},{"n":4,"cols":8,"rows":9,"slots":4,"colors":4,"hard":false,"vehicles":[{"id":0,"x":2,"y":5,"dir":"L","size":"car","color":2},{"id":1,"x":1,"y":2,"dir":"D","size":"bus","color":3},{"id":2,"x":2,"y":6,"dir":"L","size":"van","color":0},{"id":3,"x":4,"y":8,"dir":"L","size":"car","color":3},{"id":4,"x":2,"y":3,"dir":"R","size":"van","color":0,"mystery":true},{"id":5,"x":6,"y":3,"dir":"R","size":"car","color":1},{"id":6,"x":4,"y":1,"dir":"L","size":"car","color":0,"mystery":true},{"id":7,"x":0,"y":4,"dir":"D","size":"car","color":2},{"id":8,"x":1,"y":7,"dir":"L","size":"car","color":1},{"id":9,"x":2,"y":2,"dir":"R","size":"car","color":3},{"id":10,"x":5,"y":2,"dir":"R","size":"van","color":3},{"id":11,"x":0,"y":1,"dir":"L","size":"bus","color":3},{"id":12,"x":1,"y":0,"dir":"R","size":"van","color":2},{"id":13,"x":5,"y":5,"dir":"R","size":"van","color":1},{"id":14,"x":0,"y":8,"dir":"L","size":"van","color":2}],"queue":[2,2,2,2,1,1,1,2,2,2,2,2,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,1,1,1,2,2,2,2,3,3,3,3,2,2,1,1,1,1,0,0,0,0,0,0,1,0,0,0,0,3,3,3,0,0,0,0,0,0,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3],"barriers":[]},{"n":5,"cols":8,"rows":9,"slots":4,"colors":5,"hard":true,"vehicles":[{"id":0,"x":5,"y":8,"dir":"L","size":"car","color":4},{"id":1,"x":0,"y":5,"dir":"U","size":"car","color":2,"mystery":true},{"id":2,"x":2,"y":4,"dir":"L","size":"van","color":4},{"id":3,"x":4,"y":1,"dir":"L","size":"van","color":2,"mystery":true},{"id":4,"x":2,"y":3,"dir":"L","size":"car","color":2,"mystery":true},{"id":5,"x":0,"y":1,"dir":"L","size":"van","color":0},{"id":6,"x":7,"y":3,"dir":"U","size":"van","color":0},{"id":7,"x":0,"y":2,"dir":"L","size":"car","color":0},{"id":8,"x":2,"y":6,"dir":"R","size":"bus","color":0},{"id":9,"x":4,"y":7,"dir":"D","size":"car","color":3},{"id":10,"x":1,"y":3,"dir":"D","size":"van","color":0},{"id":11,"x":1,"y":7,"dir":"L","size":"car","color":3},{"id":12,"x":5,"y":7,"dir":"R","size":"car","color":4},{"id":13,"x":2,"y":2,"dir":"R","size":"van","color":1},{"id":14,"x":1,"y":8,"dir":"L","size":"van","color":0},{"id":15,"x":1,"y":0,"dir":"R","size":"car","color":4},{"id":16,"x":5,"y":2,"dir":"R","size":"car","color":1}],"queue":[0,0,0,4,4,0,0,0,1,1,1,1,1,1,4,4,3,3,3,3,1,1,0,0,0,3,3,3,4,4,4,3,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,1,1,2,2,2,2,4,4,4,4,4,4,4,4,4,4,0,0,0,0,2,2,2,2,2,2,2,2,0,0],"barriers":[]},{"n":6,"cols":8,"rows":9,"slots":4,"colors":5,"hard":false,"vehicles":[{"id":0,"x":4,"y":0,"dir":"R","size":"car","color":3},{"id":1,"x":2,"y":5,"dir":"L","size":"bus","color":1},{"id":2,"x":1,"y":7,"dir":"R","size":"car","color":2},{"id":3,"x":0,"y":5,"dir":"U","size":"car","color":1},{"id":4,"x":1,"y":6,"dir":"R","size":"van","color":0,"mystery":true},{"id":5,"x":7,"y":2,"dir":"D","size":"bus","color":0},{"id":6,"x":2,"y":8,"dir":"L","size":"van","color":2,"mystery":true},{"id":7,"x":2,"y":4,"dir":"L","size":"bus","color":4},{"id":8,"x":6,"y":5,"dir":"D","size":"van","color":2},{"id":9,"x":1,"y":2,"dir":"U","size":"bus","color":3},{"id":10,"x":5,"y":6,"dir":"D","size":"car","color":4},{"id":11,"x":6,"y":0,"dir":"R","size":"car","color":3},{"id":12,"x":0,"y":1,"dir":"L","size":"car","color":0},{"id":13,"x":7,"y":6,"dir":"D","size":"car","color":2,"mystery":true},{"id":14,"x":0,"y":0,"dir":"L","size":"van","color":2},{"id":15,"x":3,"y":0,"dir":"U","size":"van","color":2},{"id":16,"x":6,"y":8,"dir":"R","size":"car","color":3},{"id":17,"x":0,"y":8,"dir":"L","size":"car","color":4}],"queue":[2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,3,3,3,4,4,4,4,3,3,3,0,0,0,0,3,3,3,3,3,3,3,3,3,3,2,2,2,2,4,4,4,4,4,2,2,4,4,4,4,4,4,4,2,2,2,3,2,2,2,0,0,0,0,0,0,4,4,0,0,0,0,0,1,1,1,1,1,1,1,1,1,3,3,3,3,1,1,1,1,1,2,2,2,2,0,0,0,0,0],"barriers":[{"x":0,"y":4,"n":2}]},{"n":7,"cols":8,"rows":9,"slots":4,"colors":5,"hard":false,"vehicles":[{"id":0,"x":0,"y":4,"dir":"U","size":"car","color":4},{"id":1,"x":7,"y":3,"dir":"U","size":"car","color":1},{"id":2,"x":0,"y":1,"dir":"R","size":"van","color":4},{"id":3,"x":3,"y":0,"dir":"D","size":"van","color":0,"mystery":true},{"id":4,"x":4,"y":1,"dir":"D","size":"van","color":3},{"id":5,"x":1,"y":8,"dir":"R","size":"van","color":3,"mystery":true},{"id":6,"x":0,"y":0,"dir":"L","size":"car","color":1},{"id":7,"x":3,"y":6,"dir":"R","size":"car","color":1,"mystery":true},{"id":8,"x":5,"y":1,"dir":"R","size":"car","color":4},{"id":9,"x":3,"y":7,"dir":"L","size":"van","color":0},{"id":10,"x":6,"y":6,"dir":"R","size":"car","color":3},{"id":11,"x":5,"y":8,"dir":"R","size":"car","color":2,"mystery":true},{"id":12,"x":4,"y":5,"dir":"R","size":"bus","color":4},{"id":13,"x":6,"y":0,"dir":"R","size":"car","color":3},{"id":14,"x":0,"y":7,"dir":"D","size":"car","color":3},{"id":15,"x":2,"y":3,"dir":"L","size":"car","color":0},{"id":16,"x":0,"y":2,"dir":"L","size":"car","color":0},{"id":17,"x":7,"y":7,"dir":"D","size":"car","color":2},{"id":18,"x":0,"y":3,"dir":"L","size":"car","color":1},{"id":19,"x":1,"y":6,"dir":"L","size":"car","color":2}],"queue":[1,0,0,0,2,2,2,1,1,1,2,3,3,3,3,3,3,3,3,0,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,4,4,4,2,2,2,2,3,3,3,3,1,4,4,4,4,1,1,1,1,3,3,3,3,3,3,1,1,1,0,0,0,3,3,3,0,0,0,3,3,3,4,4,4,4,4,4,4,2,2,2,2,1,1,1,1,4,4,4],"barriers":[{"x":2,"y":7,"n":5},{"x":0,"y":6,"n":3}]},{"n":8,"cols":8,"rows":9,"slots":4,"colors":6,"hard":false,"vehicles":[{"id":0,"x":5,"y":1,"dir":"L","size":"van","color":2,"mystery":true},{"id":1,"x":6,"y":6,"dir":"R","size":"car","color":2},{"id":2,"x":4,"y":1,"dir":"U","size":"van","color":5},{"id":3,"x":3,"y":8,"dir":"R","size":"car","color":0,"mystery":true},{"id":4,"x":2,"y":1,"dir":"D","size":"bus","color":2,"mystery":true},{"id":5,"x":1,"y":0,"dir":"R","size":"van","color":5,"mystery":true},{"id":6,"x":1,"y":6,"dir":"L","size":"bus","color":0},{"id":7,"x":5,"y":2,"dir":"D","size":"car","color":0},{"id":8,"x":5,"y":7,"dir":"R","size":"car","color":2},{"id":9,"x":0,"y":1,"dir":"L","size":"car","color":5},{"id":10,"x":6,"y":0,"dir":"R","size":"car","color":5},{"id":11,"x":2,"y":7,"dir":"L","size":"car","color":5,"mystery":true},{"id":12,"x":1,"y":7,"dir":"D","size":"car","color":0},{"id":13,"x":0,"y":4,"dir":"L","size":"car","color":4},{"id":14,"x":2,"y":5,"dir":"L","size":"car","color":4},{"id":15,"x":0,"y":6,"dir":"D","size":"car","color":3},{"id":16,"x":5,"y":4,"dir":"R","size":"car","color":5},{"id":17,"x":0,"y":3,"dir":"L","size":"car","color":0},{"id":18,"x":5,"y":8,"dir":"R","size":"car","color":1},{"id":19,"x":5,"y":5,"dir":"R","size":"car","color":0},{"id":20,"x":7,"y":7,"dir":"D","size":"car","color":3}],"queue":[3,5,5,5,5,1,1,1,0,0,0,0,4,4,4,3,3,3,4,1,3,3,3,3,4,4,4,5,5,5,5,4,5,5,5,5,2,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,2,2,2,2,2,0,0,0,0,0,0,0,0,5,5,5,2,2,2,2,2,2,2,2,5,5,5,2,2,2,2,2,2,0,0,0,0,2,2,2,2],"barriers":[{"x":2,"y":8,"n":3},{"x":7,"y":5,"n":5}]},{"n":9,"cols":8,"rows":9,"slots":4,"colors":6,"hard":false,"vehicles":[{"id":0,"x":2,"y":6,"dir":"D","size":"car","color":2},{"id":1,"x":0,"y":5,"dir":"R","size":"van","color":0,"mystery":true},{"id":2,"x":7,"y":5,"dir":"D","size":"car","color":1,"mystery":true},{"id":3,"x":3,"y":4,"dir":"U","size":"van","color":5,"mystery":true},{"id":4,"x":6,"y":1,"dir":"D","size":"car","color":0,"mystery":true},{"id":5,"x":6,"y":7,"dir":"R","size":"car","color":2},{"id":6,"x":3,"y":0,"dir":"L","size":"car","color":0,"mystery":true},{"id":7,"x":5,"y":3,"dir":"U","size":"car","color":0},{"id":8,"x":5,"y":8,"dir":"R","size":"car","color":2},{"id":9,"x":3,"y":2,"dir":"L","size":"car","color":4,"mystery":true},{"id":10,"x":1,"y":3,"dir":"L","size":"van","color":1},{"id":11,"x":2,"y":8,"dir":"L","size":"car","color":3},{"id":12,"x":2,"y":1,"dir":"U","size":"car","color":1},{"id":13,"x":6,"y":3,"dir":"R","size":"car","color":3},{"id":14,"x":5,"y":0,"dir":"R","size":"van","color":5},{"id":15,"x":0,"y":0,"dir":"L","size":"car","color":0},{"id":16,"x":4,"y":4,"dir":"D","size":"van","color":5},{"id":17,"x":0,"y":4,"dir":"L","size":"van","color":5},{"id":18,"x":1,"y":6,"dir":"D","size":"car","color":3},{"id":19,"x":6,"y":4,"dir":"R","size":"car","color":3},{"id":20,"x":0,"y":6,"dir":"D","size":"car","color":5},{"id":21,"x":0,"y":2,"dir":"L","size":"car","color":0}],"queue":[5,5,5,3,3,3,5,0,0,0,3,5,5,5,5,0,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3,3,0,0,1,1,1,1,1,1,4,4,4,4,0,0,0,1,1,1,0,0,0,0,2,2,2,2,2,2,2,2,1,0,0,0,3,3,3,3,5,5,0,0,0,0,0,0,2,2,1,1,1,1,2,2,0,0,5,5,5,5],"barriers":[{"x":3,"y":1,"n":5},{"x":5,"y":5,"n":5}]},{"n":10,"cols":8,"rows":9,"slots":4,"colors":6,"hard":true,"vehicles":[{"id":0,"x":1,"y":1,"dir":"L","size":"car","color":0,"mystery":true},{"id":1,"x":4,"y":4,"dir":"R","size":"car","color":5,"mystery":true},{"id":2,"x":5,"y":7,"dir":"L","size":"van","color":0,"mystery":true},{"id":3,"x":3,"y":2,"dir":"U","size":"van","color":1,"mystery":true},{"id":4,"x":4,"y":5,"dir":"R","size":"car","color":0,"mystery":true},{"id":5,"x":3,"y":6,"dir":"R","size":"van","color":5},{"id":6,"x":0,"y":0,"dir":"R","size":"car","color":0,"mystery":true},{"id":7,"x":6,"y":5,"dir":"R","size":"car","color":1},{"id":8,"x":0,"y":1,"dir":"D","size":"van","color":3,"mystery":true},{"id":9,"x":5,"y":0,"dir":"U","size":"car","color":2},{"id":10,"x":5,"y":8,"dir":"R","size":"van","color":3},{"id":11,"x":2,"y":4,"dir":"D","size":"bus","color":4},{"id":12,"x":0,"y":6,"dir":"L","size":"car","color":2},{"id":13,"x":7,"y":1,"dir":"U","size":"car","color":2},{"id":14,"x":6,"y":0,"dir":"U","size":"van","color":1},{"id":15,"x":3,"y":0,"dir":"U","size":"car","color":0},{"id":16,"x":0,"y":8,"dir":"L","size":"car","color":5},{"id":17,"x":4,"y":0,"dir":"U","size":"van","color":5},{"id":18,"x":3,"y":7,"dir":"D","size":"car","color":4},{"id":19,"x":6,"y":4,"dir":"R","size":"car","color":4},{"id":20,"x":0,"y":7,"dir":"L","size":"car","color":0},{"id":21,"x":5,"y":3,"dir":"R","size":"van","color":4},{"id":22,"x":4,"y":7,"dir":"D","size":"car","color":0},{"id":23,"x":0,"y":4,"dir":"L","size":"car","color":1}],"queue":[0,4,4,4,4,0,0,4,4,4,4,0,0,4,4,4,0,0,0,5,5,5,4,4,4,1,1,1,1,1,1,1,1,1,1,0,0,0,2,2,0,5,5,5,5,4,4,2,2,3,3,2,2,2,2,4,4,4,4,2,3,3,3,3,4,4,4,4,5,5,5,0,0,0,3,3,3,0,2,2,2,5,5,5,3,3,3,0,0,0,0,1,1,0,0,1,5,5,5,5,1,1,1,0,0,0,5,5,5,0,0,0,0,0,1,1,1,1],"barriers":[{"x":6,"y":6,"n":3},{"x":2,"y":0,"n":4},{"x":0,"y":5,"n":3}]}];
 // 버스 잼 프로토타입 — 화면과 조작. 규칙 함수(SIZES, blockerOf 등)는 core.js에서 옵니다.
 
 const $ = s => document.querySelector(s);
 const stage = $('#stage');
-const SAVE_KEY = 'busjam-proto-v1';
+const SAVE_KEY = 'busjam-proto-v2';
 const PRICE = { slot: 120, revive: 150, booster: 100 };
+const DIR_ANGLE = { R: 0, D: 90, L: 180, U: 270 };
+
+// 색 (캔버스에서도 쓰려고 CSS 변수에서 읽음)
+const css = getComputedStyle(document.documentElement);
+const PAL = [0, 1, 2, 3, 4, 5].map(i => ({
+  c: css.getPropertyValue(`--c${i}`).trim(), l: css.getPropertyValue(`--l${i}`).trim(), d: css.getPropertyValue(`--d${i}`).trim(),
+}));
 
 // ---------- 저장 ----------
 const save = loadSave();
@@ -438,35 +455,59 @@ let run = null;
 function startLevel(n) {
   if (save.hearts <= 0) { heartsSheet(n); return; }
   const L = LEVELS[n - 1];
-  clearBoard();
+  stage.querySelectorAll('.veh, .barrier, .walker, .tip').forEach(e => e.remove());
   run = {
     L, n,
-    vehicles: L.vehicles.map(v => ({ ...v, where: 'lot', revealed: !v.mystery, el: null })),
+    vehicles: L.vehicles.map(v => ({ ...v, where: 'lot', revealed: !v.mystery, el: null, ang: DIR_ANGLE[v.dir] })),
+    barriers: (L.barriers ?? []).map(b => ({ ...b, el: null, open: false })),
     slots: new Array(8).fill(null),
     open: [true, true, true, true, true, false, false, false],
     queue: L.queue.slice(),
-    qi: 0, seq: 0, over: false, moved: false, vipMode: false,
-    pax: new Map(),
+    qi: 0, seq: 0, exited: 0, over: false, moved: false, vipMode: false,
   };
+  crowd.people = new Map();
   $('#lv-title').textContent = `레벨 ${n}`;
   $('#tag').textContent = L.hard ? 'HARD' : '';
   renderSlots();
   for (const v of run.vehicles) makeVehicle(v);
+  for (const b of run.barriers) makeBarrier(b);
   layoutAll(true);
+  crowd.retarget(true);
   updateHud();
   hints();
 }
 
-function clearBoard() {
-  stage.querySelectorAll('.veh, .pax, .tip').forEach(e => e.remove());
+const lotVehicles = () => run.vehicles.filter(v => v.where === 'lot');
+const lotGrid = () => occupancy(lotVehicles(), run.L.cols, run.L.rows, run.L.barriers ?? [], run.exited);
+
+// ---------- 좌표 ----------
+function rel(el) {
+  const r = el.getBoundingClientRect(), s = stage.getBoundingClientRect();
+  return { x: r.left - s.left, y: r.top - s.top, w: r.width, h: r.height };
+}
+function gridGeom() {
+  const g = rel($('#grid'));
+  return { ...g, cw: g.w / run.L.cols, ch: g.h / run.L.rows };
+}
+function cellBox(v) {
+  const g = gridGeom();
+  const len = SIZES[v.size].len;
+  const horiz = v.dir === 'L' || v.dir === 'R';
+  return { x: g.x + v.x * g.cw + 3, y: g.y + v.y * g.ch + 3, w: (horiz ? len : 1) * g.cw - 6, h: (horiz ? 1 : len) * g.ch - 6, cw: g.cw, ch: g.ch };
+}
+function slotBox(i) {
+  const b = rel(document.querySelector(`.slot[data-slot="${i}"]`));
+  return { x: b.x + 2, y: b.y + 2, w: b.w - 4, h: b.h - 4 };
 }
 
-const lotVehicles = () => run.vehicles.filter(v => v.where === 'lot');
+// ---------- 차 ----------
+const ARROW = '<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
 
-// ---------- 그리기 ----------
-const ARROW = '<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
-
-function setColor(el, c) { el.style.setProperty('--col', `var(--c${c})`); el.style.setProperty('--dark', `var(--d${c})`); }
+function paint(el, c) {
+  el.style.setProperty('--col', PAL[c].c);
+  el.style.setProperty('--hi', PAL[c].l);
+  el.style.setProperty('--dk', PAL[c].d);
+}
 
 function makeVehicle(v) {
   const el = document.createElement('button');
@@ -475,39 +516,38 @@ function makeVehicle(v) {
   el.dataset.dir = v.dir;
   el.dataset.size = v.size;
   el.dataset.vid = v.id;
-  el.setAttribute('aria-label', `${v.size} 차`);
-  el.innerHTML = ARROW + '<span class="seats"></span>';
-  if (v.mystery) el.classList.add('mystery'); else setColor(el, v.color);
+  el.setAttribute('aria-label', { car: '소형차', van: '밴', bus: '버스' }[v.size]);
+  el.innerHTML = `<div class="car"><i class="shadow"></i><i class="wheel w1"></i><i class="wheel w2"></i><i class="wheel w3"></i><i class="wheel w4"></i><i class="body"></i><i class="roof"></i><i class="glass back"></i><i class="glass front"></i>${ARROW}</div><span class="q">?</span><span class="seats"></span>`;
+  if (v.mystery) el.classList.add('mystery'); else paint(el, v.color);
   el.addEventListener('click', () => tapVehicle(v));
   stage.appendChild(el);
   v.el = el;
 }
 
-function rel(el) {
-  const r = el.getBoundingClientRect(), s = stage.getBoundingClientRect();
-  return { x: r.left - s.left, y: r.top - s.top, w: r.width, h: r.height };
-}
-
-function cellBox(v) {
-  const g = rel($('#grid'));
-  const cw = g.w / run.L.cols, ch = g.h / run.L.rows;
-  const len = SIZES[v.size].len;
-  const horiz = v.dir === 'L' || v.dir === 'R';
-  return {
-    x: g.x + v.x * cw + 3, y: g.y + v.y * ch + 3,
-    w: (horiz ? len : 1) * cw - 6, h: (horiz ? 1 : len) * ch - 6, cw, ch,
-  };
-}
-
-function place(el, b) {
+// 상자(b)에 차를 놓고, 차 그림을 각도(ang)로 돌림
+function setBox(v, b, ang, parked) {
+  const el = v.el;
   el.style.width = b.w + 'px';
   el.style.height = b.h + 'px';
   el.style.transform = `translate(${b.x}px, ${b.y}px)`;
+  const vertical = Math.abs(((ang % 180) + 180) % 180 - 90) < 1;
+  const L = vertical ? b.h : b.w, S = vertical ? b.w : b.h;
+  el.style.setProperty('--L', (parked ? L * 0.96 : L) + 'px');
+  el.style.setProperty('--S', (parked ? S * 0.86 : S) + 'px');
+  el.style.setProperty('--a', ang + 'deg');
+  v.ang = ang;
+}
+function nearestAngle(cur, target) {
+  let d = ((target - cur) % 360 + 540) % 360 - 180;
+  return cur + d;
 }
 
-function slotBox(i) {
-  const b = rel(document.querySelector(`.slot[data-slot="${i}"]`));
-  return { x: b.x + 2, y: b.y + 2, w: b.w - 4, h: b.h - 4 };
+function makeBarrier(b) {
+  const el = document.createElement('div');
+  el.className = 'barrier';
+  el.innerHTML = '<span class="bar"></span><span class="n"></span>';
+  stage.appendChild(el);
+  b.el = el;
 }
 
 function layoutAll(instant) {
@@ -516,52 +556,21 @@ function layoutAll(instant) {
   for (const v of run.vehicles) {
     if (!v.el) continue;
     els.push(v.el);
-    if (v.where === 'lot') place(v.el, cellBox(v));
-    else if (v.where === 'slot' || v.where === 'moving') { const i = run.slots.findIndex(s => s && s.vid === v.id); if (i >= 0) place(v.el, slotBox(i)); }
+    if (v.where === 'lot') setBox(v, cellBox(v), DIR_ANGLE[v.dir], false);
+    else { const i = run.slots.findIndex(s => s && s.vid === v.id); if (i >= 0) setBox(v, slotBox(i), nearestAngle(v.ang, 270), true); }
   }
-  layoutPax(instant);
+  const g = gridGeom();
+  for (const b of run.barriers) {
+    if (!b.el) continue;
+    b.el.style.width = g.cw + 'px'; b.el.style.height = g.ch + 'px';
+    b.el.style.transform = `translate(${g.x + b.x * g.cw}px, ${g.y + b.y * g.ch}px)`;
+    b.el.querySelector('.n').textContent = Math.max(0, b.n - run.exited);
+  }
   if (instant) {
-    els.forEach(e => { e.style.transition = 'none'; });
-    stage.offsetHeight; // 강제 리플로우
-    els.forEach(e => { e.style.transition = ''; });
+    els.forEach(e => { e.style.transition = 'none'; e.firstChild.style.transition = 'none'; });
+    stage.offsetHeight;
+    els.forEach(e => { e.style.transition = ''; e.firstChild.style.transition = ''; });
   }
-}
-
-// 승객: 앞사람이 왼쪽 아래, 지그재그로 뒤로 줄 섬
-function paxGeom() {
-  const q = rel($('#queue'));
-  const step = 20, pad = 12;
-  const cols = Math.max(4, Math.floor((q.w - pad * 2 + 4) / step));
-  const rows = Math.max(2, Math.floor((q.h - pad * 2 + 4) / step));
-  return { q, step, pad, cols, rows, visible: cols * rows };
-}
-function paxPos(k, g) {
-  const row = Math.floor(k / g.cols), col = k % g.cols;
-  const cx = row % 2 === 0 ? col : g.cols - 1 - col;
-  return { x: g.q.x + g.pad + cx * g.step, y: g.q.y + g.q.h - g.pad - 16 - row * g.step };
-}
-function layoutPax(instant) {
-  const g = paxGeom();
-  const end = Math.min(run.queue.length, run.qi + g.visible);
-  for (let i = run.qi; i < end; i++) {
-    let el = run.pax.get(i);
-    const p = paxPos(i - run.qi, g);
-    if (!el) {
-      el = document.createElement('span');
-      el.className = 'pax';
-      stage.appendChild(el);
-      run.pax.set(i, el);
-      el.style.transition = 'none';
-      el.style.transform = `translate(${p.x}px, ${p.y - 10}px)`;
-      el.offsetHeight;
-      el.style.transition = '';
-    }
-    setColor(el, run.queue[i]);
-    el.style.transform = `translate(${p.x}px, ${p.y}px)`;
-    if (instant) { el.style.transition = 'none'; el.offsetHeight; el.style.transition = ''; }
-  }
-  const left = run.queue.length - end;
-  $('#pax-left').textContent = left > 0 ? `+${left}명 대기` : '';
 }
 
 function renderSlots() {
@@ -589,36 +598,54 @@ function tapVehicle(v) {
   clearHint();
   if (run.vipMode) { sendToVip(v); return; }
 
-  const lot = lotVehicles();
-  const blocker = blockerOf(v, lot, run.L.cols, run.L.rows);
+  const blocker = blockerOf(v, run.L.cols, run.L.rows, lotGrid());
   if (blocker !== null) {
     bump(v);
-    const b = run.vehicles.find(o => o.id === blocker);
-    retrigger(b.el, 'blocker');
+    if (blocker === BARRIER) {
+      const b = run.barriers.find(b => !b.open && exitPath(v, run.L.cols, run.L.rows).some(([x, y]) => x === b.x && y === b.y));
+      if (b) retrigger(b.el, 'ping');
+    } else retrigger(run.vehicles.find(o => o.id === blocker).el, 'blocker');
     return;
   }
   const i = freeSlot();
   if (i === -1) { bump(v); toast('주차칸이 꽉 찼어요'); return; }
   buzz();
   run.moved = true;
-  reveal(v);
+  leaveLot(v);
   run.slots[i] = { vid: v.id, color: v.color, cap: SIZES[v.size].cap, filled: 0, ready: false, seq: ++run.seq };
-  v.where = 'moving';
 
   // 1단계: 머리 방향으로 쭉 빠짐
   const b = cellBox(v);
   const { dx, dy } = DIRS[v.dir];
   const [hx, hy] = headOf(v);
   const toEdge = dx > 0 ? run.L.cols - 1 - hx : dx < 0 ? hx : dy > 0 ? run.L.rows - 1 - hy : hy;
-  const dist = (toEdge + SIZES[v.size].len + 0.4) * (dx ? b.cw : b.ch);
+  const dist = (toEdge + SIZES[v.size].len + 0.3) * (dx ? b.cw : b.ch);
   v.el.classList.add('flying');
   v.el.style.transform = `translate(${b.x + dx * dist}px, ${b.y + dy * dist}px)`;
-  // 2단계: 주차칸으로
+  // 2단계: 돌면서 주차칸으로
   setTimeout(() => {
     v.el.classList.add('parked');
-    place(v.el, slotBox(i));
-    setTimeout(() => { arrive(v, i); }, 300);
-  }, 260);
+    setBox(v, slotBox(i), nearestAngle(v.ang, 270), true);
+    setTimeout(() => arrive(v, i), 330);
+  }, 250);
+}
+
+function leaveLot(v) {
+  v.where = 'moving';
+  run.exited++;
+  reveal(v);
+  for (const b of run.barriers) {
+    const left = Math.max(0, b.n - run.exited);
+    if (b.el) b.el.querySelector('.n').textContent = left;
+    if (!b.open && left === 0) {
+      b.open = true;
+      b.el.classList.add('open');
+      const el = b.el;
+      setTimeout(() => el.remove(), 400);
+      b.el = null;
+      toast('차단기가 열렸어요');
+    }
+  }
 }
 
 function arrive(v, i) {
@@ -637,19 +664,160 @@ function reveal(v) {
   if (v.revealed) return;
   v.revealed = true;
   v.el.classList.remove('mystery');
-  setColor(v.el, v.color);
+  paint(v.el, v.color);
 }
 
-function bump(v) {
-  const { dx, dy } = DIRS[v.dir];
-  v.el.style.setProperty('--bx', dx * 6 + 'px');
-  v.el.style.setProperty('--by', dy * 6 + 'px');
-  retrigger(v.el, 'bump');
-}
-function retrigger(el, cls) { el.classList.remove(cls); el.offsetWidth; el.classList.add(cls); setTimeout(() => el.classList.remove(cls), 600); }
+function bump(v) { v.el.style.setProperty('--bx', '6px'); retrigger(v.el, 'bump'); }
+function retrigger(el, cls) { if (!el) return; el.classList.remove(cls); el.offsetWidth; el.classList.add(cls); setTimeout(() => el.classList.remove(cls), 600); }
 function buzz() { try { navigator.vibrate?.(8); } catch { /* 무시 */ } }
+function seatLabel(v, s) { if (s && v.el) v.el.querySelector('.seats').textContent = `${s.filled}/${s.cap}`; }
 
-function seatLabel(v, s) { if (s) v.el.querySelector('.seats').textContent = `${s.filled}/${s.cap}`; }
+// ---------- 승객 행렬 (캔버스) ----------
+// 도로: 오른쪽 위 화면 밖에서 시작 → 위쪽을 따라 왼쪽 → 왼쪽 아래로 꺾여 → 아래쪽 가운데 '탑승구'에서 끝
+const crowd = {
+  canvas: $('#crowd'), ctx: null, W: 0, H: 0, dpr: 1,
+  path: [], lens: [], total: 0, road: null, people: new Map(),
+  ROW: 14, LANES: [0, -14, 14], ROAD_W: 50,
+
+  resize() {
+    const r = this.canvas.getBoundingClientRect();
+    this.dpr = Math.min(2, window.devicePixelRatio || 1);
+    this.W = r.width; this.H = r.height;
+    this.canvas.width = Math.round(r.width * this.dpr);
+    this.canvas.height = Math.round(r.height * this.dpr);
+    this.ctx = this.canvas.getContext('2d');
+    this.buildPath();
+    this.buildRoad();
+    this.retarget(true);
+  },
+
+  buildPath() {
+    const { W, H } = this;
+    const m = 34, R = 36;
+    const gate = { x: W * 0.5, y: H - m };
+    const pts = [];
+    const line = (a, b, n = 12) => { for (let i = 0; i <= n; i++) pts.push({ x: a.x + (b.x - a.x) * i / n, y: a.y + (b.y - a.y) * i / n }); };
+    const arc = (cx, cy, a0, a1) => { for (let i = 1; i <= 10; i++) { const t = a0 + (a1 - a0) * i / 10; pts.push({ x: cx + R * Math.cos(t), y: cy + R * Math.sin(t) }); } };
+    // 탑승구에서 거꾸로 (맨 앞 → 맨 뒤)
+    line(gate, { x: m + R, y: H - m });
+    arc(m + R, H - m - R, Math.PI / 2, Math.PI);
+    line({ x: m, y: H - m - R }, { x: m, y: m + R });
+    arc(m + R, m + R, Math.PI, Math.PI * 1.5);
+    line({ x: m + R, y: m }, { x: W + 80, y: m }, 30);
+    this.path = pts;
+    this.lens = [0];
+    for (let i = 1; i < pts.length; i++) this.lens.push(this.lens[i - 1] + Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y));
+    this.total = this.lens[this.lens.length - 1];
+    this.gate = gate;
+  },
+
+  at(s) {
+    const { path, lens } = this;
+    s = Math.max(0, Math.min(s, this.total));
+    let i = 1;
+    while (i < lens.length - 1 && lens[i] < s) i++;
+    const a = path[i - 1], b = path[i];
+    const t = (s - lens[i - 1]) / ((lens[i] - lens[i - 1]) || 1);
+    const dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy) || 1;
+    return { x: a.x + dx * t, y: a.y + dy * t, nx: -dy / d, ny: dx / d };
+  },
+
+  buildRoad() {
+    const c = document.createElement('canvas');
+    c.width = this.canvas.width; c.height = this.canvas.height;
+    const g = c.getContext('2d');
+    g.scale(this.dpr, this.dpr);
+    const { W, H, path, gate } = this;
+    // 광장 바닥 타일
+    g.fillStyle = '#e9eef4'; g.fillRect(0, 0, W, H);
+    g.strokeStyle = 'rgba(160,172,188,.25)'; g.lineWidth = 1;
+    for (let x = 0; x < W; x += 22) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, H); g.stroke(); }
+    for (let y = 0; y < H; y += 22) { g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke(); }
+    const stroke = (w, col) => {
+      g.lineWidth = w; g.strokeStyle = col; g.lineJoin = 'round'; g.lineCap = 'butt';
+      g.beginPath(); g.moveTo(path[0].x, path[0].y + 0); path.forEach(p => g.lineTo(p.x, p.y));
+      g.moveTo(gate.x, gate.y); g.lineTo(gate.x, H + 10);
+      g.stroke();
+    };
+    stroke(this.ROAD_W + 10, '#c3ccd8');
+    stroke(this.ROAD_W + 6, '#ffffff');
+    stroke(this.ROAD_W, '#b9c2ce');
+    // 탑승구 횡단보도
+    g.fillStyle = 'rgba(255,255,255,.85)';
+    for (let i = -2; i <= 2; i++) g.fillRect(gate.x + i * 9 - 3, H - 22, 6, 14);
+    // 꾸밈: 나무와 가로등
+    const tree = (x, y) => {
+      g.fillStyle = 'rgba(0,0,0,.12)'; g.beginPath(); g.ellipse(x, y + 9, 10, 4, 0, 0, 7); g.fill();
+      g.fillStyle = '#5cb85c'; g.beginPath(); g.arc(x, y, 10, 0, 7); g.fill();
+      g.fillStyle = '#7fd17f'; g.beginPath(); g.arc(x - 3, y - 3, 5, 0, 7); g.fill();
+    };
+    tree(W * 0.78, H * 0.55); tree(W * 0.9, H * 0.72); tree(W * 0.3, H * 0.5);
+    this.road = c;
+  },
+
+  // 맨 앞(k=0)부터 줄 선 자리 목표 좌표
+  slotXY(k) {
+    const row = Math.floor(k / 3), lane = k % 3;
+    const p = this.at(10 + row * this.ROW);
+    const off = this.LANES[lane];
+    return { x: p.x + p.nx * off, y: p.y + p.ny * off, hidden: 10 + row * this.ROW > this.total - 4 };
+  },
+
+  retarget(instant) {
+    if (!run || !this.total) return;
+    const maxShow = Math.floor((this.total - 20) / this.ROW) * 3;
+    const end = Math.min(run.queue.length, run.qi + maxShow);
+    const alive = new Set();
+    for (let i = run.qi; i < end; i++) {
+      alive.add(i);
+      const t = this.slotXY(i - run.qi);
+      let p = this.people.get(i);
+      if (!p) {
+        const start = this.at(this.total - 2);
+        p = { x: instant ? t.x : start.x, y: instant ? t.y : start.y, phase: Math.random() * 6 };
+        this.people.set(i, p);
+      }
+      p.tx = t.x; p.ty = t.y; p.color = run.queue[i];
+      if (instant) { p.x = t.x; p.y = t.y; }
+    }
+    for (const k of [...this.people.keys()]) if (!alive.has(k)) this.people.delete(k);
+    const left = run.queue.length - end;
+    $('#pax-left').textContent = left > 0 ? `+${left}명` : '';
+  },
+
+  draw(dt) {
+    const { ctx, dpr } = this;
+    if (!ctx || !this.road) return;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.drawImage(this.road, 0, 0);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const list = [...this.people.values()];
+    const speed = 110;
+    for (const p of list) {
+      const dx = p.tx - p.x, dy = p.ty - p.y, d = Math.hypot(dx, dy);
+      p.walking = d > 0.6;
+      if (p.walking) { const m = Math.min(d, speed * dt); p.x += dx / d * m; p.y += dy / d * m; p.phase += dt * 16; }
+    }
+    list.sort((a, b) => a.y - b.y);
+    for (const p of list) drawPerson(ctx, p.x, p.y, PAL[p.color], p.walking ? Math.sin(p.phase) : 0);
+  },
+};
+
+function drawPerson(ctx, x, y, pal, bob) {
+  const by = y - Math.abs(bob) * 1.6;
+  ctx.fillStyle = 'rgba(0,0,0,.22)';
+  ctx.beginPath(); ctx.ellipse(x, y + 6, 6, 2.6, 0, 0, 7); ctx.fill();
+  // 몸통
+  const g = ctx.createLinearGradient(0, by - 3, 0, by + 7);
+  g.addColorStop(0, pal.l); g.addColorStop(0.5, pal.c); g.addColorStop(1, pal.d);
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.roundRect(x - 5.5, by - 3, 11, 10, [5, 5, 3, 3]); ctx.fill();
+  // 머리
+  const h = ctx.createRadialGradient(x - 1.5, by - 8, 0.5, x, by - 6.5, 5);
+  h.addColorStop(0, pal.l); h.addColorStop(1, pal.c);
+  ctx.fillStyle = h;
+  ctx.beginPath(); ctx.arc(x, by - 6.5, 4.6, 0, 7); ctx.fill();
+}
 
 // ---------- 탑승 루프 ----------
 setInterval(step, 85);
@@ -667,27 +835,39 @@ function step() {
 function board(s) {
   const i = run.slots.indexOf(s);
   const v = run.vehicles.find(o => o.id === s.vid);
-  const el = run.pax.get(run.qi);
-  run.pax.delete(run.qi);
+  const p = crowd.people.get(run.qi);
+  crowd.people.delete(run.qi);
+  const color = run.queue[run.qi];
   run.qi++;
   s.filled++;
   seatLabel(v, s);
-  if (el) {
-    const b = slotBox(i);
-    el.classList.add('board');
-    el.style.transform = `translate(${b.x + b.w / 2 - 8}px, ${b.y + b.h / 2 - 8}px)`;
-    setTimeout(() => el.remove(), 230);
-  }
-  layoutPax(false);
+  // 맨 앞 손님이 차로 걸어감
+  const pz = rel($('#plaza'));
+  const from = p ? { x: pz.x + p.x, y: pz.y + p.y } : { x: pz.x + crowd.gate.x, y: pz.y + crowd.gate.y };
+  const b = slotBox(i);
+  const w = document.createElement('span');
+  w.className = 'walker';
+  paint(w, color);
+  w.style.transform = `translate(${from.x - 7}px, ${from.y - 12}px)`;
+  stage.appendChild(w);
+  w.offsetWidth;
+  w.style.transform = `translate(${b.x + b.w / 2 - 7}px, ${b.y + b.h / 2 - 9}px) scale(.8)`;
+  w.classList.add('in');
+  setTimeout(() => w.remove(), 520);
+  crowd.retarget(false);
   if (s.filled === s.cap) {
     s.leaving = true;
-    retrigger(v.el, 'full');
     setTimeout(() => {
-      v.el.style.transform += ' translateY(-60px)';
-      v.el.classList.add('depart');
-      setTimeout(() => { v.el.remove(); v.el = null; v.where = 'gone'; }, 320);
-      run.slots[i] = null;
-    }, 260);
+      retrigger(v.el, 'full');
+      setTimeout(() => {
+        v.el.style.transform += ' translateY(-70px)';
+        v.el.classList.add('depart');
+        const el = v.el;
+        setTimeout(() => { el.remove(); }, 320);
+        v.el = null; v.where = 'gone';
+        run.slots[i] = null;
+      }, 200);
+    }, 200);
   }
 }
 
@@ -696,7 +876,6 @@ function checkEnd() {
     if (run.slots.every(s => !s)) win();
     return;
   }
-  // 움직이는 중이거나 떠나는 중이면 아직 판정 안 함
   if (run.slots.some(s => s && (!s.ready || s.leaving))) return;
   if (freeSlot() !== -1) return;
   const c = run.queue[run.qi];
@@ -721,14 +900,18 @@ function useBooster(k) {
     return;
   }
   if (k === 'sort') {
-    // 지금 주차칸에 있는 색 승객을 앞으로 (순서는 유지)
     const inSlot = new Set(run.slots.filter(s => s && !s.leaving).map(s => s.color));
     if (!inSlot.size) { toast('주차칸에 차가 있어야 써요'); return; }
     const rest = run.queue.slice(run.qi);
     const a = rest.filter(c => inSlot.has(c)), b = rest.filter(c => !inSlot.has(c));
     run.queue.splice(run.qi, rest.length, ...a, ...b);
-    layoutPax(false);
-    toast('승객 줄을 정리했어요');
+    // 줄을 다시 서는 모습: 기존 사람들 색만 바꾸지 않고 자리를 섞어 걸어가게
+    const old = [...crowd.people.entries()];
+    crowd.people = new Map();
+    const shuffled = old.map(([, p]) => p).sort(() => Math.random() - 0.5);
+    old.forEach(([idx], j) => crowd.people.set(idx, shuffled[j]));
+    crowd.retarget(false);
+    toast('손님 줄을 정리했어요');
   }
   if (k === 'shuffle') {
     const lot = lotVehicles();
@@ -737,7 +920,7 @@ function useBooster(k) {
       const g = lot.filter(v => v.size === size);
       const cols = g.map(v => v.color);
       for (let i = cols.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [cols[i], cols[j]] = [cols[j], cols[i]]; }
-      g.forEach((v, i) => { v.color = cols[i]; if (v.revealed) setColor(v.el, v.color); retrigger(v.el, 'blocker'); });
+      g.forEach((v, i) => { v.color = cols[i]; if (v.revealed) paint(v.el, v.color); retrigger(v.el, 'blocker'); });
     }
     toast('같은 크기끼리 색을 섞었어요');
   }
@@ -757,11 +940,10 @@ function sendToVip(v) {
   setVip(false);
   save.boosters.vip--; persist(); updateHud();
   run.moved = true;
-  reveal(v);
+  leaveLot(v);
   run.slots[0] = { vid: v.id, color: v.color, cap: SIZES[v.size].cap, filled: 0, ready: false, seq: ++run.seq };
-  v.where = 'moving';
   v.el.classList.add('flying', 'parked');
-  place(v.el, slotBox(0));
+  setBox(v, slotBox(0), nearestAngle(v.ang, 270), true);
   setTimeout(() => arrive(v, 0), 420);
 }
 
@@ -810,15 +992,14 @@ function lose() {
   const canSlot = run.open.some((o, k) => k >= 5 && !o);
   sheet({
     title: '주차칸이 꽉 찼어요!',
-    body: `남은 승객 ${run.queue.length - run.qi}명. 칸이 하나만 더 있으면 이어갈 수 있어요.`,
+    body: `남은 손님 ${run.queue.length - run.qi}명. 칸이 하나만 더 있으면 이어갈 수 있어요.`,
     buttons: [
-      { label: `칸 +1 하고 이어하기`, sub: `${PRICE.revive}코인`, cls: 'gold', disabled: !canSlot || save.coins < PRICE.revive, on: () => { save.coins -= PRICE.revive; revive(); } },
+      { label: '칸 +1 하고 이어하기', sub: `${PRICE.revive}코인`, cls: 'gold', disabled: !canSlot || save.coins < PRICE.revive, on: () => { save.coins -= PRICE.revive; revive(); } },
       { label: '광고 보고 이어하기', sub: '프로토타입이라 바로 이어져요', disabled: !canSlot, on: revive },
       { label: '다시 하기', sub: '하트 -1', on: () => { save.hearts = Math.max(0, save.hearts - 1); persist(); startLevel(run.n); } },
     ],
   });
 }
-
 function revive() { openSlot(); run.over = false; }
 
 // ---------- 시트 ----------
@@ -898,15 +1079,17 @@ function hints() {
   const n = run.n;
   if (n === 1) {
     const lot = lotVehicles();
+    const grid = lotGrid();
     const front = run.queue[0];
-    const v = lot.find(v => v.color === front && blockerOf(v, lot, run.L.cols, run.L.rows) === null)
-      ?? lot.find(v => blockerOf(v, lot, run.L.cols, run.L.rows) === null);
+    const free = lot.filter(v => blockerOf(v, run.L.cols, run.L.rows, grid) === null);
+    const v = free.find(v => v.color === front) ?? free[0];
     if (v) { v.el.classList.add('hint'); hintEl = v.el; }
-    tip('맨 앞 손님 색과 같은 차를 눌러 꺼내요', rel($('#grid')).y - 30);
+    tip('맨 앞 손님 색과 같은 차를 눌러요', rel($('#grid')).y - 30);
   }
-  if (n === 3) toast('큰 차는 손님을 더 많이 태워요');
-  if (n === 5 || n === 10) toast('HARD 레벨! 순서를 잘 생각해요');
-  if (n === 6) toast('? 차는 꺼내야 색이 보여요');
+  if (n === 2) toast('밴은 6명, 버스는 10명을 태워요');
+  if (n === 4) toast('? 차는 꺼내야 색이 보여요');
+  if (n === 5 || n === 10) toast('HARD! 꺼내는 순서를 잘 생각해요');
+  if (n === 6) toast('차단기는 차가 숫자만큼 빠지면 열려요');
 }
 function clearHint() {
   if (hintEl) { hintEl.classList.remove('hint'); hintEl = null; }
@@ -928,12 +1111,11 @@ function toast(text) {
   setTimeout(() => el.remove(), 2400);
 }
 function confetti() {
-  const cols = ['--c0', '--c1', '--c2', '--c3', '--c4', '--c5'];
   for (let i = 0; i < 40; i++) {
     const c = document.createElement('span');
     c.className = 'confetti';
     c.style.left = Math.random() * 100 + 'vw';
-    c.style.background = `var(${cols[i % cols.length]})`;
+    c.style.background = PAL[i % PAL.length].c;
     c.style.animationDelay = Math.random() * 0.4 + 's';
     document.body.appendChild(c);
     setTimeout(() => c.remove(), 2000);
@@ -943,8 +1125,16 @@ function confetti() {
 // ---------- 시작 ----------
 // 개발·테스트용: 콘솔에서 __bus.run 으로 판 상태 확인
 window.__bus = { get run() { return run; }, save };
-new ResizeObserver(() => layoutAll(true)).observe(stage);
+new ResizeObserver(() => { crowd.resize(); layoutAll(true); }).observe(stage);
+let lastT = performance.now();
+(function frame(t) {
+  const dt = Math.min(0.05, (t - lastT) / 1000);
+  lastT = t;
+  crowd.draw(dt);
+  requestAnimationFrame(frame);
+})(lastT);
 updateHud();
+crowd.resize();
 startLevel(Math.min(save.unlocked, LEVELS.length));
 
 </script>
