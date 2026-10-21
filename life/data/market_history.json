@@ -1,0 +1,2364 @@
+{
+ "_note": "연도별 실제 반도체 시황(1947~2026). 게임은 cycle·memory·logic_foundry·equipment·korea 점수(-2 대불황, -1 불황, 0 보통, 1 호황, 2 슈퍼호황)로 채용·연봉·성과급·구조조정·회사 실적을 정하고, headline_ko를 게임 속 뉴스로 쓴다. 점수는 출처 수치를 바탕으로 한 판단값. global_sales_busd는 세계 반도체 매출(10억 달러). sales_basis: wsts=WSTS/SIA 집계(1984~), estimate_production=업계 생산액 추정(1983년 이전, WSTS와 기준이 달라 직접 비교 불가). 2026년은 진행 중인 해라 WSTS 2026년 8월 전망치. 조사는 웹 검색 기반이며 confidence가 low인 해는 더 확인이 필요하다.",
+ "years": [
+  {
+   "year": 1947,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 0,
+   "memory": null,
+   "logic_foundry": null,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "미국 벨연구소 바딘·브래튼, 게르마늄 점접촉 트랜지스터 시연 성공(12월)",
+    "진공관을 대체할 '고체 증폭 소자'의 탄생, 아직 상업 시장은 없음"
+   ],
+   "events_korea": [
+    "해방 직후 혼란기, 국내 전자·반도체 산업 기반 전무"
+   ],
+   "headline_ko": "벨연구소, '트랜지스터' 발명…진공관 시대의 끝이 시작됐다",
+   "confidence": "medium",
+   "sources": [
+    "https://www.computerhistory.org/siliconengine/timeline/",
+    "https://www.computerhistory.org/siliconengine/conception-of-the-junction-transistor/"
+   ]
+  },
+  {
+   "year": 1948,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 0,
+   "memory": null,
+   "logic_foundry": null,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "벨연구소, 트랜지스터 공개 발표",
+    "쇼클리, 접합형 트랜지스터 구상(1월 23일)",
+    "프랑스에서 마타레·벨커가 독자적으로 점접촉 트랜지스터('트랜지스트론') 개발"
+   ],
+   "events_korea": [],
+   "headline_ko": "트랜지스터 공개…쇼클리는 '접합형' 구상, 유럽도 독자 개발",
+   "confidence": "medium",
+   "sources": [
+    "https://www.computerhistory.org/siliconengine/conception-of-the-junction-transistor/",
+    "https://www.computerhistory.org/siliconengine/the-european-transistor-invention/"
+   ]
+  },
+  {
+   "year": 1949,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 0,
+   "memory": null,
+   "logic_foundry": null,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "트랜지스터는 아직 연구·시험 생산 단계, 신뢰성 문제로 실용화 지연",
+    "벨연구소, 접합형 트랜지스터 양산 기술 개발에 매달림"
+   ],
+   "events_korea": [],
+   "headline_ko": "트랜지스터, 아직은 연구실 속 '신기한 부품'",
+   "confidence": "low",
+   "sources": [
+    "https://www.computerhistory.org/siliconengine/conception-of-the-junction-transistor/"
+   ]
+  },
+  {
+   "year": 1950,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 0,
+   "memory": null,
+   "logic_foundry": null,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "벨연구소, 단결정 성장 기술로 접합형 트랜지스터 개발 착수",
+    "시장 규모는 미미, 군 연구 수요 중심"
+   ],
+   "events_korea": [
+    "한국전쟁 발발(6월), 산업 기반 대부분 파괴"
+   ],
+   "headline_ko": "접합형 트랜지스터 개발 박차, 시장은 아직 걸음마",
+   "confidence": "low",
+   "sources": [
+    "https://www.computerhistory.org/siliconengine/conception-of-the-junction-transistor/",
+    "https://www.computerhistory.org/siliconengine/first-grown-junction-transistors-fabricated/"
+   ]
+  },
+  {
+   "year": 1951,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 0,
+   "memory": null,
+   "logic_foundry": null,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "벨연구소 틸·스파크스, 성장 접합형(grown-junction) 트랜지스터 제작, 7월 4일 발표",
+    "접합형이 점접촉형 성능을 넘어서며 상용화 길 열림"
+   ],
+   "events_korea": [
+    "전쟁 중, 산업 활동 사실상 중단"
+   ],
+   "headline_ko": "접합형 트랜지스터 발표…상용화 시대 예고",
+   "confidence": "medium",
+   "sources": [
+    "https://www.computerhistory.org/siliconengine/first-grown-junction-transistors-fabricated/"
+   ]
+  },
+  {
+   "year": 1952,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": null,
+   "logic_foundry": null,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "벨연구소, 트랜지스터 기술 라이선스 개방…여러 기업이 반도체 사업에 뛰어듦",
+    "트랜지스터 보청기 등 첫 소비자 제품 등장"
+   ],
+   "events_korea": [],
+   "headline_ko": "트랜지스터 기술 문호 개방, 첫 상용 제품은 '보청기'",
+   "confidence": "medium",
+   "sources": [
+    "https://www.computerhistory.org/siliconengine/transistorized-consumer-products-appear/"
+   ]
+  },
+  {
+   "year": 1953,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": null,
+   "logic_foundry": null,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "트랜지스터를 쓴 실험용 컴퓨터 첫 등장",
+    "보청기·군용 장비 중심으로 트랜지스터 수요 확대"
+   ],
+   "events_korea": [
+    "정전협정 체결(7월), 전후 복구 시작"
+   ],
+   "headline_ko": "트랜지스터 컴퓨터 첫선…군수·보청기 수요 꾸준히 증가",
+   "confidence": "low",
+   "sources": [
+    "https://www.computerhistory.org/siliconengine/transistorized-computers-emerge/"
+   ]
+  },
+  {
+   "year": 1954,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": null,
+   "logic_foundry": null,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "TI, 첫 상용 실리콘 트랜지스터 개발(4월) — 고온에서도 동작",
+    "세계 최초 트랜지스터 라디오 '리전시 TR-1' 출시(가을)"
+   ],
+   "events_korea": [],
+   "headline_ko": "실리콘 트랜지스터 상용화, 주머니 속 트랜지스터 라디오 등장",
+   "confidence": "medium",
+   "sources": [
+    "https://www.computerhistory.org/siliconengine/silicon-transistors-offer-superior-operating-characteristics/",
+    "https://en.wikipedia.org/wiki/Regency_TR-1"
+   ]
+  },
+  {
+   "year": 1955,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": null,
+   "logic_foundry": null,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "쇼클리, 베크먼 지원으로 캘리포니아에 쇼클리 반도체연구소 설립 — 실리콘밸리의 씨앗",
+    "일본 업체들도 트랜지스터 라디오 생산에 뛰어듦"
+   ],
+   "events_korea": [],
+   "headline_ko": "쇼클리 반도체연구소 설립…실리콘밸리의 씨앗이 뿌려지다",
+   "confidence": "low",
+   "sources": [
+    "http://www.computerhistory.org/semiconductor/timeline/1956-Silicon.html",
+    "https://www.rfcafe.com/references/radio-news/transistor-industry-may-1956-radio-television-news.htm"
+   ]
+  },
+  {
+   "year": 1956,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 2,
+   "memory": null,
+   "logic_foundry": null,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "트랜지스터 판매 1,280만 개로 전년의 3배 이상 급증",
+    "미국 반도체 매출 약 0.89억 달러(미국 기준, EIA 자료 재인용)",
+    "바딘·브래튼·쇼클리, 트랜지스터 발명으로 노벨 물리학상"
+   ],
+   "events_korea": [],
+   "headline_ko": "트랜지스터 판매 3배 폭증, 발명 3인방 노벨상 수상",
+   "confidence": "medium",
+   "sources": [
+    "https://search.library.wisc.edu/digital/A5MEY2PKVEBCXZ86/text/ARZSPNSPGHTJQO8M",
+    "https://hartj.pages.iu.edu/documents/origins.pdf",
+    "http://www.computerhistory.org/semiconductor/timeline/1956-Silicon.html"
+   ]
+  },
+  {
+   "year": 1957,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": null,
+   "logic_foundry": null,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "'8인의 배신자' 쇼클리연구소 이탈, 페어차일드 반도체 설립(10월)",
+    "소련 스푸트니크 발사로 미국 우주·미사일 전자부품 수요 급증",
+    "미국 반도체 매출 약 1.4억 달러, 전년比 약 57% 증가(미국 기준)"
+   ],
+   "events_korea": [],
+   "headline_ko": "'8인의 배신자' 페어차일드 창업…스푸트니크 충격에 군수 수요 폭발",
+   "confidence": "medium",
+   "sources": [
+    "https://hartj.pages.iu.edu/documents/origins.pdf",
+    "https://www.shmj.or.jp/english/trends/trd70s.html",
+    "http://www.computerhistory.org/semiconductor/timeline/1956-Silicon.html"
+   ]
+  },
+  {
+   "year": 1958,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": null,
+   "logic_foundry": null,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "TI 잭 킬비, 세계 최초 집적회로(IC) 구현(9월)",
+    "미국 경기침체에도 반도체 매출 약 2.0억 달러로 약 44% 성장(미국 기준)",
+    "일본, 트랜지스터 라디오 수출로 생산 급증"
+   ],
+   "events_korea": [
+    "금성사 설립(10월), 국산 라디오 개발 착수"
+   ],
+   "headline_ko": "TI 킬비, 집적회로(IC) 발명…불황에도 반도체는 고성장",
+   "confidence": "medium",
+   "sources": [
+    "https://hartj.pages.iu.edu/documents/origins.pdf",
+    "https://www.computerhistory.org/siliconengine/timeline/",
+    "https://www.shmj.or.jp/en/industry-trends/it196002e.html"
+   ]
+  },
+  {
+   "year": 1959,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 2,
+   "memory": null,
+   "logic_foundry": null,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "페어차일드 회르니, 평면(planar) 공정 고안 — 대량생산 IC의 토대",
+    "노이스, 평면 공정 기반 모놀리식 IC 특허 출원",
+    "일본, 트랜지스터 8,600만 개 생산하며 세계 최대 생산국 부상",
+    "미국 반도체 매출 약 3.9억 달러, 전년 대비 약 2배(미국 기준)"
+   ],
+   "events_korea": [
+    "금성사, 국산 1호 진공관 라디오 A-501 출시"
+   ],
+   "headline_ko": "평면 공정·IC 특허 등장, 반도체 매출 한 해 만에 두 배",
+   "confidence": "medium",
+   "sources": [
+    "https://www.computerhistory.org/siliconengine/invention-of-the-planar-manufacturing-process/",
+    "https://hartj.pages.iu.edu/documents/origins.pdf",
+    "https://www.shmj.or.jp/en/industry-trends/it196002e.html"
+   ]
+  },
+  {
+   "year": 1960,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": null,
+   "logic_foundry": null,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "벨연구소 강대원·아탈라, MOS 트랜지스터 시연",
+    "페어차일드, 평면 공정 기반 첫 IC 제작 성공",
+    "미국 반도체 매출 약 5.3억 달러, 약 37% 성장(미국 기준)"
+   ],
+   "events_korea": [],
+   "headline_ko": "강대원 박사 MOS 트랜지스터 시연…반도체 매출 5억 달러 돌파",
+   "confidence": "medium",
+   "sources": [
+    "https://www.computerhistory.org/siliconengine/metal-oxide-semiconductor-mos-transistor-demonstrated/",
+    "https://www.computerhistory.org/siliconengine/timeline/",
+    "https://hartj.pages.iu.edu/documents/origins.pdf"
+   ]
+  },
+  {
+   "year": 1961,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 0,
+   "memory": null,
+   "logic_foundry": 0,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "페어차일드 '마이크로로직' 등 첫 상용 IC 출시",
+    "시그네틱스 설립 — 페어차일드 출신들의 첫 IC 전문 스핀오프",
+    "실리콘 트랜지스터가 속도에서 게르마늄 추월",
+    "트랜지스터 단가 하락으로 미국 반도체 매출 약 5.4억 달러, 제자리걸음(미국 기준)"
+   ],
+   "events_korea": [
+    "5·16 군사정변 이후 경제개발 계획 수립 착수"
+   ],
+   "headline_ko": "첫 상용 IC 출시, 그러나 값 하락에 업계 매출은 제자리",
+   "confidence": "medium",
+   "sources": [
+    "https://www.computerhistory.org/siliconengine/timeline/",
+    "https://www.computerhistory.org/siliconengine/silicon-transistor-exceeds-germanium-speed/",
+    "https://en.wikipedia.org/wiki/Signetics",
+    "https://hartj.pages.iu.edu/documents/origins.pdf"
+   ]
+  },
+  {
+   "year": 1962,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": -1,
+   "memory": null,
+   "logic_foundry": 1,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "미국 반도체 매출 약 5.35억 달러로 소폭 감소(미국 기준) — 트랜지스터 가격 하락 압박",
+    "트랜지스터 매출 약 2.89억 달러",
+    "IC 시장 약 400만 달러, 전량 미 정부(미니트맨 미사일·우주) 수요",
+    "TI, 미니트맨 II 유도컴퓨터용 IC 계약"
+   ],
+   "events_korea": [
+    "제1차 경제개발 5개년 계획 시작"
+   ],
+   "headline_ko": "반도체 매출 첫 역성장…IC는 미사일·우주 군수가 전량 소화",
+   "confidence": "medium",
+   "sources": [
+    "https://hartj.pages.iu.edu/documents/origins.pdf",
+    "https://www.rfcafe.com/references/electronics-world/15-billion-dollar-electronics-market-april-1963-electronics-world.htm",
+    "https://historyofcomputercommunications.info/section/2.20/The-Integrated-Circuit-1959/",
+    "https://www.computerhistory.org/siliconengine/aerospace-systems-are-first-the-applications-for-ics-in-computers/",
+    "https://ethw.org/Integrated_Circuits_and_the_Space_Program_and_Missile_Defense"
+   ]
+  },
+  {
+   "year": 1963,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 0,
+   "memory": null,
+   "logic_foundry": 2,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "페어차일드 완라스, CMOS 회로 방식 발표",
+    "아폴로 유도컴퓨터가 미국 IC 생산의 상당 부분 소비",
+    "미국 IC 출하 약 1,600만 달러로 4배 성장"
+   ],
+   "events_korea": [],
+   "headline_ko": "아폴로 계획이 IC 수요 견인, CMOS 기술 등장",
+   "confidence": "low",
+   "sources": [
+    "https://www.computerhistory.org/siliconengine/timeline/",
+    "https://ethw.org/Integrated_Circuits_and_the_Space_Program_and_Missile_Defense",
+    "https://historyofcomputercommunications.info/section/2.20/The-Integrated-Circuit-1959/"
+   ]
+  },
+  {
+   "year": 1964,
+   "global_sales_busd": 1.0,
+   "sales_basis": "estimate_production",
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": null,
+   "logic_foundry": 1,
+   "equipment": null,
+   "korea": null,
+   "events_world": [
+    "세계 반도체 시장 약 10억 달러 돌파(추정)",
+    "페어차일드, 일부 IC 가격을 25달러→5달러로 인하하며 가격 전쟁",
+    "미국 IC 출하 약 4,100만 달러",
+    "첫 상용 MOS IC 등장"
+   ],
+   "events_korea": [],
+   "headline_ko": "IC 가격 전쟁 돌입, 세계 반도체 시장 10억 달러 시대",
+   "confidence": "medium",
+   "sources": [
+    "https://www.shmj.or.jp/english/trends/trd70s.html",
+    "https://semi.org/zh/About/ctr_025819",
+    "https://www.rfcafe.com/references/electronics-mag/electronics-newsletter-electronics-mag-may-18-1964.htm",
+    "https://historyofcomputercommunications.info/section/2.20/The-Integrated-Circuit-1959/",
+    "https://www.rfcafe.com/references/electronics-world/integrated-circuit-industry-electronics-world-november-1965.htm"
+   ]
+  },
+  {
+   "year": 1965,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": null,
+   "logic_foundry": 2,
+   "equipment": null,
+   "korea": 0,
+   "events_world": [
+    "고든 무어, '무어의 법칙' 논문 발표",
+    "미국 IC 출하 약 7,900만 달러로 약 2배 성장",
+    "미니트맨 미사일이 최대 IC 수요처로 부상"
+   ],
+   "events_korea": [
+    "미국 코미(Komy) 계열 투자로 '고미(코미)반도체' 설립 — 트랜지스터 단순 조립, 한국 반도체 산업의 출발",
+    "저임금 노동력 기반 조립 하청 형태"
+   ],
+   "headline_ko": "무어의 법칙 발표…한국 첫 반도체 조립공장 문 열어",
+   "confidence": "medium",
+   "sources": [
+    "https://historyofcomputercommunications.info/section/2.20/The-Integrated-Circuit-1959/",
+    "https://ethw.org/Integrated_Circuits_and_the_Space_Program_and_Missile_Defense",
+    "https://economist.co.kr/article/view/ecn202207040047",
+    "https://news.samsungsemiconductor.com/kr/%ec%82%bc%ec%84%b1-%eb%b0%98%eb%8f%84%ec%b2%b4%ec%82%ac%ec%97%85-40%eb%85%84-%eb%8f%84%ec%a0%84%ea%b3%bc-%ec%b0%bd%ec%a1%b0%ec%9d%98-%ec%97%ad%ec%82%ac/",
+    "https://www.imaeil.com/page/view/2026051620401101260",
+    "https://semiwiki.com/semiconductor-manufacturers/samsung-foundry/7994-a-detailed-history-of-samsung-semiconductor/"
+   ]
+  },
+  {
+   "year": 1966,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": null,
+   "logic_foundry": 2,
+   "equipment": null,
+   "korea": 1,
+   "events_world": [
+    "미국 반도체 매출 10억 달러 돌파(미국 기준)",
+    "미국 IC 출하 약 1.48억 달러로 약 87% 성장"
+   ],
+   "events_korea": [
+    "페어차일드 계열 '세미코' 투자 승인(4월)",
+    "시그네틱스코리아 설립(9월) — 아시아 최초 IC 조립·테스트 일괄 공장",
+    "외자도입법 제정으로 외국 반도체 기업 직접투자 본격화",
+    "정부, 전자공업을 수출 전략산업으로 육성하는 종합계획 수립(12월)"
+   ],
+   "headline_ko": "미 반도체 매출 10억 달러 돌파, 페어차일드·시그네틱스 한국 상륙",
+   "confidence": "medium",
+   "sources": [
+    "https://www.jedec.org/node/2769",
+    "https://historyofcomputercommunications.info/section/2.20/The-Integrated-Circuit-1959/",
+    "http://www3.u-toyama.ac.jp/cfes/FES3/2004LEE.PDF",
+    "https://archive.computerhistory.org/resources/access/text/2016/12/102762592-05-01-acc.pdf",
+    "https://en.wikipedia.org/wiki/Signetics",
+    "https://www.etnews.com/20160720000209",
+    "https://semiwiki.com/semiconductor-manufacturers/samsung-foundry/7994-a-detailed-history-of-samsung-semiconductor/",
+    "https://www.kdevelopedia.org/Development-Topics/themes/--39"
+   ]
+  },
+  {
+   "year": 1967,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 0,
+   "memory": null,
+   "logic_foundry": 1,
+   "equipment": null,
+   "korea": 1,
+   "events_world": [
+    "페어차일드 이익 감소, 핵심 인력 내셔널 세미컨덕터로 대거 이동(스포크 사장 취임)",
+    "미국 IC 출하 약 2.28억 달러로 성장세는 둔화(약 54%)"
+   ],
+   "events_korea": [
+    "모토로라 한국 진출(3월 투자 승인), 반도체 조립공장 가동",
+    "외국계 조립공장 중심으로 트랜지스터·IC 조립 수출 증가"
+   ],
+   "headline_ko": "페어차일드 흔들, 인재 대이동…모토로라 한국 공장 설립",
+   "confidence": "low",
+   "sources": [
+    "https://mkaz.com/silicon-valley/fairchild-semiconductor/",
+    "https://www.fundinguniverse.com/company-histories/national-semiconductor-corporation-history",
+    "https://historyofcomputercommunications.info/section/2.20/The-Integrated-Circuit-1959/",
+    "http://www3.u-toyama.ac.jp/cfes/FES3/2004LEE.PDF",
+    "https://www.inews24.com/view/24146",
+    "https://core.ac.uk/download/pdf/51176556.pdf"
+   ]
+  },
+  {
+   "year": 1968,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": null,
+   "logic_foundry": 1,
+   "equipment": null,
+   "korea": 1,
+   "events_world": [
+    "노이스·무어, 페어차일드 떠나 인텔 창업(7월)",
+    "미국 IC 출하 약 3.12억 달러, 정부 수요 비중 37%로 하락 — 민수 시장 확대"
+   ],
+   "events_korea": [
+    "아남산업, 국내 기업 최초 반도체 조립 사업 착수(와이어본더 3대·다이본더 2대로 출발)"
+   ],
+   "headline_ko": "인텔 창업…아남산업, 국내 기업 첫 반도체 조립 시작",
+   "confidence": "medium",
+   "sources": [
+    "https://historyofcomputercommunications.info/section/2.20/The-Integrated-Circuit-1959/",
+    "https://treasures.scss.tcd.ie/hardware/TCD-SCSS-T.20251005.001/Elektronik-2-1970-p43to49-Fairchild-and-Intel-history-engUS.pdf",
+    "https://amkor.com/kr/company-history",
+    "https://news.tf.co.kr/read/ogmeta/2371339.htm"
+   ]
+  },
+  {
+   "year": 1969,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": 1,
+   "logic_foundry": 1,
+   "equipment": null,
+   "korea": 1,
+   "events_world": [
+    "AMD 창업(5월)",
+    "인텔, 첫 제품으로 반도체 메모리(SRAM) 출시 — 자기코어 메모리 대체 경쟁 시작",
+    "반도체 업계 가격 전쟁 격화",
+    "샤프, LSI 탑재 전자계산기 출시 — 계산기용 칩 수요 개막"
+   ],
+   "events_korea": [
+    "전자공업진흥법 제정(1월 28일)",
+    "전자공업진흥 8개년 계획(1969~76) — IC·트랜지스터를 육성 품목으로 지정, 1976년 전자수출 4억 달러 목표",
+    "구미 전자공업단지 조성 착수, 한국도시바 입주(7월)",
+    "반도체 수출 약 3,500만 달러, 총수출의 약 5.6%(추정)",
+    "연말 외국인 투자: 모토로라 약 754만·페어차일드 약 215만·시그네틱스 약 168만 달러"
+   ],
+   "headline_ko": "AMD 창업·가격 전쟁 격화…한국, 전자공업진흥법 제정",
+   "confidence": "medium",
+   "sources": [
+    "https://www.fundinguniverse.com/company-histories/national-semiconductor-corporation-history",
+    "https://shmj.or.jp/english/trends/trd60s.html",
+    "https://www.etnews.com/199907290073",
+    "https://theme.archives.go.kr/next/industry/chronology.do",
+    "https://www.etnews.com/200510040069",
+    "https://kbmaeil.com/article/201909080259855",
+    "http://www3.u-toyama.ac.jp/cfes/FES3/2004LEE.PDF",
+    "https://core.ac.uk/download/pdf/51176556.pdf",
+    "https://www.etnews.com/199908050079"
+   ]
+  },
+  {
+   "year": 1970,
+   "global_sales_busd": 2.4,
+   "sales_basis": "estimate_production",
+   "yoy_pct": null,
+   "cycle": -1,
+   "memory": 1,
+   "logic_foundry": -1,
+   "equipment": -1,
+   "korea": 0,
+   "events_world": [
+    "미국 경기침체·항공우주 예산 삭감으로 반도체 불황, 감원·임금 삭감",
+    "인텔, 1K D램 '1103' 출시(10월) — D램 시대 개막",
+    "세계 반도체 시장 약 8,700억 엔(약 24억 달러 추정)",
+    "반도체 장비·재료 업체 협회 SEMI 설립"
+   ],
+   "events_korea": [
+    "아남산업, 반도체 수출 개시",
+    "한국전자제품수출조합 창립(8월)",
+    "전자산업 수출 약 5,500만 달러(총수출의 약 7%)"
+   ],
+   "headline_ko": "항공우주 예산 삭감에 반도체 불황…인텔, 첫 D램 출시",
+   "confidence": "medium",
+   "sources": [
+    "https://archive.aviationweek.com/issue/19710308",
+    "https://www.aia-aerospace.org/wp-content/uploads/aerospace-facts-and-figures-1971-72.pdf",
+    "https://www.intel.com.tr/content/www/tr/tr/history/history-1975-annual-report.html",
+    "https://www.shmj.or.jp/english/trends/trd70s.html",
+    "https://en.wikipedia.org/wiki/SEMI",
+    "https://amkor.com/kr/company-history",
+    "https://www.etnews.com/200510040069"
+   ]
+  },
+  {
+   "year": 1971,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": -1,
+   "memory": 1,
+   "logic_foundry": 0,
+   "equipment": -1,
+   "korea": 0,
+   "events_world": [
+    "3월경 반도체 불황 바닥 통과 — 감원 중단, 임금 삭감 철회",
+    "인텔, 세계 최초 마이크로프로세서 '4004' 발표(11월)",
+    "컴퓨터 시장 침체 속에서도 반도체 메모리 판매 증가",
+    "제1회 SEMICON 전시회 개최(80개사 참가)"
+   ],
+   "events_korea": [
+    "한국과학원(KAIS) 설립",
+    "외국계 조립공장 중심의 저임금 하청 구조 지속"
+   ],
+   "headline_ko": "불황 바닥 통과, 인텔 4004 마이크로프로세서 탄생",
+   "confidence": "medium",
+   "sources": [
+    "https://archive.aviationweek.com/issue/19710308",
+    "https://www.intel.es/content/www/es/es/history/history-1971-annual-report.html",
+    "https://www.intel.com.tr/content/www/tr/tr/history/history-1975-annual-report.html",
+    "https://www.chiphistory.org/761-semicon-conceived",
+    "https://kenney.faculty.ucdavis.edu/wp-content/uploads/sites/332/2018/03/Institutions-and-knowledge-The-dilemmas-of-success-in-the-korean-electronics-industry.pdf"
+   ]
+  },
+  {
+   "year": 1972,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": 1,
+   "logic_foundry": 1,
+   "equipment": 1,
+   "korea": 1,
+   "events_world": [
+    "인텔 8비트 프로세서 '8008' 출시",
+    "값싼 전자계산기 붐으로 계산기용 칩 수요 급증",
+    "인텔, 말레이시아 페낭 등 신규 공장 건설 — 업계 설비 확장"
+   ],
+   "events_korea": [
+    "제3차 경제개발 5개년 계획 착수",
+    "구미 전자공업단지 조성 지속, 세계 경기 회복에 조립 수출도 회복세(추정)"
+   ],
+   "headline_ko": "전자계산기 붐 타고 반도체 경기 회복",
+   "confidence": "low",
+   "sources": [
+    "https://www.intel.pl/content/www/pl/pl/history/history-1972-annual-report.html",
+    "https://historyofinformation.com/detail.php?id=898",
+    "https://kbmaeil.com/article/201909080259855"
+   ]
+  },
+  {
+   "year": 1973,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 2,
+   "memory": 2,
+   "logic_foundry": 2,
+   "equipment": 2,
+   "korea": 1,
+   "events_world": [
+    "반도체 품귀 호황 — 고객들 재고 확보 경쟁",
+    "인텔 매출 약 6,600만 달러로 전년의 약 3배",
+    "10월 중동전쟁으로 제1차 석유파동 발생"
+   ],
+   "events_korea": [
+    "중화학공업화 선언(1월) — 전자공업을 전략산업으로 지정",
+    "구미 전자공업단지 1단지 준공(12월)",
+    "수출 드라이브 속 외국계 반도체 조립 수출 확대(추정)"
+   ],
+   "headline_ko": "반도체 품귀 대호황…연말 오일쇼크 먹구름",
+   "confidence": "medium",
+   "sources": [
+    "https://www.intel.com.tr/content/www/tr/tr/history/history-1973-financial-statement.html",
+    "https://intel.com/content/www/us/en/history/history-1974-annual-report.html",
+    "https://eetimes.itmedia.co.jp/ee/spv/1901/16/news037_2.html",
+    "https://kbmaeil.com/article/201909080259855",
+    "https://encykorea.aks.ac.kr/Article/E0005766",
+    "https://www.etnews.com/200510110042"
+   ]
+  },
+  {
+   "year": 1974,
+   "global_sales_busd": 5.905,
+   "sales_basis": "estimate_production",
+   "yoy_pct": 14,
+   "cycle": 0,
+   "memory": 0,
+   "logic_foundry": 1,
+   "equipment": 0,
+   "korea": 0,
+   "events_world": [
+    "상반기까지 품귀, 하반기 오일쇼크發 경기침체로 주문 급감",
+    "메모리 수요 3·4분기 연속 감소, 고객사 재고 축소",
+    "인텔 8080·모토로라 6800 등 8비트 마이크로프로세서 경쟁 개막",
+    "세계 반도체 생산 약 59억 달러, 약 14% 성장"
+   ],
+   "events_korea": [
+    "강기동 박사, 부천에 한국반도체 설립(1월) — 국내 첫 웨이퍼 가공 공장",
+    "설립 직후 오일쇼크·자금난으로 경영 악화",
+    "삼성(이건희), 한국반도체 지분 50% 인수 확정(12월) — 삼성 반도체 사업의 출발"
+   ],
+   "headline_ko": "상반기 품귀, 하반기 주문 급감…삼성, 한국반도체 인수",
+   "confidence": "medium",
+   "sources": [
+    "https://intel.com/content/www/us/en/history/history-1974-annual-report.html",
+    "https://www.intel.com.tr/content/www/tr/tr/history/history-1975-annual-report.html",
+    "https://eetimes.itmedia.co.jp/ee/spv/1901/16/news037_2.html",
+    "https://downloads.unido.org/ot/48/20/4820306/15001-20000_17492.pdf",
+    "https://v.daum.net/v/20230123091014717",
+    "https://www.kyeongin.com/article/1660784",
+    "https://www.etnews.com/200809260062",
+    "https://news.samsungsemiconductor.com/kr/%ec%82%bc%ec%84%b1-%eb%b0%98%eb%8f%84%ec%b2%b4%ec%82%ac%ec%97%85-40%eb%85%84-%eb%8f%84%ec%a0%84%ea%b3%bc-%ec%b0%bd%ec%a1%b0%ec%9d%98-%ec%97%ad%ec%82%ac/"
+   ]
+  },
+  {
+   "year": 1975,
+   "global_sales_busd": 4.89,
+   "sales_basis": "estimate_production",
+   "yoy_pct": -17,
+   "cycle": -2,
+   "memory": -1,
+   "logic_foundry": -2,
+   "equipment": -2,
+   "korea": -1,
+   "events_world": [
+    "세계 반도체 생산 약 49억 달러, 약 17% 급감 — 첫 두 자릿수 역성장, 첫 '실리콘 사이클' 불황",
+    "인텔 매출 1.7% 증가에 그치고 이익 17.7% 감소, 모토로라 이익 약 44% 감소",
+    "불황 속 MOS 6502·알테어 8800 등장 — PC 시대 예고"
+   ],
+   "events_korea": [
+    "해외 수요 위축으로 전자 등 수출 경공업 타격",
+    "반도체 조립이 흑백TV·앰프와 함께 전자 수출 주력 품목",
+    "김충기 박사, KAIST 부임 — 국내 반도체 인력 양성 시작"
+   ],
+   "headline_ko": "세계 반도체 생산 17% 급감, 첫 '실리콘 사이클' 불황",
+   "confidence": "high",
+   "sources": [
+    "https://downloads.unido.org/ot/48/20/4820306/15001-20000_17492.pdf",
+    "https://www.shmj.or.jp/english/trends/trd70s.html",
+    "https://www.intel.com.tr/content/www/tr/tr/history/history-1975-annual-report.html",
+    "https://www.motorolasolutions.com:443/content/dam/msi/docs/en-xw/static_files/history-motorola-annual-report-archive-1975-7p61mb-36.pdf",
+    "https://www.edn.com/?p=4045543",
+    "https://www.infineon.com/cms/austria/en/press/historic-news/cyclic-development.html",
+    "https://www.cia.gov/readingroom/print/641257",
+    "https://www.etnews.com/200510110042",
+    "https://spectrum.ieee.org/kim-choong-ki"
+   ]
+  },
+  {
+   "year": 1976,
+   "global_sales_busd": 6.66,
+   "sales_basis": "estimate_production",
+   "yoy_pct": 36.0,
+   "cycle": 1,
+   "memory": 1,
+   "logic_foundry": 1,
+   "equipment": 0,
+   "korea": 0,
+   "events_world": [
+    "1975년 불황(-17%) 뒤 세계 반도체 생산 36% 반등(ICE 추계)",
+    "16K D램 보급 시작, 메모리 대용량화 경쟁 본격화",
+    "일본 통산성 주도 '초LSI 기술연구조합' 출범(1976~1980)"
+   ],
+   "events_korea": [
+    "삼성(이건희)이 1974년 인수한 한국반도체, 부천 공장에서 전자시계용 칩 등 생산",
+    "국내 반도체는 외국계 조립·패키징 공장 중심의 수출 산업"
+   ],
+   "headline_ko": "불황 털고 반등! 세계 반도체 생산 36% 급증…16K 메모리 시대",
+   "confidence": "medium",
+   "sources": [
+    "https://downloads.unido.org/ot/48/20/4820306/15001-20000_17492.pdf",
+    "https://v.daum.net/v/20230123091014717"
+   ]
+  },
+  {
+   "year": 1977,
+   "global_sales_busd": 7.94,
+   "sales_basis": "estimate_production",
+   "yoy_pct": 19.0,
+   "cycle": 0,
+   "memory": 0,
+   "logic_foundry": 1,
+   "equipment": 0,
+   "korea": 0,
+   "events_world": [
+    "세계 반도체 생산 19% 성장(ICE 추계)",
+    "미국 반도체산업협회(SIA) 설립",
+    "애플 II 출시 등 개인용 컴퓨터 시대 태동"
+   ],
+   "events_korea": [
+    "삼성, 한국반도체 잔여 지분 인수해 경영권 확보",
+    "외국계 조립 공장 중심의 반도체 수출 지속"
+   ],
+   "headline_ko": "미국 반도체협회 출범…개인용 컴퓨터 바람 솔솔",
+   "confidence": "medium",
+   "sources": [
+    "https://downloads.unido.org/ot/48/20/4820306/15001-20000_17492.pdf",
+    "https://news.samsungsemiconductor.com/kr/?p=513"
+   ]
+  },
+  {
+   "year": 1978,
+   "global_sales_busd": 10.16,
+   "sales_basis": "estimate_production",
+   "yoy_pct": 28.0,
+   "cycle": 1,
+   "memory": 1,
+   "logic_foundry": 1,
+   "equipment": 1,
+   "korea": 0,
+   "events_world": [
+    "세계 반도체 생산 28% 증가, 100억 달러 돌파(ICE 추계)",
+    "인텔 8086 발표, 16비트 마이크로프로세서 시대",
+    "일본 업체들 16K D램으로 미국 시장 공략 확대"
+   ],
+   "events_korea": [
+    "한국반도체, 3월 '삼성반도체'로 상호 변경"
+   ],
+   "headline_ko": "한국반도체, '삼성반도체'로 간판 교체…세계 시장 28% 성장",
+   "confidence": "medium",
+   "sources": [
+    "https://downloads.unido.org/ot/48/20/4820306/15001-20000_17492.pdf",
+    "https://news.samsungsemiconductor.com/kr/?p=513",
+    "https://encykorea.aks.ac.kr/Article/E0026667"
+   ]
+  },
+  {
+   "year": 1979,
+   "global_sales_busd": 13.02,
+   "sales_basis": "estimate_production",
+   "yoy_pct": 28.0,
+   "cycle": 1,
+   "memory": 1,
+   "logic_foundry": 1,
+   "equipment": 1,
+   "korea": 0,
+   "events_world": [
+    "세계 반도체 출하 약 30% 급증(아서디리틀 조사)",
+    "2차 오일쇼크 발생",
+    "64K D램 개발 경쟁, 일본 업체 약진"
+   ],
+   "events_korea": [
+    "럭키금성, 대한전선 반도체사업부 인수·미 AT&T와 합작해 금성반도체 설립",
+    "10·26 사태 등 정국 혼란"
+   ],
+   "headline_ko": "오일쇼크에도 칩 수요는 쑥쑥…금성도 반도체 출사표",
+   "confidence": "medium",
+   "sources": [
+    "https://downloads.unido.org/ot/48/20/4820306/15001-20000_17492.pdf",
+    "https://www.csmonitor.com/1980/0219/021923.html",
+    "https://www.koreascience.or.kr/article/JAKO200859349573883.pdf",
+    "https://www.koreajoongangdaily.com/business/koo-bonmoo-brought-lg-into-21st-century/10893609"
+   ]
+  },
+  {
+   "year": 1980,
+   "global_sales_busd": 16.65,
+   "sales_basis": "estimate_production",
+   "yoy_pct": 28.0,
+   "cycle": 1,
+   "memory": 1,
+   "logic_foundry": 1,
+   "equipment": 1,
+   "korea": 0,
+   "events_world": [
+    "세계 반도체 생산 28% 증가(ICE 추계)",
+    "HP, 일본산 16K D램 불량률이 미국산보다 훨씬 낮다고 발표해 미국 업계 충격",
+    "일본 초LSI 공동연구 종료, 일본 메모리 경쟁력 급상승"
+   ],
+   "events_korea": [
+    "삼성전자, 삼성반도체 흡수합병해 반도체사업 직접 운영",
+    "오일쇼크·정치 혼란으로 국내 경제 마이너스 성장"
+   ],
+   "headline_ko": "'일본산 메모리가 더 튼튼하다' HP 보고서에 미국 업계 충격",
+   "confidence": "medium",
+   "sources": [
+    "https://downloads.unido.org/ot/48/20/4820306/15001-20000_17492.pdf",
+    "https://news.samsungsemiconductor.com/kr/?p=513"
+   ]
+  },
+  {
+   "year": 1981,
+   "global_sales_busd": 17.45,
+   "sales_basis": "estimate_production",
+   "yoy_pct": 5.0,
+   "cycle": -1,
+   "memory": -1,
+   "logic_foundry": -1,
+   "equipment": 0,
+   "korea": 0,
+   "events_world": [
+    "세계 반도체 생산 증가율 5%로 급둔화(ICE 추계)",
+    "16K·64K D램 가격 급락, 일본 업체가 64K D램 시장 주도",
+    "IBM PC 출시(8월)"
+   ],
+   "events_korea": [
+    "금성반도체, 국내 최초 국산 미니컴퓨터 생산"
+   ],
+   "headline_ko": "IBM PC 나왔지만 메모리 값 곤두박질…성장 급브레이크",
+   "confidence": "medium",
+   "sources": [
+    "https://downloads.unido.org/ot/48/20/4820306/15001-20000_17492.pdf",
+    "https://lgcorp.com/about/history/2"
+   ]
+  },
+  {
+   "year": 1982,
+   "global_sales_busd": 17.81,
+   "sales_basis": "estimate_production",
+   "yoy_pct": 2.0,
+   "cycle": -1,
+   "memory": -1,
+   "logic_foundry": -1,
+   "equipment": -1,
+   "korea": 0,
+   "events_world": [
+    "세계 반도체 생산 2% 증가에 그쳐(ICE 추계)",
+    "미국 경기침체로 수요 부진, 연초 반짝 회복 뒤 연중 하락"
+   ],
+   "events_korea": [
+    "삼성, 이병철 회장 미국 반도체 공장 시찰 등 고밀도 메모리 진출 검토"
+   ],
+   "headline_ko": "세계 경기침체에 반도체 성장 제자리…일본 64K D램 독주",
+   "confidence": "low",
+   "sources": [
+    "https://downloads.unido.org/ot/48/20/4820306/15001-20000_17492.pdf"
+   ]
+  },
+  {
+   "year": 1983,
+   "global_sales_busd": 22.24,
+   "sales_basis": "estimate_production",
+   "yoy_pct": 25.0,
+   "cycle": 1,
+   "memory": 1,
+   "logic_foundry": 1,
+   "equipment": 1,
+   "korea": 1,
+   "events_world": [
+    "PC 수요 회복으로 세계 반도체 생산 25% 증가(ICE 추계)",
+    "256K D램 시대 개막"
+   ],
+   "events_korea": [
+    "이병철 회장 '2·8 도쿄선언', 삼성 VLSI 메모리 진출 공식화",
+    "삼성, 12월 1일 64K D램 국내 최초 개발(착수 6개월 만)",
+    "현대전자산업 설립, 반도체 진출",
+    "삼성 기흥 반도체 1라인 건설"
+   ],
+   "headline_ko": "이병철 '도쿄선언'…삼성, 6개월 만에 64K D램 개발 성공",
+   "confidence": "medium",
+   "sources": [
+    "https://downloads.unido.org/ot/48/20/4820306/15001-20000_17492.pdf",
+    "https://news.samsungsemiconductor.com/kr/%EC%82%BC%EC%84%B1-%EB%B0%98%EB%8F%84%EC%B2%B4%EC%82%AC%EC%97%85-40%EB%85%84-%EB%8F%84%EC%A0%84%EA%B3%BC-%EC%B0%BD%EC%A1%B0%EC%9D%98-%EC%97%AD%EC%82%AC/",
+    "https://biz.newdaily.co.kr/site/data/html/2017/12/05/2017120510092.html"
+   ]
+  },
+  {
+   "year": 1984,
+   "global_sales_busd": 26.0,
+   "sales_basis": "wsts",
+   "yoy_pct": 47.0,
+   "cycle": 2,
+   "memory": 2,
+   "logic_foundry": 2,
+   "equipment": 2,
+   "korea": 1,
+   "events_world": [
+    "PC 붐과 중복 주문으로 세계 반도체 생산 47% 폭증(ICE 추계)",
+    "세계 반도체 시장 약 260억 달러(WSTS 기준)",
+    "자일링스 등 공장 없는 팹리스 기업 등장",
+    "애플 매킨토시 출시",
+    "연말 수요 둔화·재고 과잉 조짐"
+   ],
+   "events_korea": [
+    "삼성 기흥 1라인 가동, 64K D램 양산·수출 개시",
+    "삼성, 256K D램 개발",
+    "금성반도체, 국내 최초 8비트 마이크로프로세서 개발"
+   ],
+   "headline_ko": "주문이 주문을 부른다! 세계 반도체 역대급 호황",
+   "confidence": "medium",
+   "sources": [
+    "https://downloads.unido.org/ot/48/20/4820306/15001-20000_17492.pdf",
+    "https://www.nomura.co.jp/fin-wing/column/100years_semiconductor/",
+    "https://lgcorp.com/about/history/2",
+    "https://news.samsungsemiconductor.com/kr/%EC%82%BC%EC%84%B1-%EB%B0%98%EB%8F%84%EC%B2%B4%EC%82%AC%EC%97%85-40%EB%85%84-%EB%8F%84%EC%A0%84%EA%B3%BC-%EC%B0%BD%EC%A1%B0%EC%9D%98-%EC%97%AD%EC%82%AC/"
+   ],
+   "yoy_note": "1983년까지는 생산액 추정치라 1984년 성장률(WSTS)과 직접 비교 불가"
+  },
+  {
+   "year": 1985,
+   "global_sales_busd": 22.7,
+   "sales_basis": "wsts",
+   "yoy_pct": -17.0,
+   "cycle": -2,
+   "memory": -2,
+   "logic_foundry": -2,
+   "equipment": -2,
+   "korea": -2,
+   "events_world": [
+    "세계 반도체 매출 17% 감소, 당시 사상 최악의 해(SIA)",
+    "D램 시장 55% 폭락, 256K 메모리 개당 25달러→5달러",
+    "인텔 매출 16% 감소·D램 철수 결정, 모토로라 반도체 매출 23% 감소",
+    "미국 업계, 일본 메모리 덤핑 제소·통상법 301조 청원",
+    "플라자 합의로 엔고 시작"
+   ],
+   "events_korea": [
+    "64K D램 값 연초 3.5달러 안팎→0.5달러 수준 폭락, 제조원가(약 1.7달러)에도 못 미쳐",
+    "삼성 반도체 대규모 적자에도 1M D램 공장 투자 강행"
+   ],
+   "headline_ko": "D램 값 폭락, 반도체 사상 최악의 해…인텔도 메모리 포기",
+   "confidence": "high",
+   "sources": [
+    "https://toyokeizai.net/articles/-/747583",
+    "https://www.theglobeandmail.com/technology/global-chip-sales-to-rise-in-2002-forecast/article1186679",
+    "https://intel.com/content/www/us/en/history/history-1985-annual-report.html",
+    "https://www.motorolasolutions.com/content/dam/msi/docs/en-xw/static_files/history-motorola-annual-report-archive-1985-7p72mb-36.pdf",
+    "https://www.accountancyage.com/aa/news/1759407/dram-makers-worst-1985",
+    "https://www.infineon.com/cms/austria/en/press/historic-news/crisis-80ies.html",
+    "https://www.etnews.com/20230816000179",
+    "https://downloads.unido.org/ot/48/20/4820306/15001-20000_17492.pdf"
+   ],
+   "yoy_note": "SIA 발표 -17%. 이 파일의 1984·1985 매출로 계산하면 -13%"
+  },
+  {
+   "year": 1986,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": 26.1,
+   "cycle": 0,
+   "memory": -1,
+   "logic_foundry": -1,
+   "equipment": -1,
+   "korea": -1,
+   "events_world": [
+    "달러 기준 세계 시장 26.1% 성장했지만 엔고 효과, 현지통화 기준 일본 0.2%·유럽 -7%(데이터퀘스트)",
+    "NEC·도시바·히타치 등 일본 업체가 세계 매출 상위 석권",
+    "미·일 반도체협정 체결(9월), 일본산 메모리 덤핑 방지·외국산 점유율 확대 약속",
+    "후지쯔의 페어차일드 인수 시도로 미국 내 경계감 고조"
+   ],
+   "events_korea": [
+    "TI, D램 특허 침해로 삼성·일본 업체 제소",
+    "삼성, 1M D램 개발",
+    "정부·민간 4M D램 공동개발 사업 착수",
+    "반도체 적자 누적 속 3저 호황으로 국내 경기는 활황"
+   ],
+   "headline_ko": "미·일 반도체협정 체결…엔고 착시 속 메모리는 여전히 냉골",
+   "confidence": "medium",
+   "sources": [
+    "https://techmonitor.ai/?p=227352",
+    "https://www.techmonitor.ai/technology/japanese_take_top_three_chip_places/",
+    "https://archive.computerhistory.org/resources/access/text/2013/04/102723394-05-01-acc.pdf",
+    "https://en.wikipedia.org/wiki/1986_U.S.%E2%80%93Japan_Semiconductor_Agreement",
+    "https://www.etnews.com/20230816000179"
+   ]
+  },
+  {
+   "year": 1987,
+   "global_sales_busd": 34.0,
+   "sales_basis": "wsts",
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": 1,
+   "logic_foundry": 1,
+   "equipment": 0,
+   "korea": 1,
+   "events_world": [
+    "TSMC 설립(2월), 위탁생산 전문 '파운드리' 모델 등장",
+    "미국, 협정 위반 이유로 일본 전자제품에 100% 보복관세(4월)",
+    "미국 정부·업계 공동 반도체 컨소시엄 세마테크 설립",
+    "일본 감산·가격 하한제로 D램 가격 반등, 연말 품귀 조짐"
+   ],
+   "events_korea": [
+    "삼성 반도체 사업 흑자 전환",
+    "이병철 회장 별세(11월), 이건희 회장 취임",
+    "삼성, 4M D램에 '스택' 구조 채택 결정"
+   ],
+   "headline_ko": "TSMC 출범, '파운드리' 시대 개막…삼성 반도체 첫 흑자",
+   "confidence": "low",
+   "sources": [
+    "https://www.csmonitor.com/1988/0328/fchip.html",
+    "https://en.wikipedia.org/wiki/1986_U.S.%E2%80%93Japan_Semiconductor_Agreement"
+   ]
+  },
+  {
+   "year": 1988,
+   "global_sales_busd": 45.0,
+   "sales_basis": "wsts",
+   "yoy_pct": 38.2,
+   "cycle": 2,
+   "memory": 2,
+   "logic_foundry": 1,
+   "equipment": 1,
+   "korea": 2,
+   "events_world": [
+    "메모리 품귀로 세계 반도체 시장 38% 성장(SIA 추계), 데이터퀘스트 집계는 32.9%",
+    "메모리 업체 매출 91% 급증, 4분기엔 메모리 부족으로 성장 제약",
+    "1M D램 주력 세대로 부상"
+   ],
+   "events_korea": [
+    "삼성, 4M D램 개발",
+    "삼성반도체통신, 삼성전자에 합병",
+    "D램 품귀로 국내 반도체 업계 대규모 이익"
+   ],
+   "headline_ko": "D램이 없어서 못 판다! 메모리 품귀 대호황",
+   "confidence": "medium",
+   "sources": [
+    "https://www.upi.com/Archives/1989/01/03/Survey-semiconductor-industry-grew-329-percent-in-1988/7929599806800/",
+    "https://www.techmonitor.ai/?p=231993",
+    "https://www.techmonitor.ai/?p=235622",
+    "https://tedium.co/2016/11/24/1988-ram-shortage-history/"
+   ]
+  },
+  {
+   "year": 1989,
+   "global_sales_busd": 48.8,
+   "sales_basis": "wsts",
+   "yoy_pct": 10.0,
+   "cycle": 0,
+   "memory": 0,
+   "logic_foundry": 0,
+   "equipment": 1,
+   "korea": 1,
+   "events_world": [
+    "세계 반도체 시장 약 10% 성장(데이터퀘스트 집계 558억 달러)",
+    "NEC 세계 1위 유지, 도시바는 MOS 메모리 1위",
+    "한국·대만·동남아 업체 세계 점유율 4%로 두 배",
+    "하반기 메모리 재고 누적, 호황 정점 통과"
+   ],
+   "events_korea": [
+    "삼성, 세계 20대 반도체 기업 중 최고 성장 그룹",
+    "금성반도체, 금성일렉트론으로 재편"
+   ],
+   "headline_ko": "D램 호황 정점 찍고 꺾이나…삼성은 세계 톱20 중 고속 성장",
+   "confidence": "medium",
+   "sources": [
+    "https://www.techmonitor.ai/?p=267893",
+    "https://www.techmonitor.ai/?p=225869",
+    "https://techmonitor.ai/?p=234358",
+    "https://archive.computerhistory.org/resources/access/text/2013/04/102723225-05-01-acc.pdf",
+    "https://www.koreajoongangdaily.com/business/koo-bonmoo-brought-lg-into-21st-century/10893609"
+   ]
+  },
+  {
+   "year": 1990,
+   "global_sales_busd": 50.5,
+   "sales_basis": "wsts",
+   "yoy_pct": 3.5,
+   "cycle": -1,
+   "memory": -1,
+   "logic_foundry": 0,
+   "equipment": 0,
+   "korea": -1,
+   "events_world": [
+    "세계 반도체 시장 약 505억 달러로 성장 정체",
+    "MOS 메모리 매출 17% 감소(데이터퀘스트)",
+    "걸프 위기·미국 경기 둔화, 일본 버블 붕괴 시작"
+   ],
+   "events_korea": [
+    "삼성, 16M D램 개발로 일본과 기술 격차 축소",
+    "D램 가격 하락으로 국내 업체 수익 감소"
+   ],
+   "headline_ko": "메모리 시장 17% 역성장…반도체 경기 숨고르기",
+   "confidence": "medium",
+   "sources": [
+    "https://techmonitor.ai/?p=168073",
+    "https://www.techmonitor.ai/?p=243603",
+    "https://techmonitor.ai/?p=234358"
+   ],
+   "yoy_note": "1989·1990년 매출로 계산"
+  },
+  {
+   "year": 1991,
+   "global_sales_busd": 54.6,
+   "sales_basis": "wsts",
+   "yoy_pct": 8.1,
+   "cycle": 0,
+   "memory": 0,
+   "logic_foundry": 0,
+   "equipment": -1,
+   "korea": 0,
+   "events_world": [
+    "세계 반도체 시장 8.1% 성장(SIA/WSTS)",
+    "MOS 메모리 매출 6% 회복",
+    "2차 미·일 반도체협정, 일본 내 외국산 점유율 20% 목표"
+   ],
+   "events_korea": [
+    "정부·민간 16M·64M D램 공동개발 사업 진행",
+    "국내 업체 차세대 D램 투자 지속"
+   ],
+   "headline_ko": "2차 미·일 반도체협정…시장은 한 자릿수 완만한 회복",
+   "confidence": "medium",
+   "sources": [
+    "https://www.techmonitor.ai/?p=254748",
+    "https://www.techmonitor.ai/?p=243603"
+   ]
+  },
+  {
+   "year": 1992,
+   "global_sales_busd": null,
+   "sales_basis": null,
+   "yoy_pct": null,
+   "cycle": 0,
+   "memory": 0,
+   "logic_foundry": 1,
+   "equipment": 0,
+   "korea": 1,
+   "events_world": [
+    "일본 시장 침체로 세계 성장 둔화(SIA 전망 6.8%)",
+    "인텔, NEC 제치고 세계 반도체 매출 1위",
+    "마이크론, 한국산 D램 반덤핑 제소"
+   ],
+   "events_korea": [
+    "삼성, 64M D램 세계 최초 개발",
+    "삼성, D램 시장점유율 세계 1위 등극",
+    "미국 반덤핑 조사로 통상 압박"
+   ],
+   "headline_ko": "삼성, 64M D램 세계 최초 개발…D램 세계 1위 등극",
+   "confidence": "low",
+   "sources": [
+    "https://www.techmonitor.ai/?p=254748",
+    "https://news.samsungsemiconductor.com/kr/%EB%B0%98%EB%8F%84%EC%B2%B4-%EC%97%AD%EC%82%AC%EC%97%90-%ED%9A%8D%EC%9D%84-%EA%B7%B8%EC%9D%80-64m-d%EB%9E%A8-%EA%B5%AD%EA%B0%80%EC%A4%91%EC%9A%94%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0/",
+    "https://www.seoul.co.kr/news/1996/11/05/19961105009001"
+   ]
+  },
+  {
+   "year": 1993,
+   "global_sales_busd": 77.3,
+   "sales_basis": "wsts",
+   "yoy_pct": null,
+   "cycle": 1,
+   "memory": 2,
+   "logic_foundry": 1,
+   "equipment": 1,
+   "korea": 1,
+   "events_world": [
+    "세계 반도체 시장 약 773억 달러(WSTS), D램은 54% 성장",
+    "일본 스미토모화학 에폭시 수지 공장 폭발로 D램 가격 급등(7월)",
+    "인텔 펜티엄 출시",
+    "미국, 일본 제치고 반도체 점유율 1위 탈환"
+   ],
+   "events_korea": [
+    "삼성, 메모리 반도체 세계 1위",
+    "이건희 '신경영' 선언(프랑크푸르트)",
+    "미국 D램 반덤핑 최종판정, 삼성 저율 관세로 일단락",
+    "삼성 8인치 웨이퍼 양산 라인 가동"
+   ],
+   "headline_ko": "日 에폭시 공장 폭발에 D램값 급등…D램 시장 54% 성장",
+   "confidence": "medium",
+   "sources": [
+    "https://www.etnews.com/199411210019",
+    "https://m.etnews.com/199405210054"
+   ]
+  },
+  {
+   "year": 1994,
+   "global_sales_busd": 101.8,
+   "sales_basis": "wsts",
+   "yoy_pct": 31.8,
+   "cycle": 1,
+   "memory": 2,
+   "logic_foundry": 1,
+   "equipment": 1,
+   "korea": 2,
+   "events_world": [
+    "세계 반도체 시장 31.8% 성장한 1,018억 달러, 사상 첫 1천억 달러 돌파(WSTS)",
+    "D램 시장 234억 달러로 약 78% 급증",
+    "팹리스반도체협회(FSA) 설립",
+    "펜티엄 나눗셈 버그 파문"
+   ],
+   "events_korea": [
+    "삼성, 256M D램 세계 최초 개발(8월)",
+    "현대전자, AT&T GIS 비메모리 부문 3억 달러에 인수",
+    "반도체 3사 대규모 증설·인력 채용 확대"
+   ],
+   "headline_ko": "세계 반도체 첫 1천억 달러 돌파! 삼성 256M D램 세계 최초",
+   "confidence": "high",
+   "sources": [
+    "https://m.etnews.com/199505170080",
+    "https://www.etnews.com/199411210019",
+    "https://m.seoul.co.kr/news/1994/08/30/19940830009001",
+    "https://www.hankyung.com/amp/1994111101431"
+   ]
+  },
+  {
+   "year": 1995,
+   "global_sales_busd": 144.4,
+   "sales_basis": "wsts",
+   "yoy_pct": 41.8,
+   "cycle": 2,
+   "memory": 2,
+   "logic_foundry": 1,
+   "equipment": 2,
+   "korea": 2,
+   "events_world": [
+    "세계 반도체 시장 40%대 폭증, 사상 최대(WSTS 약 1,444억 달러·IDC 1,468억 달러)",
+    "윈도95 출시로 PC·메모리 수요 폭발",
+    "WSTS 연중 시장 전망 잇따라 상향",
+    "연말 16M D램 가격 하락 시작, 호황 끝 신호"
+   ],
+   "events_korea": [
+    "D램 슈퍼 호황으로 삼성전자 사상 최대 이익",
+    "금성일렉트론, LG반도체로 사명 변경",
+    "주성엔지니어링 창업 등 장비 국산화 벤처 등장",
+    "반도체 업계 대졸 채용 대폭 확대"
+   ],
+   "headline_ko": "윈도95 타고 반도체 '슈퍼 호황'…연말엔 D램 값 하락 조짐",
+   "confidence": "medium",
+   "sources": [
+    "https://www.techmonitor.ai/?p=137764",
+    "https://m.etnews.com/199505170080",
+    "https://m.etnews.com/199511020020"
+   ]
+  },
+  {
+   "year": 1996,
+   "global_sales_busd": 132.0,
+   "sales_basis": "wsts",
+   "yoy_pct": -8.6,
+   "cycle": -1,
+   "memory": -2,
+   "logic_foundry": 0,
+   "equipment": -1,
+   "korea": -1,
+   "events_world": [
+    "세계 반도체 시장 10여 년 만에 첫 역성장(-8.6%), 공급과잉 직격탄",
+    "16메가 D램 가격 1년 새 약 70달러→7달러 수준까지 폭락",
+    "메모리 평균판매가격 연간 60~75% 급락, 장비 발주 취소·연기 잇따라"
+   ],
+   "events_korea": [
+    "16메가 D램 개당 50달러→30달러선(3월), 이후 더 하락하며 국내 '빅3' 수익 급감",
+    "반도체 수출 4월부터 감소 전환, 연간 전년 대비 약 19% 감소",
+    "가격 폭락 속에도 삼성·현대·LG 64메가 D램 양산 경쟁 지속"
+   ],
+   "headline_ko": "D램 값 10분의 1 토막…반도체 호황 끝, 수출 '빨간불'",
+   "confidence": "medium",
+   "sources": [
+    "https://www.rcrwireless.com/?p=53790",
+    "https://m.csmonitor.com/1996/1004/100496.econ.econ.1.html",
+    "https://g.foolcdn.com/features/1996/sp0923b.htm",
+    "https://www.seoul.co.kr/news/1996/03/06/19960306010008",
+    "https://www.seoul.co.kr/news/1996/07/02/19960702009002",
+    "https://www.seoul.co.kr/news/1997/01/21/19970121009003"
+   ]
+  },
+  {
+   "year": 1997,
+   "global_sales_busd": 137.2,
+   "sales_basis": "wsts",
+   "yoy_pct": 4.0,
+   "cycle": 0,
+   "memory": -2,
+   "logic_foundry": 0,
+   "equipment": 0,
+   "korea": -1,
+   "events_world": [
+    "세계 반도체 매출 소폭 회복(+4%)했지만 메모리는 가격 하락 지속",
+    "D램 평균가격 1996년 -65%에 이어 1997년에도 약 -60%",
+    "아시아 외환위기 발발(태국→동남아→한국)"
+   ],
+   "events_korea": [
+    "64메가 D램 장기공급가 개당 100달러대(96년 7월)→30달러선(97년 9월)으로 급락",
+    "10월 64메가 D램 현물가 6.7달러→4.9달러, 업체 손실 확대 우려",
+    "12월 IMF 구제금융 신청, 원화 폭락·대기업 연쇄 부도"
+   ],
+   "headline_ko": "IMF 구제금융 충격…반도체도 '혹한기' 진입",
+   "confidence": "medium",
+   "sources": [
+    "https://www.industryweek.com/archive/chip-shipments-rebound-97",
+    "https://www.eetimes.com/?p=1187157",
+    "https://www.seoul.co.kr/news/1997/09/09/19970909008001",
+    "https://www.seoul.co.kr/news/1997/07/15/19970715008001",
+    "https://www.khan.co.kr/article/200008101906541"
+   ]
+  },
+  {
+   "year": 1998,
+   "global_sales_busd": 125.6,
+   "sales_basis": "wsts",
+   "yoy_pct": -8.4,
+   "cycle": -1,
+   "memory": -2,
+   "logic_foundry": -1,
+   "equipment": -2,
+   "korea": -2,
+   "events_world": [
+    "세계 반도체 매출 1,256억 달러로 다시 역성장",
+    "장비 수주 급감: 7월 BB율 0.69, 3개월 수주 전년 대비 -47%",
+    "TI가 D램 사업을 마이크론에 매각(9월 완료), 메모리 업계 재편 가속"
+   ],
+   "events_korea": [
+    "외환위기 정점, 한국 반도체 장비 투자 전년 대비 -53%(약 12억 달러)",
+    "삼성전자 설비투자 약 9억 달러로 대폭 축소",
+    "정부 주도 '빅딜'로 현대전자·LG반도체 통합 추진, 12월 평가에서 현대가 경영주체로",
+    "전자업계 종업원 46만→39만 명(-13%) 구조조정"
+   ],
+   "headline_ko": "외환위기 한파…'반도체 빅딜'에 감원·투자 동결",
+   "confidence": "medium",
+   "sources": [
+    "https://www.eetimes.com/?p=1187730",
+    "https://rcrwireless.com/19980914/archived-articles/semiconductor-sales-drop",
+    "https://www.vision-systems.com/factory/manufacturing/article/16741456/semiconductor-equipment-book-to-bill-ratio-plunges",
+    "https://sst.semiconductor-digest.com/?p=26011",
+    "https://www.sec.gov/Archives/edgar/data/0000097476/000095013498005689/0000950134-98-005689.txt",
+    "https://m.seoul.co.kr/news/1998/12/25/19981225009001",
+    "https://www.etnews.com/200511080039"
+   ]
+  },
+  {
+   "year": 1999,
+   "global_sales_busd": 149.4,
+   "sales_basis": "wsts",
+   "yoy_pct": 18.9,
+   "cycle": 1,
+   "memory": 1,
+   "logic_foundry": 1,
+   "equipment": 1,
+   "korea": 1,
+   "events_world": [
+    "세계 반도체 매출 사상 최대 1,490억 달러대(+18.9%)로 반등",
+    "9월 대만 대지진으로 D램 현물가 단기 급등",
+    "장비 출하가 전년 대비 60% 안팎 늘며 회복"
+   ],
+   "events_korea": [
+    "10월 현대전자가 LG반도체를 흡수합병(인수대금 2조5,600억 원), 세계 최대급 D램 업체 탄생",
+    "삼성전자 설비투자 18억 달러로 전년 대비 2배",
+    "반도체 수출 1~8월 전년 대비 +13.7%, IMF 터널 탈출 신호"
+   ],
+   "headline_ko": "반도체 빅딜 완료…대만 지진에 D램 값 들썩",
+   "confidence": "medium",
+   "sources": [
+    "https://www.eetimes.com/?p=1187732",
+    "https://www.edn.com/?p=4014563",
+    "https://www.eetimes.com/?p=1140155",
+    "https://www.realworldtech.com/industry-update-oct99/3",
+    "https://sst.semiconductor-digest.com/?p=26011",
+    "https://news.skhynix.co.kr/?p=13758",
+    "https://techmonitor.ai/?p=70238"
+   ]
+  },
+  {
+   "year": 2000,
+   "global_sales_busd": 204.4,
+   "sales_basis": "wsts",
+   "yoy_pct": 36.8,
+   "cycle": 2,
+   "memory": 2,
+   "logic_foundry": 2,
+   "equipment": 2,
+   "korea": 1,
+   "events_world": [
+    "닷컴 버블 정점, 세계 반도체 매출 첫 2,000억 달러 돌파(+37%)",
+    "D램 매출 +39.5%(289억 달러), 플래시 +133%",
+    "장비 시장 사상 최대 약 477억 달러, 파운드리 가동률 100% 초과"
+   ],
+   "events_korea": [
+    "한국 반도체 수출 연 200억 달러 돌파",
+    "현대그룹 유동성 위기 확산, 현대전자 차입금 약 7조8천억 원 부담",
+    "하반기 64메가 D램 가격 하락 시작"
+   ],
+   "headline_ko": "반도체 수출 200억 달러 시대…하지만 연말 D램 값 '삐끗'",
+   "confidence": "high",
+   "sources": [
+    "https://sst.semiconductor-digest.com/?p=23796",
+    "https://www.theregister.com/2001/01/04/global_chip_sales_growth_starts/",
+    "https://sst.semiconductor-digest.com/?p=26003",
+    "https://www.edn.com/?p=4021916",
+    "https://www.seoul.co.kr/news/2001/01/22/20010122011001",
+    "https://newstomato.com/ReadNews.aspx?no=862488"
+   ]
+  },
+  {
+   "year": 2001,
+   "global_sales_busd": 139.0,
+   "sales_basis": "wsts",
+   "yoy_pct": -32.0,
+   "cycle": -2,
+   "memory": -2,
+   "logic_foundry": -2,
+   "equipment": -2,
+   "korea": -2,
+   "events_world": [
+    "IT 버블 붕괴, 세계 반도체 매출 -32%로 사상 최악의 감소",
+    "D램 시장 315억 달러→100억 달러대로 3분의 1 토막(가트너 전망)",
+    "장비 시장 -41%(약 281억 달러), TSMC 가동률 40%대로 추락",
+    "9·11 테러로 수요 회복 지연"
+   ],
+   "events_korea": [
+    "3월 현대전자, '하이닉스반도체'로 사명 변경 후 비반도체 사업 분사",
+    "하이닉스 매출 -55%, 영업손실 1조2,900억 원",
+    "10월 하이닉스 채권금융기관 공동관리 돌입",
+    "삼성전자 반도체도 4분기 적자, 상반기 반도체 수출 -26%"
+   ],
+   "headline_ko": "반도체 사상 최악의 해…하이닉스 채권단 관리로",
+   "confidence": "high",
+   "sources": [
+    "https://www.edn.com/?p=4026514",
+    "https://www.eetimes.com/?p=1132189",
+    "https://www.edn.com/?p=4042207",
+    "https://sst.semiconductor-digest.com/?p=26003",
+    "https://www.edn.com/?p=4030671",
+    "https://news.skhynix.co.kr/turn-to-profit-in-earnest/",
+    "https://www.inews24.com/view/583406",
+    "https://www.mt.co.kr/stock/2007/07/13/2007071310325205948",
+    "https://www.khan.co.kr/article/200107171903411"
+   ]
+  },
+  {
+   "year": 2002,
+   "global_sales_busd": 140.7,
+   "sales_basis": "wsts",
+   "yoy_pct": 1.3,
+   "cycle": 0,
+   "memory": -1,
+   "logic_foundry": 0,
+   "equipment": -2,
+   "korea": -1,
+   "events_world": [
+    "세계 반도체 매출 +1.3%로 바닥 다지기",
+    "장비 시장 2년 연속 급감(-29.6%, 197억 달러) 1994년 이후 최저",
+    "11월 마이크론, 하이닉스·삼성 대상 미국 상계관세 제소"
+   ],
+   "events_korea": [
+    "4월 마이크론의 하이닉스 메모리 인수 MOU, 하이닉스 이사회가 거부하고 독자생존 선택",
+    "12월 하이닉스 채권단 출자전환·감자 등 추가 채무조정",
+    "삼성전자 1Gb 낸드 양산, 플래시 메모리 세계 1위·반도체 매출 세계 2위로"
+   ],
+   "headline_ko": "하이닉스 '독자생존' 선택…삼성은 플래시 세계 1위",
+   "confidence": "high",
+   "sources": [
+    "https://www.channelweb.co.uk/news/1876912/strong-q4-sales-semiconductors",
+    "https://sst.semiconductor-digest.com/?p=36945",
+    "https://www.eetimes.com/?p=1174957",
+    "https://www.everycrsreport.com/reports/RL31238.html",
+    "https://www.cit.uscourts.gov/sites/cit/files/05-106.pdf",
+    "https://news.samsungsemiconductor.com/kr/?p=4780",
+    "https://dealsite.co.kr/articles/54076"
+   ]
+  },
+  {
+   "year": 2003,
+   "global_sales_busd": 166.4,
+   "sales_basis": "wsts",
+   "yoy_pct": 18.3,
+   "cycle": 1,
+   "memory": 0,
+   "logic_foundry": 1,
+   "equipment": 0,
+   "korea": 1,
+   "events_world": [
+    "상반기 이라크전·사스(SARS)로 아시아 D램 수요 급랭",
+    "6월 말부터 D램 가격 상승, 하반기 회복으로 연간 +18.3%",
+    "장비 시장 222억 달러(+12.4%)로 소폭 반등"
+   ],
+   "events_korea": [
+    "하이닉스 2분기 순손실 5,300억 원, 하반기 회복 신호",
+    "8월 미국, 하이닉스 D램에 상계관세 최종 부과",
+    "삼성전자 4분기 반도체 영업이익 2조200억 원, 낸드 고성장"
+   ],
+   "headline_ko": "사스 넘고 반등…반도체 경기 '봄바람'",
+   "confidence": "high",
+   "sources": [
+    "https://eepower.com/news/sia-reports-global-semiconductor-sales-up-in-2003/",
+    "https://www.eetimes.com/?p=1191552",
+    "https://www.theregister.com/2003/08/13/hynix_q2_loss_narrowed/",
+    "https://sst.semiconductor-digest.com/?p=37080",
+    "https://www.everycrsreport.com/files/20030527_RL31238_9daddfc409a5f745fc5cab2e93738861e23e3cec.html",
+    "https://www.seoul.co.kr/news/2004/01/16/20040116017001"
+   ]
+  },
+  {
+   "year": 2004,
+   "global_sales_busd": 213.0,
+   "sales_basis": "wsts",
+   "yoy_pct": 28.0,
+   "cycle": 2,
+   "memory": 2,
+   "logic_foundry": 1,
+   "equipment": 2,
+   "korea": 2,
+   "events_world": [
+    "세계 반도체 매출 2,130억 달러로 2000년 기록 경신(+28%)",
+    "장비 시장 371억 달러(+67%) 폭발적 성장"
+   ],
+   "events_korea": [
+    "하이닉스 영업이익 2조240억 원으로 흑자전환, 사상 최대",
+    "10월 하이닉스 비메모리 부문 9,543억 원에 매각, '매그나칩반도체' 출범",
+    "삼성전자 2분기 반도체 영업이익 2조1,500억 원 사상 최대",
+    "국내 반도체 장비시장 약 5조3천억 원(+30%), 장비업체 매출 급증"
+   ],
+   "headline_ko": "반도체 슈퍼호황…하이닉스 '부활', 장비업체도 잔치",
+   "confidence": "high",
+   "sources": [
+    "https://sst.semiconductor-digest.com/?p=38285",
+    "https://sst.semiconductor-digest.com/?p=28159",
+    "https://news.skhynix.co.kr/?p=11976",
+    "https://m.etnews.com/200410080150",
+    "https://news.skhynix.co.kr/?p=12037",
+    "https://www.dt.co.kr/article/10498554",
+    "https://m.etnews.com/200106080154"
+   ]
+  },
+  {
+   "year": 2005,
+   "global_sales_busd": 227.5,
+   "sales_basis": "wsts",
+   "yoy_pct": 6.8,
+   "cycle": 0,
+   "memory": 0,
+   "logic_foundry": 0,
+   "equipment": -1,
+   "korea": 1,
+   "events_world": [
+    "세계 반도체 매출 2,275억 달러(+6.8%) 완만한 성장",
+    "애플, 아이팟용 낸드 확보 위해 삼성·하이닉스 등과 장기공급계약(선급금 12.5억 달러)",
+    "장비 시장 약 329억 달러로 조정(-11%)"
+   ],
+   "events_korea": [
+    "7월 하이닉스, 채권단 공동관리 1년 반 앞당겨 조기 졸업(3년 9개월 만)",
+    "MP3·휴대폰 붐으로 낸드플래시 수요 급증, 삼성 낸드 물량 상당분 애플향"
+   ],
+   "headline_ko": "하이닉스 워크아웃 졸업…아이팟 타고 낸드 '훨훨'",
+   "confidence": "high",
+   "sources": [
+    "https://sst.semiconductor-digest.com/?p=37466",
+    "https://www.theregister.com/2006/02/03/sia_world_chip_sales_05/",
+    "https://www.apple.com/newsroom/2005/11/21Apple-Announces-Long-Term-Supply-Agreements-for-Flash-Memory/",
+    "https://www.theregister.com/2005/11/21/apple_flash_mega_deal/",
+    "https://m.etnews.com/200507120176",
+    "https://evertiq.com/news/7033"
+   ]
+  },
+  {
+   "year": 2006,
+   "global_sales_busd": 247.7,
+   "sales_basis": "wsts",
+   "yoy_pct": 8.9,
+   "cycle": 1,
+   "memory": 1,
+   "logic_foundry": 0,
+   "equipment": 1,
+   "korea": 1,
+   "events_world": [
+    "세계 반도체 매출 2,477억 달러 사상 최대(+8.9%), 소비자 가전이 견인",
+    "PC 수요 회복·생산 부족으로 DDR2 가격 상승, 3분기 D램 시장 +23%",
+    "8월 인피니언 메모리 분사 키몬다 상장",
+    "장비 시장 405억 달러(+23%), 300mm 증설 경쟁"
+   ],
+   "events_korea": [
+    "D램 호황 속 국내 업체 공격적 증설 경쟁",
+    "12월 하이닉스, 이천·청주 공장 증설 계획 제출(수도권·상수원 규제 논란)"
+   ],
+   "headline_ko": "D램 값 반등에 증설 러시…'호황 끝물' 경고도",
+   "confidence": "high",
+   "sources": [
+    "https://semiconductors.org/global-chip-sales-hit-record-247-7-billion-in-2006",
+    "https://sst.semiconductor-digest.com/?p=29735",
+    "https://www.infoworld.com/article/2172807/infineon-readies-1-1b-qimonda-ipo.html",
+    "https://www.eetimes.com/?p=1162962",
+    "https://www.circuitsassembly.com/ca/news/292-news/2007-news/13513-global-semi-gear-sales-rose-23-in-06.html",
+    "https://www.inews24.com/view/244933"
+   ]
+  },
+  {
+   "year": 2007,
+   "global_sales_busd": 255.6,
+   "sales_basis": "wsts",
+   "yoy_pct": 3.2,
+   "cycle": 0,
+   "memory": -1,
+   "logic_foundry": 0,
+   "equipment": 0,
+   "korea": 0,
+   "events_world": [
+    "윈도 비스타 효과 실종, 신규 팹 가동으로 D램 공급과잉",
+    "범용 D램 고정거래가 연간 -83% 폭락, 'D램 치킨게임' 시작",
+    "대만 D램 업체(프로모스·파워칩·난야) 분기 적자",
+    "6월 아이폰 출시, 스마트폰 시대 개막"
+   ],
+   "events_korea": [
+    "1월 정부, 하이닉스 이천공장 증설 불허(상수원 보호) → 비수도권 증설로 선회",
+    "D램 가격 급락으로 삼성전자 분기 이익 급감",
+    "세계 매출 6년 연속 성장했지만 메모리는 '치킨게임' 진입"
+   ],
+   "headline_ko": "D램 '치킨게임' 개막…누가 먼저 쓰러지나",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/global-chip-sales-hit-255-6-billion-in-2007/",
+    "https://www.dramexchange.com/WeeklyResearch/MarketView/123",
+    "https://www.techrepublic.com/article/lackluster-vista-adoption-results-in-glut-of-dram/",
+    "https://www.mt.co.kr/stock/2007/09/26/2007092116280527049",
+    "https://www.inews24.com/view/244933",
+    "https://www.mt.co.kr/stock/2007/07/13/2007071310325205948"
+   ]
+  },
+  {
+   "year": 2008,
+   "global_sales_busd": 248.6,
+   "sales_basis": "wsts",
+   "yoy_pct": -2.8,
+   "cycle": -1,
+   "memory": -2,
+   "logic_foundry": -1,
+   "equipment": -2,
+   "korea": -2,
+   "events_world": [
+    "9월 리먼 파산, 글로벌 금융위기로 4분기 수요 절벽",
+    "DDR2 1Gb 가격 10월 1달러 붕괴(현금원가 이하)",
+    "D램 업계 2007~08년 누적 손실 약 100억 달러, 키몬다 300mm 팹 장비 반입 연기",
+    "장비 시장 295억 달러(-31%)"
+   ],
+   "events_korea": [
+    "삼성전자 반도체 4분기 영업손실 5,600억 원",
+    "하이닉스 4분기 영업손실 약 8천억 원, 채권단 유동성 지원",
+    "세계 반도체 매출 2001년 이후 첫 감소"
+   ],
+   "headline_ko": "금융위기 강타…삼성 반도체마저 적자 전환",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/category/press-releases/page/43/",
+    "https://betanews.com/2009/02/03/sia-semiconductor-sales-down",
+    "https://dramexchange.com/WeeklyResearch/Post/2/503.html",
+    "https://www.mt.co.kr/stock/2008/01/17/2008011715404284807",
+    "https://circuitsassembly.com/ca/editorial/menu-news/16340-report-semi-gear-sales-to-fall-28-in-2008.html",
+    "https://newstomato.com/ReadNews.aspx?no=39004",
+    "https://news.skhynix.co.kr/?p=10558",
+    "https://www.etoday.co.kr/news/view/199582"
+   ]
+  },
+  {
+   "year": 2009,
+   "global_sales_busd": 226.3,
+   "sales_basis": "wsts",
+   "yoy_pct": -9.0,
+   "cycle": -2,
+   "memory": -1,
+   "logic_foundry": -1,
+   "equipment": -2,
+   "korea": -1,
+   "events_world": [
+    "1월 독일 키몬다 파산 신청, 치킨게임 첫 탈락자",
+    "1분기 바닥: TSMC 매출 전년 대비 -54.8%",
+    "6월 엘피다, 일본 정부 공적자금(정책은행 300억 엔 출자) 수혈",
+    "장비 시장 159억 달러(-46%) 집계 이래 최대 감소, 하반기 회복 시작"
+   ],
+   "events_korea": [
+    "1월 하이닉스 유상증자 흥행(경쟁률 16대 1)으로 생존 자금 확보",
+    "삼성전자 반도체 1분기까지 적자 후 회복",
+    "하이닉스 3분기 흑자전환, 연간 영업이익 1,920억 원",
+    "키몬다 퇴출로 한국 업체 D램 점유율 확대"
+   ],
+   "headline_ko": "키몬다 파산…버텨낸 한국 D램, 하반기 반격",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/author/sarahravi/page/50/",
+    "https://digitimes.com/news/a20100202PR200.html",
+    "https://infineon.com/cms/en/about-infineon/press/press-releases/2009/INFXX200901-028.html",
+    "https://www.theregister.co.uk/2009/01/23/qimonda_files_insolvency/",
+    "https://www.sec.gov/Archives/edgar/data/0001046179/000114554909000712/h03306e6vk.htm",
+    "https://www.industryweek.com/the-economy/article/21947715/elpida-receives-17-billion-rescue",
+    "https://www.digitimes.com/news/a20100311PR203.html",
+    "https://newstomato.com/ReadNews.aspx?no=37466",
+    "https://news.skhynix.co.kr/?p=10120"
+   ]
+  },
+  {
+   "year": 2010,
+   "global_sales_busd": 298.3,
+   "sales_basis": "wsts",
+   "yoy_pct": 31.8,
+   "cycle": 2,
+   "memory": 2,
+   "logic_foundry": 2,
+   "equipment": 2,
+   "korea": 2,
+   "events_world": [
+    "세계 반도체 매출 2,983억 달러 사상 최대(+31.8%), 전 품목 두 자릿수 성장",
+    "장비 시장 395억 달러(+148%) 기록적 반등",
+    "아이패드·아이폰4의 A4 칩을 삼성이 위탁생산, 모바일 AP·파운드리 부상",
+    "연말 DDR3 1Gb 가격 1달러 밑으로 하락"
+   ],
+   "events_korea": [
+    "삼성전자 반도체 11조 원 등 사상 최대 26조 원 투자 계획, 화성 16라인 착공",
+    "하이닉스 영업이익 3조2,730억 원 사상 최대(2·3분기 연속 1조 원대)",
+    "상반기 반도체 수출 241억 달러 사상 최대(+95.6%), 스마트폰 수요 견인"
+   ],
+   "headline_ko": "반도체 역대급 호황…삼성 사상 최대 투자, 하이닉스 3조 흑자",
+   "confidence": "high",
+   "sources": [
+    "https://semiconductors.org/global-semiconductor-sales-hit-record-298-3-billion-in-2010",
+    "https://www.tradearabia.com/news/IT_194849.html",
+    "https://www.koreatimes.co.kr/amp/business/tech-science/20100419/apple-moves-to-self-produce-key-chips",
+    "https://www.digitimes.com/tag/ddr3/011530.html",
+    "https://news.samsung.com/kr/삼성전자-2010년-사상-최대-26조원-투자-계획",
+    "https://news.skhynix.co.kr/?p=10120",
+    "https://www.etoday.co.kr/news/view/340855"
+   ]
+  },
+  {
+   "year": 2011,
+   "global_sales_busd": 299.5,
+   "sales_basis": "wsts",
+   "yoy_pct": 0.4,
+   "cycle": 0,
+   "memory": -1,
+   "logic_foundry": 0,
+   "equipment": 0,
+   "korea": 0,
+   "events_world": [
+    "3월 동일본 대지진, 웨이퍼 점유율 60%의 신에츠·SUMCO 공장 피해로 소재 공급 불안",
+    "10월 DDR3 2Gb 가격 1달러 붕괴, 엘피다 경영난 표면화",
+    "세계 반도체 매출 2,995억 달러로 사실상 정체(+0.4%)",
+    "장비 시장 435억 달러(+9%)"
+   ],
+   "events_korea": [
+    "국내 웨이퍼 수입의 일본산 비중 51%, 소재 조달 차질 우려",
+    "11월 SK텔레콤, 하이닉스 지분 21.1% 3조4,267억 원에 인수 계약",
+    "D램 값 약세 속에도 삼성·하이닉스는 흑자 유지하며 점유율 확대"
+   ],
+   "headline_ko": "일본 대지진·D램 1달러 붕괴…하이닉스 새 주인은 SK",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/semiconductor-industry-posts-record-breaking-revenues-despite-2011-challenges/",
+    "https://www.trendforce.com/presscenter/news/20110316-7254.html",
+    "https://www.inews24.com/view/561304",
+    "https://www.trendforce.com/presscenter/news/20111012-7382.html",
+    "https://dramexchange.com/WeeklyResearch/MarketView/104",
+    "https://sst.semiconductor-digest.com/?p=33815",
+    "https://www.mt.co.kr/tech/2011/11/14/2011111416545744429"
+   ]
+  },
+  {
+   "year": 2012,
+   "global_sales_busd": 291.6,
+   "sales_basis": "wsts",
+   "yoy_pct": -2.7,
+   "cycle": -1,
+   "memory": -1,
+   "logic_foundry": 0,
+   "equipment": -1,
+   "korea": 0,
+   "events_world": [
+    "2월 일본 엘피다 파산(부채 4,480억 엔), 7월 마이크론이 인수 합의",
+    "세계 반도체 매출 2,916억 달러(-2.7%), 로직은 817억 달러(+3.7%)로 성장",
+    "스마트폰 출하 약 7억 대(+43%), 모바일 D램·낸드 수요 주도",
+    "장비 시장 369억 달러(-15%)"
+   ],
+   "events_korea": [
+    "SK텔레콤 하이닉스 인수 완료, 3월 'SK하이닉스'로 사명 변경",
+    "SK하이닉스 연간 영업손실 2,273억 원, 하반기 회복세",
+    "9월 삼성전자 중국 시안 낸드 공장 기공(총 70억 달러)",
+    "치킨게임 종료, 한국 D램 양강 체제 굳어져"
+   ],
+   "headline_ko": "엘피다 파산…D램 치킨게임 '한국 완승'",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/semiconductor-industry-posts-near-record-sales-total-in-2012/",
+    "https://www.theregister.co.uk/2012/02/27/elpida_bankruptcy/",
+    "https://businesstech.co.za/news/hardware/16929/micron-forking-over-750m-for-elpida-memory/",
+    "https://www.industryweek.com/technology-and-iiot/digital-tools/article/21959355/smartphone-sales-exploded-in-2012",
+    "https://us.design-reuse.com/news/31643/2012-global-semiconductor-equipment-sales.html",
+    "https://www.khan.co.kr/article/201203132122405",
+    "https://economist.co.kr/2022/02/15/industry/normal/20220215100006023.html",
+    "https://news.samsung.com/kr/3229",
+    "https://www.hankyung.com/amp/2012021578841"
+   ]
+  },
+  {
+   "year": 2013,
+   "global_sales_busd": 305.6,
+   "sales_basis": "wsts",
+   "yoy_pct": 4.8,
+   "cycle": 0,
+   "memory": 1,
+   "logic_foundry": 0,
+   "equipment": -1,
+   "korea": 1,
+   "events_world": [
+    "세계 반도체 매출 3,056억 달러, 전년 대비 4.8% 증가하며 사상 최대",
+    "마이크론, 일본 엘피다 인수 완료 — D램 시장 3강 체제로 재편",
+    "어플라이드머티어리얼즈-도쿄일렉트론 합병 발표(9월)",
+    "반도체 장비 시장 약 316억 달러로 14% 감소"
+   ],
+   "events_korea": [
+    "SK하이닉스 중국 우시 D램 공장(C2 라인) 화재(9월 4일) — 공급 차질로 D램 가격 강세",
+    "삼성전자 3D V낸드 세계 최초 양산(8월)",
+    "SK하이닉스 연매출 14조원대로 사상 최대 실적"
+   ],
+   "headline_ko": "D램 3강 체제 굳어졌다…반도체 매출 3천억 달러 시대",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/global-semiconductor-industry-posts-record-sales-in-2014/",
+    "https://us.design-reuse.com/news/34140/2013-global-semiconductor-equipment-sales.html",
+    "https://www.mt.co.kr/stock/2013/09/05/2013090511394945454",
+    "https://www.ajunews.com/view/20140128114408690"
+   ]
+  },
+  {
+   "year": 2014,
+   "global_sales_busd": 335.8,
+   "sales_basis": "wsts",
+   "yoy_pct": 9.9,
+   "cycle": 1,
+   "memory": 1,
+   "logic_foundry": 0,
+   "equipment": 1,
+   "korea": 1,
+   "events_world": [
+    "세계 반도체 매출 3,358억 달러(+9.9%)로 사상 최대",
+    "메모리 매출 792억 달러(+18.2%)로 최고 성장 품목",
+    "중국, 국가 반도체 투자펀드(빅펀드) 출범(9월) — 반도체 굴기 시동",
+    "반도체 장비 시장 375억 달러로 18% 증가"
+   ],
+   "events_korea": [
+    "삼성전자, 평택에 15.6조원 반도체 라인 투자 발표(10월) — 단일 라인 사상 최대",
+    "D램 호황으로 국내 메모리 업계 실적 호조"
+   ],
+   "headline_ko": "메모리 훈풍…반도체 매출 사상 최대 경신",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/global-semiconductor-industry-posts-record-sales-in-2014/",
+    "https://us.design-reuse.com/news/36888/2014-semiconductor-capital-equipment-market-by-world-region.html",
+    "https://www.dailian.co.kr/news/view/461863/"
+   ]
+  },
+  {
+   "year": 2015,
+   "global_sales_busd": 335.2,
+   "sales_basis": "wsts",
+   "yoy_pct": -0.2,
+   "cycle": 0,
+   "memory": -1,
+   "logic_foundry": 0,
+   "equipment": 0,
+   "korea": 0,
+   "events_world": [
+    "세계 반도체 매출 3,352억 달러로 0.2% 소폭 감소",
+    "반도체 M&A 광풍: 아바고-브로드컴, NXP-프리스케일, 인텔-알테라 인수 발표",
+    "중국 칭화유니그룹, 마이크론 인수 타진했으나 불발",
+    "하반기 PC 수요 부진으로 D램 가격 하락",
+    "반도체 장비 시장 약 365억 달러로 소폭 감소"
+   ],
+   "events_korea": [
+    "삼성전자 평택 반도체단지 기공식(5월 7일)",
+    "SK하이닉스 이천 M14 공장 준공(8월), 중장기 대규모 투자 계획 발표",
+    "삼성전자 14나노 핀펫 양산, 스마트폰 AP 파운드리 수주"
+   ],
+   "headline_ko": "성장 멈춘 반도체…업계는 인수합병 광풍",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/global-semiconductor-sales-top-335-billion-in-2015/",
+    "https://sst.semiconductor-digest.com/?p=71729",
+    "https://www.dailian.co.kr/news/view/503848/"
+   ]
+  },
+  {
+   "year": 2016,
+   "global_sales_busd": 338.9,
+   "sales_basis": "wsts",
+   "yoy_pct": 1.1,
+   "cycle": 0,
+   "memory": 0,
+   "logic_foundry": 0,
+   "equipment": 1,
+   "korea": 0,
+   "events_world": [
+    "세계 반도체 매출 3,389억 달러(+1.1%) — 상반기 부진, 하반기 반등",
+    "소프트뱅크, 영국 ARM 인수 발표(7월)",
+    "퀄컴, NXP 인수 발표(10월)",
+    "중국 YMTC(창장메모리) 설립 — 메모리 국산화 본격 추진",
+    "3D 낸드 투자로 반도체 장비 시장 412억 달러(+13%)"
+   ],
+   "events_korea": [
+    "하반기부터 D램·낸드 가격 상승 반전 — 슈퍼사이클 전조",
+    "SK하이닉스 청주 신규 낸드 공장(M15) 건설 결정(12월)"
+   ],
+   "headline_ko": "바닥 찍은 메모리, 하반기 가격 반등 시작",
+   "confidence": "high",
+   "sources": [
+    "https://www.theedgemarkets.com/article/global-semicon-sales-11-y-o-y-us3389b-2016-says-sia",
+    "https://sst.semiconductor-digest.com/?p=71729"
+   ]
+  },
+  {
+   "year": 2017,
+   "global_sales_busd": 412.2,
+   "sales_basis": "wsts",
+   "yoy_pct": 21.6,
+   "cycle": 2,
+   "memory": 2,
+   "logic_foundry": 1,
+   "equipment": 2,
+   "korea": 2,
+   "events_world": [
+    "세계 반도체 매출 4,122억 달러(+21.6%), 처음으로 4천억 달러 돌파",
+    "메모리 매출 1,240억 달러(+61.5%) — D램 +76.8%, 낸드 +47.5%",
+    "메모리 제외 품목도 약 10% 성장",
+    "도시바 메모리 매각 — 베인캐피털 컨소시엄(SK하이닉스 참여) 선정",
+    "반도체 장비 시장 급성장"
+   ],
+   "events_korea": [
+    "삼성전자, 인텔 제치고 반도체 매출 세계 1위 등극(가트너 집계)",
+    "삼성 평택 1라인 가동 — 세계 최대 단일 반도체 라인",
+    "메모리 슈퍼사이클로 삼성·SK하이닉스 사상 최대 이익, 협력사·장비업체 동반 호황"
+   ],
+   "headline_ko": "반도체 슈퍼사이클 개막…삼성, 25년 만에 인텔 제치고 세계 1위",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/annual-semiconductor-sales-increase-21-6-percent-top-400-billion-for-first-time/",
+    "https://siliconangle.com/blog/2018/01/04/gartner-samsung-overtakes-intel-worlds-top-semiconductor-maker/",
+    "https://www.koreatimes.co.kr/business/tech-science/20180105/samsung-beats-intel-to-become-top-chipmaker"
+   ]
+  },
+  {
+   "year": 2018,
+   "global_sales_busd": 468.8,
+   "sales_basis": "wsts",
+   "yoy_pct": 13.7,
+   "cycle": 1,
+   "memory": 2,
+   "logic_foundry": 0,
+   "equipment": 1,
+   "korea": 2,
+   "events_world": [
+    "세계 반도체 매출 4,688억 달러(+13.7%) 사상 최대, 연간 출하량 첫 1조 개 돌파",
+    "메모리 매출 1,580억 달러(+27.4%)로 최대·최고 성장 품목",
+    "4분기 매출 전분기 대비 8.2% 감소 — 메모리 가격 하락 전환",
+    "미·중 무역분쟁 격화, 중국 푸젠진화 미국 수출제한 대상 지정"
+   ],
+   "events_korea": [
+    "반도체 단일 품목 연간 수출 첫 1,000억 달러 돌파(연 1,267억 달러, 사상 최대)",
+    "삼성·SK하이닉스 사상 최대 영업이익",
+    "SK하이닉스 청주 M15 공장 준공(10월)",
+    "연말 D램 가격 하락세에 '반도체 고점론' 확산"
+   ],
+   "headline_ko": "반도체 수출 1천억 달러 돌파…연말엔 '고점' 경고등",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/global-semiconductor-sales-increase-13-7-percent-to-468-8-billion-in-2018/",
+    "https://www.investkorea.org/file/ik-kr/Semiconductor&Display_2020_kor.pdf"
+   ]
+  },
+  {
+   "year": 2019,
+   "global_sales_busd": 412.1,
+   "sales_basis": "wsts",
+   "yoy_pct": -12.1,
+   "cycle": -1,
+   "memory": -2,
+   "logic_foundry": 0,
+   "equipment": -1,
+   "korea": -1,
+   "events_world": [
+    "세계 반도체 매출 4,121억 달러(-12.1%)",
+    "메모리 매출 1,064억 달러로 급감(전년 1,580억 달러 대비 약 -33%)",
+    "미국, 화웨이 거래제한 명단 등재(5월) — 미·중 기술패권 경쟁 본격화",
+    "반도체 장비 시장 감소"
+   ],
+   "events_korea": [
+    "일본, 고순도 불화수소·포토레지스트·플루오린 폴리이미드 대한 수출규제 시행(7월 4일)",
+    "일본, 한국을 화이트리스트(백색국가)에서 제외(8월 28일)",
+    "정부 '소재·부품·장비(소부장)' 국산화 대책 추진, 국산 불화수소 등 대체 가속",
+    "반도체 수출 939억 달러로 약 26% 감소",
+    "삼성전자 '시스템반도체 비전 2030'(133조원 투자) 발표(4월)",
+    "SK하이닉스 용인 반도체 클러스터 부지 확정"
+   ],
+   "headline_ko": "日 소재 수출규제 직격탄…메모리 불황에 반도체 수출 26% 급감",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/worldwide-semiconductor-sales-decrease-12-percent-to-412-billion-in-2019/",
+    "https://www.etoday.co.kr/news/view/1772146",
+    "https://kidd.co.kr/news/212559",
+    "https://www.hankyung.com/amp/201909087703Y",
+    "https://assets.kpmg.com/content/dam/kpmg/kr/pdf/2023/business-focus/kpmg-korea-semiconductor-20231109.pdf"
+   ]
+  },
+  {
+   "year": 2020,
+   "global_sales_busd": 440.4,
+   "sales_basis": "wsts",
+   "yoy_pct": 6.8,
+   "cycle": 0,
+   "memory": 0,
+   "logic_foundry": 1,
+   "equipment": 1,
+   "korea": 0,
+   "events_world": [
+    "세계 반도체 매출 4,404억 달러(+6.8%, 수정치) — 코로나19 속에서도 성장",
+    "재택근무·원격수업으로 PC·서버 반도체 수요 급증",
+    "미국, 화웨이 제재 강화 및 중국 SMIC 수출통제 명단 등재(12월)",
+    "엔비디아 ARM 인수 발표(9월), AMD 자일링스 인수 발표(10월)",
+    "연말부터 차량용 반도체 공급 부족 시작"
+   ],
+   "events_korea": [
+    "SK하이닉스, 인텔 낸드 사업 90억 달러에 인수 발표(10월)",
+    "이건희 삼성 회장 별세(10월)",
+    "반도체 수출 992억 달러(+5.6%)"
+   ],
+   "headline_ko": "팬데믹에도 반도체는 웃었다…비대면 특수",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/global-semiconductor-sales-increase-6-5-to-439-billion-in-2020/",
+    "https://assets.kpmg.com/content/dam/kpmg/kr/pdf/2023/business-focus/kpmg-korea-semiconductor-20231109.pdf"
+   ]
+  },
+  {
+   "year": 2021,
+   "global_sales_busd": 555.9,
+   "sales_basis": "wsts",
+   "yoy_pct": 26.2,
+   "cycle": 2,
+   "memory": 1,
+   "logic_foundry": 2,
+   "equipment": 2,
+   "korea": 1,
+   "events_world": [
+    "세계 반도체 매출 5,559억 달러(+26.2%), 처음으로 5천억 달러 돌파·출하량 1.15조 개",
+    "차량용 반도체 대란 — 세계 완성차 공장 감산 속출",
+    "인텔 'IDM 2.0' 선언, 파운드리 사업 재진출(3월)",
+    "TSMC 등 파운드리 증설 경쟁, 반도체 장비 시장 사상 최대"
+   ],
+   "events_korea": [
+    "정부 'K-반도체 전략' 발표(5월) — 10년간 510조원 이상 민간 투자, K-반도체 벨트 조성",
+    "삼성전자, 시스템반도체 투자 계획 133조→171조원 확대",
+    "삼성전자, 미국 텍사스 테일러에 파운드리 공장 건설 결정(11월)",
+    "반도체 수출 약 1,280억 달러로 당시 사상 최대"
+   ],
+   "headline_ko": "반도체 품귀 대란…자동차 공장이 멈췄다",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/global-semiconductor-sales-units-shipped-reach-all-time-highs-in-2021-as-industry-ramps-up-production-amid-shortage",
+    "https://www.cnbc.com/2022/02/15/global-chip-sales-in-2021-top-half-a-trillion-dollars-for-first-time.html",
+    "https://newstomato.com/ReadNews.aspx?no=1044367"
+   ]
+  },
+  {
+   "year": 2022,
+   "global_sales_busd": 574.1,
+   "sales_basis": "wsts",
+   "yoy_pct": 3.3,
+   "cycle": 0,
+   "memory": -1,
+   "logic_foundry": 1,
+   "equipment": 1,
+   "korea": 0,
+   "events_world": [
+    "세계 반도체 매출 5,741억 달러(+3.3%) — 상반기 호조, 하반기 급랭",
+    "미국 반도체지원법(CHIPS and Science Act) 서명(8월 9일) — 반도체 지원 527억 달러",
+    "미국, 대중국 첨단 반도체·장비 수출통제 발표(10월 7일)",
+    "러시아-우크라이나 전쟁으로 네온 등 특수가스 공급 우려",
+    "하반기 메모리 재고 급증·가격 폭락"
+   ],
+   "events_korea": [
+    "삼성전자, 세계 최초 3나노 GAA 공정 양산(6월)",
+    "반도체 수출 1,292억 달러로 당시 사상 최대(상반기 견인)",
+    "SK하이닉스 4분기 영업적자 전환 — 메모리 한파 시작",
+    "삼성·SK 중국 공장, 미국 수출통제 1년 유예 획득"
+   ],
+   "headline_ko": "美 칩스법·대중 수출통제…하반기 메모리 한파 시작",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/global-semiconductor-sales-increase-3-2-in-2022-despite-second-half-slowdown/",
+    "https://www.etoday.co.kr/news/view/2433958"
+   ]
+  },
+  {
+   "year": 2023,
+   "global_sales_busd": 526.8,
+   "sales_basis": "wsts",
+   "yoy_pct": -8.2,
+   "cycle": -1,
+   "memory": -2,
+   "logic_foundry": -1,
+   "equipment": 0,
+   "korea": -2,
+   "events_world": [
+    "세계 반도체 매출 5,268억 달러(-8.2%), 연말부터 반등",
+    "챗GPT발 생성형 AI 열풍 — 엔비디아 시가총액 1조 달러 돌파(5월)",
+    "AI 가속기·HBM 수요 급증, 범용 메모리는 재고 조정",
+    "미국, 대중국 반도체 수출통제 추가 강화(10월)"
+   ],
+   "events_korea": [
+    "메모리 불황으로 삼성 DS부문 연간 약 15조원, SK하이닉스 약 7.7조원 영업손실",
+    "삼성전자 메모리 감산 공식화(4월) — 업계 동반 감산",
+    "용인 시스템반도체 국가산단 후보지 선정(3월) — 삼성 300조원 투자 구상",
+    "K칩스법 국회 통과(3월 30일) — 대기업 설비투자 세액공제 8%→15%",
+    "반도체 수출 약 986억 달러로 급감",
+    "일본 수출규제 해제·화이트리스트 복원, 미국은 삼성·SK 중국 공장 VEU 지정(10월)"
+   ],
+   "headline_ko": "반도체 적자 쇼크…감산 돌입 속 AI가 구원투수로",
+   "confidence": "high",
+   "sources": [
+    "https://www.semiconductors.org/global-semiconductor-sales-decrease-8-2-in-2023-market-rebounds-late-in-year/",
+    "https://www.hankyung.com/amp/2024052136121",
+    "https://news.skhynix.co.kr/business-results-2024/",
+    "https://www.etoday.co.kr/news/view/2235896",
+    "https://www.dailian.co.kr/news/view/1445325/"
+   ]
+  },
+  {
+   "year": 2024,
+   "global_sales_busd": 630.5,
+   "sales_basis": "wsts",
+   "yoy_pct": 19.7,
+   "cycle": 1,
+   "memory": 1,
+   "logic_foundry": 1,
+   "equipment": 1,
+   "korea": 1,
+   "events_world": [
+    "세계 반도체 매출 6,305억 달러(최초 발표 6,276억 달러, +19.1%) — 처음으로 6천억 달러 돌파",
+    "로직 2,126억 달러·메모리 1,651억 달러, AI 서버 붐이 성장 주도",
+    "엔비디아 시가총액 세계 1위 등극(6월)",
+    "미국 칩스법 보조금 잇따라 확정, 인텔은 대규모 적자·CEO 퇴진(12월)",
+    "미국, 대중국 HBM 수출통제 발표(12월)",
+    "반도체 장비 매출 1,171억 달러로 사상 최대"
+   ],
+   "events_korea": [
+    "SK하이닉스, HBM 독주로 연 영업이익 23.5조원 사상 최대",
+    "삼성전자 HBM 공급 지연 — 3분기 '어닝쇼크'에 반도체 수장 이례적 사과문(10월)",
+    "반도체 수출 1,419억 달러(+43.9%) 사상 최대",
+    "용인 반도체 국가산단 산업단지계획 승인(12월)",
+    "반도체특별법 발의(11월) — 연구인력 주52시간 예외 논쟁"
+   ],
+   "headline_ko": "HBM이 판을 갈랐다…AI 붐에 반도체 매출 6천억 달러 돌파",
+   "confidence": "high",
+   "sources": [
+    "https://semiconductors.org/global-semiconductor-sales-increase-19-1-in-2024-double-digit-growth-projected-in-2025",
+    "https://news.skhynix.co.kr/business-results-2024/",
+    "https://m.seoul.co.kr/news/2024/10/09/20241009001005",
+    "https://www.etoday.co.kr/news/view/2433958",
+    "https://www.semi.org/en/SEMI-Reports-Global-Semiconductor-Equipment-Billings-Reached-135-Billion-in-2025",
+    "https://www.kukinews.com/article/view/kuk202412260096"
+   ]
+  },
+  {
+   "year": 2025,
+   "global_sales_busd": 791.7,
+   "sales_basis": "wsts",
+   "yoy_pct": 25.6,
+   "cycle": 2,
+   "memory": 2,
+   "logic_foundry": 2,
+   "equipment": 1,
+   "korea": 2,
+   "events_world": [
+    "세계 반도체 매출 7,917억 달러(+25.6%) 사상 최대, 4분기 매출 전년 대비 37.1% 급증",
+    "로직 3,019억 달러·메모리 2,231억 달러 — AI 데이터센터 투자 폭증",
+    "하반기 D램·낸드 계약가격 급등 — '메모리 슈퍼사이클' 진입",
+    "미국 정부 인텔 지분 약 10% 확보(8월), 엔비디아 인텔에 50억 달러 투자(9월)",
+    "미국, 삼성·SK하이닉스·TSMC 중국 공장 VEU 철회 발표(8월, 연말 발효)",
+    "반도체 장비 매출 1,351억 달러(+15%) 사상 최대"
+   ],
+   "events_korea": [
+    "반도체 수출 1,734억 달러(+22.2%) 사상 최대 — 연간 수출 7천억 달러 돌파 견인",
+    "SK하이닉스 연 영업이익 47.2조원, 처음으로 삼성전자 전사 영업이익 추월",
+    "SK하이닉스 용인 클러스터 1기 팹 착공(2월)",
+    "삼성전자, 테슬라와 22.8조원(165억 달러) 규모 파운드리 계약(7월, 테일러 공장)",
+    "삼성·SK, 오픈AI 스타게이트 메모리 공급 협력 의향서 체결(10월)",
+    "엔비디아, 한국 정부·기업에 GPU 26만 장 공급 발표(APEC, 10월)",
+    "연말 용인 클러스터 '지방 이전론' 논란"
+   ],
+   "headline_ko": "AI가 밀어올린 메모리 슈퍼사이클…반도체 수출 사상 최대",
+   "confidence": "high",
+   "sources": [
+    "https://www.tomshardware.com/tech-industry/semiconductors/semiconductor-industry-on-track-to-hit-usd1-trillion-in-sales-in-2026-sia-predicts-bumper-forecast-follows-usd791-7-billion-haul-for-2025",
+    "https://atreg.com/global-2025-semiconductor-sales-rise-by-25-6-percent-to-791-7-billion/",
+    "https://www.eusemiconductors.eu/sites/default/files/ESIA_WSTS_PR_AuFc2025.pdf",
+    "https://www.trendforce.com/news/2025/11/03/news-dram-quotes-reportedly-shift-to-monthly-as-samsung-largely-halts-contracts/",
+    "https://www.afslaw.com/perspectives/alerts/bis-revokes-veu-authorizations-foreign-owned-chip-factories-china",
+    "https://www.semi.org/en/SEMI-Reports-Global-Semiconductor-Equipment-Billings-Reached-135-Billion-in-2025",
+    "https://www.mt.co.kr/economy/2026/01/01/2026010109121092166",
+    "https://www.korea.kr/news/policyNewsView.do?newsId=148957440",
+    "https://www.heraldk.com/article/2026012800224312362",
+    "https://www.koreatimes.co.kr/business/companies/20250225/sk-hynix-begins-construction-of-first-fab-in-yongin-semiconductor-cluster",
+    "https://www.koreatimes.co.kr/business/tech-science/20250728/samsung-foundry-wins-165-bil-chip-order-from-tesla",
+    "https://m.seoul.co.kr/news/2025/10/02/20251002001007",
+    "https://www.inews24.com/view/1901966",
+    "https://m.ceoscoredaily.com/page/view/2026011316222591684"
+   ]
+  },
+  {
+   "year": 2026,
+   "global_sales_busd": 1655.0,
+   "sales_basis": "wsts",
+   "yoy_pct": 108.1,
+   "cycle": 2,
+   "memory": 2,
+   "logic_foundry": 2,
+   "equipment": 1,
+   "korea": 2,
+   "events_world": [
+    "WSTS, 2026년 시장 전망 1조 6,550억 달러(+약 108%)로 상향(8월) — 메모리 약 302% 성장 예상",
+    "SIA: 1~8월 누적 매출 1조 달러 돌파, 8월 매출 1,597억 달러(전년 동월 대비 +144%)",
+    "가트너, 2026년 1.6조 달러 전망 — 메모리 비중 54%로 절반 넘어",
+    "D램·낸드 계약가격 분기마다 두 자릿수 상승, PC·스마트폰 업계는 가격 부담",
+    "미국, 일부 첨단 반도체에 25% 관세(무역확장법 232조) 부과(1월)",
+    "WSTS, 2027년 시장 약 2.1조 달러 전망"
+   ],
+   "events_korea": [
+    "반도체특별법 국회 통과(1월 29일) — 클러스터 기반시설 지원·특별회계, 주52시간 예외는 제외",
+    "SK하이닉스 미국 나스닥 ADR 상장(7월) — 외국 기업 미국 최대 규모 IPO",
+    "SK하이닉스 2분기 영업이익 60.5조원(이익률 76%) 사상 최대",
+    "삼성전자 3분기 잠정 영업이익 107.4조원 — 분기 영업이익 100조원 시대",
+    "9월 반도체 수출 603억 달러(+262.8%) 월간 사상 최대",
+    "삼성 용인 국가산단 부지 조성공사 착공(10월), 지방 이전 논란은 '계획대로 추진'으로 일단락"
+   ],
+   "headline_ko": "(전망) 반도체 시장 1조 6천억 달러 시대…메모리값 폭등에 분기 이익 100조",
+   "confidence": "medium",
+   "sources": [
+    "https://www.wsts.org/esraCMS/extension/media/f/WST/7618/WSTS_FC-Release-2026-May.pdf",
+    "https://www.wsts.org/esraCMS/extension/esrapdf/generate/13777",
+    "https://x.com/dnystedt/status/2086594694964998458",
+    "https://www.digitimes.com/news/a20260605VL208/semiconductor-industry-wsts-growth-forecast-2026.html",
+    "https://www.semiconductors.org/year-to-date-global-semiconductor-sales-top-1-trillion-through-august/",
+    "https://www.gartner.com/en/newsroom/press-releases/2026-08-24-gartner-forecasts-worldwide-semiconductor-revenue-to-reach-1-trillion-dollars-in-2026",
+    "https://www.trendforce.com/presscenter/news/20260703-13134.html",
+    "https://www.globalpolicywatch.com/2026/02/a-month-in-semiconductor-policy-section-232-measures-bis-rule-and-taiwan-deal-signal-strategic-push/",
+    "https://www.inews24.com/view/1933576",
+    "https://www.cnbc.com/2026/06/24/sk-hynix-nasdaq-adr-listing-south-korea.html",
+    "https://v.daum.net/v/yzyeUmDgkJ?f=p",
+    "https://news.skhynix.co.kr/q2-2026-business-results/",
+    "https://news.samsungsemiconductor.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-2026%EB%85%84-3%EB%B6%84%EA%B8%B0-%EC%9E%A0%EC%A0%95%EC%8B%A4%EC%A0%81-%EB%B0%9C%ED%91%9C/",
+    "https://www.mt.co.kr/economy/2026/10/01/2026100109004992929",
+    "https://www.viva100.com/article/20261005500410",
+    "https://www.kyeongin.com/article/1766111"
+   ]
+  }
+ ]
+}

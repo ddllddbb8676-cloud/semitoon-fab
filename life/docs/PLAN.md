@@ -30,7 +30,7 @@
 - [x] 회사·직업·캐릭터 데이터 초안
 - [x] 이벤트 형식 `EVENTS.md`
 - [x] 공통 규격 `SPEC.md`
-- [ ] 시황 조사 (4개 시대 중 1개 완료)
+- [x] 시황 조사 `market_history.json`, `MARKET_HISTORY.md`
 - [ ] 시스템 설계 `SYSTEMS.md`
 - [ ] 경제 설계 `ECONOMY.md` + `economy_history.json`
 - [ ] 이벤트 1차

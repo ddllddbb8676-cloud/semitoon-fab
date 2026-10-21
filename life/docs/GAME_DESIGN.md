@@ -10,7 +10,7 @@
 | `life/data/companies.json` | 가상 회사 10개 분야 39곳 |
 | `life/data/jobs.json` | 직종 40개, 학력·고용형태 |
 | `life/data/character.json` | 캐릭터 만들기 표 (능력치, 숨은 재능, 출생 지역, 시대별 부모 직업, 가정환경) |
-| `life/data/market_history.json` | 연도별 실제 반도체 시황 (조사 중) |
+| `life/data/market_history.json` | 연도별 실제 반도체 시황 1947~2026 (읽기용 표: `MARKET_HISTORY.md`) |
 
 ## 컨셉
 - 랜덤으로 태어나 1살부터 선택을 이어 가며 한 사람의 삶을 사는 인생 시뮬레이션 (BitLife류).
