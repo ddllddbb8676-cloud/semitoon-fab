@@ -1,0 +1,1143 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>버스 잼 프로토타입</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap">
+<style>
+/* 장난감 같은 밝은 한 가지 세계로 고정 (라이트/다크 전환 없음)
+   레이아웃: 위 광장과 갈고리 도로(승객 행렬) → 주차칸 → 주차장 → 부스터 바 */
+:root {
+  color-scheme: light;
+  --bg: #d9e2ec;
+  --plaza: #e9eef4;
+  --ink: #1f2a37;
+  --muted: #6b7686;
+  --asphalt: #4b5461;
+  --asphalt-hi: #59616e;
+  --line: #7a8392;
+  --slotbar: #7d8797;
+  --slot-empty: #66707f;
+  --vip: #f4b62a;
+  --vip-ink: #6b4500;
+  --panel: #ffffff;
+  --accent: #2f7cf6;
+  --good: #20b26b;
+  --bad: #e5484d;
+  --c0: #f04848; --c1: #3d86f5; --c2: #f7cb1f; --c3: #2cc45f; --c4: #a95af2; --c5: #26d0ee;
+  --l0: #ff8a8a; --l1: #8ab8ff; --l2: #ffe67a; --l3: #7ee39e; --l4: #cfa1ff; --l5: #8eeaf9;
+  --d0: #b42323; --d1: #1f55b8; --d2: #b78a00; --d3: #17883c; --d4: #6f2db5; --d5: #0e8aa3;
+  --font-game: 'Jua', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --font-ui: -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-ui); font-size: 14px;
+  -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none;
+  overscroll-behavior: none;
+}
+button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; padding: 0; }
+button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+#stage {
+  position: relative; max-width: 440px; margin: 0 auto; min-height: 100%;
+  display: flex; flex-direction: column; gap: 8px;
+  padding-block: 8px 12px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* 상단 바 */
+.top { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; }
+.round {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: linear-gradient(#4a92ff, #2468e0); color: #fff; box-shadow: 0 3px 0 #1a4fb0, inset 0 2px 0 rgba(255,255,255,.35);
+}
+.round:active { translate: 0 2px; box-shadow: 0 1px 0 #1a4fb0; }
+.round svg { width: 22px; height: 22px; }
+.title { text-align: center; font-family: var(--font-game); line-height: 1; }
+.title .lv { font-size: 26px; color: #fff; -webkit-text-stroke: 1px #3a4a60; text-shadow: 0 2px 0 #3a4a60; }
+.title .tag { display: block; font-size: 15px; color: var(--bad); letter-spacing: .04em; min-height: 16px; text-shadow: 0 1px 0 #fff; }
+.wallet { display: flex; gap: 6px; font-family: var(--font-game); font-size: 15px; }
+.chip { display: flex; align-items: center; gap: 4px; padding: 4px 9px; border-radius: 999px; background: var(--panel); font-variant-numeric: tabular-nums; box-shadow: 0 2px 0 rgba(0,0,0,.08); }
+.chip .heart { color: var(--bad); }
+.chip .coin { width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ffe680, #f2b400); box-shadow: inset 0 -1px 0 #b98600; }
+
+/* 광장 + 도로 (캔버스) */
+.plaza { position: relative; height: 170px; border-radius: 18px; overflow: hidden; background: var(--plaza); box-shadow: inset 0 0 0 2px #cdd6e1; }
+#crowd { position: absolute; inset: 0; width: 100%; height: 100%; }
+.plaza .left { position: absolute; right: 12px; bottom: 8px; font-family: var(--font-game); font-size: 13px; color: var(--muted); }
+
+/* 주차칸 */
+.slots { display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; padding: 7px; border-radius: 16px; background: var(--slotbar); box-shadow: inset 0 3px 0 rgba(0,0,0,.12); }
+.slot { aspect-ratio: 5 / 8; border-radius: 9px; background: var(--slot-empty); display: grid; place-items: center; box-shadow: inset 0 2px 0 rgba(0,0,0,.15); }
+.slot.vip { background: linear-gradient(#ffd25a, #eaa50f); color: var(--vip-ink); font-family: var(--font-game); font-size: 13px; }
+.slot.vip span { rotate: -90deg; }
+.slot.locked { background: transparent; box-shadow: none; border: 2px dashed #b5bfcc; color: #e8edf3; font-size: 22px; font-family: var(--font-game); }
+.slot.locked:active { scale: .95; }
+
+/* 주차장 */
+.lot { position: relative; border-radius: 18px; background: var(--asphalt); padding: 6px; box-shadow: inset 0 0 0 3px #3d4552, 0 4px 0 #a9b4c2; }
+.grid {
+  position: relative; width: 100%; aspect-ratio: 8 / 9; border-radius: 10px;
+  background-color: var(--asphalt-hi);
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: calc(100% / 8) calc(100% / 9);
+}
+
+/* ---------- 차 ----------
+   바깥(.veh)은 무대 좌표 상자, 안쪽(.car)은 '오른쪽을 보는' 차 그림을 --a 각도로 돌립니다. */
+.veh {
+  position: absolute; left: 0; top: 0; z-index: 3;
+  transition: transform .26s ease-in, width .32s ease, height .32s ease, opacity .3s;
+}
+.veh .car {
+  position: absolute; left: 50%; top: 50%;
+  width: var(--L); height: var(--S);
+  transform: translate(-50%, -50%) rotate(var(--a));
+  transition: transform .32s ease, width .32s ease, height .32s ease;
+}
+.car > i { position: absolute; display: block; }
+.car .shadow { inset: 3px -2px -4px 2px; border-radius: 10px; background: rgba(0,0,0,.28); filter: blur(1px); }
+.car .wheel { width: 18%; max-width: 12px; height: 4px; border-radius: 2px; background: #1b1f26; }
+.car .w1 { left: 14%; top: -2px; } .car .w2 { right: 14%; top: -2px; }
+.car .w3 { left: 14%; bottom: -2px; } .car .w4 { right: 14%; bottom: -2px; }
+.car .body {
+  inset: 0; border-radius: 9px;
+  background: linear-gradient(var(--hi) 0%, var(--col) 38%, var(--col) 70%, var(--dk) 100%);
+  box-shadow: inset 0 0 0 1.5px var(--dk), inset 0 2px 0 rgba(255,255,255,.35);
+}
+.car .roof {
+  top: 17%; bottom: 17%; left: 24%; right: 22%; border-radius: 7px;
+  background: linear-gradient(var(--hi), var(--col));
+  box-shadow: inset 0 0 0 1.5px var(--dk);
+}
+.car .glass { top: 20%; bottom: 20%; border-radius: 4px; background: linear-gradient(90deg, #cfeaff, #7fb8e8); box-shadow: inset 0 0 0 1px rgba(20,40,70,.35); }
+.car .front { right: 9%; width: 13%; }
+.car .back { left: 10%; width: 8%; opacity: .85; }
+.veh[data-size="van"] .roof { left: 14%; right: 24%; }
+.veh[data-size="van"] .front { right: 9%; width: 11%; }
+.veh[data-size="bus"] .body { border-radius: 8px; }
+.veh[data-size="bus"] .roof { left: 5%; right: 13%; top: 14%; bottom: 14%; border-radius: 5px;
+  background: repeating-linear-gradient(90deg, var(--hi) 0 14%, var(--col) 14% 17%); }
+.veh[data-size="bus"] .front { right: 3%; width: 8%; }
+.veh[data-size="bus"] .back { display: none; }
+.veh[data-size="bus"] .wheel { width: 9%; }
+.car .arrow { position: absolute; left: 50%; top: 50%; width: 18px; height: 18px; translate: -50% -50%; color: #fff; filter: drop-shadow(0 1px 0 rgba(0,0,0,.45)); }
+.veh .q { position: absolute; inset: 0; display: none; place-items: center; font-family: var(--font-game); font-size: 22px; color: #e8ebf0; text-shadow: 0 2px 0 #000; }
+.veh.mystery { --col: #2f343d; --hi: #4b525e; --dk: #15181d; }
+.veh.mystery .q { display: grid; }
+.veh.mystery .arrow { opacity: .45; }
+.veh .seats { position: absolute; left: 50%; bottom: 4px; translate: -50% 0; display: none; padding: 1px 5px; border-radius: 8px; background: rgba(0,0,0,.45); font-family: var(--font-game); font-size: 11px; color: #fff; white-space: nowrap; }
+.veh.parked .seats { display: block; }
+.veh.parked .arrow { display: none; }
+.veh.flying { z-index: 6; }
+.veh.bump .car { animation: bump .28s ease-out; }
+.veh.blocker .car { animation: flash .5s ease-out; }
+.veh.full .car { animation: pulse .25s ease-out; }
+.veh.depart { opacity: 0; }
+.veh.hint .car { animation: hint 1s ease-in-out infinite; }
+.veh.pickable .body { box-shadow: inset 0 0 0 3px var(--vip); }
+@keyframes bump { 40% { translate: var(--bx) 0; } }
+@keyframes flash { 30% { filter: brightness(1.7); } }
+@keyframes pulse { 50% { scale: 1.12; } }
+@keyframes hint { 50% { filter: brightness(1.3); scale: 1.06; } }
+
+/* 차단기 */
+.barrier { position: absolute; left: 0; top: 0; z-index: 2; display: grid; place-items: center; transition: opacity .35s, transform .35s; }
+.barrier .bar { width: 86%; height: 30%; border-radius: 4px; background: repeating-linear-gradient(45deg, #e5484d 0 7px, #fff 7px 14px); box-shadow: 0 2px 0 rgba(0,0,0,.35); }
+.barrier .n { position: absolute; top: 4%; right: 4%; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px; background: #fff; color: #c2272c; font-family: var(--font-game); font-size: 12px; line-height: 18px; text-align: center; box-shadow: 0 1px 0 rgba(0,0,0,.3); }
+.barrier.open { opacity: 0; }
+.barrier.ping { animation: flash .5s ease-out; }
+
+/* 탑승하러 걸어가는 손님 */
+.walker { position: absolute; left: 0; top: 0; z-index: 7; width: 14px; height: 18px; pointer-events: none; transition: transform .28s ease-in, opacity .2s .26s; }
+.walker::before { content: ''; position: absolute; left: 2px; right: 2px; bottom: 0; height: 11px; border-radius: 6px 6px 4px 4px; background: linear-gradient(var(--hi), var(--col)); box-shadow: inset 0 -2px 0 var(--dk); }
+.walker::after { content: ''; position: absolute; left: 3px; top: 0; width: 8px; height: 8px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, var(--hi), var(--col)); }
+.walker.in { opacity: 0; }
+
+/* 부스터 */
+.boosters { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 4px 6px 0; }
+.boost {
+  position: relative; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 50% 30%, #5d9bff, #2c63d6); color: #fff; display: grid; place-items: center;
+  box-shadow: 0 4px 0 #1d469e, inset 0 -3px 0 rgba(0,0,0,.15), inset 0 2px 0 rgba(255,255,255,.3);
+}
+.boost:active { translate: 0 2px; box-shadow: 0 2px 0 #1d469e; }
+.boost svg { width: 46%; height: 46%; filter: drop-shadow(0 2px 0 rgba(0,0,0,.25)); }
+.boost .count {
+  position: absolute; top: -4px; right: -4px; min-width: 26px; height: 26px; padding: 0 6px;
+  border-radius: 13px; background: #25b34f; border: 2px solid #fff; color: #fff;
+  font-family: var(--font-game); font-size: 15px; line-height: 22px; text-align: center;
+}
+.boost.shop { background: radial-gradient(circle at 50% 30%, #ffd75a, #f0a800); color: #7a4b00; box-shadow: 0 4px 0 #b37b00, inset 0 2px 0 rgba(255,255,255,.4); }
+.boost.active { background: radial-gradient(circle at 50% 30%, #ffd75a, #f0a800); box-shadow: 0 4px 0 #b37b00; }
+.boost[data-empty="true"] .count { background: var(--muted); }
+.boost-label { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center; font-size: 11px; color: var(--muted); margin-top: -2px; padding: 0 6px; }
+
+/* 안내 */
+.tip { position: absolute; left: 50%; translate: -50% 0; z-index: 8; padding: 6px 12px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 13px; white-space: nowrap; pointer-events: none; }
+.toast {
+  position: fixed; left: 50%; top: calc(64px + env(safe-area-inset-top, 0px)); translate: -50% 0; z-index: 30;
+  max-width: calc(100% - 32px); white-space: nowrap;
+  padding: 8px 16px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 14px;
+  animation: drop .2s ease-out, fade .3s 2s forwards;
+}
+@keyframes drop { from { opacity: 0; transform: translateY(-8px); } }
+@keyframes fade { to { opacity: 0; } }
+
+/* 시트 */
+.sheet-wrap {
+  position: fixed; inset: 0; z-index: 20; display: grid; align-items: end;
+  background: rgba(20, 28, 40, .45);
+  padding: 0 max(12px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+}
+.sheet { width: min(420px, 100%); margin: 0 auto; padding: 20px 18px 16px; border-radius: 22px; background: var(--panel); text-align: center; animation: rise .22s ease-out; }
+@keyframes rise { from { transform: translateY(30px); opacity: 0; } }
+.sheet h2 { margin: 0 0 6px; font-family: var(--font-game); font-weight: 400; font-size: 26px; }
+.sheet p { margin: 0 0 14px; color: var(--muted); line-height: 1.5; }
+.sheet .btns { display: flex; flex-direction: column; gap: 8px; }
+.btn { padding: 13px; border-radius: 14px; font-family: var(--font-game); font-size: 17px; background: #eef2f7; }
+.btn.primary { background: var(--good); color: #fff; box-shadow: 0 3px 0 #13804b; }
+.btn.gold { background: var(--vip); color: var(--vip-ink); box-shadow: 0 3px 0 #b88200; }
+.btn small { display: block; font-family: var(--font-ui); font-size: 12px; opacity: .8; }
+.btn:disabled { opacity: .45; }
+.levels { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 12px; }
+.levels button { aspect-ratio: 1; border-radius: 12px; background: #eef2f7; font-family: var(--font-game); font-size: 20px; }
+.levels button[data-state="cleared"] { background: var(--good); color: #fff; }
+.levels button[data-state="open"] { background: var(--accent); color: #fff; }
+.levels button:disabled { opacity: .35; }
+.confetti { position: fixed; z-index: 25; width: 8px; height: 12px; top: -12px; border-radius: 2px; animation: fall 1.4s ease-in forwards; pointer-events: none; }
+@keyframes fall { to { transform: translateY(105vh) rotate(540deg); } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+</style>
+</head>
+<body>
+
+
+<div id="stage">
+  <div class="top">
+    <button id="btn-restart" class="round" type="button" aria-label="다시 시작">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg>
+    </button>
+    <button id="btn-levels" class="title" type="button" aria-label="레벨 고르기">
+      <span class="tag" id="tag"></span>
+      <span class="lv" id="lv-title">레벨 1</span>
+    </button>
+    <div class="wallet">
+      <span class="chip" title="하트"><span class="heart">❤</span><span id="hearts">5</span></span>
+      <span class="chip" title="코인"><span class="coin"></span><span id="coins">0</span></span>
+    </div>
+  </div>
+
+  <div class="plaza" id="plaza"><canvas id="crowd"></canvas><span class="left" id="pax-left"></span></div>
+
+  <div class="slots" id="slots">
+    <div class="slot vip" data-slot="0"><span>VIP</span></div>
+    <div class="slot" data-slot="1"></div>
+    <div class="slot" data-slot="2"></div>
+    <div class="slot" data-slot="3"></div>
+    <div class="slot" data-slot="4"></div>
+    <button class="slot locked" data-slot="5" type="button" aria-label="칸 열기">+</button>
+    <button class="slot locked" data-slot="6" type="button" aria-label="칸 열기">+</button>
+    <button class="slot locked" data-slot="7" type="button" aria-label="칸 열기">+</button>
+  </div>
+
+  <div class="lot"><div class="grid" id="grid"></div></div>
+
+  <div class="boosters">
+    <button class="boost" id="b-sort" type="button" aria-label="승객 정렬">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="7" r="2.5"/><path d="M3 20c0-3 2-5 4-5s4 2 4 5M13 20c0-3 2-5 4-5s4 2 4 5"/></svg>
+      <span class="count" id="n-sort">2</span>
+    </button>
+    <button class="boost" id="b-shuffle" type="button" aria-label="차 섞기">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-13.7 5.6L4 15"/><path d="M4 20v-5h5"/></svg>
+      <span class="count" id="n-shuffle">4</span>
+    </button>
+    <button class="boost" id="b-vip" type="button" aria-label="VIP로 빼기">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18M12 5v4"/><rect x="5" y="11" width="14" height="7" rx="3"/><path d="M8 18v2M16 18v2"/></svg>
+      <span class="count" id="n-vip">2</span>
+    </button>
+    <button class="boost shop" id="b-shop" type="button" aria-label="상점">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1.5-5h13L20 9"/><path d="M4 9h16v2a3 3 0 0 1-5.3 2 3 3 0 0 1-5.4 0A3 3 0 0 1 4 11z"/><path d="M5 13v7h14v-7"/></svg>
+    </button>
+  </div>
+  <div class="boost-label"><span>승객 정렬</span><span>차 섞기</span><span>VIP 빼기</span><span>상점</span></div>
+</div>
+
+<script>
+// 버스 잼 프로토타입 — 순수 규칙 (DOM 없음). 게임 화면과 레벨 생성기가 함께 씁니다.
+//
+// 좌표: 주차장은 cols × rows 격자. 차는 좌상단 칸 (x, y)부터 진행 방향 축으로 len칸을 차지합니다.
+// 방향 U/D/L/R. 차는 머리 방향으로만 빠지고, 머리 앞부터 격자 끝까지 막힌 칸이 없어야 합니다.
+// 차단기: 칸 하나를 막고 있다가 차가 n대 빠져나가면 열립니다.
+
+const SIZES = {
+  car: { len: 2, cap: 4 },
+  van: { len: 3, cap: 6 },
+  bus: { len: 4, cap: 10 },
+};
+const DIRS = {
+  U: { dx: 0, dy: -1 }, D: { dx: 0, dy: 1 },
+  L: { dx: -1, dy: 0 }, R: { dx: 1, dy: 0 },
+};
+const BARRIER = -2;
+
+function cellsOf(v) {
+  const len = SIZES[v.size].len;
+  const horiz = v.dir === 'L' || v.dir === 'R';
+  const out = [];
+  for (let i = 0; i < len; i++) out.push(horiz ? [v.x + i, v.y] : [v.x, v.y + i]);
+  return out;
+}
+
+function headOf(v) {
+  const c = cellsOf(v);
+  return v.dir === 'R' || v.dir === 'D' ? c[c.length - 1] : c[0];
+}
+
+function exitPath(v, cols, rows) {
+  const { dx, dy } = DIRS[v.dir];
+  let [x, y] = headOf(v);
+  const out = [];
+  for (;;) {
+    x += dx; y += dy;
+    if (x < 0 || y < 0 || x >= cols || y >= rows) return out;
+    out.push([x, y]);
+  }
+}
+
+// 칸마다: 차 id, 닫힌 차단기는 BARRIER, 빈칸 -1
+function occupancy(vehicles, cols, rows, barriers = [], exited = 0) {
+  const grid = new Array(cols * rows).fill(-1);
+  for (const b of barriers) if (exited < b.n) grid[b.y * cols + b.x] = BARRIER;
+  for (const v of vehicles) for (const [x, y] of cellsOf(v)) grid[y * cols + x] = v.id;
+  return grid;
+}
+
+// 빠질 수 있으면 null, 막혔으면 막은 차 id 또는 BARRIER
+function blockerOf(v, cols, rows, grid) {
+  for (const [x, y] of exitPath(v, cols, rows)) {
+    const id = grid[y * cols + x];
+    if (id !== -1 && id !== v.id) return id;
+  }
+  return null;
+}
+
+// ---------- 탑승 규칙 ----------
+// slots: [{ id, color, cap, filled }] (빈 칸은 null). 맨 앞 승객 색과 같은 차에 (먼저 들어온 차부터) 탄다.
+function settle(slots, queue, qi) {
+  slots = slots.map(s => s && { ...s });
+  for (;;) {
+    if (qi >= queue.length) break;
+    const c = queue[qi];
+    const s = slots.find(s => s && s.color === c && s.filled < s.cap);
+    if (!s) break;
+    s.filled++; qi++;
+    if (s.filled === s.cap) slots[slots.indexOf(s)] = null;
+  }
+  return { slots, qi };
+}
+
+// ---------- 풀이기 ----------
+function solve(level, slotCount = level.slots, nodeLimit = 150000) {
+  const { cols, rows } = level;
+  const all = level.vehicles;
+  const barriers = level.barriers ?? [];
+  const n = all.length;
+  const failed = new Set();
+  let nodes = 0;
+  const order = [];
+
+  function dfs(alive, slots, qi, exited) {
+    if (qi >= level.queue.length) return true;
+    if (++nodes > nodeLimit) throw new Error('limit');
+    const k = alive.join('') + '|' + qi + '|' + slots.map(s => s ? s.id + ':' + s.filled : '_').sort().join(',');
+    if (failed.has(k)) return false;
+    const free = slots.indexOf(null);
+    if (free === -1) { failed.add(k); return false; }
+    const live = all.filter((v, i) => alive[i]);
+    const grid = occupancy(live, cols, rows, barriers, exited);
+    const soon = level.queue.slice(qi, qi + 20);
+    const rank = v => { const i = soon.indexOf(v.color); return i === -1 ? 99 : i; };
+    const cands = live.filter(v => blockerOf(v, cols, rows, grid) === null).sort((a, b) => rank(a) - rank(b));
+    for (const v of cands) {
+      const i = all.indexOf(v);
+      const a2 = alive.slice(); a2[i] = 0;
+      const s2 = slots.slice(); s2[free] = { id: v.id, color: v.color, cap: SIZES[v.size].cap, filled: 0 };
+      const r = settle(s2, level.queue, qi);
+      order.push(v.id);
+      if (dfs(a2, r.slots, r.qi, exited + 1)) return true;
+      order.pop();
+    }
+    failed.add(k);
+    return false;
+  }
+
+  try {
+    const ok = dfs(new Array(n).fill(1), new Array(slotCount).fill(null), 0, 0);
+    return { ok, order: ok ? order.slice() : null, nodes };
+  } catch {
+    return { ok: false, order: null, nodes, limit: true };
+  }
+}
+
+// ---------- 난이도 측정용 플레이어 ----------
+// '적당히 생각하는' 플레이어: 빠질 수 있는 차 중 곧 탈 손님 색을 선호, 나머지는 무작위. ? 차 색은 모른다고 가정.
+function playGreedy(level, rng, slotCount = level.slots, look = 10) {
+  const { cols, rows } = level;
+  const barriers = level.barriers ?? [];
+  let live = level.vehicles.slice();
+  let slots = new Array(slotCount).fill(null);
+  let qi = 0, exited = 0;
+  while (qi < level.queue.length) {
+    const free = slots.indexOf(null);
+    if (free === -1) return false;
+    const grid = occupancy(live, cols, rows, barriers, exited);
+    const cands = live.filter(v => blockerOf(v, cols, rows, grid) === null);
+    if (!cands.length) return false;
+    const soon = level.queue.slice(qi, qi + look);
+    const score = v => {
+      if (v.mystery) return 2 + rng() * 4;
+      const i = soon.indexOf(v.color);
+      return (i === -1 ? 0 : look - i) + rng() * 4;
+    };
+    const v = cands.sort((a, b) => score(b) - score(a))[0];
+    live = live.filter(o => o !== v);
+    exited++;
+    slots[free] = { id: v.id, color: v.color, cap: SIZES[v.size].cap, filled: 0 };
+    ({ slots, qi } = settle(slots, level.queue, qi));
+  }
+  return true;
+}
+
+const LEVELS = [{"n":1,"cols":8,"rows":9,"slots":4,"colors":2,"hard":false,"vehicles":[{"id":0,"x":4,"y":7,"dir":"R","size":"car","color":1},{"id":1,"x":2,"y":0,"dir":"D","size":"car","color":1},{"id":2,"x":6,"y":6,"dir":"U","size":"car","color":0},{"id":3,"x":2,"y":8,"dir":"R","size":"car","color":0},{"id":4,"x":0,"y":5,"dir":"U","size":"car","color":1},{"id":5,"x":0,"y":7,"dir":"L","size":"car","color":0}],"queue":[0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1],"barriers":[]},{"n":2,"cols":8,"rows":9,"slots":4,"colors":3,"hard":false,"vehicles":[{"id":0,"x":3,"y":4,"dir":"D","size":"car","color":2},{"id":1,"x":1,"y":3,"dir":"D","size":"car","color":0},{"id":2,"x":0,"y":3,"dir":"U","size":"car","color":1},{"id":3,"x":5,"y":3,"dir":"D","size":"car","color":0},{"id":4,"x":2,"y":2,"dir":"U","size":"car","color":1},{"id":5,"x":7,"y":4,"dir":"U","size":"van","color":0},{"id":6,"x":0,"y":7,"dir":"D","size":"car","color":1},{"id":7,"x":1,"y":8,"dir":"R","size":"car","color":2},{"id":8,"x":3,"y":8,"dir":"R","size":"car","color":0},{"id":9,"x":1,"y":5,"dir":"L","size":"car","color":0}],"queue":[0,2,2,2,2,0,0,0,0,1,1,1,0,0,0,1,0,1,1,1,1,0,0,0,0,1,1,1,1,2,2,2,2,0,0,0,0,0,0,0,0,0],"barriers":[]},{"n":3,"cols":8,"rows":9,"slots":4,"colors":4,"hard":false,"vehicles":[{"id":0,"x":7,"y":4,"dir":"U","size":"car","color":3},{"id":1,"x":5,"y":0,"dir":"L","size":"car","color":3},{"id":2,"x":3,"y":8,"dir":"L","size":"car","color":3},{"id":3,"x":0,"y":7,"dir":"U","size":"car","color":0},{"id":4,"x":3,"y":1,"dir":"R","size":"van","color":1},{"id":5,"x":0,"y":1,"dir":"U","size":"van","color":3},{"id":6,"x":5,"y":6,"dir":"D","size":"car","color":0},{"id":7,"x":1,"y":4,"dir":"D","size":"van","color":1},{"id":8,"x":1,"y":0,"dir":"L","size":"car","color":2},{"id":9,"x":6,"y":5,"dir":"D","size":"van","color":0},{"id":10,"x":1,"y":7,"dir":"D","size":"car","color":0},{"id":11,"x":2,"y":7,"dir":"D","size":"car","color":1},{"id":12,"x":4,"y":2,"dir":"R","size":"van","color":2}],"queue":[0,0,0,2,2,0,2,2,2,2,2,2,2,2,0,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,3,3,3,3,3,3,1,1,1,1,3,3,3,3,0,0,0,0,1,1,3,3,3,0,0,0,0,3,3,3,3,3],"barriers":[]},{"n":4,"cols":8,"rows":9,"slots":4,"colors":4,"hard":false,"vehicles":[{"id":0,"x":2,"y":5,"dir":"L","size":"car","color":2},{"id":1,"x":1,"y":2,"dir":"D","size":"bus","color":3},{"id":2,"x":2,"y":6,"dir":"L","size":"van","color":0},{"id":3,"x":4,"y":8,"dir":"L","size":"car","color":3},{"id":4,"x":2,"y":3,"dir":"R","size":"van","color":0,"mystery":true},{"id":5,"x":6,"y":3,"dir":"R","size":"car","color":1},{"id":6,"x":4,"y":1,"dir":"L","size":"car","color":0,"mystery":true},{"id":7,"x":0,"y":4,"dir":"D","size":"car","color":2},{"id":8,"x":1,"y":7,"dir":"L","size":"car","color":1},{"id":9,"x":2,"y":2,"dir":"R","size":"car","color":3},{"id":10,"x":5,"y":2,"dir":"R","size":"van","color":3},{"id":11,"x":0,"y":1,"dir":"L","size":"bus","color":3},{"id":12,"x":1,"y":0,"dir":"R","size":"van","color":2},{"id":13,"x":5,"y":5,"dir":"R","size":"van","color":1},{"id":14,"x":0,"y":8,"dir":"L","size":"van","color":2}],"queue":[2,2,2,2,1,1,1,2,2,2,2,2,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,1,1,1,2,2,2,2,3,3,3,3,2,2,1,1,1,1,0,0,0,0,0,0,1,0,0,0,0,3,3,3,0,0,0,0,0,0,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3],"barriers":[]},{"n":5,"cols":8,"rows":9,"slots":4,"colors":5,"hard":true,"vehicles":[{"id":0,"x":5,"y":8,"dir":"L","size":"car","color":4},{"id":1,"x":0,"y":5,"dir":"U","size":"car","color":2,"mystery":true},{"id":2,"x":2,"y":4,"dir":"L","size":"van","color":4},{"id":3,"x":4,"y":1,"dir":"L","size":"van","color":2,"mystery":true},{"id":4,"x":2,"y":3,"dir":"L","size":"car","color":2,"mystery":true},{"id":5,"x":0,"y":1,"dir":"L","size":"van","color":0},{"id":6,"x":7,"y":3,"dir":"U","size":"van","color":0},{"id":7,"x":0,"y":2,"dir":"L","size":"car","color":0},{"id":8,"x":2,"y":6,"dir":"R","size":"bus","color":0},{"id":9,"x":4,"y":7,"dir":"D","size":"car","color":3},{"id":10,"x":1,"y":3,"dir":"D","size":"van","color":0},{"id":11,"x":1,"y":7,"dir":"L","size":"car","color":3},{"id":12,"x":5,"y":7,"dir":"R","size":"car","color":4},{"id":13,"x":2,"y":2,"dir":"R","size":"van","color":1},{"id":14,"x":1,"y":8,"dir":"L","size":"van","color":0},{"id":15,"x":1,"y":0,"dir":"R","size":"car","color":4},{"id":16,"x":5,"y":2,"dir":"R","size":"car","color":1}],"queue":[0,0,0,4,4,0,0,0,1,1,1,1,1,1,4,4,3,3,3,3,1,1,0,0,0,3,3,3,4,4,4,3,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,1,1,2,2,2,2,4,4,4,4,4,4,4,4,4,4,0,0,0,0,2,2,2,2,2,2,2,2,0,0],"barriers":[]},{"n":6,"cols":8,"rows":9,"slots":4,"colors":5,"hard":false,"vehicles":[{"id":0,"x":4,"y":0,"dir":"R","size":"car","color":3},{"id":1,"x":2,"y":5,"dir":"L","size":"bus","color":1},{"id":2,"x":1,"y":7,"dir":"R","size":"car","color":2},{"id":3,"x":0,"y":5,"dir":"U","size":"car","color":1},{"id":4,"x":1,"y":6,"dir":"R","size":"van","color":0,"mystery":true},{"id":5,"x":7,"y":2,"dir":"D","size":"bus","color":0},{"id":6,"x":2,"y":8,"dir":"L","size":"van","color":2,"mystery":true},{"id":7,"x":2,"y":4,"dir":"L","size":"bus","color":4},{"id":8,"x":6,"y":5,"dir":"D","size":"van","color":2},{"id":9,"x":1,"y":2,"dir":"U","size":"bus","color":3},{"id":10,"x":5,"y":6,"dir":"D","size":"car","color":4},{"id":11,"x":6,"y":0,"dir":"R","size":"car","color":3},{"id":12,"x":0,"y":1,"dir":"L","size":"car","color":0},{"id":13,"x":7,"y":6,"dir":"D","size":"car","color":2,"mystery":true},{"id":14,"x":0,"y":0,"dir":"L","size":"van","color":2},{"id":15,"x":3,"y":0,"dir":"U","size":"van","color":2},{"id":16,"x":6,"y":8,"dir":"R","size":"car","color":3},{"id":17,"x":0,"y":8,"dir":"L","size":"car","color":4}],"queue":[2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,3,3,3,4,4,4,4,3,3,3,0,0,0,0,3,3,3,3,3,3,3,3,3,3,2,2,2,2,4,4,4,4,4,2,2,4,4,4,4,4,4,4,2,2,2,3,2,2,2,0,0,0,0,0,0,4,4,0,0,0,0,0,1,1,1,1,1,1,1,1,1,3,3,3,3,1,1,1,1,1,2,2,2,2,0,0,0,0,0],"barriers":[{"x":0,"y":4,"n":2}]},{"n":7,"cols":8,"rows":9,"slots":4,"colors":5,"hard":false,"vehicles":[{"id":0,"x":0,"y":4,"dir":"U","size":"car","color":4},{"id":1,"x":7,"y":3,"dir":"U","size":"car","color":1},{"id":2,"x":0,"y":1,"dir":"R","size":"van","color":4},{"id":3,"x":3,"y":0,"dir":"D","size":"van","color":0,"mystery":true},{"id":4,"x":4,"y":1,"dir":"D","size":"van","color":3},{"id":5,"x":1,"y":8,"dir":"R","size":"van","color":3,"mystery":true},{"id":6,"x":0,"y":0,"dir":"L","size":"car","color":1},{"id":7,"x":3,"y":6,"dir":"R","size":"car","color":1,"mystery":true},{"id":8,"x":5,"y":1,"dir":"R","size":"car","color":4},{"id":9,"x":3,"y":7,"dir":"L","size":"van","color":0},{"id":10,"x":6,"y":6,"dir":"R","size":"car","color":3},{"id":11,"x":5,"y":8,"dir":"R","size":"car","color":2,"mystery":true},{"id":12,"x":4,"y":5,"dir":"R","size":"bus","color":4},{"id":13,"x":6,"y":0,"dir":"R","size":"car","color":3},{"id":14,"x":0,"y":7,"dir":"D","size":"car","color":3},{"id":15,"x":2,"y":3,"dir":"L","size":"car","color":0},{"id":16,"x":0,"y":2,"dir":"L","size":"car","color":0},{"id":17,"x":7,"y":7,"dir":"D","size":"car","color":2},{"id":18,"x":0,"y":3,"dir":"L","size":"car","color":1},{"id":19,"x":1,"y":6,"dir":"L","size":"car","color":2}],"queue":[1,0,0,0,2,2,2,1,1,1,2,3,3,3,3,3,3,3,3,0,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,4,4,4,2,2,2,2,3,3,3,3,1,4,4,4,4,1,1,1,1,3,3,3,3,3,3,1,1,1,0,0,0,3,3,3,0,0,0,3,3,3,4,4,4,4,4,4,4,2,2,2,2,1,1,1,1,4,4,4],"barriers":[{"x":2,"y":7,"n":5},{"x":0,"y":6,"n":3}]},{"n":8,"cols":8,"rows":9,"slots":4,"colors":6,"hard":false,"vehicles":[{"id":0,"x":5,"y":1,"dir":"L","size":"van","color":2,"mystery":true},{"id":1,"x":6,"y":6,"dir":"R","size":"car","color":2},{"id":2,"x":4,"y":1,"dir":"U","size":"van","color":5},{"id":3,"x":3,"y":8,"dir":"R","size":"car","color":0,"mystery":true},{"id":4,"x":2,"y":1,"dir":"D","size":"bus","color":2,"mystery":true},{"id":5,"x":1,"y":0,"dir":"R","size":"van","color":5,"mystery":true},{"id":6,"x":1,"y":6,"dir":"L","size":"bus","color":0},{"id":7,"x":5,"y":2,"dir":"D","size":"car","color":0},{"id":8,"x":5,"y":7,"dir":"R","size":"car","color":2},{"id":9,"x":0,"y":1,"dir":"L","size":"car","color":5},{"id":10,"x":6,"y":0,"dir":"R","size":"car","color":5},{"id":11,"x":2,"y":7,"dir":"L","size":"car","color":5,"mystery":true},{"id":12,"x":1,"y":7,"dir":"D","size":"car","color":0},{"id":13,"x":0,"y":4,"dir":"L","size":"car","color":4},{"id":14,"x":2,"y":5,"dir":"L","size":"car","color":4},{"id":15,"x":0,"y":6,"dir":"D","size":"car","color":3},{"id":16,"x":5,"y":4,"dir":"R","size":"car","color":5},{"id":17,"x":0,"y":3,"dir":"L","size":"car","color":0},{"id":18,"x":5,"y":8,"dir":"R","size":"car","color":1},{"id":19,"x":5,"y":5,"dir":"R","size":"car","color":0},{"id":20,"x":7,"y":7,"dir":"D","size":"car","color":3}],"queue":[3,5,5,5,5,1,1,1,0,0,0,0,4,4,4,3,3,3,4,1,3,3,3,3,4,4,4,5,5,5,5,4,5,5,5,5,2,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,2,2,2,2,2,0,0,0,0,0,0,0,0,5,5,5,2,2,2,2,2,2,2,2,5,5,5,2,2,2,2,2,2,0,0,0,0,2,2,2,2],"barriers":[{"x":2,"y":8,"n":3},{"x":7,"y":5,"n":5}]},{"n":9,"cols":8,"rows":9,"slots":4,"colors":6,"hard":false,"vehicles":[{"id":0,"x":2,"y":6,"dir":"D","size":"car","color":2},{"id":1,"x":0,"y":5,"dir":"R","size":"van","color":0,"mystery":true},{"id":2,"x":7,"y":5,"dir":"D","size":"car","color":1,"mystery":true},{"id":3,"x":3,"y":4,"dir":"U","size":"van","color":5,"mystery":true},{"id":4,"x":6,"y":1,"dir":"D","size":"car","color":0,"mystery":true},{"id":5,"x":6,"y":7,"dir":"R","size":"car","color":2},{"id":6,"x":3,"y":0,"dir":"L","size":"car","color":0,"mystery":true},{"id":7,"x":5,"y":3,"dir":"U","size":"car","color":0},{"id":8,"x":5,"y":8,"dir":"R","size":"car","color":2},{"id":9,"x":3,"y":2,"dir":"L","size":"car","color":4,"mystery":true},{"id":10,"x":1,"y":3,"dir":"L","size":"van","color":1},{"id":11,"x":2,"y":8,"dir":"L","size":"car","color":3},{"id":12,"x":2,"y":1,"dir":"U","size":"car","color":1},{"id":13,"x":6,"y":3,"dir":"R","size":"car","color":3},{"id":14,"x":5,"y":0,"dir":"R","size":"van","color":5},{"id":15,"x":0,"y":0,"dir":"L","size":"car","color":0},{"id":16,"x":4,"y":4,"dir":"D","size":"van","color":5},{"id":17,"x":0,"y":4,"dir":"L","size":"van","color":5},{"id":18,"x":1,"y":6,"dir":"D","size":"car","color":3},{"id":19,"x":6,"y":4,"dir":"R","size":"car","color":3},{"id":20,"x":0,"y":6,"dir":"D","size":"car","color":5},{"id":21,"x":0,"y":2,"dir":"L","size":"car","color":0}],"queue":[5,5,5,3,3,3,5,0,0,0,3,5,5,5,5,0,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3,3,0,0,1,1,1,1,1,1,4,4,4,4,0,0,0,1,1,1,0,0,0,0,2,2,2,2,2,2,2,2,1,0,0,0,3,3,3,3,5,5,0,0,0,0,0,0,2,2,1,1,1,1,2,2,0,0,5,5,5,5],"barriers":[{"x":3,"y":1,"n":5},{"x":5,"y":5,"n":5}]},{"n":10,"cols":8,"rows":9,"slots":4,"colors":6,"hard":true,"vehicles":[{"id":0,"x":1,"y":1,"dir":"L","size":"car","color":0,"mystery":true},{"id":1,"x":4,"y":4,"dir":"R","size":"car","color":5,"mystery":true},{"id":2,"x":5,"y":7,"dir":"L","size":"van","color":0,"mystery":true},{"id":3,"x":3,"y":2,"dir":"U","size":"van","color":1,"mystery":true},{"id":4,"x":4,"y":5,"dir":"R","size":"car","color":0,"mystery":true},{"id":5,"x":3,"y":6,"dir":"R","size":"van","color":5},{"id":6,"x":0,"y":0,"dir":"R","size":"car","color":0,"mystery":true},{"id":7,"x":6,"y":5,"dir":"R","size":"car","color":1},{"id":8,"x":0,"y":1,"dir":"D","size":"van","color":3,"mystery":true},{"id":9,"x":5,"y":0,"dir":"U","size":"car","color":2},{"id":10,"x":5,"y":8,"dir":"R","size":"van","color":3},{"id":11,"x":2,"y":4,"dir":"D","size":"bus","color":4},{"id":12,"x":0,"y":6,"dir":"L","size":"car","color":2},{"id":13,"x":7,"y":1,"dir":"U","size":"car","color":2},{"id":14,"x":6,"y":0,"dir":"U","size":"van","color":1},{"id":15,"x":3,"y":0,"dir":"U","size":"car","color":0},{"id":16,"x":0,"y":8,"dir":"L","size":"car","color":5},{"id":17,"x":4,"y":0,"dir":"U","size":"van","color":5},{"id":18,"x":3,"y":7,"dir":"D","size":"car","color":4},{"id":19,"x":6,"y":4,"dir":"R","size":"car","color":4},{"id":20,"x":0,"y":7,"dir":"L","size":"car","color":0},{"id":21,"x":5,"y":3,"dir":"R","size":"van","color":4},{"id":22,"x":4,"y":7,"dir":"D","size":"car","color":0},{"id":23,"x":0,"y":4,"dir":"L","size":"car","color":1}],"queue":[0,4,4,4,4,0,0,4,4,4,4,0,0,4,4,4,0,0,0,5,5,5,4,4,4,1,1,1,1,1,1,1,1,1,1,0,0,0,2,2,0,5,5,5,5,4,4,2,2,3,3,2,2,2,2,4,4,4,4,2,3,3,3,3,4,4,4,4,5,5,5,0,0,0,3,3,3,0,2,2,2,5,5,5,3,3,3,0,0,0,0,1,1,0,0,1,5,5,5,5,1,1,1,0,0,0,5,5,5,0,0,0,0,0,1,1,1,1],"barriers":[{"x":6,"y":6,"n":3},{"x":2,"y":0,"n":4},{"x":0,"y":5,"n":3}]}];
+// 버스 잼 프로토타입 — 화면과 조작. 규칙 함수(SIZES, blockerOf 등)는 core.js에서 옵니다.
+
+const $ = s => document.querySelector(s);
+const stage = $('#stage');
+const SAVE_KEY = 'busjam-proto-v2';
+const PRICE = { slot: 120, revive: 150, booster: 100 };
+const DIR_ANGLE = { R: 0, D: 90, L: 180, U: 270 };
+
+// 색 (캔버스에서도 쓰려고 CSS 변수에서 읽음)
+const css = getComputedStyle(document.documentElement);
+const PAL = [0, 1, 2, 3, 4, 5].map(i => ({
+  c: css.getPropertyValue(`--c${i}`).trim(), l: css.getPropertyValue(`--l${i}`).trim(), d: css.getPropertyValue(`--d${i}`).trim(),
+}));
+
+// ---------- 저장 ----------
+const save = loadSave();
+function loadSave() {
+  const base = { unlocked: 1, cleared: [], coins: 200, hearts: 5, boosters: { sort: 2, shuffle: 4, vip: 2 } };
+  try {
+    const raw = JSON.parse(localStorage.getItem(SAVE_KEY));
+    if (raw) return { ...base, ...raw, boosters: { ...base.boosters, ...(raw.boosters || {}) } };
+  } catch { /* 저장 불가 환경 */ }
+  return base;
+}
+function persist() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(save)); } catch { /* 무시 */ } }
+
+// ---------- 판 상태 ----------
+let run = null;
+
+function startLevel(n) {
+  if (save.hearts <= 0) { heartsSheet(n); return; }
+  const L = LEVELS[n - 1];
+  stage.querySelectorAll('.veh, .barrier, .walker, .tip').forEach(e => e.remove());
+  run = {
+    L, n,
+    vehicles: L.vehicles.map(v => ({ ...v, where: 'lot', revealed: !v.mystery, el: null, ang: DIR_ANGLE[v.dir] })),
+    barriers: (L.barriers ?? []).map(b => ({ ...b, el: null, open: false })),
+    slots: new Array(8).fill(null),
+    open: [true, true, true, true, true, false, false, false],
+    queue: L.queue.slice(),
+    qi: 0, seq: 0, exited: 0, over: false, moved: false, vipMode: false,
+  };
+  crowd.people = new Map();
+  $('#lv-title').textContent = `레벨 ${n}`;
+  $('#tag').textContent = L.hard ? 'HARD' : '';
+  renderSlots();
+  for (const v of run.vehicles) makeVehicle(v);
+  for (const b of run.barriers) makeBarrier(b);
+  layoutAll(true);
+  crowd.retarget(true);
+  updateHud();
+  hints();
+}
+
+const lotVehicles = () => run.vehicles.filter(v => v.where === 'lot');
+const lotGrid = () => occupancy(lotVehicles(), run.L.cols, run.L.rows, run.L.barriers ?? [], run.exited);
+
+// ---------- 좌표 ----------
+function rel(el) {
+  const r = el.getBoundingClientRect(), s = stage.getBoundingClientRect();
+  return { x: r.left - s.left, y: r.top - s.top, w: r.width, h: r.height };
+}
+function gridGeom() {
+  const g = rel($('#grid'));
+  return { ...g, cw: g.w / run.L.cols, ch: g.h / run.L.rows };
+}
+function cellBox(v) {
+  const g = gridGeom();
+  const len = SIZES[v.size].len;
+  const horiz = v.dir === 'L' || v.dir === 'R';
+  return { x: g.x + v.x * g.cw + 3, y: g.y + v.y * g.ch + 3, w: (horiz ? len : 1) * g.cw - 6, h: (horiz ? 1 : len) * g.ch - 6, cw: g.cw, ch: g.ch };
+}
+function slotBox(i) {
+  const b = rel(document.querySelector(`.slot[data-slot="${i}"]`));
+  return { x: b.x + 2, y: b.y + 2, w: b.w - 4, h: b.h - 4 };
+}
+
+// ---------- 차 ----------
+const ARROW = '<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
+
+function paint(el, c) {
+  el.style.setProperty('--col', PAL[c].c);
+  el.style.setProperty('--hi', PAL[c].l);
+  el.style.setProperty('--dk', PAL[c].d);
+}
+
+function makeVehicle(v) {
+  const el = document.createElement('button');
+  el.type = 'button';
+  el.className = 'veh';
+  el.dataset.dir = v.dir;
+  el.dataset.size = v.size;
+  el.dataset.vid = v.id;
+  el.setAttribute('aria-label', { car: '소형차', van: '밴', bus: '버스' }[v.size]);
+  el.innerHTML = `<div class="car"><i class="shadow"></i><i class="wheel w1"></i><i class="wheel w2"></i><i class="wheel w3"></i><i class="wheel w4"></i><i class="body"></i><i class="roof"></i><i class="glass back"></i><i class="glass front"></i>${ARROW}</div><span class="q">?</span><span class="seats"></span>`;
+  if (v.mystery) el.classList.add('mystery'); else paint(el, v.color);
+  el.addEventListener('click', () => tapVehicle(v));
+  stage.appendChild(el);
+  v.el = el;
+}
+
+// 상자(b)에 차를 놓고, 차 그림을 각도(ang)로 돌림
+function setBox(v, b, ang, parked) {
+  const el = v.el;
+  el.style.width = b.w + 'px';
+  el.style.height = b.h + 'px';
+  el.style.transform = `translate(${b.x}px, ${b.y}px)`;
+  const vertical = Math.abs(((ang % 180) + 180) % 180 - 90) < 1;
+  const L = vertical ? b.h : b.w, S = vertical ? b.w : b.h;
+  el.style.setProperty('--L', (parked ? L * 0.96 : L) + 'px');
+  el.style.setProperty('--S', (parked ? S * 0.86 : S) + 'px');
+  el.style.setProperty('--a', ang + 'deg');
+  v.ang = ang;
+}
+function nearestAngle(cur, target) {
+  let d = ((target - cur) % 360 + 540) % 360 - 180;
+  return cur + d;
+}
+
+function makeBarrier(b) {
+  const el = document.createElement('div');
+  el.className = 'barrier';
+  el.innerHTML = '<span class="bar"></span><span class="n"></span>';
+  stage.appendChild(el);
+  b.el = el;
+}
+
+function layoutAll(instant) {
+  if (!run) return;
+  const els = [];
+  for (const v of run.vehicles) {
+    if (!v.el) continue;
+    els.push(v.el);
+    if (v.where === 'lot') setBox(v, cellBox(v), DIR_ANGLE[v.dir], false);
+    else { const i = run.slots.findIndex(s => s && s.vid === v.id); if (i >= 0) setBox(v, slotBox(i), nearestAngle(v.ang, 270), true); }
+  }
+  const g = gridGeom();
+  for (const b of run.barriers) {
+    if (!b.el) continue;
+    b.el.style.width = g.cw + 'px'; b.el.style.height = g.ch + 'px';
+    b.el.style.transform = `translate(${g.x + b.x * g.cw}px, ${g.y + b.y * g.ch}px)`;
+    b.el.querySelector('.n').textContent = Math.max(0, b.n - run.exited);
+  }
+  if (instant) {
+    els.forEach(e => { e.style.transition = 'none'; e.firstChild.style.transition = 'none'; });
+    stage.offsetHeight;
+    els.forEach(e => { e.style.transition = ''; e.firstChild.style.transition = ''; });
+  }
+}
+
+function renderSlots() {
+  document.querySelectorAll('.slot').forEach((el, i) => {
+    if (i < 5) return;
+    el.classList.toggle('locked', !run.open[i]);
+    el.textContent = run.open[i] ? '' : '+';
+    el.disabled = run.open[i];
+  });
+}
+
+function updateHud() {
+  $('#hearts').textContent = save.hearts;
+  $('#coins').textContent = save.coins;
+  for (const k of ['sort', 'shuffle', 'vip']) {
+    $('#n-' + k).textContent = save.boosters[k] > 0 ? save.boosters[k] : '+';
+    $('#b-' + k).dataset.empty = String(save.boosters[k] <= 0);
+  }
+  $('#b-vip').classList.toggle('active', !!run?.vipMode);
+}
+
+// ---------- 차 탭 ----------
+function tapVehicle(v) {
+  if (!run || run.over || v.where !== 'lot') return;
+  clearHint();
+  if (run.vipMode) { sendToVip(v); return; }
+
+  const blocker = blockerOf(v, run.L.cols, run.L.rows, lotGrid());
+  if (blocker !== null) {
+    bump(v);
+    if (blocker === BARRIER) {
+      const b = run.barriers.find(b => !b.open && exitPath(v, run.L.cols, run.L.rows).some(([x, y]) => x === b.x && y === b.y));
+      if (b) retrigger(b.el, 'ping');
+    } else retrigger(run.vehicles.find(o => o.id === blocker).el, 'blocker');
+    return;
+  }
+  const i = freeSlot();
+  if (i === -1) { bump(v); toast('주차칸이 꽉 찼어요'); return; }
+  buzz();
+  run.moved = true;
+  leaveLot(v);
+  run.slots[i] = { vid: v.id, color: v.color, cap: SIZES[v.size].cap, filled: 0, ready: false, seq: ++run.seq };
+
+  // 1단계: 머리 방향으로 쭉 빠짐
+  const b = cellBox(v);
+  const { dx, dy } = DIRS[v.dir];
+  const [hx, hy] = headOf(v);
+  const toEdge = dx > 0 ? run.L.cols - 1 - hx : dx < 0 ? hx : dy > 0 ? run.L.rows - 1 - hy : hy;
+  const dist = (toEdge + SIZES[v.size].len + 0.3) * (dx ? b.cw : b.ch);
+  v.el.classList.add('flying');
+  v.el.style.transform = `translate(${b.x + dx * dist}px, ${b.y + dy * dist}px)`;
+  // 2단계: 돌면서 주차칸으로
+  setTimeout(() => {
+    v.el.classList.add('parked');
+    setBox(v, slotBox(i), nearestAngle(v.ang, 270), true);
+    setTimeout(() => arrive(v, i), 330);
+  }, 250);
+}
+
+function leaveLot(v) {
+  v.where = 'moving';
+  run.exited++;
+  reveal(v);
+  for (const b of run.barriers) {
+    const left = Math.max(0, b.n - run.exited);
+    if (b.el) b.el.querySelector('.n').textContent = left;
+    if (!b.open && left === 0) {
+      b.open = true;
+      b.el.classList.add('open');
+      const el = b.el;
+      setTimeout(() => el.remove(), 400);
+      b.el = null;
+      toast('차단기가 열렸어요');
+    }
+  }
+}
+
+function arrive(v, i) {
+  v.where = 'slot';
+  v.el.classList.remove('flying');
+  if (run.slots[i]) run.slots[i].ready = true;
+  seatLabel(v, run.slots[i]);
+}
+
+function freeSlot() {
+  for (let i = 1; i < 8; i++) if (run.open[i] && !run.slots[i]) return i;
+  return -1;
+}
+
+function reveal(v) {
+  if (v.revealed) return;
+  v.revealed = true;
+  v.el.classList.remove('mystery');
+  paint(v.el, v.color);
+}
+
+function bump(v) { v.el.style.setProperty('--bx', '6px'); retrigger(v.el, 'bump'); }
+function retrigger(el, cls) { if (!el) return; el.classList.remove(cls); el.offsetWidth; el.classList.add(cls); setTimeout(() => el.classList.remove(cls), 600); }
+function buzz() { try { navigator.vibrate?.(8); } catch { /* 무시 */ } }
+function seatLabel(v, s) { if (s && v.el) v.el.querySelector('.seats').textContent = `${s.filled}/${s.cap}`; }
+
+// ---------- 승객 행렬 (캔버스) ----------
+// 도로: 오른쪽 위 화면 밖에서 시작 → 위쪽을 따라 왼쪽 → 왼쪽 아래로 꺾여 → 아래쪽 가운데 '탑승구'에서 끝
+const crowd = {
+  canvas: $('#crowd'), ctx: null, W: 0, H: 0, dpr: 1,
+  path: [], lens: [], total: 0, road: null, people: new Map(),
+  ROW: 14, LANES: [0, -14, 14], ROAD_W: 50,
+
+  resize() {
+    const r = this.canvas.getBoundingClientRect();
+    this.dpr = Math.min(2, window.devicePixelRatio || 1);
+    this.W = r.width; this.H = r.height;
+    this.canvas.width = Math.round(r.width * this.dpr);
+    this.canvas.height = Math.round(r.height * this.dpr);
+    this.ctx = this.canvas.getContext('2d');
+    this.buildPath();
+    this.buildRoad();
+    this.retarget(true);
+  },
+
+  buildPath() {
+    const { W, H } = this;
+    const m = 34, R = 36;
+    const gate = { x: W * 0.5, y: H - m };
+    const pts = [];
+    const line = (a, b, n = 12) => { for (let i = 0; i <= n; i++) pts.push({ x: a.x + (b.x - a.x) * i / n, y: a.y + (b.y - a.y) * i / n }); };
+    const arc = (cx, cy, a0, a1) => { for (let i = 1; i <= 10; i++) { const t = a0 + (a1 - a0) * i / 10; pts.push({ x: cx + R * Math.cos(t), y: cy + R * Math.sin(t) }); } };
+    // 탑승구에서 거꾸로 (맨 앞 → 맨 뒤)
+    line(gate, { x: m + R, y: H - m });
+    arc(m + R, H - m - R, Math.PI / 2, Math.PI);
+    line({ x: m, y: H - m - R }, { x: m, y: m + R });
+    arc(m + R, m + R, Math.PI, Math.PI * 1.5);
+    line({ x: m + R, y: m }, { x: W + 80, y: m }, 30);
+    this.path = pts;
+    this.lens = [0];
+    for (let i = 1; i < pts.length; i++) this.lens.push(this.lens[i - 1] + Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y));
+    this.total = this.lens[this.lens.length - 1];
+    this.gate = gate;
+  },
+
+  at(s) {
+    const { path, lens } = this;
+    s = Math.max(0, Math.min(s, this.total));
+    let i = 1;
+    while (i < lens.length - 1 && lens[i] < s) i++;
+    const a = path[i - 1], b = path[i];
+    const t = (s - lens[i - 1]) / ((lens[i] - lens[i - 1]) || 1);
+    const dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy) || 1;
+    return { x: a.x + dx * t, y: a.y + dy * t, nx: -dy / d, ny: dx / d };
+  },
+
+  buildRoad() {
+    const c = document.createElement('canvas');
+    c.width = this.canvas.width; c.height = this.canvas.height;
+    const g = c.getContext('2d');
+    g.scale(this.dpr, this.dpr);
+    const { W, H, path, gate } = this;
+    // 광장 바닥 타일
+    g.fillStyle = '#e9eef4'; g.fillRect(0, 0, W, H);
+    g.strokeStyle = 'rgba(160,172,188,.25)'; g.lineWidth = 1;
+    for (let x = 0; x < W; x += 22) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, H); g.stroke(); }
+    for (let y = 0; y < H; y += 22) { g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke(); }
+    const stroke = (w, col) => {
+      g.lineWidth = w; g.strokeStyle = col; g.lineJoin = 'round'; g.lineCap = 'butt';
+      g.beginPath(); g.moveTo(path[0].x, path[0].y + 0); path.forEach(p => g.lineTo(p.x, p.y));
+      g.moveTo(gate.x, gate.y); g.lineTo(gate.x, H + 10);
+      g.stroke();
+    };
+    stroke(this.ROAD_W + 10, '#c3ccd8');
+    stroke(this.ROAD_W + 6, '#ffffff');
+    stroke(this.ROAD_W, '#b9c2ce');
+    // 탑승구 횡단보도
+    g.fillStyle = 'rgba(255,255,255,.85)';
+    for (let i = -2; i <= 2; i++) g.fillRect(gate.x + i * 9 - 3, H - 22, 6, 14);
+    // 꾸밈: 나무와 가로등
+    const tree = (x, y) => {
+      g.fillStyle = 'rgba(0,0,0,.12)'; g.beginPath(); g.ellipse(x, y + 9, 10, 4, 0, 0, 7); g.fill();
+      g.fillStyle = '#5cb85c'; g.beginPath(); g.arc(x, y, 10, 0, 7); g.fill();
+      g.fillStyle = '#7fd17f'; g.beginPath(); g.arc(x - 3, y - 3, 5, 0, 7); g.fill();
+    };
+    tree(W * 0.78, H * 0.55); tree(W * 0.9, H * 0.72); tree(W * 0.3, H * 0.5);
+    this.road = c;
+  },
+
+  // 맨 앞(k=0)부터 줄 선 자리 목표 좌표
+  slotXY(k) {
+    const row = Math.floor(k / 3), lane = k % 3;
+    const p = this.at(10 + row * this.ROW);
+    const off = this.LANES[lane];
+    return { x: p.x + p.nx * off, y: p.y + p.ny * off, hidden: 10 + row * this.ROW > this.total - 4 };
+  },
+
+  retarget(instant) {
+    if (!run || !this.total) return;
+    const maxShow = Math.floor((this.total - 20) / this.ROW) * 3;
+    const end = Math.min(run.queue.length, run.qi + maxShow);
+    const alive = new Set();
+    for (let i = run.qi; i < end; i++) {
+      alive.add(i);
+      const t = this.slotXY(i - run.qi);
+      let p = this.people.get(i);
+      if (!p) {
+        const start = this.at(this.total - 2);
+        p = { x: instant ? t.x : start.x, y: instant ? t.y : start.y, phase: Math.random() * 6 };
+        this.people.set(i, p);
+      }
+      p.tx = t.x; p.ty = t.y; p.color = run.queue[i];
+      if (instant) { p.x = t.x; p.y = t.y; }
+    }
+    for (const k of [...this.people.keys()]) if (!alive.has(k)) this.people.delete(k);
+    const left = run.queue.length - end;
+    $('#pax-left').textContent = left > 0 ? `+${left}명` : '';
+  },
+
+  draw(dt) {
+    const { ctx, dpr } = this;
+    if (!ctx || !this.road) return;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.drawImage(this.road, 0, 0);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const list = [...this.people.values()];
+    const speed = 110;
+    for (const p of list) {
+      const dx = p.tx - p.x, dy = p.ty - p.y, d = Math.hypot(dx, dy);
+      p.walking = d > 0.6;
+      if (p.walking) { const m = Math.min(d, speed * dt); p.x += dx / d * m; p.y += dy / d * m; p.phase += dt * 16; }
+    }
+    list.sort((a, b) => a.y - b.y);
+    for (const p of list) drawPerson(ctx, p.x, p.y, PAL[p.color], p.walking ? Math.sin(p.phase) : 0);
+  },
+};
+
+function drawPerson(ctx, x, y, pal, bob) {
+  const by = y - Math.abs(bob) * 1.6;
+  ctx.fillStyle = 'rgba(0,0,0,.22)';
+  ctx.beginPath(); ctx.ellipse(x, y + 6, 6, 2.6, 0, 0, 7); ctx.fill();
+  // 몸통
+  const g = ctx.createLinearGradient(0, by - 3, 0, by + 7);
+  g.addColorStop(0, pal.l); g.addColorStop(0.5, pal.c); g.addColorStop(1, pal.d);
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.roundRect(x - 5.5, by - 3, 11, 10, [5, 5, 3, 3]); ctx.fill();
+  // 머리
+  const h = ctx.createRadialGradient(x - 1.5, by - 8, 0.5, x, by - 6.5, 5);
+  h.addColorStop(0, pal.l); h.addColorStop(1, pal.c);
+  ctx.fillStyle = h;
+  ctx.beginPath(); ctx.arc(x, by - 6.5, 4.6, 0, 7); ctx.fill();
+}
+
+// ---------- 탑승 루프 ----------
+setInterval(step, 85);
+
+function step() {
+  if (!run || run.over) return;
+  if (run.qi < run.queue.length) {
+    const c = run.queue[run.qi];
+    const s = run.slots.filter(s => s && s.ready && !s.leaving && s.color === c && s.filled < s.cap).sort((a, b) => a.seq - b.seq)[0];
+    if (s) board(s);
+  }
+  checkEnd();
+}
+
+function board(s) {
+  const i = run.slots.indexOf(s);
+  const v = run.vehicles.find(o => o.id === s.vid);
+  const p = crowd.people.get(run.qi);
+  crowd.people.delete(run.qi);
+  const color = run.queue[run.qi];
+  run.qi++;
+  s.filled++;
+  seatLabel(v, s);
+  // 맨 앞 손님이 차로 걸어감
+  const pz = rel($('#plaza'));
+  const from = p ? { x: pz.x + p.x, y: pz.y + p.y } : { x: pz.x + crowd.gate.x, y: pz.y + crowd.gate.y };
+  const b = slotBox(i);
+  const w = document.createElement('span');
+  w.className = 'walker';
+  paint(w, color);
+  w.style.transform = `translate(${from.x - 7}px, ${from.y - 12}px)`;
+  stage.appendChild(w);
+  w.offsetWidth;
+  w.style.transform = `translate(${b.x + b.w / 2 - 7}px, ${b.y + b.h / 2 - 9}px) scale(.8)`;
+  w.classList.add('in');
+  setTimeout(() => w.remove(), 520);
+  crowd.retarget(false);
+  if (s.filled === s.cap) {
+    s.leaving = true;
+    setTimeout(() => {
+      retrigger(v.el, 'full');
+      setTimeout(() => {
+        v.el.style.transform += ' translateY(-70px)';
+        v.el.classList.add('depart');
+        const el = v.el;
+        setTimeout(() => { el.remove(); }, 320);
+        v.el = null; v.where = 'gone';
+        run.slots[i] = null;
+      }, 200);
+    }, 200);
+  }
+}
+
+function checkEnd() {
+  if (run.qi >= run.queue.length) {
+    if (run.slots.every(s => !s)) win();
+    return;
+  }
+  if (run.slots.some(s => s && (!s.ready || s.leaving))) return;
+  if (freeSlot() !== -1) return;
+  const c = run.queue[run.qi];
+  if (run.slots.some(s => s && s.color === c && s.filled < s.cap)) return;
+  if (run.vipMode) return;
+  lose();
+}
+
+// ---------- 부스터 ----------
+$('#b-sort').addEventListener('click', () => useBooster('sort'));
+$('#b-shuffle').addEventListener('click', () => useBooster('shuffle'));
+$('#b-vip').addEventListener('click', () => useBooster('vip'));
+$('#b-shop').addEventListener('click', shopSheet);
+
+function useBooster(k) {
+  if (!run || run.over) return;
+  if (save.boosters[k] <= 0) { shopSheet(); return; }
+  if (k === 'vip') {
+    if (run.vipMode) { setVip(false); return; }
+    if (run.slots[0]) { toast('VIP 칸이 이미 차 있어요'); return; }
+    setVip(true);
+    return;
+  }
+  if (k === 'sort') {
+    const inSlot = new Set(run.slots.filter(s => s && !s.leaving).map(s => s.color));
+    if (!inSlot.size) { toast('주차칸에 차가 있어야 써요'); return; }
+    const rest = run.queue.slice(run.qi);
+    const a = rest.filter(c => inSlot.has(c)), b = rest.filter(c => !inSlot.has(c));
+    run.queue.splice(run.qi, rest.length, ...a, ...b);
+    // 줄을 다시 서는 모습: 기존 사람들 색만 바꾸지 않고 자리를 섞어 걸어가게
+    const old = [...crowd.people.entries()];
+    crowd.people = new Map();
+    const shuffled = old.map(([, p]) => p).sort(() => Math.random() - 0.5);
+    old.forEach(([idx], j) => crowd.people.set(idx, shuffled[j]));
+    crowd.retarget(false);
+    toast('손님 줄을 정리했어요');
+  }
+  if (k === 'shuffle') {
+    const lot = lotVehicles();
+    if (lot.length < 2) { toast('섞을 차가 부족해요'); return; }
+    for (const size of Object.keys(SIZES)) {
+      const g = lot.filter(v => v.size === size);
+      const cols = g.map(v => v.color);
+      for (let i = cols.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [cols[i], cols[j]] = [cols[j], cols[i]]; }
+      g.forEach((v, i) => { v.color = cols[i]; if (v.revealed) paint(v.el, v.color); retrigger(v.el, 'blocker'); });
+    }
+    toast('같은 크기끼리 색을 섞었어요');
+  }
+  save.boosters[k]--;
+  persist(); updateHud();
+}
+
+function setVip(on) {
+  run.vipMode = on;
+  lotVehicles().forEach(v => v.el.classList.toggle('pickable', on));
+  stage.querySelectorAll('.tip').forEach(e => e.remove());
+  if (on) tip('VIP 칸으로 보낼 차를 고르세요', rel($('#grid')).y - 30);
+  updateHud();
+}
+
+function sendToVip(v) {
+  setVip(false);
+  save.boosters.vip--; persist(); updateHud();
+  run.moved = true;
+  leaveLot(v);
+  run.slots[0] = { vid: v.id, color: v.color, cap: SIZES[v.size].cap, filled: 0, ready: false, seq: ++run.seq };
+  v.el.classList.add('flying', 'parked');
+  setBox(v, slotBox(0), nearestAngle(v.ang, 270), true);
+  setTimeout(() => arrive(v, 0), 420);
+}
+
+// ---------- 잠긴 칸 ----------
+document.querySelectorAll('.slot.locked').forEach(el => el.addEventListener('click', () => {
+  if (!run || run.over || run.open[+el.dataset.slot]) return;
+  sheet({
+    title: '칸 열기', body: '이번 판에서만 주차칸이 하나 늘어나요.',
+    buttons: [
+      { label: `${PRICE.slot}코인으로 열기`, cls: 'gold', disabled: save.coins < PRICE.slot, on: () => { save.coins -= PRICE.slot; openSlot(); } },
+      { label: '광고 보고 열기', sub: '프로토타입이라 바로 열려요', on: openSlot },
+      { label: '닫기' },
+    ],
+  });
+}));
+
+function openSlot() {
+  const i = run.open.findIndex((o, k) => k >= 5 && !o);
+  if (i === -1) return false;
+  run.open[i] = true;
+  renderSlots(); persist(); updateHud();
+  return true;
+}
+
+// ---------- 결과 ----------
+function win() {
+  run.over = true;
+  const reward = run.L.hard ? 40 : 20;
+  save.coins += reward;
+  if (!save.cleared.includes(run.n)) save.cleared.push(run.n);
+  save.unlocked = Math.max(save.unlocked, Math.min(LEVELS.length, run.n + 1));
+  persist(); updateHud(); confetti();
+  const last = run.n === LEVELS.length;
+  setTimeout(() => sheet({
+    title: last ? '10레벨 모두 클리어!' : '클리어!',
+    body: `코인 +${reward}${last ? ' · 프로토타입은 여기까지예요' : ''}`,
+    buttons: last
+      ? [{ label: '레벨 고르기', cls: 'primary', on: levelsSheet }]
+      : [{ label: `레벨 ${run.n + 1} 하기`, cls: 'primary', on: () => startLevel(run.n + 1) }, { label: '한 번 더', on: () => startLevel(run.n) }],
+  }), 500);
+}
+
+function lose() {
+  run.over = true;
+  buzz();
+  const canSlot = run.open.some((o, k) => k >= 5 && !o);
+  sheet({
+    title: '주차칸이 꽉 찼어요!',
+    body: `남은 손님 ${run.queue.length - run.qi}명. 칸이 하나만 더 있으면 이어갈 수 있어요.`,
+    buttons: [
+      { label: '칸 +1 하고 이어하기', sub: `${PRICE.revive}코인`, cls: 'gold', disabled: !canSlot || save.coins < PRICE.revive, on: () => { save.coins -= PRICE.revive; revive(); } },
+      { label: '광고 보고 이어하기', sub: '프로토타입이라 바로 이어져요', disabled: !canSlot, on: revive },
+      { label: '다시 하기', sub: '하트 -1', on: () => { save.hearts = Math.max(0, save.hearts - 1); persist(); startLevel(run.n); } },
+    ],
+  });
+}
+function revive() { openSlot(); run.over = false; }
+
+// ---------- 시트 ----------
+function sheet({ title, body, buttons, extra }) {
+  closeSheet();
+  const wrap = document.createElement('div');
+  wrap.className = 'sheet-wrap';
+  wrap.innerHTML = `<div class="sheet" role="dialog" aria-modal="true"><h2></h2><p></p>${extra ?? ''}<div class="btns"></div></div>`;
+  wrap.querySelector('h2').textContent = title;
+  wrap.querySelector('p').textContent = body;
+  for (const b of buttons) {
+    const el = document.createElement('button');
+    el.type = 'button';
+    el.className = 'btn ' + (b.cls ?? '');
+    el.textContent = b.label;
+    if (b.sub) { const s = document.createElement('small'); s.textContent = b.sub; el.appendChild(s); }
+    el.disabled = !!b.disabled;
+    el.addEventListener('click', () => { closeSheet(); b.on?.(); });
+    wrap.querySelector('.btns').appendChild(el);
+  }
+  document.body.appendChild(wrap);
+  return wrap;
+}
+function closeSheet() { document.querySelectorAll('.sheet-wrap').forEach(e => e.remove()); }
+
+function levelsSheet() {
+  const extra = '<div class="levels">' + LEVELS.map((L, i) => {
+    const n = i + 1;
+    const st = save.cleared.includes(n) ? 'cleared' : n <= save.unlocked ? 'open' : 'locked';
+    return `<button type="button" data-n="${n}" data-state="${st}" ${n > save.unlocked ? 'disabled' : ''}>${n}</button>`;
+  }).join('') + '</div>';
+  const w = sheet({
+    title: '레벨 고르기', body: 'HARD: 5, 10',
+    extra,
+    buttons: [{ label: '진행 초기화', on: () => { try { localStorage.removeItem(SAVE_KEY); } catch { /* 무시 */ } location.reload(); } }, { label: '닫기' }],
+  });
+  w.querySelectorAll('.levels button').forEach(b => b.addEventListener('click', () => { closeSheet(); startLevel(+b.dataset.n); }));
+}
+
+function shopSheet() {
+  const buy = k => () => { save.coins -= PRICE.booster; save.boosters[k]++; persist(); updateHud(); shopSheet(); };
+  sheet({
+    title: '상점', body: `보유 코인 ${save.coins} · 프로토타입이라 실제 결제는 없어요`,
+    buttons: [
+      { label: '승객 정렬 +1', sub: `${PRICE.booster}코인`, disabled: save.coins < PRICE.booster, on: buy('sort') },
+      { label: '차 섞기 +1', sub: `${PRICE.booster}코인`, disabled: save.coins < PRICE.booster, on: buy('shuffle') },
+      { label: 'VIP 빼기 +1', sub: `${PRICE.booster}코인`, disabled: save.coins < PRICE.booster, on: buy('vip') },
+      { label: '테스트용 코인 +500', cls: 'gold', on: () => { save.coins += 500; persist(); updateHud(); shopSheet(); } },
+      { label: '닫기' },
+    ],
+  });
+}
+
+function heartsSheet(n) {
+  sheet({
+    title: '하트가 없어요', body: '원래는 25분마다 하나씩 차요. 프로토타입이라 바로 채울 수 있어요.',
+    buttons: [{ label: '하트 채우기', cls: 'primary', on: () => { save.hearts = 5; persist(); updateHud(); startLevel(n); } }],
+  });
+}
+
+$('#btn-levels').addEventListener('click', levelsSheet);
+$('#btn-restart').addEventListener('click', () => {
+  if (!run) return;
+  if (!run.moved || run.over) { startLevel(run.n); return; }
+  sheet({
+    title: '다시 시작할까요?', body: '하던 판을 그만두면 하트가 1개 줄어요.',
+    buttons: [
+      { label: '다시 시작', sub: '하트 -1', cls: 'primary', on: () => { save.hearts = Math.max(0, save.hearts - 1); persist(); startLevel(run.n); } },
+      { label: '계속하기' },
+    ],
+  });
+});
+
+// ---------- 안내 ----------
+let hintEl = null;
+function hints() {
+  const n = run.n;
+  if (n === 1) {
+    const lot = lotVehicles();
+    const grid = lotGrid();
+    const front = run.queue[0];
+    const free = lot.filter(v => blockerOf(v, run.L.cols, run.L.rows, grid) === null);
+    const v = free.find(v => v.color === front) ?? free[0];
+    if (v) { v.el.classList.add('hint'); hintEl = v.el; }
+    tip('맨 앞 손님 색과 같은 차를 눌러요', rel($('#grid')).y - 30);
+  }
+  if (n === 2) toast('밴은 6명, 버스는 10명을 태워요');
+  if (n === 4) toast('? 차는 꺼내야 색이 보여요');
+  if (n === 5 || n === 10) toast('HARD! 꺼내는 순서를 잘 생각해요');
+  if (n === 6) toast('차단기는 차가 숫자만큼 빠지면 열려요');
+}
+function clearHint() {
+  if (hintEl) { hintEl.classList.remove('hint'); hintEl = null; }
+  if (!run.vipMode) stage.querySelectorAll('.tip').forEach(e => e.remove());
+}
+function tip(text, y) {
+  const el = document.createElement('div');
+  el.className = 'tip';
+  el.textContent = text;
+  el.style.top = Math.max(0, y) + 'px';
+  stage.appendChild(el);
+}
+function toast(text) {
+  document.querySelectorAll('.toast').forEach(e => e.remove());
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = text;
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 2400);
+}
+function confetti() {
+  for (let i = 0; i < 40; i++) {
+    const c = document.createElement('span');
+    c.className = 'confetti';
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.background = PAL[i % PAL.length].c;
+    c.style.animationDelay = Math.random() * 0.4 + 's';
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 2000);
+  }
+}
+
+// ---------- 시작 ----------
+// 개발·테스트용: 콘솔에서 __bus.run 으로 판 상태 확인
+window.__bus = { get run() { return run; }, save };
+new ResizeObserver(() => { crowd.resize(); layoutAll(true); }).observe(stage);
+let lastT = performance.now();
+(function frame(t) {
+  const dt = Math.min(0.05, (t - lastT) / 1000);
+  lastT = t;
+  crowd.draw(dt);
+  requestAnimationFrame(frame);
+})(lastT);
+updateHud();
+crowd.resize();
+startLevel(Math.min(save.unlocked, LEVELS.length));
+
+</script>
+
+</body>
+</html>
