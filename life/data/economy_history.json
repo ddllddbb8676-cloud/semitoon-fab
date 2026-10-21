@@ -1,0 +1,2816 @@
+{
+ "_note": "세미툰 라이프 연도별 한국 경제 기준표(1940~2026). 금액은 모두 1962년 화폐개혁 이후의 '원' 기준으로 환산했다(1원 = 10환 = 1953년 이전 구 원 1,000원). 1962년 이전 금액은 소수점이 생길 수 있고, 화면 표시는 ECONOMY.md의 '시대별 화폐 표시' 규칙을 따른다. [출처와 검증] cpi_index·min_wage·base_rate·kospi_close는 KOSIS(통계청)·한국은행·최저임금위원회·한국거래소의 공식 수치를 옮긴 값이고, 2025~2026년 물가·금리·최저임금·코스피, 1994·1995·2020~2023년 임금, 서울 집값 기준점(경실련 1993·2003·2004·2017·2021·2022, KB 2025)은 웹 검색으로 교차 확인했다. 그 밖의 연도별 값은 공식 시계열의 알려진 수치를 옮겼지만 원자료 표를 직접 열람하지는 못했으므로 confidence를 함께 볼 것. [추정 방법 — estimated_fields에 표시된 항목] (1) cpi_index 1940~1965: KOSIS 소비자물가는 1965년부터라, 서울 소비자·도매물가 상승률 근사로 거슬러 올라갔다. 1945~1953년 해방·전쟁 인플레이션(KDI 연구: 연 25~531%)은 1940년 공장 노동자 월급이 구 원 40~60원 수준이 되도록 맞춘 대략값이다. (2) avg_wage_krw = 근로자 1인당 월평균 임금총액×12. 1970~2000은 노동부 매월노동통계(10인 이상, 1999~ 5인 이상)의 명목임금 상승률로 연결(1980 17.6만·1985 32.4만·1990 64.2만·1995 122.2만 원/월), 2020~2023은 사업체노동력조사 1인 이상 전체근로자(352.7만→396.6만 원/월). 2001~2019는 조사 범위가 바뀌어 생긴 수준 차이를 흡수하도록 두 기준점 사이를 실제 상승률 모양대로 보간했다. 1966~1969는 실질임금 고성장 가정으로, 1940~1965는 1965년 실질임금 대비 배율×물가로 추정했다. 2024~2026은 추정(2026년 5월 월간 403.1만 원, +1.5%). (3) house_seoul_krw = 서울 아파트 전용 84㎡(30평형대) 안팎의 그 해 대표 매매가. 1986~2002는 KB 아파트 매매가격지수의 연간 변동(1990 +37%, 1998 -14.6%, 2001 +19%, 2002 +31%)과 경실련 30평형 시세(1993 약 2.1억, 2003 약 3억)로 맞춘 근사, 2003~2025는 경실련·KB 평균가격 기준점 사이 보간(2025년 9월 KB 서울 평균 14.36억, 12월 15억 돌파). 1986년 이전은 '집값 = 연평균 임금 × 소득 대비 배율(1940년대 8 → 1985년 17)'로 추정했고, 아파트가 드물던 1960년대 이전은 같은 생활 수준의 단독주택 환산값이다. (4) house_local_krw = 지방(비수도권 광역시·중소도시) 아파트 같은 기준. 전 기간 '서울 ÷ 서울/지방 배율(1980년대 2.2 → 2010년 3.0 → 2013년 2.3 → 2025년 4.8)'로 만든 추정값이며 2024~2025 KB 전국·수도권 평균(전국 5.38억, 수도권 약 8억)에서 역산한 지방 약 3억 원에 맞췄다. (5) mortgage_rate_pct: 2002년부터 한국은행 예금은행 주택담보대출 신규취급액 금리(연평균 근사), 그 이전은 은행 일반·주택자금 대출금리 근사. 주택금고(1967) 이전은 개인 주택담보대출이 사실상 없어 null. (6) base_rate_pct: 1999~2008.2 콜금리 목표, 2008.3~ 기준금리, 연말 값. 1998년 이전은 정책금리 체계가 달라 null(게임은 deposit_rate_pct 사용). (7) deposit_rate_pct(추가 필드): 예금은행 1년 정기예금 대표 금리. 1965~1982 규제 금리, 이후 시장 금리 근사, 1964년 이전 추정. 모두 근사값이다. (8) kospi_close: 연말 종가(1980.1.4=100). 2026은 진행 중이라 10월 초 수준(약 6,800, 6월 9,000 돌파 뒤 조정) 잠정값. (9) macro_score(추가 필드): 그 시대 기준 체감 경기 판단값(-2 대불황 ~ +2 호황), 성장률·실업·물가를 보고 정한 게임용 값. 2026년은 9월까지의 실적과 전망으로 채운 잠정 행이다. 2027년 이후는 FUTURE.md의 미래 모델이 만든다.",
+ "_fields": {
+  "cpi_index": "소비자물가지수, 2020=100, 연평균",
+  "avg_wage_krw": "근로자 1인당 연평균 임금총액(원) = 월평균×12, 세전",
+  "min_wage_hourly_krw": "최저임금 시급(원). 1988년 시행 전은 null. 1994~2006 9월~8월 적용분은 그 해 1월 적용액",
+  "house_seoul_krw": "서울 아파트 84㎡급 대표 매매가(원)",
+  "house_local_krw": "지방 아파트 84㎡급 대표 매매가(원)",
+  "base_rate_pct": "한국은행 정책금리 연말 값(%). 1999년 전 null",
+  "mortgage_rate_pct": "주택담보대출 금리(%). 1967년 전 null",
+  "deposit_rate_pct": "1년 정기예금 금리(%) — 추가 필드",
+  "kospi_close": "코스피 연말 종가. 1980년 전 null",
+  "macro_score": "체감 경기 -2~2 — 추가 필드",
+  "estimated_fields": "추정·보간으로 채운 필드 목록 — 추가 필드"
+ },
+ "years": [
+  {
+   "year": 1940,
+   "cpi_index": 3.473e-05,
+   "avg_wage_krw": 0.6771,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 5.42,
+   "house_local_krw": 2.71,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 3.5,
+   "kospi_close": null,
+   "macro_score": 0,
+   "events_ko": [
+    "중일전쟁 장기화로 전시 통제경제, 생필품 배급 확대"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1941,
+   "cpi_index": 3.821e-05,
+   "avg_wage_krw": 0.7448,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 5.96,
+   "house_local_krw": 2.98,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 3.5,
+   "kospi_close": null,
+   "macro_score": -1,
+   "events_ko": [
+    "태평양전쟁 발발(12월), 쌀 공출과 강제 저축 강화"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1942,
+   "cpi_index": 4.279e-05,
+   "avg_wage_krw": 0.8103,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 6.48,
+   "house_local_krw": 3.24,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 3.5,
+   "kospi_close": null,
+   "macro_score": -1,
+   "events_ko": [
+    "전시 공출 강화, 공정가격 아래 암시장 물가 상승"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1943,
+   "cpi_index": 4.921e-05,
+   "avg_wage_krw": 0.8908,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 7.13,
+   "house_local_krw": 3.56,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 3.5,
+   "kospi_close": null,
+   "macro_score": -1,
+   "events_ko": [
+    "징용·징병 확대, 생필품 부족 심화"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1944,
+   "cpi_index": 6.397e-05,
+   "avg_wage_krw": 1.069,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 8.55,
+   "house_local_krw": 4.28,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 3.5,
+   "kospi_close": null,
+   "macro_score": -2,
+   "events_ko": [
+    "징병제 시행, 물자 부족과 암시장 물가 급등"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1945,
+   "cpi_index": 0.0002559,
+   "avg_wage_krw": 3.919,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 31.4,
+   "house_local_krw": 15.7,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 6.0,
+   "kospi_close": null,
+   "macro_score": -2,
+   "events_ko": [
+    "8·15 광복, 일본 경제권과 단절",
+    "조선은행권 남발로 물가 폭등 시작"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1946,
+   "cpi_index": 0.001279,
+   "avg_wage_krw": 17.82,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 143,
+   "house_local_krw": 71.3,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 6.0,
+   "kospi_close": null,
+   "macro_score": -2,
+   "events_ko": [
+    "미군정 미곡 수집, 쌀값 폭등과 해방 인플레이션"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1947,
+   "cpi_index": 0.002559,
+   "avg_wage_krw": 39.19,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 314,
+   "house_local_krw": 157,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 6.0,
+   "kospi_close": null,
+   "macro_score": -1,
+   "events_ko": [
+    "남북 단절로 전력·비료 부족, 생산 위축 속 고물가"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1948,
+   "cpi_index": 0.004094,
+   "avg_wage_krw": 68.41,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 547,
+   "house_local_krw": 274,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 6.0,
+   "kospi_close": null,
+   "macro_score": -1,
+   "events_ko": [
+    "대한민국 정부 수립",
+    "북한의 5·14 단전으로 공장 가동 차질"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1949,
+   "cpi_index": 0.005323,
+   "avg_wage_krw": 96.34,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 771,
+   "house_local_krw": 385,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 6.0,
+   "kospi_close": null,
+   "macro_score": 0,
+   "events_ko": [
+    "농지개혁법 제정, 물가 오름세 다소 둔화"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1950,
+   "cpi_index": 0.01597,
+   "avg_wage_krw": 244.6,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 1710,
+   "house_local_krw": 856,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 9.0,
+   "kospi_close": null,
+   "macro_score": -2,
+   "events_ko": [
+    "6·25 전쟁 발발, 공장·도로·주택 대거 파괴",
+    "농지개혁 시행"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1951,
+   "cpi_index": 0.08782,
+   "avg_wage_krw": 1101,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 7700,
+   "house_local_krw": 3850,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 9.0,
+   "kospi_close": null,
+   "macro_score": -2,
+   "events_ko": [
+    "1·4 후퇴, 전시 통화 남발로 물가 수백% 폭등"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1952,
+   "cpi_index": 0.202,
+   "avg_wage_krw": 3094,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 21700,
+   "house_local_krw": 10800,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 9.0,
+   "kospi_close": null,
+   "macro_score": -1,
+   "events_ko": [
+    "전시 인플레이션 지속, 미국 원조 물자 유입"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1953,
+   "cpi_index": 0.308,
+   "avg_wage_krw": 5576,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 50200,
+   "house_local_krw": 25100,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 9.0,
+   "kospi_close": null,
+   "macro_score": 0,
+   "events_ko": [
+    "2월 화폐개혁(100원→1환)",
+    "7월 휴전협정, 전후 복구 시작"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1954,
+   "cpi_index": 0.422,
+   "avg_wage_krw": 8814,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 80600,
+   "house_local_krw": 40300,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 12.0,
+   "kospi_close": null,
+   "macro_score": 0,
+   "events_ko": [
+    "원조 경제 본격화, 밀가루·설탕·면직 '삼백산업' 성장"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1955,
+   "cpi_index": 0.7596,
+   "avg_wage_krw": 15870,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 147000,
+   "house_local_krw": 73700,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 12.0,
+   "kospi_close": null,
+   "macro_score": 0,
+   "events_ko": [
+    "전후 복구 속 물가 다시 급등"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1956,
+   "cpi_index": 0.9875,
+   "avg_wage_krw": 21450,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 202000,
+   "house_local_krw": 101000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 12.0,
+   "kospi_close": null,
+   "macro_score": -1,
+   "events_ko": [
+    "대한증권거래소 개장(3월), 국채 위주 거래"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1957,
+   "cpi_index": 1.165,
+   "avg_wage_krw": 26610,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 255000,
+   "house_local_krw": 127000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 12.0,
+   "kospi_close": null,
+   "macro_score": 1,
+   "events_ko": [
+    "미국 원조 정점, 삼백산업 호황"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1958,
+   "cpi_index": 1.142,
+   "avg_wage_krw": 27980,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 272000,
+   "house_local_krw": 136000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 12.0,
+   "kospi_close": null,
+   "macro_score": 0,
+   "events_ko": [
+    "원조 감소 시작, 물가 안정되며 경기 둔화"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1959,
+   "cpi_index": 1.181,
+   "avg_wage_krw": 29590,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 292000,
+   "house_local_krw": 146000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 12.0,
+   "kospi_close": null,
+   "macro_score": -1,
+   "events_ko": [
+    "원조 감축으로 경기 침체, 도시 실업 증가"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1960,
+   "cpi_index": 1.275,
+   "avg_wage_krw": 32670,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 327000,
+   "house_local_krw": 163000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 12.0,
+   "kospi_close": null,
+   "macro_score": -1,
+   "events_ko": [
+    "4·19 혁명, 정치 혼란 속 경기 침체"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1961,
+   "cpi_index": 1.377,
+   "avg_wage_krw": 35670,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 357000,
+   "house_local_krw": 178000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 15.0,
+   "kospi_close": null,
+   "macro_score": 0,
+   "events_ko": [
+    "5·16 군사정변, 농어촌 고리채 정리"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1962,
+   "cpi_index": 1.468,
+   "avg_wage_krw": 38840,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 388000,
+   "house_local_krw": 194000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 15.0,
+   "kospi_close": null,
+   "macro_score": 0,
+   "events_ko": [
+    "6월 화폐개혁(10환→1원), 예금 일시 동결",
+    "제1차 경제개발 5개년 계획 시작, 5월 증권 파동"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1963,
+   "cpi_index": 1.772,
+   "avg_wage_krw": 45890,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 459000,
+   "house_local_krw": 229000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 15.0,
+   "kospi_close": null,
+   "macro_score": 1,
+   "events_ko": [
+    "흉작으로 쌀값 폭등, 물가 20%대"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1964,
+   "cpi_index": 2.295,
+   "avg_wage_krw": 57520,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 575000,
+   "house_local_krw": 288000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 15.0,
+   "kospi_close": null,
+   "macro_score": 0,
+   "events_ko": [
+    "환율 현실화(달러당 130원→255원), 물가 30% 가까이 상승"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1965,
+   "cpi_index": 2.607,
+   "avg_wage_krw": 72600,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 726000,
+   "house_local_krw": 363000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 26.4,
+   "kospi_close": null,
+   "macro_score": 1,
+   "events_ko": [
+    "한일 국교 정상화, 청구권 자금 유입",
+    "9월 금리현실화로 정기예금 금리 연 26.4%"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.kdi.re.kr/research/reportView?pub_no=1",
+    "https://www.officialdata.org/south-korea/inflation/1953",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1966,
+   "cpi_index": 2.901,
+   "avg_wage_krw": 84940,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 866000,
+   "house_local_krw": 433000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": null,
+   "deposit_rate_pct": 26.4,
+   "kospi_close": null,
+   "macro_score": 2,
+   "events_ko": [
+    "베트남 특수, 수출 2억 달러대 진입"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1967,
+   "cpi_index": 3.218,
+   "avg_wage_krw": 103600,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 1080000,
+   "house_local_krw": 539000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 24.0,
+   "deposit_rate_pct": 26.4,
+   "kospi_close": null,
+   "macro_score": 1,
+   "events_ko": [
+    "제2차 경제개발 5개년 계획 시작, 구로 수출공단 가동"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1968,
+   "cpi_index": 3.565,
+   "avg_wage_krw": 131600,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 1400000,
+   "house_local_krw": 698000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 24.0,
+   "deposit_rate_pct": 25.2,
+   "kospi_close": null,
+   "macro_score": 2,
+   "events_ko": [
+    "경부고속도로 착공, 고도 성장 지속"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1969,
+   "cpi_index": 4.007,
+   "avg_wage_krw": 175000,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 1890000,
+   "house_local_krw": 945000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 24.0,
+   "deposit_rate_pct": 22.8,
+   "kospi_close": null,
+   "macro_score": 2,
+   "events_ko": [
+    "외자 도입 기업 부실 확대, 물가 고공행진"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1970,
+   "cpi_index": 4.649,
+   "avg_wage_krw": 218800,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 2410000,
+   "house_local_krw": 1200000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 24.0,
+   "deposit_rate_pct": 22.8,
+   "kospi_close": null,
+   "macro_score": 1,
+   "events_ko": [
+    "경부고속도로 개통, 새마을운동 시작",
+    "수출 10억 달러 돌파"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1971,
+   "cpi_index": 5.276,
+   "avg_wage_krw": 253800,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 2870000,
+   "house_local_krw": 1430000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 22.0,
+   "deposit_rate_pct": 20.4,
+   "kospi_close": null,
+   "macro_score": 0,
+   "events_ko": [
+    "고속 성장 뒤 기업 부실, 원화 평가절하"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1972,
+   "cpi_index": 5.893,
+   "avg_wage_krw": 289100,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 3350000,
+   "house_local_krw": 1680000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 15.5,
+   "deposit_rate_pct": 12.6,
+   "kospi_close": null,
+   "macro_score": 0,
+   "events_ko": [
+    "8·3 사채동결 긴급조치(사채 이자 동결·금리 인하)",
+    "10월 유신"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1973,
+   "cpi_index": 6.082,
+   "avg_wage_krw": 322300,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 3840000,
+   "house_local_krw": 1920000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 15.5,
+   "deposit_rate_pct": 12.6,
+   "kospi_close": null,
+   "macro_score": 2,
+   "events_ko": [
+    "중화학공업화 선언, 고성장",
+    "연말 1차 오일쇼크"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1974,
+   "cpi_index": 7.56,
+   "avg_wage_krw": 426400,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 5200000,
+   "house_local_krw": 2600000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 15.5,
+   "deposit_rate_pct": 15.0,
+   "kospi_close": null,
+   "macro_score": 0,
+   "events_ko": [
+    "오일쇼크로 물가 24%대",
+    "12월 환율 달러당 484원으로 인상"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1975,
+   "cpi_index": 9.465,
+   "avg_wage_krw": 552200,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 6900000,
+   "house_local_krw": 3450000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 15.5,
+   "deposit_rate_pct": 15.0,
+   "kospi_close": null,
+   "macro_score": 0,
+   "events_ko": [
+    "물가 25%대 고물가",
+    "중동 건설 붐 시작"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1976,
+   "cpi_index": 10.91,
+   "avg_wage_krw": 748300,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 9980000,
+   "house_local_krw": 4750000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 18.0,
+   "deposit_rate_pct": 16.2,
+   "kospi_close": null,
+   "macro_score": 2,
+   "events_ko": [
+    "중동 특수로 외화 유입, 고성장 재개"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1977,
+   "cpi_index": 12.02,
+   "avg_wage_krw": 988500,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 14000000,
+   "house_local_krw": 6670000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 18.0,
+   "deposit_rate_pct": 16.2,
+   "kospi_close": null,
+   "macro_score": 2,
+   "events_ko": [
+    "수출 100억 달러 달성",
+    "부가가치세 도입, 직장 의료보험 시작"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1978,
+   "cpi_index": 13.76,
+   "avg_wage_krw": 1334000,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 20000000,
+   "house_local_krw": 9530000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 19.0,
+   "deposit_rate_pct": 18.6,
+   "kospi_close": null,
+   "macro_score": 2,
+   "events_ko": [
+    "강남 아파트 투기 광풍",
+    "8·8 부동산 투기억제대책"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1979,
+   "cpi_index": 16.28,
+   "avg_wage_krw": 1712000,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 25700000,
+   "house_local_krw": 12200000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 19.0,
+   "deposit_rate_pct": 18.6,
+   "kospi_close": null,
+   "macro_score": 0,
+   "events_ko": [
+    "2차 오일쇼크",
+    "부마항쟁·10·26, 경기 급랭"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr"
+   ]
+  },
+  {
+   "year": 1980,
+   "cpi_index": 20.95,
+   "avg_wage_krw": 2113000,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 31700000,
+   "house_local_krw": 15100000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 22.0,
+   "deposit_rate_pct": 19.5,
+   "kospi_close": 106.87,
+   "macro_score": -2,
+   "events_ko": [
+    "마이너스 성장(-1.6%)과 물가 28.7%, 해방 후 최악의 불황",
+    "1월 환율 20% 인상, 컬러TV 방송 시작",
+    "코스피 기준점(1980.1.4=100)"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "http://data.krx.co.kr"
+   ]
+  },
+  {
+   "year": 1981,
+   "cpi_index": 25.43,
+   "avg_wage_krw": 2550000,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 39100000,
+   "house_local_krw": 17800000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 18.0,
+   "deposit_rate_pct": 16.2,
+   "kospi_close": 131.3,
+   "macro_score": 0,
+   "events_ko": [
+    "물가 21%대, 경기 회복 시작"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "http://data.krx.co.kr"
+   ]
+  },
+  {
+   "year": 1982,
+   "cpi_index": 27.26,
+   "avg_wage_krw": 2953000,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 46300000,
+   "house_local_krw": 21000000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 11.0,
+   "deposit_rate_pct": 8.0,
+   "kospi_close": 127.31,
+   "macro_score": 0,
+   "events_ko": [
+    "6·28 조치로 금리 대폭 인하(정기예금 8%)",
+    "장영자 어음사기 사건"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "http://data.krx.co.kr"
+   ]
+  },
+  {
+   "year": 1983,
+   "cpi_index": 28.19,
+   "avg_wage_krw": 3278000,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 52400000,
+   "house_local_krw": 23800000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 11.0,
+   "deposit_rate_pct": 8.0,
+   "kospi_close": 121.21,
+   "macro_score": 2,
+   "events_ko": [
+    "물가 3%대로 안정",
+    "아파트 투기 재연, 투기 단속 지역 지정"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "http://data.krx.co.kr"
+   ]
+  },
+  {
+   "year": 1984,
+   "cpi_index": 28.83,
+   "avg_wage_krw": 3563000,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 58800000,
+   "house_local_krw": 26700000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 11.5,
+   "deposit_rate_pct": 9.0,
+   "kospi_close": 142.46,
+   "macro_score": 1,
+   "events_ko": [
+    "물가 안정 속 고성장, 긴축 재정"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "http://data.krx.co.kr"
+   ]
+  },
+  {
+   "year": 1985,
+   "cpi_index": 29.56,
+   "avg_wage_krw": 3891000,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 66100000,
+   "house_local_krw": 30100000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 11.5,
+   "deposit_rate_pct": 10.0,
+   "kospi_close": 163.37,
+   "macro_score": 0,
+   "events_ko": [
+    "국제그룹 해체",
+    "플라자 합의로 엔화 강세"
+   ],
+   "confidence": "low",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "http://data.krx.co.kr"
+   ]
+  },
+  {
+   "year": 1986,
+   "cpi_index": 30.38,
+   "avg_wage_krw": 4210000,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 72000000,
+   "house_local_krw": 32700000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 11.5,
+   "deposit_rate_pct": 10.0,
+   "kospi_close": 272.61,
+   "macro_score": 2,
+   "events_ko": [
+    "3저 호황(저달러·저유가·저금리) 시작",
+    "사상 첫 경상수지 흑자, 아시안게임"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 1987,
+   "cpi_index": 31.29,
+   "avg_wage_krw": 4635000,
+   "min_wage_hourly_krw": null,
+   "house_seoul_krw": 77000000,
+   "house_local_krw": 35000000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 11.5,
+   "deposit_rate_pct": 10.0,
+   "kospi_close": 525.11,
+   "macro_score": 2,
+   "events_ko": [
+    "6월 민주항쟁·노동자 대투쟁으로 임금 급등",
+    "3저 호황 절정"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 1988,
+   "cpi_index": 33.52,
+   "avg_wage_krw": 5353000,
+   "min_wage_hourly_krw": 487.5,
+   "house_seoul_krw": 93000000,
+   "house_local_krw": 40400000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 12.0,
+   "deposit_rate_pct": 10.0,
+   "kospi_close": 907.2,
+   "macro_score": 2,
+   "events_ko": [
+    "최저임금제 시행(시급 462.5원·487.5원 두 그룹)",
+    "국민연금 시작, 서울올림픽",
+    "코스피 900 돌파"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 1989,
+   "cpi_index": 35.43,
+   "avg_wage_krw": 6483000,
+   "min_wage_hourly_krw": 600,
+   "house_seoul_krw": 111000000,
+   "house_local_krw": 46300000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 12.5,
+   "deposit_rate_pct": 10.0,
+   "kospi_close": 909.72,
+   "macro_score": 0,
+   "events_ko": [
+    "코스피 첫 1,000 돌파(3월)",
+    "집값 폭등, 분당·일산 신도시 발표·토지공개념 도입"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 1990,
+   "cpi_index": 38.47,
+   "avg_wage_krw": 7702000,
+   "min_wage_hourly_krw": 690,
+   "house_seoul_krw": 153000000,
+   "house_local_krw": 58800000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 12.5,
+   "deposit_rate_pct": 10.0,
+   "kospi_close": 696.11,
+   "macro_score": 1,
+   "events_ko": [
+    "서울 아파트값 30%대 폭등",
+    "증시 급락, 깡통계좌 일괄 정리"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 1991,
+   "cpi_index": 42.05,
+   "avg_wage_krw": 9049000,
+   "min_wage_hourly_krw": 820,
+   "house_seoul_krw": 147000000,
+   "house_local_krw": 58800000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 13.0,
+   "deposit_rate_pct": 10.0,
+   "kospi_close": 610.92,
+   "macro_score": 1,
+   "events_ko": [
+    "주택 200만 호 공급으로 집값 하락 전환",
+    "1단계 금리자유화"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 1992,
+   "cpi_index": 44.66,
+   "avg_wage_krw": 10420000,
+   "min_wage_hourly_krw": 925,
+   "house_seoul_krw": 141000000,
+   "house_local_krw": 58800000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 12.5,
+   "deposit_rate_pct": 9.0,
+   "kospi_close": 678.44,
+   "macro_score": -1,
+   "events_ko": [
+    "외국인 주식투자 허용",
+    "집값 하락 지속, 성장 둔화"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 1993,
+   "cpi_index": 46.8,
+   "avg_wage_krw": 11700000,
+   "min_wage_hourly_krw": 1005,
+   "house_seoul_krw": 140000000,
+   "house_local_krw": 60900000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 11.0,
+   "deposit_rate_pct": 8.5,
+   "kospi_close": 866.18,
+   "macro_score": 0,
+   "events_ko": [
+    "8·12 금융실명제 전격 실시"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630",
+    "https://www.newsis.com/view/NISX20210623_0001486397",
+    "https://v.daum.net/v/1lA3BHsbyb",
+    "https://mobile.newsis.com/view/NISX20210303_0001357406"
+   ]
+  },
+  {
+   "year": 1994,
+   "cpi_index": 49.75,
+   "avg_wage_krw": 13190000,
+   "min_wage_hourly_krw": 1085,
+   "house_seoul_krw": 142000000,
+   "house_local_krw": 61700000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 11.0,
+   "deposit_rate_pct": 8.5,
+   "kospi_close": 1027.37,
+   "macro_score": 1,
+   "events_ko": [
+    "반도체 호황 속 경기 과열, 코스피 1,000 회복"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.seoul.co.kr/news/1996/03/09/19960309021001",
+    "https://www.minimumwage.go.kr",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 1995,
+   "cpi_index": 51.99,
+   "avg_wage_krw": 14660000,
+   "min_wage_hourly_krw": 1170,
+   "house_seoul_krw": 144000000,
+   "house_local_krw": 65500000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 11.5,
+   "deposit_rate_pct": 8.8,
+   "kospi_close": 882.94,
+   "macro_score": 1,
+   "events_ko": [
+    "1인당 국민소득 1만 달러 시대",
+    "부동산실명제 시행"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.seoul.co.kr/news/1996/03/09/19960309021001",
+    "https://www.minimumwage.go.kr",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 1996,
+   "cpi_index": 54.54,
+   "avg_wage_krw": 16410000,
+   "min_wage_hourly_krw": 1275,
+   "house_seoul_krw": 153000000,
+   "house_local_krw": 69500000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 11.5,
+   "deposit_rate_pct": 9.0,
+   "kospi_close": 651.22,
+   "macro_score": 0,
+   "events_ko": [
+    "OECD 가입, 코스닥 출범",
+    "반도체 값 폭락으로 경상수지 적자 확대"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 1997,
+   "cpi_index": 56.94,
+   "avg_wage_krw": 17560000,
+   "min_wage_hourly_krw": 1400,
+   "house_seoul_krw": 160000000,
+   "house_local_krw": 72700000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 12.5,
+   "deposit_rate_pct": 10.8,
+   "kospi_close": 376.31,
+   "macro_score": -1,
+   "events_ko": [
+    "한보·기아 부도",
+    "11월 IMF 구제금융 신청, 환율 2,000원 근접",
+    "코스피 376으로 추락"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 1998,
+   "cpi_index": 61.21,
+   "avg_wage_krw": 17120000,
+   "min_wage_hourly_krw": 1485,
+   "house_seoul_krw": 138000000,
+   "house_local_krw": 62700000,
+   "base_rate_pct": null,
+   "mortgage_rate_pct": 15.0,
+   "deposit_rate_pct": 13.3,
+   "kospi_close": 562.46,
+   "macro_score": -2,
+   "events_ko": [
+    "IMF 외환위기, 성장률 -5%대",
+    "금리 20~30%대 폭등, 대량 해고로 실업자 150만 명",
+    "금 모으기 운동"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 1999,
+   "cpi_index": 61.7,
+   "avg_wage_krw": 19190000,
+   "min_wage_hourly_krw": 1525,
+   "house_seoul_krw": 157000000,
+   "house_local_krw": 68300000,
+   "base_rate_pct": 4.75,
+   "mortgage_rate_pct": 10.5,
+   "deposit_rate_pct": 6.9,
+   "kospi_close": 1028.07,
+   "macro_score": 2,
+   "events_ko": [
+    "성장률 11%대 급반등, 코스닥·IT 벤처 붐",
+    "대우그룹 해체"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2000,
+   "cpi_index": 63.12,
+   "avg_wage_krw": 20730000,
+   "min_wage_hourly_krw": 1600,
+   "house_seoul_krw": 165000000,
+   "house_local_krw": 71700000,
+   "base_rate_pct": 5.25,
+   "mortgage_rate_pct": 9.5,
+   "deposit_rate_pct": 7.1,
+   "kospi_close": 504.62,
+   "macro_score": 1,
+   "events_ko": [
+    "닷컴 버블 붕괴, 코스피 반토막",
+    "의약분업"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2001,
+   "cpi_index": 65.7,
+   "avg_wage_krw": 21580000,
+   "min_wage_hourly_krw": 1865,
+   "house_seoul_krw": 198000000,
+   "house_local_krw": 79200000,
+   "base_rate_pct": 4.0,
+   "mortgage_rate_pct": 8.0,
+   "deposit_rate_pct": 5.4,
+   "kospi_close": 693.7,
+   "macro_score": -1,
+   "events_ko": [
+    "IMF 차입금 조기 상환(8월)",
+    "저금리로 집값 상승 시작"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2002,
+   "cpi_index": 67.54,
+   "avg_wage_krw": 23780000,
+   "min_wage_hourly_krw": 2100,
+   "house_seoul_krw": 262000000,
+   "house_local_krw": 90300000,
+   "base_rate_pct": 4.25,
+   "mortgage_rate_pct": 6.7,
+   "deposit_rate_pct": 4.7,
+   "kospi_close": 627.55,
+   "macro_score": 1,
+   "events_ko": [
+    "신용카드 남발·가계대출 급증",
+    "서울 아파트값 30% 급등, 월드컵"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2003,
+   "cpi_index": 69.91,
+   "avg_wage_krw": 25730000,
+   "min_wage_hourly_krw": 2275,
+   "house_seoul_krw": 300000000,
+   "house_local_krw": 100000000,
+   "base_rate_pct": 3.75,
+   "mortgage_rate_pct": 6.2,
+   "deposit_rate_pct": 4.2,
+   "kospi_close": 810.71,
+   "macro_score": -1,
+   "events_ko": [
+    "카드대란, 신용불량자 370만 명",
+    "10·29 부동산 대책"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630",
+    "https://www.newsis.com/view/NISX20210623_0001486397",
+    "https://v.daum.net/v/1lA3BHsbyb",
+    "https://mobile.newsis.com/view/NISX20210303_0001357406"
+   ]
+  },
+  {
+   "year": 2004,
+   "cpi_index": 72.42,
+   "avg_wage_krw": 27020000,
+   "min_wage_hourly_krw": 2510,
+   "house_seoul_krw": 310000000,
+   "house_local_krw": 103000000,
+   "base_rate_pct": 3.25,
+   "mortgage_rate_pct": 5.9,
+   "deposit_rate_pct": 3.8,
+   "kospi_close": 895.92,
+   "macro_score": 0,
+   "events_ko": [
+    "내수 침체",
+    "KTX 개통, 주 5일 근무제 시작(대기업)"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630",
+    "https://www.newsis.com/view/NISX20210623_0001486397",
+    "https://v.daum.net/v/1lA3BHsbyb",
+    "https://mobile.newsis.com/view/NISX20210303_0001357406"
+   ]
+  },
+  {
+   "year": 2005,
+   "cpi_index": 74.45,
+   "avg_wage_krw": 28540000,
+   "min_wage_hourly_krw": 2840,
+   "house_seoul_krw": 340000000,
+   "house_local_krw": 106000000,
+   "base_rate_pct": 3.75,
+   "mortgage_rate_pct": 5.4,
+   "deposit_rate_pct": 3.6,
+   "kospi_close": 1379.37,
+   "macro_score": 0,
+   "events_ko": [
+    "8·31 부동산 대책(종합부동산세 강화)",
+    "코스피 1,300 돌파, 적립식 펀드 붐"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2006,
+   "cpi_index": 76.09,
+   "avg_wage_krw": 29880000,
+   "min_wage_hourly_krw": 3100,
+   "house_seoul_krw": 420000000,
+   "house_local_krw": 117000000,
+   "base_rate_pct": 4.5,
+   "mortgage_rate_pct": 5.6,
+   "deposit_rate_pct": 4.4,
+   "kospi_close": 1434.46,
+   "macro_score": 0,
+   "events_ko": [
+    "'버블세븐' 집값 급등, 11·15 대책으로 대출 규제 강화"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2007,
+   "cpi_index": 77.99,
+   "avg_wage_krw": 31270000,
+   "min_wage_hourly_krw": 3480,
+   "house_seoul_krw": 450000000,
+   "house_local_krw": 125000000,
+   "base_rate_pct": 5.0,
+   "mortgage_rate_pct": 6.2,
+   "deposit_rate_pct": 5.0,
+   "kospi_close": 1897.13,
+   "macro_score": 1,
+   "events_ko": [
+    "코스피 첫 2,000 돌파(7월)",
+    "중국 펀드 열풍"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2008,
+   "cpi_index": 81.66,
+   "avg_wage_krw": 31940000,
+   "min_wage_hourly_krw": 3770,
+   "house_seoul_krw": 490000000,
+   "house_local_krw": 136000000,
+   "base_rate_pct": 3.0,
+   "mortgage_rate_pct": 6.8,
+   "deposit_rate_pct": 5.7,
+   "kospi_close": 1124.47,
+   "macro_score": -1,
+   "events_ko": [
+    "글로벌 금융위기, 코스피 1,000 붕괴(10월)",
+    "환율 1,500원대, 키코(KIKO) 피해"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2009,
+   "cpi_index": 83.94,
+   "avg_wage_krw": 31800000,
+   "min_wage_hourly_krw": 4000,
+   "house_seoul_krw": 500000000,
+   "house_local_krw": 147000000,
+   "base_rate_pct": 2.0,
+   "mortgage_rate_pct": 5.6,
+   "deposit_rate_pct": 3.3,
+   "kospi_close": 1682.77,
+   "macro_score": -1,
+   "events_ko": [
+    "기준금리 사상 최저 2.0%",
+    "V자 반등"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2010,
+   "cpi_index": 86.38,
+   "avg_wage_krw": 33650000,
+   "min_wage_hourly_krw": 4110,
+   "house_seoul_krw": 490000000,
+   "house_local_krw": 163000000,
+   "base_rate_pct": 2.5,
+   "mortgage_rate_pct": 5.0,
+   "deposit_rate_pct": 3.2,
+   "kospi_close": 2051.0,
+   "macro_score": 1,
+   "events_ko": [
+    "G20 서울 정상회의",
+    "수출 호조, 코스피 2,000 회복"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2011,
+   "cpi_index": 89.83,
+   "avg_wage_krw": 33710000,
+   "min_wage_hourly_krw": 4320,
+   "house_seoul_krw": 490000000,
+   "house_local_krw": 188000000,
+   "base_rate_pct": 3.25,
+   "mortgage_rate_pct": 5.0,
+   "deposit_rate_pct": 3.7,
+   "kospi_close": 1825.74,
+   "macro_score": 0,
+   "events_ko": [
+    "저축은행 영업정지 사태",
+    "미국 신용등급 강등 충격, 물가 4%"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2012,
+   "cpi_index": 91.81,
+   "avg_wage_krw": 35170000,
+   "min_wage_hourly_krw": 4580,
+   "house_seoul_krw": 470000000,
+   "house_local_krw": 196000000,
+   "base_rate_pct": 2.75,
+   "mortgage_rate_pct": 4.6,
+   "deposit_rate_pct": 3.4,
+   "kospi_close": 1997.05,
+   "macro_score": -1,
+   "events_ko": [
+    "유럽 재정위기",
+    "하우스푸어, 집값 하락"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2013,
+   "cpi_index": 93.0,
+   "avg_wage_krw": 36030000,
+   "min_wage_hourly_krw": 4860,
+   "house_seoul_krw": 460000000,
+   "house_local_krw": 200000000,
+   "base_rate_pct": 2.5,
+   "mortgage_rate_pct": 3.8,
+   "deposit_rate_pct": 2.7,
+   "kospi_close": 2011.34,
+   "macro_score": 0,
+   "events_ko": [
+    "집값 바닥",
+    "코스피 1,900~2,000 '박스피'"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2014,
+   "cpi_index": 94.21,
+   "avg_wage_krw": 36620000,
+   "min_wage_hourly_krw": 5210,
+   "house_seoul_krw": 470000000,
+   "house_local_krw": 204000000,
+   "base_rate_pct": 2.0,
+   "mortgage_rate_pct": 3.5,
+   "deposit_rate_pct": 2.4,
+   "kospi_close": 1915.59,
+   "macro_score": 0,
+   "events_ko": [
+    "LTV 70%·DTI 60%로 대출 규제 완화",
+    "기준금리 2.0%"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2015,
+   "cpi_index": 94.87,
+   "avg_wage_krw": 37520000,
+   "min_wage_hourly_krw": 5580,
+   "house_seoul_krw": 500000000,
+   "house_local_krw": 208000000,
+   "base_rate_pct": 1.5,
+   "mortgage_rate_pct": 3.0,
+   "deposit_rate_pct": 1.7,
+   "kospi_close": 1961.31,
+   "macro_score": 0,
+   "events_ko": [
+    "기준금리 1.5%, 전세난",
+    "메르스 사태"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2016,
+   "cpi_index": 95.82,
+   "avg_wage_krw": 38590000,
+   "min_wage_hourly_krw": 6030,
+   "house_seoul_krw": 540000000,
+   "house_local_krw": 216000000,
+   "base_rate_pct": 1.25,
+   "mortgage_rate_pct": 2.9,
+   "deposit_rate_pct": 1.5,
+   "kospi_close": 2026.46,
+   "macro_score": 0,
+   "events_ko": [
+    "가계부채 1,300조 원 돌파",
+    "조선·해운 구조조정, 한진해운 법정관리"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2017,
+   "cpi_index": 97.64,
+   "avg_wage_krw": 39530000,
+   "min_wage_hourly_krw": 6470,
+   "house_seoul_krw": 610000000,
+   "house_local_krw": 218000000,
+   "base_rate_pct": 1.5,
+   "mortgage_rate_pct": 3.3,
+   "deposit_rate_pct": 1.6,
+   "kospi_close": 2467.49,
+   "macro_score": 1,
+   "events_ko": [
+    "반도체 슈퍼사이클, 코스피 2,400대",
+    "8·2 부동산 대책(서울 LTV 40%)"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630",
+    "https://www.newsis.com/view/NISX20210623_0001486397",
+    "https://v.daum.net/v/1lA3BHsbyb",
+    "https://mobile.newsis.com/view/NISX20210303_0001357406"
+   ]
+  },
+  {
+   "year": 2018,
+   "cpi_index": 99.11,
+   "avg_wage_krw": 41240000,
+   "min_wage_hourly_krw": 7530,
+   "house_seoul_krw": 720000000,
+   "house_local_krw": 218000000,
+   "base_rate_pct": 1.75,
+   "mortgage_rate_pct": 3.4,
+   "deposit_rate_pct": 2.0,
+   "kospi_close": 2041.04,
+   "macro_score": 0,
+   "events_ko": [
+    "최저임금 16.4% 인상(7,530원)",
+    "서울 집값 급등, 9·13 대책"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2019,
+   "cpi_index": 99.5,
+   "avg_wage_krw": 42250000,
+   "min_wage_hourly_krw": 8350,
+   "house_seoul_krw": 820000000,
+   "house_local_krw": 222000000,
+   "base_rate_pct": 1.25,
+   "mortgage_rate_pct": 2.8,
+   "deposit_rate_pct": 1.8,
+   "kospi_close": 2197.67,
+   "macro_score": -1,
+   "events_ko": [
+    "일본 수출규제",
+    "12·16 대책(15억 초과 주택 대출 금지)"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2020,
+   "cpi_index": 100.0,
+   "avg_wage_krw": 42320000,
+   "min_wage_hourly_krw": 8590,
+   "house_seoul_krw": 980000000,
+   "house_local_krw": 265000000,
+   "base_rate_pct": 0.5,
+   "mortgage_rate_pct": 2.5,
+   "deposit_rate_pct": 1.1,
+   "kospi_close": 2873.47,
+   "macro_score": -1,
+   "events_ko": [
+    "코로나19, 기준금리 0.5%",
+    "동학개미·영끌 열풍, 코스피 2,873 마감"
+   ],
+   "confidence": "high",
+   "estimated": true,
+   "estimated_fields": [
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2021,
+   "cpi_index": 102.5,
+   "avg_wage_krw": 44270000,
+   "min_wage_hourly_krw": 8720,
+   "house_seoul_krw": 1180000000,
+   "house_local_krw": 311000000,
+   "base_rate_pct": 1.0,
+   "mortgage_rate_pct": 2.9,
+   "deposit_rate_pct": 1.1,
+   "kospi_close": 2977.65,
+   "macro_score": 1,
+   "events_ko": [
+    "코스피 첫 3,000 돌파(1월)",
+    "서울 집값 폭등, 8월 금리 인상 시작"
+   ],
+   "confidence": "high",
+   "estimated": true,
+   "estimated_fields": [
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630",
+    "https://www.newsis.com/view/NISX20210623_0001486397",
+    "https://v.daum.net/v/1lA3BHsbyb",
+    "https://mobile.newsis.com/view/NISX20210303_0001357406"
+   ]
+  },
+  {
+   "year": 2022,
+   "cpi_index": 107.72,
+   "avg_wage_krw": 46430000,
+   "min_wage_hourly_krw": 9160,
+   "house_seoul_krw": 1230000000,
+   "house_local_krw": 308000000,
+   "base_rate_pct": 3.25,
+   "mortgage_rate_pct": 4.3,
+   "deposit_rate_pct": 2.9,
+   "kospi_close": 2236.4,
+   "macro_score": 0,
+   "events_ko": [
+    "물가 5.1%로 24년 만에 최고",
+    "기준금리 1.0%→3.25% 연속 인상, 집값 급락",
+    "레고랜드 사태로 자금시장 경색"
+   ],
+   "confidence": "high",
+   "estimated": true,
+   "estimated_fields": [
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.newsis.com/view/NISX20240229_0002644147",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630",
+    "https://www.newsis.com/view/NISX20210623_0001486397",
+    "https://v.daum.net/v/1lA3BHsbyb",
+    "https://mobile.newsis.com/view/NISX20210303_0001357406"
+   ]
+  },
+  {
+   "year": 2023,
+   "cpi_index": 111.59,
+   "avg_wage_krw": 47590000,
+   "min_wage_hourly_krw": 9620,
+   "house_seoul_krw": 1170000000,
+   "house_local_krw": 292000000,
+   "base_rate_pct": 3.5,
+   "mortgage_rate_pct": 4.3,
+   "deposit_rate_pct": 3.7,
+   "kospi_close": 2655.28,
+   "macro_score": -1,
+   "events_ko": [
+    "기준금리 3.5% 유지",
+    "역전세·전세사기 피해 확산"
+   ],
+   "confidence": "high",
+   "estimated": true,
+   "estimated_fields": [
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.newsis.com/view/NISX20240229_0002644147",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2024,
+   "cpi_index": 114.18,
+   "avg_wage_krw": 48840000,
+   "min_wage_hourly_krw": 9860,
+   "house_seoul_krw": 1260000000,
+   "house_local_krw": 293000000,
+   "base_rate_pct": 3.0,
+   "mortgage_rate_pct": 4.0,
+   "deposit_rate_pct": 3.4,
+   "kospi_close": 2399.49,
+   "macro_score": 0,
+   "events_ko": [
+    "밸류업 프로그램, 금투세 폐지",
+    "10월부터 금리 인하",
+    "12·3 비상계엄 사태로 환율 1,470원대, 코스피 연간 -9.6%"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630"
+   ]
+  },
+  {
+   "year": 2025,
+   "cpi_index": 116.61,
+   "avg_wage_krw": 50280000,
+   "min_wage_hourly_krw": 10030,
+   "house_seoul_krw": 1430000000,
+   "house_local_krw": 298000000,
+   "base_rate_pct": 2.5,
+   "mortgage_rate_pct": 4.0,
+   "deposit_rate_pct": 2.6,
+   "kospi_close": 4214.17,
+   "macro_score": -1,
+   "events_ko": [
+    "6월 조기 대선, 기준금리 2.5%까지 인하",
+    "6·27 대출 규제(수도권 주담대 6억 원 한도), 10·15 대책",
+    "코스피 75.6% 급등, 4,214로 마감"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "avg_wage_krw",
+    "house_local_krw",
+    "deposit_rate_pct"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630",
+    "https://news.tf.co.kr/read/ogmeta/2277690.htm",
+    "https://www.koreatimes.co.kr/amp/economy/policy/20251230/korean-stock-market-finishes-2025-on-high-note",
+    "https://kbthink.com/realestate/issue/data-251002.html",
+    "https://kbthink.com/realestate/issue/data-260102.html",
+    "https://kbthink.com/realestate/insights/research/251215-7.html"
+   ]
+  },
+  {
+   "year": 2026,
+   "cpi_index": 119.8,
+   "avg_wage_krw": 51480000,
+   "min_wage_hourly_krw": 10320,
+   "house_seoul_krw": 1580000000,
+   "house_local_krw": 304000000,
+   "base_rate_pct": 3.0,
+   "mortgage_rate_pct": 4.4,
+   "deposit_rate_pct": 2.8,
+   "kospi_close": 6800.0,
+   "macro_score": 1,
+   "events_ko": [
+    "반도체 슈퍼호황, 코스피 5,000(1월)·6,000(2월)·8,000(5월)·9,000(6월) 돌파 뒤 급락",
+    "중동 전쟁 장기화로 고유가·고환율, 물가 3% 안팎",
+    "기준금리 7월 2.75%·8월 3.0%로 연속 인상",
+    "최저임금 10,320원, 2027년분은 10,700원(+3.7%)으로 결정"
+   ],
+   "confidence": "medium",
+   "estimated": true,
+   "estimated_fields": [
+    "cpi_index",
+    "avg_wage_krw",
+    "house_seoul_krw",
+    "house_local_krw",
+    "mortgage_rate_pct",
+    "deposit_rate_pct",
+    "kospi_close"
+   ],
+   "sources": [
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=4226",
+    "https://kosis.kr",
+    "https://www.index.go.kr/unify/idx-info.do?idxCd=1485",
+    "https://www.minimumwage.go.kr",
+    "https://v.daum.net/v/20260715085108633",
+    "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+    "http://data.krx.co.kr",
+    "https://www.smarttoday.co.kr/ko-kr/articles/37630",
+    "https://eiec.kdi.re.kr/policy/materialView.do?num=287770",
+    "https://kbthink.com/investment/deepdive/tip/260828.html",
+    "https://eiec.kdi.re.kr/policy/materialView.do?num=282763",
+    "https://www.koreatimes.co.kr/amp/economy/20260225/kospi-surpasses-6000-to-close-on-new-high",
+    "https://www.khan.co.kr/en/article/202606181651007",
+    "https://www.blockmedia.co.kr/archives/tag/마감시황",
+    "https://kbthink.com/realestate/issue/data-251002.html",
+    "https://kbthink.com/realestate/issue/data-260102.html",
+    "https://www.insight.co.kr/news/576172",
+    "https://v.daum.net/v/H5WIWKNdrS"
+   ]
+  }
+ ]
+}
