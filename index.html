@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>세미툰 FAB</title>
+  <meta name="description" content="웨이퍼가 끝없이 흘러가는 귀여운 반도체 팹 방치형 게임">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap">
+  <!-- 디자인 (GPT 담당): tokens.css = 색·폰트 변수, style.css = 화면 꾸미기 -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-event="" data-full-line="false">
+  <!--
+    id / class / data-속성은 js/ui.js 가 읽고 씁니다. 목록: docs/UI_CONTRACT.md
+    장식용 요소는 자유롭게 추가해도 되지만, 계약서에 있는 id와 class는 지우거나 이름을 바꾸지 마세요.
+  -->
+  <header id="hud" class="hud">
+    <div class="hud__brand">세미툰 <b>FAB</b></div>
+    <div class="hud__node"><span class="hud__label">공정 노드</span><span id="node-name">2D NAND 20nm</span></div>
+    <div class="hud__money"><span class="hud__label">보유 자금</span><span id="money">0원</span></div>
+    <div class="hud__stats">
+      <span class="hud__stat"><span class="hud__label">매출</span><span id="rate">0원/초</span></span>
+      <span class="hud__stat"><span class="hud__label">평균 수율</span><span id="yield-avg">86.0%</span></span>
+    </div>
+  </header>
+
+  <main class="fab">
+    <section id="event-banner" class="event" data-type="" hidden aria-live="polite">
+      <div class="event__text">
+        <strong id="event-title" class="event__title"></strong>
+        <span id="event-desc" class="event__desc"></span>
+      </div>
+      <span id="event-timer" class="event__timer"></span>
+      <button id="event-action" class="event__action" type="button"></button>
+      <div class="event__gauge" aria-hidden="true"></div>
+    </section>
+
+    <section class="line" aria-label="생산 라인">
+      <div id="conveyor" class="conveyor" data-running="false" aria-hidden="true">
+        <span class="wafer"></span><span class="wafer"></span><span class="wafer"></span>
+        <span class="wafer"></span><span class="wafer"></span><span class="wafer"></span>
+      </div>
+      <div class="line__stats">
+        <span><span class="hud__label">라인 처리량</span> <span id="throughput">0</span></span>
+        <span><span class="hud__label">Lot 가치</span> <span id="lot-value">0원</span></span>
+      </div>
+    </section>
+
+    <section class="tap">
+      <button id="tap-btn" class="tap__btn" type="button">
+        <span class="tap__wafer" aria-hidden="true"></span>
+        <span class="tap__label">웨이퍼 투입</span>
+      </button>
+      <ol id="lot-feed" class="lot-feed" aria-label="최근 Lot"></ol>
+    </section>
+
+    <section class="stations">
+      <h2 class="section-title">생산 라인 <small>병목을 증설하면 라인 전체가 빨라져요</small></h2>
+      <ol id="station-list" class="station-list"></ol>
+    </section>
+
+    <section id="prestige" class="prestige" data-ready="false">
+      <h2 class="section-title">다음 노드 <small>기술 포인트 <b id="tech-points">0</b> · 1포인트당 매출 +5%</small></h2>
+      <div class="prestige__bar" aria-hidden="true"><span></span></div>
+      <p id="prestige-info" class="prestige__info"></p>
+      <button id="prestige-btn" class="prestige__btn" type="button" disabled>노드 전환</button>
+    </section>
+
+    <section class="achievements">
+      <h2 class="section-title">칭호 <small id="achievement-count">0 / 10</small></h2>
+      <ul id="achievement-list" class="achievement-list"></ul>
+    </section>
+
+    <footer class="footer">
+      <button id="reset-btn" class="footer__reset" type="button">처음부터 다시</button>
+      <span class="footer__ver">v0.1 프로토타입</span>
+    </footer>
+  </main>
+
+  <div id="toast-stack" class="toast-stack" aria-live="polite"></div>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h3 id="modal-title" class="modal__title"></h3>
+      <p id="modal-body" class="modal__body"></p>
+      <button id="modal-close" class="modal__close" type="button">확인</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+  <!-- 시각 효과 (GPT 담당): fab:* 이벤트를 듣고 연출만 합니다 -->
+  <script type="module" src="js/fx.js"></script>
+</body>
+</html>

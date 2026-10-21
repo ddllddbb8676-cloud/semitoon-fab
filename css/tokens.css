@@ -1,0 +1,46 @@
+/* 디자인 토큰 (담당: GPT)
+   임시 버전 — Claude가 화면 확인용으로 만든 기본값입니다. 자유롭게 갈아엎어 주세요.
+   컨셉 메모: 포토 베이의 노란 조명 + 방진복 흰색 + 무지갯빛 웨이퍼 */
+
+:root {
+  --bg: #f6f5fb;
+  --surface: #ffffff;
+  --surface-2: #eeedf6;
+  --fg: #2a2740;
+  --muted: #77738f;
+  --line: #dddbe9;
+
+  --accent: #f2b33d;        /* 포토 베이 노란 조명 */
+  --accent-fg: #3a2a00;
+  --accent-soft: #fff1cf;
+
+  --good: #2fa57a;
+  --warn: #e8822a;          /* 병목 */
+  --bad: #e2504c;           /* 장비 다운 / 스크랩 */
+  --golden: #e7b416;
+
+  --wafer: conic-gradient(from 30deg, #b9c7ff, #f5c6ff, #c9f3e6, #fff0b8, #b9c7ff);
+
+  --font-display: 'Jua', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --font-body: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 2px 0 rgba(42, 39, 64, .08), 0 8px 24px rgba(42, 39, 64, .06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17151f;
+    --surface: #221f2e;
+    --surface-2: #2c2939;
+    --fg: #efedf7;
+    --muted: #a19db8;
+    --line: #3a3649;
+    --accent: #f5bf55;
+    --accent-fg: #2a1d00;
+    --accent-soft: #3d321a;
+    --shadow: 0 2px 0 rgba(0, 0, 0, .3);
+    color-scheme: dark;
+  }
+}
