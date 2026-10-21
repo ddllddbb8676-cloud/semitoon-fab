@@ -33,9 +33,10 @@
 - [x] 이벤트 형식 `EVENTS.md`
 - [x] 공통 규격 `SPEC.md`
 - [x] 시황 조사 `market_history.json`, `MARKET_HISTORY.md`
-- [ ] 시스템 설계 `SYSTEMS.md`
+- [x] 시스템 설계 `SYSTEMS.md` (17장: 한 해 루프, 교육·병역, 커리어, 회사 운명, 관계, 건강·죽음, 엔딩, 화면 흐름 등)
 - [x] 이벤트 1차: 생애 단계별 130개 (반도체 접점 65개)
-- [ ] 갈림길 사건 `events/major.json` (시스템 설계 후)
+- [x] 갈림길 사건 `events/major.json` 32개
+- [x] SPEC 통합 (시스템·경제 제안 반영, `do` 동작·조건 키·상태 확장) — FUTURE 제안은 나중에
 - [x] 미래 조사 4개 분야 → 원자료 `life/research/future/F1~F4.json` (근거 203개, 기술 후보 104개, 시나리오 12개)
 - [ ] 미래 설계 `FUTURE.md`: 업계 테크트리, 2027~2150 시황 모델, 2060년 이후 가상 시나리오, 플레이어 R&D 스킬트리
 - [ ] 검토 (GPT T10)
