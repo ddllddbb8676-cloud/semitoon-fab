@@ -1,0 +1,1836 @@
+{
+  "_note": "업적 100개·칭호 50개. 분포는 직업·커리어 53, 시대·역사 30, 돈·투자·집 23, 가족·관계 22, 웃긴·희귀 22개이며, 각 id의 분류 접두어로 구분해요. 희귀도 common/rare/epic/legend=75/45/23/7개, hidden=true 30개예요. when은 SPEC으로 표현 가능한 사전 필터이고 condition_ko 전체의 논리곱으로 최종 판정해요. 누적·순서·이전 상태는 연표에 근거가 있을 때만 판정하며 기록이 없으면 달성으로 추정하지 않아요. 연말 조건은 그해 결산 직후 평가해요. 역사 조건은 기준 브랜치 market_history.json의 해당 연도 점수를 쓰며 2026년 전망은 역사 업적으로 넣지 않았어요. 칭호는 생애 종료 시 전체 기록으로 평가하고 여러 개가 맞으면 오너·Claude가 정할 우선순위로 하나만 표시해요. 인생의 가치는 희귀도나 재산 순위로 정하지 않아요.",
+  "items": [
+    {
+      "id": "ach_career_first_process_engineer",
+      "kind": "achievement",
+      "name": "공정의 첫 줄",
+      "desc": "공정 앞뒤로 이어진 사람들의 일을 배웠어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=process_engineer이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "process_engineer"
+      }
+    },
+    {
+      "id": "ach_career_first_equipment_engineer",
+      "kind": "achievement",
+      "name": "장비와 첫인사",
+      "desc": "장비보다 먼저 확인할 순서를 배웠어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=equipment_engineer이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "equipment_engineer"
+      }
+    },
+    {
+      "id": "ach_career_first_yield_engineer",
+      "kind": "achievement",
+      "name": "점들을 잇는 사람",
+      "desc": "웨이퍼 맵의 점을 기록과 함께 읽었어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=yield_engineer이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "yield_engineer"
+      }
+    },
+    {
+      "id": "ach_career_first_device_researcher",
+      "kind": "achievement",
+      "name": "질문 한 장",
+      "desc": "예상 밖 결과도 연구 노트에 남겼어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=device_researcher이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "device_researcher"
+      }
+    },
+    {
+      "id": "ach_career_first_circuit_designer",
+      "kind": "achievement",
+      "name": "선 하나의 시작",
+      "desc": "회로의 작은 선이 어디로 가는지 따라갔어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=circuit_designer이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "circuit_designer"
+      }
+    },
+    {
+      "id": "ach_career_first_quality_engineer",
+      "kind": "achievement",
+      "name": "체크의 의미",
+      "desc": "확인 표시 뒤의 기준을 배웠어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=quality_engineer이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "quality_engineer"
+      }
+    },
+    {
+      "id": "ach_career_first_operator",
+      "kind": "achievement",
+      "name": "첫 교대표",
+      "desc": "교대 근무표 속에서 내 하루를 시작했어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=operator이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "operator"
+      }
+    },
+    {
+      "id": "ach_career_first_assembler",
+      "kind": "achievement",
+      "name": "작은 부품의 자리",
+      "desc": "반도체 조립의 첫해를 손끝으로 배웠어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=assembler이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "assembler"
+      }
+    },
+    {
+      "id": "ach_career_first_field_service",
+      "kind": "achievement",
+      "name": "첫 고객사 출입",
+      "desc": "장비와 고객 사이에서 첫해를 보냈어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=field_service이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "field_service"
+      }
+    },
+    {
+      "id": "ach_career_first_chemist",
+      "kind": "achievement",
+      "name": "시료의 이름",
+      "desc": "소재 하나에도 이력과 질문이 있다는 걸 배웠어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=chemist이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "chemist"
+      }
+    },
+    {
+      "id": "ach_career_first_hr",
+      "kind": "achievement",
+      "name": "이름을 기억해요",
+      "desc": "새로 온 사람들의 출발을 도왔어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=hr이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "hr"
+      }
+    },
+    {
+      "id": "ach_career_first_purchasing",
+      "kind": "achievement",
+      "name": "견적 너머의 일",
+      "desc": "가격표와 현장의 시간을 함께 봤어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=purchasing이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "purchasing"
+      }
+    },
+    {
+      "id": "ach_career_first_sales",
+      "kind": "achievement",
+      "name": "다른 시계 같은 약속",
+      "desc": "시차 너머 고객과 반도체 이야기를 나눴어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=sales이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "sales"
+      }
+    },
+    {
+      "id": "ach_career_first_patent",
+      "kind": "achievement",
+      "name": "한 문장 더 정확히",
+      "desc": "발명의 뜻을 차근차근 확인했어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=patent이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "patent"
+      }
+    },
+    {
+      "id": "ach_career_first_environment_safety",
+      "kind": "achievement",
+      "name": "확인하는 하루",
+      "desc": "현장의 시작 전에 필요한 질문을 건넸어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=environment_safety이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "environment_safety"
+      }
+    },
+    {
+      "id": "ach_career_first_welder",
+      "kind": "achievement",
+      "name": "도면에서 현장으로",
+      "desc": "팹을 만드는 접합선 하나에 내 일이 닿았어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=welder이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "welder"
+      }
+    },
+    {
+      "id": "ach_career_first_cook",
+      "kind": "achievement",
+      "name": "교대조의 한 끼",
+      "desc": "누군가의 근무 사이에 따뜻한 밥을 놓았어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=cook이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "cook"
+      }
+    },
+    {
+      "id": "ach_career_first_security_gate",
+      "kind": "achievement",
+      "name": "오늘도 확인했어요",
+      "desc": "매일 지나가는 문을 맡아 첫해를 보냈어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=security_gate이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "security_gate"
+      }
+    },
+    {
+      "id": "ach_career_first_cleanroom_laundry",
+      "kind": "achievement",
+      "name": "하얀 옷의 여정",
+      "desc": "공장 밖에서도 클린룸의 하루를 이었어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=cleanroom_laundry이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "cleanroom_laundry"
+      }
+    },
+    {
+      "id": "ach_career_first_shuttle_driver",
+      "kind": "achievement",
+      "name": "첫해의 종점",
+      "desc": "교대조의 출퇴근을 맡아 계절을 건넜어요.",
+      "condition_ko": "연말 정산 직후 현재 career.job=shuttle_driver이고 해당 직업의 연속 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "shuttle_driver"
+      }
+    },
+    {
+      "id": "ach_career_trade_to_equipment",
+      "kind": "achievement",
+      "name": "손끝에서 장비로",
+      "desc": "현장의 손재주를 장비 업무로 이어 갔어요.",
+      "condition_ko": "서로 다른 재직 구간에서 welder로 1년 이상 일한 뒤 equipment_engineer로 1년 이상 일했어요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "job": "equipment_engineer"
+      }
+    },
+    {
+      "id": "ach_career_operator_to_process",
+      "kind": "achievement",
+      "name": "라인에서 공정으로",
+      "desc": "운영하던 라인을 다른 자리에서 보게 됐어요.",
+      "condition_ko": "operator 재직 1년 이상 이후 process_engineer 재직을 1년 이상 마쳤어요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "job": "process_engineer"
+      }
+    },
+    {
+      "id": "ach_career_service_to_quality",
+      "kind": "achievement",
+      "name": "방문에서 기준으로",
+      "desc": "고객 현장 경험을 품질 업무로 이어 갔어요.",
+      "condition_ko": "field_service 재직 1년 이상 이후 quality_engineer 재직을 1년 이상 마쳤어요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "job": "quality_engineer"
+      }
+    },
+    {
+      "id": "ach_career_research_to_class",
+      "kind": "achievement",
+      "name": "질문에서 수업으로",
+      "desc": "연구실에서 품던 질문을 학생과 나눴어요.",
+      "condition_ko": "device_researcher 또는 chemist로 3년 이상 일한 뒤 professor 재직을 1년 이상 마쳤어요.",
+      "rarity": "epic",
+      "hidden": true,
+      "when": {
+        "job": "professor"
+      }
+    },
+    {
+      "id": "ach_career_one_company_decade",
+      "kind": "achievement",
+      "name": "열 번의 같은 출근길",
+      "desc": "같은 회사에서 열 번의 연말을 맞았어요.",
+      "condition_ko": "같은 company id로 중단 없이 10번 연속 연말 정산을 마쳤어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_career_one_company_retire",
+      "kind": "achievement",
+      "name": "익숙한 문을 나서며",
+      "desc": "오래 다닌 회사에서 은퇴를 맞았어요.",
+      "condition_ko": "단일 company id에서 연속 20년 이상 근무한 직후 연표에 은퇴 전환이 기록됐어요.",
+      "rarity": "epic",
+      "hidden": true
+    },
+    {
+      "id": "ach_career_three_roles",
+      "kind": "achievement",
+      "name": "명함 세 장",
+      "desc": "서로 다른 직무의 첫해를 세 번 마쳤어요.",
+      "condition_ko": "서로 다른 job id 3종 각각의 누적 재직 기간이 1년 이상이에요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_career_three_groups",
+      "kind": "achievement",
+      "name": "다른 현장을 잇다",
+      "desc": "서로 다른 직업군의 시간을 살아 봤어요.",
+      "condition_ko": "현장·사무·기능직·서비스·생태계 중 서로 다른 3개 group에서 각각 1년 이상 일했어요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "ach_career_shift_decade",
+      "kind": "achievement",
+      "name": "교대표 열 권",
+      "desc": "교대조의 낮과 밤을 오래 함께했어요.",
+      "condition_ko": "jobs.json에서 shift=true인 직업의 누적 재직 기간이 10년 이상이에요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_career_mentor_five",
+      "kind": "achievement",
+      "name": "다음 사람의 첫날",
+      "desc": "배운 것을 다섯 번 다음 사람에게 나눴어요.",
+      "condition_ko": "연표에 교육·인수인계 선택으로 friends가 증가한 직업 사건이 5회 이상 기록됐어요. 동일 사건의 반복도 서로 다른 발생 건이면 세어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_career_work_region_pair",
+      "kind": "achievement",
+      "name": "두 도시의 출근길",
+      "desc": "두 지역에서 각각 내 자리를 만들었어요.",
+      "condition_ko": "서로 다른 region id 2곳에서 각각 3년 이상 재직한 기록이 있어요. 주소만 바뀐 해는 제외해요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "ach_career_return_to_work",
+      "kind": "achievement",
+      "name": "다시 첫 출근",
+      "desc": "일을 쉬던 시간을 지나 새 출근길을 열었어요.",
+      "condition_ko": "재직 기록 뒤 연속 1년 이상 미취업 구간이 있고, 이후 다시 직업을 얻어 1년 이상 일했어요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "ach_career_team_reputation",
+      "kind": "achievement",
+      "name": "함께 믿는 이름",
+      "desc": "오랜 근무 뒤 동료의 신뢰가 쌓였어요.",
+      "condition_ko": "현재 career.reputation이 80 이상이고 총 재직 기간이 5년 이상이에요.",
+      "rarity": "epic",
+      "hidden": true
+    },
+    {
+      "id": "ach_career_late_start",
+      "kind": "achievement",
+      "name": "늦었다는 말 너머",
+      "desc": "쉰 살 이후에도 첫해는 새로웠어요.",
+      "condition_ko": "50세 이상에 시작한 첫 재직 구간에서 1년 이상 일했어요. 이전 재직 기록은 없어야 해요.",
+      "rarity": "epic",
+      "hidden": true,
+      "when": {
+        "age": [
+          51,
+          null
+        ]
+      }
+    },
+    {
+      "id": "ach_career_every_group",
+      "kind": "achievement",
+      "name": "다섯 갈래의 일",
+      "desc": "산업을 서로 다른 다섯 자리에서 만났어요.",
+      "condition_ko": "현장·사무·기능직·서비스·생태계의 5개 group 모두에서 각각 1년 이상 일했어요.",
+      "rarity": "legend",
+      "hidden": true
+    },
+    {
+      "id": "ach_history_1984",
+      "kind": "achievement",
+      "name": "봄빛의 출근길",
+      "desc": "1984년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "1984년 연말 정산 직후 sector=memory 회사에 재직 중이고, market_history의 memory=2인 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "year": [
+          1984,
+          1984
+        ],
+        "sector": "memory",
+        "market": {
+          "memory": [
+            2,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_1985",
+      "kind": "achievement",
+      "name": "85년의 달력",
+      "desc": "1985년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "1985년 연말 정산 직후 sector=memory 회사에 재직 중이고, market_history의 memory=-2인 기록이 있어요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "year": [
+          1985,
+          1985
+        ],
+        "sector": "memory",
+        "market": {
+          "memory": [
+            -2,
+            -2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_1986",
+      "kind": "achievement",
+      "name": "조용한 다음 해",
+      "desc": "1986년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "1986년 연말 정산 직후 sector=memory 회사에 재직 중이고, market_history의 memory=-1인 기록이 있어요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "year": [
+          1986,
+          1986
+        ],
+        "sector": "memory",
+        "market": {
+          "memory": [
+            -1,
+            -1
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_1988",
+      "kind": "achievement",
+      "name": "바쁜 여름의 기록",
+      "desc": "1988년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "1988년 연말 정산 직후 sector=memory 회사에 재직 중이고, market_history의 memory=2인 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "year": [
+          1988,
+          1988
+        ],
+        "sector": "memory",
+        "market": {
+          "memory": [
+            2,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_1990",
+      "kind": "achievement",
+      "name": "속도를 낮춘 해",
+      "desc": "1990년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "1990년 연말 정산 직후 sector=memory 회사에 재직 중이고, market_history의 memory=-1인 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "year": [
+          1990,
+          1990
+        ],
+        "sector": "memory",
+        "market": {
+          "memory": [
+            -1,
+            -1
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_1993",
+      "kind": "achievement",
+      "name": "다시 늘어난 일정",
+      "desc": "1993년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "1993년 연말 정산 직후 sector=memory 회사에 재직 중이고, market_history의 memory=2인 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "year": [
+          1993,
+          1993
+        ],
+        "sector": "memory",
+        "market": {
+          "memory": [
+            2,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_1995",
+      "kind": "achievement",
+      "name": "95년의 열기",
+      "desc": "1995년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "1995년 연말 정산 직후 sector=memory 회사에 재직 중이고, market_history의 memory=2인 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "year": [
+          1995,
+          1995
+        ],
+        "sector": "memory",
+        "market": {
+          "memory": [
+            2,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_1996",
+      "kind": "achievement",
+      "name": "뒤집힌 시간표",
+      "desc": "1996년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "1996년 연말 정산 직후 sector=memory 회사에 재직 중이고, market_history의 memory=-2인 기록이 있어요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "year": [
+          1996,
+          1996
+        ],
+        "sector": "memory",
+        "market": {
+          "memory": [
+            -2,
+            -2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_1997",
+      "kind": "achievement",
+      "name": "흔들리는 해의 동료",
+      "desc": "1997년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "1997년 연말 정산 직후 sector=memory 회사에 재직 중이고, market_history의 memory=-2인 기록이 있어요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "year": [
+          1997,
+          1997
+        ],
+        "sector": "memory",
+        "market": {
+          "memory": [
+            -2,
+            -2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_1998",
+      "kind": "achievement",
+      "name": "현장의 겨울나기",
+      "desc": "1998년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "1998년 연말 정산 직후 sector=construction 회사에 재직 중이고, market_history의 equipment=-2인 기록이 있어요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "year": [
+          1998,
+          1998
+        ],
+        "sector": "construction",
+        "market": {
+          "equipment": [
+            -2,
+            -2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_2000",
+      "kind": "achievement",
+      "name": "새 세기의 첫 장",
+      "desc": "2000년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "2000년 연말 정산 직후 sector=foundry 회사에 재직 중이고, market_history의 cycle=2인 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "year": [
+          2000,
+          2000
+        ],
+        "sector": "foundry",
+        "market": {
+          "cycle": [
+            2,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_2001",
+      "kind": "achievement",
+      "name": "긴 한 해를 지나",
+      "desc": "2001년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "2001년 연말 정산 직후 sector=memory 회사에 재직 중이고, market_history의 cycle=-2인 기록이 있어요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "year": [
+          2001,
+          2001
+        ],
+        "sector": "memory",
+        "market": {
+          "cycle": [
+            -2,
+            -2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_2004",
+      "kind": "achievement",
+      "name": "돌아온 설비 일정",
+      "desc": "2004년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "2004년 연말 정산 직후 sector=equipment_korea 회사에 재직 중이고, market_history의 equipment=2인 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "year": [
+          2004,
+          2004
+        ],
+        "sector": "equipment_korea",
+        "market": {
+          "equipment": [
+            2,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_2008",
+      "kind": "achievement",
+      "name": "불확실한 연말",
+      "desc": "2008년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "2008년 연말 정산 직후 sector=packaging 회사에 재직 중이고, market_history의 cycle=-1인 기록이 있어요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "year": [
+          2008,
+          2008
+        ],
+        "sector": "packaging",
+        "market": {
+          "cycle": [
+            -1,
+            -1
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_2009",
+      "kind": "achievement",
+      "name": "멈춰 선 주문표",
+      "desc": "2009년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "2009년 연말 정산 직후 sector=equipment_global 회사에 재직 중이고, market_history의 equipment=-2인 기록이 있어요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "year": [
+          2009,
+          2009
+        ],
+        "sector": "equipment_global",
+        "market": {
+          "equipment": [
+            -2,
+            -2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_2010",
+      "kind": "achievement",
+      "name": "다시 바빠진 출근길",
+      "desc": "2010년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "2010년 연말 정산 직후 sector=memory 회사에 재직 중이고, market_history의 cycle=2인 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "year": [
+          2010,
+          2010
+        ],
+        "sector": "memory",
+        "market": {
+          "cycle": [
+            2,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_2017",
+      "kind": "achievement",
+      "name": "초호황의 한 페이지",
+      "desc": "2017년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "2017년 연말 정산 직후 sector=memory 회사에 재직 중이고, market_history의 memory=2인 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "year": [
+          2017,
+          2017
+        ],
+        "sector": "memory",
+        "market": {
+          "memory": [
+            2,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_2019",
+      "kind": "achievement",
+      "name": "낮아진 시황 속에서",
+      "desc": "2019년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "2019년 연말 정산 직후 sector=memory 회사에 재직 중이고, market_history의 memory=-2인 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "year": [
+          2019,
+          2019
+        ],
+        "sector": "memory",
+        "market": {
+          "memory": [
+            -2,
+            -2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_2021",
+      "kind": "achievement",
+      "name": "촘촘해진 달력",
+      "desc": "2021년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "2021년 연말 정산 직후 sector=foundry 회사에 재직 중이고, market_history의 logic_foundry=2인 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "year": [
+          2021,
+          2021
+        ],
+        "sector": "foundry",
+        "market": {
+          "logic_foundry": [
+            2,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_history_2023",
+      "kind": "achievement",
+      "name": "23년의 기록장",
+      "desc": "2023년의 업계 분위기 속에서 내 자리의 한 해를 보냈어요.",
+      "condition_ko": "2023년 연말 정산 직후 sector=memory 회사에 재직 중이고, market_history의 memory=-2인 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "year": [
+          2023,
+          2023
+        ],
+        "sector": "memory",
+        "market": {
+          "memory": [
+            -2,
+            -2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ach_money_first_buffer",
+      "kind": "achievement",
+      "name": "한 해의 여유",
+      "desc": "생활을 지킬 여유를 조금씩 모았어요.",
+      "condition_ko": "연말 현금이 그해 본인 연봉의 1배 이상이고 연봉은 0보다 커요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_money_three_year_buffer",
+      "kind": "achievement",
+      "name": "세 해의 쿠션",
+      "desc": "서두르지 않을 시간을 마련했어요.",
+      "condition_ko": "연말 현금이 그해 본인 연봉의 3배 이상이고 연봉은 0보다 커요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "ach_money_first_home",
+      "kind": "achievement",
+      "name": "내 집의 첫 열쇠",
+      "desc": "내 이름으로 된 첫 집의 문을 열었어요.",
+      "condition_ko": "연말 money.houses 원소 수가 1 이상이에요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "has_house": true
+      }
+    },
+    {
+      "id": "ach_money_mortgage_clear",
+      "kind": "achievement",
+      "name": "가벼워진 열쇠",
+      "desc": "집을 가진 채 빚 없는 연말을 맞았어요.",
+      "condition_ko": "이전 연말 debt가 0보다 컸고, 현재 debt=0이며 집을 1채 이상 소유해요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "has_house": true
+      }
+    },
+    {
+      "id": "ach_money_debt_return",
+      "kind": "achievement",
+      "name": "다시 영의 자리",
+      "desc": "남아 있던 빚을 모두 정리했어요.",
+      "condition_ko": "어느 연말에 debt>0인 기록이 있고 이후 연말 debt=0이 됐어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_money_two_regions",
+      "kind": "achievement",
+      "name": "두 동네의 주소",
+      "desc": "서로 다른 지역에 생활의 자리를 남겼어요.",
+      "condition_ko": "같은 연말에 서로 다른 region id의 집을 각각 1채 이상 소유해요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "has_house": true
+      }
+    },
+    {
+      "id": "ach_money_small_investment",
+      "kind": "achievement",
+      "name": "첫 주식 한 주",
+      "desc": "관심 있던 산업과 작은 지분으로 만났어요.",
+      "condition_ko": "연말 money.stocks에 보유 수량이 1 이상인 company id가 있고, 같은 해 반도체 접점 semi가 1건 이상 있어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_money_portfolio_three",
+      "kind": "achievement",
+      "name": "세 갈래의 지분",
+      "desc": "한 이름에만 기대지 않는 보유 기록이 생겼어요.",
+      "condition_ko": "같은 연말 money.stocks에서 수량이 1 이상인 서로 다른 company id가 3개 이상이에요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_money_five_year_holder",
+      "kind": "achievement",
+      "name": "서두르지 않은 보유",
+      "desc": "같은 회사 지분과 다섯 번의 연말을 보냈어요.",
+      "condition_ko": "동일 company id의 주식 수량이 1 이상인 연말 기록이 5년 연속 있어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_money_rent_five",
+      "kind": "achievement",
+      "name": "다섯 해의 이웃",
+      "desc": "집을 관리하며 이웃의 시간을 함께했어요.",
+      "condition_ko": "landlord 누적 재직 5년 이상이고 현재 집을 1채 이상 소유해요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "job": "landlord",
+        "has_house": true
+      }
+    },
+    {
+      "id": "ach_money_store_surplus",
+      "kind": "achievement",
+      "name": "가게의 숨 돌릴 틈",
+      "desc": "가게를 지키며 생활의 여유를 남겼어요.",
+      "condition_ko": "chicken_shop 재직 3년 이상이며 그중 마지막 연말 cash가 직전 연말 cash보다 많고 debt는 늘지 않았어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "job": "chicken_shop"
+      }
+    },
+    {
+      "id": "ach_money_stock_reentry",
+      "kind": "achievement",
+      "name": "다시 읽은 사업 이야기",
+      "desc": "보유를 마친 뒤 다시 산업 공부와 만났어요.",
+      "condition_ko": "주식 보유 수량 합계가 양수→0→양수로 바뀐 서로 다른 3개 연말 기록이 있어요. 수익 여부는 보지 않아요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_money_smaller_home",
+      "kind": "achievement",
+      "name": "가벼운 공간의 선택",
+      "desc": "공간을 줄이고 남은 시간을 골랐어요.",
+      "condition_ko": "주택 1채 매각 직후 더 낮은 취득가격의 집 1채를 취득한 기록이 있고, 그해 말 debt가 전년보다 늘지 않았어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_money_steady_saving",
+      "kind": "achievement",
+      "name": "다섯 번 남긴 여유",
+      "desc": "작은 여유를 여러 해 이어 갔어요.",
+      "condition_ko": "5년 연속 연말 cash가 직전 연말보다 증가하고 같은 기간 debt는 증가하지 않았어요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "ach_money_recovery_buffer",
+      "kind": "achievement",
+      "name": "다시 쌓은 쿠션",
+      "desc": "빚을 정리한 뒤 생활의 여유도 만들었어요.",
+      "condition_ko": "debt>0→0 전환 이후, 연봉>0인 연말에 cash가 해당 연봉 이상이고 debt=0이에요.",
+      "rarity": "epic",
+      "hidden": true
+    },
+    {
+      "id": "ach_family_partner_first",
+      "kind": "achievement",
+      "name": "함께의 시작",
+      "desc": "혼자 정하던 일정에 다른 사람의 시간이 들어왔어요.",
+      "condition_ko": "relations.partner가 없는 상태에서 있는 상태로 전환된 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "has_partner": true
+      }
+    },
+    {
+      "id": "ach_family_partner_decade",
+      "kind": "achievement",
+      "name": "열 번째 같은 계절",
+      "desc": "같은 사람과 열 번의 계절을 함께했어요.",
+      "condition_ko": "동일 partner와 관계가 유지된 연속 연말 기록이 10개 이상이에요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "has_partner": true
+      }
+    },
+    {
+      "id": "ach_family_first_child",
+      "kind": "achievement",
+      "name": "처음 불린 이름",
+      "desc": "부모라는 새로운 이름을 받아 들었어요.",
+      "condition_ko": "relations.children의 원소 수가 0에서 1 이상으로 처음 증가했어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "has_children": true
+      }
+    },
+    {
+      "id": "ach_family_two_children",
+      "kind": "achievement",
+      "name": "각자의 작은 우주",
+      "desc": "서로 다른 두 아이의 하루가 삶에 들어왔어요.",
+      "condition_ko": "relations.children에 서로 다른 자녀 2명 이상이 기록돼요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "has_children": true
+      }
+    },
+    {
+      "id": "ach_family_friend_60",
+      "kind": "achievement",
+      "name": "안부를 건넬 사이",
+      "desc": "연락하고 싶은 얼굴이 많은 해였어요.",
+      "condition_ko": "연말 relations.friends가 60 이상이에요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_family_friend_90",
+      "kind": "achievement",
+      "name": "곁에 남은 사람들",
+      "desc": "오래 나눈 마음이 든든한 곁이 됐어요.",
+      "condition_ko": "연말 relations.friends가 90 이상이고 나이가 40세 이상이에요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "age": [
+          40,
+          null
+        ]
+      }
+    },
+    {
+      "id": "ach_family_friend_decade",
+      "kind": "achievement",
+      "name": "열 해의 안부",
+      "desc": "관계를 돌보며 열 번의 연말을 보냈어요.",
+      "condition_ko": "relations.friends가 60 이상인 연말 기록이 10년 연속 있어요.",
+      "rarity": "epic",
+      "hidden": true
+    },
+    {
+      "id": "ach_family_home_choice",
+      "kind": "achievement",
+      "name": "오늘은 집으로",
+      "desc": "일보다 내 시간을 택한 날들이 쌓였어요.",
+      "condition_ko": "서로 다른 발생 건의 선택 효과에서 trait.work_life가 음수였던 기록이 10회 이상이에요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_family_parent_time",
+      "kind": "achievement",
+      "name": "부모님과 같은 계절",
+      "desc": "부모님이 곁에 있는 쉰 번째 생일을 맞았어요.",
+      "condition_ko": "50세 생일 직후 relations.parents_alive에 생존한 부모가 1명 이상 기록돼요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "age": [
+          50,
+          50
+        ]
+      }
+    },
+    {
+      "id": "ach_family_sibling_start",
+      "kind": "achievement",
+      "name": "이름이 여럿인 집",
+      "desc": "형제자매와 나눈 어린 시절이 있어요.",
+      "condition_ko": "profile.family.siblings가 3 이상인 상태로 7세 생일을 맞았어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "age": [
+          7,
+          7
+        ]
+      }
+    },
+    {
+      "id": "ach_family_friend_recover",
+      "kind": "achievement",
+      "name": "다시 건넨 안부",
+      "desc": "멀어졌던 관계의 자리를 다시 돌봤어요.",
+      "condition_ko": "relations.friends가 30 미만인 연말 이후 60 이상인 연말을 맞았어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_family_family_boundary",
+      "kind": "achievement",
+      "name": "함께 쉴 줄 알아요",
+      "desc": "누군가와 살며 내 시간을 지키는 법도 배웠어요.",
+      "condition_ko": "연말 has_partner=true 또는 has_children=true이고 traits.work_life가 -51 이하예요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "trait_max": {
+          "work_life": -51
+        }
+      }
+    },
+    {
+      "id": "ach_family_empty_calendar",
+      "kind": "achievement",
+      "name": "일정표 밖의 만남",
+      "desc": "빈 시간을 사람과 함께 채운 날들이 쌓였어요.",
+      "condition_ko": "선택 효과 happiness>0 및 friends>0이 동시에 발생한 사건이 서로 다른 발생 건으로 5회 이상 있어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_family_new_place_partner",
+      "kind": "achievement",
+      "name": "두 사람이 옮긴 동네",
+      "desc": "낯선 동네도 함께 생활하는 곳이 됐어요.",
+      "condition_ko": "같은 partner가 유지된 상태로 profile.region이 변경되고 이후 1년 이상 관계를 유지했어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "has_partner": true
+      }
+    },
+    {
+      "id": "ach_family_careful_words",
+      "kind": "achievement",
+      "name": "말을 고르는 사이",
+      "desc": "한 번 더 듣는 선택으로 관계를 이어 갔어요.",
+      "condition_ko": "sociability와 friends가 동시에 증가한 사건 선택을 서로 다른 발생 건으로 10회 이상 했어요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "ach_odd_semi_first",
+      "kind": "achievement",
+      "name": "뜻밖의 반도체",
+      "desc": "예상하지 못한 자리에서 산업과 만났어요.",
+      "condition_ko": "semi.semi_moments에 기록이 처음 1건 이상 생겼어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_odd_semi_ten",
+      "kind": "achievement",
+      "name": "열 장의 작은 카드",
+      "desc": "반도체와 닿은 장면이 열 장 모였어요.",
+      "condition_ko": "semi.semi_moments에 서로 다른 발생 건의 기록이 10건 이상 있어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_odd_semi_fifty",
+      "kind": "achievement",
+      "name": "이어진 쉰 장면",
+      "desc": "서로 다른 하루들이 하나의 산업과 이어졌어요.",
+      "condition_ko": "semi.semi_moments에 서로 다른 발생 건의 기록이 50건 이상 있어요.",
+      "rarity": "epic",
+      "hidden": true
+    },
+    {
+      "id": "ach_odd_late_gate",
+      "kind": "achievement",
+      "name": "인생 후반의 게이트",
+      "desc": "예순 이후 처음 반도체 회사의 문을 맡았어요.",
+      "condition_ko": "60세 이상에 security_gate로 첫 취업했고 그 이전 semi.semi_moments는 비어 있었으며 이후 접점 기록이 생겼어요.",
+      "rarity": "epic",
+      "hidden": true,
+      "when": {
+        "job": "security_gate",
+        "age": [
+          60,
+          null
+        ]
+      }
+    },
+    {
+      "id": "ach_odd_all_axes",
+      "kind": "achievement",
+      "name": "한쪽으로만 살진 않아요",
+      "desc": "여러 성향이 함께 드러나는 시기를 지났어요.",
+      "condition_ko": "연말 7개 성향 축 중 절댓값 51 이상인 축이 서로 다른 4개 이상이에요.",
+      "rarity": "epic",
+      "hidden": true
+    },
+    {
+      "id": "ach_odd_changed_mind",
+      "kind": "achievement",
+      "name": "다르게 살아 본 해",
+      "desc": "익숙하던 성향의 반대편도 살아 봤어요.",
+      "condition_ko": "같은 성향 축이 서로 다른 연말에 51 이상과 -51 이하를 각각 기록했어요.",
+      "rarity": "epic",
+      "hidden": true
+    },
+    {
+      "id": "ach_odd_calm_middle",
+      "kind": "achievement",
+      "name": "가운데의 속도",
+      "desc": "크게 치우치지 않는 속도로 쉰 살을 맞았어요.",
+      "condition_ko": "50세 생일 직후 모든 성향 축의 절댓값이 20 이하예요.",
+      "rarity": "legend",
+      "hidden": true,
+      "when": {
+        "age": [
+          50,
+          50
+        ]
+      }
+    },
+    {
+      "id": "ach_odd_second_try",
+      "kind": "achievement",
+      "name": "두 번째 골라 본 삶",
+      "desc": "처음 나온 후보 말고 다른 시작을 골랐어요.",
+      "condition_ko": "캐릭터 생성에서 재굴림을 1회 이상 사용한 뒤 최초 후보가 아닌 후보로 삶을 시작했어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "ach_odd_original_choice",
+      "kind": "achievement",
+      "name": "처음의 나로",
+      "desc": "다른 가능성을 본 뒤 처음의 나를 골랐어요.",
+      "condition_ko": "캐릭터 생성에서 재굴림을 3회 사용하고 최초 후보를 최종 선택했어요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "ach_odd_night_circle",
+      "kind": "achievement",
+      "name": "밤의 동료 네 자리",
+      "desc": "서로 다른 교대 직무를 모두 경험했어요.",
+      "condition_ko": "operator·assembler·security_gate·facility_manager 네 job id에서 각각 1년 이상 재직했어요.",
+      "rarity": "legend",
+      "hidden": true
+    },
+    {
+      "id": "ach_odd_back_to_school",
+      "kind": "achievement",
+      "name": "다시 여는 공책",
+      "desc": "일을 해 본 뒤 다시 배움의 단계를 올렸어요.",
+      "condition_ko": "첫 재직 구간 이후 education.level이 education_levels 순서에서 한 단계 이상 상승했어요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "ach_odd_long_route",
+      "kind": "achievement",
+      "name": "팔십 번째 생일",
+      "desc": "내 속도로 긴 시간을 걸었어요.",
+      "condition_ko": "80세 생일을 맞았어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "age": [
+          80,
+          null
+        ]
+      }
+    },
+    {
+      "id": "ach_odd_quiet_happiness",
+      "kind": "achievement",
+      "name": "조용히 괜찮은 날",
+      "desc": "일하지 않는 해에도 내 하루를 좋아했어요.",
+      "condition_ko": "연말 career.job이 없고 happiness가 80 이상이며 health가 50 이상이에요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "stat_min": {
+          "health": 50
+        }
+      }
+    },
+    {
+      "id": "ach_odd_useful_hands",
+      "kind": "achievement",
+      "name": "손끝의 여러 이름",
+      "desc": "손재주를 여러 현장에서 나눠 썼어요.",
+      "condition_ko": "서로 다른 기능직 group job id 3개 이상에서 각각 1년 이상 일했고 현재 dexterity가 70 이상이에요.",
+      "rarity": "epic",
+      "hidden": true,
+      "when": {
+        "stat_min": {
+          "dexterity": 70
+        }
+      }
+    },
+    {
+      "id": "ach_odd_leave_on_time",
+      "kind": "achievement",
+      "name": "퇴근도 내 일",
+      "desc": "성실함과 내 시간을 함께 지킨 해였어요.",
+      "condition_ko": "동일 연말 traits.diligence>=51이고 traits.work_life<=-51이에요.",
+      "rarity": "epic",
+      "hidden": true,
+      "when": {
+        "trait_min": {
+          "diligence": 51
+        },
+        "trait_max": {
+          "work_life": -51
+        }
+      }
+    },
+    {
+      "id": "title_career_process_anchor",
+      "kind": "title",
+      "name": "공정의 길잡이",
+      "desc": "바뀌는 공정 사이에서 연결을 살핀 사람이에요.",
+      "condition_ko": "생애 최다 재직 직업이 process_engineer이고 해당 직업 누적 10년 이상이에요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "title_career_equipment_anchor",
+      "kind": "title",
+      "name": "장비 곁의 사람",
+      "desc": "장비가 멈추고 다시 준비되는 시간을 함께했어요.",
+      "condition_ko": "생애 최다 재직 직업이 equipment_engineer이고 해당 직업 누적 10년 이상이에요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "title_career_yield_reader",
+      "kind": "title",
+      "name": "점을 잇는 눈",
+      "desc": "흩어진 결과에서 확인할 질문을 찾았어요.",
+      "condition_ko": "yield_engineer 누적 재직 10년 이상이고 생애 마지막 reputation이 70 이상이에요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_career_research_question",
+      "kind": "title",
+      "name": "오래 품은 질문",
+      "desc": "답이 늦어도 질문을 놓지 않았어요.",
+      "condition_ko": "device_researcher 또는 chemist의 합산 재직 기간이 15년 이상이에요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_career_circuit_weaver",
+      "kind": "title",
+      "name": "회로를 잇는 손",
+      "desc": "작은 선들을 오래 이어 온 삶이에요.",
+      "condition_ko": "circuit_designer 누적 재직 기간이 15년 이상이에요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_career_quality_voice",
+      "kind": "title",
+      "name": "기준을 묻는 목소리",
+      "desc": "확인됐는지 한 번 더 물어 온 사람이에요.",
+      "condition_ko": "quality_engineer 누적 재직 10년 이상이고 생애 마지막 traits.diligence>=51이에요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "trait_min": {
+          "diligence": 51
+        }
+      }
+    },
+    {
+      "id": "title_career_shift_keeper",
+      "kind": "title",
+      "name": "밤을 잇는 동료",
+      "desc": "다른 사람의 아침까지 자기 자리를 지켰어요.",
+      "condition_ko": "shift=true 직업의 합산 재직 기간이 20년 이상이에요.",
+      "rarity": "epic",
+      "hidden": true
+    },
+    {
+      "id": "title_career_assembly_hands",
+      "kind": "title",
+      "name": "작은 것의 전문가",
+      "desc": "작은 부품을 다루며 긴 시간을 쌓았어요.",
+      "condition_ko": "assembler가 생애 최다 재직 직업이고 누적 재직 15년 이상이에요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "title_career_field_bridge",
+      "kind": "title",
+      "name": "현장을 잇는 다리",
+      "desc": "방문하던 현장마다 사람과 일을 연결했어요.",
+      "condition_ko": "field_service 누적 재직 10년 이상이고 마지막 relations.friends>=60이에요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "title_career_trade_master",
+      "kind": "title",
+      "name": "팹을 세운 손",
+      "desc": "공장 바깥의 손길로 산업의 자리를 만들었어요.",
+      "condition_ko": "기능직 group 합산 재직 20년 이상이고 마지막 dexterity>=70이에요.",
+      "rarity": "epic",
+      "hidden": true,
+      "when": {
+        "stat_min": {
+          "dexterity": 70
+        }
+      }
+    },
+    {
+      "id": "title_career_meal_clock",
+      "kind": "title",
+      "name": "교대조의 밥시계",
+      "desc": "누군가의 긴 근무 사이에 한 끼를 지켰어요.",
+      "condition_ko": "cook 또는 dietitian의 합산 재직 기간이 15년 이상이에요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "title_career_gate_neighbor",
+      "kind": "title",
+      "name": "익숙한 문 앞에서",
+      "desc": "지나가는 사람들의 하루를 오래 마주했어요.",
+      "condition_ko": "security_gate 누적 재직 기간이 15년 이상이에요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_career_clean_path",
+      "kind": "title",
+      "name": "하얀 하루의 조력자",
+      "desc": "세탁과 정돈의 시간으로 공장의 하루를 이었어요.",
+      "condition_ko": "cleanroom_laundry 또는 janitor의 합산 재직 기간이 15년 이상이에요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "title_career_route_companion",
+      "kind": "title",
+      "name": "출근길의 동행",
+      "desc": "수많은 첫 출근과 늦은 퇴근을 함께했어요.",
+      "condition_ko": "shuttle_driver 누적 재직 기간이 15년 이상이에요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_career_classroom_bridge",
+      "kind": "title",
+      "name": "질문을 건네는 사람",
+      "desc": "배운 것을 다음 사람의 출발점으로 놓았어요.",
+      "condition_ko": "professor 또는 academy_teacher의 합산 재직 기간이 15년 이상이에요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_career_clear_words",
+      "kind": "title",
+      "name": "산업을 풀어 쓴 사람",
+      "desc": "복잡한 산업을 사람의 말로 옮겼어요.",
+      "condition_ko": "journalist 또는 youtuber의 합산 재직 기간이 10년 이상이고 마지막 reputation>=60이에요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_career_one_badge",
+      "kind": "title",
+      "name": "오래된 사원증",
+      "desc": "한 회사의 계절을 오래 함께 지났어요.",
+      "condition_ko": "단일 company id에서 연속 25년 이상 재직한 기록이 있어요.",
+      "rarity": "legend",
+      "hidden": true
+    },
+    {
+      "id": "title_career_new_chapter",
+      "kind": "title",
+      "name": "명함 밖의 다음 장",
+      "desc": "다른 일을 고를 때마다 삶의 폭을 넓혔어요.",
+      "condition_ko": "서로 다른 job id 5종 이상에서 각각 3년 이상 재직했어요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_history_from_1985",
+      "kind": "title",
+      "name": "85년을 건넌 사람",
+      "desc": "시황이 낮던 해도 내 연표의 한 장이에요.",
+      "condition_ko": "1985년과 1988년 연말에 모두 sector=memory 회사 재직 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "title_history_from_1996",
+      "kind": "title",
+      "name": "호황 다음도 함께",
+      "desc": "밝은 시기와 조용한 시기를 모두 경험했어요.",
+      "condition_ko": "1995년과 1996년 연말에 모두 sector=memory 회사 재직 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "title_history_from_1997",
+      "kind": "title",
+      "name": "흔들림 속의 일상",
+      "desc": "큰 시대 변화 속에서도 내 하루를 살아 냈어요.",
+      "condition_ko": "1997년과 1998년 연말에 모두 재직한 기록이 있어요. 같은 회사일 필요는 없어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "title_history_new_century",
+      "kind": "title",
+      "name": "새 세기의 동료",
+      "desc": "세기가 바뀌는 시간에 산업의 자리에 있었어요.",
+      "condition_ko": "2000년과 2001년 연말에 모두 memory·foundry·fabless·equipment_global·equipment_korea·materials·packaging 중 하나의 sector에 재직한 기록이 있어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "title_history_from_2008",
+      "kind": "title",
+      "name": "긴 겨울의 기록자",
+      "desc": "쉬운 말로 줄일 수 없는 계절을 지나왔어요.",
+      "condition_ko": "2008년과 2009년 연말에 모두 재직한 기록이 있고 해당 두 해 semi 기록 합계가 1건 이상이에요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "title_history_from_2010",
+      "kind": "title",
+      "name": "다시 바빠진 날들",
+      "desc": "낮아졌다 다시 높아진 시황의 시간을 알았어요.",
+      "condition_ko": "2009년과 2010년 연말에 모두 memory·foundry·fabless·equipment_global·equipment_korea·materials·packaging 중 하나의 sector에 재직했어요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "title_history_memory_2017",
+      "kind": "title",
+      "name": "메모리의 뜨거운 계절",
+      "desc": "유난히 바빴던 두 해가 연표에 남았어요.",
+      "condition_ko": "2017년과 2018년 연말에 모두 sector=memory 회사에 재직했어요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_history_memory_2019",
+      "kind": "title",
+      "name": "사이클의 양면",
+      "desc": "같은 업계의 다른 표정을 함께 봤어요.",
+      "condition_ko": "2018년과 2019년 연말에 모두 sector=memory 회사에 재직했어요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_history_foundry_2021",
+      "kind": "title",
+      "name": "촘촘했던 주문의 해",
+      "desc": "바쁜 산업의 달력 속에 자기 일이 있었어요.",
+      "condition_ko": "2021년 연말 sector=foundry 회사 재직 기록과 그해 semi 기록 1건 이상이 있어요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_history_memory_2023",
+      "kind": "title",
+      "name": "다음 장을 기다린 사람",
+      "desc": "낮은 시황 뒤에도 이야기는 이어졌어요.",
+      "condition_ko": "2023년과 2024년 연말에 모두 sector=memory 회사에 재직한 기록이 있어요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_money_local_home",
+      "kind": "title",
+      "name": "동네에 뿌리내린 사람",
+      "desc": "한 동네에 오래 생활의 자리를 뒀어요.",
+      "condition_ko": "같은 region id의 집을 20년 이상 연속 보유한 기록이 있어요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_money_local_landlord",
+      "kind": "title",
+      "name": "공장 앞 집지기",
+      "desc": "공장 근처에서 이웃의 잠자리를 오래 돌봤어요.",
+      "condition_ko": "landlord 누적 재직 20년 이상이고 마지막에 집을 1채 이상 소유해요.",
+      "rarity": "epic",
+      "hidden": true,
+      "when": {
+        "has_house": true
+      }
+    },
+    {
+      "id": "title_money_shop_neighbor",
+      "kind": "title",
+      "name": "교대 뒤의 치킨집",
+      "desc": "근무가 끝난 사람들을 가게에서 오래 만났어요.",
+      "condition_ko": "chicken_shop 누적 재직 20년 이상이고 마지막 relations.friends>=60이에요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_money_patient_investor",
+      "kind": "title",
+      "name": "오래 읽은 사업 이야기",
+      "desc": "가격보다 긴 시간으로 산업을 바라봤어요.",
+      "condition_ko": "retail_investor 누적 재직 15년 이상이고 동일 company 주식 양수 보유가 10년 연속 기록돼요.",
+      "rarity": "epic",
+      "hidden": true
+    },
+    {
+      "id": "title_money_light_debt",
+      "kind": "title",
+      "name": "가벼운 마지막 장",
+      "desc": "한때의 빚을 정리하고 다음 여유를 남겼어요.",
+      "condition_ko": "생애 중 debt>0인 기록이 있고 마지막 money.debt=0이며 money.cash>0이에요.",
+      "rarity": "common",
+      "hidden": false
+    },
+    {
+      "id": "title_money_savings_time",
+      "kind": "title",
+      "name": "여유를 모은 사람",
+      "desc": "돈과 함께 서두르지 않을 시간도 쌓았어요.",
+      "condition_ko": "연봉>0인 재직 연말에 cash가 해당 연봉의 5배 이상이고 debt=0인 기록이 있어요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_money_comeback_budget",
+      "kind": "title",
+      "name": "다시 세운 살림",
+      "desc": "한 번 정리된 뒤에도 살림을 새로 꾸렸어요.",
+      "condition_ko": "연표에 파산 확정이 1회 이상 기록된 뒤, 연봉>0인 연말에 debt=0이고 cash>=해당 연봉인 기록이 있어요. 파산은 농담으로 묘사하지 않아요.",
+      "rarity": "legend",
+      "hidden": true
+    },
+    {
+      "id": "title_money_small_home",
+      "kind": "title",
+      "name": "작은 집의 여유",
+      "desc": "공간을 줄인 뒤에도 자기 시간을 아꼈어요.",
+      "condition_ko": "더 낮은 취득가격의 주택으로 옮긴 뒤 5년 연속 debt가 늘지 않은 연말 기록이 있어요.",
+      "rarity": "epic",
+      "hidden": true
+    },
+    {
+      "id": "title_family_long_partner",
+      "kind": "title",
+      "name": "오랜 계절의 짝",
+      "desc": "같은 사람과 계절을 오래 나눴어요.",
+      "condition_ko": "동일 partner와 30년 이상 관계를 유지한 기록이 있어요.",
+      "rarity": "epic",
+      "hidden": true
+    },
+    {
+      "id": "title_family_wide_table",
+      "kind": "title",
+      "name": "여럿이 둘러앉은 식탁",
+      "desc": "서로 다른 아이들의 시간을 함께했어요.",
+      "condition_ko": "relations.children에 서로 다른 자녀가 3명 이상 기록돼요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "has_children": true
+      }
+    },
+    {
+      "id": "title_family_friend_anchor",
+      "kind": "title",
+      "name": "안부가 머무는 사람",
+      "desc": "오래 나눈 관계가 삶의 곁에 남았어요.",
+      "condition_ko": "relations.friends>=70인 연말이 20년 이상 연속 기록돼요.",
+      "rarity": "legend",
+      "hidden": true
+    },
+    {
+      "id": "title_family_home_time",
+      "kind": "title",
+      "name": "함께하는 시간을 고른 사람",
+      "desc": "일 밖의 시간을 돌보는 쪽을 자주 택했어요.",
+      "condition_ko": "생애 마지막 traits.work_life<=-51이며 파트너 또는 자녀가 있는 해를 10년 이상 보냈어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "trait_max": {
+          "work_life": -51
+        }
+      }
+    },
+    {
+      "id": "title_family_chosen_circle",
+      "kind": "title",
+      "name": "내 곁의 사람들",
+      "desc": "가족의 모양과 관계없이 든든한 곁을 만들었어요.",
+      "condition_ko": "마지막 partner가 없고 children이 비어 있으며 friends>=80이고, 같은 상태로 friends>=60인 연말이 10년 이상 있어요.",
+      "rarity": "epic",
+      "hidden": true
+    },
+    {
+      "id": "title_family_social_bridge",
+      "kind": "title",
+      "name": "먼저 안부를 건넨 사람",
+      "desc": "만남을 고르는 선택이 관계를 넓혔어요.",
+      "condition_ko": "마지막 traits.social>=51이고 friends>=70이며 sociability>=60이에요.",
+      "rarity": "rare",
+      "hidden": false,
+      "when": {
+        "trait_min": {
+          "social": 51
+        },
+        "stat_min": {
+          "sociability": 60
+        }
+      }
+    },
+    {
+      "id": "title_family_returning_friend",
+      "kind": "title",
+      "name": "다시 이은 인연",
+      "desc": "멀어진 뒤에도 관계를 돌보는 선택을 했어요.",
+      "condition_ko": "friends<30인 연말 이후 friends>=70인 연말이 5년 이상 연속 있어요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_odd_semi_everywhere",
+      "kind": "title",
+      "name": "어디서든 반도체",
+      "desc": "생각보다 많은 삶의 장면이 산업과 이어졌어요.",
+      "condition_ko": "semi 기록이 30건 이상이고, 기록 발생 당시의 서로 다른 직업 group이 3개 이상이에요.",
+      "rarity": "epic",
+      "hidden": true
+    },
+    {
+      "id": "title_odd_quiet_balance",
+      "kind": "title",
+      "name": "조용한 균형",
+      "desc": "내 속도를 쉽게 한 단어로 정하지 않았어요.",
+      "condition_ko": "마지막 나이가 70세 이상이고 모든 trait 축 절댓값<=30, happiness>=60이에요.",
+      "rarity": "epic",
+      "hidden": true,
+      "when": {
+        "age": [
+          70,
+          null
+        ]
+      }
+    },
+    {
+      "id": "title_odd_conscience_engineer",
+      "kind": "title",
+      "name": "소신 엔지니어",
+      "desc": "일을 대하는 성실함과 자기 생각을 함께 지켰어요.",
+      "condition_ko": "process_engineer·equipment_engineer·yield_engineer·circuit_designer·quality_engineer·field_service 중 하나 이상의 직업에서 합산 누적 10년 이상이며 마지막 diligence>=51, conform<=-51, reputation>=60이에요.",
+      "rarity": "epic",
+      "hidden": true,
+      "when": {
+        "trait_min": {
+          "diligence": 51
+        },
+        "trait_max": {
+          "conform": -51
+        }
+      }
+    },
+    {
+      "id": "title_odd_second_start",
+      "kind": "title",
+      "name": "다시 시작한 이름",
+      "desc": "인생 후반에도 새 일의 첫해를 만들었어요.",
+      "condition_ko": "60세 이상 시작한 직업에서 5년 이상 재직했고, 그 이전과 job id가 달라요.",
+      "rarity": "epic",
+      "hidden": true
+    },
+    {
+      "id": "title_odd_late_first_semi",
+      "kind": "title",
+      "name": "늦게 만난 작은 칩",
+      "desc": "처음 만난 시기가 늦어도 이야기는 남았어요.",
+      "condition_ko": "최초 semi 기록 당시 나이가 70세 이상이고 생애 semi 기록은 3건 이상이에요.",
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "title_odd_changed_axis",
+      "kind": "title",
+      "name": "한 단어로 못 담는 삶",
+      "desc": "같은 성향의 양쪽을 모두 살아 봤어요.",
+      "condition_ko": "서로 다른 성향 축 2개 이상이 생애 연말 기록에서 각각 >=51과 <=-51을 모두 경험했어요.",
+      "rarity": "legend",
+      "hidden": true
+    },
+    {
+      "id": "title_odd_ordinary_joy",
+      "kind": "title",
+      "name": "평범해서 좋은 하루",
+      "desc": "커다란 이름 없이도 내 하루를 좋아했어요.",
+      "condition_ko": "마지막 나이가 65세 이상이고 happiness>=80, health>=50이며 마지막 3개 연말에서 회사 재직이 없어요.",
+      "rarity": "common",
+      "hidden": false,
+      "when": {
+        "age": [
+          65,
+          null
+        ],
+        "stat_min": {
+          "health": 50
+        }
+      }
+    }
+  ]
+}
