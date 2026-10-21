@@ -25,7 +25,7 @@ talent     숨은 재능 id (발견 전엔 숨김)
 traits     성향 축 7개 (-100~100)
 happiness  행복 (0~100)
 condition  건강 상태 목록 (질병, 부상)
-education  level(무관~박사), school_tier(1~5), major
+education  level(무관~박사), school_tier(1~5), major, specialty(대학원 전공 "<축>.<값>", 예: "process.litho" = 포토)
 career     job, company, employment, years, rank, salary, reputation(0~100)
 money      cash, debt, stocks{company_id: 주식 수}, houses[{region, bought_year, price}]
 relations  partner, children[], parents_alive, friends(0~100)

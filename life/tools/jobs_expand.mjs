@@ -60,6 +60,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     for (const j of jobs) groups[j.group] = (groups[j.group] ?? 0) + 1;
     console.log('그룹별:', groups);
     console.log('2026년까지 열리는 직업:', jobs.filter((j) => j.since <= 2026).length, '/ 미래 직업:', jobs.filter((j) => j.future || j.since > 2026).length);
-    console.log(`세부 직업 합계 ${jobs.length}개 (직무 ${Object.keys(by).length}개)`);
+    const m = loadMatrix();
+    const tracks = m.degree_tracks ? m.degree_tracks.levels.length * m.degree_tracks.dims.reduce((n, d) => n + (m.dimensions[d]?.length ?? 0), 0) : 0;
+    console.log(`세부 직업 합계 ${jobs.length}개 (직무 ${Object.keys(by).length}개), 대학원 학위 전공 ${tracks}가지`);
   }
 }
