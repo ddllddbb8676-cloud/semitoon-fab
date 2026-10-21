@@ -4,6 +4,8 @@
 
 **플레이:** https://ddllddbb8676-cloud.github.io/semitoon-fab/
 
+**새 퍼즐 플레이 테스트:** [칩나라 FOUP 잼 — 휴대폰용](https://chipnara-foup-jam.ddllddbb8676.chatgpt.site) · [규칙과 실행 방법](prototypes/foup-jam/README.md). 오너 전용 테스트이며 같은 ChatGPT 계정으로 로그인해 열 수 있습니다.
+
 ## 어떻게 노나요
 1. **웨이퍼 투입**을 톡톡 눌러 첫 돈을 벌어요
 2. 다음 공정을 **오픈**하면 Lot 가치가 올라가요
