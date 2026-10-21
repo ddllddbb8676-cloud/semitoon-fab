@@ -64,7 +64,13 @@ log        연도별 연표 항목
 **돈 상대값**: 시대마다 물가가 달라 고정 금액 대신 `"cash": "@salary*0.5"` (연봉의 절반), `"@house_local*0.1"` (그 지역 집값의 10%)처럼 씁니다. 기준값은 `life/data/economy_history.json`.
 
 ## 사건 조건 키 (`when`)
-`stage`, `age`, `year`, `job`, `job_group`, `sector`, `employment`, `region`, `stat_min{}`, `trait_min{}`, `trait_max{}`, `wealth_min`, `cash_min`, `has_partner`, `has_children`, `has_house`, `flag`, `not_flag`, `company_state` (내 회사 실적 -2~2), `market{}` (market_history의 그 해 점수 범위)
+`stage`, `age`, `year`, `job`, `job_group`, `sector`, `employment`, `region`, `stat_min{}`, `trait_min{}`, `trait_max{}`, `wealth_min`, `cash_min`, `has_partner`, `has_children`, `has_house`, `flag`, `not_flag`, `company_state` (내 회사 실적 -2~2), `market{}` (market_history의 그 해 점수 범위), `near_fab` (사는 지역의 `fab_since` ≤ 올해), `parents_alive`, `semi_max` (반도체 접점 기록이 이 개수 이하)
+
+- 값이 배열이면 "그중 하나". `age`, `year`, `company_state`, `market.*`는 `[최소, 최대]` (`null`은 제한 없음).
+- `"job": "none"`은 무직.
+- `market`은 사건 맨 위에 둬도 되고 `when` 안에 둬도 됨.
+- 음수 금액은 `"@salary*-0.1"`처럼 씀.
+- `parent_semi` flag는 엔진이 출생 때 부모 직업이 반도체(`semi: true`)면 붙임.
 
 ## 데이터 파일
 | 파일 | 담당 역할 |

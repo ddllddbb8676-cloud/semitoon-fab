@@ -14,7 +14,7 @@ const EFFECT_KEYS = new Set([...STATS, ...AXES.map((a) => `trait.${a}`),
   'happiness', 'cash', 'debt', 'reputation', 'friends', 'flag', 'semi', 'goto', 'title_progress']);
 const WHEN_KEYS = new Set(['stage', 'age', 'year', 'job', 'job_group', 'sector', 'employment', 'region',
   'stat_min', 'trait_min', 'trait_max', 'wealth_min', 'cash_min', 'has_partner', 'has_children',
-  'has_house', 'flag', 'not_flag', 'company_state', 'market']);
+  'has_house', 'flag', 'not_flag', 'company_state', 'market', 'near_fab', 'parents_alive', 'semi_max']);
 const EVENT_KEYS = new Set(['id', 'age', 'year', 'when', 'market', 'weight', 'once', 'text', 'choices', 'default']);
 const PLACEHOLDERS = new Set(['name', 'birth_year', 'death_year', 'age', 'region', 'main_job', 'main_company',
   'career_years', 'trait_top', 'trait_second', 'children', 'semi_count', 'best_year', 'worst_year', 'title',
@@ -75,7 +75,7 @@ function checkWhen(file, id, when) {
   for (const [k, v] of Object.entries(when ?? {})) {
     if (!WHEN_KEYS.has(k)) { err(file, `${id}: 없는 조건 키 ${k}`); continue; }
     const vals = [v].flat();
-    if (k === 'job') vals.forEach((x) => jobIds.has(x) || err(file, `${id}: 없는 직업 ${x}`));
+    if (k === 'job') vals.forEach((x) => x === 'none' || jobIds.has(x) || err(file, `${id}: 없는 직업 ${x}`));
     if (k === 'job_group') vals.forEach((x) => jobGroups.has(x) || err(file, `${id}: 없는 직업 그룹 ${x}`));
     if (k === 'sector') vals.forEach((x) => sectors.has(x) || err(file, `${id}: 없는 분야 ${x}`));
     if (k === 'region') vals.forEach((x) => regions.has(x) || err(file, `${id}: 없는 지역 ${x}`));
@@ -111,8 +111,8 @@ for (const file of walk(join(DATA, 'events'))) {
     if (eventIds.has(id)) err(file, `${id}: id 중복 (${relative(ROOT, eventIds.get(id))})`);
     eventIds.set(id, file);
     for (const k of Object.keys(e)) if (!EVENT_KEYS.has(k)) err(file, `${id}: 없는 사건 키 ${k}`);
-    if (e.age !== undefined && !isRange(e.age)) err(file, `${id}: age는 [최소, 최대]`);
-    if (e.year !== undefined && !isRange(e.year)) err(file, `${id}: year는 [최소, 최대]`);
+    if (e.age != null && !isRange(e.age)) err(file, `${id}: age는 [최소, 최대]`);
+    if (e.year != null && !isRange(e.year)) err(file, `${id}: year는 [최소, 최대]`);
     checkWhen(file, id, e.when);
     if (e.market) checkMarket(file, id, e.market);
     checkText(file, id, e.text);

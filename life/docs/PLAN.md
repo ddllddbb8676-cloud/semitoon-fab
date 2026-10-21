@@ -35,7 +35,7 @@
 - [x] 시황 조사 `market_history.json`, `MARKET_HISTORY.md`
 - [ ] 시스템 설계 `SYSTEMS.md`
 - [ ] 경제 설계 `ECONOMY.md` + `economy_history.json`
-- [ ] 이벤트 1차
+- [x] 이벤트 1차: 생애 단계별 130개 (반도체 접점 65개)
 - [ ] 갈림길 사건 `events/major.json` (시스템 설계 후)
 - [x] 미래 조사 4개 분야 → 원자료 `life/research/future/F1~F4.json` (근거 203개, 기술 후보 104개, 시나리오 12개)
 - [ ] 미래 설계 `FUTURE.md`: 업계 테크트리, 2027~2150 시황 모델, 2060년 이후 가상 시나리오, 플레이어 R&D 스킬트리
