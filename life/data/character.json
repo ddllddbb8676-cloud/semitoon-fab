@@ -1,0 +1,96 @@
+{
+  "_note": "캐릭터 만들기 표. 이름·태어난 해는 직접 고르고 나머지는 주사위. 다시 굴리기 rerolls번, 나온 결과(처음 포함) 중 하나 선택. 확률 가중치(weight, birth)와 fab_since(근처에 반도체 공장·조립장이 생긴 해)는 실제 통계가 아니라 게임용 대략값. 출생 연대 키는 그 연대의 시작 연도(1940=1940~1959).",
+  "rerolls": 3,
+  "birth_year": { "min": 1940, "max": 2026 },
+  "genders": [
+    { "id": "m", "name": "남" },
+    { "id": "f", "name": "여" }
+  ],
+  "stats": [
+    { "id": "health", "name": "체력", "desc": "질병, 수명, 교대근무·현장일 버티기" },
+    { "id": "intelligence", "name": "지능", "desc": "학업, 연구·설계 직군" },
+    { "id": "dexterity", "name": "손재주", "desc": "기능직, 설비, 조립" },
+    { "id": "sociability", "name": "사교성", "desc": "영업, 관리직, 인맥, 연애" },
+    { "id": "mental", "name": "멘탈", "desc": "야근, 교대근무, 구조조정, 불황 버티기" },
+    { "id": "looks", "name": "외모", "desc": "연애, 영업, 유튜버" }
+  ],
+  "hidden_talents": [
+    { "id": "machine_sense", "name": "설비 고치는 감각", "reveal_age": [12, 20], "effect": { "dexterity": 15 }, "favors": ["equipment_engineer", "field_service"] },
+    { "id": "numbers", "name": "숫자 보는 눈", "reveal_age": [10, 18], "effect": { "intelligence": 10 }, "favors": ["yield_engineer", "analyst"] },
+    { "id": "iron_body", "name": "강철 체력", "reveal_age": [15, 25], "effect": { "health": 15 }, "favors": ["operator", "scaffolder", "security_gate"] },
+    { "id": "silver_tongue", "name": "말발", "reveal_age": [14, 22], "effect": { "sociability": 15 }, "favors": ["sales", "recruiter"] },
+    { "id": "big_hand", "name": "손맛", "reveal_age": [20, 40], "effect": { "dexterity": 10 }, "favors": ["cook", "chicken_shop"] },
+    { "id": "stock_luck", "name": "투자 촉", "reveal_age": [25, 45], "effect": {}, "favors": ["retail_investor"] }
+  ],
+  "regions": [
+    { "id": "seoul", "name": "서울", "birth": { "1940": 8, "1960": 18, "1980": 22, "2000": 18 } },
+    { "id": "busan", "name": "부산", "birth": { "1940": 8, "1960": 10, "1980": 8, "2000": 6 } },
+    { "id": "daegu", "name": "대구", "birth": { "1940": 5, "1960": 6, "1980": 6, "2000": 5 } },
+    { "id": "incheon", "name": "인천", "birth": { "1940": 3, "1960": 4, "1980": 6, "2000": 6 }, "fab_since": 1968 },
+    { "id": "bucheon", "name": "부천", "birth": { "1940": 1, "1960": 2, "1980": 4, "2000": 3 }, "fab_since": 1974 },
+    { "id": "suwon", "name": "수원·성남", "birth": { "1940": 2, "1960": 4, "1980": 8, "2000": 10 } },
+    { "id": "giheung", "name": "용인 기흥", "birth": { "1940": 1, "1960": 1, "1980": 2, "2000": 3 }, "fab_since": 1983 },
+    { "id": "yongin", "name": "용인 처인", "birth": { "1940": 1, "1960": 1, "1980": 1, "2000": 2 }, "fab_since": 2025 },
+    { "id": "hwaseong", "name": "화성", "birth": { "1940": 2, "1960": 1, "1980": 2, "2000": 5 }, "fab_since": 2000 },
+    { "id": "pyeongtaek", "name": "평택", "birth": { "1940": 2, "1960": 1, "1980": 2, "2000": 3 }, "fab_since": 2015 },
+    { "id": "icheon", "name": "이천", "birth": { "1940": 2, "1960": 1, "1980": 1, "2000": 2 }, "fab_since": 1983 },
+    { "id": "gwangju_gg", "name": "경기 광주", "birth": { "1940": 1, "1960": 1, "1980": 1, "2000": 2 } },
+    { "id": "paju", "name": "파주", "birth": { "1940": 1, "1960": 1, "1980": 1, "2000": 2 } },
+    { "id": "cheongju", "name": "청주", "birth": { "1940": 2, "1960": 2, "1980": 2, "2000": 3 }, "fab_since": 1990 },
+    { "id": "eumseong", "name": "음성", "birth": { "1940": 1, "1960": 1, "1980": 1, "2000": 1 } },
+    { "id": "cheonan", "name": "천안", "birth": { "1940": 1, "1960": 1, "1980": 2, "2000": 3 } },
+    { "id": "asan", "name": "아산 온양", "birth": { "1940": 1, "1960": 1, "1980": 1, "2000": 2 }, "fab_since": 1991 },
+    { "id": "gongju", "name": "공주", "birth": { "1940": 1, "1960": 1, "1980": 1, "2000": 1 } },
+    { "id": "daejeon", "name": "대전", "birth": { "1940": 2, "1960": 3, "1980": 4, "2000": 4 } },
+    { "id": "gumi", "name": "구미", "birth": { "1940": 1, "1960": 1, "1980": 2, "2000": 2 }, "fab_since": 1972 },
+    { "id": "yeongju", "name": "영주", "birth": { "1940": 1, "1960": 1, "1980": 1, "2000": 1 } },
+    { "id": "gwangju_jn", "name": "광주", "birth": { "1940": 3, "1960": 4, "1980": 4, "2000": 3 } },
+    { "id": "rural", "name": "농어촌", "birth": { "1940": 50, "1960": 33, "1980": 15, "2000": 8 } }
+  ],
+  "work_only_regions": [
+    { "id": "overseas", "name": "해외" }
+  ],
+  "parent_jobs": {
+    "1940": [
+      { "name": "농사", "weight": 50 }, { "name": "어업", "weight": 6 }, { "name": "장사", "weight": 10 },
+      { "name": "공무원", "weight": 4 }, { "name": "교사", "weight": 3 }, { "name": "군인", "weight": 4 },
+      { "name": "목수", "weight": 4 }, { "name": "공장 노동자", "weight": 5 }, { "name": "행상", "weight": 6 },
+      { "name": "살림", "weight": 30, "mother_only": true }
+    ],
+    "1960": [
+      { "name": "농사", "weight": 25 }, { "name": "공장 노동자", "weight": 15 }, { "name": "장사", "weight": 12 },
+      { "name": "공무원", "weight": 6 }, { "name": "교사", "weight": 5 }, { "name": "회사원", "weight": 10 },
+      { "name": "건설 노동자", "weight": 8 }, { "name": "운전기사", "weight": 5 }, { "name": "광부", "weight": 3 },
+      { "name": "전자공장 조립원", "weight": 4, "since": 1965 },
+      { "name": "살림", "weight": 30, "mother_only": true }
+    ],
+    "1980": [
+      { "name": "회사원", "weight": 25 }, { "name": "자영업", "weight": 15 }, { "name": "공무원", "weight": 7 },
+      { "name": "교사", "weight": 5 }, { "name": "생산직", "weight": 12 }, { "name": "건설 노동자", "weight": 6 },
+      { "name": "택시 기사", "weight": 4 }, { "name": "간호사", "weight": 3 }, { "name": "농사", "weight": 6 },
+      { "name": "반도체 엔지니어", "weight": 3, "since": 1983, "semi": true },
+      { "name": "반도체 생산직", "weight": 4, "since": 1983, "semi": true },
+      { "name": "살림", "weight": 25, "mother_only": true }
+    ],
+    "2000": [
+      { "name": "회사원", "weight": 28 }, { "name": "자영업", "weight": 14 }, { "name": "공무원", "weight": 8 },
+      { "name": "교사", "weight": 5 }, { "name": "개발자", "weight": 6 }, { "name": "간호사", "weight": 4 },
+      { "name": "배달 라이더", "weight": 3, "since": 2015 }, { "name": "프리랜서", "weight": 4 },
+      { "name": "반도체 엔지니어", "weight": 5, "semi": true },
+      { "name": "반도체 오퍼레이터", "weight": 4, "semi": true },
+      { "name": "반도체 협력사 직원", "weight": 5, "semi": true },
+      { "name": "살림", "weight": 12, "mother_only": true }
+    ]
+  },
+  "family": {
+    "wealth": [
+      { "level": 1, "name": "매우 어려움", "weight": 15 },
+      { "level": 2, "name": "어려움", "weight": 25 },
+      { "level": 3, "name": "보통", "weight": 35 },
+      { "level": 4, "name": "여유", "weight": 18 },
+      { "level": 5, "name": "부유", "weight": 7 }
+    ],
+    "harmony": { "min": 0, "max": 100 },
+    "siblings": { "1940": [3, 6], "1960": [2, 5], "1980": [1, 3], "2000": [0, 2] }
+  }
+}

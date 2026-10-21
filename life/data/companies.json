@@ -1,0 +1,104 @@
+{
+  "_note": "게임용 가상 회사. 이름은 패러디이고 설립연도는 실제를 대략 참고했지만 정확하지 않을 수 있음. 설립연도 이전에는 입사 불가. salary·wlb·stability·growth는 1~5 기본값이며 판마다 ±1 랜덤. 회사의 성공·인수·파산은 판마다 랜덤(market_history.json 시황 범위 안에서).",
+  "sectors": [
+    {
+      "id": "memory",
+      "name": "메모리",
+      "companies": [
+        { "id": "samsong", "name": "삼송전자", "country": "KR", "founded": 1974, "regions": ["giheung", "hwaseong", "pyeongtaek"], "salary": 5, "wlb": 3, "stability": 5, "growth": 4 },
+        { "id": "hynixu", "name": "하이닉수", "country": "KR", "founded": 1983, "regions": ["icheon", "cheongju"], "salary": 5, "wlb": 3, "stability": 4, "growth": 4 },
+        { "id": "microng", "name": "마이크롱", "country": "US", "founded": 1978, "regions": ["overseas"], "salary": 4, "wlb": 4, "stability": 4, "growth": 3 },
+        { "id": "kioxiya", "name": "키옥시야", "country": "JP", "founded": 1987, "regions": ["overseas"], "salary": 3, "wlb": 3, "stability": 3, "growth": 3 }
+      ]
+    },
+    {
+      "id": "foundry",
+      "name": "파운드리",
+      "companies": [
+        { "id": "tsnc", "name": "TSNC", "country": "TW", "founded": 1987, "regions": ["overseas"], "salary": 4, "wlb": 2, "stability": 5, "growth": 5 },
+        { "id": "unc", "name": "UNC", "country": "TW", "founded": 1980, "regions": ["overseas"], "salary": 3, "wlb": 3, "stability": 3, "growth": 2 },
+        { "id": "globalfounders", "name": "글로벌파운더스", "country": "US", "founded": 2009, "regions": ["overseas"], "salary": 4, "wlb": 4, "stability": 3, "growth": 2 },
+        { "id": "ddhitek", "name": "DD하이텍", "country": "KR", "founded": 1997, "regions": ["bucheon", "eumseong"], "salary": 3, "wlb": 3, "stability": 3, "growth": 3 }
+      ]
+    },
+    {
+      "id": "fabless",
+      "name": "팹리스(설계)",
+      "companies": [
+        { "id": "nvidiya", "name": "엔비디야", "country": "US", "founded": 1993, "regions": ["overseas", "seoul"], "salary": 5, "wlb": 2, "stability": 3, "growth": 5 },
+        { "id": "qualcon", "name": "콸콤", "country": "US", "founded": 1985, "regions": ["overseas", "seoul"], "salary": 5, "wlb": 3, "stability": 4, "growth": 3 },
+        { "id": "and", "name": "AND", "country": "US", "founded": 1969, "regions": ["overseas"], "salary": 4, "wlb": 3, "stability": 3, "growth": 4 },
+        { "id": "lzsemicon", "name": "LZ세미콘", "country": "KR", "founded": 1999, "regions": ["daejeon", "seoul"], "salary": 3, "wlb": 3, "stability": 3, "growth": 3 }
+      ]
+    },
+    {
+      "id": "equipment_global",
+      "name": "장비(해외)",
+      "companies": [
+        { "id": "asnl", "name": "ASNL", "country": "NL", "founded": 1984, "regions": ["overseas", "hwaseong"], "salary": 5, "wlb": 3, "stability": 5, "growth": 5 },
+        { "id": "applite", "name": "어플라이트 머티리얼즈", "country": "US", "founded": 1967, "regions": ["overseas", "pyeongtaek"], "salary": 4, "wlb": 3, "stability": 4, "growth": 4 },
+        { "id": "ramresearch", "name": "람리서치", "country": "US", "founded": 1980, "regions": ["overseas", "yongin"], "salary": 4, "wlb": 3, "stability": 4, "growth": 4 },
+        { "id": "tokyoelectrong", "name": "도쿄일렉트롱", "country": "JP", "founded": 1963, "regions": ["overseas", "hwaseong"], "salary": 4, "wlb": 3, "stability": 4, "growth": 3 }
+      ]
+    },
+    {
+      "id": "equipment_korea",
+      "name": "장비(국내)",
+      "companies": [
+        { "id": "semess", "name": "세메쓰", "country": "KR", "founded": 1993, "regions": ["cheonan"], "salary": 4, "wlb": 3, "stability": 4, "growth": 3 },
+        { "id": "wonikipc", "name": "원익IPC", "country": "KR", "founded": 1991, "regions": ["pyeongtaek"], "salary": 3, "wlb": 3, "stability": 3, "growth": 3 },
+        { "id": "hanmi", "name": "한미반도채", "country": "KR", "founded": 1980, "regions": ["incheon"], "salary": 3, "wlb": 3, "stability": 3, "growth": 4 },
+        { "id": "jusung", "name": "주승엔지니어링", "country": "KR", "founded": 1993, "regions": ["gwangju_gg"], "salary": 3, "wlb": 3, "stability": 3, "growth": 3 }
+      ]
+    },
+    {
+      "id": "materials",
+      "name": "소재",
+      "companies": [
+        { "id": "shinetsu", "name": "신에추화학", "country": "JP", "founded": 1926, "regions": ["overseas"], "salary": 4, "wlb": 4, "stability": 5, "growth": 2 },
+        { "id": "sxmaterials", "name": "SX머티리얼즈", "country": "KR", "founded": 1982, "regions": ["yeongju"], "salary": 3, "wlb": 3, "stability": 3, "growth": 3 },
+        { "id": "soulbrains", "name": "솔브레인즈", "country": "KR", "founded": 1986, "regions": ["gongju"], "salary": 3, "wlb": 3, "stability": 3, "growth": 3 },
+        { "id": "dongjinsemicam", "name": "동진세미캠", "country": "KR", "founded": 1967, "regions": ["hwaseong"], "salary": 3, "wlb": 3, "stability": 4, "growth": 3 }
+      ]
+    },
+    {
+      "id": "packaging",
+      "name": "패키징·테스트",
+      "companies": [
+        { "id": "amcore", "name": "앰코어", "country": "US", "founded": 1968, "regions": ["incheon", "gwangju_jn"], "salary": 3, "wlb": 3, "stability": 4, "growth": 3 },
+        { "id": "asf", "name": "ASF", "country": "TW", "founded": 1984, "regions": ["overseas", "paju"], "salary": 3, "wlb": 3, "stability": 4, "growth": 3 },
+        { "id": "hanamicrong", "name": "하나마이크롱", "country": "KR", "founded": 2001, "regions": ["asan"], "salary": 3, "wlb": 3, "stability": 3, "growth": 4 },
+        { "id": "sfb", "name": "SFB반도체", "country": "KR", "founded": 1998, "regions": ["cheonan"], "salary": 2, "wlb": 3, "stability": 3, "growth": 3 }
+      ]
+    },
+    {
+      "id": "construction",
+      "name": "팹 건설·시공",
+      "companies": [
+        { "id": "samsong_cnt", "name": "삼송물산 건설", "country": "KR", "founded": 1977, "regions": ["pyeongtaek", "hwaseong"], "salary": 4, "wlb": 2, "stability": 4, "growth": 3 },
+        { "id": "hyundae_enc", "name": "현데건설", "country": "KR", "founded": 1947, "regions": ["icheon", "cheongju"], "salary": 4, "wlb": 2, "stability": 4, "growth": 3 },
+        { "id": "sxecoplant", "name": "SX에코플랜트", "country": "KR", "founded": 1977, "regions": ["icheon", "yongin"], "salary": 3, "wlb": 2, "stability": 3, "growth": 3 },
+        { "id": "sungdooeng", "name": "성두이엔지", "country": "KR", "founded": 1987, "regions": ["pyeongtaek", "hwaseong"], "salary": 3, "wlb": 2, "stability": 3, "growth": 3 }
+      ]
+    },
+    {
+      "id": "catering",
+      "name": "급식",
+      "companies": [
+        { "id": "samsong_wellstory", "name": "삼송웰스토리", "country": "KR", "founded": 1982, "regions": ["giheung", "hwaseong", "pyeongtaek"], "salary": 2, "wlb": 3, "stability": 4, "growth": 2 },
+        { "id": "ourhomes", "name": "아워홈즈", "country": "KR", "founded": 2000, "regions": ["icheon", "cheongju"], "salary": 2, "wlb": 3, "stability": 3, "growth": 2 },
+        { "id": "czfreshway", "name": "CZ프레시웨이", "country": "KR", "founded": 1988, "regions": ["cheonan", "asan"], "salary": 2, "wlb": 3, "stability": 3, "growth": 2 },
+        { "id": "hyundae_greenfood", "name": "현데그린푸드", "country": "KR", "founded": 1968, "regions": ["icheon", "gumi"], "salary": 2, "wlb": 3, "stability": 3, "growth": 2 }
+      ]
+    },
+    {
+      "id": "security",
+      "name": "보안·시설",
+      "companies": [
+        { "id": "s2", "name": "에스투", "country": "KR", "founded": 1977, "regions": ["giheung", "hwaseong", "pyeongtaek"], "salary": 2, "wlb": 2, "stability": 4, "growth": 2 },
+        { "id": "sxshielders", "name": "SX쉴더스", "country": "KR", "founded": 1971, "regions": ["icheon", "cheongju"], "salary": 2, "wlb": 2, "stability": 3, "growth": 2 },
+        { "id": "kctelecop", "name": "KC텔레캅", "country": "KR", "founded": 1998, "regions": ["gumi", "cheonan"], "salary": 2, "wlb": 2, "stability": 3, "growth": 2 }
+      ]
+    }
+  ]
+}

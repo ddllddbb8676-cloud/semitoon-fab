@@ -1,0 +1,57 @@
+{
+  "_note": "직종 × 소속(sectors) × 고용형태(employment) 조합으로 실제 일자리가 만들어짐. stats는 지원 최소 능력치(0~100), education은 최소 학력. since는 이 직종이 생기는 해. shift=true면 교대근무(멘탈·체력 소모 큼). touch는 반도체와의 접점 종류(core 현장, near 회사 주변, eco 생태계).",
+  "education_levels": ["무관", "고졸", "전문대졸", "대졸", "석사", "박사"],
+  "employment_types": [
+    { "id": "regular", "name": "정규직" },
+    { "id": "contract", "name": "계약직" },
+    { "id": "dispatch", "name": "파견직" },
+    { "id": "daily", "name": "일용직" },
+    { "id": "owner", "name": "자영업" }
+  ],
+  "jobs": [
+    { "id": "process_engineer", "name": "공정 엔지니어", "group": "현장", "touch": "core", "stats": { "intelligence": 65 }, "education": "대졸", "sectors": ["memory", "foundry"], "employment": ["regular"], "since": 1974 },
+    { "id": "equipment_engineer", "name": "설비 엔지니어", "group": "현장", "touch": "core", "stats": { "intelligence": 50, "dexterity": 60 }, "education": "전문대졸", "sectors": ["memory", "foundry", "equipment_global", "equipment_korea"], "employment": ["regular", "dispatch"], "since": 1974 },
+    { "id": "yield_engineer", "name": "수율 엔지니어", "group": "현장", "touch": "core", "stats": { "intelligence": 70 }, "education": "대졸", "sectors": ["memory", "foundry"], "employment": ["regular"], "since": 1983 },
+    { "id": "device_researcher", "name": "소자 연구원", "group": "현장", "touch": "core", "stats": { "intelligence": 80 }, "education": "석사", "sectors": ["memory", "foundry"], "employment": ["regular"], "since": 1974 },
+    { "id": "circuit_designer", "name": "회로 설계 엔지니어", "group": "현장", "touch": "core", "stats": { "intelligence": 75 }, "education": "대졸", "sectors": ["memory", "fabless"], "employment": ["regular"], "since": 1983 },
+    { "id": "quality_engineer", "name": "품질 엔지니어", "group": "현장", "touch": "core", "stats": { "intelligence": 55 }, "education": "대졸", "sectors": ["memory", "foundry", "packaging", "materials"], "employment": ["regular"], "since": 1974 },
+    { "id": "operator", "name": "오퍼레이터", "group": "현장", "touch": "core", "stats": { "health": 50, "mental": 50 }, "education": "고졸", "sectors": ["memory", "foundry", "packaging"], "employment": ["regular", "dispatch"], "shift": true, "since": 1965 },
+    { "id": "assembler", "name": "조립 생산직", "group": "현장", "touch": "core", "stats": { "dexterity": 50 }, "education": "무관", "sectors": ["packaging"], "employment": ["regular", "contract", "dispatch"], "shift": true, "since": 1965 },
+    { "id": "field_service", "name": "장비 셋업·서비스 엔지니어", "group": "현장", "touch": "core", "stats": { "dexterity": 60, "health": 55 }, "education": "전문대졸", "sectors": ["equipment_global", "equipment_korea"], "employment": ["regular", "contract"], "since": 1984 },
+    { "id": "chemist", "name": "소재 연구원", "group": "현장", "touch": "core", "stats": { "intelligence": 70 }, "education": "석사", "sectors": ["materials"], "employment": ["regular"], "since": 1982 },
+
+    { "id": "hr", "name": "인사 담당", "group": "사무", "touch": "core", "stats": { "sociability": 60 }, "education": "대졸", "sectors": ["memory", "foundry", "fabless", "equipment_korea", "materials", "packaging"], "employment": ["regular"], "since": 1965 },
+    { "id": "purchasing", "name": "구매 담당", "group": "사무", "touch": "core", "stats": { "sociability": 55, "intelligence": 50 }, "education": "대졸", "sectors": ["memory", "foundry", "packaging"], "employment": ["regular"], "since": 1974 },
+    { "id": "sales", "name": "해외 영업", "group": "사무", "touch": "core", "stats": { "sociability": 70 }, "education": "대졸", "sectors": ["memory", "foundry", "equipment_korea", "materials"], "employment": ["regular"], "since": 1974 },
+    { "id": "patent", "name": "특허 담당", "group": "사무", "touch": "core", "stats": { "intelligence": 75 }, "education": "대졸", "sectors": ["memory", "foundry", "fabless"], "employment": ["regular"], "since": 1983 },
+    { "id": "environment_safety", "name": "환경안전 담당", "group": "사무", "touch": "core", "stats": { "mental": 55 }, "education": "대졸", "sectors": ["memory", "foundry", "materials"], "employment": ["regular"], "since": 1974 },
+
+    { "id": "welder", "name": "용접공", "group": "기능직", "touch": "near", "stats": { "dexterity": 60, "health": 60 }, "education": "무관", "sectors": ["construction", "equipment_korea"], "employment": ["regular", "daily"], "since": 1965 },
+    { "id": "pipefitter", "name": "배관공", "group": "기능직", "touch": "near", "stats": { "dexterity": 55, "health": 60 }, "education": "무관", "sectors": ["construction"], "employment": ["daily", "contract"], "since": 1974 },
+    { "id": "electrician", "name": "전기공", "group": "기능직", "touch": "near", "stats": { "dexterity": 55, "intelligence": 40 }, "education": "고졸", "sectors": ["construction"], "employment": ["daily", "contract"], "since": 1965 },
+    { "id": "duct_worker", "name": "덕트공", "group": "기능직", "touch": "near", "stats": { "dexterity": 50, "health": 60 }, "education": "무관", "sectors": ["construction"], "employment": ["daily"], "since": 1983 },
+    { "id": "scaffolder", "name": "비계공", "group": "기능직", "touch": "near", "stats": { "health": 70, "mental": 50 }, "education": "무관", "sectors": ["construction"], "employment": ["daily"], "since": 1965 },
+    { "id": "crane_operator", "name": "타워크레인 기사", "group": "기능직", "touch": "near", "stats": { "dexterity": 60, "mental": 60 }, "education": "고졸", "sectors": ["construction"], "employment": ["contract"], "since": 1983 },
+    { "id": "site_manager", "name": "현장 공사 관리자", "group": "기능직", "touch": "near", "stats": { "sociability": 55, "mental": 60 }, "education": "대졸", "sectors": ["construction"], "employment": ["regular"], "since": 1974 },
+
+    { "id": "cook", "name": "구내식당 조리사", "group": "서비스", "touch": "near", "stats": { "health": 50, "dexterity": 45 }, "education": "무관", "sectors": ["catering"], "employment": ["regular", "contract"], "since": 1974 },
+    { "id": "dietitian", "name": "영양사", "group": "서비스", "touch": "near", "stats": { "intelligence": 50 }, "education": "대졸", "sectors": ["catering"], "employment": ["regular"], "since": 1982 },
+    { "id": "security_gate", "name": "보안게이트 요원", "group": "서비스", "touch": "near", "stats": { "health": 50, "mental": 50 }, "education": "고졸", "sectors": ["security"], "employment": ["regular", "contract"], "shift": true, "since": 1977 },
+    { "id": "facility_manager", "name": "시설 관리원", "group": "서비스", "touch": "near", "stats": { "dexterity": 45 }, "education": "고졸", "sectors": ["security"], "employment": ["contract"], "shift": true, "since": 1974 },
+    { "id": "shuttle_driver", "name": "통근버스 기사", "group": "서비스", "touch": "near", "stats": { "health": 50, "mental": 55 }, "education": "무관", "sectors": [], "employment": ["contract", "owner"], "since": 1974 },
+    { "id": "cleanroom_laundry", "name": "방진복 세탁원", "group": "서비스", "touch": "near", "stats": { "health": 45 }, "education": "무관", "sectors": [], "employment": ["contract"], "since": 1983 },
+    { "id": "janitor", "name": "미화원", "group": "서비스", "touch": "near", "stats": { "health": 45 }, "education": "무관", "sectors": ["security"], "employment": ["contract"], "since": 1965 },
+    { "id": "dorm_manager", "name": "기숙사 사감", "group": "서비스", "touch": "near", "stats": { "sociability": 50, "mental": 55 }, "education": "고졸", "sectors": ["memory", "packaging"], "employment": ["contract"], "since": 1974 },
+
+    { "id": "professor", "name": "반도체학과 교수", "group": "생태계", "touch": "eco", "stats": { "intelligence": 85 }, "education": "박사", "sectors": [], "employment": ["regular"], "since": 1975 },
+    { "id": "journalist", "name": "반도체 담당 기자", "group": "생태계", "touch": "eco", "stats": { "intelligence": 60, "sociability": 60 }, "education": "대졸", "sectors": [], "employment": ["regular"], "since": 1983 },
+    { "id": "official", "name": "산업부 공무원", "group": "생태계", "touch": "eco", "stats": { "intelligence": 70 }, "education": "대졸", "sectors": [], "employment": ["regular"], "since": 1965 },
+    { "id": "analyst", "name": "증권사 반도체 애널리스트", "group": "생태계", "touch": "eco", "stats": { "intelligence": 75, "mental": 55 }, "education": "대졸", "sectors": [], "employment": ["regular"], "since": 1988 },
+    { "id": "retail_investor", "name": "반도체주 개미 투자자", "group": "생태계", "touch": "eco", "stats": {}, "education": "무관", "sectors": [], "employment": ["owner"], "since": 1975, "side_job": true },
+    { "id": "landlord", "name": "공장 앞 원룸 임대업", "group": "생태계", "touch": "eco", "stats": {}, "education": "무관", "sectors": [], "employment": ["owner"], "since": 1983, "needs_wealth": 4 },
+    { "id": "chicken_shop", "name": "공장 앞 치킨집 사장", "group": "생태계", "touch": "eco", "stats": { "health": 45 }, "education": "무관", "sectors": [], "employment": ["owner"], "since": 1977 },
+    { "id": "recruiter", "name": "반도체 헤드헌터", "group": "생태계", "touch": "eco", "stats": { "sociability": 70 }, "education": "대졸", "sectors": [], "employment": ["owner", "regular"], "since": 1995 },
+    { "id": "academy_teacher", "name": "반도체 취업 학원 강사", "group": "생태계", "touch": "eco", "stats": { "intelligence": 60, "sociability": 55 }, "education": "대졸", "sectors": [], "employment": ["owner", "contract"], "since": 2005 },
+    { "id": "youtuber", "name": "반도체 유튜버", "group": "생태계", "touch": "eco", "stats": { "sociability": 60, "looks": 50 }, "education": "무관", "sectors": [], "employment": ["owner"], "since": 2012, "side_job": true }
+  ]
+}

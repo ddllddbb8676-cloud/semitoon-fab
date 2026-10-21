@@ -22,6 +22,16 @@
   - 예: Claude가 새 상태(`data-state="maintenance"`)를 만들면 UI_CONTRACT.md에 적어 GPT가 스타일을 입힘
 - 화면과 로직의 약속(id, class, data-속성, `fab:*` 이벤트)은 전부 **`docs/UI_CONTRACT.md`** 에 있습니다. 여기 없는 것에 의존하지 마세요.
 
+### 두 번째 게임 `life/` (기획 단계)
+
+인생 시뮬(가제 세미툰 라이프). 역할 나누는 방식과 기술 규칙은 위와 같습니다.
+
+| 담당 | 파일 |
+|---|---|
+| **Claude** (로직) | `life/js/` (`life/js/fx.js` 제외), `life/data/`, `life/docs/GAME_DESIGN.md`, `life/tools/` |
+| **GPT** (디자인) | `life/css/`, `life/js/fx.js`, `life/assets/` |
+| 공동 (조율 필요) | `life/index.html`, `life/docs/UI_CONTRACT.md` |
+
 ## 기술 규칙
 
 - **빌드 도구 없음.** 순수 HTML + CSS + ES 모듈 JS. npm, 번들러, 프레임워크 추가 금지.
