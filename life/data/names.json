@@ -1,0 +1,7251 @@
+{
+  "_note": "NPC 이름 추첨용 편집 데이터예요. given의 키는 출생 연대 시작(1910=1910~1919)이에요. 역사 12연대 남녀 각 40개, 가상 미래 12연대 남녀 각 30개예요. 성씨는 2015년 한자별 상위 30개 범주와 전체 인구 대비 대략 비율을 참고한 weight이며 합계 100이 아니므로 선택된 범주 안에서 정규화해요. 조·유가 두 번 있는 것은 다른 한자 범주이기 때문이에요. 이름 weight는 시대감과 후보 다양성을 위한 상대 가중치이며 실제 출생 빈도·비율이 아니에요. 일부 대표 이름을 제외한 후보는 편집 확장이므로 전체 명단을 공식 상위 이름 순위라 부르지 않아요. 1910~1930·1950~1960·1980~1990·2020년대는 직접 대조 자료가 부족해 low예요. 2030~2140년대는 중성 이름·한 글자·외래 느낌을 늘린 가상 목록이며 근거 있는 인구 예측이 아니에요. m/f는 추첨 풀 구분일 뿐 해당 이름의 사용 성별을 제한하지 않아요. 직장 호칭은 직급·직책·조직 정책을 먼저 적용하며 연대는 분위기 참고용이에요. 출처 확인일은 2026-10-21이에요.",
+  "surnames": [
+    {
+      "name": "김",
+      "hanja": "金",
+      "weight": 21.51
+    },
+    {
+      "name": "이",
+      "hanja": "李",
+      "weight": 14.7
+    },
+    {
+      "name": "박",
+      "hanja": "朴",
+      "weight": 8.43
+    },
+    {
+      "name": "최",
+      "hanja": "崔",
+      "weight": 4.7
+    },
+    {
+      "name": "정",
+      "hanja": "鄭",
+      "weight": 4.33
+    },
+    {
+      "name": "강",
+      "hanja": "姜",
+      "weight": 2.37
+    },
+    {
+      "name": "조",
+      "hanja": "趙",
+      "weight": 2.12
+    },
+    {
+      "name": "윤",
+      "hanja": "尹",
+      "weight": 2.05
+    },
+    {
+      "name": "장",
+      "hanja": "張",
+      "weight": 2.0
+    },
+    {
+      "name": "임",
+      "hanja": "林",
+      "weight": 1.66
+    },
+    {
+      "name": "한",
+      "hanja": "韓",
+      "weight": 1.56
+    },
+    {
+      "name": "오",
+      "hanja": "吳",
+      "weight": 1.54
+    },
+    {
+      "name": "서",
+      "hanja": "徐",
+      "weight": 1.51
+    },
+    {
+      "name": "신",
+      "hanja": "申",
+      "weight": 1.49
+    },
+    {
+      "name": "권",
+      "hanja": "權",
+      "weight": 1.42
+    },
+    {
+      "name": "황",
+      "hanja": "黃",
+      "weight": 1.4
+    },
+    {
+      "name": "안",
+      "hanja": "安",
+      "weight": 1.38
+    },
+    {
+      "name": "송",
+      "hanja": "宋",
+      "weight": 1.38
+    },
+    {
+      "name": "전",
+      "hanja": "全",
+      "weight": 1.12
+    },
+    {
+      "name": "홍",
+      "hanja": "洪",
+      "weight": 1.12
+    },
+    {
+      "name": "유",
+      "hanja": "柳",
+      "weight": 0.96
+    },
+    {
+      "name": "고",
+      "hanja": "高",
+      "weight": 0.95
+    },
+    {
+      "name": "문",
+      "hanja": "文",
+      "weight": 0.93
+    },
+    {
+      "name": "양",
+      "hanja": "梁",
+      "weight": 0.93
+    },
+    {
+      "name": "손",
+      "hanja": "孫",
+      "weight": 0.92
+    },
+    {
+      "name": "배",
+      "hanja": "裵",
+      "weight": 0.81
+    },
+    {
+      "name": "조",
+      "hanja": "曺",
+      "weight": 0.8
+    },
+    {
+      "name": "백",
+      "hanja": "白",
+      "weight": 0.77
+    },
+    {
+      "name": "허",
+      "hanja": "許",
+      "weight": 0.66
+    },
+    {
+      "name": "유",
+      "hanja": "劉",
+      "weight": 0.61
+    }
+  ],
+  "given": {
+    "1910": {
+      "confidence": "low",
+      "note_ko": "직접 대조한 출생 이름 순위가 없는 조부모 세대 재구성이에요.",
+      "m": [
+        {
+          "name": "영수",
+          "weight": 5
+        },
+        {
+          "name": "영호",
+          "weight": 5
+        },
+        {
+          "name": "영식",
+          "weight": 5
+        },
+        {
+          "name": "복동",
+          "weight": 5
+        },
+        {
+          "name": "덕수",
+          "weight": 5
+        },
+        {
+          "name": "봉수",
+          "weight": 3
+        },
+        {
+          "name": "만수",
+          "weight": 3
+        },
+        {
+          "name": "길수",
+          "weight": 3
+        },
+        {
+          "name": "용수",
+          "weight": 3
+        },
+        {
+          "name": "종수",
+          "weight": 3
+        },
+        {
+          "name": "창수",
+          "weight": 3
+        },
+        {
+          "name": "성수",
+          "weight": 3
+        },
+        {
+          "name": "동수",
+          "weight": 3
+        },
+        {
+          "name": "철수",
+          "weight": 3
+        },
+        {
+          "name": "병수",
+          "weight": 3
+        },
+        {
+          "name": "대수",
+          "weight": 2
+        },
+        {
+          "name": "진수",
+          "weight": 2
+        },
+        {
+          "name": "인수",
+          "weight": 2
+        },
+        {
+          "name": "광수",
+          "weight": 2
+        },
+        {
+          "name": "경수",
+          "weight": 2
+        },
+        {
+          "name": "학수",
+          "weight": 2
+        },
+        {
+          "name": "정수",
+          "weight": 2
+        },
+        {
+          "name": "상수",
+          "weight": 2
+        },
+        {
+          "name": "춘수",
+          "weight": 2
+        },
+        {
+          "name": "봉식",
+          "weight": 2
+        },
+        {
+          "name": "덕식",
+          "weight": 2
+        },
+        {
+          "name": "만식",
+          "weight": 2
+        },
+        {
+          "name": "용식",
+          "weight": 2
+        },
+        {
+          "name": "종식",
+          "weight": 2
+        },
+        {
+          "name": "성식",
+          "weight": 2
+        },
+        {
+          "name": "동식",
+          "weight": 1
+        },
+        {
+          "name": "인식",
+          "weight": 1
+        },
+        {
+          "name": "광식",
+          "weight": 1
+        },
+        {
+          "name": "경식",
+          "weight": 1
+        },
+        {
+          "name": "학식",
+          "weight": 1
+        },
+        {
+          "name": "태식",
+          "weight": 1
+        },
+        {
+          "name": "기봉",
+          "weight": 1
+        },
+        {
+          "name": "덕봉",
+          "weight": 1
+        },
+        {
+          "name": "춘식",
+          "weight": 1
+        },
+        {
+          "name": "돌석",
+          "weight": 1
+        }
+      ],
+      "f": [
+        {
+          "name": "복례",
+          "weight": 5
+        },
+        {
+          "name": "순이",
+          "weight": 5
+        },
+        {
+          "name": "점순",
+          "weight": 5
+        },
+        {
+          "name": "갑순",
+          "weight": 5
+        },
+        {
+          "name": "을순",
+          "weight": 5
+        },
+        {
+          "name": "삼순",
+          "weight": 3
+        },
+        {
+          "name": "끝순",
+          "weight": 3
+        },
+        {
+          "name": "분이",
+          "weight": 3
+        },
+        {
+          "name": "금순",
+          "weight": 3
+        },
+        {
+          "name": "옥순",
+          "weight": 3
+        },
+        {
+          "name": "복순",
+          "weight": 3
+        },
+        {
+          "name": "덕순",
+          "weight": 3
+        },
+        {
+          "name": "만순",
+          "weight": 3
+        },
+        {
+          "name": "길순",
+          "weight": 3
+        },
+        {
+          "name": "용순",
+          "weight": 3
+        },
+        {
+          "name": "정순",
+          "weight": 2
+        },
+        {
+          "name": "춘심",
+          "weight": 2
+        },
+        {
+          "name": "옥분",
+          "weight": 2
+        },
+        {
+          "name": "금분",
+          "weight": 2
+        },
+        {
+          "name": "복분",
+          "weight": 2
+        },
+        {
+          "name": "봉순",
+          "weight": 2
+        },
+        {
+          "name": "순덕",
+          "weight": 2
+        },
+        {
+          "name": "복덕",
+          "weight": 2
+        },
+        {
+          "name": "정임",
+          "weight": 2
+        },
+        {
+          "name": "순임",
+          "weight": 2
+        },
+        {
+          "name": "옥임",
+          "weight": 2
+        },
+        {
+          "name": "금임",
+          "weight": 2
+        },
+        {
+          "name": "덕임",
+          "weight": 2
+        },
+        {
+          "name": "복임",
+          "weight": 2
+        },
+        {
+          "name": "춘임",
+          "weight": 2
+        },
+        {
+          "name": "정례",
+          "weight": 1
+        },
+        {
+          "name": "춘례",
+          "weight": 1
+        },
+        {
+          "name": "옥례",
+          "weight": 1
+        },
+        {
+          "name": "금례",
+          "weight": 1
+        },
+        {
+          "name": "봉례",
+          "weight": 1
+        },
+        {
+          "name": "순례",
+          "weight": 1
+        },
+        {
+          "name": "덕례",
+          "weight": 1
+        },
+        {
+          "name": "복녀",
+          "weight": 1
+        },
+        {
+          "name": "순녀",
+          "weight": 1
+        },
+        {
+          "name": "옥녀",
+          "weight": 1
+        }
+      ]
+    },
+    "1920": {
+      "confidence": "low",
+      "note_ko": "직접 대조한 연대별 빈도표가 없어 낮은 신뢰도로 둬요.",
+      "m": [
+        {
+          "name": "영수",
+          "weight": 5
+        },
+        {
+          "name": "영호",
+          "weight": 5
+        },
+        {
+          "name": "영식",
+          "weight": 5
+        },
+        {
+          "name": "용수",
+          "weight": 5
+        },
+        {
+          "name": "덕수",
+          "weight": 5
+        },
+        {
+          "name": "봉수",
+          "weight": 3
+        },
+        {
+          "name": "종수",
+          "weight": 3
+        },
+        {
+          "name": "성수",
+          "weight": 3
+        },
+        {
+          "name": "동수",
+          "weight": 3
+        },
+        {
+          "name": "철수",
+          "weight": 3
+        },
+        {
+          "name": "병수",
+          "weight": 3
+        },
+        {
+          "name": "광수",
+          "weight": 3
+        },
+        {
+          "name": "경수",
+          "weight": 3
+        },
+        {
+          "name": "정수",
+          "weight": 3
+        },
+        {
+          "name": "상수",
+          "weight": 3
+        },
+        {
+          "name": "학수",
+          "weight": 2
+        },
+        {
+          "name": "만수",
+          "weight": 2
+        },
+        {
+          "name": "길수",
+          "weight": 2
+        },
+        {
+          "name": "진수",
+          "weight": 2
+        },
+        {
+          "name": "인수",
+          "weight": 2
+        },
+        {
+          "name": "영철",
+          "weight": 2
+        },
+        {
+          "name": "영길",
+          "weight": 2
+        },
+        {
+          "name": "영진",
+          "weight": 2
+        },
+        {
+          "name": "영환",
+          "weight": 2
+        },
+        {
+          "name": "영남",
+          "weight": 2
+        },
+        {
+          "name": "영태",
+          "weight": 2
+        },
+        {
+          "name": "영석",
+          "weight": 2
+        },
+        {
+          "name": "영준",
+          "weight": 2
+        },
+        {
+          "name": "창수",
+          "weight": 2
+        },
+        {
+          "name": "성식",
+          "weight": 2
+        },
+        {
+          "name": "종식",
+          "weight": 1
+        },
+        {
+          "name": "용식",
+          "weight": 1
+        },
+        {
+          "name": "만식",
+          "weight": 1
+        },
+        {
+          "name": "태식",
+          "weight": 1
+        },
+        {
+          "name": "기봉",
+          "weight": 1
+        },
+        {
+          "name": "덕봉",
+          "weight": 1
+        },
+        {
+          "name": "춘식",
+          "weight": 1
+        },
+        {
+          "name": "병식",
+          "weight": 1
+        },
+        {
+          "name": "인식",
+          "weight": 1
+        },
+        {
+          "name": "대식",
+          "weight": 1
+        }
+      ],
+      "f": [
+        {
+          "name": "순자",
+          "weight": 5
+        },
+        {
+          "name": "영자",
+          "weight": 5
+        },
+        {
+          "name": "정자",
+          "weight": 5
+        },
+        {
+          "name": "옥자",
+          "weight": 5
+        },
+        {
+          "name": "춘자",
+          "weight": 5
+        },
+        {
+          "name": "경자",
+          "weight": 3
+        },
+        {
+          "name": "복자",
+          "weight": 3
+        },
+        {
+          "name": "금자",
+          "weight": 3
+        },
+        {
+          "name": "말순",
+          "weight": 3
+        },
+        {
+          "name": "갑순",
+          "weight": 3
+        },
+        {
+          "name": "을순",
+          "weight": 3
+        },
+        {
+          "name": "점순",
+          "weight": 3
+        },
+        {
+          "name": "금순",
+          "weight": 3
+        },
+        {
+          "name": "옥순",
+          "weight": 3
+        },
+        {
+          "name": "복순",
+          "weight": 3
+        },
+        {
+          "name": "봉순",
+          "weight": 2
+        },
+        {
+          "name": "정순",
+          "weight": 2
+        },
+        {
+          "name": "순덕",
+          "weight": 2
+        },
+        {
+          "name": "복덕",
+          "weight": 2
+        },
+        {
+          "name": "정임",
+          "weight": 2
+        },
+        {
+          "name": "순임",
+          "weight": 2
+        },
+        {
+          "name": "옥임",
+          "weight": 2
+        },
+        {
+          "name": "금임",
+          "weight": 2
+        },
+        {
+          "name": "덕임",
+          "weight": 2
+        },
+        {
+          "name": "복임",
+          "weight": 2
+        },
+        {
+          "name": "춘임",
+          "weight": 2
+        },
+        {
+          "name": "정례",
+          "weight": 2
+        },
+        {
+          "name": "춘례",
+          "weight": 2
+        },
+        {
+          "name": "옥례",
+          "weight": 2
+        },
+        {
+          "name": "금례",
+          "weight": 2
+        },
+        {
+          "name": "봉례",
+          "weight": 1
+        },
+        {
+          "name": "순례",
+          "weight": 1
+        },
+        {
+          "name": "덕례",
+          "weight": 1
+        },
+        {
+          "name": "복례",
+          "weight": 1
+        },
+        {
+          "name": "복녀",
+          "weight": 1
+        },
+        {
+          "name": "순녀",
+          "weight": 1
+        },
+        {
+          "name": "옥녀",
+          "weight": 1
+        },
+        {
+          "name": "영순",
+          "weight": 1
+        },
+        {
+          "name": "명순",
+          "weight": 1
+        },
+        {
+          "name": "귀례",
+          "weight": 1
+        }
+      ]
+    },
+    "1930": {
+      "confidence": "low",
+      "note_ko": "1945년 경향보다 앞선 세대의 편집 후보예요. 정확한 순위는 아니에요.",
+      "m": [
+        {
+          "name": "영수",
+          "weight": 5
+        },
+        {
+          "name": "영호",
+          "weight": 5
+        },
+        {
+          "name": "영식",
+          "weight": 5
+        },
+        {
+          "name": "영철",
+          "weight": 5
+        },
+        {
+          "name": "영길",
+          "weight": 5
+        },
+        {
+          "name": "영진",
+          "weight": 3
+        },
+        {
+          "name": "영환",
+          "weight": 3
+        },
+        {
+          "name": "영남",
+          "weight": 3
+        },
+        {
+          "name": "영태",
+          "weight": 3
+        },
+        {
+          "name": "영석",
+          "weight": 3
+        },
+        {
+          "name": "영준",
+          "weight": 3
+        },
+        {
+          "name": "정수",
+          "weight": 3
+        },
+        {
+          "name": "성수",
+          "weight": 3
+        },
+        {
+          "name": "동수",
+          "weight": 3
+        },
+        {
+          "name": "철수",
+          "weight": 3
+        },
+        {
+          "name": "병수",
+          "weight": 2
+        },
+        {
+          "name": "광수",
+          "weight": 2
+        },
+        {
+          "name": "경수",
+          "weight": 2
+        },
+        {
+          "name": "용수",
+          "weight": 2
+        },
+        {
+          "name": "덕수",
+          "weight": 2
+        },
+        {
+          "name": "종수",
+          "weight": 2
+        },
+        {
+          "name": "창수",
+          "weight": 2
+        },
+        {
+          "name": "진수",
+          "weight": 2
+        },
+        {
+          "name": "인수",
+          "weight": 2
+        },
+        {
+          "name": "정식",
+          "weight": 2
+        },
+        {
+          "name": "성식",
+          "weight": 2
+        },
+        {
+          "name": "동식",
+          "weight": 2
+        },
+        {
+          "name": "철식",
+          "weight": 2
+        },
+        {
+          "name": "병식",
+          "weight": 2
+        },
+        {
+          "name": "광식",
+          "weight": 2
+        },
+        {
+          "name": "종식",
+          "weight": 1
+        },
+        {
+          "name": "용식",
+          "weight": 1
+        },
+        {
+          "name": "상식",
+          "weight": 1
+        },
+        {
+          "name": "태식",
+          "weight": 1
+        },
+        {
+          "name": "대식",
+          "weight": 1
+        },
+        {
+          "name": "기영",
+          "weight": 1
+        },
+        {
+          "name": "성호",
+          "weight": 1
+        },
+        {
+          "name": "정호",
+          "weight": 1
+        },
+        {
+          "name": "종호",
+          "weight": 1
+        },
+        {
+          "name": "경호",
+          "weight": 1
+        }
+      ],
+      "f": [
+        {
+          "name": "영자",
+          "weight": 5
+        },
+        {
+          "name": "정자",
+          "weight": 5
+        },
+        {
+          "name": "순자",
+          "weight": 5
+        },
+        {
+          "name": "춘자",
+          "weight": 5
+        },
+        {
+          "name": "경자",
+          "weight": 5
+        },
+        {
+          "name": "옥자",
+          "weight": 3
+        },
+        {
+          "name": "명자",
+          "weight": 3
+        },
+        {
+          "name": "금자",
+          "weight": 3
+        },
+        {
+          "name": "복자",
+          "weight": 3
+        },
+        {
+          "name": "화자",
+          "weight": 3
+        },
+        {
+          "name": "숙자",
+          "weight": 3
+        },
+        {
+          "name": "선자",
+          "weight": 3
+        },
+        {
+          "name": "미자",
+          "weight": 3
+        },
+        {
+          "name": "정숙",
+          "weight": 3
+        },
+        {
+          "name": "영숙",
+          "weight": 3
+        },
+        {
+          "name": "순덕",
+          "weight": 2
+        },
+        {
+          "name": "순임",
+          "weight": 2
+        },
+        {
+          "name": "정임",
+          "weight": 2
+        },
+        {
+          "name": "옥임",
+          "weight": 2
+        },
+        {
+          "name": "금임",
+          "weight": 2
+        },
+        {
+          "name": "춘임",
+          "weight": 2
+        },
+        {
+          "name": "정례",
+          "weight": 2
+        },
+        {
+          "name": "춘례",
+          "weight": 2
+        },
+        {
+          "name": "옥례",
+          "weight": 2
+        },
+        {
+          "name": "금례",
+          "weight": 2
+        },
+        {
+          "name": "순례",
+          "weight": 2
+        },
+        {
+          "name": "덕례",
+          "weight": 2
+        },
+        {
+          "name": "복례",
+          "weight": 2
+        },
+        {
+          "name": "순이",
+          "weight": 2
+        },
+        {
+          "name": "영순",
+          "weight": 2
+        },
+        {
+          "name": "명순",
+          "weight": 1
+        },
+        {
+          "name": "정순",
+          "weight": 1
+        },
+        {
+          "name": "옥순",
+          "weight": 1
+        },
+        {
+          "name": "금순",
+          "weight": 1
+        },
+        {
+          "name": "복순",
+          "weight": 1
+        },
+        {
+          "name": "봉순",
+          "weight": 1
+        },
+        {
+          "name": "춘심",
+          "weight": 1
+        },
+        {
+          "name": "옥분",
+          "weight": 1
+        },
+        {
+          "name": "금분",
+          "weight": 1
+        },
+        {
+          "name": "정희",
+          "weight": 1
+        }
+      ]
+    },
+    "1940": {
+      "confidence": "medium",
+      "note_ko": "1945년 공개 집계 보도의 영수·영호·영식, 영자·정자·순자 경향을 출발점으로 확장했어요.",
+      "m": [
+        {
+          "name": "영수",
+          "weight": 5
+        },
+        {
+          "name": "영호",
+          "weight": 5
+        },
+        {
+          "name": "영식",
+          "weight": 5
+        },
+        {
+          "name": "정웅",
+          "weight": 5
+        },
+        {
+          "name": "영길",
+          "weight": 5
+        },
+        {
+          "name": "영철",
+          "weight": 3
+        },
+        {
+          "name": "정수",
+          "weight": 3
+        },
+        {
+          "name": "영환",
+          "weight": 3
+        },
+        {
+          "name": "영진",
+          "weight": 3
+        },
+        {
+          "name": "영남",
+          "weight": 3
+        },
+        {
+          "name": "영태",
+          "weight": 3
+        },
+        {
+          "name": "영석",
+          "weight": 3
+        },
+        {
+          "name": "성수",
+          "weight": 3
+        },
+        {
+          "name": "동수",
+          "weight": 3
+        },
+        {
+          "name": "철수",
+          "weight": 3
+        },
+        {
+          "name": "병수",
+          "weight": 2
+        },
+        {
+          "name": "광수",
+          "weight": 2
+        },
+        {
+          "name": "경수",
+          "weight": 2
+        },
+        {
+          "name": "종수",
+          "weight": 2
+        },
+        {
+          "name": "용수",
+          "weight": 2
+        },
+        {
+          "name": "진수",
+          "weight": 2
+        },
+        {
+          "name": "상수",
+          "weight": 2
+        },
+        {
+          "name": "창수",
+          "weight": 2
+        },
+        {
+          "name": "정식",
+          "weight": 2
+        },
+        {
+          "name": "성식",
+          "weight": 2
+        },
+        {
+          "name": "동식",
+          "weight": 2
+        },
+        {
+          "name": "철식",
+          "weight": 2
+        },
+        {
+          "name": "병식",
+          "weight": 2
+        },
+        {
+          "name": "종식",
+          "weight": 2
+        },
+        {
+          "name": "태식",
+          "weight": 2
+        },
+        {
+          "name": "성호",
+          "weight": 1
+        },
+        {
+          "name": "정호",
+          "weight": 1
+        },
+        {
+          "name": "종호",
+          "weight": 1
+        },
+        {
+          "name": "경호",
+          "weight": 1
+        },
+        {
+          "name": "승호",
+          "weight": 1
+        },
+        {
+          "name": "태호",
+          "weight": 1
+        },
+        {
+          "name": "기영",
+          "weight": 1
+        },
+        {
+          "name": "종철",
+          "weight": 1
+        },
+        {
+          "name": "병철",
+          "weight": 1
+        },
+        {
+          "name": "상철",
+          "weight": 1
+        }
+      ],
+      "f": [
+        {
+          "name": "영자",
+          "weight": 5
+        },
+        {
+          "name": "정자",
+          "weight": 5
+        },
+        {
+          "name": "순자",
+          "weight": 5
+        },
+        {
+          "name": "춘자",
+          "weight": 5
+        },
+        {
+          "name": "경자",
+          "weight": 5
+        },
+        {
+          "name": "옥자",
+          "weight": 3
+        },
+        {
+          "name": "명자",
+          "weight": 3
+        },
+        {
+          "name": "숙자",
+          "weight": 3
+        },
+        {
+          "name": "화자",
+          "weight": 3
+        },
+        {
+          "name": "미자",
+          "weight": 3
+        },
+        {
+          "name": "선자",
+          "weight": 3
+        },
+        {
+          "name": "금자",
+          "weight": 3
+        },
+        {
+          "name": "정숙",
+          "weight": 3
+        },
+        {
+          "name": "영숙",
+          "weight": 3
+        },
+        {
+          "name": "순덕",
+          "weight": 3
+        },
+        {
+          "name": "영순",
+          "weight": 2
+        },
+        {
+          "name": "명순",
+          "weight": 2
+        },
+        {
+          "name": "정순",
+          "weight": 2
+        },
+        {
+          "name": "옥순",
+          "weight": 2
+        },
+        {
+          "name": "춘심",
+          "weight": 2
+        },
+        {
+          "name": "정희",
+          "weight": 2
+        },
+        {
+          "name": "영희",
+          "weight": 2
+        },
+        {
+          "name": "경희",
+          "weight": 2
+        },
+        {
+          "name": "순희",
+          "weight": 2
+        },
+        {
+          "name": "옥희",
+          "weight": 2
+        },
+        {
+          "name": "명희",
+          "weight": 2
+        },
+        {
+          "name": "춘희",
+          "weight": 2
+        },
+        {
+          "name": "인숙",
+          "weight": 2
+        },
+        {
+          "name": "현숙",
+          "weight": 2
+        },
+        {
+          "name": "경숙",
+          "weight": 2
+        },
+        {
+          "name": "선숙",
+          "weight": 1
+        },
+        {
+          "name": "미숙",
+          "weight": 1
+        },
+        {
+          "name": "정임",
+          "weight": 1
+        },
+        {
+          "name": "순임",
+          "weight": 1
+        },
+        {
+          "name": "옥임",
+          "weight": 1
+        },
+        {
+          "name": "정례",
+          "weight": 1
+        },
+        {
+          "name": "춘례",
+          "weight": 1
+        },
+        {
+          "name": "순례",
+          "weight": 1
+        },
+        {
+          "name": "복례",
+          "weight": 1
+        },
+        {
+          "name": "혜자",
+          "weight": 1
+        }
+      ]
+    },
+    "1950": {
+      "confidence": "low",
+      "note_ko": "인접 연대 사이를 보수적으로 잇는 편집 목록이며 연대 전체 통계는 아니에요.",
+      "m": [
+        {
+          "name": "영수",
+          "weight": 5
+        },
+        {
+          "name": "영철",
+          "weight": 5
+        },
+        {
+          "name": "영호",
+          "weight": 5
+        },
+        {
+          "name": "영식",
+          "weight": 5
+        },
+        {
+          "name": "영환",
+          "weight": 5
+        },
+        {
+          "name": "영진",
+          "weight": 3
+        },
+        {
+          "name": "성수",
+          "weight": 3
+        },
+        {
+          "name": "정수",
+          "weight": 3
+        },
+        {
+          "name": "동수",
+          "weight": 3
+        },
+        {
+          "name": "철수",
+          "weight": 3
+        },
+        {
+          "name": "병수",
+          "weight": 3
+        },
+        {
+          "name": "광수",
+          "weight": 3
+        },
+        {
+          "name": "경수",
+          "weight": 3
+        },
+        {
+          "name": "종수",
+          "weight": 3
+        },
+        {
+          "name": "용수",
+          "weight": 3
+        },
+        {
+          "name": "진수",
+          "weight": 2
+        },
+        {
+          "name": "상수",
+          "weight": 2
+        },
+        {
+          "name": "창수",
+          "weight": 2
+        },
+        {
+          "name": "성호",
+          "weight": 2
+        },
+        {
+          "name": "정호",
+          "weight": 2
+        },
+        {
+          "name": "종호",
+          "weight": 2
+        },
+        {
+          "name": "경호",
+          "weight": 2
+        },
+        {
+          "name": "승호",
+          "weight": 2
+        },
+        {
+          "name": "태호",
+          "weight": 2
+        },
+        {
+          "name": "재호",
+          "weight": 2
+        },
+        {
+          "name": "재수",
+          "weight": 2
+        },
+        {
+          "name": "재영",
+          "weight": 2
+        },
+        {
+          "name": "기영",
+          "weight": 2
+        },
+        {
+          "name": "동식",
+          "weight": 2
+        },
+        {
+          "name": "병식",
+          "weight": 2
+        },
+        {
+          "name": "종식",
+          "weight": 1
+        },
+        {
+          "name": "태식",
+          "weight": 1
+        },
+        {
+          "name": "정식",
+          "weight": 1
+        },
+        {
+          "name": "정환",
+          "weight": 1
+        },
+        {
+          "name": "성환",
+          "weight": 1
+        },
+        {
+          "name": "종환",
+          "weight": 1
+        },
+        {
+          "name": "상철",
+          "weight": 1
+        },
+        {
+          "name": "병철",
+          "weight": 1
+        },
+        {
+          "name": "종철",
+          "weight": 1
+        },
+        {
+          "name": "광호",
+          "weight": 1
+        }
+      ],
+      "f": [
+        {
+          "name": "영숙",
+          "weight": 5
+        },
+        {
+          "name": "정숙",
+          "weight": 5
+        },
+        {
+          "name": "미숙",
+          "weight": 5
+        },
+        {
+          "name": "경숙",
+          "weight": 5
+        },
+        {
+          "name": "인숙",
+          "weight": 5
+        },
+        {
+          "name": "현숙",
+          "weight": 3
+        },
+        {
+          "name": "선숙",
+          "weight": 3
+        },
+        {
+          "name": "영자",
+          "weight": 3
+        },
+        {
+          "name": "정자",
+          "weight": 3
+        },
+        {
+          "name": "순자",
+          "weight": 3
+        },
+        {
+          "name": "경자",
+          "weight": 3
+        },
+        {
+          "name": "명자",
+          "weight": 3
+        },
+        {
+          "name": "혜자",
+          "weight": 3
+        },
+        {
+          "name": "영희",
+          "weight": 3
+        },
+        {
+          "name": "정희",
+          "weight": 3
+        },
+        {
+          "name": "경희",
+          "weight": 2
+        },
+        {
+          "name": "명희",
+          "weight": 2
+        },
+        {
+          "name": "순희",
+          "weight": 2
+        },
+        {
+          "name": "옥희",
+          "weight": 2
+        },
+        {
+          "name": "미경",
+          "weight": 2
+        },
+        {
+          "name": "영경",
+          "weight": 2
+        },
+        {
+          "name": "혜경",
+          "weight": 2
+        },
+        {
+          "name": "은경",
+          "weight": 2
+        },
+        {
+          "name": "숙희",
+          "weight": 2
+        },
+        {
+          "name": "선희",
+          "weight": 2
+        },
+        {
+          "name": "인희",
+          "weight": 2
+        },
+        {
+          "name": "복희",
+          "weight": 2
+        },
+        {
+          "name": "영순",
+          "weight": 2
+        },
+        {
+          "name": "명순",
+          "weight": 2
+        },
+        {
+          "name": "정순",
+          "weight": 2
+        },
+        {
+          "name": "옥순",
+          "weight": 1
+        },
+        {
+          "name": "정임",
+          "weight": 1
+        },
+        {
+          "name": "순임",
+          "weight": 1
+        },
+        {
+          "name": "정화",
+          "weight": 1
+        },
+        {
+          "name": "영란",
+          "weight": 1
+        },
+        {
+          "name": "순옥",
+          "weight": 1
+        },
+        {
+          "name": "경옥",
+          "weight": 1
+        },
+        {
+          "name": "정옥",
+          "weight": 1
+        },
+        {
+          "name": "영옥",
+          "weight": 1
+        },
+        {
+          "name": "희숙",
+          "weight": 1
+        }
+      ]
+    },
+    "1960": {
+      "confidence": "low",
+      "note_ko": "인접한 1945·1975년 경향 사이의 편집 후보이며 직접 대조한 1960년대 빈도표는 없어요.",
+      "m": [
+        {
+          "name": "영수",
+          "weight": 5
+        },
+        {
+          "name": "영철",
+          "weight": 5
+        },
+        {
+          "name": "영호",
+          "weight": 5
+        },
+        {
+          "name": "성호",
+          "weight": 5
+        },
+        {
+          "name": "정호",
+          "weight": 5
+        },
+        {
+          "name": "재호",
+          "weight": 3
+        },
+        {
+          "name": "동호",
+          "weight": 3
+        },
+        {
+          "name": "승호",
+          "weight": 3
+        },
+        {
+          "name": "태호",
+          "weight": 3
+        },
+        {
+          "name": "정훈",
+          "weight": 3
+        },
+        {
+          "name": "성훈",
+          "weight": 3
+        },
+        {
+          "name": "성진",
+          "weight": 3
+        },
+        {
+          "name": "정진",
+          "weight": 3
+        },
+        {
+          "name": "영진",
+          "weight": 3
+        },
+        {
+          "name": "재영",
+          "weight": 3
+        },
+        {
+          "name": "재훈",
+          "weight": 2
+        },
+        {
+          "name": "상훈",
+          "weight": 2
+        },
+        {
+          "name": "동훈",
+          "weight": 2
+        },
+        {
+          "name": "종훈",
+          "weight": 2
+        },
+        {
+          "name": "경수",
+          "weight": 2
+        },
+        {
+          "name": "철수",
+          "weight": 2
+        },
+        {
+          "name": "민수",
+          "weight": 2
+        },
+        {
+          "name": "현수",
+          "weight": 2
+        },
+        {
+          "name": "진수",
+          "weight": 2
+        },
+        {
+          "name": "상수",
+          "weight": 2
+        },
+        {
+          "name": "종수",
+          "weight": 2
+        },
+        {
+          "name": "광수",
+          "weight": 2
+        },
+        {
+          "name": "대식",
+          "weight": 2
+        },
+        {
+          "name": "성식",
+          "weight": 2
+        },
+        {
+          "name": "정식",
+          "weight": 2
+        },
+        {
+          "name": "창수",
+          "weight": 1
+        },
+        {
+          "name": "정환",
+          "weight": 1
+        },
+        {
+          "name": "성환",
+          "weight": 1
+        },
+        {
+          "name": "종환",
+          "weight": 1
+        },
+        {
+          "name": "재철",
+          "weight": 1
+        },
+        {
+          "name": "동철",
+          "weight": 1
+        },
+        {
+          "name": "종철",
+          "weight": 1
+        },
+        {
+          "name": "상철",
+          "weight": 1
+        },
+        {
+          "name": "병철",
+          "weight": 1
+        },
+        {
+          "name": "광호",
+          "weight": 1
+        }
+      ],
+      "f": [
+        {
+          "name": "미숙",
+          "weight": 5
+        },
+        {
+          "name": "영숙",
+          "weight": 5
+        },
+        {
+          "name": "정숙",
+          "weight": 5
+        },
+        {
+          "name": "경숙",
+          "weight": 5
+        },
+        {
+          "name": "인숙",
+          "weight": 5
+        },
+        {
+          "name": "현숙",
+          "weight": 3
+        },
+        {
+          "name": "선숙",
+          "weight": 3
+        },
+        {
+          "name": "미경",
+          "weight": 3
+        },
+        {
+          "name": "은경",
+          "weight": 3
+        },
+        {
+          "name": "혜경",
+          "weight": 3
+        },
+        {
+          "name": "미영",
+          "weight": 3
+        },
+        {
+          "name": "은영",
+          "weight": 3
+        },
+        {
+          "name": "은정",
+          "weight": 3
+        },
+        {
+          "name": "은주",
+          "weight": 3
+        },
+        {
+          "name": "미정",
+          "weight": 3
+        },
+        {
+          "name": "영희",
+          "weight": 2
+        },
+        {
+          "name": "정희",
+          "weight": 2
+        },
+        {
+          "name": "경희",
+          "weight": 2
+        },
+        {
+          "name": "선희",
+          "weight": 2
+        },
+        {
+          "name": "인희",
+          "weight": 2
+        },
+        {
+          "name": "숙희",
+          "weight": 2
+        },
+        {
+          "name": "정화",
+          "weight": 2
+        },
+        {
+          "name": "영란",
+          "weight": 2
+        },
+        {
+          "name": "미옥",
+          "weight": 2
+        },
+        {
+          "name": "경옥",
+          "weight": 2
+        },
+        {
+          "name": "정옥",
+          "weight": 2
+        },
+        {
+          "name": "영옥",
+          "weight": 2
+        },
+        {
+          "name": "미선",
+          "weight": 2
+        },
+        {
+          "name": "영미",
+          "weight": 2
+        },
+        {
+          "name": "경미",
+          "weight": 2
+        },
+        {
+          "name": "정미",
+          "weight": 1
+        },
+        {
+          "name": "순옥",
+          "weight": 1
+        },
+        {
+          "name": "명숙",
+          "weight": 1
+        },
+        {
+          "name": "혜숙",
+          "weight": 1
+        },
+        {
+          "name": "지숙",
+          "weight": 1
+        },
+        {
+          "name": "연숙",
+          "weight": 1
+        },
+        {
+          "name": "정순",
+          "weight": 1
+        },
+        {
+          "name": "영순",
+          "weight": 1
+        },
+        {
+          "name": "명희",
+          "weight": 1
+        },
+        {
+          "name": "금자",
+          "weight": 1
+        }
+      ]
+    },
+    "1970": {
+      "confidence": "medium",
+      "note_ko": "1975년 정훈·성호·성훈·성진·정호와 미영·은정·은주·은영의 공개 집계 보도를 출발점으로 확장했어요.",
+      "m": [
+        {
+          "name": "정훈",
+          "weight": 5
+        },
+        {
+          "name": "성호",
+          "weight": 5
+        },
+        {
+          "name": "성훈",
+          "weight": 5
+        },
+        {
+          "name": "성진",
+          "weight": 5
+        },
+        {
+          "name": "정호",
+          "weight": 5
+        },
+        {
+          "name": "영수",
+          "weight": 3
+        },
+        {
+          "name": "영훈",
+          "weight": 3
+        },
+        {
+          "name": "민수",
+          "weight": 3
+        },
+        {
+          "name": "현수",
+          "weight": 3
+        },
+        {
+          "name": "재훈",
+          "weight": 3
+        },
+        {
+          "name": "상훈",
+          "weight": 3
+        },
+        {
+          "name": "동훈",
+          "weight": 3
+        },
+        {
+          "name": "종훈",
+          "weight": 3
+        },
+        {
+          "name": "태훈",
+          "weight": 3
+        },
+        {
+          "name": "지훈",
+          "weight": 3
+        },
+        {
+          "name": "재호",
+          "weight": 2
+        },
+        {
+          "name": "동호",
+          "weight": 2
+        },
+        {
+          "name": "승호",
+          "weight": 2
+        },
+        {
+          "name": "태호",
+          "weight": 2
+        },
+        {
+          "name": "준호",
+          "weight": 2
+        },
+        {
+          "name": "진호",
+          "weight": 2
+        },
+        {
+          "name": "성민",
+          "weight": 2
+        },
+        {
+          "name": "정민",
+          "weight": 2
+        },
+        {
+          "name": "승민",
+          "weight": 2
+        },
+        {
+          "name": "영진",
+          "weight": 2
+        },
+        {
+          "name": "재영",
+          "weight": 2
+        },
+        {
+          "name": "정진",
+          "weight": 2
+        },
+        {
+          "name": "현진",
+          "weight": 2
+        },
+        {
+          "name": "동현",
+          "weight": 2
+        },
+        {
+          "name": "상현",
+          "weight": 2
+        },
+        {
+          "name": "수현",
+          "weight": 1
+        },
+        {
+          "name": "승현",
+          "weight": 1
+        },
+        {
+          "name": "철수",
+          "weight": 1
+        },
+        {
+          "name": "경수",
+          "weight": 1
+        },
+        {
+          "name": "진수",
+          "weight": 1
+        },
+        {
+          "name": "성수",
+          "weight": 1
+        },
+        {
+          "name": "종수",
+          "weight": 1
+        },
+        {
+          "name": "재현",
+          "weight": 1
+        },
+        {
+          "name": "정환",
+          "weight": 1
+        },
+        {
+          "name": "성환",
+          "weight": 1
+        }
+      ],
+      "f": [
+        {
+          "name": "미영",
+          "weight": 5
+        },
+        {
+          "name": "은정",
+          "weight": 5
+        },
+        {
+          "name": "은주",
+          "weight": 5
+        },
+        {
+          "name": "은영",
+          "weight": 5
+        },
+        {
+          "name": "미경",
+          "weight": 5
+        },
+        {
+          "name": "지영",
+          "weight": 3
+        },
+        {
+          "name": "미정",
+          "weight": 3
+        },
+        {
+          "name": "현정",
+          "weight": 3
+        },
+        {
+          "name": "혜진",
+          "weight": 3
+        },
+        {
+          "name": "수진",
+          "weight": 3
+        },
+        {
+          "name": "선영",
+          "weight": 3
+        },
+        {
+          "name": "소영",
+          "weight": 3
+        },
+        {
+          "name": "지현",
+          "weight": 3
+        },
+        {
+          "name": "은경",
+          "weight": 3
+        },
+        {
+          "name": "혜경",
+          "weight": 3
+        },
+        {
+          "name": "정희",
+          "weight": 2
+        },
+        {
+          "name": "영희",
+          "weight": 2
+        },
+        {
+          "name": "선희",
+          "weight": 2
+        },
+        {
+          "name": "경희",
+          "weight": 2
+        },
+        {
+          "name": "유미",
+          "weight": 2
+        },
+        {
+          "name": "경미",
+          "weight": 2
+        },
+        {
+          "name": "정미",
+          "weight": 2
+        },
+        {
+          "name": "영미",
+          "weight": 2
+        },
+        {
+          "name": "미선",
+          "weight": 2
+        },
+        {
+          "name": "정은",
+          "weight": 2
+        },
+        {
+          "name": "주희",
+          "weight": 2
+        },
+        {
+          "name": "현주",
+          "weight": 2
+        },
+        {
+          "name": "연희",
+          "weight": 2
+        },
+        {
+          "name": "혜정",
+          "weight": 2
+        },
+        {
+          "name": "윤정",
+          "weight": 2
+        },
+        {
+          "name": "경아",
+          "weight": 1
+        },
+        {
+          "name": "정아",
+          "weight": 1
+        },
+        {
+          "name": "현숙",
+          "weight": 1
+        },
+        {
+          "name": "인숙",
+          "weight": 1
+        },
+        {
+          "name": "은미",
+          "weight": 1
+        },
+        {
+          "name": "미숙",
+          "weight": 1
+        },
+        {
+          "name": "정숙",
+          "weight": 1
+        },
+        {
+          "name": "민정",
+          "weight": 1
+        },
+        {
+          "name": "희정",
+          "weight": 1
+        },
+        {
+          "name": "명희",
+          "weight": 1
+        }
+      ]
+    },
+    "1980": {
+      "confidence": "low",
+      "note_ko": "지훈·현우, 지혜·지영 등의 세대감을 반영한 편집 후보로 연대 통계 직접 검증은 없어요.",
+      "m": [
+        {
+          "name": "지훈",
+          "weight": 5
+        },
+        {
+          "name": "정훈",
+          "weight": 5
+        },
+        {
+          "name": "성훈",
+          "weight": 5
+        },
+        {
+          "name": "현우",
+          "weight": 5
+        },
+        {
+          "name": "민수",
+          "weight": 5
+        },
+        {
+          "name": "현수",
+          "weight": 3
+        },
+        {
+          "name": "동현",
+          "weight": 3
+        },
+        {
+          "name": "재현",
+          "weight": 3
+        },
+        {
+          "name": "승현",
+          "weight": 3
+        },
+        {
+          "name": "준호",
+          "weight": 3
+        },
+        {
+          "name": "진호",
+          "weight": 3
+        },
+        {
+          "name": "성민",
+          "weight": 3
+        },
+        {
+          "name": "정민",
+          "weight": 3
+        },
+        {
+          "name": "승민",
+          "weight": 3
+        },
+        {
+          "name": "재훈",
+          "weight": 3
+        },
+        {
+          "name": "상훈",
+          "weight": 2
+        },
+        {
+          "name": "동훈",
+          "weight": 2
+        },
+        {
+          "name": "종훈",
+          "weight": 2
+        },
+        {
+          "name": "태훈",
+          "weight": 2
+        },
+        {
+          "name": "영훈",
+          "weight": 2
+        },
+        {
+          "name": "영수",
+          "weight": 2
+        },
+        {
+          "name": "성호",
+          "weight": 2
+        },
+        {
+          "name": "정호",
+          "weight": 2
+        },
+        {
+          "name": "재호",
+          "weight": 2
+        },
+        {
+          "name": "동호",
+          "weight": 2
+        },
+        {
+          "name": "승호",
+          "weight": 2
+        },
+        {
+          "name": "태호",
+          "weight": 2
+        },
+        {
+          "name": "성진",
+          "weight": 2
+        },
+        {
+          "name": "영진",
+          "weight": 2
+        },
+        {
+          "name": "현진",
+          "weight": 2
+        },
+        {
+          "name": "상현",
+          "weight": 1
+        },
+        {
+          "name": "수현",
+          "weight": 1
+        },
+        {
+          "name": "종현",
+          "weight": 1
+        },
+        {
+          "name": "준영",
+          "weight": 1
+        },
+        {
+          "name": "승우",
+          "weight": 1
+        },
+        {
+          "name": "태영",
+          "weight": 1
+        },
+        {
+          "name": "우진",
+          "weight": 1
+        },
+        {
+          "name": "경수",
+          "weight": 1
+        },
+        {
+          "name": "민석",
+          "weight": 1
+        },
+        {
+          "name": "준석",
+          "weight": 1
+        }
+      ],
+      "f": [
+        {
+          "name": "지혜",
+          "weight": 5
+        },
+        {
+          "name": "지영",
+          "weight": 5
+        },
+        {
+          "name": "민정",
+          "weight": 5
+        },
+        {
+          "name": "은정",
+          "weight": 5
+        },
+        {
+          "name": "현정",
+          "weight": 5
+        },
+        {
+          "name": "혜진",
+          "weight": 3
+        },
+        {
+          "name": "수진",
+          "weight": 3
+        },
+        {
+          "name": "지현",
+          "weight": 3
+        },
+        {
+          "name": "은주",
+          "weight": 3
+        },
+        {
+          "name": "은영",
+          "weight": 3
+        },
+        {
+          "name": "미영",
+          "weight": 3
+        },
+        {
+          "name": "미정",
+          "weight": 3
+        },
+        {
+          "name": "소영",
+          "weight": 3
+        },
+        {
+          "name": "선영",
+          "weight": 3
+        },
+        {
+          "name": "유진",
+          "weight": 3
+        },
+        {
+          "name": "수현",
+          "weight": 2
+        },
+        {
+          "name": "혜정",
+          "weight": 2
+        },
+        {
+          "name": "윤정",
+          "weight": 2
+        },
+        {
+          "name": "정은",
+          "weight": 2
+        },
+        {
+          "name": "주희",
+          "weight": 2
+        },
+        {
+          "name": "현주",
+          "weight": 2
+        },
+        {
+          "name": "경아",
+          "weight": 2
+        },
+        {
+          "name": "정아",
+          "weight": 2
+        },
+        {
+          "name": "은지",
+          "weight": 2
+        },
+        {
+          "name": "보람",
+          "weight": 2
+        },
+        {
+          "name": "아름",
+          "weight": 2
+        },
+        {
+          "name": "슬기",
+          "weight": 2
+        },
+        {
+          "name": "혜원",
+          "weight": 2
+        },
+        {
+          "name": "예진",
+          "weight": 2
+        },
+        {
+          "name": "소연",
+          "weight": 2
+        },
+        {
+          "name": "지은",
+          "weight": 1
+        },
+        {
+          "name": "선아",
+          "weight": 1
+        },
+        {
+          "name": "민지",
+          "weight": 1
+        },
+        {
+          "name": "다혜",
+          "weight": 1
+        },
+        {
+          "name": "은미",
+          "weight": 1
+        },
+        {
+          "name": "지수",
+          "weight": 1
+        },
+        {
+          "name": "희정",
+          "weight": 1
+        },
+        {
+          "name": "수정",
+          "weight": 1
+        },
+        {
+          "name": "나영",
+          "weight": 1
+        },
+        {
+          "name": "지원",
+          "weight": 1
+        }
+      ]
+    },
+    "1990": {
+      "confidence": "low",
+      "note_ko": "동현·민수, 유진·민지 등 인접 세대와 이어지는 후보예요. 정확한 연대 순위는 검증하지 못했어요.",
+      "m": [
+        {
+          "name": "동현",
+          "weight": 5
+        },
+        {
+          "name": "민수",
+          "weight": 5
+        },
+        {
+          "name": "지훈",
+          "weight": 5
+        },
+        {
+          "name": "성민",
+          "weight": 5
+        },
+        {
+          "name": "현우",
+          "weight": 5
+        },
+        {
+          "name": "준호",
+          "weight": 3
+        },
+        {
+          "name": "민재",
+          "weight": 3
+        },
+        {
+          "name": "재현",
+          "weight": 3
+        },
+        {
+          "name": "승현",
+          "weight": 3
+        },
+        {
+          "name": "준영",
+          "weight": 3
+        },
+        {
+          "name": "우진",
+          "weight": 3
+        },
+        {
+          "name": "태영",
+          "weight": 3
+        },
+        {
+          "name": "종현",
+          "weight": 3
+        },
+        {
+          "name": "정민",
+          "weight": 3
+        },
+        {
+          "name": "승민",
+          "weight": 3
+        },
+        {
+          "name": "준혁",
+          "weight": 2
+        },
+        {
+          "name": "민석",
+          "weight": 2
+        },
+        {
+          "name": "준석",
+          "weight": 2
+        },
+        {
+          "name": "상민",
+          "weight": 2
+        },
+        {
+          "name": "재민",
+          "weight": 2
+        },
+        {
+          "name": "동훈",
+          "weight": 2
+        },
+        {
+          "name": "성진",
+          "weight": 2
+        },
+        {
+          "name": "현진",
+          "weight": 2
+        },
+        {
+          "name": "상현",
+          "weight": 2
+        },
+        {
+          "name": "수현",
+          "weight": 2
+        },
+        {
+          "name": "승우",
+          "weight": 2
+        },
+        {
+          "name": "태훈",
+          "weight": 2
+        },
+        {
+          "name": "정훈",
+          "weight": 2
+        },
+        {
+          "name": "진호",
+          "weight": 2
+        },
+        {
+          "name": "재훈",
+          "weight": 2
+        },
+        {
+          "name": "민준",
+          "weight": 1
+        },
+        {
+          "name": "준서",
+          "weight": 1
+        },
+        {
+          "name": "지호",
+          "weight": 1
+        },
+        {
+          "name": "건우",
+          "weight": 1
+        },
+        {
+          "name": "도현",
+          "weight": 1
+        },
+        {
+          "name": "시우",
+          "weight": 1
+        },
+        {
+          "name": "은우",
+          "weight": 1
+        },
+        {
+          "name": "태현",
+          "weight": 1
+        },
+        {
+          "name": "성준",
+          "weight": 1
+        },
+        {
+          "name": "경민",
+          "weight": 1
+        }
+      ],
+      "f": [
+        {
+          "name": "유진",
+          "weight": 5
+        },
+        {
+          "name": "지혜",
+          "weight": 5
+        },
+        {
+          "name": "민지",
+          "weight": 5
+        },
+        {
+          "name": "수빈",
+          "weight": 5
+        },
+        {
+          "name": "지원",
+          "weight": 5
+        },
+        {
+          "name": "지은",
+          "weight": 3
+        },
+        {
+          "name": "지현",
+          "weight": 3
+        },
+        {
+          "name": "지영",
+          "weight": 3
+        },
+        {
+          "name": "수진",
+          "weight": 3
+        },
+        {
+          "name": "은지",
+          "weight": 3
+        },
+        {
+          "name": "혜진",
+          "weight": 3
+        },
+        {
+          "name": "수현",
+          "weight": 3
+        },
+        {
+          "name": "예진",
+          "weight": 3
+        },
+        {
+          "name": "혜원",
+          "weight": 3
+        },
+        {
+          "name": "지수",
+          "weight": 3
+        },
+        {
+          "name": "소연",
+          "weight": 2
+        },
+        {
+          "name": "정은",
+          "weight": 2
+        },
+        {
+          "name": "민정",
+          "weight": 2
+        },
+        {
+          "name": "윤정",
+          "weight": 2
+        },
+        {
+          "name": "다혜",
+          "weight": 2
+        },
+        {
+          "name": "수정",
+          "weight": 2
+        },
+        {
+          "name": "나영",
+          "weight": 2
+        },
+        {
+          "name": "채원",
+          "weight": 2
+        },
+        {
+          "name": "은서",
+          "weight": 2
+        },
+        {
+          "name": "소희",
+          "weight": 2
+        },
+        {
+          "name": "예은",
+          "weight": 2
+        },
+        {
+          "name": "다은",
+          "weight": 2
+        },
+        {
+          "name": "가영",
+          "weight": 2
+        },
+        {
+          "name": "세영",
+          "weight": 2
+        },
+        {
+          "name": "현지",
+          "weight": 2
+        },
+        {
+          "name": "서영",
+          "weight": 1
+        },
+        {
+          "name": "아름",
+          "weight": 1
+        },
+        {
+          "name": "보람",
+          "weight": 1
+        },
+        {
+          "name": "슬기",
+          "weight": 1
+        },
+        {
+          "name": "소영",
+          "weight": 1
+        },
+        {
+          "name": "선영",
+          "weight": 1
+        },
+        {
+          "name": "주희",
+          "weight": 1
+        },
+        {
+          "name": "연주",
+          "weight": 1
+        },
+        {
+          "name": "예림",
+          "weight": 1
+        },
+        {
+          "name": "다영",
+          "weight": 1
+        }
+      ]
+    },
+    "2000": {
+      "confidence": "medium",
+      "note_ko": "2006년 공개 집계 보도의 민준·민재·지훈·현우·준서·현준 및 서연·민서·수빈·서현·민지·예은 경향을 반영했어요.",
+      "m": [
+        {
+          "name": "민준",
+          "weight": 5
+        },
+        {
+          "name": "민재",
+          "weight": 5
+        },
+        {
+          "name": "지훈",
+          "weight": 5
+        },
+        {
+          "name": "현우",
+          "weight": 5
+        },
+        {
+          "name": "준서",
+          "weight": 5
+        },
+        {
+          "name": "현준",
+          "weight": 3
+        },
+        {
+          "name": "동현",
+          "weight": 3
+        },
+        {
+          "name": "준혁",
+          "weight": 3
+        },
+        {
+          "name": "건우",
+          "weight": 3
+        },
+        {
+          "name": "우진",
+          "weight": 3
+        },
+        {
+          "name": "도현",
+          "weight": 3
+        },
+        {
+          "name": "지호",
+          "weight": 3
+        },
+        {
+          "name": "예준",
+          "weight": 3
+        },
+        {
+          "name": "지후",
+          "weight": 3
+        },
+        {
+          "name": "성민",
+          "weight": 3
+        },
+        {
+          "name": "준영",
+          "weight": 2
+        },
+        {
+          "name": "시우",
+          "weight": 2
+        },
+        {
+          "name": "승민",
+          "weight": 2
+        },
+        {
+          "name": "재민",
+          "weight": 2
+        },
+        {
+          "name": "정민",
+          "weight": 2
+        },
+        {
+          "name": "태현",
+          "weight": 2
+        },
+        {
+          "name": "성준",
+          "weight": 2
+        },
+        {
+          "name": "서준",
+          "weight": 2
+        },
+        {
+          "name": "하준",
+          "weight": 2
+        },
+        {
+          "name": "준우",
+          "weight": 2
+        },
+        {
+          "name": "은우",
+          "weight": 2
+        },
+        {
+          "name": "재현",
+          "weight": 2
+        },
+        {
+          "name": "승우",
+          "weight": 2
+        },
+        {
+          "name": "유준",
+          "weight": 2
+        },
+        {
+          "name": "시윤",
+          "weight": 2
+        },
+        {
+          "name": "윤우",
+          "weight": 1
+        },
+        {
+          "name": "현서",
+          "weight": 1
+        },
+        {
+          "name": "도윤",
+          "weight": 1
+        },
+        {
+          "name": "지환",
+          "weight": 1
+        },
+        {
+          "name": "태준",
+          "weight": 1
+        },
+        {
+          "name": "연우",
+          "weight": 1
+        },
+        {
+          "name": "수현",
+          "weight": 1
+        },
+        {
+          "name": "민성",
+          "weight": 1
+        },
+        {
+          "name": "재윤",
+          "weight": 1
+        },
+        {
+          "name": "현빈",
+          "weight": 1
+        }
+      ],
+      "f": [
+        {
+          "name": "서연",
+          "weight": 5
+        },
+        {
+          "name": "민서",
+          "weight": 5
+        },
+        {
+          "name": "수빈",
+          "weight": 5
+        },
+        {
+          "name": "서현",
+          "weight": 5
+        },
+        {
+          "name": "민지",
+          "weight": 5
+        },
+        {
+          "name": "예은",
+          "weight": 3
+        },
+        {
+          "name": "지민",
+          "weight": 3
+        },
+        {
+          "name": "지우",
+          "weight": 3
+        },
+        {
+          "name": "수아",
+          "weight": 3
+        },
+        {
+          "name": "지윤",
+          "weight": 3
+        },
+        {
+          "name": "채원",
+          "weight": 3
+        },
+        {
+          "name": "지원",
+          "weight": 3
+        },
+        {
+          "name": "은서",
+          "weight": 3
+        },
+        {
+          "name": "하은",
+          "weight": 3
+        },
+        {
+          "name": "다은",
+          "weight": 3
+        },
+        {
+          "name": "예원",
+          "weight": 2
+        },
+        {
+          "name": "유진",
+          "weight": 2
+        },
+        {
+          "name": "수현",
+          "weight": 2
+        },
+        {
+          "name": "예진",
+          "weight": 2
+        },
+        {
+          "name": "혜원",
+          "weight": 2
+        },
+        {
+          "name": "지수",
+          "weight": 2
+        },
+        {
+          "name": "소연",
+          "weight": 2
+        },
+        {
+          "name": "소희",
+          "weight": 2
+        },
+        {
+          "name": "서영",
+          "weight": 2
+        },
+        {
+          "name": "은지",
+          "weight": 2
+        },
+        {
+          "name": "가은",
+          "weight": 2
+        },
+        {
+          "name": "나영",
+          "weight": 2
+        },
+        {
+          "name": "다인",
+          "weight": 2
+        },
+        {
+          "name": "채은",
+          "weight": 2
+        },
+        {
+          "name": "하윤",
+          "weight": 2
+        },
+        {
+          "name": "지유",
+          "weight": 1
+        },
+        {
+          "name": "지아",
+          "weight": 1
+        },
+        {
+          "name": "서윤",
+          "weight": 1
+        },
+        {
+          "name": "윤서",
+          "weight": 1
+        },
+        {
+          "name": "시은",
+          "weight": 1
+        },
+        {
+          "name": "채윤",
+          "weight": 1
+        },
+        {
+          "name": "예린",
+          "weight": 1
+        },
+        {
+          "name": "연우",
+          "weight": 1
+        },
+        {
+          "name": "다연",
+          "weight": 1
+        },
+        {
+          "name": "세은",
+          "weight": 1
+        }
+      ]
+    },
+    "2010": {
+      "confidence": "medium",
+      "note_ko": "2013년 출생신고 집계 보도로 확인한 이름을 앞에 두고 게임용 후보를 보탰어요.",
+      "m": [
+        {
+          "name": "민준",
+          "weight": 5
+        },
+        {
+          "name": "서준",
+          "weight": 5
+        },
+        {
+          "name": "주원",
+          "weight": 5
+        },
+        {
+          "name": "하준",
+          "weight": 5
+        },
+        {
+          "name": "예준",
+          "weight": 5
+        },
+        {
+          "name": "준우",
+          "weight": 3
+        },
+        {
+          "name": "도윤",
+          "weight": 3
+        },
+        {
+          "name": "지후",
+          "weight": 3
+        },
+        {
+          "name": "준서",
+          "weight": 3
+        },
+        {
+          "name": "지호",
+          "weight": 3
+        },
+        {
+          "name": "시우",
+          "weight": 3
+        },
+        {
+          "name": "은우",
+          "weight": 3
+        },
+        {
+          "name": "유준",
+          "weight": 3
+        },
+        {
+          "name": "건우",
+          "weight": 3
+        },
+        {
+          "name": "현우",
+          "weight": 3
+        },
+        {
+          "name": "우진",
+          "weight": 2
+        },
+        {
+          "name": "선우",
+          "weight": 2
+        },
+        {
+          "name": "연우",
+          "weight": 2
+        },
+        {
+          "name": "정우",
+          "weight": 2
+        },
+        {
+          "name": "윤우",
+          "weight": 2
+        },
+        {
+          "name": "시윤",
+          "weight": 2
+        },
+        {
+          "name": "지안",
+          "weight": 2
+        },
+        {
+          "name": "수호",
+          "weight": 2
+        },
+        {
+          "name": "이준",
+          "weight": 2
+        },
+        {
+          "name": "태준",
+          "weight": 2
+        },
+        {
+          "name": "도현",
+          "weight": 2
+        },
+        {
+          "name": "준혁",
+          "weight": 2
+        },
+        {
+          "name": "재윤",
+          "weight": 2
+        },
+        {
+          "name": "지환",
+          "weight": 2
+        },
+        {
+          "name": "현준",
+          "weight": 2
+        },
+        {
+          "name": "민재",
+          "weight": 1
+        },
+        {
+          "name": "지훈",
+          "weight": 1
+        },
+        {
+          "name": "성민",
+          "weight": 1
+        },
+        {
+          "name": "준영",
+          "weight": 1
+        },
+        {
+          "name": "시후",
+          "weight": 1
+        },
+        {
+          "name": "승우",
+          "weight": 1
+        },
+        {
+          "name": "이안",
+          "weight": 1
+        },
+        {
+          "name": "서진",
+          "weight": 1
+        },
+        {
+          "name": "은찬",
+          "weight": 1
+        },
+        {
+          "name": "재하",
+          "weight": 1
+        }
+      ],
+      "f": [
+        {
+          "name": "서윤",
+          "weight": 5
+        },
+        {
+          "name": "서연",
+          "weight": 5
+        },
+        {
+          "name": "민서",
+          "weight": 5
+        },
+        {
+          "name": "서현",
+          "weight": 5
+        },
+        {
+          "name": "지민",
+          "weight": 5
+        },
+        {
+          "name": "하은",
+          "weight": 3
+        },
+        {
+          "name": "하윤",
+          "weight": 3
+        },
+        {
+          "name": "지유",
+          "weight": 3
+        },
+        {
+          "name": "지우",
+          "weight": 3
+        },
+        {
+          "name": "지아",
+          "weight": 3
+        },
+        {
+          "name": "수아",
+          "weight": 3
+        },
+        {
+          "name": "수빈",
+          "weight": 3
+        },
+        {
+          "name": "예은",
+          "weight": 3
+        },
+        {
+          "name": "윤서",
+          "weight": 3
+        },
+        {
+          "name": "예린",
+          "weight": 3
+        },
+        {
+          "name": "채원",
+          "weight": 2
+        },
+        {
+          "name": "지윤",
+          "weight": 2
+        },
+        {
+          "name": "은서",
+          "weight": 2
+        },
+        {
+          "name": "다은",
+          "weight": 2
+        },
+        {
+          "name": "예원",
+          "weight": 2
+        },
+        {
+          "name": "가은",
+          "weight": 2
+        },
+        {
+          "name": "시은",
+          "weight": 2
+        },
+        {
+          "name": "소율",
+          "weight": 2
+        },
+        {
+          "name": "하린",
+          "weight": 2
+        },
+        {
+          "name": "지안",
+          "weight": 2
+        },
+        {
+          "name": "서우",
+          "weight": 2
+        },
+        {
+          "name": "유나",
+          "weight": 2
+        },
+        {
+          "name": "다인",
+          "weight": 2
+        },
+        {
+          "name": "수현",
+          "weight": 2
+        },
+        {
+          "name": "연우",
+          "weight": 2
+        },
+        {
+          "name": "채은",
+          "weight": 1
+        },
+        {
+          "name": "채윤",
+          "weight": 1
+        },
+        {
+          "name": "나윤",
+          "weight": 1
+        },
+        {
+          "name": "은채",
+          "weight": 1
+        },
+        {
+          "name": "소윤",
+          "weight": 1
+        },
+        {
+          "name": "세아",
+          "weight": 1
+        },
+        {
+          "name": "아린",
+          "weight": 1
+        },
+        {
+          "name": "예서",
+          "weight": 1
+        },
+        {
+          "name": "다현",
+          "weight": 1
+        },
+        {
+          "name": "연서",
+          "weight": 1
+        }
+      ]
+    },
+    "2020": {
+      "confidence": "low",
+      "note_ko": "진행 중인 연대예요. 최근 이름의 2차 집계 경향만 참고했으며 2020년대 전체의 확정 통계로 보지 않아요.",
+      "m": [
+        {
+          "name": "도윤",
+          "weight": 5
+        },
+        {
+          "name": "이준",
+          "weight": 5
+        },
+        {
+          "name": "하준",
+          "weight": 5
+        },
+        {
+          "name": "시우",
+          "weight": 5
+        },
+        {
+          "name": "서준",
+          "weight": 5
+        },
+        {
+          "name": "은우",
+          "weight": 3
+        },
+        {
+          "name": "유준",
+          "weight": 3
+        },
+        {
+          "name": "지호",
+          "weight": 3
+        },
+        {
+          "name": "예준",
+          "weight": 3
+        },
+        {
+          "name": "이안",
+          "weight": 3
+        },
+        {
+          "name": "도현",
+          "weight": 3
+        },
+        {
+          "name": "지후",
+          "weight": 3
+        },
+        {
+          "name": "수호",
+          "weight": 3
+        },
+        {
+          "name": "주원",
+          "weight": 3
+        },
+        {
+          "name": "연우",
+          "weight": 3
+        },
+        {
+          "name": "선우",
+          "weight": 2
+        },
+        {
+          "name": "정우",
+          "weight": 2
+        },
+        {
+          "name": "윤우",
+          "weight": 2
+        },
+        {
+          "name": "우진",
+          "weight": 2
+        },
+        {
+          "name": "시윤",
+          "weight": 2
+        },
+        {
+          "name": "은호",
+          "weight": 2
+        },
+        {
+          "name": "재이",
+          "weight": 2
+        },
+        {
+          "name": "이현",
+          "weight": 2
+        },
+        {
+          "name": "태오",
+          "weight": 2
+        },
+        {
+          "name": "지안",
+          "weight": 2
+        },
+        {
+          "name": "서우",
+          "weight": 2
+        },
+        {
+          "name": "준우",
+          "weight": 2
+        },
+        {
+          "name": "건우",
+          "weight": 2
+        },
+        {
+          "name": "민준",
+          "weight": 2
+        },
+        {
+          "name": "하율",
+          "weight": 2
+        },
+        {
+          "name": "로운",
+          "weight": 1
+        },
+        {
+          "name": "유찬",
+          "weight": 1
+        },
+        {
+          "name": "시온",
+          "weight": 1
+        },
+        {
+          "name": "재하",
+          "weight": 1
+        },
+        {
+          "name": "은찬",
+          "weight": 1
+        },
+        {
+          "name": "지한",
+          "weight": 1
+        },
+        {
+          "name": "우주",
+          "weight": 1
+        },
+        {
+          "name": "이든",
+          "weight": 1
+        },
+        {
+          "name": "도하",
+          "weight": 1
+        },
+        {
+          "name": "리안",
+          "weight": 1
+        }
+      ],
+      "f": [
+        {
+          "name": "서아",
+          "weight": 5
+        },
+        {
+          "name": "서윤",
+          "weight": 5
+        },
+        {
+          "name": "이서",
+          "weight": 5
+        },
+        {
+          "name": "하린",
+          "weight": 5
+        },
+        {
+          "name": "하윤",
+          "weight": 5
+        },
+        {
+          "name": "지안",
+          "weight": 3
+        },
+        {
+          "name": "지아",
+          "weight": 3
+        },
+        {
+          "name": "아린",
+          "weight": 3
+        },
+        {
+          "name": "지유",
+          "weight": 3
+        },
+        {
+          "name": "시아",
+          "weight": 3
+        },
+        {
+          "name": "지우",
+          "weight": 3
+        },
+        {
+          "name": "수아",
+          "weight": 3
+        },
+        {
+          "name": "나은",
+          "weight": 3
+        },
+        {
+          "name": "서연",
+          "weight": 3
+        },
+        {
+          "name": "서우",
+          "weight": 3
+        },
+        {
+          "name": "하은",
+          "weight": 2
+        },
+        {
+          "name": "유나",
+          "weight": 2
+        },
+        {
+          "name": "다인",
+          "weight": 2
+        },
+        {
+          "name": "채원",
+          "weight": 2
+        },
+        {
+          "name": "소율",
+          "weight": 2
+        },
+        {
+          "name": "윤서",
+          "weight": 2
+        },
+        {
+          "name": "소윤",
+          "weight": 2
+        },
+        {
+          "name": "은채",
+          "weight": 2
+        },
+        {
+          "name": "지윤",
+          "weight": 2
+        },
+        {
+          "name": "예서",
+          "weight": 2
+        },
+        {
+          "name": "세아",
+          "weight": 2
+        },
+        {
+          "name": "나윤",
+          "weight": 2
+        },
+        {
+          "name": "연우",
+          "weight": 2
+        },
+        {
+          "name": "이솔",
+          "weight": 2
+        },
+        {
+          "name": "재이",
+          "weight": 2
+        },
+        {
+          "name": "윤슬",
+          "weight": 1
+        },
+        {
+          "name": "유하",
+          "weight": 1
+        },
+        {
+          "name": "도아",
+          "weight": 1
+        },
+        {
+          "name": "로아",
+          "weight": 1
+        },
+        {
+          "name": "아윤",
+          "weight": 1
+        },
+        {
+          "name": "리아",
+          "weight": 1
+        },
+        {
+          "name": "라온",
+          "weight": 1
+        },
+        {
+          "name": "지율",
+          "weight": 1
+        },
+        {
+          "name": "하율",
+          "weight": 1
+        },
+        {
+          "name": "서하",
+          "weight": 1
+        }
+      ]
+    },
+    "2030": {
+      "confidence": "low",
+      "note_ko": "가상 미래 이름 목록이에요. 현재 이름을 유지하면서 중성·한 글자·외래 느낌 후보의 비중을 늘린 게임 설정이며 실제 유행 예측은 아니에요.",
+      "m": [
+        {
+          "name": "이안",
+          "weight": 3
+        },
+        {
+          "name": "지안",
+          "weight": 3
+        },
+        {
+          "name": "재이",
+          "weight": 3
+        },
+        {
+          "name": "이현",
+          "weight": 3
+        },
+        {
+          "name": "서우",
+          "weight": 3
+        },
+        {
+          "name": "연우",
+          "weight": 3
+        },
+        {
+          "name": "하율",
+          "weight": 3
+        },
+        {
+          "name": "라온",
+          "weight": 3
+        },
+        {
+          "name": "시온",
+          "weight": 3
+        },
+        {
+          "name": "도하",
+          "weight": 3
+        },
+        {
+          "name": "도윤",
+          "weight": 2
+        },
+        {
+          "name": "이준",
+          "weight": 2
+        },
+        {
+          "name": "하준",
+          "weight": 2
+        },
+        {
+          "name": "시우",
+          "weight": 2
+        },
+        {
+          "name": "서준",
+          "weight": 2
+        },
+        {
+          "name": "은우",
+          "weight": 2
+        },
+        {
+          "name": "유준",
+          "weight": 2
+        },
+        {
+          "name": "지호",
+          "weight": 2
+        },
+        {
+          "name": "예준",
+          "weight": 2
+        },
+        {
+          "name": "도현",
+          "weight": 2
+        },
+        {
+          "name": "지후",
+          "weight": 2
+        },
+        {
+          "name": "수호",
+          "weight": 2
+        },
+        {
+          "name": "주원",
+          "weight": 2
+        },
+        {
+          "name": "선우",
+          "weight": 2
+        },
+        {
+          "name": "정우",
+          "weight": 2
+        },
+        {
+          "name": "윤우",
+          "weight": 2
+        },
+        {
+          "name": "우진",
+          "weight": 2
+        },
+        {
+          "name": "태오",
+          "weight": 2
+        },
+        {
+          "name": "준우",
+          "weight": 2
+        },
+        {
+          "name": "건우",
+          "weight": 2
+        }
+      ],
+      "f": [
+        {
+          "name": "이안",
+          "weight": 3
+        },
+        {
+          "name": "지안",
+          "weight": 3
+        },
+        {
+          "name": "재이",
+          "weight": 3
+        },
+        {
+          "name": "이현",
+          "weight": 3
+        },
+        {
+          "name": "서우",
+          "weight": 3
+        },
+        {
+          "name": "연우",
+          "weight": 3
+        },
+        {
+          "name": "하율",
+          "weight": 3
+        },
+        {
+          "name": "라온",
+          "weight": 3
+        },
+        {
+          "name": "시온",
+          "weight": 3
+        },
+        {
+          "name": "도하",
+          "weight": 3
+        },
+        {
+          "name": "서아",
+          "weight": 2
+        },
+        {
+          "name": "서윤",
+          "weight": 2
+        },
+        {
+          "name": "이서",
+          "weight": 2
+        },
+        {
+          "name": "하린",
+          "weight": 2
+        },
+        {
+          "name": "하윤",
+          "weight": 2
+        },
+        {
+          "name": "지아",
+          "weight": 2
+        },
+        {
+          "name": "아린",
+          "weight": 2
+        },
+        {
+          "name": "지유",
+          "weight": 2
+        },
+        {
+          "name": "시아",
+          "weight": 2
+        },
+        {
+          "name": "지우",
+          "weight": 2
+        },
+        {
+          "name": "수아",
+          "weight": 2
+        },
+        {
+          "name": "나은",
+          "weight": 2
+        },
+        {
+          "name": "서연",
+          "weight": 2
+        },
+        {
+          "name": "하은",
+          "weight": 2
+        },
+        {
+          "name": "유나",
+          "weight": 2
+        },
+        {
+          "name": "다인",
+          "weight": 2
+        },
+        {
+          "name": "채원",
+          "weight": 2
+        },
+        {
+          "name": "소율",
+          "weight": 2
+        },
+        {
+          "name": "윤서",
+          "weight": 2
+        },
+        {
+          "name": "소윤",
+          "weight": 2
+        }
+      ]
+    },
+    "2040": {
+      "confidence": "low",
+      "note_ko": "가상 미래 이름 목록이에요. 현재 이름을 유지하면서 중성·한 글자·외래 느낌 후보의 비중을 늘린 게임 설정이며 실제 유행 예측은 아니에요.",
+      "m": [
+        {
+          "name": "서우",
+          "weight": 3
+        },
+        {
+          "name": "연우",
+          "weight": 3
+        },
+        {
+          "name": "하율",
+          "weight": 3
+        },
+        {
+          "name": "라온",
+          "weight": 3
+        },
+        {
+          "name": "시온",
+          "weight": 3
+        },
+        {
+          "name": "도하",
+          "weight": 3
+        },
+        {
+          "name": "리안",
+          "weight": 3
+        },
+        {
+          "name": "유안",
+          "weight": 3
+        },
+        {
+          "name": "우주",
+          "weight": 3
+        },
+        {
+          "name": "이든",
+          "weight": 3
+        },
+        {
+          "name": "하람",
+          "weight": 3
+        },
+        {
+          "name": "온유",
+          "weight": 3
+        },
+        {
+          "name": "시우",
+          "weight": 2
+        },
+        {
+          "name": "서준",
+          "weight": 2
+        },
+        {
+          "name": "은우",
+          "weight": 2
+        },
+        {
+          "name": "유준",
+          "weight": 2
+        },
+        {
+          "name": "지호",
+          "weight": 2
+        },
+        {
+          "name": "예준",
+          "weight": 2
+        },
+        {
+          "name": "도현",
+          "weight": 2
+        },
+        {
+          "name": "지후",
+          "weight": 2
+        },
+        {
+          "name": "수호",
+          "weight": 2
+        },
+        {
+          "name": "주원",
+          "weight": 2
+        },
+        {
+          "name": "선우",
+          "weight": 2
+        },
+        {
+          "name": "정우",
+          "weight": 2
+        },
+        {
+          "name": "윤우",
+          "weight": 2
+        },
+        {
+          "name": "우진",
+          "weight": 2
+        },
+        {
+          "name": "태오",
+          "weight": 2
+        },
+        {
+          "name": "준우",
+          "weight": 2
+        },
+        {
+          "name": "건우",
+          "weight": 2
+        },
+        {
+          "name": "민준",
+          "weight": 2
+        }
+      ],
+      "f": [
+        {
+          "name": "서우",
+          "weight": 3
+        },
+        {
+          "name": "연우",
+          "weight": 3
+        },
+        {
+          "name": "하율",
+          "weight": 3
+        },
+        {
+          "name": "라온",
+          "weight": 3
+        },
+        {
+          "name": "시온",
+          "weight": 3
+        },
+        {
+          "name": "도하",
+          "weight": 3
+        },
+        {
+          "name": "리안",
+          "weight": 3
+        },
+        {
+          "name": "유안",
+          "weight": 3
+        },
+        {
+          "name": "우주",
+          "weight": 3
+        },
+        {
+          "name": "이든",
+          "weight": 3
+        },
+        {
+          "name": "하람",
+          "weight": 3
+        },
+        {
+          "name": "온유",
+          "weight": 3
+        },
+        {
+          "name": "하린",
+          "weight": 2
+        },
+        {
+          "name": "하윤",
+          "weight": 2
+        },
+        {
+          "name": "지아",
+          "weight": 2
+        },
+        {
+          "name": "아린",
+          "weight": 2
+        },
+        {
+          "name": "지유",
+          "weight": 2
+        },
+        {
+          "name": "시아",
+          "weight": 2
+        },
+        {
+          "name": "지우",
+          "weight": 2
+        },
+        {
+          "name": "수아",
+          "weight": 2
+        },
+        {
+          "name": "나은",
+          "weight": 2
+        },
+        {
+          "name": "서연",
+          "weight": 2
+        },
+        {
+          "name": "하은",
+          "weight": 2
+        },
+        {
+          "name": "유나",
+          "weight": 2
+        },
+        {
+          "name": "다인",
+          "weight": 2
+        },
+        {
+          "name": "채원",
+          "weight": 2
+        },
+        {
+          "name": "소율",
+          "weight": 2
+        },
+        {
+          "name": "윤서",
+          "weight": 2
+        },
+        {
+          "name": "소윤",
+          "weight": 2
+        },
+        {
+          "name": "은채",
+          "weight": 2
+        }
+      ]
+    },
+    "2050": {
+      "confidence": "low",
+      "note_ko": "가상 미래 이름 목록이에요. 현재 이름을 유지하면서 중성·한 글자·외래 느낌 후보의 비중을 늘린 게임 설정이며 실제 유행 예측은 아니에요.",
+      "m": [
+        {
+          "name": "시온",
+          "weight": 3
+        },
+        {
+          "name": "도하",
+          "weight": 3
+        },
+        {
+          "name": "리안",
+          "weight": 3
+        },
+        {
+          "name": "유안",
+          "weight": 3
+        },
+        {
+          "name": "우주",
+          "weight": 3
+        },
+        {
+          "name": "이든",
+          "weight": 3
+        },
+        {
+          "name": "하람",
+          "weight": 3
+        },
+        {
+          "name": "온유",
+          "weight": 3
+        },
+        {
+          "name": "로운",
+          "weight": 3
+        },
+        {
+          "name": "이솔",
+          "weight": 3
+        },
+        {
+          "name": "하늘",
+          "weight": 3
+        },
+        {
+          "name": "한결",
+          "weight": 3
+        },
+        {
+          "name": "가온",
+          "weight": 3
+        },
+        {
+          "name": "다온",
+          "weight": 3
+        },
+        {
+          "name": "유준",
+          "weight": 2
+        },
+        {
+          "name": "지호",
+          "weight": 2
+        },
+        {
+          "name": "예준",
+          "weight": 2
+        },
+        {
+          "name": "도현",
+          "weight": 2
+        },
+        {
+          "name": "지후",
+          "weight": 2
+        },
+        {
+          "name": "수호",
+          "weight": 2
+        },
+        {
+          "name": "주원",
+          "weight": 2
+        },
+        {
+          "name": "선우",
+          "weight": 2
+        },
+        {
+          "name": "정우",
+          "weight": 2
+        },
+        {
+          "name": "윤우",
+          "weight": 2
+        },
+        {
+          "name": "우진",
+          "weight": 2
+        },
+        {
+          "name": "태오",
+          "weight": 2
+        },
+        {
+          "name": "준우",
+          "weight": 2
+        },
+        {
+          "name": "건우",
+          "weight": 2
+        },
+        {
+          "name": "민준",
+          "weight": 2
+        },
+        {
+          "name": "유찬",
+          "weight": 2
+        }
+      ],
+      "f": [
+        {
+          "name": "시온",
+          "weight": 3
+        },
+        {
+          "name": "도하",
+          "weight": 3
+        },
+        {
+          "name": "리안",
+          "weight": 3
+        },
+        {
+          "name": "유안",
+          "weight": 3
+        },
+        {
+          "name": "우주",
+          "weight": 3
+        },
+        {
+          "name": "이든",
+          "weight": 3
+        },
+        {
+          "name": "하람",
+          "weight": 3
+        },
+        {
+          "name": "온유",
+          "weight": 3
+        },
+        {
+          "name": "로운",
+          "weight": 3
+        },
+        {
+          "name": "이솔",
+          "weight": 3
+        },
+        {
+          "name": "하늘",
+          "weight": 3
+        },
+        {
+          "name": "한결",
+          "weight": 3
+        },
+        {
+          "name": "가온",
+          "weight": 3
+        },
+        {
+          "name": "다온",
+          "weight": 3
+        },
+        {
+          "name": "아린",
+          "weight": 2
+        },
+        {
+          "name": "지유",
+          "weight": 2
+        },
+        {
+          "name": "시아",
+          "weight": 2
+        },
+        {
+          "name": "지우",
+          "weight": 2
+        },
+        {
+          "name": "수아",
+          "weight": 2
+        },
+        {
+          "name": "나은",
+          "weight": 2
+        },
+        {
+          "name": "서연",
+          "weight": 2
+        },
+        {
+          "name": "하은",
+          "weight": 2
+        },
+        {
+          "name": "유나",
+          "weight": 2
+        },
+        {
+          "name": "다인",
+          "weight": 2
+        },
+        {
+          "name": "채원",
+          "weight": 2
+        },
+        {
+          "name": "소율",
+          "weight": 2
+        },
+        {
+          "name": "윤서",
+          "weight": 2
+        },
+        {
+          "name": "소윤",
+          "weight": 2
+        },
+        {
+          "name": "은채",
+          "weight": 2
+        },
+        {
+          "name": "지윤",
+          "weight": 2
+        }
+      ]
+    },
+    "2060": {
+      "confidence": "low",
+      "note_ko": "가상 미래 이름 목록이에요. 현재 이름을 유지하면서 중성·한 글자·외래 느낌 후보의 비중을 늘린 게임 설정이며 실제 유행 예측은 아니에요.",
+      "m": [
+        {
+          "name": "우주",
+          "weight": 3
+        },
+        {
+          "name": "이든",
+          "weight": 3
+        },
+        {
+          "name": "하람",
+          "weight": 3
+        },
+        {
+          "name": "온유",
+          "weight": 3
+        },
+        {
+          "name": "로운",
+          "weight": 3
+        },
+        {
+          "name": "이솔",
+          "weight": 3
+        },
+        {
+          "name": "하늘",
+          "weight": 3
+        },
+        {
+          "name": "한결",
+          "weight": 3
+        },
+        {
+          "name": "가온",
+          "weight": 3
+        },
+        {
+          "name": "다온",
+          "weight": 3
+        },
+        {
+          "name": "나루",
+          "weight": 3
+        },
+        {
+          "name": "여울",
+          "weight": 3
+        },
+        {
+          "name": "바다",
+          "weight": 3
+        },
+        {
+          "name": "해온",
+          "weight": 3
+        },
+        {
+          "name": "아온",
+          "weight": 3
+        },
+        {
+          "name": "루아",
+          "weight": 3
+        },
+        {
+          "name": "도현",
+          "weight": 2
+        },
+        {
+          "name": "지후",
+          "weight": 2
+        },
+        {
+          "name": "수호",
+          "weight": 2
+        },
+        {
+          "name": "주원",
+          "weight": 2
+        },
+        {
+          "name": "선우",
+          "weight": 2
+        },
+        {
+          "name": "정우",
+          "weight": 2
+        },
+        {
+          "name": "윤우",
+          "weight": 2
+        },
+        {
+          "name": "우진",
+          "weight": 2
+        },
+        {
+          "name": "태오",
+          "weight": 2
+        },
+        {
+          "name": "준우",
+          "weight": 2
+        },
+        {
+          "name": "건우",
+          "weight": 2
+        },
+        {
+          "name": "민준",
+          "weight": 2
+        },
+        {
+          "name": "유찬",
+          "weight": 2
+        },
+        {
+          "name": "재하",
+          "weight": 2
+        }
+      ],
+      "f": [
+        {
+          "name": "우주",
+          "weight": 3
+        },
+        {
+          "name": "이든",
+          "weight": 3
+        },
+        {
+          "name": "하람",
+          "weight": 3
+        },
+        {
+          "name": "온유",
+          "weight": 3
+        },
+        {
+          "name": "로운",
+          "weight": 3
+        },
+        {
+          "name": "이솔",
+          "weight": 3
+        },
+        {
+          "name": "하늘",
+          "weight": 3
+        },
+        {
+          "name": "한결",
+          "weight": 3
+        },
+        {
+          "name": "가온",
+          "weight": 3
+        },
+        {
+          "name": "다온",
+          "weight": 3
+        },
+        {
+          "name": "나루",
+          "weight": 3
+        },
+        {
+          "name": "여울",
+          "weight": 3
+        },
+        {
+          "name": "바다",
+          "weight": 3
+        },
+        {
+          "name": "해온",
+          "weight": 3
+        },
+        {
+          "name": "아온",
+          "weight": 3
+        },
+        {
+          "name": "루아",
+          "weight": 3
+        },
+        {
+          "name": "지우",
+          "weight": 2
+        },
+        {
+          "name": "수아",
+          "weight": 2
+        },
+        {
+          "name": "나은",
+          "weight": 2
+        },
+        {
+          "name": "서연",
+          "weight": 2
+        },
+        {
+          "name": "하은",
+          "weight": 2
+        },
+        {
+          "name": "유나",
+          "weight": 2
+        },
+        {
+          "name": "다인",
+          "weight": 2
+        },
+        {
+          "name": "채원",
+          "weight": 2
+        },
+        {
+          "name": "소율",
+          "weight": 2
+        },
+        {
+          "name": "윤서",
+          "weight": 2
+        },
+        {
+          "name": "소윤",
+          "weight": 2
+        },
+        {
+          "name": "은채",
+          "weight": 2
+        },
+        {
+          "name": "지윤",
+          "weight": 2
+        },
+        {
+          "name": "예서",
+          "weight": 2
+        }
+      ]
+    },
+    "2070": {
+      "confidence": "low",
+      "note_ko": "가상 미래 이름 목록이에요. 현재 이름을 유지하면서 중성·한 글자·외래 느낌 후보의 비중을 늘린 게임 설정이며 실제 유행 예측은 아니에요.",
+      "m": [
+        {
+          "name": "로운",
+          "weight": 3
+        },
+        {
+          "name": "이솔",
+          "weight": 3
+        },
+        {
+          "name": "하늘",
+          "weight": 3
+        },
+        {
+          "name": "한결",
+          "weight": 3
+        },
+        {
+          "name": "가온",
+          "weight": 3
+        },
+        {
+          "name": "다온",
+          "weight": 3
+        },
+        {
+          "name": "나루",
+          "weight": 3
+        },
+        {
+          "name": "여울",
+          "weight": 3
+        },
+        {
+          "name": "바다",
+          "weight": 3
+        },
+        {
+          "name": "해온",
+          "weight": 3
+        },
+        {
+          "name": "아온",
+          "weight": 3
+        },
+        {
+          "name": "루아",
+          "weight": 3
+        },
+        {
+          "name": "노아",
+          "weight": 3
+        },
+        {
+          "name": "로이",
+          "weight": 3
+        },
+        {
+          "name": "루온",
+          "weight": 3
+        },
+        {
+          "name": "리온",
+          "weight": 3
+        },
+        {
+          "name": "솔",
+          "weight": 3
+        },
+        {
+          "name": "율",
+          "weight": 3
+        },
+        {
+          "name": "주원",
+          "weight": 2
+        },
+        {
+          "name": "선우",
+          "weight": 2
+        },
+        {
+          "name": "정우",
+          "weight": 2
+        },
+        {
+          "name": "윤우",
+          "weight": 2
+        },
+        {
+          "name": "우진",
+          "weight": 2
+        },
+        {
+          "name": "태오",
+          "weight": 2
+        },
+        {
+          "name": "준우",
+          "weight": 2
+        },
+        {
+          "name": "건우",
+          "weight": 2
+        },
+        {
+          "name": "민준",
+          "weight": 2
+        },
+        {
+          "name": "유찬",
+          "weight": 2
+        },
+        {
+          "name": "재하",
+          "weight": 2
+        },
+        {
+          "name": "은찬",
+          "weight": 2
+        }
+      ],
+      "f": [
+        {
+          "name": "로운",
+          "weight": 3
+        },
+        {
+          "name": "이솔",
+          "weight": 3
+        },
+        {
+          "name": "하늘",
+          "weight": 3
+        },
+        {
+          "name": "한결",
+          "weight": 3
+        },
+        {
+          "name": "가온",
+          "weight": 3
+        },
+        {
+          "name": "다온",
+          "weight": 3
+        },
+        {
+          "name": "나루",
+          "weight": 3
+        },
+        {
+          "name": "여울",
+          "weight": 3
+        },
+        {
+          "name": "바다",
+          "weight": 3
+        },
+        {
+          "name": "해온",
+          "weight": 3
+        },
+        {
+          "name": "아온",
+          "weight": 3
+        },
+        {
+          "name": "루아",
+          "weight": 3
+        },
+        {
+          "name": "노아",
+          "weight": 3
+        },
+        {
+          "name": "로이",
+          "weight": 3
+        },
+        {
+          "name": "루온",
+          "weight": 3
+        },
+        {
+          "name": "리온",
+          "weight": 3
+        },
+        {
+          "name": "솔",
+          "weight": 3
+        },
+        {
+          "name": "율",
+          "weight": 3
+        },
+        {
+          "name": "서연",
+          "weight": 2
+        },
+        {
+          "name": "하은",
+          "weight": 2
+        },
+        {
+          "name": "유나",
+          "weight": 2
+        },
+        {
+          "name": "다인",
+          "weight": 2
+        },
+        {
+          "name": "채원",
+          "weight": 2
+        },
+        {
+          "name": "소율",
+          "weight": 2
+        },
+        {
+          "name": "윤서",
+          "weight": 2
+        },
+        {
+          "name": "소윤",
+          "weight": 2
+        },
+        {
+          "name": "은채",
+          "weight": 2
+        },
+        {
+          "name": "지윤",
+          "weight": 2
+        },
+        {
+          "name": "예서",
+          "weight": 2
+        },
+        {
+          "name": "세아",
+          "weight": 2
+        }
+      ]
+    },
+    "2080": {
+      "confidence": "low",
+      "note_ko": "가상 미래 이름 목록이에요. 현재 이름을 유지하면서 중성·한 글자·외래 느낌 후보의 비중을 늘린 게임 설정이며 실제 유행 예측은 아니에요.",
+      "m": [
+        {
+          "name": "가온",
+          "weight": 3
+        },
+        {
+          "name": "다온",
+          "weight": 3
+        },
+        {
+          "name": "나루",
+          "weight": 3
+        },
+        {
+          "name": "여울",
+          "weight": 3
+        },
+        {
+          "name": "바다",
+          "weight": 3
+        },
+        {
+          "name": "해온",
+          "weight": 3
+        },
+        {
+          "name": "아온",
+          "weight": 3
+        },
+        {
+          "name": "루아",
+          "weight": 3
+        },
+        {
+          "name": "노아",
+          "weight": 3
+        },
+        {
+          "name": "로이",
+          "weight": 3
+        },
+        {
+          "name": "루온",
+          "weight": 3
+        },
+        {
+          "name": "리온",
+          "weight": 3
+        },
+        {
+          "name": "솔",
+          "weight": 3
+        },
+        {
+          "name": "율",
+          "weight": 3
+        },
+        {
+          "name": "온",
+          "weight": 3
+        },
+        {
+          "name": "결",
+          "weight": 3
+        },
+        {
+          "name": "윤",
+          "weight": 3
+        },
+        {
+          "name": "현",
+          "weight": 3
+        },
+        {
+          "name": "봄",
+          "weight": 3
+        },
+        {
+          "name": "별",
+          "weight": 3
+        },
+        {
+          "name": "윤우",
+          "weight": 2
+        },
+        {
+          "name": "우진",
+          "weight": 2
+        },
+        {
+          "name": "태오",
+          "weight": 2
+        },
+        {
+          "name": "준우",
+          "weight": 2
+        },
+        {
+          "name": "건우",
+          "weight": 2
+        },
+        {
+          "name": "민준",
+          "weight": 2
+        },
+        {
+          "name": "유찬",
+          "weight": 2
+        },
+        {
+          "name": "재하",
+          "weight": 2
+        },
+        {
+          "name": "은찬",
+          "weight": 2
+        },
+        {
+          "name": "지한",
+          "weight": 2
+        }
+      ],
+      "f": [
+        {
+          "name": "가온",
+          "weight": 3
+        },
+        {
+          "name": "다온",
+          "weight": 3
+        },
+        {
+          "name": "나루",
+          "weight": 3
+        },
+        {
+          "name": "여울",
+          "weight": 3
+        },
+        {
+          "name": "바다",
+          "weight": 3
+        },
+        {
+          "name": "해온",
+          "weight": 3
+        },
+        {
+          "name": "아온",
+          "weight": 3
+        },
+        {
+          "name": "루아",
+          "weight": 3
+        },
+        {
+          "name": "노아",
+          "weight": 3
+        },
+        {
+          "name": "로이",
+          "weight": 3
+        },
+        {
+          "name": "루온",
+          "weight": 3
+        },
+        {
+          "name": "리온",
+          "weight": 3
+        },
+        {
+          "name": "솔",
+          "weight": 3
+        },
+        {
+          "name": "율",
+          "weight": 3
+        },
+        {
+          "name": "온",
+          "weight": 3
+        },
+        {
+          "name": "결",
+          "weight": 3
+        },
+        {
+          "name": "윤",
+          "weight": 3
+        },
+        {
+          "name": "현",
+          "weight": 3
+        },
+        {
+          "name": "봄",
+          "weight": 3
+        },
+        {
+          "name": "별",
+          "weight": 3
+        },
+        {
+          "name": "다인",
+          "weight": 2
+        },
+        {
+          "name": "채원",
+          "weight": 2
+        },
+        {
+          "name": "소율",
+          "weight": 2
+        },
+        {
+          "name": "윤서",
+          "weight": 2
+        },
+        {
+          "name": "소윤",
+          "weight": 2
+        },
+        {
+          "name": "은채",
+          "weight": 2
+        },
+        {
+          "name": "지윤",
+          "weight": 2
+        },
+        {
+          "name": "예서",
+          "weight": 2
+        },
+        {
+          "name": "세아",
+          "weight": 2
+        },
+        {
+          "name": "나윤",
+          "weight": 2
+        }
+      ]
+    },
+    "2090": {
+      "confidence": "low",
+      "note_ko": "가상 미래 이름 목록이에요. 현재 이름을 유지하면서 중성·한 글자·외래 느낌 후보의 비중을 늘린 게임 설정이며 실제 유행 예측은 아니에요.",
+      "m": [
+        {
+          "name": "바다",
+          "weight": 3
+        },
+        {
+          "name": "해온",
+          "weight": 3
+        },
+        {
+          "name": "아온",
+          "weight": 3
+        },
+        {
+          "name": "루아",
+          "weight": 3
+        },
+        {
+          "name": "노아",
+          "weight": 3
+        },
+        {
+          "name": "로이",
+          "weight": 3
+        },
+        {
+          "name": "루온",
+          "weight": 3
+        },
+        {
+          "name": "리온",
+          "weight": 3
+        },
+        {
+          "name": "솔",
+          "weight": 3
+        },
+        {
+          "name": "율",
+          "weight": 3
+        },
+        {
+          "name": "온",
+          "weight": 3
+        },
+        {
+          "name": "결",
+          "weight": 3
+        },
+        {
+          "name": "윤",
+          "weight": 3
+        },
+        {
+          "name": "현",
+          "weight": 3
+        },
+        {
+          "name": "봄",
+          "weight": 3
+        },
+        {
+          "name": "별",
+          "weight": 3
+        },
+        {
+          "name": "새봄",
+          "weight": 3
+        },
+        {
+          "name": "나봄",
+          "weight": 3
+        },
+        {
+          "name": "여름",
+          "weight": 3
+        },
+        {
+          "name": "겨울",
+          "weight": 3
+        },
+        {
+          "name": "가람",
+          "weight": 3
+        },
+        {
+          "name": "마루",
+          "weight": 3
+        },
+        {
+          "name": "준우",
+          "weight": 2
+        },
+        {
+          "name": "건우",
+          "weight": 2
+        },
+        {
+          "name": "민준",
+          "weight": 2
+        },
+        {
+          "name": "유찬",
+          "weight": 2
+        },
+        {
+          "name": "재하",
+          "weight": 2
+        },
+        {
+          "name": "은찬",
+          "weight": 2
+        },
+        {
+          "name": "지한",
+          "weight": 2
+        },
+        {
+          "name": "유건",
+          "weight": 2
+        }
+      ],
+      "f": [
+        {
+          "name": "바다",
+          "weight": 3
+        },
+        {
+          "name": "해온",
+          "weight": 3
+        },
+        {
+          "name": "아온",
+          "weight": 3
+        },
+        {
+          "name": "루아",
+          "weight": 3
+        },
+        {
+          "name": "노아",
+          "weight": 3
+        },
+        {
+          "name": "로이",
+          "weight": 3
+        },
+        {
+          "name": "루온",
+          "weight": 3
+        },
+        {
+          "name": "리온",
+          "weight": 3
+        },
+        {
+          "name": "솔",
+          "weight": 3
+        },
+        {
+          "name": "율",
+          "weight": 3
+        },
+        {
+          "name": "온",
+          "weight": 3
+        },
+        {
+          "name": "결",
+          "weight": 3
+        },
+        {
+          "name": "윤",
+          "weight": 3
+        },
+        {
+          "name": "현",
+          "weight": 3
+        },
+        {
+          "name": "봄",
+          "weight": 3
+        },
+        {
+          "name": "별",
+          "weight": 3
+        },
+        {
+          "name": "새봄",
+          "weight": 3
+        },
+        {
+          "name": "나봄",
+          "weight": 3
+        },
+        {
+          "name": "여름",
+          "weight": 3
+        },
+        {
+          "name": "겨울",
+          "weight": 3
+        },
+        {
+          "name": "가람",
+          "weight": 3
+        },
+        {
+          "name": "마루",
+          "weight": 3
+        },
+        {
+          "name": "윤서",
+          "weight": 2
+        },
+        {
+          "name": "소윤",
+          "weight": 2
+        },
+        {
+          "name": "은채",
+          "weight": 2
+        },
+        {
+          "name": "지윤",
+          "weight": 2
+        },
+        {
+          "name": "예서",
+          "weight": 2
+        },
+        {
+          "name": "세아",
+          "weight": 2
+        },
+        {
+          "name": "나윤",
+          "weight": 2
+        },
+        {
+          "name": "아윤",
+          "weight": 2
+        }
+      ]
+    },
+    "2100": {
+      "confidence": "low",
+      "note_ko": "가상 미래 이름 목록이에요. 현재 이름을 유지하면서 중성·한 글자·외래 느낌 후보의 비중을 늘린 게임 설정이며 실제 유행 예측은 아니에요.",
+      "m": [
+        {
+          "name": "노아",
+          "weight": 3
+        },
+        {
+          "name": "로이",
+          "weight": 3
+        },
+        {
+          "name": "루온",
+          "weight": 3
+        },
+        {
+          "name": "리온",
+          "weight": 3
+        },
+        {
+          "name": "솔",
+          "weight": 3
+        },
+        {
+          "name": "율",
+          "weight": 3
+        },
+        {
+          "name": "온",
+          "weight": 3
+        },
+        {
+          "name": "결",
+          "weight": 3
+        },
+        {
+          "name": "윤",
+          "weight": 3
+        },
+        {
+          "name": "현",
+          "weight": 3
+        },
+        {
+          "name": "봄",
+          "weight": 3
+        },
+        {
+          "name": "별",
+          "weight": 3
+        },
+        {
+          "name": "새봄",
+          "weight": 3
+        },
+        {
+          "name": "나봄",
+          "weight": 3
+        },
+        {
+          "name": "여름",
+          "weight": 3
+        },
+        {
+          "name": "겨울",
+          "weight": 3
+        },
+        {
+          "name": "가람",
+          "weight": 3
+        },
+        {
+          "name": "마루",
+          "weight": 3
+        },
+        {
+          "name": "누리",
+          "weight": 3
+        },
+        {
+          "name": "다솜",
+          "weight": 3
+        },
+        {
+          "name": "윤슬",
+          "weight": 3
+        },
+        {
+          "name": "소담",
+          "weight": 3
+        },
+        {
+          "name": "빛나",
+          "weight": 3
+        },
+        {
+          "name": "이음",
+          "weight": 3
+        },
+        {
+          "name": "유찬",
+          "weight": 2
+        },
+        {
+          "name": "재하",
+          "weight": 2
+        },
+        {
+          "name": "은찬",
+          "weight": 2
+        },
+        {
+          "name": "지한",
+          "weight": 2
+        },
+        {
+          "name": "유건",
+          "weight": 2
+        },
+        {
+          "name": "도겸",
+          "weight": 2
+        }
+      ],
+      "f": [
+        {
+          "name": "노아",
+          "weight": 3
+        },
+        {
+          "name": "로이",
+          "weight": 3
+        },
+        {
+          "name": "루온",
+          "weight": 3
+        },
+        {
+          "name": "리온",
+          "weight": 3
+        },
+        {
+          "name": "솔",
+          "weight": 3
+        },
+        {
+          "name": "율",
+          "weight": 3
+        },
+        {
+          "name": "온",
+          "weight": 3
+        },
+        {
+          "name": "결",
+          "weight": 3
+        },
+        {
+          "name": "윤",
+          "weight": 3
+        },
+        {
+          "name": "현",
+          "weight": 3
+        },
+        {
+          "name": "봄",
+          "weight": 3
+        },
+        {
+          "name": "별",
+          "weight": 3
+        },
+        {
+          "name": "새봄",
+          "weight": 3
+        },
+        {
+          "name": "나봄",
+          "weight": 3
+        },
+        {
+          "name": "여름",
+          "weight": 3
+        },
+        {
+          "name": "겨울",
+          "weight": 3
+        },
+        {
+          "name": "가람",
+          "weight": 3
+        },
+        {
+          "name": "마루",
+          "weight": 3
+        },
+        {
+          "name": "누리",
+          "weight": 3
+        },
+        {
+          "name": "다솜",
+          "weight": 3
+        },
+        {
+          "name": "윤슬",
+          "weight": 3
+        },
+        {
+          "name": "소담",
+          "weight": 3
+        },
+        {
+          "name": "빛나",
+          "weight": 3
+        },
+        {
+          "name": "이음",
+          "weight": 3
+        },
+        {
+          "name": "지윤",
+          "weight": 2
+        },
+        {
+          "name": "예서",
+          "weight": 2
+        },
+        {
+          "name": "세아",
+          "weight": 2
+        },
+        {
+          "name": "나윤",
+          "weight": 2
+        },
+        {
+          "name": "아윤",
+          "weight": 2
+        },
+        {
+          "name": "리아",
+          "weight": 2
+        }
+      ]
+    },
+    "2110": {
+      "confidence": "low",
+      "note_ko": "가상 미래 이름 목록이에요. 현재 이름을 유지하면서 중성·한 글자·외래 느낌 후보의 비중을 늘린 게임 설정이며 실제 유행 예측은 아니에요.",
+      "m": [
+        {
+          "name": "솔",
+          "weight": 3
+        },
+        {
+          "name": "율",
+          "weight": 3
+        },
+        {
+          "name": "온",
+          "weight": 3
+        },
+        {
+          "name": "결",
+          "weight": 3
+        },
+        {
+          "name": "윤",
+          "weight": 3
+        },
+        {
+          "name": "현",
+          "weight": 3
+        },
+        {
+          "name": "봄",
+          "weight": 3
+        },
+        {
+          "name": "별",
+          "weight": 3
+        },
+        {
+          "name": "새봄",
+          "weight": 3
+        },
+        {
+          "name": "나봄",
+          "weight": 3
+        },
+        {
+          "name": "여름",
+          "weight": 3
+        },
+        {
+          "name": "겨울",
+          "weight": 3
+        },
+        {
+          "name": "가람",
+          "weight": 3
+        },
+        {
+          "name": "마루",
+          "weight": 3
+        },
+        {
+          "name": "누리",
+          "weight": 3
+        },
+        {
+          "name": "다솜",
+          "weight": 3
+        },
+        {
+          "name": "윤슬",
+          "weight": 3
+        },
+        {
+          "name": "소담",
+          "weight": 3
+        },
+        {
+          "name": "빛나",
+          "weight": 3
+        },
+        {
+          "name": "이음",
+          "weight": 3
+        },
+        {
+          "name": "새온",
+          "weight": 3
+        },
+        {
+          "name": "유온",
+          "weight": 3
+        },
+        {
+          "name": "도온",
+          "weight": 3
+        },
+        {
+          "name": "라엘",
+          "weight": 3
+        },
+        {
+          "name": "시엘",
+          "weight": 3
+        },
+        {
+          "name": "로엘",
+          "weight": 3
+        },
+        {
+          "name": "지한",
+          "weight": 2
+        },
+        {
+          "name": "유건",
+          "weight": 2
+        },
+        {
+          "name": "도겸",
+          "weight": 2
+        },
+        {
+          "name": "태윤",
+          "weight": 2
+        }
+      ],
+      "f": [
+        {
+          "name": "솔",
+          "weight": 3
+        },
+        {
+          "name": "율",
+          "weight": 3
+        },
+        {
+          "name": "온",
+          "weight": 3
+        },
+        {
+          "name": "결",
+          "weight": 3
+        },
+        {
+          "name": "윤",
+          "weight": 3
+        },
+        {
+          "name": "현",
+          "weight": 3
+        },
+        {
+          "name": "봄",
+          "weight": 3
+        },
+        {
+          "name": "별",
+          "weight": 3
+        },
+        {
+          "name": "새봄",
+          "weight": 3
+        },
+        {
+          "name": "나봄",
+          "weight": 3
+        },
+        {
+          "name": "여름",
+          "weight": 3
+        },
+        {
+          "name": "겨울",
+          "weight": 3
+        },
+        {
+          "name": "가람",
+          "weight": 3
+        },
+        {
+          "name": "마루",
+          "weight": 3
+        },
+        {
+          "name": "누리",
+          "weight": 3
+        },
+        {
+          "name": "다솜",
+          "weight": 3
+        },
+        {
+          "name": "윤슬",
+          "weight": 3
+        },
+        {
+          "name": "소담",
+          "weight": 3
+        },
+        {
+          "name": "빛나",
+          "weight": 3
+        },
+        {
+          "name": "이음",
+          "weight": 3
+        },
+        {
+          "name": "새온",
+          "weight": 3
+        },
+        {
+          "name": "유온",
+          "weight": 3
+        },
+        {
+          "name": "도온",
+          "weight": 3
+        },
+        {
+          "name": "라엘",
+          "weight": 3
+        },
+        {
+          "name": "시엘",
+          "weight": 3
+        },
+        {
+          "name": "로엘",
+          "weight": 3
+        },
+        {
+          "name": "나윤",
+          "weight": 2
+        },
+        {
+          "name": "아윤",
+          "weight": 2
+        },
+        {
+          "name": "리아",
+          "weight": 2
+        },
+        {
+          "name": "서하",
+          "weight": 2
+        }
+      ]
+    },
+    "2120": {
+      "confidence": "low",
+      "note_ko": "가상 미래 이름 목록이에요. 현재 이름을 유지하면서 중성·한 글자·외래 느낌 후보의 비중을 늘린 게임 설정이며 실제 유행 예측은 아니에요.",
+      "m": [
+        {
+          "name": "윤",
+          "weight": 3
+        },
+        {
+          "name": "현",
+          "weight": 3
+        },
+        {
+          "name": "봄",
+          "weight": 3
+        },
+        {
+          "name": "별",
+          "weight": 3
+        },
+        {
+          "name": "새봄",
+          "weight": 3
+        },
+        {
+          "name": "나봄",
+          "weight": 3
+        },
+        {
+          "name": "여름",
+          "weight": 3
+        },
+        {
+          "name": "겨울",
+          "weight": 3
+        },
+        {
+          "name": "가람",
+          "weight": 3
+        },
+        {
+          "name": "마루",
+          "weight": 3
+        },
+        {
+          "name": "누리",
+          "weight": 3
+        },
+        {
+          "name": "다솜",
+          "weight": 3
+        },
+        {
+          "name": "윤슬",
+          "weight": 3
+        },
+        {
+          "name": "소담",
+          "weight": 3
+        },
+        {
+          "name": "빛나",
+          "weight": 3
+        },
+        {
+          "name": "이음",
+          "weight": 3
+        },
+        {
+          "name": "새온",
+          "weight": 3
+        },
+        {
+          "name": "유온",
+          "weight": 3
+        },
+        {
+          "name": "도온",
+          "weight": 3
+        },
+        {
+          "name": "라엘",
+          "weight": 3
+        },
+        {
+          "name": "시엘",
+          "weight": 3
+        },
+        {
+          "name": "로엘",
+          "weight": 3
+        },
+        {
+          "name": "아엘",
+          "weight": 3
+        },
+        {
+          "name": "하온",
+          "weight": 3
+        },
+        {
+          "name": "리오",
+          "weight": 3
+        },
+        {
+          "name": "루이",
+          "weight": 3
+        },
+        {
+          "name": "태윤",
+          "weight": 2
+        },
+        {
+          "name": "하진",
+          "weight": 2
+        },
+        {
+          "name": "은결",
+          "weight": 2
+        },
+        {
+          "name": "준결",
+          "weight": 2
+        }
+      ],
+      "f": [
+        {
+          "name": "윤",
+          "weight": 3
+        },
+        {
+          "name": "현",
+          "weight": 3
+        },
+        {
+          "name": "봄",
+          "weight": 3
+        },
+        {
+          "name": "별",
+          "weight": 3
+        },
+        {
+          "name": "새봄",
+          "weight": 3
+        },
+        {
+          "name": "나봄",
+          "weight": 3
+        },
+        {
+          "name": "여름",
+          "weight": 3
+        },
+        {
+          "name": "겨울",
+          "weight": 3
+        },
+        {
+          "name": "가람",
+          "weight": 3
+        },
+        {
+          "name": "마루",
+          "weight": 3
+        },
+        {
+          "name": "누리",
+          "weight": 3
+        },
+        {
+          "name": "다솜",
+          "weight": 3
+        },
+        {
+          "name": "윤슬",
+          "weight": 3
+        },
+        {
+          "name": "소담",
+          "weight": 3
+        },
+        {
+          "name": "빛나",
+          "weight": 3
+        },
+        {
+          "name": "이음",
+          "weight": 3
+        },
+        {
+          "name": "새온",
+          "weight": 3
+        },
+        {
+          "name": "유온",
+          "weight": 3
+        },
+        {
+          "name": "도온",
+          "weight": 3
+        },
+        {
+          "name": "라엘",
+          "weight": 3
+        },
+        {
+          "name": "시엘",
+          "weight": 3
+        },
+        {
+          "name": "로엘",
+          "weight": 3
+        },
+        {
+          "name": "아엘",
+          "weight": 3
+        },
+        {
+          "name": "하온",
+          "weight": 3
+        },
+        {
+          "name": "리오",
+          "weight": 3
+        },
+        {
+          "name": "루이",
+          "weight": 3
+        },
+        {
+          "name": "서하",
+          "weight": 2
+        },
+        {
+          "name": "다은",
+          "weight": 2
+        },
+        {
+          "name": "예원",
+          "weight": 2
+        },
+        {
+          "name": "가은",
+          "weight": 2
+        }
+      ]
+    },
+    "2130": {
+      "confidence": "low",
+      "note_ko": "가상 미래 이름 목록이에요. 현재 이름을 유지하면서 중성·한 글자·외래 느낌 후보의 비중을 늘린 게임 설정이며 실제 유행 예측은 아니에요.",
+      "m": [
+        {
+          "name": "새봄",
+          "weight": 3
+        },
+        {
+          "name": "나봄",
+          "weight": 3
+        },
+        {
+          "name": "여름",
+          "weight": 3
+        },
+        {
+          "name": "겨울",
+          "weight": 3
+        },
+        {
+          "name": "가람",
+          "weight": 3
+        },
+        {
+          "name": "마루",
+          "weight": 3
+        },
+        {
+          "name": "누리",
+          "weight": 3
+        },
+        {
+          "name": "다솜",
+          "weight": 3
+        },
+        {
+          "name": "윤슬",
+          "weight": 3
+        },
+        {
+          "name": "소담",
+          "weight": 3
+        },
+        {
+          "name": "빛나",
+          "weight": 3
+        },
+        {
+          "name": "이음",
+          "weight": 3
+        },
+        {
+          "name": "새온",
+          "weight": 3
+        },
+        {
+          "name": "유온",
+          "weight": 3
+        },
+        {
+          "name": "도온",
+          "weight": 3
+        },
+        {
+          "name": "라엘",
+          "weight": 3
+        },
+        {
+          "name": "시엘",
+          "weight": 3
+        },
+        {
+          "name": "로엘",
+          "weight": 3
+        },
+        {
+          "name": "아엘",
+          "weight": 3
+        },
+        {
+          "name": "하온",
+          "weight": 3
+        },
+        {
+          "name": "리오",
+          "weight": 3
+        },
+        {
+          "name": "루이",
+          "weight": 3
+        },
+        {
+          "name": "레오",
+          "weight": 3
+        },
+        {
+          "name": "서온",
+          "weight": 3
+        },
+        {
+          "name": "은솔",
+          "weight": 3
+        },
+        {
+          "name": "여운",
+          "weight": 3
+        },
+        {
+          "name": "준결",
+          "weight": 2
+        },
+        {
+          "name": "도율",
+          "weight": 2
+        },
+        {
+          "name": "지율",
+          "weight": 2
+        },
+        {
+          "name": "로한",
+          "weight": 2
+        }
+      ],
+      "f": [
+        {
+          "name": "새봄",
+          "weight": 3
+        },
+        {
+          "name": "나봄",
+          "weight": 3
+        },
+        {
+          "name": "여름",
+          "weight": 3
+        },
+        {
+          "name": "겨울",
+          "weight": 3
+        },
+        {
+          "name": "가람",
+          "weight": 3
+        },
+        {
+          "name": "마루",
+          "weight": 3
+        },
+        {
+          "name": "누리",
+          "weight": 3
+        },
+        {
+          "name": "다솜",
+          "weight": 3
+        },
+        {
+          "name": "윤슬",
+          "weight": 3
+        },
+        {
+          "name": "소담",
+          "weight": 3
+        },
+        {
+          "name": "빛나",
+          "weight": 3
+        },
+        {
+          "name": "이음",
+          "weight": 3
+        },
+        {
+          "name": "새온",
+          "weight": 3
+        },
+        {
+          "name": "유온",
+          "weight": 3
+        },
+        {
+          "name": "도온",
+          "weight": 3
+        },
+        {
+          "name": "라엘",
+          "weight": 3
+        },
+        {
+          "name": "시엘",
+          "weight": 3
+        },
+        {
+          "name": "로엘",
+          "weight": 3
+        },
+        {
+          "name": "아엘",
+          "weight": 3
+        },
+        {
+          "name": "하온",
+          "weight": 3
+        },
+        {
+          "name": "리오",
+          "weight": 3
+        },
+        {
+          "name": "루이",
+          "weight": 3
+        },
+        {
+          "name": "레오",
+          "weight": 3
+        },
+        {
+          "name": "서온",
+          "weight": 3
+        },
+        {
+          "name": "은솔",
+          "weight": 3
+        },
+        {
+          "name": "여운",
+          "weight": 3
+        },
+        {
+          "name": "가은",
+          "weight": 2
+        },
+        {
+          "name": "은서",
+          "weight": 2
+        },
+        {
+          "name": "나린",
+          "weight": 2
+        },
+        {
+          "name": "여린",
+          "weight": 2
+        }
+      ]
+    },
+    "2140": {
+      "confidence": "low",
+      "note_ko": "가상 미래 이름 목록이에요. 현재 이름을 유지하면서 중성·한 글자·외래 느낌 후보의 비중을 늘린 게임 설정이며 실제 유행 예측은 아니에요.",
+      "m": [
+        {
+          "name": "가람",
+          "weight": 3
+        },
+        {
+          "name": "마루",
+          "weight": 3
+        },
+        {
+          "name": "누리",
+          "weight": 3
+        },
+        {
+          "name": "다솜",
+          "weight": 3
+        },
+        {
+          "name": "윤슬",
+          "weight": 3
+        },
+        {
+          "name": "소담",
+          "weight": 3
+        },
+        {
+          "name": "빛나",
+          "weight": 3
+        },
+        {
+          "name": "이음",
+          "weight": 3
+        },
+        {
+          "name": "새온",
+          "weight": 3
+        },
+        {
+          "name": "유온",
+          "weight": 3
+        },
+        {
+          "name": "도온",
+          "weight": 3
+        },
+        {
+          "name": "라엘",
+          "weight": 3
+        },
+        {
+          "name": "시엘",
+          "weight": 3
+        },
+        {
+          "name": "로엘",
+          "weight": 3
+        },
+        {
+          "name": "아엘",
+          "weight": 3
+        },
+        {
+          "name": "하온",
+          "weight": 3
+        },
+        {
+          "name": "리오",
+          "weight": 3
+        },
+        {
+          "name": "루이",
+          "weight": 3
+        },
+        {
+          "name": "레오",
+          "weight": 3
+        },
+        {
+          "name": "서온",
+          "weight": 3
+        },
+        {
+          "name": "은솔",
+          "weight": 3
+        },
+        {
+          "name": "여운",
+          "weight": 3
+        },
+        {
+          "name": "해솔",
+          "weight": 3
+        },
+        {
+          "name": "한솔",
+          "weight": 3
+        },
+        {
+          "name": "이안",
+          "weight": 3
+        },
+        {
+          "name": "지안",
+          "weight": 3
+        },
+        {
+          "name": "로한",
+          "weight": 2
+        },
+        {
+          "name": "이찬",
+          "weight": 2
+        },
+        {
+          "name": "온결",
+          "weight": 2
+        },
+        {
+          "name": "해준",
+          "weight": 2
+        }
+      ],
+      "f": [
+        {
+          "name": "가람",
+          "weight": 3
+        },
+        {
+          "name": "마루",
+          "weight": 3
+        },
+        {
+          "name": "누리",
+          "weight": 3
+        },
+        {
+          "name": "다솜",
+          "weight": 3
+        },
+        {
+          "name": "윤슬",
+          "weight": 3
+        },
+        {
+          "name": "소담",
+          "weight": 3
+        },
+        {
+          "name": "빛나",
+          "weight": 3
+        },
+        {
+          "name": "이음",
+          "weight": 3
+        },
+        {
+          "name": "새온",
+          "weight": 3
+        },
+        {
+          "name": "유온",
+          "weight": 3
+        },
+        {
+          "name": "도온",
+          "weight": 3
+        },
+        {
+          "name": "라엘",
+          "weight": 3
+        },
+        {
+          "name": "시엘",
+          "weight": 3
+        },
+        {
+          "name": "로엘",
+          "weight": 3
+        },
+        {
+          "name": "아엘",
+          "weight": 3
+        },
+        {
+          "name": "하온",
+          "weight": 3
+        },
+        {
+          "name": "리오",
+          "weight": 3
+        },
+        {
+          "name": "루이",
+          "weight": 3
+        },
+        {
+          "name": "레오",
+          "weight": 3
+        },
+        {
+          "name": "서온",
+          "weight": 3
+        },
+        {
+          "name": "은솔",
+          "weight": 3
+        },
+        {
+          "name": "여운",
+          "weight": 3
+        },
+        {
+          "name": "해솔",
+          "weight": 3
+        },
+        {
+          "name": "한솔",
+          "weight": 3
+        },
+        {
+          "name": "이안",
+          "weight": 3
+        },
+        {
+          "name": "지안",
+          "weight": 3
+        },
+        {
+          "name": "여린",
+          "weight": 2
+        },
+        {
+          "name": "새아",
+          "weight": 2
+        },
+        {
+          "name": "해린",
+          "weight": 2
+        },
+        {
+          "name": "루나",
+          "weight": 2
+        }
+      ]
+    }
+  },
+  "workplace_titles": [
+    {
+      "from": 1910,
+      "to": 1919,
+      "examples_ko": [
+        "김 서기",
+        "김 선생"
+      ],
+      "note_ko": "상업·관청 장면을 위한 낮은 신뢰도의 선택 예시예요. 당시 전체 직장의 표준 호칭으로 단정하지 않아요.",
+      "confidence": "low"
+    },
+    {
+      "from": 1920,
+      "to": 1929,
+      "examples_ko": [
+        "김 주임",
+        "김 선생"
+      ],
+      "note_ko": "조직과 신분에 따라 달랐던 호칭의 재구성이에요. 단일한 전국 제도로 표현하지 않아요.",
+      "confidence": "low"
+    },
+    {
+      "from": 1930,
+      "to": 1939,
+      "examples_ko": [
+        "김 주임",
+        "김 서기"
+      ],
+      "note_ko": "직장별 직함을 먼저 적용하는 초기 시대 배경용 예시예요. 통계로 검증한 비율은 없어요.",
+      "confidence": "low"
+    },
+    {
+      "from": 1940,
+      "to": 1949,
+      "examples_ko": [
+        "김 주임",
+        "김 씨"
+      ],
+      "note_ko": "해방 전후 조직의 차이가 커요. 한 해에 일괄 전환되는 규칙으로 쓰지 않아요.",
+      "confidence": "low"
+    },
+    {
+      "from": 1950,
+      "to": 1959,
+      "examples_ko": [
+        "김 계장",
+        "김 주임",
+        "김 씨"
+      ],
+      "note_ko": "회사별 직급 호칭과 성씨 호칭이 섞인 장면용 후보예요.",
+      "confidence": "low"
+    },
+    {
+      "from": 1960,
+      "to": 1969,
+      "examples_ko": [
+        "김 대리",
+        "김 계장",
+        "미스 김"
+      ],
+      "note_ko": "미스 김은 과거의 성별에 따른 비대칭 호칭을 재현하는 보조 예시예요. 기본 안내에서는 이름·직급을 우선해요.",
+      "confidence": "low"
+    },
+    {
+      "from": 1970,
+      "to": 1979,
+      "examples_ko": [
+        "김 과장",
+        "김 대리",
+        "영수 씨",
+        "미스 김"
+      ],
+      "note_ko": "직급·씨 호칭이 병존하는 배경 예시예요. 성별에 따른 호칭을 모든 여성에게 자동 적용하지 않아요.",
+      "confidence": "low"
+    },
+    {
+      "from": 1980,
+      "to": 1989,
+      "examples_ko": [
+        "김 과장",
+        "김 대리",
+        "민정 씨"
+      ],
+      "note_ko": "직급 중심 조직과 이름·씨 호칭의 혼용을 표현해요. 회사마다 달라요.",
+      "confidence": "low"
+    },
+    {
+      "from": 1990,
+      "to": 1999,
+      "examples_ko": [
+        "김 팀장",
+        "김 과장",
+        "유진 씨"
+      ],
+      "note_ko": "직급과 업무상 직책을 구분해요. 팀장 여부는 나이나 성별로 추정하지 않아요.",
+      "confidence": "low"
+    },
+    {
+      "from": 2000,
+      "to": 2009,
+      "examples_ko": [
+        "김 팀장",
+        "민준 씨",
+        "서연 님",
+        "김 매니저"
+      ],
+      "note_ko": "기존 직급과 수평 호칭이 혼용되는 회사별 사례를 위한 후보예요. 전국 동시 도입을 뜻하지 않아요.",
+      "confidence": "low"
+    },
+    {
+      "from": 2010,
+      "to": 2019,
+      "examples_ko": [
+        "김 팀장",
+        "서준 님",
+        "하윤 프로",
+        "김 매니저"
+      ],
+      "note_ko": "2010년대 후반 기업의 공식 수평 호칭 도입 사례를 참고했어요. 님·프로는 회사 설정에 따라 선택해요.",
+      "confidence": "medium"
+    },
+    {
+      "from": 2020,
+      "to": 2029,
+      "examples_ko": [
+        "이준 님",
+        "서아 프로",
+        "김 매니저",
+        "김 팀장"
+      ],
+      "note_ko": "직급·직책·수평 호칭이 병존해요. 회사 정책을 먼저 고르고 연대는 후보 선택에만 써요.",
+      "confidence": "medium"
+    },
+    {
+      "from": 2030,
+      "to": 2149,
+      "examples_ko": [
+        "재이 님",
+        "이안 매니저",
+        "김 팀장"
+      ],
+      "note_ko": "미래 조직 호칭은 알 수 없어요. 현재의 역할·이름 호칭을 이어 쓴 가상 설정이에요.",
+      "confidence": "low"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.kostat.go.kr/boardDownload.es?bid=203&list_no=356061&seq=8",
+      "title": "2015 인구주택총조사 전수집계 결과",
+      "use_ko": "통계청 발표의 2015년 성씨 인구와 비율 기준이에요. 검색에 노출된 표21을 확인했으며 대용량 PDF 본문 전체는 도구가 열지 못했어요."
+    },
+    {
+      "url": "https://www.rootsinfo.co.kr/info/roots/table_sung15.php",
+      "title": "2015 성씨별 인구순위 전재표",
+      "use_ko": "한자별 상위 30개 범주와 인구수를 대조한 2차 전재 자료예요. 통계청이 직접 제공한 상세표와 같은 수준의 독립 검증으로 표현하지 않아요."
+    },
+    {
+      "url": "https://m.mk.co.kr/amp/4271948",
+      "title": "2007-03-20 대법원 이름 집계 보도",
+      "use_ko": "1945·1975·2006년의 일부 대표 이름을 확인했어요. 각 연대의 40개 전체나 부여 가중치를 검증하는 자료는 아니에요."
+    },
+    {
+      "url": "https://www.donga.com/news/List/article/all/20140526/63754032/1",
+      "title": "2014-05-26 출생신고 이름 통계 보도",
+      "use_ko": "2013년 대표 이름 경향을 확인한 2차 보도예요."
+    },
+    {
+      "url": "https://efamily.scourt.go.kr/index.jsp",
+      "title": "법원 전자가족관계등록시스템",
+      "use_ko": "상위 출생신고 이름 현황 서비스의 존재를 확인했어요. 이번 조회에서는 동적 통계표의 원시 빈도를 직접 추출하지 못했어요."
+    },
+    {
+      "url": "https://www.ioreum.com/name-ranking",
+      "title": "최근 출생신고 이름 순위 재집계",
+      "use_ko": "2020년대 이름의 일부 경향만 참고한 2차 목록이에요. 정확한 연대 순위나 확률로 사용하지 않아요."
+    },
+    {
+      "url": "https://www.samsung.com/sec/sustainability/media/pdf/Sustainability_report_2017_kr.pdf",
+      "title": "기업 공식 지속가능경영보고서 2017",
+      "use_ko": "직급 단순화와 님·프로 등 수평 호칭 도입의 한 사례예요. 게임 회사의 일괄 정책으로 복제하지 않아요."
+    }
+  ]
+}
