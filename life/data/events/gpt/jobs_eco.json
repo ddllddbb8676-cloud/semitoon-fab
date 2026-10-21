@@ -1,0 +1,2102 @@
+[
+  {
+    "id": "job_professor_first_class",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "professor"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "반도체 수업 첫날이에요. 준비한 설명보다 학생 질문이 먼저 나와요.",
+    "choices": [
+      {
+        "label": "질문에서 수업을 시작해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "반도체학과 교수 · 첫 업무"
+        },
+        "result": "아는 내용을 전하는 순서가 달라졌어요."
+      },
+      {
+        "label": "기초 그림부터 함께 봐요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "반도체학과 교수 · 첫 업무"
+        },
+        "result": "어려운 단어를 한꺼번에 쏟지 않았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_professor_lab_feedback",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "professor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "학생의 실험 보고서에 예상과 다른 결과가 있어요.",
+    "choices": [
+      {
+        "label": "근거를 같이 살펴요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "반도체학과 교수 · 일상 업무"
+        },
+        "result": "틀렸다고 닫기 전에 과정을 읽었어요."
+      },
+      {
+        "label": "다음 질문을 골라 줘요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "반도체학과 교수 · 일상 업무"
+        },
+        "result": "바로 답을 주는 대신 확인할 길을 열어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_professor_lesson_revision",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "professor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "작년 수업 자료의 그림 설명이 낡아 보여요.",
+    "choices": [
+      {
+        "label": "공개 자료로 갱신해요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "intelligence": 2
+        },
+        "result": "익숙한 자료도 다시 확인했어요."
+      },
+      {
+        "label": "학생 의견을 받아요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "어디서 막혔는지 듣고 분량을 줄여요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_professor_industry_request",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "professor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "산학 협력 담당자가 급한 교육 일정을 제안해요.",
+    "choices": [
+      {
+        "label": "가능한 범위를 정해요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "반도체학과 교수 · 함께한 사람"
+        },
+        "result": "좋은 기회와 과도한 약속을 구분해요."
+      },
+      {
+        "label": "학과 동료와 나눠요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "반도체학과 교수 · 함께한 사람"
+        },
+        "result": "혼자 모든 분야를 맡지 않았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_professor_boom_students",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "professor",
+      "market": {
+        "cycle": [
+          1,
+          2
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "업계가 호황이에요. 반도체 진로 상담이 늘었어요.",
+    "choices": [
+      {
+        "label": "직무의 여러 길을 설명해요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "반도체학과 교수 · 시황 속 하루"
+        },
+        "result": "한 가지 성공 경로만 권하지 않았어요."
+      },
+      {
+        "label": "상담 시간을 나눠 잡아요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "반도체학과 교수 · 시황 속 하루"
+        },
+        "result": "학생도 나도 기다릴 기준이 생겨요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_professor_lecture_table",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "professor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "가족에게 리모컨을 설명하다 판서할 곳을 찾고 있어요.",
+    "choices": [
+      {
+        "label": "필요한 버튼만 알려요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "오늘의 수업은 한 문장으로 끝나요."
+      },
+      {
+        "label": "먼저 해 보게 기다려요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "설명하지 않는 시간도 배움이 돼요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_journalist_first_beat",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "journalist"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "반도체 담당 첫날이에요. 공개 자료에도 모르는 약어가 가득해요.",
+    "choices": [
+      {
+        "label": "용어와 출처를 정리해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "반도체 담당 기자 · 첫 업무"
+        },
+        "result": "그럴듯한 말을 그대로 옮기지 않았어요."
+      },
+      {
+        "label": "선배에게 질문을 모아요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "반도체 담당 기자 · 첫 업무"
+        },
+        "result": "모른다는 말에서 취재가 시작돼요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_journalist_source_numbers",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "journalist"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "두 자료의 시장 수치가 달라요. 집계 범위도 다르네요.",
+    "choices": [
+      {
+        "label": "범위를 확인해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "반도체 담당 기자 · 일상 업무"
+        },
+        "result": "서로 다른 숫자를 억지로 하나로 만들지 않아요."
+      },
+      {
+        "label": "발표 기관에 문의해요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "반도체 담당 기자 · 일상 업무"
+        },
+        "result": "확인되지 않은 부분은 남겨 두었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_journalist_headline_scope",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "journalist"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "기사 제목을 줄이니 전망이 확정처럼 읽혀요.",
+    "choices": [
+      {
+        "label": "전망임을 남겨요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "intelligence": 2
+        },
+        "result": "짧은 제목에도 시점을 지켰어요."
+      },
+      {
+        "label": "데스크와 다시 읽어요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "눈길과 정확함 사이를 함께 조율해요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_journalist_interview_terms",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "journalist"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "인터뷰이가 익숙한 전문어로 빠르게 말해요.",
+    "choices": [
+      {
+        "label": "독자 눈높이로 되물어요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "반도체 담당 기자 · 함께한 사람"
+        },
+        "result": "모르는 채 고개만 끄덕이지 않았어요."
+      },
+      {
+        "label": "설명 확인을 요청해요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "반도체 담당 기자 · 함께한 사람"
+        },
+        "result": "내가 이해한 뜻이 맞는지 다시 물었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_journalist_boom_coverage",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "journalist",
+      "market": {
+        "cycle": [
+          1,
+          2
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "업계가 호황이에요. 성과 발표가 연달아 들어와요.",
+    "choices": [
+      {
+        "label": "발표와 검증을 구분해요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "반도체 담당 기자 · 시황 속 하루"
+        },
+        "result": "밝은 제목 속에서도 근거를 남겨요."
+      },
+      {
+        "label": "취재 일정을 나눠요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "반도체 담당 기자 · 시황 속 하루"
+        },
+        "result": "급한 기사를 혼자 모두 받지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_journalist_family_source",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "journalist"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "가족이 밥 먹었냐고 묻자 출처부터 대답할 뻔했어요.",
+    "choices": [
+      {
+        "label": "밥상 얘기를 해요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "오늘 저녁의 확인 대상은 내 배고픔이에요."
+      },
+      {
+        "label": "잠깐 취재 메모를 닫아요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "안부에는 기사 마감이 없어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_official_first_brief",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "official"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "산업 업무 첫날이에요. 반도체 생태계 자료를 한 장씩 넘겨요.",
+    "choices": [
+      {
+        "label": "분야별 역할을 익혀요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "산업부 공무원 · 첫 업무"
+        },
+        "result": "공장 밖에도 많은 일이 이어져 있어요."
+      },
+      {
+        "label": "선배와 용어를 확인해요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "산업부 공무원 · 첫 업무"
+        },
+        "result": "처음 보는 말을 행정 문장으로 덮지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_official_public_notice",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "official"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "지원 안내문을 읽는데 신청자가 헷갈릴 문장이 보여요.",
+    "choices": [
+      {
+        "label": "조건을 쉽게 풀어요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "산업부 공무원 · 일상 업무"
+        },
+        "result": "짧은 문장이 문의 한 번을 줄여요."
+      },
+      {
+        "label": "현장 의견을 들어요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "산업부 공무원 · 일상 업무"
+        },
+        "result": "정확한 표현도 읽는 사람 기준으로 봐요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_official_meeting_minutes",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "official"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "회의에서 합의한 내용과 검토할 내용이 섞였어요.",
+    "choices": [
+      {
+        "label": "상태를 나눠 기록해요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "intelligence": 2
+        },
+        "result": "미정인 일을 확정처럼 전달하지 않아요."
+      },
+      {
+        "label": "참석자 확인을 받아요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "같은 회의를 다르게 기억한 곳을 맞춰요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_official_site_question",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "official"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "현장 방문에서 작은 협력사 담당자가 질문을 꺼내요.",
+    "choices": [
+      {
+        "label": "질문을 끝까지 들어요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "산업부 공무원 · 함께한 사람"
+        },
+        "result": "큰 회사 자료에 없던 사정을 알게 돼요."
+      },
+      {
+        "label": "확인할 창구를 안내해요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "산업부 공무원 · 함께한 사람"
+        },
+        "result": "현장에서 안 되는 약속은 하지 않았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_official_slow_support",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "official",
+      "market": {
+        "cycle": [
+          -2,
+          -1
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "반도체 업계가 불황이에요. 상담 문의가 늘었어요.",
+    "choices": [
+      {
+        "label": "안내 기준을 정리해요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "산업부 공무원 · 시황 속 하루"
+        },
+        "result": "급한 마음을 성급한 약속으로 바꾸지 않아요."
+      },
+      {
+        "label": "업무 분담을 요청해요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "산업부 공무원 · 시황 속 하루"
+        },
+        "result": "문의한 사람도 나도 기다릴 순서를 알아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_official_weekend_form",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "official"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "주말 모임 공지에 제출 기한을 쓰고 말았어요.",
+    "choices": [
+      {
+        "label": "편한 말로 고쳐요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "이번 모임에는 신청 양식이 없어요."
+      },
+      {
+        "label": "친구에게 날짜를 물어요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "공문 대신 대화로 일정을 잡아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_analyst_first_model",
+    "year": [
+      1988,
+      null
+    ],
+    "when": {
+      "job": "analyst"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "반도체 분석 첫날이에요. 숫자를 채우기 전에 자료 기준부터 읽어요.",
+    "choices": [
+      {
+        "label": "집계 범위를 적어요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "증권사 반도체 애널리스트 · 첫 업무"
+        },
+        "result": "같은 매출이라는 말도 범위가 달랐어요."
+      },
+      {
+        "label": "선배와 가정을 봐요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "증권사 반도체 애널리스트 · 첫 업무"
+        },
+        "result": "표 뒤에 사람이 정한 전제가 있어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_analyst_revision_trace",
+    "year": [
+      1988,
+      null
+    ],
+    "when": {
+      "job": "analyst"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "새 발표가 나왔는데 이전 추정과 차이가 있어요.",
+    "choices": [
+      {
+        "label": "변경 근거를 남겨요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "증권사 반도체 애널리스트 · 일상 업무"
+        },
+        "result": "틀린 숫자를 숨기지 않고 가정을 갱신해요."
+      },
+      {
+        "label": "팀과 해석을 검토해요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "증권사 반도체 애널리스트 · 일상 업무"
+        },
+        "result": "하나의 자료로 결론을 서두르지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_analyst_chart_axis",
+    "year": [
+      1988,
+      null
+    ],
+    "when": {
+      "job": "analyst"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "그래프 범위를 바꾸니 변화가 훨씬 커 보이네요.",
+    "choices": [
+      {
+        "label": "축과 단위를 표시해요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "intelligence": 2
+        },
+        "result": "보이는 인상과 실제 차이를 함께 설명해요."
+      },
+      {
+        "label": "다른 그림도 비교해요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "보고 싶은 방향만 강조하지 않았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_analyst_client_call",
+    "year": [
+      1988,
+      null
+    ],
+    "when": {
+      "job": "analyst"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "고객이 주가를 딱 잘라 말해 달래요.",
+    "choices": [
+      {
+        "label": "불확실성과 근거를 설명해요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "증권사 반도체 애널리스트 · 함께한 사람"
+        },
+        "result": "분석을 수익 약속으로 바꾸지 않았어요."
+      },
+      {
+        "label": "자료의 범위를 다시 알려요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "증권사 반도체 애널리스트 · 함께한 사람"
+        },
+        "result": "내가 확인한 데까지 답했어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_analyst_slow_model",
+    "year": [
+      1988,
+      null
+    ],
+    "when": {
+      "job": "analyst",
+      "market": {
+        "memory": [
+          -2,
+          -1
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "메모리 업계가 불황이에요. 기존 전망을 다시 검토해요.",
+    "choices": [
+      {
+        "label": "가정을 나눠 살펴요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "증권사 반도체 애널리스트 · 시황 속 하루"
+        },
+        "result": "시황과 개별 기업의 차이를 남겨요."
+      },
+      {
+        "label": "동료와 반대 근거를 찾아요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "증권사 반도체 애널리스트 · 시황 속 하루"
+        },
+        "result": "익숙한 결론을 혼자 밀지 않았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_analyst_menu_outlook",
+    "year": [
+      1988,
+      null
+    ],
+    "when": {
+      "job": "analyst"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "점심 메뉴를 고르는데 내일 수요부터 생각하고 있어요.",
+    "choices": [
+      {
+        "label": "오늘 먹을 걸 골라요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "한 끼의 전망은 내 배가 정해 줘요."
+      },
+      {
+        "label": "동료 추천을 받아요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "예측하지 않아도 괜찮은 선택도 있어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_retail_investor_first_report",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "retail_investor"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "반도체주를 처음 공부해요. 이름만 알던 회사의 공개 자료를 펼쳐요.",
+    "choices": [
+      {
+        "label": "사업이 뭔지 읽어요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "반도체주 개미 투자자 · 첫 업무"
+        },
+        "result": "가격표 밖의 반도체 일을 처음 봤어요."
+      },
+      {
+        "label": "공부할 범위를 정해요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "반도체주 개미 투자자 · 첫 업무"
+        },
+        "result": "바로 매수하지 않아도 시작할 수 있어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_retail_investor_source_check",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "retail_investor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "게시판 소문과 공개 발표의 내용이 달라요.",
+    "choices": [
+      {
+        "label": "발표 원문을 찾아요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "반도체주 개미 투자자 · 일상 업무"
+        },
+        "result": "확인할 수 없는 말은 판단에서 뺐어요."
+      },
+      {
+        "label": "오늘 판단을 미뤄요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "반도체주 개미 투자자 · 일상 업무"
+        },
+        "result": "모르는 걸 매매로 메우지 않았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_retail_investor_budget_note",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "retail_investor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "관심 종목이 늘어나 생활비와 투자 돈이 섞여 보여요.",
+    "choices": [
+      {
+        "label": "사용 범위를 따로 적어요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "intelligence": 2
+        },
+        "result": "공부보다 먼저 감당할 범위를 확인해요."
+      },
+      {
+        "label": "잠시 시세를 멀리해요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "앱을 덜 여니 저녁이 길어졌어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_retail_investor_friend_tip",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "retail_investor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "친구가 반도체 종목을 무조건 오른다며 추천해요.",
+    "choices": [
+      {
+        "label": "추천 근거를 물어요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "반도체주 개미 투자자 · 함께한 사람"
+        },
+        "result": "친구의 확신과 내 판단을 구분해요."
+      },
+      {
+        "label": "다른 얘기로 쉬어 가요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "반도체주 개미 투자자 · 함께한 사람"
+        },
+        "result": "만남을 투자 회의로 만들지 않았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_retail_investor_slow_sentiment",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "retail_investor",
+      "market": {
+        "memory": [
+          -2,
+          -1
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "메모리 업계가 불황이에요. 관련 소식에 마음이 흔들려요.",
+    "choices": [
+      {
+        "label": "가정과 감당 범위를 봐요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "반도체주 개미 투자자 · 시황 속 하루"
+        },
+        "result": "불안하다고 큰 결정을 서두르지 않아요."
+      },
+      {
+        "label": "오늘은 시세를 덜 봐요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "반도체주 개미 투자자 · 시황 속 하루"
+        },
+        "result": "업계 소식이 하루 기분 전부가 되진 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_retail_investor_price_refresh",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "retail_investor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "아침밥이 식는 줄도 모르고 같은 시세를 새로고침했어요.",
+    "choices": [
+      {
+        "label": "화면을 닫고 먹어요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "오늘 첫 수익 대신 따뜻한 밥을 챙겨요."
+      },
+      {
+        "label": "가족과 안부를 나눠요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "숫자 밖에도 아침 이야기가 있었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_landlord_first_tenant",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "landlord"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "공장 근처 원룸에 첫 세입자가 들어와요. 교대근무를 한대요.",
+    "choices": [
+      {
+        "label": "생활 시간을 들어요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "공장 앞 원룸 임대업 · 첫 업무"
+        },
+        "result": "집을 빌리는 사람의 하루도 알게 됐어요."
+      },
+      {
+        "label": "안내 내용을 정리해요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "공장 앞 원룸 임대업 · 첫 업무"
+        },
+        "result": "말로만 한 약속을 남겨 두었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_landlord_repair_log",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "landlord"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "근무를 마친 세입자가 시설 문의를 남겼어요.",
+    "choices": [
+      {
+        "label": "담당 수리를 연결해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "공장 앞 원룸 임대업 · 일상 업무"
+        },
+        "result": "가능한 일정과 확인할 부분을 알려요."
+      },
+      {
+        "label": "세입자와 방문 시간을 맞춰요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "공장 앞 원룸 임대업 · 일상 업무"
+        },
+        "result": "쉬는 시간을 함부로 깨우지 않았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_landlord_room_notice",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "landlord"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "공용 공간 안내가 모호하다는 의견을 받았어요.",
+    "choices": [
+      {
+        "label": "안내를 쉽게 고쳐요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "intelligence": 2
+        },
+        "result": "오래 산 사람만 아는 규칙을 줄였어요."
+      },
+      {
+        "label": "입주자 의견을 모아요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "한 사람의 취향만으로 정하지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_landlord_night_sleep",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "landlord"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "낮에 자는 직원과 낮에 생활하는 세입자가 소음을 이야기해요.",
+    "choices": [
+      {
+        "label": "서로의 시간을 들어요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "공장 앞 원룸 임대업 · 함께한 사람"
+        },
+        "result": "누구의 생활도 한쪽 기준으로만 보지 않아요."
+      },
+      {
+        "label": "가능한 조정을 안내해요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "공장 앞 원룸 임대업 · 함께한 사람"
+        },
+        "result": "즉시 해결을 약속하기보다 대화를 열어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_landlord_slow_inquiry",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "landlord",
+      "market": {
+        "cycle": [
+          -2,
+          -1
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "업계가 불황이에요. 공장 앞 원룸 문의도 뜸해졌어요.",
+    "choices": [
+      {
+        "label": "집 상태와 안내를 살펴요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "공장 앞 원룸 임대업 · 시황 속 하루"
+        },
+        "result": "업계 분위기만 탓하지 않고 할 일을 찾아요."
+      },
+      {
+        "label": "관리 일정을 다시 짜요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "공장 앞 원룸 임대업 · 시황 속 하루"
+        },
+        "result": "빈방 걱정을 하루 종일 붙들지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_landlord_light_on",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "landlord"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "빈방 확인을 끝내고 집에 와서도 방 개수를 세고 있어요.",
+    "choices": [
+      {
+        "label": "내 방에서 쉬어요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "오늘 마지막 방은 수익표 밖에 있어요."
+      },
+      {
+        "label": "이웃과 차를 마셔요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "주소보다 사람 이야기를 더 들었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_chicken_shop_first_order",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "chicken_shop"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "공장 앞 치킨집 첫날이에요. 교대 시간에 맞춰 손님이 들어와요.",
+    "choices": [
+      {
+        "label": "주문 동선을 익혀요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "공장 앞 치킨집 사장 · 첫 업무"
+        },
+        "result": "공장 근무표가 가게 시계와 이어져요."
+      },
+      {
+        "label": "동료와 역할을 나눠요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "공장 앞 치킨집 사장 · 첫 업무"
+        },
+        "result": "처음부터 혼자 다 잡으려 하지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_chicken_shop_shift_orders",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "chicken_shop"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "교대가 끝나자 주문이 한꺼번에 들어와요.",
+    "choices": [
+      {
+        "label": "준비 가능 시간을 안내해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "공장 앞 치킨집 사장 · 일상 업무"
+        },
+        "result": "빨리 된다는 말보다 맞는 시간을 전해요."
+      },
+      {
+        "label": "주문 배분을 상의해요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "공장 앞 치킨집 사장 · 일상 업무"
+        },
+        "result": "주방과 포장이 같은 순서를 봐요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_chicken_shop_stock_check",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "chicken_shop"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "남은 재료와 예약 주문을 맞춰 보고 있어요.",
+    "choices": [
+      {
+        "label": "수량을 확인해요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "intelligence": 2
+        },
+        "result": "바쁠 거라는 느낌만으로 준비하지 않아요."
+      },
+      {
+        "label": "팀과 마감 계획을 세워요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "오늘 끝낼 일을 함께 나눴어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_chicken_shop_regular_story",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "chicken_shop"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "단골이 오늘 라인이 유난히 바빴다고 해요.",
+    "choices": [
+      {
+        "label": "수고했다며 들어요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "공장 앞 치킨집 사장 · 함께한 사람"
+        },
+        "result": "메뉴 주문 뒤에 사람의 하루가 보여요."
+      },
+      {
+        "label": "편히 먹도록 챙겨요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "공장 앞 치킨집 사장 · 함께한 사람"
+        },
+        "result": "자세한 회사 이야기는 묻지 않았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_chicken_shop_boom_evening",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "chicken_shop",
+      "market": {
+        "cycle": [
+          1,
+          2
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "업계가 호황이에요. 공장 앞 저녁 모임 문의가 늘어요.",
+    "choices": [
+      {
+        "label": "예약과 인력을 맞춰요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "공장 앞 치킨집 사장 · 시황 속 하루"
+        },
+        "result": "받을 수 있는 주문부터 정했어요."
+      },
+      {
+        "label": "메뉴 준비를 단순하게 해요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "공장 앞 치킨집 사장 · 시황 속 하루"
+        },
+        "result": "무리한 확장보다 오늘 저녁을 챙겨요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_chicken_shop_family_chicken",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "chicken_shop"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "쉬는 날 가족이 저녁으로 치킨을 먹자고 해요.",
+    "choices": [
+      {
+        "label": "오늘은 다른 메뉴를 제안해요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "가게 밖 저녁 취향도 꺼내 봐요."
+      },
+      {
+        "label": "가족 선택을 웃으며 들어요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "이번 주문에는 계산대 대신 식탁에 앉아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_recruiter_first_profile",
+    "year": [
+      1995,
+      null
+    ],
+    "when": {
+      "job": "recruiter"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "반도체 채용 담당 첫날이에요. 비슷한 직함에도 하는 일이 달라요.",
+    "choices": [
+      {
+        "label": "업무 범위를 물어요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "반도체 헤드헌터 · 첫 업무"
+        },
+        "result": "이름보다 실제 경험을 듣기 시작해요."
+      },
+      {
+        "label": "선배와 공고를 읽어요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "반도체 헤드헌터 · 첫 업무"
+        },
+        "result": "모르는 직무를 혼자 분류하지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_recruiter_consent_intro",
+    "year": [
+      1995,
+      null
+    ],
+    "when": {
+      "job": "recruiter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "기업이 후보자 소개를 요청했어요. 본인 의사는 아직 안 물었어요.",
+    "choices": [
+      {
+        "label": "먼저 동의를 확인해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "반도체 헤드헌터 · 일상 업무"
+        },
+        "result": "이력서보다 사람의 선택이 먼저예요."
+      },
+      {
+        "label": "공고 정보만 정리해요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "반도체 헤드헌터 · 일상 업무"
+        },
+        "result": "소개를 서두르지 않고 설명부터 준비해요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_recruiter_role_match",
+    "year": [
+      1995,
+      null
+    ],
+    "when": {
+      "job": "recruiter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "공고의 근무 방식과 후보자가 들은 조건이 달라요.",
+    "choices": [
+      {
+        "label": "조건을 다시 확인해요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "intelligence": 2
+        },
+        "result": "좋아 보이는 제안도 범위를 맞춰요."
+      },
+      {
+        "label": "후보자의 우선순위를 들어요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "연봉 한 가지로 결정을 대신하지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_recruiter_no_thanks",
+    "year": [
+      1995,
+      null
+    ],
+    "when": {
+      "job": "recruiter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "후보자가 이직 제안을 정중히 거절했어요.",
+    "choices": [
+      {
+        "label": "이유를 듣고 마쳐요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "반도체 헤드헌터 · 함께한 사람"
+        },
+        "result": "거절도 존중받을 선택으로 남겨요."
+      },
+      {
+        "label": "나중 연락 여부를 물어요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "반도체 헤드헌터 · 함께한 사람"
+        },
+        "result": "허락받은 범위에서만 관계를 이어 가요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_recruiter_boom_offers",
+    "year": [
+      1995,
+      null
+    ],
+    "when": {
+      "job": "recruiter",
+      "market": {
+        "cycle": [
+          1,
+          2
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "반도체 호황으로 인재 소개 요청이 늘어요.",
+    "choices": [
+      {
+        "label": "직무와 조건을 대조해요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "반도체 헤드헌터 · 시황 속 하루"
+        },
+        "result": "많은 소개보다 맞는 안내를 먼저 해요."
+      },
+      {
+        "label": "일정을 나눠 잡아요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "반도체 헤드헌터 · 시황 속 하루"
+        },
+        "result": "후보자에게 급한 결정을 떠넘기지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_recruiter_friend_resume",
+    "year": [
+      1995,
+      null
+    ],
+    "when": {
+      "job": "recruiter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "친구가 취미를 말하는데 경력 기술처럼 듣고 있어요.",
+    "choices": [
+      {
+        "label": "취미 얘기로 돌아와요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "오늘 만남에서는 채용하지 않아요."
+      },
+      {
+        "label": "내 취미도 꺼내요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "직함 밖의 서로를 조금 더 알아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_academy_teacher_first_lesson",
+    "year": [
+      2005,
+      null
+    ],
+    "when": {
+      "job": "academy_teacher"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "반도체 취업 수업 첫날이에요. 수강생의 출발점이 제각각이에요.",
+    "choices": [
+      {
+        "label": "배경을 먼저 들어요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "반도체 취업 학원 강사 · 첫 업무"
+        },
+        "result": "같은 용어도 설명 순서를 달리해요."
+      },
+      {
+        "label": "기초 그림부터 봐요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "반도체 취업 학원 강사 · 첫 업무"
+        },
+        "result": "처음 듣는 사람이 따라올 길을 마련해요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_academy_teacher_concept_gap",
+    "year": [
+      2005,
+      null
+    ],
+    "when": {
+      "job": "academy_teacher"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "Lot과 낱장 웨이퍼를 헷갈리는 질문이 나왔어요.",
+    "choices": [
+      {
+        "label": "그림으로 차이를 보여요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "반도체 취업 학원 강사 · 일상 업무"
+        },
+        "result": "외울 말 대신 이동 장면으로 설명해요."
+      },
+      {
+        "label": "수강생의 이해를 들어요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "반도체 취업 학원 강사 · 일상 업무"
+        },
+        "result": "같은 말을 반복하기 전에 막힌 곳을 봐요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_academy_teacher_course_note",
+    "year": [
+      2005,
+      null
+    ],
+    "when": {
+      "job": "academy_teacher"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "수업 자료에 확인이 필요한 업계 표현이 있어요.",
+    "choices": [
+      {
+        "label": "공개 근거로 고쳐요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "intelligence": 2
+        },
+        "result": "현장 비밀처럼 꾸미지 않고 확인해요."
+      },
+      {
+        "label": "다음 시간 보충을 약속해요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "모르는 내용을 즉석에서 지어내지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_academy_teacher_student_worry",
+    "year": [
+      2005,
+      null
+    ],
+    "when": {
+      "job": "academy_teacher"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "수강생이 자기 학력으로는 늦은 것 같대요.",
+    "choices": [
+      {
+        "label": "여러 직무의 길을 설명해요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "반도체 취업 학원 강사 · 함께한 사람"
+        },
+        "result": "한 가지 기준으로 가능성을 닫지 않아요."
+      },
+      {
+        "label": "지금 할 일을 함께 골라요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "반도체 취업 학원 강사 · 함께한 사람"
+        },
+        "result": "큰 약속보다 작은 준비를 정했어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_academy_teacher_slow_class",
+    "year": [
+      2005,
+      null
+    ],
+    "when": {
+      "job": "academy_teacher",
+      "market": {
+        "cycle": [
+          -2,
+          -1
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "반도체 업계가 불황이에요. 수강생의 채용 걱정이 커졌어요.",
+    "choices": [
+      {
+        "label": "확인된 공고를 함께 읽어요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "반도체 취업 학원 강사 · 시황 속 하루"
+        },
+        "result": "합격을 보장하는 말은 하지 않아요."
+      },
+      {
+        "label": "질문 시간을 나눠 잡아요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "반도체 취업 학원 강사 · 시황 속 하루"
+        },
+        "result": "걱정을 수업 밖에 혼자 두지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_academy_teacher_weekend_whiteboard",
+    "year": [
+      2005,
+      null
+    ],
+    "when": {
+      "job": "academy_teacher"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "주말 카페에서도 냅킨에 공정 그림을 그리고 있어요.",
+    "choices": [
+      {
+        "label": "펜을 내려놓고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "오늘은 커피가 식기 전에 마셔요."
+      },
+      {
+        "label": "동행의 이야기를 들어요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "설명하는 사람도 듣는 시간이 필요해요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_youtuber_first_video",
+    "year": [
+      2012,
+      null
+    ],
+    "when": {
+      "job": "youtuber"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "반도체 주제로 첫 영상을 준비해요. 카메라보다 용어가 더 낯설어요.",
+    "choices": [
+      {
+        "label": "공개 자료부터 확인해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "반도체 유튜버 · 첫 업무"
+        },
+        "result": "아는 만큼만 설명할 기준을 세워요."
+      },
+      {
+        "label": "짧은 주제 하나를 골라요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "반도체 유튜버 · 첫 업무"
+        },
+        "result": "첫 영상에 모든 공정을 담지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_youtuber_script_source",
+    "year": [
+      2012,
+      null
+    ],
+    "when": {
+      "job": "youtuber"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "대본 속 숫자의 집계 기준이 자료마다 달라요.",
+    "choices": [
+      {
+        "label": "시점과 범위를 적어요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "intelligence": 2,
+          "semi": "반도체 유튜버 · 일상 업무"
+        },
+        "result": "조회수를 위해 차이를 숨기지 않아요."
+      },
+      {
+        "label": "확인 안 된 숫자는 빼요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "반도체 유튜버 · 일상 업무"
+        },
+        "result": "빈자리를 그럴듯한 말로 채우지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_youtuber_comment_question",
+    "year": [
+      2012,
+      null
+    ],
+    "when": {
+      "job": "youtuber"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "댓글에 같은 질문이 이어져요. 설명이 어려웠나 봐요.",
+    "choices": [
+      {
+        "label": "쉬운 그림을 덧붙여요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "intelligence": 2
+        },
+        "result": "짧은 보충이 다음 사람의 길이 돼요."
+      },
+      {
+        "label": "다음 주제로 메모해요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "댓글 하나마다 급히 새 영상을 만들지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_youtuber_collab_scope",
+    "year": [
+      2012,
+      null
+    ],
+    "when": {
+      "job": "youtuber"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "다른 창작자가 반도체 공동 영상을 제안해요.",
+    "choices": [
+      {
+        "label": "역할과 출처를 맞춰요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "반도체 유튜버 · 함께한 사람"
+        },
+        "result": "서로의 설명 범위를 먼저 정해요."
+      },
+      {
+        "label": "가능한 분량을 상의해요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "반도체 유튜버 · 함께한 사람"
+        },
+        "result": "좋은 기회에도 쉬는 시간을 남겨요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_youtuber_boom_views",
+    "year": [
+      2012,
+      null
+    ],
+    "when": {
+      "job": "youtuber",
+      "market": {
+        "cycle": [
+          1,
+          2
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "반도체 업계가 호황이에요. 관련 영상에 관심이 몰려요.",
+    "choices": [
+      {
+        "label": "확인된 설명을 이어 가요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "반도체 유튜버 · 시황 속 하루"
+        },
+        "result": "뜨는 주제여도 확정을 과장하지 않아요."
+      },
+      {
+        "label": "제작 일정을 지켜요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "반도체 유튜버 · 시황 속 하루"
+        },
+        "result": "관심이 늘었다고 매일 밤을 쓰진 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_youtuber_retake_name",
+    "year": [
+      2012,
+      null
+    ],
+    "when": {
+      "job": "youtuber"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "짧은 인사말만 다섯 번 찍고 본론은 한 번에 끝났어요.",
+    "choices": [
+      {
+        "label": "가장 자연스러운 걸 골라요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "작은 멈춤도 오늘 내 말투로 남겨요."
+      },
+      {
+        "label": "잠깐 쉬었다 돌아와요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "카메라 밖 목소리도 챙겨요."
+      }
+    ],
+    "default": 0
+  }
+]

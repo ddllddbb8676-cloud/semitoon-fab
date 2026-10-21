@@ -1,0 +1,1472 @@
+[
+  {
+    "id": "job_welder_first_permit",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "welder"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "원청 {company} 팹 공사 첫날이에요. 용접보다 먼저 작업 허가 범위를 배워요.",
+    "choices": [
+      {
+        "label": "허가와 도면을 확인해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "dexterity": 2,
+          "semi": "용접공 · 첫 업무"
+        },
+        "result": "할 수 있는 작업부터 분명히 알아요."
+      },
+      {
+        "label": "선배와 준비물을 봐요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "용접공 · 첫 업무"
+        },
+        "result": "낯선 현장을 혼자 판단하지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_welder_fit_check",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "welder"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "맞댈 부품의 도면과 현장 표기가 달라 보여요.",
+    "choices": [
+      {
+        "label": "착수 전에 확인해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "dexterity": 2,
+          "semi": "용접공 · 일상 업무"
+        },
+        "result": "눈대중 대신 맞는 기준을 기다려요."
+      },
+      {
+        "label": "담당자와 함께 봐요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "용접공 · 일상 업무"
+        },
+        "result": "다른 팀의 변경 사항을 알게 됐어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_welder_record_joint",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "welder"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "작업 기록에 빠진 접합부 표기를 발견했어요.",
+    "choices": [
+      {
+        "label": "완료 이력을 정리해요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "dexterity": 2
+        },
+        "result": "다음 점검자가 찾을 자리가 생겼어요."
+      },
+      {
+        "label": "짝과 기록을 맞춰요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "기억이 엇갈린 부분을 바로잡았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_welder_other_trade",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "welder"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "다른 공종도 같은 구역을 써야 한대요. 원청 일정이 겹쳤어요.",
+    "choices": [
+      {
+        "label": "작업 순서를 조율해요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "용접공 · 함께한 사람"
+        },
+        "result": "서로 기다릴 시간을 미리 알게 됐어요."
+      },
+      {
+        "label": "관리자에게 조정을 요청해요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "용접공 · 함께한 사람"
+        },
+        "result": "혼자 구역을 양보하거나 차지하지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_welder_boom_sites",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "welder",
+      "market": {
+        "equipment": [
+          1,
+          2
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "장비 투자가 호황이에요. 팹 증설 현장의 작업 문의가 늘어요.",
+    "choices": [
+      {
+        "label": "감당할 일정을 골라요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "용접공 · 시황 속 하루"
+        },
+        "result": "많이 잡는 것보다 끝낼 수 있는 일을 택해요."
+      },
+      {
+        "label": "팀 배정을 상의해요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "용접공 · 시황 속 하루"
+        },
+        "result": "혼자 체력으로 메우려던 계획을 바꿨어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_welder_straight_line",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "welder"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "집 선반을 보다가 접합선부터 살피고 있어요.",
+    "choices": [
+      {
+        "label": "집에서는 쉬어 가요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "오늘의 선반은 책만 받쳐 줘도 충분해요."
+      },
+      {
+        "label": "가족과 정리를 해요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "고칠 곳 대신 놓고 싶은 물건을 골라요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_pipefitter_first_drawing",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "pipefitter"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "원청 {company} 팹 공사에 왔어요. 배관 도면의 구역 표시부터 익혀요.",
+    "choices": [
+      {
+        "label": "도면과 표기를 맞춰요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "dexterity": 2,
+          "semi": "배관공 · 첫 업무"
+        },
+        "result": "비슷한 관도 쓰임과 경로가 달라요."
+      },
+      {
+        "label": "선배와 동선을 돌아요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "배관공 · 첫 업무"
+        },
+        "result": "먼저 길을 익히니 질문이 구체적이에요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_pipefitter_material_tag",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "pipefitter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "가져온 자재의 식별표를 다시 보고 있어요.",
+    "choices": [
+      {
+        "label": "지정 자재와 대조해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "dexterity": 2,
+          "semi": "배관공 · 일상 업무"
+        },
+        "result": "겉모양만 같다고 연결하지 않아요."
+      },
+      {
+        "label": "담당자에게 확인해요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "배관공 · 일상 업무"
+        },
+        "result": "헷갈리는 자재는 따로 두고 물었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_pipefitter_route_overlap",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "pipefitter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "도면의 경로와 다른 공종의 작업 구역이 겹쳐요.",
+    "choices": [
+      {
+        "label": "변경 검토를 요청해요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "dexterity": 2
+        },
+        "result": "현장에서 임의로 경로를 바꾸지 않았어요."
+      },
+      {
+        "label": "작업 순서를 상의해요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "당장 가능한 준비부터 나눠 했어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_pipefitter_handover_team",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "pipefitter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "다음 조가 원청의 변경 지시를 못 들었대요.",
+    "choices": [
+      {
+        "label": "변경 이력을 함께 봐요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "배관공 · 함께한 사람"
+        },
+        "result": "구두 안내가 인계 기록으로 남아요."
+      },
+      {
+        "label": "현장 담당자를 불러요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "배관공 · 함께한 사람"
+        },
+        "result": "서로 다른 지시를 한자리에서 맞춰요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_pipefitter_slow_schedule",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "pipefitter",
+      "market": {
+        "equipment": [
+          -2,
+          -1
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "장비 업계가 불황이에요. 팹 공사 일정이 뒤로 조정됐어요.",
+    "choices": [
+      {
+        "label": "확정 일정을 다시 받아요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "배관공 · 시황 속 하루"
+        },
+        "result": "소문 대신 배정표로 다음 일을 준비해요."
+      },
+      {
+        "label": "팀과 다른 준비를 나눠요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "배관공 · 시황 속 하루"
+        },
+        "result": "기다리는 동안 혼자 걱정만 하지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_pipefitter_maze_break",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "pipefitter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "휴게실 가는 길은 외웠는데 배관 도면의 길이 먼저 떠올라요.",
+    "choices": [
+      {
+        "label": "휴식 동선을 따로 외워요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "도면 밖 내 길도 하나 생겼어요."
+      },
+      {
+        "label": "동료와 같이 걸어요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "오늘은 관 대신 사람을 따라 쉬러 가요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_electrician_first_board",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "electrician"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "원청 {company} 공사 첫날이에요. 분전 구역과 작업 허가 체계를 배워요.",
+    "choices": [
+      {
+        "label": "작업 전 확인을 익혀요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "dexterity": 2,
+          "semi": "전기공 · 첫 업무"
+        },
+        "result": "전원을 다루기 전에 내 역할부터 알아요."
+      },
+      {
+        "label": "숙련자와 도면을 봐요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "전기공 · 첫 업무"
+        },
+        "result": "교육 없이 손대지 않고 질문을 모아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_electrician_label_match",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "electrician"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "도면의 회로 표기와 현장 표시가 일치하는지 살펴요.",
+    "choices": [
+      {
+        "label": "불일치를 기록해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "dexterity": 2,
+          "semi": "전기공 · 일상 업무"
+        },
+        "result": "확인 전에는 임의로 연결하지 않아요."
+      },
+      {
+        "label": "담당자와 교차 확인해요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "전기공 · 일상 업무"
+        },
+        "result": "낯익은 표기도 다시 읽었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_electrician_completion_note",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "electrician"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "마친 작업의 표시가 다음 점검표에 빠졌어요.",
+    "choices": [
+      {
+        "label": "완료 범위를 정리해요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "dexterity": 2
+        },
+        "result": "다음 사람이 확인할 근거가 남아요."
+      },
+      {
+        "label": "다음 조에 직접 인계해요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "서류와 말이 같은 범위를 가리켜요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_electrician_lighting_request",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "electrician"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "원청 담당자가 작업 구역 변경을 요청했어요.",
+    "choices": [
+      {
+        "label": "허가 범위를 다시 확인해요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "전기공 · 함께한 사람"
+        },
+        "result": "급한 요청에도 확인 순서를 지켰어요."
+      },
+      {
+        "label": "관리자와 일정을 맞춰요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "전기공 · 함께한 사람"
+        },
+        "result": "할 일과 기다릴 일을 함께 구분해요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_electrician_boom_power",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "electrician",
+      "market": {
+        "equipment": [
+          1,
+          2
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "장비 투자가 늘며 팹 공사 배정도 촘촘해졌어요.",
+    "choices": [
+      {
+        "label": "작업 가능 범위를 알려요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "전기공 · 시황 속 하루"
+        },
+        "result": "모든 요청에 바로 된다고 하지 않았어요."
+      },
+      {
+        "label": "팀 지원을 요청해요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "전기공 · 시황 속 하루"
+        },
+        "result": "서두름을 혼자 떠안지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_electrician_switch_habit",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "electrician"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "집 조명 스위치를 누르다 머릿속으로 도면을 그리고 있어요.",
+    "choices": [
+      {
+        "label": "퇴근했다고 말해 봐요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "스위치는 켜고 머릿속 작업은 꺼요."
+      },
+      {
+        "label": "가족과 저녁을 준비해요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "오늘 집에서는 밥 짓는 일을 나눠요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_duct_worker_first_section",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "duct_worker"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "원청 {company} 팹 공사에 처음 왔어요. 덕트 구간 표시가 끝없이 이어져요.",
+    "choices": [
+      {
+        "label": "구간과 도면을 맞춰요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "dexterity": 2,
+          "semi": "덕트공 · 첫 업무"
+        },
+        "result": "큰 통로도 작은 확인에서 시작해요."
+      },
+      {
+        "label": "팀과 동선을 익혀요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "덕트공 · 첫 업무"
+        },
+        "result": "재료보다 먼저 사람이 다닐 길을 봐요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_duct_worker_section_size",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "duct_worker"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "준비한 부재와 도면의 구간 표시를 비교해요.",
+    "choices": [
+      {
+        "label": "규격을 다시 확인해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "dexterity": 2,
+          "semi": "덕트공 · 일상 업무"
+        },
+        "result": "비슷해 보여도 확인 없이 맞추지 않아요."
+      },
+      {
+        "label": "반장에게 대조를 부탁해요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "덕트공 · 일상 업무"
+        },
+        "result": "낯선 표시를 혼자 짐작하지 않았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_duct_worker_coordination",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "duct_worker"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "설치 예정 위치가 다른 공종의 준비 구역과 겹쳐요.",
+    "choices": [
+      {
+        "label": "조정 내용을 요청해요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "dexterity": 2
+        },
+        "result": "현장에서 임의로 위치를 옮기지 않아요."
+      },
+      {
+        "label": "다른 준비부터 나눠요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "기다림을 급한 작업으로 메우지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_duct_worker_new_partner",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "duct_worker"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "새 동료가 원청의 구역 이름을 헷갈려 해요.",
+    "choices": [
+      {
+        "label": "도면에 함께 표시해요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "덕트공 · 함께한 사람"
+        },
+        "result": "말로만 설명할 때보다 빨리 맞췄어요."
+      },
+      {
+        "label": "안내 담당자를 연결해요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "덕트공 · 함께한 사람"
+        },
+        "result": "내가 모르는 구역은 같이 확인해요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_duct_worker_boom_duct",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "duct_worker",
+      "market": {
+        "equipment": [
+          1,
+          2
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "장비 투자 호황으로 새 팹 공사 문의가 늘어요.",
+    "choices": [
+      {
+        "label": "팀 일정과 물량을 맞춰요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "덕트공 · 시황 속 하루"
+        },
+        "result": "잡을 수 있는 일과 할 수 있는 일을 구분해요."
+      },
+      {
+        "label": "휴식 포함 배정을 요청해요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "덕트공 · 시황 속 하루"
+        },
+        "result": "몸이 버티는 범위도 일정에 넣어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_duct_worker_ceiling_cafe",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "duct_worker"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "카페에 앉자마자 천장의 덕트를 올려다봤어요.",
+    "choices": [
+      {
+        "label": "이제 메뉴판을 봐요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "오늘은 천장 대신 커피를 골라요."
+      },
+      {
+        "label": "동료에게 사진 없이 얘기해요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "현장 사진은 남기지 않고 버릇만 웃어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_scaffolder_first_access",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "scaffolder"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "원청 {company} 현장 첫날이에요. 비계 작업 교육과 출입 안내부터 받아요.",
+    "choices": [
+      {
+        "label": "정해진 교육을 따라요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "dexterity": 2,
+          "semi": "비계공 · 첫 업무"
+        },
+        "result": "높이보다 먼저 확인할 기준을 배워요."
+      },
+      {
+        "label": "팀과 역할을 나눠요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "비계공 · 첫 업무"
+        },
+        "result": "처음부터 혼자 할 일을 늘리지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_scaffolder_check_handover",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "scaffolder"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "인계받을 구역의 점검 기록을 보고 있어요.",
+    "choices": [
+      {
+        "label": "사용 범위를 확인해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "dexterity": 2,
+          "semi": "비계공 · 일상 업무"
+        },
+        "result": "확인 전 구역을 멋대로 쓰지 않아요."
+      },
+      {
+        "label": "담당자와 함께 살펴요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "비계공 · 일상 업무"
+        },
+        "result": "기록의 표시가 무엇인지 물었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_scaffolder_material_sort",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "scaffolder"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "자재 반입 동선과 다른 팀의 이동 시간이 겹쳐요.",
+    "choices": [
+      {
+        "label": "이동 계획을 맞춰요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "dexterity": 2
+        },
+        "result": "사람이 지나갈 길을 먼저 비워 둬요."
+      },
+      {
+        "label": "관리자에게 조정을 부탁해요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "급한 자재를 혼자 서둘러 옮기지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_scaffolder_request_change",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "scaffolder"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "원청의 다음 공종이 작업 구역 변경을 요청해요.",
+    "choices": [
+      {
+        "label": "승인된 변경을 확인해요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "비계공 · 함께한 사람"
+        },
+        "result": "요청만 듣고 구조를 바꾸지 않았어요."
+      },
+      {
+        "label": "팀 회의를 잡아요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "비계공 · 함께한 사람"
+        },
+        "result": "여러 공종이 같은 범위를 보게 해요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_scaffolder_slow_site",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "scaffolder",
+      "market": {
+        "equipment": [
+          -2,
+          -1
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "장비 투자가 주춤하며 팹 현장 일정도 바뀌었어요.",
+    "choices": [
+      {
+        "label": "확정 배정을 확인해요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "비계공 · 시황 속 하루"
+        },
+        "result": "소문이 아닌 일정으로 다음 일을 준비해요."
+      },
+      {
+        "label": "동료와 교육 시간을 잡아요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "비계공 · 시황 속 하루"
+        },
+        "result": "비는 시간을 혼자 불안해하지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_scaffolder_stair_day",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "scaffolder"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "쉬는 날 산책길 계단 앞에서 잠깐 멈췄어요. 오늘은 평지가 좋아요.",
+    "choices": [
+      {
+        "label": "평지 길을 골라요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "잘 쉬는 것도 다음 일을 위한 선택이에요."
+      },
+      {
+        "label": "친구와 천천히 걸어요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "걷는 속도를 오늘 기분에 맞췄어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_crane_operator_first_signal",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "crane_operator"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "원청 {company} 팹 공사 첫날이에요. 신호 담당자와 약속부터 맞춰요.",
+    "choices": [
+      {
+        "label": "신호 체계를 확인해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "dexterity": 2,
+          "semi": "타워크레인 기사 · 첫 업무"
+        },
+        "result": "익숙한 손짓도 현장 기준으로 다시 배워요."
+      },
+      {
+        "label": "관리자와 역할을 정해요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "타워크레인 기사 · 첫 업무"
+        },
+        "result": "누구의 신호를 받을지 분명히 했어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_crane_operator_lift_plan",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "crane_operator"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "반입할 자재의 계획서와 현장 배치가 달라 보여요.",
+    "choices": [
+      {
+        "label": "인양 전 확인을 요청해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "dexterity": 2,
+          "semi": "타워크레인 기사 · 일상 업무"
+        },
+        "result": "계획이 맞을 때까지 시작을 기다려요."
+      },
+      {
+        "label": "담당자를 함께 불러요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "타워크레인 기사 · 일상 업무"
+        },
+        "result": "높은 자리의 판단을 혼자 떠안지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_crane_operator_weather_wait",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "crane_operator"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "날씨가 바뀌어 작업 가능 여부를 다시 확인해요.",
+    "choices": [
+      {
+        "label": "중지 기준을 따라요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "dexterity": 2
+        },
+        "result": "기다리는 시간도 작업 판단의 일부예요."
+      },
+      {
+        "label": "팀과 다음 순서를 정해요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "무리한 만회를 약속하지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_crane_operator_signal_pause",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "crane_operator"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "신호가 분명하게 전달되지 않았어요. 원청의 일정은 빠듯해요.",
+    "choices": [
+      {
+        "label": "멈추고 다시 확인해요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "타워크레인 기사 · 함께한 사람"
+        },
+        "result": "바쁜 일정도 분명한 신호를 대신하지 못해요."
+      },
+      {
+        "label": "담당자와 소통 경로를 맞춰요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "타워크레인 기사 · 함께한 사람"
+        },
+        "result": "누락된 연락 구간을 함께 찾았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_crane_operator_boom_lifts",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "crane_operator",
+      "market": {
+        "equipment": [
+          1,
+          2
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "장비 투자 호황으로 팹 공사 반입 일정이 늘었어요.",
+    "choices": [
+      {
+        "label": "가능한 횟수를 조율해요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "타워크레인 기사 · 시황 속 하루"
+        },
+        "result": "일정에 점검과 휴식도 함께 넣어요."
+      },
+      {
+        "label": "관리자에게 배정을 요청해요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "타워크레인 기사 · 시황 속 하루"
+        },
+        "result": "한 번에 다 하겠다는 약속은 아꼈어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_crane_operator_small_package",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "crane_operator"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "집에 온 작은 택배를 들며 무게부터 가늠하고 있어요.",
+    "choices": [
+      {
+        "label": "택배를 열며 쉬어요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "오늘 상자는 승인된 계획 없이도 책상에 놓여요."
+      },
+      {
+        "label": "가족에게 먼저 건네요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "내 물건이 아니라 간식이었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_site_manager_first_schedule",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "site_manager"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "원청 {company} 팹 공사 관리 첫날이에요. 공종별 일정표를 한데 모아요.",
+    "choices": [
+      {
+        "label": "겹치는 구역을 찾아요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "dexterity": 2,
+          "semi": "현장 공사 관리자 · 첫 업무"
+        },
+        "result": "빈칸처럼 보인 날에도 준비 작업이 있어요."
+      },
+      {
+        "label": "각 반장과 동선을 봐요",
+        "effects": {
+          "sociability": 2,
+          "mental": 1,
+          "semi": "현장 공사 관리자 · 첫 업무"
+        },
+        "result": "일정표에 사람 목소리를 보탰어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_site_manager_revision_board",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "site_manager"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "어제 도면과 오늘 도면의 변경 범위를 확인해요.",
+    "choices": [
+      {
+        "label": "변경본을 구분해 배포해요",
+        "effects": {
+          "trait.diligence": 5,
+          "reputation": 1,
+          "dexterity": 2,
+          "semi": "현장 공사 관리자 · 일상 업무"
+        },
+        "result": "서로 다른 도면으로 시작하지 않게 했어요."
+      },
+      {
+        "label": "팀별 수신을 확인해요",
+        "effects": {
+          "sociability": 1,
+          "mental": 1,
+          "semi": "현장 공사 관리자 · 일상 업무"
+        },
+        "result": "보냈다는 말 뒤에 받았는지도 봐요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_site_manager_material_arrival",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "site_manager"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "반입 일정이 바뀌었는데 다음 공종은 기존 날짜를 알아요.",
+    "choices": [
+      {
+        "label": "연결 일정을 다시 잡아요",
+        "effects": {
+          "reputation": 1,
+          "mental": -1,
+          "dexterity": 2
+        },
+        "result": "하루의 변경이 닿는 구간을 함께 봐요."
+      },
+      {
+        "label": "담당자들을 연결해요",
+        "effects": {
+          "sociability": 2,
+          "trait.social": 5
+        },
+        "result": "전화를 혼자 전달하는 대신 같은 설명을 해요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_site_manager_owner_meeting",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "site_manager"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "원청은 빨리, 각 공종은 확인 시간을 원해요.",
+    "choices": [
+      {
+        "label": "제약과 대안을 같이 적어요",
+        "effects": {
+          "sociability": 2,
+          "friends": 1,
+          "semi": "현장 공사 관리자 · 함께한 사람"
+        },
+        "result": "막연한 약속 대신 가능한 순서를 냈어요."
+      },
+      {
+        "label": "현장 의견을 먼저 모아요",
+        "effects": {
+          "mental": 2,
+          "trait.conform": -5,
+          "semi": "현장 공사 관리자 · 함께한 사람"
+        },
+        "result": "표 밖의 사정을 회의 안으로 가져왔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_site_manager_slow_replan",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "site_manager",
+      "market": {
+        "equipment": [
+          -2,
+          -1
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "장비 업계가 불황이에요. 공사 단계별 일정 조정 요청이 왔어요.",
+    "choices": [
+      {
+        "label": "확정과 미정을 나눠요",
+        "effects": {
+          "reputation": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "현장 공사 관리자 · 시황 속 하루"
+        },
+        "result": "미정인 날짜를 확정처럼 전달하지 않아요."
+      },
+      {
+        "label": "작업팀과 대응을 상의해요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5,
+          "semi": "현장 공사 관리자 · 시황 속 하루"
+        },
+        "result": "일정 변경의 부담을 혼자 넘기지 않아요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_site_manager_family_calendar",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "site_manager"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "가족 모임 날짜를 잡는데 공종별 일정표처럼 칸을 그리고 있어요.",
+    "choices": [
+      {
+        "label": "가족 의견부터 들어요",
+        "effects": {
+          "mental": 2,
+          "trait.work_life": -5
+        },
+        "result": "이번 일정에는 웃음도 여유도 남겼어요."
+      },
+      {
+        "label": "가능한 날만 말해요",
+        "effects": {
+          "happiness": 3,
+          "trait.social": 5
+        },
+        "result": "빈칸을 모두 채우지 않아도 모일 수 있어요."
+      }
+    ],
+    "default": 0
+  }
+]
