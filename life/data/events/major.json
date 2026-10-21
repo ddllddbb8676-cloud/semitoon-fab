@@ -1,0 +1,424 @@
+[
+  {
+    "id": "hs_track_early",
+    "big": true, "forced": true, "trigger": "hs_entry", "priority": 6, "tags": ["study"],
+    "age": [14, 16], "year": [1952, 1976],
+    "when": {}, "market": null, "weight": 10, "once": true,
+    "text": "중학교 졸업이 코앞이에요. 동네 친구 절반은 벌써 일자리를 알아보고 있어요. 나는 어떻게 할까요?",
+    "choices": [
+      { "label": "인문계 고등학교에 간다", "effects": { "do": "school:hs_general", "flag": "hs_general", "intelligence": 2, "trait.conform": 3 }, "result": "새 교복을 입고 사진관에 갔어요. 대학이라는 말이 처음으로 가깝게 들려요." },
+      { "label": "공업고등학교에 간다", "effects": { "do": "school:hs_vocational", "flag": "hs_vocational", "dexterity": 3, "trait.diligence": 3 }, "result": "실습실 선반 앞에 처음 섰어요. 쇳가루 냄새가 싫지 않아요." },
+      { "label": "바로 일을 시작한다", "effects": { "do": ["school:none", "job:search"], "flag": "no_highschool", "health": 2, "trait.thrift": 5, "happiness": -3 }, "result": "첫 월급 봉투를 어머니께 드렸어요. 어머니는 한참 아무 말씀이 없으셨어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "hs_track_industrial",
+    "big": true, "forced": true, "trigger": "hs_entry", "priority": 6, "tags": ["study", "work"],
+    "age": [14, 16], "year": [1977, 1994],
+    "when": {}, "market": null, "weight": 10, "once": true,
+    "text": "중학교 졸업을 앞두고 진학 원서를 받았어요. 교무실 게시판에는 '낮에는 전자 회사, 밤에는 고등학교'라는 모집 공고도 붙어 있어요.",
+    "choices": [
+      { "label": "인문계 고등학교에 간다", "effects": { "do": "school:hs_general", "flag": "hs_general", "intelligence": 2, "trait.conform": 3 }, "result": "입학식 날 운동장이 생각보다 넓었어요. 3년 뒤 내 모습이 잘 그려지지 않아요." },
+      { "label": "공업고등학교에 간다", "effects": { "do": "school:hs_vocational", "flag": "hs_vocational", "dexterity": 3, "trait.diligence": 3 }, "result": "전자과 실습실에서 납땜 인두를 처음 잡았어요. 연기 냄새가 금방 익숙해져요." },
+      { "label": "전자 회사에 다니며 부설 고교에 간다", "effects": { "do": ["school:hs_factory", "job:hire:assembler"], "flag": "hs_factory_school", "health": -2, "trait.diligence": 5, "trait.thrift": 5, "semi": { "text": "열여섯 살, 반도체 조립 라인 첫 출근", "kind": "core" } }, "result": "기숙사 이층 침대가 내 자리예요. 퇴근하면 교복으로 갈아입고 교실로 뛰어가요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "hs_track_modern",
+    "big": true, "forced": true, "trigger": "hs_entry", "priority": 6, "tags": ["study"],
+    "age": [14, 16], "year": [1995, 2009],
+    "when": {}, "market": null, "weight": 10, "once": true,
+    "text": "중3 겨울, 고입 원서를 써야 해요. 담임 선생님이 성적표를 보며 한참 고민하세요.",
+    "choices": [
+      { "label": "인문계 고등학교에 간다", "effects": { "do": "school:hs_general", "flag": "hs_general", "intelligence": 2, "trait.conform": 3 }, "result": "야간 자율학습 시간표를 받았어요. 밤 10시가 하교 시간이래요." },
+      { "label": "실업계 고등학교에 간다", "effects": { "do": "school:hs_vocational", "flag": "hs_vocational", "dexterity": 3, "trait.risk": 3 }, "result": "전자과에 들어갔어요. 회로 기판을 들여다보는 시간이 즐거워요." },
+      { "label": "과학고에 도전한다", "when": { "stat_min": { "intelligence": 75 } }, "check": { "stat": "intelligence", "dc": 85 }, "effects": { "do": "school:hs_science", "flag": "hs_science", "intelligence": 3, "trait.diligence": 5 }, "result": "합격자 명단에 내 이름이 있어요. 기숙사 짐을 싸요.", "fail": { "effects": { "do": "school:hs_general", "flag": ["hs_general", "hs_science_failed"], "mental": -3 }, "result": "아쉽게 떨어졌어요. 동네 인문계 고등학교에 가요." } }
+    ],
+    "default": 0
+  },
+  {
+    "id": "hs_track_meister",
+    "big": true, "forced": true, "trigger": "hs_entry", "priority": 6, "tags": ["study"],
+    "age": [14, 16], "year": [2010, null],
+    "when": {}, "market": null, "weight": 10, "once": true,
+    "text": "중3 진로 시간이에요. 반도체 마이스터고 홍보 영상에서 방진복 입은 선배가 손을 흔들어요. \"졸업하면 바로 라인으로 가요.\"",
+    "choices": [
+      { "label": "인문계 고등학교에 간다", "effects": { "do": "school:hs_general", "flag": "hs_general", "intelligence": 2, "trait.conform": 3 }, "result": "학원 시간표가 학교 시간표보다 빽빽해졌어요." },
+      { "label": "특성화고에 간다", "effects": { "do": "school:hs_vocational", "flag": "hs_vocational", "dexterity": 3, "trait.risk": 3 }, "result": "전자과 실습실에서 멀티미터를 처음 잡았어요. 숫자가 바뀌는 게 재밌어요." },
+      { "label": "반도체 마이스터고에 지원한다", "check": { "stat": "dexterity", "dc": 50 }, "effects": { "do": "school:hs_meister", "flag": "hs_meister", "dexterity": 3, "trait.diligence": 3, "semi": { "text": "반도체 마이스터고 입학", "kind": "school" } }, "result": "실습실에서 방진복을 처음 입어 봤어요. 거울 속 내가 좀 멋있어요.", "fail": { "effects": { "do": "school:hs_vocational", "flag": ["hs_vocational", "hs_meister_failed"], "mental": -2 }, "result": "아쉽게 떨어졌어요. 근처 특성화고 전자과에 가요." } },
+      { "label": "과학고·영재고에 도전한다", "when": { "stat_min": { "intelligence": 75 } }, "check": { "stat": "intelligence", "dc": 85 }, "effects": { "do": "school:hs_science", "flag": "hs_science", "intelligence": 3, "trait.diligence": 5 }, "result": "합격 통보를 받았어요. 기숙사 짐을 싸면서 조금 떨려요.", "fail": { "effects": { "do": "school:hs_general", "flag": ["hs_general", "hs_science_failed"], "mental": -3 }, "result": "아쉽게 떨어졌어요. 동네 인문계 고등학교에 가요." } }
+    ],
+    "default": 0
+  },
+  {
+    "id": "college_choice",
+    "big": true, "forced": true, "trigger": "hs_graduate", "priority": 6, "tags": ["study"],
+    "age": [17, 22], "year": [1955, null],
+    "when": {}, "market": null, "weight": 10, "once": false,
+    "text": "고등학교 졸업이 다가와요. 원서 마감이 이번 주예요. 책상 위에 대학 원서와 취업 공고가 나란히 놓여 있어요.",
+    "choices": [
+      { "label": "4년제 대학에 지원한다", "when": { "not_flag": "is_rejected" }, "effects": { "do": "school:college", "goto": "major_choice", "trait.risk": 2 }, "result": "원서를 냈어요. 발표 날까지 잠이 잘 안 와요." },
+      { "label": "전문대에 간다", "effects": { "do": "school:junior_college", "flag": "junior_college", "goto": "major_choice", "trait.risk": -2 }, "result": "2년 뒤면 바로 일할 수 있대요. 실습 시간이 많아서 마음에 들어요." },
+      { "label": "바로 취업한다", "effects": { "do": "job:search", "flag": "hs_to_work", "trait.thrift": 3 }, "result": "졸업장을 받기도 전에 이력서부터 썼어요." },
+      { "label": "재수한다", "effects": { "do": ["school:retry", "again:1"], "flag": "retry_exam", "mental": -5, "trait.diligence": 5 }, "result": "독서실 책상에 '1년만 더'라고 써 붙였어요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "major_choice",
+    "big": true, "forced": false, "trigger": "goto", "priority": 6, "tags": ["study"],
+    "age": [17, 35], "year": [1955, null],
+    "when": { "flag_any": ["is_college", "is_jc"] }, "market": null, "weight": 0, "once": false,
+    "text": "합격 소식이 왔어요! 이제 무엇을 공부할지 정할 차례예요.",
+    "choices": [
+      { "label": "전자·반도체 계열", "effects": { "do": "major:semi", "flag": "major_semi", "intelligence": 1, "semi": { "text": "반도체를 전공으로 골랐어요", "kind": "school" } }, "result": "첫 수업 칠판에 'p-n 접합'이라고 적혀 있어요. 낯선데 이상하게 끌려요." },
+      { "label": "재료·화학 계열", "effects": { "do": "major:materials", "flag": "major_materials", "intelligence": 1 }, "result": "실험실 후드 앞에서 보안경을 썼어요. 주기율표를 다시 외워요." },
+      { "label": "기계·컴퓨터 등 다른 공대", "effects": { "do": "major:other_eng", "flag": "major_other_eng", "dexterity": 1 }, "result": "공대 건물은 밤에도 불이 켜져 있어요. 나도 곧 그 불빛 중 하나가 될 것 같아요." },
+      { "label": "인문·사회·상경 계열", "effects": { "do": "major:nonsci", "flag": "major_nonsci", "sociability": 2 }, "result": "동아리 방이 시끌벅적해요. 공대 친구들이 부러워하는 시간표예요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "grad_school",
+    "big": true, "forced": true, "trigger": "college_senior", "priority": 6, "tags": ["study"],
+    "age": [20, 32], "year": [1960, null],
+    "when": { "flag": "is_college" }, "market": null, "weight": 10, "once": true,
+    "text": "졸업 학기예요. 지도교수님이 커피를 건네며 물어보세요. \"연구실에 남아 볼 생각 없어요?\"",
+    "choices": [
+      { "label": "석사까지 한다", "effects": { "do": "school:master", "flag": "grad_master", "intelligence": 2, "trait.diligence": 3 }, "result": "연구실 책상 한 칸이 생겼어요. 밤샘 실험이 일상이 될 것 같아요." },
+      { "label": "박사까지 간다", "when": { "stat_min": { "intelligence": 70 } }, "effects": { "do": "school:phd", "flag": ["grad_master", "grad_phd"], "intelligence": 3, "trait.risk": 5, "happiness": -2 }, "result": "교수님이 활짝 웃으셨어요. 앞으로 몇 년은 이 연구실이 집이에요." },
+      { "label": "취업한다", "effects": { "do": "job:search", "trait.thrift": 2 }, "result": "자기소개서를 몇 번이나 고쳐 썼어요. 첫 문장이 제일 어려워요." }
+    ],
+    "default": 2
+  },
+  {
+    "id": "military_service",
+    "big": true, "forced": true, "trigger": "military_due", "priority": 5, "tags": ["work"],
+    "age": [18, 30], "year": [1953, null],
+    "when": { "gender": "m", "not_flag": ["grad_master", "grad_phd"] }, "market": null, "weight": 10, "once": false,
+    "text": "병무청에서 입영 통지서가 왔어요. 봉투가 생각보다 얇아요.",
+    "choices": [
+      { "label": "현역으로 입대한다", "effects": { "do": "military:army", "flag": "served_army", "health": 3, "trait.conform": 5 }, "result": "머리를 짧게 자르고 훈련소 정문을 지났어요. 부모님 얼굴이 자꾸 생각나요." },
+      { "label": "졸업 후 장교로 간다", "when": { "flag": "is_college" }, "effects": { "do": "military:officer", "flag": "served_officer", "trait.diligence": 3, "trait.conform": 3 }, "result": "학군단 지원서를 냈어요. 졸업하면 소위 계급장을 달아요." },
+      { "label": "산업기능요원으로 복무한다", "when": { "year": [1973, null], "flag_any": ["hs_vocational", "hs_meister", "hs_factory_school", "junior_college"] }, "effects": { "do": "military:industrial", "flag": "served_industrial", "dexterity": 2, "semi": { "text": "산업기능요원으로 {company} 라인에 섰어요", "kind": "core" } }, "result": "군복 대신 작업복을 입어요. 출근 도장이 곧 복무 기록이에요." },
+      { "label": "졸업 후로 미룬다", "when": { "flag_any": ["is_college", "is_jc"] }, "effects": { "do": "military:defer", "flag": "military_deferred" }, "result": "입영 연기 서류를 냈어요. 숙제를 미룬 기분이에요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "military_grad",
+    "big": true, "forced": true, "trigger": "military_due", "priority": 5, "tags": ["work"],
+    "age": [22, 32], "year": [1960, null],
+    "when": { "gender": "m", "flag_any": ["grad_master", "grad_phd"] }, "market": null, "weight": 10, "once": true,
+    "text": "학위 논문 심사가 끝나자 병역 문제가 다시 떠올랐어요. 연구실 선배들이 저마다 다른 길을 권해요.",
+    "choices": [
+      { "label": "현역으로 입대한다", "effects": { "do": "military:army", "flag": "served_army", "health": 3, "trait.conform": 5 }, "result": "연구실 열쇠를 후배에게 맡겼어요. 실험 노트는 2년 동안 쉬어요." },
+      { "label": "장교로 간다", "effects": { "do": "military:officer", "flag": "served_officer", "trait.diligence": 3 }, "result": "장교 후보생 지원서를 냈어요. 논문보다 체력 검정이 더 걱정이에요." },
+      { "label": "전문연구요원에 지원한다", "when": { "year": [1973, null], "stat_min": { "intelligence": 65 } }, "check": { "stat": "intelligence", "dc": 70 }, "effects": { "do": "military:research", "flag": "served_research", "intelligence": 2, "semi": { "text": "전문연구요원으로 {company} 연구소에 출근했어요", "kind": "core" } }, "result": "연구소 출입증이 곧 복무 명찰이에요. 첫 과제는 남이 쓰다 만 실험 보고서예요.", "fail": { "effects": { "do": "military:army", "flag": ["served_army", "research_corps_failed"], "mental": -3 }, "result": "자리가 모자랐대요. 결국 훈련소 버스에 올랐어요." } }
+    ],
+    "default": 0
+  },
+  {
+    "id": "first_job",
+    "big": true, "forced": true, "trigger": "job_search", "priority": 6, "tags": ["work"],
+    "age": [14, 50], "year": [1952, null],
+    "when": { "not_flag": "had_job" }, "market": null, "weight": 10, "once": false,
+    "text": "합격 연락이 왔어요. 그것도 세 군데서요! 어디로 첫 출근을 할까요?",
+    "choices": [
+      { "label": "{offer1}", "effects": { "do": "job:offer1", "trait.work_life": 3 }, "result": "{offer1}. 첫 출근 전날 밤, 알람을 세 번 확인했어요." },
+      { "label": "{offer2}", "effects": { "do": "job:offer2", "friends": 2 }, "result": "{offer2}. 집에서 가까워서 아침잠 10분을 벌었어요." },
+      { "label": "{offer3}", "effects": { "do": "job:offer3", "trait.risk": 3 }, "result": "{offer3}. 남들과 조금 다른 길이지만 마음이 편해요." },
+      { "label": "1년 더 준비한다", "effects": { "do": "job:wait", "mental": -3, "trait.risk": -2 }, "result": "자격증 책을 한 권 더 샀어요. 내년엔 더 좋은 데 갈 거예요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "early_assembly_plant",
+    "big": true, "forced": false, "priority": 5, "tags": ["work", "risk"],
+    "age": [16, 30], "year": [1968, 1985],
+    "when": { "semi_max": 0, "not_flag": ["is_student", "is_military"] }, "market": null, "weight": 4, "once": true,
+    "text": "외국 회사가 세운 반도체 조립 공장에서 사람을 뽑는대요. 기숙사도 주고, 월급도 논일보다 낫대요. 동네 언니 오빠들이 벌써 버스를 탔어요.",
+    "choices": [
+      { "label": "공장에 지원한다", "effects": { "do": "job:hire:assembler", "flag": "early_assembly", "trait.risk": 3, "semi": { "text": "{company} 조립 공장에서 처음 칩을 만졌어요", "kind": "core" } }, "result": "현미경 아래에서 머리카락보다 가는 금선을 이어요. 눈이 아프지만 신기해요." },
+      { "label": "집안일을 돕는다", "effects": { "trait.conform": 5, "friends": 2, "happiness": -2 }, "result": "논두렁에서 공장 통근버스가 지나가는 걸 봤어요." },
+      { "label": "서울로 올라간다", "effects": { "do": ["move:seoul", "job:search"], "trait.risk": 6 }, "result": "보따리 하나 들고 기차에 탔어요. 창밖으로 고향이 점점 작아져요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "scout_offer",
+    "big": true, "forced": true, "trigger": "scout", "priority": 3, "tags": ["work", "risk"],
+    "age": [24, 62], "year": [1970, null],
+    "when": { "flag": "is_employed" }, "market": null, "weight": 5, "once": false,
+    "text": "{rival}에서 연락이 왔어요. 지금보다 연봉을 꽤 더 주겠대요. 대신 근무지는 {region}이에요.",
+    "choices": [
+      { "label": "옮긴다", "effects": { "do": "job:rival", "flag": "moved_by_scout", "trait.risk": 5, "trait.conform": -3 }, "result": "송별회에서 팀장님이 '배신자'라며 웃으셨어요. 반쯤은 진심 같았어요." },
+      { "label": "남는다", "effects": { "flag": "declined_scout", "reputation": 1, "trait.conform": 3 }, "result": "제안서를 서랍에 넣었어요. 가끔 꺼내 보게 될 것 같아요." },
+      { "label": "제안서로 연봉 협상을 한다", "check": { "stat": "sociability", "dc": 60 }, "effects": { "do": "salary_mod:0.1", "flag": "negotiated_raise", "reputation": 2, "trait.risk": 3 }, "result": "팀장님이 인사팀과 통화하더니 연봉을 맞춰 줬어요.", "fail": { "effects": { "reputation": -3, "mental": -3 }, "result": "협상 얘기가 먼저 소문이 났어요. 팀 분위기가 묘해졌어요." } }
+    ],
+    "default": 1
+  },
+  {
+    "id": "overseas_post",
+    "big": true, "forced": false, "priority": 3, "tags": ["work", "family", "risk"],
+    "age": [28, 50], "year": [1985, null],
+    "when": { "job_group": ["현장", "사무"], "employment": "regular", "career_years_min": 4 }, "market": null, "weight": 2, "once": true,
+    "text": "회사에서 해외 공장 파견자를 찾아요. 3년 근무, 가족 동반 가능이래요. 팀장님이 내 이름을 먼저 꺼냈대요.",
+    "choices": [
+      { "label": "간다", "effects": { "do": "move:overseas:3", "flag": "overseas_post", "reputation": 5, "friends": -5, "trait.risk": 5, "semi": { "text": "해외 공장에서 라인을 세웠어요", "kind": "core" } }, "result": "비행기를 두 번 갈아탔어요. 현지 직원이 서툰 한국어로 인사해요." },
+      { "label": "가족과 남는다", "effects": { "flag": "declined_overseas", "happiness": 2, "trait.work_life": -5 }, "result": "저녁 식탁에서 아무도 아쉬워하지 않았어요. 그거면 됐어요." },
+      { "label": "혼자 다녀온다", "when": { "has_partner": true }, "effects": { "do": "move:overseas:3", "flag": ["overseas_post", "overseas_alone"], "reputation": 5, "happiness": -5, "trait.work_life": 8, "semi": { "text": "해외 공장에서 라인을 세웠어요", "kind": "core" } }, "result": "국제전화 너머 가족 목소리가 매번 조금씩 낯설어요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "marriage",
+    "big": true, "forced": true, "trigger": "proposal", "priority": 4, "tags": ["romance", "family"],
+    "age": [18, 80], "year": [1955, null],
+    "when": { "has_partner": true, "not_flag": "is_married" }, "market": null, "weight": 5, "once": false,
+    "text": "{partner}와 만난 지 꽤 됐어요. 오늘따라 둘 다 반지 가게 앞에서 걸음이 느려져요.",
+    "choices": [
+      { "label": "프러포즈한다", "effects": { "do": "partner:marry", "flag": "married_once", "happiness": 10, "trait.work_life": -5 }, "result": "{partner}가 울다가 웃었어요. 대답은 '응'이었어요." },
+      { "label": "아직은 이르다", "effects": { "do": ["partner:wait", "again:2"], "happiness": -2 }, "result": "아무 말 없이 가게 앞을 지나쳤어요. {partner}도 아무 말 하지 않았어요." },
+      { "label": "헤어진다", "effects": { "do": "partner:breakup", "happiness": -8, "trait.social": -3 }, "result": "마지막 인사는 생각보다 짧았어요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "childbirth",
+    "big": true, "forced": true, "trigger": "baby_chance", "priority": 4, "tags": ["family"],
+    "age": [18, 60], "year": [1955, null],
+    "when": { "flag": "is_married", "has_children": false }, "market": null, "weight": 5, "once": false,
+    "text": "장 보고 오는 길, 아기 옷 가게 앞에서 둘이 한참 서 있었어요. 집에 와서 {partner}가 조심스럽게 말을 꺼내요.",
+    "choices": [
+      { "label": "아이를 갖자고 한다", "effects": { "do": "child:add", "flag": "parent", "happiness": 8, "trait.work_life": -8 }, "result": "우는 소리가 이렇게 반가울 줄 몰랐어요. {child}가 태어났어요." },
+      { "label": "조금 더 미룬다", "effects": { "do": "again:2", "trait.risk": -2 }, "result": "'내년에 다시 얘기하자.' 둘 다 고개를 끄덕였어요." },
+      { "label": "둘이서 살기로 한다", "effects": { "flag": "childfree", "happiness": 2, "trait.social": -2 }, "result": "둘만의 여행 계획을 짜기 시작했어요. 이것도 우리 가족의 모양이에요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "childbirth_more",
+    "big": true, "forced": true, "trigger": "baby_chance", "priority": 4, "tags": ["family"],
+    "age": [19, 60], "year": [1955, null],
+    "when": { "flag": "is_married", "has_children": true, "not_flag": ["family_complete", "childfree"] }, "market": null, "weight": 5, "once": false,
+    "text": "{child}가 동생이 있으면 좋겠대요. 통장 잔고와 아이 웃음 사이에서 고민이 길어져요.",
+    "choices": [
+      { "label": "한 명 더 낳는다", "effects": { "do": "child:add", "happiness": 6, "trait.work_life": -5 }, "result": "집이 두 배로 시끄러워졌어요. 행복도 그만큼이에요. {child}가 태어났어요." },
+      { "label": "지금이 딱 좋다", "effects": { "flag": "family_complete", "trait.thrift": 3 }, "result": "가족사진 액자를 새로 걸었어요. 자리가 딱 맞아요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "house_buy",
+    "big": true, "forced": true, "trigger": "house_chance", "priority": 4, "tags": ["money", "risk"],
+    "age": [25, 80], "year": [1960, null],
+    "when": { "has_house": false }, "market": null, "weight": 5, "once": false,
+    "text": "전세 만기가 석 달 남았어요. 부동산 사장님이 '지금이 제일 쌀 때'라며 매물 사진을 보여 줘요.",
+    "choices": [
+      { "label": "대출 끼고 산다", "effects": { "do": "house:buy", "flag": "bought_house", "happiness": 5, "trait.risk": 5 }, "result": "등기부등본에 내 이름이 찍혔어요. 은행 이름도 같이요." },
+      { "label": "작은 집을 산다", "effects": { "do": "house:buy_small", "flag": "bought_house", "happiness": 3, "trait.thrift": 5 }, "result": "거실은 좁아도 내 집이에요. 못 하나 박는 데도 설레요." },
+      { "label": "전세로 한 번 더 버틴다", "effects": { "do": "again:2", "trait.risk": -3 }, "result": "계약서에 도장을 찍었어요. 2년 뒤에는 어떨까요?" }
+    ],
+    "default": 2
+  },
+  {
+    "id": "startup_tech",
+    "big": true, "forced": false, "priority": 2, "tags": ["work", "risk"],
+    "age": [32, 55], "year": [1985, null],
+    "when": { "job_group": "현장", "career_years_min": 7, "flag": "is_employed" }, "market": null, "weight": 1.5, "once": true,
+    "text": "같이 일하던 선배가 장비 부품 회사를 차리재요. \"우리가 직접 만들면 반값에 만들 수 있어. 너만 오면 돼.\"",
+    "choices": [
+      { "label": "퇴사하고 함께 창업한다", "effects": { "do": "job:found:equipment_korea", "cash": "@salary*-1", "flag": "founded_company", "trait.risk": 15, "semi": { "text": "내 손으로 세운 장비 부품 회사", "kind": "core" } }, "result": "공단 구석 창고를 빌렸어요. 간판은 아직 종이에 프린트한 거예요." },
+      { "label": "돈만 조금 보탠다", "effects": { "cash": "@salary*-0.3", "flag": "angel_investor", "trait.risk": 5 }, "result": "주주 명부 맨 아래에 내 이름이 올라갔어요." },
+      { "label": "회사에 남는다", "effects": { "trait.risk": -5, "trait.conform": 3 }, "result": "선배가 '그럴 줄 알았다'며 웃었어요. 서운한 눈치는 아니었어요." }
+    ],
+    "default": 2
+  },
+  {
+    "id": "startup_shop",
+    "big": true, "forced": false, "priority": 2, "tags": ["work", "risk", "money"],
+    "age": [35, 62], "year": [1977, null],
+    "when": { "near_fab": true, "not_flag": "is_owner" }, "market": null, "weight": 1.5, "once": true,
+    "text": "{company} 정문 앞 치킨집이 가게를 내놨어요. 교대 시간마다 줄이 서는 집이에요. 사장님이 '권리금 싸게 줄게요'래요.",
+    "choices": [
+      { "label": "가게를 인수한다", "effects": { "do": "job:owner:chicken_shop", "cash": "@salary*-1.5", "flag": "chicken_shop_owner", "trait.risk": 10, "semi": { "text": "{company} 교대 시간에 맞춰 닭을 튀겼어요", "kind": "near" } }, "result": "새벽 6시, 야간조 퇴근 손님이 첫 주문을 했어요. \"반반이요.\"" },
+      { "label": "공장 앞 원룸을 산다", "when": { "cash_min": "@house_local*0.3" }, "effects": { "do": "job:side:landlord", "cash": "@house_local*-0.3", "flag": "landlord", "trait.risk": 5, "semi": { "text": "{company} 신입들에게 원룸을 내줬어요", "kind": "eco" } }, "result": "세입자 첫 질문은 '통근버스 정류장이 어디예요?'였어요." },
+      { "label": "하던 일을 계속한다", "effects": { "trait.risk": -5 }, "result": "치킨 냄새를 맡으며 퇴근했어요. 오늘은 사 먹기만 할래요." }
+    ],
+    "default": 2
+  },
+  {
+    "id": "invest_all_in",
+    "big": true, "forced": false, "priority": 2, "tags": ["invest", "risk", "money"],
+    "age": [25, 85], "year": [1975, null],
+    "when": { "cash_min": "@salary*1" }, "market": null, "weight": 1.5, "once": true,
+    "text": "주변 사람들이 온통 {company} 주식 얘기예요. \"이번엔 진짜래요. 다음 실적이 역대급이래요.\"",
+    "choices": [
+      { "label": "전 재산을 넣는다", "effects": { "do": "invest:company:0.9", "flag": "all_in", "trait.risk": 15, "semi": { "text": "{company} 주식에 전 재산을 걸었어요", "kind": "money" } }, "result": "매수 주문을 넣고 한동안 시세를 못 봤어요. 손이 조금 떨려요." },
+      { "label": "반만 넣는다", "effects": { "do": "invest:company:0.4", "flag": "half_in", "trait.risk": 5, "semi": { "text": "{company} 주식을 샀어요", "kind": "money" } }, "result": "반은 꿈에, 반은 현실에 걸었어요." },
+      { "label": "예금에 둔다", "effects": { "flag": "stayed_savings", "trait.risk": -5, "trait.thrift": 3 }, "result": "통장 이자는 귀엽지만 잠은 잘 와요." }
+    ],
+    "default": 2
+  },
+  {
+    "id": "imf_1997",
+    "big": true, "forced": true, "priority": 8, "tags": ["work", "money"],
+    "age": [18, 75], "year": [1997, 1998],
+    "when": { "flag": "is_employed" }, "market": null, "weight": 10, "once": true,
+    "text": "뉴스마다 'IMF'라는 말이 나와요. 회사 게시판에 명예퇴직 신청 안내가 올라왔어요. 점심시간 식당이 유난히 조용해요.",
+    "choices": [
+      { "label": "끝까지 버틴다", "check": { "stat": "mental", "dc": 55 }, "effects": { "flag": "imf_survived", "reputation": 3, "mental": -3, "trait.diligence": 5 }, "result": "월급은 깎였지만 자리는 지켰어요. 빈자리가 많아진 사무실에서 일을 두 배로 해요.", "fail": { "effects": { "do": "job:quit", "flag": "imf_laid_off", "cash": "@salary*0.5", "mental": -10, "happiness": -10 }, "result": "결국 정리 명단에 이름이 있었어요. 짐 상자가 생각보다 가벼웠어요." } },
+      { "label": "명예퇴직 신청서를 낸다", "effects": { "do": "job:quit", "flag": ["imf_laid_off", "imf_voluntary"], "cash": "@salary*1.5", "happiness": -5, "trait.risk": 8 }, "result": "위로금 봉투를 받았어요. 이 돈으로 뭘 해야 할지 아직 모르겠어요." },
+      { "label": "월급을 반납하고 남는다", "effects": { "flag": "imf_survived", "cash": "@salary*-0.2", "reputation": 5, "trait.conform": 8 }, "result": "'회사부터 살리자'는 말에 사인했어요. 장롱 속 돌반지도 금 모으기에 냈어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "imf_1997_family",
+    "big": true, "forced": true, "priority": 8, "tags": ["family", "money"],
+    "age": [7, 25], "year": [1997, 1998],
+    "when": { "not_flag": ["is_employed", "is_owner"] }, "market": null, "weight": 10, "once": true,
+    "text": "부모님 얼굴이 요즘 부쩍 어두워요. 저녁 뉴스에서는 매일 'IMF'라는 말이 나와요.",
+    "choices": [
+      { "label": "아르바이트를 시작한다", "when": { "age": [14, 25] }, "effects": { "do": "wealth:-1", "flag": "imf_child", "health": -2, "trait.thrift": 10, "trait.diligence": 5 }, "result": "주말마다 전단지를 돌려요. 받은 돈은 엄마 지갑에 몰래 넣었어요." },
+      { "label": "공부에 더 매달린다", "effects": { "do": "wealth:-1", "flag": "imf_child", "intelligence": 3, "mental": -5, "trait.diligence": 8 }, "result": "'우리 집은 내가 일으킨다.' 책상 앞에 붙인 종이가 누렇게 바랬어요." },
+      { "label": "애써 밝게 지낸다", "effects": { "do": "wealth:-1", "flag": "imf_child", "happiness": 2, "trait.outlook": 8 }, "result": "동생을 웃기려고 개그 프로를 따라 했어요. 엄마가 오랜만에 웃었어요." }
+    ],
+    "default": 2
+  },
+  {
+    "id": "crisis_2008",
+    "big": true, "forced": true, "priority": 8, "tags": ["invest", "money"],
+    "age": [20, 95], "year": [2008, 2009],
+    "when": {}, "market": null, "weight": 10, "once": true,
+    "text": "미국의 큰 은행이 무너졌대요. 반도체 회사 주가도 반 토막이 났어요. 뉴스에서는 '100년 만의 위기'라는 말이 나와요.",
+    "choices": [
+      { "label": "허리띠를 졸라맨다", "effects": { "flag": "crisis2008_saved", "happiness": -3, "trait.thrift": 8 }, "result": "외식을 끊고 가계부를 다시 쓰기 시작했어요." },
+      { "label": "이때다 싶어 반도체주를 산다", "effects": { "do": "invest:semi_index:0.3", "flag": "crisis2008_bought", "trait.risk": 10, "semi": { "text": "금융위기 폭락장에서 반도체주를 샀어요", "kind": "money" } }, "result": "모두가 팔 때 샀어요. 무서운데 어딘가 짜릿해요." },
+      { "label": "뉴스를 끄고 하던 일을 한다", "effects": { "flag": "crisis2008_ignored", "mental": 2, "trait.outlook": 5 }, "result": "세상이 시끄러워도 오늘 할 일은 오늘 해요." }
+    ],
+    "default": 2
+  },
+  {
+    "id": "covid_2020",
+    "big": true, "forced": true, "priority": 8, "tags": ["health", "invest"],
+    "age": [12, 110], "year": [2020, 2021],
+    "when": {}, "market": null, "weight": 10, "once": true,
+    "text": "마스크 없이는 밖에 나갈 수 없는 해예요. 그런데 뉴스에서는 반도체가 '없어서 못 판다'고 해요.",
+    "choices": [
+      { "label": "방역 수칙을 지키며 버틴다", "effects": { "flag": "covid_careful", "health": 2, "friends": -5, "trait.conform": 5 }, "result": "가족 단톡방이 제일 바쁜 대화방이 됐어요." },
+      { "label": "라인을 지키러 출근한다", "when": { "job_group": "현장", "flag": "is_employed" }, "effects": { "flag": "covid_frontline", "reputation": 3, "mental": -3, "trait.work_life": 5 }, "result": "클린룸은 멈추지 않았어요. 방진복 안에 마스크를 하나 더 썼어요." },
+      { "label": "동학개미가 된다", "when": { "age": [19, 110] }, "effects": { "do": "invest:semi_index:0.3", "flag": "covid_ant", "trait.risk": 8, "semi": { "text": "동학개미가 되어 반도체주를 샀어요", "kind": "money" } }, "result": "증권 앱을 처음 깔았어요. 하루에 스무 번은 열어 봐요." },
+      { "label": "이참에 건강을 챙긴다", "effects": { "do": "habit:+exercise", "flag": "covid_health", "health": 3, "mental": 2 }, "result": "집 앞 공원을 매일 걸어요. 계절이 바뀌는 게 보여요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "layoff_target",
+    "big": true, "forced": true, "trigger": "layoff_target", "priority": 7, "tags": ["work", "conflict"],
+    "age": [20, 70], "year": [1960, null],
+    "when": { "flag": "is_employed" }, "market": null, "weight": 10, "once": false,
+    "text": "{company}가 희망퇴직을 받는대요. 팀장님이 면담하자며 작은 회의실로 불러요. 책상 위에 서류가 한 장 놓여 있어요.",
+    "choices": [
+      { "label": "끝까지 버틴다", "check": { "stat": "mental", "dc": 60 }, "effects": { "flag": "layoff_survived", "reputation": -2, "mental": -5, "trait.conform": -5 }, "result": "끝까지 사인하지 않았어요. 다음 조직도에도 내 이름이 있어요.", "fail": { "effects": { "do": "job:quit", "flag": "layoff_out", "cash": "@salary*0.5", "happiness": -10 }, "result": "버티던 동기들이 하나둘 나갔어요. 결국 나도 짐을 쌌어요." } },
+      { "label": "위로금을 받고 나간다", "effects": { "do": "job:quit", "flag": "layoff_volunteer", "cash": "@salary*2", "happiness": -3, "trait.risk": 5 }, "result": "위로금이 찍힌 통장을 오래 들여다봤어요. 홀가분하기도, 허전하기도 해요." },
+      { "label": "협력사로 옮긴다", "when": { "employment": "regular" }, "effects": { "do": "job:transfer", "flag": "layoff_transfer", "reputation": -3, "trait.conform": 3 }, "result": "새 명함의 회사 이름은 바뀌었지만, 출근하는 공장은 그대로예요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "company_acquired",
+    "big": true, "forced": true, "trigger": "company_acquired", "priority": 9, "tags": ["work"],
+    "age": [18, 80], "year": [1960, null],
+    "when": { "flag": "is_employed" }, "market": null, "weight": 10, "once": false,
+    "text": "내일부터 사원증 로고가 {acquirer}로 바뀐대요. 메일함에 '통합 안내'가 열 통째 쌓였어요.",
+    "choices": [
+      { "label": "새 회사에 적응한다", "effects": { "do": "job:stay", "flag": "acquired_stayed", "reputation": -2, "trait.conform": 5 }, "result": "회의 용어부터 다시 배워요. 그래도 라인은 똑같이 돌아가요." },
+      { "label": "이참에 이직을 알아본다", "effects": { "do": "job:look", "flag": "acquired_left", "trait.risk": 5 }, "result": "옛 회사 로고가 박힌 머그잔만 챙겨 두었어요." },
+      { "label": "위로금을 받고 쉰다", "effects": { "do": "job:quit", "flag": "acquired_left", "cash": "@salary*1", "happiness": 3, "mental": 5 }, "result": "처음으로 평일 낮에 공원을 걸었어요. 조금 어색해요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "company_bankrupt",
+    "big": true, "forced": true, "trigger": "company_bankrupt", "priority": 9, "tags": ["work"],
+    "age": [18, 80], "year": [1960, null],
+    "when": {}, "market": null, "weight": 10, "once": false,
+    "text": "{company}가 문을 닫는대요. 라인이 멈춘 공장은 이상할 만큼 조용해요. 동료들과 마지막으로 정문 앞에서 사진을 찍었어요.",
+    "choices": [
+      { "label": "바로 일자리를 찾는다", "effects": { "do": "job:search", "flag": "survived_bankruptcy", "mental": -5, "trait.diligence": 5 }, "result": "다음 날에도 같은 시간에 일어났어요. 출근 대신 이력서를 써요." },
+      { "label": "경쟁사 동료에게 연락한다", "check": { "stat": "sociability", "dc": 50 }, "effects": { "do": "job:rival", "flag": "survived_bankruptcy", "friends": 3 }, "result": "옛 동료 덕분에 {rival}에 자리가 났어요. 첫 출근 날 아는 얼굴이 많아요.", "fail": { "effects": { "do": "job:search", "flag": "survived_bankruptcy", "friends": -2 }, "result": "다들 자기 자리 지키기도 바쁘대요. 서운하지만 이해해요." } },
+      { "label": "1년 쉬며 재정비한다", "effects": { "do": "job:rest", "flag": "survived_bankruptcy", "mental": 8, "happiness": 2, "trait.outlook": 3 }, "result": "오랜만에 늦잠을 잤어요. 그동안 못 본 얼굴들을 만나러 다녀요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "contract_lost",
+    "big": true, "forced": true, "trigger": "contract_lost", "priority": 9, "tags": ["work"],
+    "age": [16, 85], "year": [1970, null],
+    "when": { "flag": "is_employed" }, "market": null, "weight": 10, "once": false,
+    "text": "{client} 공장과 우리 회사의 계약이 끝났대요. 다음 달부터는 이 정문으로 출근할 수 없어요.",
+    "choices": [
+      { "label": "다른 사업장으로 보내 달라고 한다", "effects": { "do": "job:transfer", "flag": "contract_lost_moved", "trait.conform": 3 }, "result": "본사에 다른 사업장 자리를 부탁했어요. 어디로 갈지는 다음 주에 알려 준대요." },
+      { "label": "근처 다른 공장 일자리를 찾는다", "effects": { "do": "job:search", "flag": "contract_lost_search", "friends": 2 }, "result": "같이 일하던 동료가 다른 공장 자리를 알려 줬어요." },
+      { "label": "이참에 쉰다", "effects": { "do": "job:quit", "flag": "contract_lost_rest", "mental": 5, "happiness": 2 }, "result": "출근 시간마다 정문 앞 풍경이 떠올라요. 그래도 오늘은 푹 잘래요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "exec_offer",
+    "big": true, "forced": true, "trigger": "exec_offer", "priority": 3, "tags": ["work"],
+    "age": [38, 68], "year": [1970, null],
+    "when": { "flag": "is_employed" }, "market": null, "weight": 10, "once": false,
+    "text": "인사 발표 전날 밤, 전화가 왔어요. \"내년부터 상무로 일해 주세요. 대신 1년 계약이에요.\"",
+    "choices": [
+      { "label": "임원 자리를 받는다", "effects": { "do": "job:exec", "flag": "became_exec", "reputation": 10, "trait.work_life": 10, "title_progress": "반도체 신화" }, "result": "명함에 '상무'가 찍혔어요. 전화는 이제 주말에도 울려요." },
+      { "label": "부장으로 정년까지 간다", "effects": { "flag": "declined_exec", "happiness": 3, "trait.work_life": -5 }, "result": "정년까지 남은 해를 손가락으로 세어 봤어요. 생각보다 길지 않아요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "child_career",
+    "big": true, "forced": true, "trigger": "child_17", "priority": 4, "tags": ["family"],
+    "age": [30, 90], "year": [1960, null],
+    "when": { "has_children": true }, "market": null, "weight": 10, "once": false,
+    "text": "{child}가 진로 희망 조사서를 내밀며 물어요. \"나 뭐 하면 좋을 것 같아?\"",
+    "choices": [
+      { "label": "반도체 쪽을 권한다", "effects": { "do": "child:encourage_semi", "flag": "pushed_child_semi" }, "result": "\"요즘 반도체가 대세래.\" {child}가 고개를 갸웃하더니 한참 생각에 잠겼어요." },
+      { "label": "하고 싶은 걸 하라고 한다", "effects": { "do": "child:free", "flag": "child_free_choice", "happiness": 2, "trait.conform": -3 }, "result": "{child}가 씩 웃었어요. 그 웃음이 대답 같았어요." },
+      { "label": "의대를 권한다", "effects": { "do": "child:encourage_medic", "flag": "pushed_child_medic", "trait.risk": -3 }, "result": "{child}가 한숨을 쉬었어요. 그래도 문제집은 한 권 더 샀대요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "retirement_path",
+    "big": true, "forced": true, "trigger": "retired", "priority": 6, "tags": ["work"],
+    "age": [45, 85], "year": [1970, null],
+    "when": {}, "market": null, "weight": 10, "once": false,
+    "text": "퇴임식 꽃다발이 시들기도 전에 하루가 너무 길어졌어요. 이제 뭘 하며 지낼까요?",
+    "choices": [
+      { "label": "공장 경비로 다시 출근한다", "effects": { "do": "job:hire:security_gate", "flag": "retire_rehired", "semi": { "text": "정년 뒤 {company} 정문을 지켰어요", "kind": "near" } }, "result": "경비 제복을 받았어요. 출근하는 젊은 직원들이 꾸벅 인사해요." },
+      { "label": "공장 앞 치킨집을 차린다", "effects": { "do": "job:owner:chicken_shop", "flag": "retire_shop", "cash": "@salary*-1", "trait.risk": 8, "semi": { "text": "{company} 앞에서 치킨집을 열었어요", "kind": "near" } }, "result": "간판 불을 처음 켜던 날, 옛 동료들이 단체로 왔어요." },
+      { "label": "원룸 임대를 시작한다", "when": { "cash_min": "@house_local*0.3" }, "effects": { "do": "job:side:landlord", "flag": "retire_landlord", "cash": "@house_local*-0.3", "semi": { "text": "{company} 신입들에게 원룸을 내줬어요", "kind": "eco" } }, "result": "세입자들 출근 시간에 맞춰 나도 일어나요. 습관은 못 버려요." },
+      { "label": "푹 쉰다", "effects": { "do": "job:retire", "flag": "retire_rest", "happiness": 5, "trait.work_life": -5 }, "result": "등산화와 낚싯대를 샀어요. 둘 다 아직 새것이에요." }
+    ],
+    "default": 3
+  },
+  {
+    "id": "senior_semi_rescue",
+    "big": true, "forced": true, "priority": 5, "tags": ["work"],
+    "age": [60, 72], "year": [1980, null],
+    "when": { "semi_max": 0 }, "market": null, "weight": 10, "once": true,
+    "text": "{company} 공장에서 경비·시설 인력을 모집한대요. 집에서 버스로 20분, 자격은 '건강한 분'이 전부래요.",
+    "choices": [
+      { "label": "경비로 지원한다", "effects": { "do": "job:hire:security_gate", "flag": "late_semi", "semi": { "text": "예순 넘어 {company} 정문을 지켰어요", "kind": "near" } }, "result": "첫 출근 날, 사원증을 목에 건 사람들이 줄지어 게이트를 지나가요. 저 안에서 뭘 만드는지 처음 궁금해졌어요." },
+      { "label": "방진복 세탁 일을 한다", "effects": { "do": "job:hire:cleanroom_laundry", "flag": "late_semi", "semi": { "text": "{company} 방진복을 빨고 개었어요", "kind": "near" } }, "result": "하얀 방진복이 산처럼 쌓여 있어요. 하나하나 개다 보면 하루가 가요." },
+      { "label": "통근버스를 운전한다", "when": { "stat_min": { "health": 40 } }, "effects": { "do": "job:hire:shuttle_driver", "flag": "late_semi", "semi": { "text": "{company} 통근버스 운전대를 잡았어요", "kind": "near" } }, "result": "새벽 첫차예요. 졸린 얼굴들이 하나둘 버스에 올라요." },
+      { "label": "괜찮다고 한다", "effects": { "happiness": 1, "trait.risk": -3 }, "result": "모집 공고를 접어 냉장고에 붙여 뒀어요. 언젠가 생각날지도 몰라요." }
+    ],
+    "default": 0
+  }
+]

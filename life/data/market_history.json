@@ -1,5 +1,5 @@
 {
- "_note": "연도별 실제 반도체 시황(1947~2026). 게임은 cycle·memory·logic_foundry·equipment·korea 점수(-2 대불황, -1 불황, 0 보통, 1 호황, 2 슈퍼호황)로 채용·연봉·성과급·구조조정·회사 실적을 정하고, headline_ko를 게임 속 뉴스로 쓴다. 점수는 출처 수치를 바탕으로 한 판단값. global_sales_busd는 세계 반도체 매출(10억 달러). sales_basis: wsts=WSTS/SIA 집계(1984~), estimate_production=업계 생산액 추정(1983년 이전, WSTS와 기준이 달라 직접 비교 불가). 2026년은 진행 중인 해라 WSTS 2026년 8월 전망치. 조사는 웹 검색 기반이며 confidence가 low인 해는 더 확인이 필요하다.",
+ "_note": "연도별 실제 반도체 시황(1947~2026). 게임은 cycle·memory·logic_foundry·equipment·korea 점수(-2 대불황, -1 불황, 0 보통, 1 호황, 2 슈퍼호황)로 채용·연봉·성과급·구조조정·회사 실적을 정하고, headline_ko를 게임 속 뉴스로 쓴다. 점수는 출처 수치를 바탕으로 한 판단값. global_sales_busd는 세계 반도체 매출(10억 달러). sales_basis: wsts=WSTS/SIA 집계(1984~), estimate_production=업계 생산액 추정(1983년 이전, WSTS와 기준이 달라 직접 비교 불가). 2026년은 진행 중인 해라 WSTS 2026년 8월 전망치. 조사는 웹 검색 기반이며 confidence가 low인 해는 더 확인이 필요하다. 2026-10-21 GPT 교차 검증(life/docs/reviews/T05_market_review.md) 반영: 1986·1987·1992 매출, 1987·1989·1992·1993·2025 성장률, 1997 IMF 날짜, 2011~2012 SK 인수 시점.",
  "years": [
   {
    "year": 1947,
@@ -1058,8 +1058,8 @@
   },
   {
    "year": 1986,
-   "global_sales_busd": null,
-   "sales_basis": null,
+   "global_sales_busd": 26.4,
+   "sales_basis": "wsts",
    "yoy_pct": 26.1,
    "cycle": 0,
    "memory": -1,
@@ -1085,14 +1085,16 @@
     "https://www.techmonitor.ai/technology/japanese_take_top_three_chip_places/",
     "https://archive.computerhistory.org/resources/access/text/2013/04/102723394-05-01-acc.pdf",
     "https://en.wikipedia.org/wiki/1986_U.S.%E2%80%93Japan_Semiconductor_Agreement",
-    "https://www.etnews.com/20230816000179"
-   ]
+    "https://www.etnews.com/20230816000179",
+    "https://www.wsts.org/esraCMS/extension/media/f/WST/7803/WSTS-Historical-Billings-Report-Aug_2026.xlsx"
+   ],
+   "yoy_note": "26.1%는 다른 기관 집계 기준 (WSTS 1985년 값 미확보)"
   },
   {
    "year": 1987,
-   "global_sales_busd": 34.0,
+   "global_sales_busd": 32.5,
    "sales_basis": "wsts",
-   "yoy_pct": null,
+   "yoy_pct": 23.4,
    "cycle": 1,
    "memory": 1,
    "logic_foundry": 1,
@@ -1113,7 +1115,8 @@
    "confidence": "low",
    "sources": [
     "https://www.csmonitor.com/1988/0328/fchip.html",
-    "https://en.wikipedia.org/wiki/1986_U.S.%E2%80%93Japan_Semiconductor_Agreement"
+    "https://en.wikipedia.org/wiki/1986_U.S.%E2%80%93Japan_Semiconductor_Agreement",
+    "https://www.wsts.org/esraCMS/extension/media/f/WST/7803/WSTS-Historical-Billings-Report-Aug_2026.xlsx"
    ]
   },
   {
@@ -1149,7 +1152,7 @@
    "year": 1989,
    "global_sales_busd": 48.8,
    "sales_basis": "wsts",
-   "yoy_pct": 10.0,
+   "yoy_pct": 8.4,
    "cycle": 0,
    "memory": 0,
    "logic_foundry": 0,
@@ -1172,8 +1175,10 @@
     "https://www.techmonitor.ai/?p=225869",
     "https://techmonitor.ai/?p=234358",
     "https://archive.computerhistory.org/resources/access/text/2013/04/102723225-05-01-acc.pdf",
-    "https://www.koreajoongangdaily.com/business/koo-bonmoo-brought-lg-into-21st-century/10893609"
-   ]
+    "https://www.koreajoongangdaily.com/business/koo-bonmoo-brought-lg-into-21st-century/10893609",
+    "https://www.wsts.org/esraCMS/extension/media/f/WST/7803/WSTS-Historical-Billings-Report-Aug_2026.xlsx"
+   ],
+   "yoy_note": "WSTS 기준. Dataquest 집계는 약 10%"
   },
   {
    "year": 1990,
@@ -1231,9 +1236,9 @@
   },
   {
    "year": 1992,
-   "global_sales_busd": null,
-   "sales_basis": null,
-   "yoy_pct": null,
+   "global_sales_busd": 59.9,
+   "sales_basis": "wsts",
+   "yoy_pct": 9.6,
    "cycle": 0,
    "memory": 0,
    "logic_foundry": 1,
@@ -1254,14 +1259,15 @@
    "sources": [
     "https://www.techmonitor.ai/?p=254748",
     "https://news.samsungsemiconductor.com/kr/%EB%B0%98%EB%8F%84%EC%B2%B4-%EC%97%AD%EC%82%AC%EC%97%90-%ED%9A%8D%EC%9D%84-%EA%B7%B8%EC%9D%80-64m-d%EB%9E%A8-%EA%B5%AD%EA%B0%80%EC%A4%91%EC%9A%94%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0/",
-    "https://www.seoul.co.kr/news/1996/11/05/19961105009001"
+    "https://www.seoul.co.kr/news/1996/11/05/19961105009001",
+    "https://www.wsts.org/esraCMS/extension/media/f/WST/7803/WSTS-Historical-Billings-Report-Aug_2026.xlsx"
    ]
   },
   {
    "year": 1993,
    "global_sales_busd": 77.3,
    "sales_basis": "wsts",
-   "yoy_pct": null,
+   "yoy_pct": 29.1,
    "cycle": 1,
    "memory": 2,
    "logic_foundry": 1,
@@ -1283,7 +1289,8 @@
    "confidence": "medium",
    "sources": [
     "https://www.etnews.com/199411210019",
-    "https://m.etnews.com/199405210054"
+    "https://m.etnews.com/199405210054",
+    "https://www.wsts.org/esraCMS/extension/media/f/WST/7803/WSTS-Historical-Billings-Report-Aug_2026.xlsx"
    ]
   },
   {
@@ -1395,7 +1402,7 @@
    "events_korea": [
     "64메가 D램 장기공급가 개당 100달러대(96년 7월)→30달러선(97년 9월)으로 급락",
     "10월 64메가 D램 현물가 6.7달러→4.9달러, 업체 손실 확대 우려",
-    "12월 IMF 구제금융 신청, 원화 폭락·대기업 연쇄 부도"
+    "11월 21일 IMF 지원 요청 발표, 12월 3일 의향서 서명·4일 승인 — 원화 폭락·대기업 연쇄 부도"
    ],
    "headline_ko": "IMF 구제금융 충격…반도체도 '혹한기' 진입",
    "confidence": "medium",
@@ -1404,7 +1411,8 @@
     "https://www.eetimes.com/?p=1187157",
     "https://www.seoul.co.kr/news/1997/09/09/19970909008001",
     "https://www.seoul.co.kr/news/1997/07/15/19970715008001",
-    "https://www.khan.co.kr/article/200008101906541"
+    "https://www.khan.co.kr/article/200008101906541",
+    "https://www.imf.org/external/np/loi/120397.htm"
    ]
   },
   {
@@ -1851,7 +1859,7 @@
     "11월 SK텔레콤, 하이닉스 지분 21.1% 3조4,267억 원에 인수 계약",
     "D램 값 약세 속에도 삼성·하이닉스는 흑자 유지하며 점유율 확대"
    ],
-   "headline_ko": "일본 대지진·D램 1달러 붕괴…하이닉스 새 주인은 SK",
+   "headline_ko": "일본 대지진·D램 1달러 붕괴…하이닉스, SK와 인수 계약",
    "confidence": "high",
    "sources": [
     "https://www.semiconductors.org/semiconductor-industry-posts-record-breaking-revenues-despite-2011-challenges/",
@@ -1883,7 +1891,8 @@
     "SK텔레콤 하이닉스 인수 완료, 3월 'SK하이닉스'로 사명 변경",
     "SK하이닉스 연간 영업손실 2,273억 원, 하반기 회복세",
     "9월 삼성전자 중국 시안 낸드 공장 기공(총 70억 달러)",
-    "치킨게임 종료, 한국 D램 양강 체제 굳어져"
+    "치킨게임 종료, 한국 D램 양강 체제 굳어져",
+    "SK텔레콤의 하이닉스 인수 완료, 3월 SK하이닉스로 새 출발"
    ],
    "headline_ko": "엘피다 파산…D램 치킨게임 '한국 완승'",
    "confidence": "high",
@@ -2269,9 +2278,9 @@
   },
   {
    "year": 2025,
-   "global_sales_busd": 791.7,
+   "global_sales_busd": 795.6,
    "sales_basis": "wsts",
-   "yoy_pct": 25.6,
+   "yoy_pct": 26.2,
    "cycle": 2,
    "memory": 2,
    "logic_foundry": 2,
@@ -2310,8 +2319,10 @@
     "https://www.koreatimes.co.kr/business/tech-science/20250728/samsung-foundry-wins-165-bil-chip-order-from-tesla",
     "https://m.seoul.co.kr/news/2025/10/02/20251002001007",
     "https://www.inews24.com/view/1901966",
-    "https://m.ceoscoredaily.com/page/view/2026011316222591684"
-   ]
+    "https://m.ceoscoredaily.com/page/view/2026011316222591684",
+    "https://www.wsts.org/esraCMS/extension/media/f/WST/7803/WSTS-Historical-Billings-Report-Aug_2026.xlsx"
+   ],
+   "yoy_note": "WSTS 2026년 8월 개정값. 최초 발표(2026년 2월)는 791.7 / +25.6%"
   },
   {
    "year": 2026,
@@ -2339,7 +2350,7 @@
     "9월 반도체 수출 603억 달러(+262.8%) 월간 사상 최대",
     "삼성 용인 국가산단 부지 조성공사 착공(10월), 지방 이전 논란은 '계획대로 추진'으로 일단락"
    ],
-   "headline_ko": "(전망) 반도체 시장 1조 6천억 달러 시대…메모리값 폭등에 분기 이익 100조",
+   "headline_ko": "(전망) 반도체 시장 1조 6천억 달러 시대…메모리값 폭등에 대기업 분기 영업이익 100조 돌파",
    "confidence": "medium",
    "sources": [
     "https://www.wsts.org/esraCMS/extension/media/f/WST/7618/WSTS_FC-Release-2026-May.pdf",
@@ -2357,8 +2368,10 @@
     "https://news.samsungsemiconductor.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-2026%EB%85%84-3%EB%B6%84%EA%B8%B0-%EC%9E%A0%EC%A0%95%EC%8B%A4%EC%A0%81-%EB%B0%9C%ED%91%9C/",
     "https://www.mt.co.kr/economy/2026/10/01/2026100109004992929",
     "https://www.viva100.com/article/20261005500410",
-    "https://www.kyeongin.com/article/1766111"
-   ]
+    "https://www.kyeongin.com/article/1766111",
+    "https://www.wsts.org/esraCMS/extension/media/f/WST/7803/WSTS-Historical-Billings-Report-Aug_2026.xlsx"
+   ],
+   "yoy_note": "연간 값은 1~2분기 실적 + 봄 전망 가정으로 계산한 WSTS 8월 전망. 1~8월 실제 누계는 1,043.0 (10억 달러)"
   }
  ]
 }

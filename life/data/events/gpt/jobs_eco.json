@@ -1,0 +1,2522 @@
+[
+  {
+    "id": "job_professor_first_class",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "professor"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "반도체 수업 칠판에 소자 단면을 그렸어요. 맨 뒷줄에서 그림이 안 보인대요.",
+    "choices": [
+      {
+        "label": "구조를 크게 다시 그려요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "반도체 수업 칠판에 소자 단면을 그렸어요"
+        },
+        "result": "칠판이 소자 하나로 찼어요. 오늘 제일 큰 반도체예요."
+      },
+      {
+        "label": "핵심 부분만 확대해 설명해요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "반도체 수업 칠판에 소자 단면을 그렸어요"
+        },
+        "result": "전극 부분에 원을 그렸어요. 전체 구조 질문은 수업 뒤로 남았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_professor_lab_feedback",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "professor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "학생 실험 보고서에 비교 조건이 빠졌어요. 개별로 짚어 주면 퇴근이 늦어져요.",
+    "choices": [
+      {
+        "label": "보고서마다 질문을 적어요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.diligence": 5,
+          "semi": "학생 실험 보고서에 비교 조건이 빠졌어요"
+        },
+        "result": "제출함에 메모 붙은 보고서가 쌓였어요. 연구실 복도는 조용해졌어요."
+      },
+      {
+        "label": "공통 설명을 주고 재제출을 받아요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "학생 실험 보고서에 비교 조건이 빠졌어요"
+        },
+        "result": "게시판에 안내가 붙었어요. 나는 먼저 연구실 문을 잠갔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_professor_lesson_revision",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "professor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "강의 자료의 공정 순서가 옛 판과 달라요. 수업까지 남은 시간이 빠듯해요.",
+    "choices": [
+      {
+        "label": "바뀐 부분부터 다시 짚어요",
+        "effects": {
+          "reputation": 2,
+          "friends": -1,
+          "trait.conform": -5
+        },
+        "result": "칠판에 새 흐름이 그려졌어요. 뒷줄에서 진도표를 넘겼어요."
+      },
+      {
+        "label": "정정표를 주고 기존 진도를 이어 가요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1,
+          "trait.conform": 5
+        },
+        "result": "학생들이 정정표를 끼웠어요. 추가 설명 칸은 다음 수업으로 갔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_professor_industry_request",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "professor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "산학 면담 뒤 학생이 연구 주제를 더 묻고 있어요. 내 점심시간이 시작됐어요.",
+    "choices": [
+      {
+        "label": "논문 그림을 같이 읽어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5,
+          "semi": "산학 면담 뒤 학생이 연구 주제를 더 묻고 있어요"
+        },
+        "result": "학생 노트에 새 질문이 생겼어요. 내 점심 상자는 닫힌 채예요."
+      },
+      {
+        "label": "읽을 자료를 주고 다음 면담을 잡아요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5,
+          "semi": "산학 면담 뒤 학생이 연구 주제를 더 묻고 있어요"
+        },
+        "result": "학생이 종이를 접었어요. 나는 창가 의자에서 한숨 돌렸어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_professor_boom_students",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "professor",
+      "market": {
+        "cycle": [
+          1,
+          2
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "진로 상담표가 반도체 호황으로 찼어요. 추가 상담 시간을 열어 달래요.",
+    "choices": [
+      {
+        "label": "상담 시간을 더 열어요",
+        "effects": {
+          "reputation": 2,
+          "health": -1,
+          "trait.work_life": 5,
+          "semi": "진로 상담표가 반도체 호황으로 찼어요"
+        },
+        "result": "면담표에 학생 이름이 찼어요. 집에서는 의자에 앉자마자 졸았어요."
+      },
+      {
+        "label": "기존 시간만 운영해요",
+        "effects": {
+          "health": 1,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "진로 상담표가 반도체 호황으로 찼어요"
+        },
+        "result": "연구실을 제시간에 나왔어요. 새 신청은 다음 주 칸으로 갔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_professor_lecture_table",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "professor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "학생이 내 소자 그림을 지층 같다고 했어요. 칠판에는 색 분필이 세 개 남았어요.",
+    "choices": [
+      {
+        "label": "지층별 이름을 붙여 설명해요",
+        "effects": {
+          "happiness": 2,
+          "reputation": -1,
+          "trait.conform": -5
+        },
+        "result": "학생이 단면을 다시 그렸어요. 화산 대신 전극이 올라왔어요."
+      },
+      {
+        "label": "원래 구조도로 돌아가요",
+        "effects": {
+          "reputation": 1,
+          "happiness": -1,
+          "trait.conform": 5
+        },
+        "result": "칠판 옆 농담이 지워졌어요. 학생은 교재를 다시 폈어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_journalist_first_beat",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "journalist"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "취재 수첩 첫 장에 반도체 용어를 적었어요. 취재원이 앞장보다 뒷장을 더 채워 줘요.",
+    "choices": [
+      {
+        "label": "설명 끝까지 듣고 다시 확인해요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "취재 수첩 첫 장에 반도체 용어를 적었어요"
+        },
+        "result": "수첩이 다섯 장 늘었어요. 기사는 아직 제목도 없어요."
+      },
+      {
+        "label": "오늘 기사에 쓸 용어부터 확인해요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "취재 수첩 첫 장에 반도체 용어를 적었어요"
+        },
+        "result": "필요한 말에 동그라미를 쳤어요. 남은 질문은 선배에게 갔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_journalist_source_numbers",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "journalist"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "산업 통계 보도자료 두 장의 단위가 달라요. 마감 전에 원자료까지 볼까요?",
+    "choices": [
+      {
+        "label": "단위와 집계 범위를 대조해요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.diligence": 5,
+          "semi": "산업 통계 보도자료 두 장의 단위가 달라요"
+        },
+        "result": "기사 숫자 옆에 기준이 붙었어요. 책상 위 샌드위치는 식었어요."
+      },
+      {
+        "label": "확인된 항목만 쓰고 나머지는 빼요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "산업 통계 보도자료 두 장의 단위가 달라요"
+        },
+        "result": "기사 분량이 짧아졌어요. 나는 마감 뒤 의자에 등을 붙였어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_journalist_headline_scope",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "journalist"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "기사 제목의 세계 최초가 취재 범위보다 넓어요. 편집자는 그대로 가자고 해요.",
+    "choices": [
+      {
+        "label": "확인한 범위로 제목을 좁혀요",
+        "effects": {
+          "reputation": 2,
+          "friends": -1,
+          "trait.conform": -5
+        },
+        "result": "제목에서 두 글자가 빠졌어요. 편집자의 펜 뚜껑이 닫혔어요."
+      },
+      {
+        "label": "조건을 부제에 넣어 달라고 해요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1,
+          "trait.conform": 5
+        },
+        "result": "부제가 한 줄 늘었어요. 제목 범위를 묻는 연락이 다시 왔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_journalist_interview_terms",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "journalist"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "공장 취재 뒤 취재원이 용어를 더 풀어 준대요. 내 점심시간이 시작됐어요.",
+    "choices": [
+      {
+        "label": "수첩을 펴고 더 들어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5,
+          "semi": "공장 취재 뒤 취재원이 용어를 더 풀어 준대요"
+        },
+        "result": "낯선 약어에 뜻이 달렸어요. 내 식사 봉투는 그대로예요."
+      },
+      {
+        "label": "질문을 적고 후속 취재를 잡아요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5,
+          "semi": "공장 취재 뒤 취재원이 용어를 더 풀어 준대요"
+        },
+        "result": "취재원이 메모를 받아 갔어요. 나는 벤치에서 숨을 돌렸어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_journalist_boom_coverage",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "journalist",
+      "market": {
+        "cycle": [
+          1,
+          2
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "호황이라 반도체 기사 요청이 늘었어요. 현장 취재 한 건을 더 맡아 달래요.",
+    "choices": [
+      {
+        "label": "추가 취재를 맡아요",
+        "effects": {
+          "reputation": 2,
+          "health": -1,
+          "trait.work_life": 5,
+          "semi": "호황이라 반도체 기사 요청이 늘었어요"
+        },
+        "result": "취재표에 내 이름이 늘었어요. 돌아오는 차에서는 바로 잠들었어요."
+      },
+      {
+        "label": "현재 기사까지만 맡아요",
+        "effects": {
+          "health": 1,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "호황이라 반도체 기사 요청이 늘었어요"
+        },
+        "result": "마감 뒤 수첩을 덮었어요. 새 취재표에는 동료 이름이 적혔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_journalist_family_source",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "journalist"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "기사 교열 뒤 점심 메뉴판의 오자가 보여요. 동료가 오늘 취재 대상은 국밥이래요.",
+    "choices": [
+      {
+        "label": "메뉴 오자도 조용히 알려요",
+        "effects": {
+          "happiness": 2,
+          "reputation": -1,
+          "trait.conform": -5
+        },
+        "result": "주인이 고맙다며 글자를 고쳤어요. 내 국밥만 사진 찍듯 식었어요."
+      },
+      {
+        "label": "메뉴판을 접고 국밥을 먹어요",
+        "effects": {
+          "reputation": 1,
+          "happiness": -1,
+          "trait.conform": 5
+        },
+        "result": "국물이 아직 뜨거워요. 오자는 다음 손님 앞에 남았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_official_first_brief",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "official"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "산업 지원 설명회 자료를 받았어요. 첫 페이지부터 공장 부지와 신청 조건이 나와요.",
+    "choices": [
+      {
+        "label": "공고와 신청 예시를 끝까지 맞춰요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "산업 지원 설명회 자료를 받았어요"
+        },
+        "result": "자료 옆 메모가 더 두꺼워졌어요. 설명 전에 내 설명이 필요해요."
+      },
+      {
+        "label": "오늘 안내할 조건부터 익혀요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "산업 지원 설명회 자료를 받았어요"
+        },
+        "result": "해당 조건에 표시했어요. 남은 설명은 선배가 이어 갔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_official_public_notice",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "official"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "지원 공고와 접수 양식의 기간이 달라요. 확인 연락이 퇴근 무렵 온대요.",
+    "choices": [
+      {
+        "label": "담당자들과 기간을 맞춰요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.diligence": 5,
+          "semi": "지원 공고와 접수 양식의 기간이 달라요"
+        },
+        "result": "공고 옆에 확인표가 붙었어요. 내 버스는 다음 편이에요."
+      },
+      {
+        "label": "차이를 적어 공고 담당에게 넘겨요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "지원 공고와 접수 양식의 기간이 달라요"
+        },
+        "result": "담당자가 양식을 펼쳤어요. 나는 먼저 책상을 비웠어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_official_meeting_minutes",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "official"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "산업 회의록에 확정과 검토가 섞였어요. 참석자는 빨리 돌려 달라고 해요.",
+    "choices": [
+      {
+        "label": "발언 상태를 다시 확인해요",
+        "effects": {
+          "reputation": 2,
+          "friends": -1,
+          "trait.conform": -5
+        },
+        "result": "문장 옆에 검토 표시가 붙었어요. 회의록을 기다리던 펜이 멎었어요."
+      },
+      {
+        "label": "미확정 항목을 분리해 먼저 배포해요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1,
+          "trait.conform": 5
+        },
+        "result": "서류가 두 묶음으로 갈렸어요. 내 완료 칸 하나는 비었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_official_site_question",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "official"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "산업단지 설명회 뒤 주민이 교통 계획을 물어요. 내 휴게 시간이 시작됐어요.",
+    "choices": [
+      {
+        "label": "자료를 같이 펴고 범위를 설명해요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5,
+          "semi": "산업단지 설명회 뒤 주민이 교통 계획을 물어요"
+        },
+        "result": "주민이 해당 지도에 표시했어요. 내 물컵은 그대로 남았어요."
+      },
+      {
+        "label": "담당 창구를 적어 주고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5,
+          "semi": "산업단지 설명회 뒤 주민이 교통 계획을 물어요"
+        },
+        "result": "주민이 메모를 접었어요. 나는 빈 의자에 등을 붙였어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_official_slow_support",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "official",
+      "market": {
+        "cycle": [
+          -2,
+          -1
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "업황이 식어 지원 상담이 줄었어요. 자주 반려되는 항목을 안내에 넣어 볼까요?",
+    "choices": [
+      {
+        "label": "신청 예시를 새로 만들어요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.risk": 5,
+          "semi": "업황이 식어 지원 상담이 줄었어요"
+        },
+        "result": "접수대에 예시가 붙었어요. 내 오후 휴게 칸은 지워졌어요."
+      },
+      {
+        "label": "현재 접수 건만 정리하고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.risk": -5,
+          "semi": "업황이 식어 지원 상담이 줄었어요"
+        },
+        "result": "접수철을 서랍에 넣었어요. 새 예시는 빈 종이로 남았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_official_weekend_form",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "official"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "신청서 양식을 보다 점심 주문서까지 검토했어요. 동료가 결재선은 없대요.",
+    "choices": [
+      {
+        "label": "반찬 추가는 별도 협의냐고 해요",
+        "effects": {
+          "happiness": 2,
+          "reputation": -1,
+          "trait.conform": -5
+        },
+        "result": "동료가 메뉴판을 돌려줬어요. 협의 상대는 주방이래요."
+      },
+      {
+        "label": "메뉴 번호만 적고 넘겨요",
+        "effects": {
+          "reputation": 1,
+          "happiness": -1,
+          "trait.conform": 5
+        },
+        "result": "주문서가 바로 주방으로 갔어요. 동료는 수저를 들었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_analyst_first_model",
+    "year": [
+      1988,
+      null
+    ],
+    "when": {
+      "job": "analyst"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "반도체 전망표 첫 장을 맡았어요. 가정 칸이 숫자 칸보다 넓어요.",
+    "choices": [
+      {
+        "label": "산식과 가정을 끝까지 따라가요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "반도체 전망표 첫 장을 맡았어요"
+        },
+        "result": "가정표에 질문이 다섯 개 붙었어요. 확실한 건 오늘도 점심이 늦다는 거예요."
+      },
+      {
+        "label": "오늘 맡을 항목부터 익혀요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "반도체 전망표 첫 장을 맡았어요"
+        },
+        "result": "담당 숫자에 표시했어요. 나머지 모델은 선배가 이어 봤어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_analyst_revision_trace",
+    "year": [
+      1988,
+      null
+    ],
+    "when": {
+      "job": "analyst"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "분석표의 지난 전망과 새 전망이 달라요. 변경 근거를 다 쓰면 마감이 늦어져요.",
+    "choices": [
+      {
+        "label": "가정 변경표까지 붙여요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.diligence": 5,
+          "semi": "분석표의 지난 전망과 새 전망이 달라요"
+        },
+        "result": "수정 이유가 표 밑에 찼어요. 책상 위 차는 식었어요."
+      },
+      {
+        "label": "확인된 항목만 내고 추가분은 분리해요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "분석표의 지난 전망과 새 전망이 달라요"
+        },
+        "result": "보고서가 먼저 나갔어요. 내 추가 검토 칸은 대기로 남았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_analyst_chart_axis",
+    "year": [
+      1988,
+      null
+    ],
+    "when": {
+      "job": "analyst"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "발표 도표의 축이 좁아 변화가 크게 보여요. 발표자는 이대로 가자고 해요.",
+    "choices": [
+      {
+        "label": "축과 비교 기준을 손봐요",
+        "effects": {
+          "reputation": 2,
+          "friends": -1,
+          "trait.conform": -5
+        },
+        "result": "도표의 기울기가 완만해졌어요. 발표자의 펜이 잠깐 멎었어요."
+      },
+      {
+        "label": "원래 축과 전체 축을 함께 붙여요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1,
+          "trait.conform": 5
+        },
+        "result": "비교 도표가 한 장 늘었어요. 발표 시간은 다음 항목에서 줄었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_analyst_client_call",
+    "year": [
+      1988,
+      null
+    ],
+    "when": {
+      "job": "analyst"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "고객 통화 뒤 동료가 전망 가정을 더 묻고 있어요. 내 점심시간이 시작됐어요.",
+    "choices": [
+      {
+        "label": "같이 가정표를 다시 읽어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5,
+          "semi": "고객 통화 뒤 동료가 전망 가정을 더 묻고 있어요"
+        },
+        "result": "동료의 메모에 조건이 늘었어요. 내 점심 봉투는 닫힌 채예요."
+      },
+      {
+        "label": "가정표를 주고 후속 설명을 잡아요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5,
+          "semi": "고객 통화 뒤 동료가 전망 가정을 더 묻고 있어요"
+        },
+        "result": "동료가 표를 들고 갔어요. 나는 빈 의자에서 눈을 쉬었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_analyst_slow_model",
+    "year": [
+      1988,
+      null
+    ],
+    "when": {
+      "job": "analyst",
+      "market": {
+        "memory": [
+          -2,
+          -1
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "메모리 전망표가 불황으로 다시 나왔어요. 하락 시나리오를 나눠 볼 시간이 빠듯해요.",
+    "choices": [
+      {
+        "label": "가정별 경우를 더 나눠요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.risk": 5,
+          "semi": "메모리 전망표가 불황으로 다시 나왔어요"
+        },
+        "result": "보고서에 비교표가 늘었어요. 내 오후 휴게 칸은 비었어요."
+      },
+      {
+        "label": "현재 근거 범위로만 갱신해요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.risk": -5,
+          "semi": "메모리 전망표가 불황으로 다시 나왔어요"
+        },
+        "result": "전망표에 적용 범위를 적었어요. 나는 먼저 서류함을 닫았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_analyst_menu_outlook",
+    "year": [
+      1988,
+      null
+    ],
+    "when": {
+      "job": "analyst"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "점심 메뉴를 고르며 내일 반찬까지 예상했어요. 동료가 또 전망치를 내냐고 물어요.",
+    "choices": [
+      {
+        "label": "국수 수요는 높겠다고 해요",
+        "effects": {
+          "happiness": 2,
+          "reputation": -1,
+          "trait.conform": -5
+        },
+        "result": "내가 고른 국수만 품절이에요. 오차 원인은 아직 배고픔이에요."
+      },
+      {
+        "label": "예상 대신 오늘 메뉴를 골라요",
+        "effects": {
+          "reputation": 1,
+          "happiness": -1,
+          "trait.conform": 5
+        },
+        "result": "식판에 밥이 놓였어요. 동료는 다음 반찬으로 넘어갔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_retail_investor_first_report",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "retail_investor"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "증권사 자료대에서 반도체 기업 보고서를 폈어요. 첫 장부터 모르는 말이 나와요.",
+    "choices": [
+      {
+        "label": "실적표와 용어를 끝까지 읽어요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "증권사 자료대에서 반도체 기업 보고서를 폈어요"
+        },
+        "result": "밑줄이 종이를 채웠어요. 산 주식보다 모르는 단어가 많아요."
+      },
+      {
+        "label": "핵심 항목만 읽고 덮어요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "증권사 자료대에서 반도체 기업 보고서를 폈어요"
+        },
+        "result": "읽은 항목에 표시했어요. 나머지 페이지는 다음 날 몫이에요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_retail_investor_source_check",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "retail_investor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "같은 반도체주 소식인데 보고서마다 숫자가 달라요. 기준 시점을 더 찾아볼까요?",
+    "choices": [
+      {
+        "label": "공시 기준일까지 대조해요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.diligence": 5,
+          "semi": "같은 반도체주 소식인데 보고서마다 숫자가 달라요"
+        },
+        "result": "날짜 옆에 비교 메모가 남았어요. 내 쉬는 시간은 지나갔어요."
+      },
+      {
+        "label": "확인 안 된 소식은 접고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "같은 반도체주 소식인데 보고서마다 숫자가 달라요"
+        },
+        "result": "보고서를 접어 가방에 넣었어요. 자료대에는 다른 투자자가 섰어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_retail_investor_budget_note",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "retail_investor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "투자 장부 옆에 생활비 봉투가 놓였어요. 지인이 한 종목을 더 보자고 해요.",
+    "choices": [
+      {
+        "label": "오늘은 장부부터 맞추겠다고 해요",
+        "effects": {
+          "reputation": 2,
+          "friends": -1,
+          "trait.conform": -5
+        },
+        "result": "지인은 자료를 접었어요. 내 생활비 칸은 그대로 남았어요."
+      },
+      {
+        "label": "자료만 받고 다음 검토를 약속해요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1,
+          "trait.conform": 5
+        },
+        "result": "지인이 다음 쪽을 설명했어요. 내 투자 검토 메모는 또 늘었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_retail_investor_friend_tip",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "retail_investor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "증권사 휴게 자리에서 지인이 반도체 전망을 물어요. 나는 잠깐 쉬러 왔어요.",
+    "choices": [
+      {
+        "label": "자료의 조건을 같이 읽어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5,
+          "semi": "증권사 휴게 자리에서 지인이 반도체 전망을 물어요"
+        },
+        "result": "지인이 날짜에 동그라미를 쳤어요. 내 차는 식었어요."
+      },
+      {
+        "label": "자료 위치만 알려 주고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5,
+          "semi": "증권사 휴게 자리에서 지인이 반도체 전망을 물어요"
+        },
+        "result": "지인은 자료대로 갔어요. 나는 빈 의자에 등을 붙였어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_retail_investor_slow_sentiment",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "retail_investor",
+      "market": {
+        "memory": [
+          -2,
+          -1
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "메모리 업황이 식어 시세판이 조용해요. 보유 이유를 다시 적어 볼까요?",
+    "choices": [
+      {
+        "label": "장부에 가정과 기한을 다시 써요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.risk": 5,
+          "semi": "메모리 업황이 식어 시세판이 조용해요"
+        },
+        "result": "종목 옆에 검토일이 붙었어요. 내 오후 휴게 칸은 비었어요."
+      },
+      {
+        "label": "정한 확인일만 보고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.risk": -5,
+          "semi": "메모리 업황이 식어 시세판이 조용해요"
+        },
+        "result": "시세표를 접었어요. 새 검토 원고는 책상에 남았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_retail_investor_price_refresh",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "retail_investor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "시세판 앞에 다시 섰는데 방금 본 숫자예요. 발만 먼저 돌아왔어요.",
+    "choices": [
+      {
+        "label": "한 번만 더 보고 가요",
+        "effects": {
+          "happiness": 1,
+          "mental": -2,
+          "trait.risk": 5
+        },
+        "result": "숫자는 그대로예요. 새로 오른 건 내 방문 횟수예요."
+      },
+      {
+        "label": "시세판을 등지고 밖으로 나가요",
+        "effects": {
+          "mental": 2,
+          "happiness": -1,
+          "trait.risk": -5
+        },
+        "result": "유리문에 숫자 대신 하늘이 비쳤어요. 주머니 속 메모는 접혔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_landlord_first_tenant",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "landlord"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "공장 근처 원룸 열쇠를 처음 넘겨요. 입주자는 다음 주부터 야간조래요.",
+    "choices": [
+      {
+        "label": "생활 시간과 시설 안내를 함께 맞춰요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "공장 근처 원룸 열쇠를 처음 넘겨요"
+        },
+        "result": "안내 메모가 세 장이 됐어요. 방은 여전히 한 칸이에요."
+      },
+      {
+        "label": "계약한 기본 안내부터 마쳐요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "공장 근처 원룸 열쇠를 처음 넘겨요"
+        },
+        "result": "필수 안내서에 서명을 받았어요. 추가 질문은 다음 약속으로 갔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_landlord_repair_log",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "landlord"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "원룸 수리 장부에 같은 방 번호가 두 번 있어요. 영수증까지 맞추면 휴게가 늦어져요.",
+    "choices": [
+      {
+        "label": "작업 이력과 영수증을 대조해요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.diligence": 5,
+          "semi": "원룸 수리 장부에 같은 방 번호가 두 번 있어요"
+        },
+        "result": "같은 수리가 한 줄로 묶였어요. 내 차는 식었어요."
+      },
+      {
+        "label": "차이를 적어 수리 담당에게 넘겨요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "원룸 수리 장부에 같은 방 번호가 두 번 있어요"
+        },
+        "result": "담당자가 장부를 가져갔어요. 나는 창가 의자에 앉았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_landlord_room_notice",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "landlord"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "공용 게시판의 수리 안내가 야간조 수면 시간과 겹쳐요. 업체는 원래 시간을 원해요.",
+    "choices": [
+      {
+        "label": "작업 시간을 다시 협의해요",
+        "effects": {
+          "reputation": 2,
+          "friends": -1,
+          "trait.conform": -5
+        },
+        "result": "새 안내가 문마다 붙었어요. 업체 담당자는 일정표를 다시 폈어요."
+      },
+      {
+        "label": "희망 시간을 모아 업체에 넘겨요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1,
+          "trait.conform": 5
+        },
+        "result": "입주자 메모가 한 묶음이 됐어요. 내 조정 완료 칸은 비었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_landlord_night_sleep",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "landlord"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "야간조 입주자가 낮 시간 소음을 이야기해요. 내 쉬는 시간이 시작됐어요.",
+    "choices": [
+      {
+        "label": "시간표를 펴고 끝까지 들어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5,
+          "semi": "야간조 입주자가 낮 시간 소음을 이야기해요"
+        },
+        "result": "입주자가 수면 시간을 표시했어요. 내 물컵은 그대로예요."
+      },
+      {
+        "label": "접수 내용을 적고 상담 시간을 잡아요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5,
+          "semi": "야간조 입주자가 낮 시간 소음을 이야기해요"
+        },
+        "result": "입주자가 메모를 받아 갔어요. 나는 빈 의자에 앉았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_landlord_slow_inquiry",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "landlord",
+      "market": {
+        "cycle": [
+          -2,
+          -1
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "업황이 식어 빈방 문의가 줄었어요. 오래된 방 안내서를 손볼까요?",
+    "choices": [
+      {
+        "label": "교대 생활 정보를 따로 묶어요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.risk": 5,
+          "semi": "업황이 식어 빈방 문의가 줄었어요"
+        },
+        "result": "새 안내가 빈방 문에 붙었어요. 내 오후 휴게는 밀렸어요."
+      },
+      {
+        "label": "기존 문의만 정리하고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.risk": -5,
+          "semi": "업황이 식어 빈방 문의가 줄었어요"
+        },
+        "result": "문의 장부를 덮었어요. 안내서 초안은 다음 칸으로 갔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_landlord_light_on",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "landlord"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "공장 교대 시간에 원룸 복도 불이 차례로 켜져요. 내 시계보다 정확해 보여요.",
+    "choices": [
+      {
+        "label": "점등 시간을 메모해 봐요",
+        "effects": {
+          "intelligence": 1,
+          "mental": -1,
+          "trait.diligence": 5
+        },
+        "result": "메모가 교대표처럼 됐어요. 다만 내 방은 늘 지각이에요."
+      },
+      {
+        "label": "장부를 덮고 내 저녁을 먹어요",
+        "effects": {
+          "mental": 2,
+          "happiness": -1,
+          "trait.work_life": -5
+        },
+        "result": "식탁 불만 따로 켰어요. 복도 발소리가 멀어졌어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_chicken_shop_first_order",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "chicken_shop"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "공장 앞 치킨집에 첫 주문표가 걸렸어요. 조리 순서보다 내 손이 더 바빠요.",
+    "choices": [
+      {
+        "label": "선배와 포장 순서를 더 맞춰요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "공장 앞 치킨집에 첫 주문표가 걸렸어요"
+        },
+        "result": "빈 상자가 다섯 번 접혔어요. 연습 손님은 전부 공기예요."
+      },
+      {
+        "label": "오늘 메뉴 순서만 익히고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "공장 앞 치킨집에 첫 주문표가 걸렸어요"
+        },
+        "result": "기본 주문표에 표시했어요. 추가 메뉴는 선배가 맡았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_chicken_shop_shift_orders",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "chicken_shop"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "교대가 끝난 직원들 주문이 한꺼번에 왔어요. 마감 시간을 조금 늘려 달래요.",
+    "choices": [
+      {
+        "label": "주문 가능한 만큼 더 받아요",
+        "effects": {
+          "cash": "@salary*0.005",
+          "mental": -2,
+          "trait.work_life": 5,
+          "semi": "교대가 끝난 직원들 주문이 한꺼번에 왔어요"
+        },
+        "result": "포장 상자가 한 줄 더 나갔어요. 내 저녁은 한참 뒤에 왔어요."
+      },
+      {
+        "label": "예정한 주문까지만 받아요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "교대가 끝난 직원들 주문이 한꺼번에 왔어요"
+        },
+        "result": "튀김기 정리를 마쳤어요. 추가 주문표는 옆 가게로 갔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_chicken_shop_stock_check",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "chicken_shop"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "재료 장부와 남은 상자 수가 달라요. 마감 뒤 한 번 더 맞춰 볼까요?",
+    "choices": [
+      {
+        "label": "입고 기록까지 대조해요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.diligence": 5
+        },
+        "result": "장부와 선반 수가 맞았어요. 내 휴게 컵은 식었어요."
+      },
+      {
+        "label": "차이를 적어 다음 담당에게 넘겨요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5
+        },
+        "result": "인계 메모가 장부에 붙었어요. 나는 의자에 등을 기댔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_chicken_shop_regular_story",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "chicken_shop"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "늦은 교대 단골이 포장대에서 말을 걸어요. 뒤에는 마감 그릇이 기다려요.",
+    "choices": [
+      {
+        "label": "잠깐 멈춰 이야기를 들어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5,
+          "semi": "늦은 교대 단골이 포장대에서 말을 걸어요"
+        },
+        "result": "단골이 빈 상자를 접어 줬어요. 내 마감은 조금 늦어졌어요."
+      },
+      {
+        "label": "다음에 듣겠다고 하고 정리해요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5,
+          "semi": "늦은 교대 단골이 포장대에서 말을 걸어요"
+        },
+        "result": "단골이 인사하고 나갔어요. 내 세척대는 제시간에 비었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_chicken_shop_boom_evening",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "chicken_shop",
+      "market": {
+        "cycle": [
+          1,
+          2
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "호황이라 퇴근 시간마다 주문표가 길어져요. 저녁 주문을 더 받을까요?",
+    "choices": [
+      {
+        "label": "조리 가능한 수량만 더 받아요",
+        "effects": {
+          "cash": "@salary*0.005",
+          "mental": -2,
+          "trait.work_life": 5,
+          "semi": "호황이라 퇴근 시간마다 주문표가 길어져요"
+        },
+        "result": "포장대에 상자가 한 줄 늘었어요. 내 다리는 의자부터 찾아요."
+      },
+      {
+        "label": "기존 마감 시간을 지켜요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "호황이라 퇴근 시간마다 주문표가 길어져요"
+        },
+        "result": "문 앞 영업표를 뒤집었어요. 늦은 손님은 옆길로 갔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_chicken_shop_family_chicken",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "chicken_shop"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "마감 뒤 집에서 치킨을 또 보게 됐어요. 냉장고 반찬도 전부 곁들임처럼 보여요.",
+    "choices": [
+      {
+        "label": "남은 재료로 다른 한 끼를 만들어요",
+        "effects": {
+          "happiness": 2,
+          "mental": -1,
+          "trait.work_life": -5
+        },
+        "result": "접시에 닭이 없어요. 오늘 가장 새로운 메뉴예요."
+      },
+      {
+        "label": "오늘도 치킨을 꺼내요",
+        "effects": {
+          "mental": 2,
+          "happiness": -1,
+          "trait.diligence": -5
+        },
+        "result": "포장 상자가 식탁에 놓였어요. 반찬통은 그대로 닫혔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_recruiter_first_profile",
+    "year": [
+      1995,
+      null
+    ],
+    "when": {
+      "job": "recruiter"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "첫 후보자 경력표에 장비 이름이 빼곡해요. 직무 설명서에는 낯선 약어가 더 많아요.",
+    "choices": [
+      {
+        "label": "채용 담당자와 역할부터 맞춰요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "첫 후보자 경력표에 장비 이름이 빼곡해요"
+        },
+        "result": "경력표 여백이 질문으로 찼어요. 오늘 면접자는 나 같아요."
+      },
+      {
+        "label": "현재 제안할 역할부터 익혀요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "첫 후보자 경력표에 장비 이름이 빼곡해요"
+        },
+        "result": "필요한 경력에 표시했어요. 나머지 역할은 선배가 이어 봤어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_recruiter_consent_intro",
+    "year": [
+      1995,
+      null
+    ],
+    "when": {
+      "job": "recruiter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "후보자 소개서에 전달 동의 범위가 빠졌어요. 확인 연락이 늦은 오후 온대요.",
+    "choices": [
+      {
+        "label": "후보자에게 확인하고 마무리해요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.diligence": 5,
+          "semi": "후보자 소개서에 전달 동의 범위가 빠졌어요"
+        },
+        "result": "동의 범위가 소개서에 붙었어요. 내 버스는 다음 편이에요."
+      },
+      {
+        "label": "전달을 보류하고 다음 담당에게 넘겨요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "후보자 소개서에 전달 동의 범위가 빠졌어요"
+        },
+        "result": "보류 표시가 파일에 붙었어요. 나는 먼저 책상을 비웠어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_recruiter_role_match",
+    "year": [
+      1995,
+      null
+    ],
+    "when": {
+      "job": "recruiter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "직무 설명서의 장비 경험 범위가 너무 넓어요. 채용 담당자는 그대로 소개해 달래요.",
+    "choices": [
+      {
+        "label": "필수 경험부터 좁혀 달라고 해요",
+        "effects": {
+          "reputation": 2,
+          "friends": -1,
+          "trait.conform": -5
+        },
+        "result": "설명서에 필수와 우대가 갈렸어요. 담당자의 펜이 잠깐 멎었어요."
+      },
+      {
+        "label": "넓은 범위 그대로 후보자에게 설명해요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1,
+          "trait.conform": 5
+        },
+        "result": "담당자는 고개를 끄덕였어요. 후보자의 확인 질문은 더 늘었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_recruiter_no_thanks",
+    "year": [
+      1995,
+      null
+    ],
+    "when": {
+      "job": "recruiter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "면담 뒤 후보자가 현장 근무 형태를 더 물어요. 내 휴게 시간이 시작됐어요.",
+    "choices": [
+      {
+        "label": "공개된 조건을 같이 읽어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5,
+          "semi": "면담 뒤 후보자가 현장 근무 형태를 더 물어요"
+        },
+        "result": "후보자가 근무표에 표시했어요. 내 차는 식었어요."
+      },
+      {
+        "label": "조건표를 주고 추가 면담을 잡아요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5,
+          "semi": "면담 뒤 후보자가 현장 근무 형태를 더 물어요"
+        },
+        "result": "후보자가 종이를 접었어요. 나는 빈 의자에 등을 붙였어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_recruiter_boom_offers",
+    "year": [
+      1995,
+      null
+    ],
+    "when": {
+      "job": "recruiter",
+      "market": {
+        "cycle": [
+          1,
+          2
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "호황이라 장비 엔지니어 채용 의뢰가 늘었어요. 추가 상담을 맡아 달래요.",
+    "choices": [
+      {
+        "label": "상담 시간을 더 열어요",
+        "effects": {
+          "reputation": 2,
+          "health": -1,
+          "trait.work_life": 5,
+          "semi": "호황이라 장비 엔지니어 채용 의뢰가 늘었어요"
+        },
+        "result": "예약표에 이름이 찼어요. 퇴근 버스에서는 바로 잠들었어요."
+      },
+      {
+        "label": "기존 상담까지만 맡아요",
+        "effects": {
+          "health": 1,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "호황이라 장비 엔지니어 채용 의뢰가 늘었어요"
+        },
+        "result": "예약 수첩을 제시간에 덮었어요. 새 의뢰는 다른 담당에게 갔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_recruiter_friend_resume",
+    "year": [
+      1995,
+      null
+    ],
+    "when": {
+      "job": "recruiter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "친구가 밥자리에서 내 경력을 소개했어요. 나도 모르게 근무지를 물었어요.",
+    "choices": [
+      {
+        "label": "희망 조건까지 장난으로 물어요",
+        "effects": {
+          "happiness": 2,
+          "reputation": -1,
+          "trait.conform": -5
+        },
+        "result": "친구가 반찬 많은 회사래요. 채용 조건은 식탁 위에 있었어요."
+      },
+      {
+        "label": "웃고 밥 이야기로 돌아가요",
+        "effects": {
+          "reputation": 1,
+          "happiness": -1,
+          "trait.conform": 5
+        },
+        "result": "경력 얘기는 접혔어요. 친구가 마지막 반찬을 집었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_academy_teacher_first_lesson",
+    "year": [
+      2005,
+      null
+    ],
+    "when": {
+      "job": "academy_teacher"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "반도체 취업반 칠판에 공정 흐름을 그렸어요. 학생 질문이 첫 화살표에서 멈춰요.",
+    "choices": [
+      {
+        "label": "첫 공정을 그림부터 다시 풀어요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "반도체 취업반 칠판에 공정 흐름을 그렸어요"
+        },
+        "result": "칠판 한 면이 한 공정이 됐어요. 화살표도 오늘은 지각이에요."
+      },
+      {
+        "label": "핵심 용어부터 짧게 익혀 줘요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "반도체 취업반 칠판에 공정 흐름을 그렸어요"
+        },
+        "result": "용어표에 동그라미가 생겼어요. 전체 흐름은 다음 수업으로 남았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_academy_teacher_concept_gap",
+    "year": [
+      2005,
+      null
+    ],
+    "when": {
+      "job": "academy_teacher"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "학생 답안에 웨이퍼와 칩이 바뀌어 있어요. 개별 피드백을 더 하면 퇴근이 늦어져요.",
+    "choices": [
+      {
+        "label": "답안마다 그림을 붙여 줘요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.diligence": 5,
+          "semi": "학생 답안에 웨이퍼와 칩이 바뀌어 있어요"
+        },
+        "result": "답안 여백에 동그라미와 네모가 찼어요. 강의실 복도는 조용해졌어요."
+      },
+      {
+        "label": "공통 설명을 주고 다시 받아요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "학생 답안에 웨이퍼와 칩이 바뀌어 있어요"
+        },
+        "result": "자료함에 설명지가 들어갔어요. 나는 제시간에 가방을 들었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_academy_teacher_course_note",
+    "year": [
+      2005,
+      null
+    ],
+    "when": {
+      "job": "academy_teacher"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "강의 안내에 취업 보장처럼 읽히는 문장이 있어요. 접수 담당자는 짧게 두자고 해요.",
+    "choices": [
+      {
+        "label": "확인할 수 있는 내용만 남겨요",
+        "effects": {
+          "reputation": 2,
+          "friends": -1,
+          "trait.conform": -5
+        },
+        "result": "안내문이 한 줄 짧아졌어요. 접수 담당자의 펜이 멎었어요."
+      },
+      {
+        "label": "수강 범위와 조건을 따로 붙여요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1,
+          "trait.conform": 5
+        },
+        "result": "안내 아래 조건표가 달렸어요. 설명 요청은 한 번 더 왔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_academy_teacher_student_worry",
+    "year": [
+      2005,
+      null
+    ],
+    "when": {
+      "job": "academy_teacher"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "수업 뒤 학생이 교대 생활을 더 물어요. 내 휴게 시간이 시작됐어요.",
+    "choices": [
+      {
+        "label": "공개된 근무 예시를 같이 읽어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5,
+          "semi": "수업 뒤 학생이 교대 생활을 더 물어요"
+        },
+        "result": "학생이 시간표에 표시했어요. 내 물컵은 그대로 남았어요."
+      },
+      {
+        "label": "참고 자료를 주고 상담 시간을 잡아요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5,
+          "semi": "수업 뒤 학생이 교대 생활을 더 물어요"
+        },
+        "result": "학생이 종이를 접었어요. 나는 빈 의자에 등을 붙였어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_academy_teacher_slow_class",
+    "year": [
+      2005,
+      null
+    ],
+    "when": {
+      "job": "academy_teacher",
+      "market": {
+        "cycle": [
+          -2,
+          -1
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "반도체반 접수표가 불황으로 듬성해요. 수업 예시를 손볼 시간이 났어요.",
+    "choices": [
+      {
+        "label": "직무별 사례를 새로 묶어요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.risk": 5,
+          "semi": "반도체반 접수표가 불황으로 듬성해요"
+        },
+        "result": "교재에 현장과 사무 예시가 나뉘었어요. 내 오후 휴게 칸은 비었어요."
+      },
+      {
+        "label": "현재 수업만 정리하고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.risk": -5,
+          "semi": "반도체반 접수표가 불황으로 듬성해요"
+        },
+        "result": "강의철을 덮었어요. 새 사례 원고는 책상에 남았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_academy_teacher_weekend_whiteboard",
+    "year": [
+      2005,
+      null
+    ],
+    "when": {
+      "job": "academy_teacher"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "휴게실 유리컵에 웨이퍼 단면을 그릴 뻔했어요. 손에는 보드펜이 들렸어요.",
+    "choices": [
+      {
+        "label": "빈 종이에 그림을 옮겨요",
+        "effects": {
+          "happiness": 2,
+          "reputation": -1,
+          "trait.conform": -5
+        },
+        "result": "동료가 컵보다 잘 보인대요. 오늘 보충수업은 휴게실 한 명이에요."
+      },
+      {
+        "label": "펜을 넣고 물부터 마셔요",
+        "effects": {
+          "reputation": 1,
+          "happiness": -1,
+          "trait.conform": 5
+        },
+        "result": "컵이 깨끗한 채로 돌아갔어요. 동료도 자기 자리로 갔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_youtuber_first_video",
+    "year": [
+      2012,
+      null
+    ],
+    "when": {
+      "job": "youtuber"
+    },
+    "weight": 2,
+    "once": true,
+    "text": "첫 반도체 영상 녹음 버튼을 눌렀어요. 인사 뒤 약어에서 혀가 멈췄어요.",
+    "choices": [
+      {
+        "label": "용어를 풀어 다시 녹음해요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1,
+          "trait.diligence": 5,
+          "semi": "첫 반도체 영상 녹음 버튼을 눌렀어요"
+        },
+        "result": "인사만 열두 번 쌓였어요. 채널엔 아직 인사 한 번도 없어요."
+      },
+      {
+        "label": "짧은 개념 하나만 먼저 찍어요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "첫 반도체 영상 녹음 버튼을 눌렀어요"
+        },
+        "result": "짧은 파일이 저장됐어요. 나머지 대본은 책상에 남았어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_youtuber_script_source",
+    "year": [
+      2012,
+      null
+    ],
+    "when": {
+      "job": "youtuber"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "영상 대본의 시장 숫자가 원문과 달라요. 출처 시점까지 보면 업로드가 늦어져요.",
+    "choices": [
+      {
+        "label": "원문 기준으로 다시 대조해요",
+        "effects": {
+          "reputation": 2,
+          "mental": -2,
+          "trait.diligence": 5,
+          "semi": "영상 대본의 시장 숫자가 원문과 달라요"
+        },
+        "result": "화면 아래 기준 날짜가 붙었어요. 예약 시각은 다음 칸으로 갔어요."
+      },
+      {
+        "label": "확인된 숫자만 쓰고 나머지를 빼요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "영상 대본의 시장 숫자가 원문과 달라요"
+        },
+        "result": "대본이 짧아졌어요. 나는 업로드 뒤 의자에 등을 붙였어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_youtuber_comment_question",
+    "year": [
+      2012,
+      null
+    ],
+    "when": {
+      "job": "youtuber"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "댓글 질문을 보니 제목 범위가 너무 넓어요. 협업자는 지금 제목이 좋대요.",
+    "choices": [
+      {
+        "label": "확인한 내용에 맞춰 제목을 줄여요",
+        "effects": {
+          "reputation": 2,
+          "friends": -1,
+          "trait.conform": -5
+        },
+        "result": "제목에서 과장이 빠졌어요. 협업자는 잠시 말을 멈췄어요."
+      },
+      {
+        "label": "조건 설명을 제목 아래 붙여요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1,
+          "trait.conform": 5
+        },
+        "result": "설명란이 한 줄 늘었어요. 제목을 묻는 댓글은 다시 달렸어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_youtuber_collab_scope",
+    "year": [
+      2012,
+      null
+    ],
+    "when": {
+      "job": "youtuber"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "협업 녹화 뒤 동료가 용어 설명을 더 맞추재요. 내 휴게 시간이 시작됐어요.",
+    "choices": [
+      {
+        "label": "대본을 같이 다시 읽어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5,
+          "semi": "협업 녹화 뒤 동료가 용어 설명을 더 맞추재요"
+        },
+        "result": "두 대본의 약어가 맞춰졌어요. 내 음료는 식었어요."
+      },
+      {
+        "label": "검토 지점을 보내고 다음 통화를 잡아요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5,
+          "semi": "협업 녹화 뒤 동료가 용어 설명을 더 맞추재요"
+        },
+        "result": "동료가 파일을 열었어요. 나는 화면을 닫고 눈을 쉬었어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_youtuber_boom_views",
+    "year": [
+      2012,
+      null
+    ],
+    "when": {
+      "job": "youtuber",
+      "market": {
+        "cycle": [
+          1,
+          2
+        ]
+      }
+    },
+    "weight": 1,
+    "once": false,
+    "text": "호황이라 반도체 영상 요청이 늘었어요. 추가 해설 한 편을 부탁해요.",
+    "choices": [
+      {
+        "label": "추가 영상을 맡아요",
+        "effects": {
+          "reputation": 2,
+          "health": -1,
+          "trait.work_life": 5,
+          "semi": "호황이라 반도체 영상 요청이 늘었어요"
+        },
+        "result": "촬영표가 한 줄 늘었어요. 귀갓길 눈꺼풀이 무거워요."
+      },
+      {
+        "label": "기존 영상까지만 맡아요",
+        "effects": {
+          "health": 1,
+          "reputation": -1,
+          "trait.work_life": -5,
+          "semi": "호황이라 반도체 영상 요청이 늘었어요"
+        },
+        "result": "마이크를 끄고 어깨를 폈어요. 새 영상은 다음 주 칸으로 갔어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_youtuber_retake_name",
+    "year": [
+      2012,
+      null
+    ],
+    "when": {
+      "job": "youtuber"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "녹화본을 보니 웨이퍼를 와이퍼라고 했어요. 화면 속 나는 아주 자신만만해요.",
+    "choices": [
+      {
+        "label": "해당 부분을 다시 찍어요",
+        "effects": {
+          "happiness": 2,
+          "reputation": -1,
+          "trait.conform": -5
+        },
+        "result": "같은 문장을 아홉 번 읽었어요. 차 유리 닦는 칩은 사라졌어요."
+      },
+      {
+        "label": "그 부분을 빼고 짧게 편집해요",
+        "effects": {
+          "reputation": 1,
+          "happiness": -1,
+          "trait.conform": 5
+        },
+        "result": "영상이 십 초 줄었어요. 공들인 비유도 함께 잘렸어요."
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "job_professor_small_question",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "professor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "강의실에서 학생이 소자 단면을 돌려 그려도 되냐고 해요. 좌우를 바꾸면 더 잘 보인대요.",
+    "choices": [
+      {
+        "label": "같이 방향과 표시를 맞춰요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5
+        },
+        "result": "학생 그림에 전극명이 붙었어요. 내 쉬는 시간은 끝났어요."
+      },
+      {
+        "label": "방향 표기 예시를 주고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5
+        },
+        "result": "학생은 교재 여백에 그렸어요. 나는 강의실 밖 의자에 앉았어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_journalist_coffee_line",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "journalist"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "취재 수첩 앞에서 후배가 약어를 그대로 적어도 되냐고 해요. 나중에 못 읽을까 걱정이래요.",
+    "choices": [
+      {
+        "label": "같이 뜻과 발언 맥락을 풀어 써요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5
+        },
+        "result": "후배 수첩 여백이 찼어요. 내 쉬는 시간은 지나갔어요."
+      },
+      {
+        "label": "용어 목록을 주고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5
+        },
+        "result": "후배는 빈 책상으로 갔어요. 나는 눈을 감고 등을 기댔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_official_station_walk",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "official"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "설명회 담당자가 지도 범례를 크게 해도 되냐고 해요. 뒷줄에서 잘 안 보인대요.",
+    "choices": [
+      {
+        "label": "같이 지도와 범례를 다시 맞춰요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5
+        },
+        "result": "뒷줄에서도 구역이 보였어요. 내 휴게 시간은 끝났어요."
+      },
+      {
+        "label": "인쇄 기준을 알려 주고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5
+        },
+        "result": "담당자가 자료를 다시 폈어요. 나는 복도 의자에 앉았어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_analyst_lunch_spice",
+    "year": [
+      1988,
+      null
+    ],
+    "when": {
+      "job": "analyst"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "동료가 보고서의 화살표 색을 물어요. 상승과 실적 개선을 같은 뜻으로 써도 되냐고 해요.",
+    "choices": [
+      {
+        "label": "같이 범례의 의미를 나눠요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5
+        },
+        "result": "도표 아래 설명이 두 줄 됐어요. 내 쉬는 시간은 끝났어요."
+      },
+      {
+        "label": "기존 범례를 주고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5
+        },
+        "result": "동료가 표를 다시 읽었어요. 나는 창가 의자에 앉았어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_retail_investor_phone_away",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "retail_investor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "자료대에서 지인이 주가와 실적 도표를 같은 장에 붙여도 되냐고 해요. 날짜가 서로 달라요.",
+    "choices": [
+      {
+        "label": "같이 기준 날짜를 나눠 적어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5
+        },
+        "result": "두 도표 아래 날짜가 붙었어요. 내 쉬는 시간은 지나갔어요."
+      },
+      {
+        "label": "원자료 위치만 알려 주고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5
+        },
+        "result": "지인은 자료철을 폈어요. 나는 장부를 가방에 넣었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_landlord_neighbor_parcel",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "landlord"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "야간조 입주자가 수리 안내를 문자 대신 문 앞에 붙여 달래요. 자는 동안 연락을 놓친대요.",
+    "choices": [
+      {
+        "label": "함께 안내 위치와 시간을 맞춰요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5
+        },
+        "result": "문 앞에 접힌 안내가 걸렸어요. 내 휴게 시간은 짧아졌어요."
+      },
+      {
+        "label": "기존 접수 방식을 설명하고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5
+        },
+        "result": "입주자가 접수 시간을 적었어요. 나는 장부를 덮었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_chicken_shop_closing_song",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "chicken_shop"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "포장대에서 동료가 상자 접는 순서를 바꿔 보재요. 교대 시간 주문에 맞추고 싶대요.",
+    "choices": [
+      {
+        "label": "같이 빈 상자로 연습해요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5
+        },
+        "result": "포장대에 상자가 가지런히 섰어요. 내 쉬는 시간은 끝났어요."
+      },
+      {
+        "label": "기존 순서로 맡기고 잠깐 쉬어요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5
+        },
+        "result": "동료가 주문표를 받았어요. 나는 빈 의자에 앉았어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_recruiter_hobby_question",
+    "year": [
+      1995,
+      null
+    ],
+    "when": {
+      "job": "recruiter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "후보자가 소개서의 장비명 대신 맡은 일을 먼저 써도 되냐고 해요. 모델명만 길게 나열돼 있대요.",
+    "choices": [
+      {
+        "label": "같이 공개 가능한 역할부터 정리해요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5
+        },
+        "result": "소개서 첫 줄이 짧아졌어요. 내 쉬는 시간은 지나갔어요."
+      },
+      {
+        "label": "기존 양식 예시를 주고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5
+        },
+        "result": "후보자가 새 종이를 폈어요. 나는 창가 의자에 앉았어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_academy_teacher_chalk_color",
+    "year": [
+      2005,
+      null
+    ],
+    "when": {
+      "job": "academy_teacher"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "학생이 공정 순서를 색으로 외워도 되냐고 해요. 칠판 화살표가 전부 같아 보인대요.",
+    "choices": [
+      {
+        "label": "같이 색과 공정 이름을 붙여요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5
+        },
+        "result": "학생 노트에 흐름이 이어졌어요. 내 쉬는 시간은 끝났어요."
+      },
+      {
+        "label": "기존 흐름표를 주고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5
+        },
+        "result": "학생이 표를 펼쳤어요. 나는 강의실 밖 의자에 앉았어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_youtuber_evening_screen",
+    "year": [
+      2012,
+      null
+    ],
+    "when": {
+      "job": "youtuber"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "댓글창에서 후배 제작자가 자막 줄을 물어요. 반도체 약어가 화면을 꽉 채운대요.",
+    "choices": [
+      {
+        "label": "같이 용어와 자막을 나눠 봐요",
+        "effects": {
+          "friends": 2,
+          "mental": -1,
+          "trait.social": 5
+        },
+        "result": "자막에 숨 쉴 줄이 생겼어요. 내 휴게 시간은 지나갔어요."
+      },
+      {
+        "label": "자막 예시를 보내고 쉬어요",
+        "effects": {
+          "mental": 2,
+          "friends": -1,
+          "trait.social": -5
+        },
+        "result": "후배가 새 파일을 열었어요. 나는 화면을 끄고 등을 기댔어요."
+      }
+    ],
+    "default": 1
+  }
+]
