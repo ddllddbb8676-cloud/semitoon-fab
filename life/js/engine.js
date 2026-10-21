@@ -20,6 +20,7 @@ import { familyYearStart, familyYearEnd, giveIndependenceFund } from './family.j
 import { settleYear, houseChance } from './money.js';
 import { buildQueue, present as presentEvent, choose } from './events.js';
 import { matchWhen } from './conditions.js';
+import { chronicle } from './chronicle.js';
 
 export { createLife, rollCandidate, hydrate, SAVE_VERSION } from './state.js';
 export { review } from './review.js';
@@ -133,15 +134,19 @@ export function finishYear(L) {
     for (const sj of s.career.side_jobs) s.career.sector_years[sj] = (s.career.sector_years[sj] ?? 0) + 1;
     if (D.jobById.get(s.career.job)?.touch === 'core' && !s.flags.first_core_year) s.flags.first_core_year = s.year;
   }
-  // 업적 (GPT achievements.json이 있으면 when으로 판정)
+  // 업적 (GPT achievements.json이 있으면 when으로 판정) — 연표에는 안 쓰고 토스트와 엔딩 목록으로만 (v0.2)
   for (const a of D.achievements) {
     if (s.achievements.includes(a.id)) continue;
     try {
-      if (matchWhen(L, a.when)) { s.achievements.push(a.id); addLog(L, `업적: ${a.name}`, 1, 'achievement'); L.emit('achievement', { id: a.id, name: a.name }); }
+      if (matchWhen(L, a.when)) {
+        s.achievements.push(a.id);
+        (s.ach_log ??= []).push({ id: a.id, name: a.name, year: s.year, age: s.age });
+        L.emit('achievement', { id: a.id, name: a.name });
+      }
     } catch { /* 형식이 이상한 업적은 무시 */ }
   }
-  // 조용한 해
-  if (!s.log.some((x) => x.year === s.year && x.importance >= 1)) addLog(L, quietLine(L), 0, 'quiet');
+  // 그 해의 소식 한 줄 (가족·근속·재산·업황·세상 소식). 반복 문장은 단계마다 한 번만
+  chronicle(L);
   const aw = L.W.econ(s.year).avg_wage;
   const r2 = (x) => Math.round(100 * x / aw) / 100;
   s.hist.push({ y: s.year, h: Math.round(s.happiness), nw: r2(s.money.networth ?? 0), cash: r2(s.money.cash), debt: r2(s.money.debt), inc: r2(s.money.last?.income ?? 0), st: statusOf(s) });
@@ -160,18 +165,6 @@ export function finishYear(L) {
   }
   s.turn = null;
   return { dead: !!d };
-}
-
-function quietLine(L) {
-  const { s } = L;
-  const st = statusOf(s);
-  if (s.age <= 6) return '무럭무럭 자랐어요';
-  if (st === 'student') return '학교에 다니며 한 해를 보냈어요';
-  if (st === 'military') return '복무하며 한 해를 보냈어요';
-  if (st === 'employed' || st === 'owner') return '일하며 조용히 한 해를 보냈어요';
-  if (st === 'retired') return '느긋하게 한 해를 보냈어요';
-  if (st === 'unemployed') return '일자리를 찾으며 한 해를 보냈어요';
-  return '조용히 한 해가 지나갔어요';
 }
 
 export { STAGES, hExp };

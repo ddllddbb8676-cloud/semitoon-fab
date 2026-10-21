@@ -190,6 +190,7 @@ export function review(L) {
     traits: traits.map((t) => ({ name: t.name, axis: t.axis, sign: t.sign })), traitLines,
     longestTrait: longest ? { name: longest[0], years: longest[1] } : null,
     timeline: timelineSummary(L), semi: semiCards(L), industry: industryTimeline(L), numbers,
+    achievements: (s.ach_log ?? []).map((a) => ({ ...a })),
     path: [s.education.level, ...new Set(c.history.map((h) => D.jobById.get(h.job)?.name).filter(Boolean))].slice(0, 4).join(' → '),
     job: c.job ? jobName(L) : null,
   };

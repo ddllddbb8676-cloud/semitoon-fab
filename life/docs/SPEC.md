@@ -99,6 +99,9 @@ world      seed, market{year: {cycle, memory, logic_foundry, equipment, korea}},
 | `goto` | `"job_search"` | 다른 사건으로 이어짐 |
 | `title_progress` | `"소신 엔지니어"` | 칭호 진행 |
 | `do` | `"job:quit"` 또는 배열 | 시스템 동작 (아래) |
+| `later` | `{ "event": "<사건 id>", "years": [1, 3], "chance": 0.7 }` 또는 배열 | **나중에 돌아오는 결과**: 1~3년 뒤 그 사건을 강제로 띄움 (chance 생략 시 1). 대상 사건은 보통 `weight: 0` |
+
+사건 필드 추가: `repeatable` (bool, 기본 false — 기본은 한 인생에 한 번), `repeat_gap` (반복 가능할 때 최소 간격, 기본 10년), `recap` (연표에 남길 짧은 질문 요약, 없으면 `text` 첫 문장).
 
 ### `do` 동작
 | 동작 | 뜻 |

@@ -14,7 +14,7 @@
 |---|---|---|
 | `body[data-screen]` | `loading` `title` `create` `main` `ending` | 지금 화면 |
 | `body[data-stage]` | `infant` `child` `teen` `young` `middle` `senior` | 생애 단계 (SPEC) |
-| `body[data-speed]` | `0` `1` `2` `4` `8` | 배속 (0 = 멈춤) |
+| `body[data-speed]` | `auto` `0` `1` `2` `4` `8` | 배속 (`auto` = 자동, 기본값 · 0 = 멈춤) |
 | `body[data-paused]` | `true` `false` | 시계가 멈췄는지 (멈춤 버튼 또는 큰 사건) |
 | `body[data-event]` | `small` `big` 빈 값 | 열린 사건 카드 |
 
@@ -49,7 +49,8 @@
 | `#hud` | 위쪽 고정 영역 |
 | `#life-name` `#life-age` `#life-year` `#life-stage` | 이름 · `34세` · `2013년` · `청년` |
 | `#year-progress` | 그 해 진행 막대. `style="--p: 0.42"` (0~1). 안에 `.progress__bar` |
-| `#speed-controls` › `.speed-btn[data-speed]` | `0 1 2 4 8`. 지금 배속 버튼은 `data-active="true"` |
+| `#speed-controls` › `.speed-btn[data-speed]` | `auto 0 1 2 4 8`. 지금 배속 버튼은 `data-active="true"`. **자동**(기본): 사건 없는 해는 0.6초에 지나가고, 사건이 있으면 카드에서 기다림 (작은 사건 15초, 결과 4초) |
+| `#btn-skip` (`.skip-btn`) | "다음 사건까지 ▶▶" — 열린 결과 카드를 닫고, 다음 사건 카드가 열릴 때까지 해를 넘김 (한 번에 최대 40년) |
 | `#headline` | 그 해 업계 헤드라인 1줄 (`뉴스 · …`, 없으면 빈 칸) |
 | `#status-line` | 지금 상태 한 줄 (학교·학년 / 회사 · 직종 · 직급 (고용형태) / 은퇴 …) |
 | `#money-line` | 현금 · 빚 · 집 · 주식 · 회사 실적 (어린이는 안내 문구) |
@@ -60,10 +61,20 @@
 
 피드 항목:
 ```html
-<li class="feed-item" data-importance="0~3" data-kind="life|school|work|family|money|health|trait|semi|event|choice|company|military|achievement|quiet|death" data-new="true">
+<li class="feed-item" data-importance="0~3" data-kind="life|school|work|family|money|health|trait|semi|event|choice|company|military|world|quiet|death" data-new="true">
   <span class="feed-item__when">2013 · 34세</span>본문
 </li>
+<!-- 사건 선택 줄 (kind event|choice): 질문 요약 → 내 선택 → 결과 -->
+<li class="feed-item" data-kind="choice" data-importance="3" data-later="true">
+  <span class="feed-item__when">2019 · 34세</span>
+  <span class="feed-item__tag">그때 그 선택… 2017</span>            <!-- 나중에 돌아온 결과(later)일 때만 -->
+  <span class="feed-item__q">2017 코인 광풍</span><span class="feed-item__arrow"> → </span>
+  <b class="feed-item__pick">월급 절반을 넣는다</b><span class="feed-item__arrow"> → </span>
+  <span class="feed-item__res">결과 문장</span>
+</li>
 ```
+- `data-kind="world"`: 조용한 해의 세상 소식·동네 공장 소식 (v0.2). `achievement`는 더 이상 피드에 오지 않음 (토스트 + 엔딩 `#ending-achievements`).
+- 반복 문장(`quiet`, 중요도 0)은 학교 단계·직장마다 한 번만 나옵니다.
 - `data-importance`: 3 = 출생·첫 직장·결혼·출산·은퇴·사망·갈림길 선택, 2 = 입학·졸업·이직·승진(3단계↑)·집·질병·회사 운명, 1 = 작은 사건, 0 = 조용한 해 (SYSTEMS 11.2)
 - `data-kind="semi"`는 사건 밖에서 생긴 반도체 순간 (첫 출근 등 자동 기록)
 
@@ -72,8 +83,8 @@
 ### 사건 카드 (`#event-layer`)
 ```html
 <div id="event-layer">                                  <!-- 열리면 hidden 해제 -->
-  <article id="event-card" data-size="small|big" data-phase="choose|result" data-id="사건 id">
-    <p id="event-kicker">인생의 갈림길</p>             <!-- 큰 사건만, 작은 사건은 빈 칸 -->
+  <article id="event-card" data-size="small|big" data-phase="choose|result" data-id="사건 id" data-later="true|false">
+    <p id="event-kicker">인생의 갈림길</p>             <!-- 큰 사건만, 작은 사건은 빈 칸. later면 "그때 그 선택… (2017년 · 고른 선택지)" -->
     <p id="event-text">문장</p>
     <div id="event-choices">
       <button class="choice" data-index="0" data-default="true" data-check="false">
@@ -84,7 +95,7 @@
     <div id="event-timer" style="--t: 0.6"><span></span></div>   <!-- 작은 사건 남은 시간 1→0 -->
     <div id="event-result" hidden>
       <p id="event-result-text"></p>
-      <div id="event-chips"><span class="chip" data-tone="good|bad|semi">멘탈 −5</span></div>
+      <div id="event-chips"><span class="chip" data-tone="good|bad|semi|trait|money">멘탈 −5</span></div>   <!-- 칩이 없으면 hidden -->
       <button id="event-ok">확인</button>
     </div>
   </article>
@@ -92,16 +103,18 @@
 ```
 - **작은 사건**: 시계는 계속 갑니다. 실제 시간 15초 안에 안 고르면 `data-default="true"` 선택지가 골라지고, 결과는 5초 뒤 저절로 닫힙니다.
 - **큰 사건**(갈림길): 시계가 멈추고(`body[data-paused="true"]`) 시간 제한이 없습니다. 결과는 확인을 눌러야 닫힙니다.
-- 칩 `data-tone`: `good` 좋아짐 · `bad` 나빠짐 · `semi` 반도체 순간 획득.
+- 칩 `data-tone`: `good` 좋아짐 · `bad` 나빠짐 · `semi` 반도체 순간 획득 · `trait` 성향 이동("성실함 ↑", 크게 움직이면 "↑↑") · `money` 투자 평가액 변화.
+- 칩은 선택 전후 상태를 비교해 만듭니다: 능력치·행복·평판·친구·성향·현금·투자·빚·집·연인/결혼/이별·아이·직장·직급·연봉 보정. 돈은 시대 단위 (`현금 +120만 원`).
+- `data-later="true"`: 예전 선택이 몇 년 뒤 돌아온 사건 (SPEC `later`).
 
 ### 엔딩
-`#ending-line`(마지막 한 줄), `#ending-cause`(사망 문구, 선택), `#ending-title`, `#ending-ribbons` › `.ribbon`, `#ending-summary`(선택), `#ending-score`, `#score-bars` › `li.bar[data-id]` › `.bar__fill`(`--v`), `#ending-traits` › `.trait-badge`, `#ending-trait-lines`(선택), `#ending-semi` › `li.semi-card[data-kind]` › `.semi-card__meta` `.semi-card__text`, `#ending-timeline` › `li[data-mine]` › `.timeline__year`, `#ending-industry`(같은 구조, `data-mine="true"`는 내 회사·주식), `#ending-numbers`(dl), `#ending-epitaph`(선택), `#btn-again-same`, `#btn-again-new`, `#ending-seed`.
+`#ending-line`(마지막 한 줄), `#ending-cause`(사망 문구, 선택), `#ending-title`, `#ending-ribbons` › `.ribbon`, `#ending-summary`(선택), `#ending-score`, `#score-bars` › `li.bar[data-id]` › `.bar__fill`(`--v`), `#ending-traits` › `.trait-badge`, `#ending-trait-lines`(선택), `#ending-semi` › `li.semi-card[data-kind]` › `.semi-card__meta` `.semi-card__text`, `#ending-timeline` › `li[data-mine]` › `.timeline__year`, `#ending-industry`(같은 구조, `data-mine="true"`는 내 회사·주식), `#ending-numbers`(dl), `#ending-achievements`(ul › `li.ach[data-id]` › `.ach__when` `.ach__name`, 없으면 `li.ach.ach--none`), `#ending-epitaph`(선택), `#btn-again-same`, `#btn-again-new`, `#ending-seed`.
 - `semi-card[data-kind]`: `core near eco family money school place history everyday` (그림 id `semi_<kind>` 자리, SYSTEMS 11.3)
 - 점수 막대 id: `happiness health wealth relations career semi`
 - "(선택)" 표시는 GPT의 `review_text.json`이 있을 때만 채워짐
 
 ### 토스트
-`#toast-stack` › `.toast[data-tone="semi|"]` — 3.5초 뒤 사라짐 (반도체 순간·특징·승진·재능·업적 알림).
+`#toast-stack` › `.toast[data-tone="semi|achievement|"]` — 3.5초 뒤 사라짐, 한 번에 2개까지 (반도체 순간·특징·승진·재능·업적 알림).
 
 ## 연출 이벤트 (`document`에서 듣기)
 `document.addEventListener('life:semi', (e) => e.detail …)`
@@ -126,7 +139,7 @@
 | `semilife.save.v1` | 지금 인생 전체 (해마다·큰 사건 선택 뒤·멈춤·창 숨김 때 저장) |
 | `semilife.save.bak` | 직전 저장본 |
 | `semilife.archive.v1` | 끝난 인생 요약 최대 30개 |
-| `semilife.settings.v1` | 배속 |
+| `semilife.settings.v1` | 배속 (`auto` 또는 1·2·4·8) |
 
 저장이 막힌 환경(사생활 보호 모드 등)에서도 게임은 그대로 돌아갑니다 (이어 하기만 안 됨).
 

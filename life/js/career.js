@@ -83,11 +83,45 @@ export function baseSalary(L, o) {
   const edu = eduIdx(s.education.level) - eduIdx(j.education);
   let base = e.avg_wage * jobMult(j) * (co ? CO_MULT[co.attrs.salary] : 1) * RANK_MULT[lvl]
     * (1 + 0.02 * Math.min(o.rank_years ?? 0, 5)) * (EMP_MULT[o.employment] ?? 1)
-    * (edu >= 2 ? 1.1 : edu === 1 ? 1.05 : 1) * (0.92 + 0.16 * (o.reputation ?? 50) / 100)
+    * (edu >= 2 ? 1.1 : edu === 1 ? 1.05 : 1) * (0.9 + 0.2 * (o.reputation ?? 50) / 100)
     * (j.shift ? 1.15 : 1) * (o.region === 'overseas' ? 1.3 : 1) * (1 + (o.salary_mod ?? 0));
   if (e.min_wage && j.id !== 'part_timer') base = Math.max(base, e.min_wage * 209 * 12);
   if (j.id === 'part_timer' && e.min_wage) base = Math.max(base, e.min_wage * 209 * 12 * 0.6);
   return base;
+}
+
+// 호봉·연차 (ECONOMY 3.2 보완): 총 경력 1년마다 실질 +0.8%(대기업 정규직)·+0.5%(그 밖의 정규직)·+0.3%(계약·파견), 25년까지.
+// 직급(RANK)·직급 안 호봉(EXP)과 합치면 대기업 정규직 실질 인상은 해마다 약 2~4%
+function seniority(c, co) {
+  if (!['regular', 'contract', 'dispatch'].includes(c.employment)) return 1;
+  const r = c.employment !== 'regular' ? 0.003 : co && co.attrs.salary >= 4 ? 0.008 : 0.005;
+  return 1 + r * Math.min(25, c.total_years ?? 0);
+}
+// 올해 받을 연봉 목표치: 기본급(그 해 평균 임금·직급·평판·회사 등급) × 호봉 × 회사 실적 × 일시 배율
+export function targetSalary(L, c = L.s.career) {
+  const base = baseSalary(L, c);
+  if (['owner', 'daily'].includes(c.employment)) return base;
+  const co = L.W.co(c.company);
+  const perf = co ? 1 + 0.03 * clamp(co.c, -2, 2) : 1;
+  const mult = c.salary_mult && c.salary_mult.until >= L.s.year ? c.salary_mult.x : 1;
+  return base * seniority(c, co) * perf * mult;
+}
+// 연말 결산 첫머리: 올해 연봉 다시 정하기. 명목 연봉은 잘 안 깎임(평소엔 동결, 회사 위기 때만 최대 −10%)
+export function updateSalary(L) {
+  const { s, W } = L;
+  const c = s.career;
+  if (!c.job || c.leave || ['owner', 'daily'].includes(c.employment)) return null;
+  const prev = c.salary || 0;
+  const t = targetSalary(L, c);
+  const key = `${c.job}|${c.company}|${c.employment}`;
+  const fresh = !prev || c.salary_key !== key;
+  const co = W.co(c.company);
+  const crisis = !!co && (co.c <= -1.5 || (W.marketKey('korea', s.year) <= -2 && co.c <= -1));
+  const next = fresh || t >= prev ? t : crisis ? Math.max(t, prev * 0.9) : prev;
+  const promoted = !fresh && c.rank > (c.salary_rank ?? c.rank);
+  const moved = !fresh && (c.region === 'overseas') !== (c.salary_region === 'overseas');
+  Object.assign(c, { salary: next, salary_key: key, salary_rank: c.rank, salary_region: c.region });
+  return { next, fresh, change: fresh ? 0 : next / prev - 1, promoted, moved, abroad: c.region === 'overseas', crisis, frozen: !fresh && next === prev };
 }
 
 // 올해 소득 {base, bonus} — 연말 결산에서 부릅니다
@@ -113,7 +147,8 @@ export function yearIncome(L) {
     const days = clamp(rng.gauss(220 + 25 * W.marketKey('equipment', y) + 15 * e.macro_score, 25), 80, 290);
     return { base: dayRate * days, bonus: 0 };
   }
-  const base = c.salary || baseSalary(L, c);
+  // 육아휴직·출산휴가 쓴 해는 기본급 75% (do leave:*)
+  const base = (c.salary || baseSalary(L, c)) * (c.parental?.year === y ? 0.75 : 1);
   const co = W.co(c.company);
   const bp = co ? bonusParams(co.sector) : null;
   let rate = 0;
@@ -123,7 +158,8 @@ export function yearIncome(L) {
     if (co.c >= 2 && bonusMarket(W, co.sector, y) >= 2 && (co.hist.at(-2)?.[1] ?? 0) >= 2) rate += rng.float(0, 0.4);
   } else if (j.ladder === 'public' || j.group === '생태계') rate = 0.05;
   const lvl = RANK_LEVEL[c.ladder]?.[c.rank] ?? 0;
-  const bonus = base * rate * (EMP_BONUS[c.employment] ?? 0) * (lvl >= 6 ? 4 : lvl >= 5 ? 2.5 : 1);
+  // 입사 첫해 성과급은 절반 (해 중간 입사 평균, v0.2)
+  const bonus = base * rate * (EMP_BONUS[c.employment] ?? 0) * (lvl >= 6 ? 4 : lvl >= 5 ? 2.5 : 1) * (c.years === 0 ? 0.5 : 1);
   return { base, bonus };
 }
 
@@ -167,6 +203,9 @@ function hireChance(L, j, co, emp, region) {
   const major = D.majors.find((mj) => mj.id === s.education.major);
   if (major?.fits?.includes(j.id)) z += 0.5;
   if (j.group === '현장' && req >= 3 && s.education.major_group === 'nonsci') z -= 0.4;
+  // 공대 대졸↑가 반도체 현장·연구 직종에 지원하면 전공 접점 +0.3, 박사가 연구직이면 +0.5 (v0.2)
+  if (ENG.includes(s.education.major_group) && myEdu >= 3 && j.touch === 'core' && j.group === '현장') z += 0.3;
+  if (myEdu >= 5 && (j.ladder === 'research' || j.ladder === 'academic')) z += 0.5;
   const home = s.profile.region;
   if (region === home) z += 0.3;
   else if (D.regions.get(region)?.area === D.regions.get(home)?.area) z += 0.15;
@@ -192,6 +231,27 @@ function hireChance(L, j, co, emp, region) {
   return clamp(logistic(z), 0.02, 0.95);
 }
 
+const ENG = ['semi', 'materials', 'other_eng'];
+// 학력·전공 맞춤 선호 (v0.2): 공대 대졸↑는 반도체 현장·연구, 석사는 연구·현장, 박사는 R&D(연구소·교수·국책연) 먼저.
+// 학력보다 한참 낮은 일·전공과 먼 서비스 일은 거의 고르지 않습니다.
+export function fitMult(L, j, o = {}) {
+  const { s, D } = L;
+  const myEdu = eduIdx(s.education.level);
+  const req = eduIdx(j.education);
+  const g = s.education.major_group;
+  const eng = ENG.includes(g);
+  const fits = !!D.majors.find((m) => m.id === s.education.major)?.fits?.includes(j.id);
+  const core = j.touch === 'core' && j.group === '현장';
+  let w = fits ? 3 : 1;
+  if (eng && myEdu >= 3 && core) w *= 2.5;
+  if (myEdu >= 5) w *= j.ladder === 'research' || j.ladder === 'academic' || o.role === 'eco_gov_lab' ? 6 : core ? 1.2 : 0.1;
+  else if (myEdu === 4) w *= j.ladder === 'research' || core ? 2.5 : req <= 2 ? 0.2 : 0.6;
+  if (myEdu >= 3 && req <= 1) w *= 0.3;
+  if (eng && myEdu >= 3 && ['서비스', '일반'].includes(j.group) && !fits) w *= 0.3;
+  if (g === 'nonsci' && myEdu >= 3 && core && req >= 3 && !fits) w *= 0.5;
+  return w;
+}
+
 // 지금 지원할 수 있는 자리 목록 (직종 × 회사 × 고용형태)
 export function postings(L) {
   const { s, D, W } = L;
@@ -211,27 +271,34 @@ export function postings(L) {
       for (const emp of emps) out.push({ job: j.id, company: co?.id ?? null, employment: emp, region, p: hireChance(L, j, co, emp, region), touch: j.touch });
     }
   }
+  // 박사: 국책연구소 연구원 자리 (세부 직무 eco_gov_lab, 회사 없음·대전)
+  const lab = D.jobById.get('device_researcher');
+  if (myEdu >= 5 && lab && y >= 1976 && D.subJobs.some((x) => x.role === 'eco_gov_lab')) {
+    const region = D.regions.has('daejeon') ? 'daejeon' : s.profile.region;
+    out.push({ job: lab.id, company: null, employment: 'regular', region, role: 'eco_gov_lab', p: hireChance(L, lab, null, 'regular', region), touch: lab.touch });
+  }
   return out;
 }
 
-const keyOf = (o) => `${o.job}|${o.company}|${o.employment}`;
+const keyOf = (o) => `${o.job}|${o.company}|${o.employment}|${o.role ?? ''}`;
 export function offerLabel(L, o) {
   const j = L.D.jobById.get(o.job);
   const co = L.W.co(o.company);
-  const where = co ? co.name : L.D.regions.get(o.region)?.name ?? '동네';
-  return `${where} · ${j?.name ?? o.job} (${L.D.employmentNames[o.employment] ?? o.employment})`;
+  const where = o.role === 'eco_gov_lab' ? '국책연구소' : co ? co.name : L.D.regions.get(o.region)?.name ?? '동네';
+  const title = (o.sub && L.D.subById.get(o.sub)?.name) || j?.name || o.job;
+  return `${where} · ${title} (${L.D.employmentNames[o.employment] ?? o.employment})`;
 }
 
 // 붙은 곳 고르기: first면 5.3 슬롯(연봉·가까움·다른 길), 아니면 연락 온 곳 최대 3개
 export function makeOffers(L, { first = false } = {}) {
-  const { s, rng, D } = L;
+  const { s, rng, D, W } = L;
   const posts = postings(L);
   const noSemi = s.semi.length === 0;
   const myEdu = eduIdx(s.education.level);
+  const fit = (o) => (o._fit ??= fitMult(L, D.jobById.get(o.job), o));
   const prefer = (o) => {
     const j = D.jobById.get(o.job);
-    let w = o.p * (1 + 0.8 * eduIdx(j.education)) * (o.touch !== 'none' ? (noSemi && s.age >= 30 ? 2.5 : 1.4) : 1);
-    if (myEdu >= 3 && eduIdx(j.education) <= 1) w *= 0.4;
+    let w = o.p * (1 + 0.8 * eduIdx(j.education)) * (o.touch !== 'none' ? (noSemi && s.age >= 30 ? 2.5 : 1.4) : 1) * fit(o);
     if (o.region === 'overseas') w *= 0.3;
     return w;
   };
@@ -246,7 +313,7 @@ export function makeOffers(L, { first = false } = {}) {
   const pay = (o) => baseSalary(L, { ...o, rank: 0 });
   const dist = (o) => (o.region === s.profile.region ? 0 : D.regions.get(o.region)?.area === D.regions.get(s.profile.region)?.area ? 1 : 2);
   const semiJob = (o) => o.touch !== 'none';
-  const fallback = (pred) => posts.filter(pred).sort((a, b) => b.p - a.p)[0];
+  const fallback = (pred) => posts.filter(pred).sort((a, b) => b.p * fit(b) - a.p * fit(a))[0];
   const easy = () => {
     const pt = D.jobById.get('part_timer');
     return { job: 'part_timer', company: null, employment: 'contract', region: s.profile.region, p: 0.9, touch: pt?.touch ?? 'none' };
@@ -258,10 +325,17 @@ export function makeOffers(L, { first = false } = {}) {
     take([...accepted].sort((a, b) => pay(b) - pay(a))[0] ?? fallback((o) => o.touch === 'core' && ['contract', 'dispatch'].includes(o.employment)));
     if (picked.length < 1) take(easy());
     const rest = accepted.filter((a) => !picked.some((p) => keyOf(p) === keyOf(a)));
-    take(rest.sort((a, b) => dist(a) - dist(b) || pay(b) - pay(a))[0]
+    // 가까운 곳: 거리 다음으로 학력·전공 맞춤
+    take(rest.sort((a, b) => dist(a) - dist(b) - Math.log(fit(a) / fit(b)) || pay(b) - pay(a))[0]
       ?? fallback((o) => o.touch === 'none' && dist(o) === 0 && !picked.some((p) => keyOf(p) === keyOf(o))));
     const allSemi = picked.every(semiJob);
-    const rest2 = accepted.filter((a) => !picked.some((p) => keyOf(p) === keyOf(a)) && (allSemi ? !semiJob(a) : semiJob(a)));
+    // 다른 길: 석사↑면 연구소·교수 같은 학위 맞춤 길, 아니면 touch가 다른 곳
+    const rest2 = accepted.filter((a) => !picked.some((p) => keyOf(p) === keyOf(a)) && (allSemi ? !semiJob(a) : semiJob(a)))
+      .sort((a, b) => fit(b) - fit(a));
+    if (myEdu >= 4) {
+      const alt = accepted.filter((a) => !picked.some((p) => keyOf(p) === keyOf(a)) && fit(a) >= 2).sort((a, b) => fit(b) - fit(a));
+      if (alt.length) rest2.unshift(alt[0]);
+    }
     if (!take(rest2[0])) {
       const fb = fallback((o) => (allSemi ? !semiJob(o) : semiJob(o)) && !picked.some((p) => keyOf(p) === keyOf(o)));
       if (!take(fb)) take(easy());
@@ -272,21 +346,36 @@ export function makeOffers(L, { first = false } = {}) {
     }
     if (picked.length < 3) take(easy());
   } else {
-    const semiFirst = accepted.filter(semiJob).sort((a, b) => pay(b) - pay(a));
+    const semiFirst = accepted.filter(semiJob).sort((a, b) => pay(b) * fit(b) - pay(a) * fit(a));
     take(semiFirst[0]);
-    for (const o of [...accepted].sort((a, b) => pay(b) - pay(a))) { if (picked.length >= 3) break; take(o); }
+    for (const o of [...accepted].sort((a, b) => pay(b) * fit(b) - pay(a) * fit(a))) { if (picked.length >= 3) break; take(o); }
     if (picked.length < 3) take(easy());
   }
-  return picked.slice(0, 3).map((o) => ({ job: o.job, company: o.company, employment: o.employment, region: o.region, label: offerLabel(L, o) }));
+  // 세부 직무를 미리 정해 공고에 보여 줌 (예: "삼송전자 · D램 포토 공정 엔지니어 (정규직)")
+  return picked.slice(0, 3).map((o) => {
+    const sub = pickSub(L, D.jobById.get(o.job), W.co(o.company), o.role ?? null)?.id ?? null;
+    const x = { job: o.job, company: o.company, employment: o.employment, region: o.region, role: o.role ?? null, sub };
+    return { ...x, label: offerLabel(L, x) };
+  });
 }
 
 // ---------- 채용 ----------
-function pickSub(L, j, co) {
-  const y = L.s.year;
-  const myEdu = eduIdx(L.s.education.level);
-  const subs = (L.D.subByParent.get(j.id) ?? []).filter((x) => x.since <= y && (!x.future || y > 2026) && eduIdx(x.education) <= myEdu
-    && (co ? (!x.sectors.length || x.sectors.includes(co.sector)) : !x.sectors.length));
-  return subs.length ? L.rng.pick(subs) : null;
+// 세부 직업 고르기 (job_matrix): 회사 분야에 맞고, 학력에 가까운 직무일수록, 대학원 전공(specialty)과 축이 맞을수록 잘 뽑힘
+function pickSub(L, j, co, role = null) {
+  const { s } = L;
+  const y = s.year;
+  const myEdu = eduIdx(s.education.level);
+  let subs = (L.D.subByParent.get(j.id) ?? []).filter((x) => x.since <= y && (!x.future || y > 2026) && eduIdx(x.education) <= myEdu
+    && (co ? (!x.sectors.length || x.sectors.includes(co.sector)) && (x.touch !== 'eco' || j.touch === 'eco') : !x.sectors.length));
+  if (role) { const r = subs.filter((x) => x.role === role); if (r.length) subs = r; }
+  if (!subs.length) return null;
+  const [sd, sv] = String(s.education.specialty ?? '').split('.');
+  return L.rng.weighted(subs, (x) => {
+    const gap = myEdu - eduIdx(x.education);
+    let w = gap <= 0 ? 3 : gap === 1 ? 2 : gap === 2 ? 0.6 : 0.2;
+    if (sd && x.dims?.[sd] === sv) w *= 6;
+    return w;
+  });
 }
 function pickClient(L, co, region) {
   const { W } = L;
@@ -324,7 +413,8 @@ export function hire(L, o, opts = {}) {
   if (opts.rankUp && lad?.ranks?.length && rank + 1 < (lad.exec_from ?? lad.ranks.length)) rank++;
   if (opts.exec) rank = opts.exec;
   const region = o.region ?? workRegion(L, co);
-  const sub = pickSub(L, j, co);
+  const pre = o.sub ? D.subById.get(o.sub) : null;
+  const sub = pre && pre.parent === j.id ? pre : pickSub(L, j, co, o.role ?? null);
   const c = s.career;
   Object.assign(c, {
     job: j.id, sub: sub?.id ?? null, company: co?.id ?? null, employment, region, ladder, rank, rank_years: rankYears, years: 0,
@@ -334,7 +424,11 @@ export function hire(L, o, opts = {}) {
     exec_pending: false, leave: false, military_job: opts.military ?? null, contract_years: 0, founder: !!opts.founder,
   });
   if (employment === 'owner') c.business = { score: 0, stage: 0, up: 0, down: 0 };
-  c.salary = baseSalary(L, c);
+  c.salary = targetSalary(L, c);
+  c.salary_key = `${c.job}|${c.company}|${c.employment}`;
+  c.salary_rank = c.rank;
+  c.salary_region = c.region;
+  c.salary_mult = null;
   c.moves = (c.moves ?? 0) + (hadJob ? 1 : 0);
   if (!hadJob) { c.first_job = j.id; c.first_job_year = s.year; c.first_job_employment = employment; }
   s.retired = false;
@@ -346,8 +440,8 @@ export function hire(L, o, opts = {}) {
   if (j.touch !== 'none' && !s.flags.semi_job) {
     addFlag(s, 'semi_job');
     if (!opts.semiAdded) {
-      const place = where || W.nearbyFab(region)?.name || '반도체 공장';
-      addSemi(L, `${place} ${name} 첫 출근`, j.touch, null);
+      const place = where || (o.role ? '' : W.nearbyFab(region)?.name || '반도체 공장');
+      addSemi(L, `${place ? `${place} ` : ''}${name} 첫 출근`, j.touch, null);
     }
   }
   // 다른 권역 근무지면 이사 (해외는 근무지만)
@@ -410,7 +504,7 @@ export function careerYearStart(L, triggers) {
           c.company = f.acquirer;
           triggers.set('company_acquired', { acquirer: f.acquirer, company: f.acquirer, old: co.id });
           addLog(L, `${josa(co.name, '이', '가')} ${W.companyName(f.acquirer)}에 인수됐어요`, 2, 'company');
-          if (semiCo) addSemi(L, `${co.name}이 ${W.companyName(f.acquirer)}에 인수되던 날`, 'core');
+          if (semiCo) addSemi(L, `${josa(co.name, '이', '가')} ${W.companyName(f.acquirer)}에 인수되던 날`, 'core');
         } else triggers.set('layoff_target', { company: co.id });
         L.emit?.('company', { kind: 'acquired', company: co.id, acquirer: f.acquirer });
       } else if (f.kind === 'leader' && semiCo) {
@@ -570,7 +664,9 @@ export function careerYearEnd(L) {
   const minY = lad.min_years?.[r];
   const base = lad.promo_base?.[r];
   if (minY === null || minY === undefined || base === null || base === undefined) return;
-  const need = minY * (c.ladder === 'corporate' && eduIdx(s.education.level) <= 2 ? 1.5 : 1);
+  const toExecNext = lad.exec_from !== null && lad.exec_from !== undefined && r + 1 >= lad.exec_from;
+  // 임원 문턱은 최소 연수를 0.6배로 (정년 전에 임원 도전 기회가 오게, v0.2 life_sim 튜닝)
+  const need = minY * (c.ladder === 'corporate' && eduIdx(s.education.level) <= 2 ? 1.5 : 1) * (toExecNext ? 0.6 : 1);
   if (c.rank_years < need) return;
   if (c.plateau) return;
   const execFrom = lad.exec_from;
@@ -591,8 +687,9 @@ export function careerYearEnd(L) {
   const nR = lad.ranks.length - 1;
   const toExec = execFrom !== null && execFrom !== undefined && r + 1 >= execFrom;
   const ratio = (r + 1) / Math.max(1, nR);
-  const squeeze = toExec || c.ladder === 'academic' ? 1 : ratio <= 0.4 ? 1 : ratio <= 0.55 ? 0.3 : 0.2;
-  const P = base * (1 + sv) * coF * squeeze;
+  const squeeze = toExec || c.ladder === 'academic' ? 1 : ratio <= 0.4 ? 1 : ratio <= 0.55 ? 0.22 : 0.13;
+  // 임원 문턱 (v0.2 life_sim 튜닝): 문서 값(promo_base 0.04)으로는 대졸 회사원·연구원 임원이 1~2%라 목표(3~8%)에 맞게 ×2
+  const P = base * (1 + sv) * coF * squeeze * (toExec ? 2 : 1);
   if (rng.chance(P)) {
     if (execFrom !== null && execFrom !== undefined && r + 1 === execFrom && !c.exec) {
       c.exec_pending = true;

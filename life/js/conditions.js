@@ -87,12 +87,31 @@ export function matchWhen(L, when) {
       case 'asset_grade_min': ok = wealthGrade(L) >= v; break;
       case 'asset_grade_max': ok = wealthGrade(L) <= v; break;
       case 'credit': ok = asArray(v).includes(s.flags.credit_default ? 'default' : 'ok'); break;
-      case 'house_tenure': ok = asArray(v).includes(s.money.houses.length ? 'own' : s.age < 27 && !s.relations.partner?.married ? 'parents' : 'jeonse'); break;
+      case 'house_tenure': ok = asArray(v).includes(s.money.houses.length ? 'own' : s.money.tenure ?? (s.age < 27 && !s.relations.partner?.married ? 'parents' : 'jeonse')); break;
       case 'has_house': ok = (s.money.houses.length > 0) === !!v; break;
       case 'has_loan': ok = (s.money.debt > 0) === !!v; break;
       case 'holds_stock': {
         const ids = Object.keys(s.money.stocks).filter((id) => s.money.stocks[id].value > 0);
         ok = asArray(v).some((x) => (x === 'any' ? ids.length > 0 : x === 'my_company' ? ids.includes(c.company) : ids.includes(x)));
+        break;
+      }
+      case 'holds_coin': {
+        const coins = s.money.coins ?? {};
+        const held = Object.keys(coins).filter((k) => coins[k] > 0);
+        ok = v === true ? held.length > 0 : v === false ? !held.length : asArray(v).some((k) => (k === 'any' ? held.length > 0 : held.includes(k)));
+        break;
+      }
+      case 'coin_ret': ok = s.money.coin_ret !== null && s.money.coin_ret !== undefined && inRange(100 * s.money.coin_ret, v); break;
+      case 'stock_ret': {
+        const hs = Object.values(s.money.stocks).filter((h) => h.value > 0 && h.ret !== undefined);
+        const tot = hs.reduce((a, h) => a + h.value, 0);
+        ok = tot > 0 && inRange(100 * hs.reduce((a, h) => a + h.ret * h.value, 0) / tot, v);
+        break;
+      }
+      case 'concentration_min': {
+        const vals = Object.values(s.money.stocks).map((h) => h.value);
+        const tot = Math.max(0, s.money.cash) + vals.reduce((a, x) => a + x, 0);
+        ok = tot > 0 && Math.max(0, ...vals) / tot >= v;
         break;
       }
       case 'future': ok = (y > 2026) === !!v; break;

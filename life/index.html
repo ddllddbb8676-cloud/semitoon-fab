@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/proto.css">
   <!-- GPT 연출 파일(js/fx.js)을 만들면 여기에: <script type="module" src="js/fx.js"></script> -->
 </head>
-<body data-screen="loading" data-stage="" data-speed="4" data-paused="false" data-event="">
+<body data-screen="loading" data-stage="" data-speed="auto" data-paused="false" data-event="">
   <!--
     id / class / data-속성은 js/ui.js가 읽고 씁니다. 목록과 뜻: docs/UI_CONTRACT.md
     장식 요소는 자유롭게 추가해도 되지만, 계약된 id·class는 지우거나 이름을 바꾸지 마세요.
@@ -79,12 +79,14 @@
         </div>
         <div id="year-progress" class="progress" style="--p: 0"><span class="progress__bar"></span></div>
         <div id="speed-controls" class="speed" role="group" aria-label="배속">
+          <button class="speed-btn" type="button" data-speed="auto" aria-label="자동: 사건 없는 해는 빨리, 사건이 있으면 기다림">자동</button>
           <button class="speed-btn" type="button" data-speed="0" aria-label="일시정지">멈춤</button>
           <button class="speed-btn" type="button" data-speed="1">1×</button>
           <button class="speed-btn" type="button" data-speed="2">2×</button>
           <button class="speed-btn" type="button" data-speed="4">4×</button>
           <button class="speed-btn" type="button" data-speed="8">8×</button>
         </div>
+        <button id="btn-skip" class="skip-btn" type="button">다음 사건까지 ▶▶</button>
       </header>
 
       <p id="headline" class="headline"></p>
@@ -143,6 +145,8 @@
       <ol id="ending-industry" class="timeline timeline--industry"></ol>
       <h3 class="ending__h">숫자로 본 인생</h3>
       <dl id="ending-numbers" class="numbers"></dl>
+      <h3 class="ending__h">업적</h3>
+      <ul id="ending-achievements" class="ach-list"></ul>
       <p id="ending-epitaph" class="ending__epitaph" hidden></p>
       <div class="ending__actions">
         <button id="btn-again-same" class="btn btn--primary" type="button">같은 세계에서 새 인생</button>

@@ -7,7 +7,7 @@ const sig = (x) => {
   return String(Math.round(x * 100) / 100);
 };
 
-// won(51480000, 2026) → '5,150만원'
+// won(51480000, 2026) → '5,150만 원' (만·억·조 뒤에는 띄어 씀, 그 밖에는 '3,500원')
 export function won(amount, year = 2026) {
   let v = Number(amount) || 0;
   let unit = '원';
@@ -20,8 +20,10 @@ export function won(amount, year = 2026) {
   else if (a >= 1e8) out = `${sig(a / 1e8)}억`;
   else if (a >= 1e4) out = `${sig(a / 1e4)}만`;
   else out = a >= 10 ? Math.round(a).toLocaleString('ko-KR') : String(Math.round(a * 100) / 100);
-  return `${neg ? '−' : ''}${out}${unit}`;
+  return `${neg ? '−' : ''}${out}${/[만억조]$/.test(out) ? ' ' : ''}${unit}`;
 }
+// 부호를 붙인 돈: '+120만 원', '−3,000원'
+export const wonSigned = (amount, year) => `${amount > 0 ? '+' : ''}${won(amount, year)}`;
 
 export const signed = (n) => (n > 0 ? `+${n}` : n < 0 ? `−${Math.abs(n)}` : '0');
 export const pct = (x) => `${Math.round(x * 100)}%`;

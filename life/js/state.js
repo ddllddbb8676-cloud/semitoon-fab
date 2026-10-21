@@ -62,7 +62,7 @@ export function createLife(D, { name, birthYear, candidate: c, seed }) {
       total_years: 0, exp: {}, salary: 0, salary_mod: 0, reputation: 50, side_jobs: [], business: null, plateau: false, tries: 0,
       exec: false, exec_pending: false, leave: false, history: [], moves: 0, unemployed_years: 0, best_rank: 0, best_rep: 50, core_years: 0,
     },
-    money: { cash: 0, debt: 0, houses: [], stocks: {}, last: null, networth: 0, pension: 0 },
+    money: { cash: 0, debt: 0, houses: [], stocks: {}, coins: {}, last: null, networth: 0, pension: 0 },
     relations: {
       partner: null, children: [], grandchildren: 0,
       friends: clamp(40 + (c.stats.sociability - 50) / 5, 0, 100),
@@ -71,7 +71,7 @@ export function createLife(D, { name, birthYear, candidate: c, seed }) {
         { role: 'mother', birth_year: birthYear - c.mother.age, alive: true, job: c.mother.job, semi: c.mother.semi },
       ],
     },
-    flags: {}, semi: [], titles: {}, log: [], seen: {}, again: {}, achievements: [],
+    flags: {}, semi: [], titles: {}, log: [], seen: {}, seen_n: {}, again: {}, achievements: [], ach_log: [], later: [],
     pendingTriggers: {}, yearFlags: {}, deferred: [], lastLotteryBig: -99,
     hist: [], dead: null, turn: null, retired: false,
   };
@@ -87,6 +87,7 @@ export function hydrate(raw) {
   if (!raw || typeof raw !== 'object' || raw.v !== SAVE_VERSION || !raw.profile || !raw.world) return null;
   raw.flags ??= {}; raw.seen ??= {}; raw.again ??= {}; raw.titles ??= {}; raw.achievements ??= [];
   raw.pendingTriggers ??= {}; raw.yearFlags ??= {}; raw.deferred ??= []; raw.hist ??= [];
+  raw.later ??= []; raw.ach_log ??= []; raw.seen_n ??= {}; raw.money.coins ??= {};
   return raw;
 }
 

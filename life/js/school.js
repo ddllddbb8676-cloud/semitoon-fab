@@ -14,6 +14,8 @@ const RATES = [
 ];
 export const rate = (y, col) => lerpTable(RATES.map((r) => [r[0], r[col]]), y);
 const WEALTH_MULT = [1, 0.6, 0.8, 1, 1.15, 1.3];
+// 진학 확률에 집안 형편 반영: p^(1/배율) — 진학률이 99%인 시대엔 가난해도 거의 다 가고, 40%인 시대엔 차이가 큼 (v0.2)
+const withWealth = (p, wm) => Math.min(0.995, Math.pow(Math.min(0.999, p), 1 / wm));
 const DUR = { elem: 6, middle: 3, hs: 3, college: 4, jc: 2, master: 2, phd: 6, retry: 1 };
 const LEVEL_AFTER = { hs: '고졸', jc: '전문대졸', college: '대졸', master: '석사', phd: '박사' };
 const TRACK_TIER = { general: 3, vocational: 3, meister: 4, science: 5, factory: 2 };
@@ -69,7 +71,7 @@ export function schoolYearEnd(L) {
   const st = e.stage;
   const wm = WEALTH_MULT[s.profile.family.wealth] ?? 1;
   if (st === 'elem') {
-    if (rng.chance(Math.min(0.99, rate(y + 1, 1) * wm))) enter(L, 'middle');
+    if (rng.chance(withWealth(rate(y + 1, 1), wm))) enter(L, 'middle');
     else {
       e.stage = null;
       addFlag(s, 'no_middle_school');
@@ -81,7 +83,7 @@ export function schoolYearEnd(L) {
   if (st === 'middle') {
     if (e.next?.stage === 'hs') return enter(L, 'hs', e.next.track);
     if (e.stop) { e.stage = null; addLog(L, '중학교를 마치고 일을 시작해요', 2, 'school'); return; }
-    if (rng.chance(Math.min(0.99, rate(y + 1, 2) * wm))) return enter(L, 'hs', 'general');
+    if (rng.chance(withWealth(rate(y + 1, 2), wm))) return enter(L, 'hs', 'general');
     e.stage = null;
     addFlag(s, 'no_highschool');
     addLog(L, '중학교를 마치고 일을 시작해요', 2, 'school');
@@ -96,11 +98,18 @@ export function schoolYearEnd(L) {
   // 고교·대학·대학원 졸업
   if (LEVEL_AFTER[st]) {
     e.level = LEVEL_AFTER[st];
+    (e.grad ??= {})[e.level] = y;
     if (st === 'hs') e.tier = TRACK_TIER[e.track] ?? 3;
     else if (st === 'college') e.tier = tierFromG(e.grade);
     else if (st === 'jc') e.tier = Math.max(1, tierFromG(e.grade) - 1 + (e.major === 'semi_equipment' ? 1 : 0));
     else e.tier = Math.max(e.tier ?? 1, tierFromG(e.grade));
-    addLog(L, `${josa(stageLabel(st, y, e.track), '을', '를')} 졸업했어요 (${e.level})`, 2, 'school');
+    // 대학원 학위 전공 (job_matrix degree_tracks, SPEC education.specialty = "<축>.<값>")
+    if ((st === 'master' || st === 'phd') && (!e.specialty || (st === 'phd' && rng.chance(0.3)))) {
+      const sp = pickSpecialty(L);
+      if (sp) { e.specialty = sp.id; e.specialty_name = sp.name; }
+    }
+    const spec = (st === 'master' || st === 'phd') && e.specialty_name ? ` · ${e.specialty_name} 전공` : '';
+    addLog(L, `${josa(stageLabel(st, y, e.track), '을', '를')} 졸업했어요 (${e.level}${spec})`, 2, 'school');
     if (st === 'master') addFlag(s, 'grad_master');
     if (st === 'phd') addFlag(s, 'grad_phd');
   }
@@ -109,6 +118,22 @@ export function schoolYearEnd(L) {
   if (nx?.stage) enter(L, nx.stage, nx.track);
   // 장교는 졸업 뒤 복무
   if (!e.stage && s.military.status === 'officer_pending') startService(L, 'officer');
+}
+
+// 대학원 전공 분야: 전공 계열에 맞는 축(공정·설계·소재·패키징·연구 분야)에서 그 해 있는 값 하나
+const SPEC_DIMS = { semi: ['process', 'process', 'design', 'field'], materials: ['material', 'process', 'field'], other_eng: ['process', 'pkg', 'design', 'field'] };
+function pickSpecialty(L) {
+  const { s, D, rng } = L;
+  const e = s.education;
+  const M = D.raw?.matrix;
+  const allowed = M?.degree_tracks?.dims ?? [];
+  let pref = e.major === 'computer' ? ['design'] : SPEC_DIMS[e.major_group] ?? [];
+  pref = pref.filter((d) => allowed.includes(d));
+  if (!pref.length) return null;
+  const d = rng.pick(pref);
+  const vals = (M.dimensions?.[d] ?? []).filter((v) => (v.since ?? 0) <= s.year && !v.future);
+  const v = rng.pick(vals);
+  return v ? { id: `${d}.${v.id}`, name: v.name } : null;
 }
 
 // 대학 합격 판정 (4.5)

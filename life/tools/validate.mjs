@@ -14,7 +14,7 @@ const AXES = ['diligence', 'risk', 'thrift', 'work_life', 'social', 'outlook', '
 const STAGES = ['infant', 'child', 'teen', 'young', 'middle', 'senior'];
 const MARKET_KEYS = ['cycle', 'memory', 'logic_foundry', 'equipment', 'korea'];
 const EFFECT_KEYS = new Set([...STATS, ...AXES.map((a) => `trait.${a}`),
-  'happiness', 'cash', 'debt', 'reputation', 'friends', 'flag', 'semi', 'goto', 'title_progress', 'do']);
+  'happiness', 'cash', 'debt', 'reputation', 'friends', 'flag', 'semi', 'goto', 'title_progress', 'do', 'later']);
 const WHEN_KEYS = new Set(['stage', 'age', 'year', 'gender', 'stat_min', 'trait_min', 'trait_max', 'edu_min', 'edu_max',
   'wealth_min', 'job', 'job_group', 'job_role', 'job_dim', 'sector', 'employment', 'career_years_min', 'rank_min',
   'company_state', 'region', 'near_fab', 'has_partner', 'has_children', 'parents_alive', 'flag', 'not_flag', 'flag_any',
@@ -25,7 +25,7 @@ const WHEN_KEYS = new Set(['stage', 'age', 'year', 'gender', 'stat_min', 'trait_
   'skill_min', 'skill_value_min', 'skill_value_max', 'job_demand_min', 'job_demand_max', 'future']);
 const RANGE_KEYS = new Set(['age', 'year', 'company_state', 'macro', 'kospi_change', 'base_rate', 'house_change', 'stock_ret', 'coin_ret']);
 const EVENT_KEYS = new Set(['id', 'age', 'year', 'when', 'market', 'weight', 'once', 'big', 'forced', 'trigger',
-  'priority', 'tags', 'bias', 'text', 'choices', 'default']);
+  'priority', 'tags', 'bias', 'text', 'choices', 'default', 'repeatable', 'repeat_gap', 'recap']);
 const CHOICE_KEYS = new Set(['label', 'when', 'check', 'fail', 'effects', 'result']);
 const DO_VERBS = new Set(['school', 'major', 'military', 'job', 'salary_mod', 'salary_mult', 'bonus', 'partner', 'child',
   'leave', 'house', 'tenure', 'invest', 'stock', 'index', 'coin', 'loan', 'repay', 'credit', 'move', 'wealth', 'habit',
@@ -164,6 +164,10 @@ function checkEffects(file, id, effects) {
     if (!EFFECT_KEYS.has(k)) { err(file, `${id}: 없는 효과 키 ${k}`); continue; }
     if (k === 'cash' || k === 'debt') checkMoney(file, id, v);
     if (k === 'goto') gotos.push([file, id, v]);
+    if (k === 'later') for (const l of [v].flat()) {
+      if (!l.event || !isRange(l.years)) err(file, `${id}: later는 {event, years:[최소,최대]}`);
+      else gotos.push([file, id, l.event]);
+    }
     if (k === 'do') checkDo(file, id, v);
     if (k === 'semi' && typeof v === 'object' && (!v.text || (v.kind && !SEMI_KINDS.has(v.kind)))) err(file, `${id}: semi는 {text, kind}`);
   }
