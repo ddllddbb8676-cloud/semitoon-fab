@@ -2098,5 +2098,315 @@
       }
     ],
     "default": 0
+  },
+  {
+    "id": "job_process_engineer_lunch_question",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "process_engineer"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "동료가 점심 같이 가실래요 하고 물어요. 오늘은 혼자 천천히 먹고 싶기도 해요.",
+    "choices": [
+      {
+        "label": "같이 먹어요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "오늘은 공정 말고 반찬 이야기를 했어요."
+      },
+      {
+        "label": "혼자 쉬겠다고 말해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "다음에 같이 먹자고 웃으며 인사했어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_equipment_engineer_break_drink",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "equipment_engineer"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "휴게 시간이에요. 동료가 물 한 잔 드실래요 하고 물어요.",
+    "choices": [
+      {
+        "label": "같이 물을 마셔요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "장비 얘기를 잠깐 내려놓고 쉬었어요."
+      },
+      {
+        "label": "혼자 앉아 쉬어요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "말없이 쉬는 시간도 편안했어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_yield_engineer_window_seat",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "yield_engineer"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "동료가 창가 자리로 옮겨 앉을까요 하고 물어요. 잠깐 햇빛이 들어와요.",
+    "choices": [
+      {
+        "label": "창가에 같이 앉아요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "표 말고 창밖을 보며 이야기를 나눴어요."
+      },
+      {
+        "label": "익숙한 자리에 있어요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "오늘은 조용한 구석이 더 편해요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_device_researcher_notebook_color",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "device_researcher"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "새 연구 노트를 골라요. 문구점 직원이 무슨 색으로 드릴까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "밝은 색을 골라요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "책상에서 내 노트를 바로 찾을 것 같아요."
+      },
+      {
+        "label": "늘 쓰던 색을 골라요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "익숙한 표지라 손이 편해요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_circuit_designer_stretch_question",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "circuit_designer"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "동료가 잠깐 일어나서 몸 좀 풀까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "같이 몸을 풀어요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "눈과 어깨에 짧은 쉬는 시간을 줬어요."
+      },
+      {
+        "label": "조용히 혼자 쉬어요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "자리를 정돈하고 잠깐 멀리 봤어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_quality_engineer_pen_lend",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "quality_engineer"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "동료가 펜 잠깐 빌릴 수 있을까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "펜을 건네요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "돌려받은 펜에 작은 고맙다는 말이 따라와요."
+      },
+      {
+        "label": "여분 펜 있는 곳을 알려요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "나도 쓰던 중이라 다른 방법을 찾았어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_operator_offday_meet",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "operator"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "친구가 쉬는 날 잠깐 만날까요 하고 물어요. 내 교대 근무표를 다시 봐요.",
+    "choices": [
+      {
+        "label": "쉴 시간을 보고 약속해요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "둘이 편한 시간에 짧게 만나기로 했어요."
+      },
+      {
+        "label": "이번에는 쉬겠다고 해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "친구도 다음 쉬는 날을 물어봐 줬어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_assembler_snack_break",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "assembler"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "휴게실에서 동료가 가져온 간식 드실래요 하고 물어요.",
+    "choices": [
+      {
+        "label": "조금 받아요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "간식보다 먼저 다녀온 동네 이야기를 들었어요."
+      },
+      {
+        "label": "고맙다고만 해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "지금 안 먹어도 마음은 잘 받았어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_field_service_dinner_plan",
+    "year": [
+      1984,
+      null
+    ],
+    "when": {
+      "job": "field_service"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "현장 방문을 마치고 동료가 저녁 같이 드실래요 하고 물어요.",
+    "choices": [
+      {
+        "label": "가볍게 같이 먹어요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "처음 온 동네에서 익숙한 메뉴를 골랐어요."
+      },
+      {
+        "label": "오늘은 방에서 쉬어요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "인사를 마치고 혼자 쉴 시간을 챙겼어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_chemist_tea_question",
+    "year": [
+      1982,
+      null
+    ],
+    "when": {
+      "job": "chemist"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "쉬는 시간에 동료가 차 드실래요 하고 물어요.",
+    "choices": [
+      {
+        "label": "같이 한 잔 마셔요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "오늘은 시료 이름 대신 차 향 이야기를 했어요."
+      },
+      {
+        "label": "물만 마시겠다고 해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "다른 걸 골라도 편히 쉴 수 있어요."
+      }
+    ],
+    "default": 1
   }
 ]

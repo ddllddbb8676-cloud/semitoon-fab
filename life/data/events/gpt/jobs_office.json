@@ -1048,5 +1048,160 @@
       }
     ],
     "default": 0
+  },
+  {
+    "id": "job_hr_first_hello",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "hr"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "복도에서 이름은 아는데 아직 말은 못 나눈 동료와 마주쳤어요.",
+    "choices": [
+      {
+        "label": "먼저 인사해요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "짧은 안녕하세요 뒤에 웃음이 돌아왔어요."
+      },
+      {
+        "label": "눈인사만 해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "긴 대화 없이도 반갑게 지나갔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_purchasing_receipt_choice",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "purchasing"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "퇴근길 작은 가게에서 영수증 드릴까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "받아서 확인해요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "산 물건을 잠깐 확인하고 가방에 넣었어요."
+      },
+      {
+        "label": "필요 없다고 말해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "고맙다는 인사를 하고 가볍게 나왔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_sales_weekend_call",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "sales"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "친구가 주말에 전화해도 될까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "편한 시간을 알려요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "기다릴 시간을 맞추니 마음도 편해요."
+      },
+      {
+        "label": "짧은 안부부터 나눠요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "긴 통화 대신 오늘 소식만 전했어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_patent_book_question",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "patent"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "동료가 점심 뒤에 읽던 책 재미있어요 하고 물어요.",
+    "choices": [
+      {
+        "label": "한 대목만 말해요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "설명이 길어지기 전에 같이 웃었어요."
+      },
+      {
+        "label": "나중에 빌려주겠다고 해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "다 읽은 뒤 책 이야기를 하기로 했어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_environment_safety_walk_question",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "environment_safety"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "업무를 마친 동료가 잠깐 바람 쐴까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "정해진 휴게 공간으로 가요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "오늘은 점검보다 날씨 이야기를 했어요."
+      },
+      {
+        "label": "오늘은 혼자 쉬어요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "동료에게 인사하고 편한 자리를 찾았어요."
+      }
+    ],
+    "default": 1
   }
 ]

@@ -1670,5 +1670,253 @@
       }
     ],
     "default": 0
+  },
+  {
+    "id": "job_cook_home_menu",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "cook"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "가족이 오늘 집에서는 뭐 먹을까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "먹고 싶은 걸 하나 말해요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "식수 계산 대신 내 취향을 꺼냈어요."
+      },
+      {
+        "label": "가족이 골라 보게 해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "오늘은 내가 메뉴를 정하지 않아도 돼요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_dietitian_fruit_question",
+    "year": [
+      1982,
+      null
+    ],
+    "when": {
+      "job": "dietitian"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "장 보러 가니 어떤 과일 좋아하세요 하고 물어요.",
+    "choices": [
+      {
+        "label": "좋아하는 걸 말해요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "익숙한 맛이 생각나 기분이 좋아요."
+      },
+      {
+        "label": "함께 먹을 사람에게 물어요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "각자 좋아하는 맛을 하나씩 골랐어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_security_gate_neighbor_hello",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "security_gate"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "퇴근길 엘리베이터에서 이웃과 눈이 마주쳤어요.",
+    "choices": [
+      {
+        "label": "먼저 인사해요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "근무지 밖에서도 익숙한 얼굴이 늘었어요."
+      },
+      {
+        "label": "가볍게 고개를 끄덕여요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "오늘은 조용한 인사로 충분해요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_facility_manager_plant_water",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "facility_manager"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "집에서 가족이 화분 물은 제가 줄까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "부탁하고 같이 봐요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "오늘은 점검표 없이 잎을 한 번 살폈어요."
+      },
+      {
+        "label": "내가 주겠다고 해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "작은 일을 마치고 천천히 쉬었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_shuttle_driver_dayoff_seat",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "shuttle_driver"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "쉬는 날 버스를 탔어요. 창가와 통로 쪽 자리가 비어 있어요.",
+    "choices": [
+      {
+        "label": "창가에 앉아요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "오늘은 운전 대신 지나가는 풍경을 봐요."
+      },
+      {
+        "label": "통로 쪽에 앉아요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "편하게 내려갈 자리를 골랐어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_cleanroom_laundry_home_sort",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "cleanroom_laundry"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "집에서 가족이 빨래 같이 갤까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "같이 개요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "양말을 맞추며 별것 아닌 이야기를 했어요."
+      },
+      {
+        "label": "잠깐 쉬고 하자고 해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "빨래는 조금 기다리고 몸부터 쉬었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_janitor_evening_air",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "janitor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "이웃이 저녁에 동네 한 바퀴 걸을까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "짧게 같이 걸어요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "익숙한 길에서 새로 핀 꽃을 봤어요."
+      },
+      {
+        "label": "오늘은 집에 있어요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "편한 옷으로 갈아입고 쉬었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_dorm_manager_late_snack",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "dorm_manager"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "근무를 마치고 친구가 간단히 뭐 먹을까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "가볍게 같이 먹어요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "입주 문의 대신 친구 안부를 들었어요."
+      },
+      {
+        "label": "오늘은 쉬겠다고 해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "다음 약속을 잡고 편히 돌아왔어요."
+      }
+    ],
+    "default": 1
   }
 ]

@@ -2098,5 +2098,315 @@
       }
     ],
     "default": 0
+  },
+  {
+    "id": "job_professor_small_question",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "professor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "수업 뒤 학생이 오늘 설명 재미있었어요 하고 인사해요.",
+    "choices": [
+      {
+        "label": "고맙다고 답해요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "짧은 인사가 긴 준비 시간을 다독여 줬어요."
+      },
+      {
+        "label": "어느 부분인지 물어봐요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "학생이 기억한 장면을 하나 알게 됐어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_journalist_coffee_line",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "journalist"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "동료가 쉬는 시간에 커피 드실래요 하고 물어요.",
+    "choices": [
+      {
+        "label": "같이 잠깐 앉아요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "오늘은 기사에 넣지 않을 안부를 나눴어요."
+      },
+      {
+        "label": "혼자 바람 쐬어요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "질문을 쉬는 시간도 챙겼어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_official_station_walk",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "official"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "퇴근길 동료가 역까지 같이 걸을까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "같이 걸어요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "업무 밖의 취향을 하나 알게 됐어요."
+      },
+      {
+        "label": "따로 천천히 가요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "인사하고 내 속도로 걸었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_analyst_lunch_spice",
+    "year": [
+      1988,
+      null
+    ],
+    "when": {
+      "job": "analyst"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "동료가 점심 매운 음식 괜찮으세요 하고 물어요.",
+    "choices": [
+      {
+        "label": "괜찮다고 말해요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "오늘 취향을 분명하게 전했어요."
+      },
+      {
+        "label": "덜 매운 메뉴를 골라요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "같이 먹을 수 있는 다른 메뉴를 찾았어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_retail_investor_phone_away",
+    "year": [
+      1975,
+      null
+    ],
+    "when": {
+      "job": "retail_investor"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "가족이 밥 먹을 때는 휴대폰 내려놓을까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "같이 내려놔요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "같은 시세 대신 오늘 서로의 이야기를 들었어요."
+      },
+      {
+        "label": "확인 마치고 합류해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "정한 시간에 화면을 닫고 식탁으로 갔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_landlord_neighbor_parcel",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "landlord"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "이웃이 현관 앞 택배를 같이 들고 갈까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "고맙다고 부탁해요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "작은 도움 덕분에 이웃 이름을 알게 됐어요."
+      },
+      {
+        "label": "괜찮다고 인사해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "가벼운 짐을 들고 내 방으로 돌아갔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_chicken_shop_closing_song",
+    "year": [
+      1977,
+      null
+    ],
+    "when": {
+      "job": "chicken_shop"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "마감 뒤 동료가 음악 한 곡 듣고 갈까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "한 곡 같이 들어요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "주문 소리가 멎은 가게에 노래가 남았어요."
+      },
+      {
+        "label": "먼저 쉬러 가요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "인사를 마치고 조용한 집으로 향했어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_recruiter_hobby_question",
+    "year": [
+      1995,
+      null
+    ],
+    "when": {
+      "job": "recruiter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "친구가 요즘 쉬는 날 뭐 하세요 하고 물어요.",
+    "choices": [
+      {
+        "label": "내 취미를 말해요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "직함 없이 나를 소개하는 시간이 됐어요."
+      },
+      {
+        "label": "친구 이야기부터 들어요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "오늘은 경력 말고 취향을 들었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_academy_teacher_chalk_color",
+    "year": [
+      2005,
+      null
+    ],
+    "when": {
+      "job": "academy_teacher"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "수업 준비 중 옆 강사가 다른 색 펜 써 보실래요 하고 물어요.",
+    "choices": [
+      {
+        "label": "빌려서 써 봐요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "그림 하나가 조금 더 눈에 들어와요."
+      },
+      {
+        "label": "익숙한 펜을 써요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "내 손에 편한 도구로 천천히 준비해요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_youtuber_evening_screen",
+    "year": [
+      2012,
+      null
+    ],
+    "when": {
+      "job": "youtuber"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "친구가 영상 다 만들었으면 잠깐 산책할까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "같이 나가요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "카메라 없이 오늘 저녁을 봤어요."
+      },
+      {
+        "label": "집에서 조용히 쉬어요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "다음 영상 생각도 잠깐 내려놓았어요."
+      }
+    ],
+    "default": 1
   }
 ]

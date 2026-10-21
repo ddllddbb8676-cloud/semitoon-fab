@@ -1468,5 +1468,222 @@
       }
     ],
     "default": 0
+  },
+  {
+    "id": "job_welder_afterwork_rice",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "welder"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "작업 인계를 마치자 동료가 밥 같이 먹고 갈까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "같이 한 끼 먹어요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "도면 이야기는 접고 좋아하는 반찬을 골랐어요."
+      },
+      {
+        "label": "집에 가서 먹어요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "오늘 저녁은 익숙한 식탁이 좋아요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_pipefitter_bus_seat",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "pipefitter"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "퇴근 버스에서 동료가 옆에 앉아도 될까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "같이 앉아요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "말이 없어도 같이 가는 길이 편해요."
+      },
+      {
+        "label": "조용히 쉬고 싶다고 해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "동료도 편히 쉬라며 다른 자리를 골랐어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_electrician_bread_stop",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "electrician"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "작업을 마친 뒤 동료가 빵집 잠깐 들를까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "같이 구경해요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "사는 것 없이도 동네 이야기가 생겼어요."
+      },
+      {
+        "label": "오늘은 바로 가요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "다음에 가자고 인사하고 집으로 향했어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_duct_worker_weather_talk",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "duct_worker"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "휴게실에서 동료가 오늘 날씨 좋지 않아요 하고 말을 걸어요.",
+    "choices": [
+      {
+        "label": "짧게 대답하며 쉬어요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "같은 하늘 얘기로 잠깐 가까워졌어요."
+      },
+      {
+        "label": "웃으며 고개만 끄덕여요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "말이 적은 날도 편하게 지나갔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_scaffolder_weekend_walk",
+    "year": [
+      1965,
+      null
+    ],
+    "when": {
+      "job": "scaffolder"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "친구가 주말 산책길을 물어요. 오늘은 완만한 길이 좋아요.",
+    "choices": [
+      {
+        "label": "편한 길을 제안해요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "서로 걷기 좋은 코스를 골랐어요."
+      },
+      {
+        "label": "이번 주는 쉬기로 해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "약속을 옮기고 집에서 다리를 쉬었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_crane_operator_radio_off",
+    "year": [
+      1983,
+      null
+    ],
+    "when": {
+      "job": "crane_operator"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "퇴근 후 가족이 음악 틀어도 될까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "작게 같이 들어요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "업무 신호 대신 좋아하는 노래가 흘러요."
+      },
+      {
+        "label": "잠깐 조용히 있자고 해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "가족도 내게 잠시 쉴 시간을 줬어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "job_site_manager_dinner_time",
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "job": "site_manager"
+    },
+    "weight": 1,
+    "once": false,
+    "text": "가족이 오늘 저녁 몇 시에 먹을까요 하고 물어요.",
+    "choices": [
+      {
+        "label": "내 시간을 확인해 답해요",
+        "effects": {
+          "happiness": 1,
+          "friends": 1
+        },
+        "result": "일정표 밖의 약속도 또렷해졌어요."
+      },
+      {
+        "label": "먼저 먹으라고 말해요",
+        "effects": {
+          "mental": 1
+        },
+        "result": "늦어도 서로 기다리는 걱정을 덜었어요."
+      }
+    ],
+    "default": 1
   }
 ]
