@@ -1,0 +1,259 @@
+<title>버스 잼 프로토타입</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap">
+<style>
+/* 장난감 같은 밝은 한 가지 세계로 고정 (라이트/다크 전환 없음)
+   레이아웃: 위 승객 행렬 → 주차칸 → 주차장 → 부스터 바, 폰 세로 한 화면 */
+:root {
+  color-scheme: light;
+  --bg: #dfe7f0;
+  --plaza: #eef2f7;
+  --ink: #1f2a37;
+  --muted: #6b7686;
+  --asphalt: #4a5361;
+  --asphalt-line: #6c7584;
+  --slot: #8a94a3;
+  --slot-empty: #6f7a8a;
+  --vip: #f4b62a;
+  --vip-ink: #6b4500;
+  --panel: #ffffff;
+  --accent: #2f7cf6;
+  --good: #20b26b;
+  --bad: #e5484d;
+  --c0: #ef4444; --c1: #3b82f6; --c2: #facc15; --c3: #22c55e; --c4: #a855f7; --c5: #22d3ee;
+  --d0: #b91c1c; --d1: #1d4ed8; --d2: #ca8a04; --d3: #15803d; --d4: #7e22ce; --d5: #0e7490;
+  --font-game: 'Jua', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --font-ui: -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-ui); font-size: 14px;
+  -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none;
+  overscroll-behavior: none;
+}
+button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; padding: 0; }
+button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+#stage {
+  position: relative; max-width: 440px; margin: 0 auto; min-height: 100%;
+  display: flex; flex-direction: column; gap: 10px;
+  padding-block: 10px 14px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* 상단 바 */
+.top { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; }
+.round {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--accent); color: #fff; box-shadow: 0 3px 0 #1d58b8;
+}
+.round:active { translate: 0 2px; box-shadow: 0 1px 0 #1d58b8; }
+.round svg { width: 22px; height: 22px; }
+.title { text-align: center; font-family: var(--font-game); line-height: 1.05; }
+.title .lv { font-size: 26px; }
+.title .tag { display: block; font-size: 15px; color: var(--bad); letter-spacing: .04em; min-height: 16px; }
+.wallet { display: flex; gap: 6px; font-family: var(--font-game); font-size: 15px; }
+.chip { display: flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 999px; background: var(--panel); font-variant-numeric: tabular-nums; }
+.chip i { font-style: normal; }
+
+/* 승객 행렬 */
+.queue {
+  position: relative; height: 148px; border-radius: 18px;
+  background: var(--plaza); border: 2px solid #cfd8e3;
+}
+.queue::before { content: '탑승 순서: 아래 왼쪽부터'; position: absolute; left: 12px; top: 6px; font-size: 11px; color: var(--muted); }
+.queue .left { position: absolute; right: 10px; top: 6px; font-family: var(--font-game); font-size: 13px; color: var(--muted); }
+
+/* 주차칸 */
+.slots { display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; padding: 8px; border-radius: 16px; background: var(--slot); }
+.slot { aspect-ratio: 5 / 8; border-radius: 9px; background: var(--slot-empty); display: grid; place-items: center; }
+.slot.vip { background: var(--vip); color: var(--vip-ink); font-family: var(--font-game); font-size: 13px; }
+.slot.vip span { rotate: -90deg; }
+.slot.locked { background: transparent; border: 2px dashed #c3cad5; color: #eef2f7; font-size: 22px; font-family: var(--font-game); }
+.slot.locked:active { scale: .95; }
+
+/* 주차장 */
+.lot { position: relative; border-radius: 18px; background: var(--asphalt); padding: 6px; }
+.grid {
+  position: relative; width: 100%; aspect-ratio: 7 / 8;
+  background-image:
+    linear-gradient(var(--asphalt-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--asphalt-line) 1px, transparent 1px);
+  background-size: calc(100% / 7) calc(100% / 8);
+  border-radius: 10px;
+}
+
+/* 차: 무대(stage) 좌표로 절대 배치 */
+.veh {
+  position: absolute; left: 0; top: 0; z-index: 3;
+  border-radius: 10px; background: var(--col); box-shadow: inset 0 -5px 0 var(--dark), 0 2px 0 rgba(0,0,0,.25);
+  transition: transform .26s ease-in, width .3s ease, height .3s ease, opacity .3s;
+  display: grid; place-items: center; color: #fff;
+}
+.veh::before { /* 앞 유리: 머리 쪽 */
+  content: ''; position: absolute; background: rgba(255,255,255,.55); border-radius: 5px;
+}
+.veh[data-dir="R"]::before { right: 5px; top: 18%; bottom: 22%; width: 18%; }
+.veh[data-dir="L"]::before { left: 5px; top: 18%; bottom: 22%; width: 18%; }
+.veh[data-dir="U"]::before { top: 5px; left: 18%; right: 18%; height: 18%; }
+.veh[data-dir="D"]::before { bottom: 9px; left: 18%; right: 18%; height: 18%; }
+.veh .arrow { width: 20px; height: 20px; opacity: .95; filter: drop-shadow(0 1px 0 rgba(0,0,0,.3)); }
+.veh[data-dir="R"] .arrow { rotate: 0deg; } .veh[data-dir="D"] .arrow { rotate: 90deg; }
+.veh[data-dir="L"] .arrow { rotate: 180deg; } .veh[data-dir="U"] .arrow { rotate: 270deg; }
+.veh[data-size="bus"] { border-radius: 12px; }
+.veh.mystery { --col: #2b2f36; --dark: #15181d; }
+.veh.mystery .arrow { display: none; }
+.veh.mystery::after { content: '?'; font-family: var(--font-game); font-size: 24px; color: #e5e7eb; }
+.veh .seats { display: none; }
+.veh.parked { box-shadow: inset 0 -4px 0 var(--dark); }
+.veh.parked::before { top: 5px; left: 16%; right: 16%; height: 14%; bottom: auto; width: auto; }
+.veh.parked .arrow { display: none; }
+.veh.parked .seats { display: block; font-family: var(--font-game); font-size: 12px; color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,.35); margin-top: 10px; }
+.veh.flying { z-index: 6; }
+.veh.bump { animation: bump .28s ease-out; }
+.veh.blocker { animation: flash .5s ease-out; }
+.veh.full { animation: pulse .25s ease-out; }
+.veh.depart { opacity: 0; }
+.veh.hint { animation: hint 1s ease-in-out infinite; z-index: 4; }
+.veh.pickable { outline: 3px solid var(--vip); outline-offset: 1px; }
+@keyframes bump { 40% { translate: var(--bx) var(--by); } }
+@keyframes flash { 30% { filter: brightness(1.6); scale: 1.04; } }
+@keyframes pulse { 50% { scale: 1.12; } }
+@keyframes hint { 50% { filter: brightness(1.25); scale: 1.05; } }
+
+/* 승객 */
+.pax {
+  position: absolute; left: 0; top: 0; z-index: 2;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--col); box-shadow: inset 0 -3px 0 var(--dark);
+  transition: transform .18s ease-out;
+}
+.pax.board { z-index: 7; transition: transform .22s ease-in, scale .22s; scale: .6; }
+
+/* 부스터 */
+.boosters { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding-top: 2px; }
+.boost {
+  position: relative; aspect-ratio: 1; border-radius: 50%;
+  background: #3b6fd8; color: #fff; display: grid; place-items: center;
+  box-shadow: 0 4px 0 #234a99;
+}
+.boost:active { translate: 0 2px; box-shadow: 0 2px 0 #234a99; }
+.boost svg { width: 46%; height: 46%; }
+.boost .count {
+  position: absolute; top: -4px; right: -4px; min-width: 26px; height: 26px; padding: 0 6px;
+  border-radius: 13px; background: #25b34f; border: 2px solid #fff;
+  font-family: var(--font-game); font-size: 15px; line-height: 22px; text-align: center;
+}
+.boost.shop { background: #f6c12b; color: #7a4b00; box-shadow: 0 4px 0 #b88200; }
+.boost.active { background: var(--vip); box-shadow: 0 4px 0 #b88200; }
+.boost[data-empty="true"] .count { background: var(--muted); }
+.boost-label { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center; font-size: 11px; color: var(--muted); margin-top: -4px; }
+
+/* 안내 말풍선 */
+.tip {
+  position: absolute; left: 50%; translate: -50% 0; z-index: 8;
+  padding: 6px 12px; border-radius: 999px; background: var(--ink); color: #fff;
+  font-size: 13px; white-space: nowrap; pointer-events: none;
+}
+
+/* 시트(팝업) */
+.sheet-wrap {
+  position: fixed; inset: 0; z-index: 20; display: grid; align-items: end;
+  background: rgba(20, 28, 40, .45);
+  padding: 0 max(12px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+}
+.sheet {
+  width: min(420px, 100%); margin: 0 auto; padding: 20px 18px 16px; border-radius: 22px;
+  background: var(--panel); text-align: center; animation: rise .22s ease-out;
+}
+.sheet h2 { margin: 0 0 6px; font-family: var(--font-game); font-weight: 400; font-size: 26px; }
+.sheet p { margin: 0 0 14px; color: var(--muted); line-height: 1.5; }
+.sheet .btns { display: flex; flex-direction: column; gap: 8px; }
+.btn { padding: 13px; border-radius: 14px; font-family: var(--font-game); font-size: 17px; background: #eef2f7; }
+.btn.primary { background: var(--good); color: #fff; box-shadow: 0 3px 0 #13804b; }
+.btn.gold { background: var(--vip); color: var(--vip-ink); box-shadow: 0 3px 0 #b88200; }
+.btn small { display: block; font-family: var(--font-ui); font-size: 12px; opacity: .8; }
+.btn:disabled { opacity: .45; }
+.levels { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 12px; }
+.levels button { aspect-ratio: 1; border-radius: 12px; background: #eef2f7; font-family: var(--font-game); font-size: 20px; }
+.levels button[data-state="cleared"] { background: var(--good); color: #fff; }
+.levels button[data-state="open"] { background: var(--accent); color: #fff; }
+.levels button:disabled { opacity: .35; }
+.toast {
+  position: fixed; left: 50%; top: calc(76px + env(safe-area-inset-top, 0px)); translate: -50% 0; z-index: 30; max-width: calc(100% - 32px); white-space: nowrap;
+  padding: 8px 16px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 14px;
+  animation: rise .2s ease-out, fade .3s 2s forwards;
+}
+@keyframes rise { from { translate: -50% 16px; opacity: 0; } }
+.sheet { animation-name: rise-s; }
+@keyframes rise-s { from { transform: translateY(30px); opacity: 0; } }
+@keyframes fade { to { opacity: 0; } }
+.confetti { position: fixed; z-index: 25; width: 8px; height: 12px; top: -12px; border-radius: 2px; animation: fall 1.4s ease-in forwards; pointer-events: none; }
+@keyframes fall { to { transform: translateY(105vh) rotate(540deg); } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+</style>
+
+<div id="stage">
+  <div class="top">
+    <button id="btn-restart" class="round" type="button" aria-label="다시 시작">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg>
+    </button>
+    <button id="btn-levels" class="title" type="button" aria-label="레벨 고르기">
+      <span class="tag" id="tag"></span>
+      <span class="lv" id="lv-title">레벨 1</span>
+    </button>
+    <div class="wallet">
+      <span class="chip" title="하트"><i>❤</i><span id="hearts">5</span></span>
+      <span class="chip" title="코인"><i>●</i><span id="coins">0</span></span>
+    </div>
+  </div>
+
+  <div class="queue" id="queue"><span class="left" id="pax-left"></span></div>
+
+  <div class="slots" id="slots">
+    <div class="slot vip" data-slot="0"><span>VIP</span></div>
+    <div class="slot" data-slot="1"></div>
+    <div class="slot" data-slot="2"></div>
+    <div class="slot" data-slot="3"></div>
+    <div class="slot" data-slot="4"></div>
+    <button class="slot locked" data-slot="5" type="button" aria-label="칸 열기">+</button>
+    <button class="slot locked" data-slot="6" type="button" aria-label="칸 열기">+</button>
+    <button class="slot locked" data-slot="7" type="button" aria-label="칸 열기">+</button>
+  </div>
+
+  <div class="lot"><div class="grid" id="grid"></div></div>
+
+  <div class="boosters">
+    <button class="boost" id="b-sort" type="button" aria-label="승객 정렬">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="7" r="2.5"/><path d="M3 20c0-3 2-5 4-5s4 2 4 5M13 20c0-3 2-5 4-5s4 2 4 5"/></svg>
+      <span class="count" id="n-sort">2</span>
+    </button>
+    <button class="boost" id="b-shuffle" type="button" aria-label="차 섞기">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-13.7 5.6L4 15"/><path d="M4 20v-5h5"/></svg>
+      <span class="count" id="n-shuffle">4</span>
+    </button>
+    <button class="boost" id="b-vip" type="button" aria-label="VIP로 빼기">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18M12 5v4"/><rect x="5" y="11" width="14" height="7" rx="3"/><path d="M8 18v2M16 18v2"/></svg>
+      <span class="count" id="n-vip">2</span>
+    </button>
+    <button class="boost shop" id="b-shop" type="button" aria-label="상점">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1.5-5h13L20 9"/><path d="M4 9h16v2a3 3 0 0 1-5.3 2 3 3 0 0 1-5.4 0A3 3 0 0 1 4 11z"/><path d="M5 13v7h14v-7"/></svg>
+    </button>
+  </div>
+  <div class="boost-label"><span>승객 정렬</span><span>차 섞기</span><span>VIP 빼기</span><span>상점</span></div>
+</div>
+<div id="layer"></div>
+
+<script>
+/*CORE*/
+const LEVELS = /*LEVELS*/;
+/*GAME*/
+</script>
