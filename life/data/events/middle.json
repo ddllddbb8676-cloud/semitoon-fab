@@ -1,0 +1,395 @@
+[
+  {
+    "id": "middle_parent_teacher_meeting",
+    "age": [38, 52],
+    "year": null,
+    "when": { "has_children": true },
+    "market": null,
+    "weight": 3,
+    "once": false,
+    "text": "아이 학교 상담 주간이에요. 선생님이 “아이가 꿈이 참 많네요” 하세요.",
+    "choices": [
+      { "label": "반차 내고 직접 간다", "effects": { "happiness": 4, "reputation": -1, "trait.work_life": -10 }, "result": "아이 꿈 목록 세 번째에 내 직업이 있었어요. 하루 종일 기분이 좋았어요." },
+      { "label": "퇴근 후 전화로 상담한다", "effects": { "mental": -1, "trait.work_life": 5 }, "result": "통화를 끊고 아이 방 문을 살짝 열어 봤어요. 벌써 자고 있었어요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "middle_parents_aging",
+    "age": [38, 59],
+    "year": null,
+    "when": { "parents_alive": true },
+    "market": null,
+    "weight": 3,
+    "once": false,
+    "text": "고향 부모님이 요즘 자꾸 깜빡하신대요. 전화 너머 목소리가 예전 같지 않아요.",
+    "choices": [
+      { "label": "주말마다 내려간다", "effects": { "health": -1, "happiness": 2, "trait.work_life": -10 }, "result": "왕복 다섯 시간. 그래도 밥상 앞에서 웃으시는 걸 보면 다 괜찮아져요." },
+      { "label": "병원 예약부터 잡아 드린다", "effects": { "mental": 1, "cash": "@salary*-0.02" }, "result": "결과는 ‘연세에 비해 괜찮다’였어요. 그 말을 몇 번이나 되뇌었어요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "middle_morning_soccer",
+    "age": [35, 55],
+    "year": null,
+    "when": {},
+    "market": null,
+    "weight": 2,
+    "once": true,
+    "text": "동네 조기 축구회에서 같이 뛰자고 연락이 왔어요. 일요일 아침 6시래요.",
+    "choices": [
+      { "label": "가입한다", "effects": { "health": 3, "friends": 3 }, "result": "10분 만에 숨이 턱까지 찼어요. 뒤풀이 해장국은 정말 맛있었어요." },
+      { "label": "일요일 아침은 이불 속", "effects": { "mental": 2, "health": -1 }, "result": "이불 속에서 축구 중계를 봤어요. 그것도 축구니까요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "middle_condolence_trip",
+    "age": [40, 59],
+    "year": null,
+    "when": {},
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "오랜 친구 아버님의 부고가 왔어요. 지방이라 왕복 다섯 시간이에요.",
+    "choices": [
+      { "label": "밤길을 달려간다", "effects": { "friends": 4, "health": -1 }, "result": "친구가 말없이 손을 꼭 잡았어요. 와 줘서 고맙다는 말은 한참 뒤에 들었어요." },
+      { "label": "조의금을 보내고 전화한다", "effects": { "friends": 1, "cash": "@salary*-0.005" }, "result": "전화기 너머로 친구가 괜찮다고 했어요. 다음에 꼭 밥 한번 먹자고 약속했어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_teen_door_slam",
+    "age": [40, 55],
+    "year": [1985, null],
+    "when": { "has_children": true },
+    "market": null,
+    "weight": 3,
+    "once": false,
+    "text": "사춘기 아이가 방문을 쾅 닫았어요. 이유는 아무도 몰라요.",
+    "choices": [
+      { "label": "문 앞에서 기다린다", "effects": { "mental": -1, "sociability": 2 }, "result": "한 시간 뒤 아이가 문을 열고 물었어요. “저녁 뭐야?”" },
+      { "label": "치킨을 시킨다", "effects": { "happiness": 3, "cash": "@salary*-0.001" }, "result": "치킨 냄새에 문이 열렸어요. 사춘기도 치킨은 못 이겨요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "middle_anniversary_trip",
+    "age": [35, 59],
+    "year": null,
+    "when": { "has_partner": true },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "기념일이에요. 오랜만에 둘이서만 여행을 갈까요?",
+    "choices": [
+      { "label": "바다 보러 간다", "effects": { "happiness": 6, "trait.work_life": -5, "cash": "@salary*-0.02" }, "result": "회사 연락은 돌아와서 몰아 봤어요. 그래도 괜찮았어요." },
+      { "label": "집에서 케이크를 자른다", "effects": { "happiness": 3, "trait.thrift": 5 }, "result": "촛불을 끄고 옛날 사진을 봤어요. 둘 다 많이 변했고, 둘 다 웃었어요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "middle_reading_glasses",
+    "age": [42, 55],
+    "year": null,
+    "when": {},
+    "market": null,
+    "weight": 2,
+    "once": true,
+    "text": "메뉴판 글씨가 팔을 쭉 뻗어야 보여요.",
+    "choices": [
+      { "label": "돋보기를 맞춘다", "effects": { "happiness": 2, "cash": "@avg_wage*-0.003" }, "result": "세상이 다시 선명해졌어요. 신문 글씨가 원래 이렇게 컸나 싶어요." },
+      { "label": "팔을 더 뻗는다", "effects": { "mental": 1, "trait.conform": -5 }, "result": "눈이 아니라 팔이 짧은 거라고 우기는 중이에요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_bonus_day",
+    "age": [35, 59],
+    "year": [1995, null],
+    "when": { "job_group": ["현장", "사무"], "company_state": [2, 2] },
+    "market": null,
+    "weight": 5,
+    "once": false,
+    "text": "{company} 성과급이 연봉의 절반이래요. 아침부터 사내 메신저가 난리예요.",
+    "choices": [
+      { "label": "대출부터 갚는다", "effects": { "happiness": 3, "trait.thrift": 5, "debt": "@salary*-0.4", "cash": "@salary*0.1", "semi": "성과급 메신저가 터진 날" }, "result": "줄어든 대출 잔액을 캡처해 뒀어요. 아무에게도 안 보여 줬어요." },
+      { "label": "가족 여행을 떠난다", "effects": { "happiness": 8, "trait.work_life": -5, "cash": "@salary*0.3", "semi": "성과급 메신저가 터진 날" }, "result": "아이들이 비행기 창문에 코를 박고 내리지 않으려 했어요." },
+      { "label": "반도체주에 몰빵한다", "effects": { "trait.risk": 15, "cash": "@salary*0.05", "flag": "bought_semi_stock", "semi": "성과급 메신저가 터진 날" }, "result": "다음 날부터 주식 앱을 하루에 마흔 번 열어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_bonus_zero",
+    "age": [35, 59],
+    "year": [1995, null],
+    "when": { "job_group": ["현장", "사무"], "company_state": [-2, -1] },
+    "market": null,
+    "weight": 4,
+    "once": false,
+    "text": "올해 성과급은 0%래요. 공지 한 줄에 사무실이 조용해졌어요.",
+    "choices": [
+      { "label": "묵묵히 일한다", "effects": { "mental": -2, "reputation": 1, "trait.conform": 5, "semi": "성과급 0%의 겨울" }, "result": "퇴근길 통근버스 안이 유난히 조용했어요." },
+      { "label": "구내식당에서 하소연한다", "effects": { "friends": 2, "mental": 1, "semi": "성과급 0%의 겨울" }, "result": "식판 위로 한숨이 열 개쯤 쌓였어요. 그래도 조금 후련했어요." },
+      { "label": "이력서를 고쳐 둔다", "effects": { "trait.risk": 5, "flag": "resume_updated", "semi": "성과급 0%의 겨울" }, "result": "마지막으로 이력서를 고친 게 7년 전이더라고요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_senior_leaves",
+    "age": [38, 59],
+    "year": [1998, null],
+    "when": { "job_group": ["현장", "사무"], "company_state": [-2, -1] },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "옆자리 선배가 희망퇴직을 신청했대요. 마지막 날, 사원증을 반납하러 가는 뒷모습이 보여요.",
+    "choices": [
+      { "label": "송별회를 연다", "effects": { "friends": 3, "sociability": 2, "semi": "선배의 마지막 출근" }, "result": "“나 없어도 수율 잘 챙겨.” 다들 웃다가 조용해졌어요." },
+      { "label": "말없이 악수한다", "effects": { "mental": -2, "semi": "선배의 마지막 출근" }, "result": "선배 손이 생각보다 따뜻했어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_today_possible",
+    "age": [35, 55],
+    "year": [1984, null],
+    "when": { "job_group": "현장" },
+    "market": null,
+    "weight": 4,
+    "once": false,
+    "text": "임원이 라인을 지나가며 물어요. “오늘 되지?”",
+    "choices": [
+      { "label": "된다고 한다", "effects": { "mental": -5, "reputation": 3, "trait.work_life": 5, "semi": "“오늘 되지?”의 밤" }, "result": "밤 11시에 됐어요. 임원은 이미 퇴근했고요." },
+      { "label": "솔직히 내일이라고 한다", "effects": { "reputation": -1, "trait.conform": -5, "title_progress": "소신 엔지니어" }, "result": "표정이 굳었지만, 다음 날 정말로 됐어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_landlord_groundbreaking",
+    "age": [35, 59],
+    "year": [1990, null],
+    "when": { "job": "landlord" },
+    "market": null,
+    "weight": 4,
+    "once": false,
+    "text": "근처에 새 팹을 짓는다는 뉴스가 떴어요. 원룸 문의 전화가 하루 종일 울려요.",
+    "choices": [
+      { "label": "월세를 올린다", "effects": { "friends": -1, "trait.thrift": 5, "cash": "@avg_wage*0.05", "semi": "착공 뉴스에 울린 전화" }, "result": "통장은 두꺼워졌는데 세입자들 인사가 짧아졌어요." },
+      { "label": "지금 세입자는 그대로 둔다", "effects": { "happiness": 3, "friends": 2, "semi": "착공 뉴스에 울린 전화" }, "result": "건설 현장 형님들이 귤 한 박스를 문 앞에 두고 갔어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_chicken_rush",
+    "age": [35, 59],
+    "year": [1990, null],
+    "when": { "job": "chicken_shop" },
+    "market": null,
+    "weight": 4,
+    "once": false,
+    "text": "밤 10시 반, 교대가 끝나는 시간이에요. 주문이 한꺼번에 서른 건 들어왔어요.",
+    "choices": [
+      { "label": "전부 받는다", "effects": { "health": -3, "happiness": 2, "cash": "@avg_wage*0.01", "semi": "교대 시간의 치킨 폭주" }, "result": "튀김기 앞에서 두 시간을 버텼어요. 리뷰에 ‘야간조의 빛’이라고 달렸어요." },
+      { "label": "대기 시간을 안내한다", "effects": { "health": 1, "mental": 1, "semi": "교대 시간의 치킨 폭주" }, "result": "40분을 기다려도 다들 와요. 이 시간에 문 연 데가 여기뿐이거든요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_analyst_downgrade",
+    "age": [35, 59],
+    "year": [1990, null],
+    "when": { "job": "analyst" },
+    "market": null,
+    "weight": 4,
+    "once": false,
+    "text": "업황이 꺾이는 신호가 보여요. 목표 주가를 내리는 리포트를 써야 해요.",
+    "choices": [
+      { "label": "소신대로 쓴다", "effects": { "mental": -2, "reputation": 3, "trait.conform": -10, "semi": "목표가를 내린 리포트" }, "result": "다음 날 항의 전화가 서른 통 왔어요. 석 달 뒤엔 다들 그 리포트를 다시 찾았어요." },
+      { "label": "표현을 부드럽게 다듬는다", "effects": { "mental": 1, "trait.conform": 10, "semi": "목표가를 내린 리포트" }, "result": "‘단기 조정 가능성’. 열 번을 고쳐 쓴 말이었어요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "middle_professor_alumni",
+    "age": [40, 59],
+    "year": [1985, null],
+    "when": { "job": "professor" },
+    "market": null,
+    "weight": 4,
+    "once": false,
+    "text": "졸업한 제자가 {company}에 붙었다며 인사를 왔어요. 손에 회사 로고가 박힌 수첩을 들고요.",
+    "choices": [
+      { "label": "연구실 사진을 같이 찍는다", "effects": { "happiness": 5, "reputation": 2, "semi": "제자의 첫 사원증" }, "result": "벽에 사진이 또 한 장 늘었어요. 첫 사진보다 머리숱은 조금 줄었고요." },
+      { "label": "논문 얘기부터 꺼낸다", "effects": { "reputation": 1, "trait.diligence": 5, "semi": "제자의 첫 사원증" }, "result": "제자가 웃으며 말했어요. “교수님, 저 이제 졸업했어요.”" }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_shuttle_first_route",
+    "age": [35, 59],
+    "year": [1980, null],
+    "when": { "job": "shuttle_driver" },
+    "market": null,
+    "weight": 4,
+    "once": false,
+    "text": "새벽 5시 40분, 첫 노선이에요. 승객 절반이 앉자마자 잠들어요.",
+    "choices": [
+      { "label": "라디오를 아주 작게 튼다", "effects": { "happiness": 2, "mental": 1, "semi": "새벽 통근버스 첫 노선" }, "result": "정문 앞에 서자 다들 기적처럼 눈을 떴어요." },
+      { "label": "정류장마다 깨워 준다", "effects": { "sociability": 3, "reputation": 2, "semi": "새벽 통근버스 첫 노선" }, "result": "연말에 롤케이크를 받았어요. 카드엔 ‘깨워 주셔서 감사해요’라고 적혀 있었어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_laundry_suits",
+    "age": [35, 59],
+    "year": [1985, null],
+    "when": { "job": "cleanroom_laundry" },
+    "market": null,
+    "weight": 4,
+    "once": false,
+    "text": "오늘 들어온 방진복이 수천 벌이에요. 이름표마다 누군가의 하루가 묻어 있어요.",
+    "choices": [
+      { "label": "한 벌씩 꼼꼼히 검사한다", "effects": { "dexterity": 2, "reputation": 2, "trait.diligence": 5, "semi": "수천 벌의 방진복" }, "result": "작은 실밥 하나를 찾아냈어요. 그게 클린룸에 안 들어간 것만으로 오늘은 충분해요." },
+      { "label": "속도를 올린다", "effects": { "health": -1, "reputation": 1, "semi": "수천 벌의 방진복" }, "result": "마감 전에 다 끝냈어요. 허리를 펴니 해가 지고 있었어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_cafeteria_rating",
+    "age": [35, 59],
+    "year": [2018, null],
+    "when": { "job": ["cook", "dietitian"] },
+    "market": null,
+    "weight": 4,
+    "once": false,
+    "text": "식단 평가 앱에 별점이 올라와요. ‘오늘 마라탕 미쳤다’가 리뷰 1등이에요.",
+    "choices": [
+      { "label": "다음 주에 또 넣는다", "effects": { "happiness": 5, "reputation": 2, "semi": "구내식당 별점 1등" }, "result": "마라탕 데이가 생겼어요. 그날은 출근율이 높다는 소문이 있어요." },
+      { "label": "건강식으로 균형을 맞춘다", "effects": { "health": 1, "trait.conform": 5, "semi": "구내식당 별점 1등" }, "result": "‘저염 나물 비빔밥’ 별점은 3.1이었어요. 그래도 뿌듯했어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_site_schedule_cut",
+    "age": [35, 59],
+    "year": [1990, null],
+    "when": { "job": ["site_manager", "crane_operator"] },
+    "market": null,
+    "weight": 4,
+    "once": false,
+    "text": "팹 건설 공기를 2주 당기라는 지시가 내려왔어요.",
+    "choices": [
+      { "label": "안전 절차는 그대로 지킨다", "effects": { "mental": -1, "reputation": -1, "trait.conform": -5, "title_progress": "안전제일", "semi": "공기 단축 지시가 내려온 날" }, "result": "회의실 공기는 차가웠지만, 그 현장은 끝까지 무사했어요." },
+      { "label": "인원을 더 투입한다", "effects": { "mental": -3, "reputation": 2, "semi": "공기 단축 지시가 내려온 날" }, "result": "현장이 사람으로 가득 찼어요. 함바집 밥이 두 번이나 모자랐어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_headhunter_call",
+    "age": [35, 50],
+    "year": [1997, null],
+    "when": { "job_group": ["현장", "사무"] },
+    "market": null,
+    "weight": 3,
+    "once": false,
+    "text": "헤드헌터에게 전화가 왔어요. “{rival}에서 연봉 1.3배 생각 있으세요? 근무지는 {region}입니다.”",
+    "choices": [
+      { "label": "이력서를 보낸다", "effects": { "trait.risk": 5, "flag": "resume_updated", "semi": "경쟁사에서 걸려 온 전화" }, "result": "면접 날짜가 잡혔어요. 아직 아무에게도 말하지 않았어요." },
+      { "label": "정중히 거절한다", "effects": { "reputation": 1, "trait.conform": 5 }, "result": "전화를 끊고 사원증을 한 번 내려다봤어요." },
+      { "label": "연봉 협상 카드로 쓴다", "effects": { "sociability": 2, "reputation": -1, "trait.risk": 10, "cash": "@salary*0.05" }, "result": "팀장님 표정이 복잡했지만, 연봉은 조금 올랐어요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "middle_pm_recital",
+    "age": [35, 50],
+    "year": [1990, null],
+    "when": { "job": ["equipment_engineer", "field_service"], "has_children": true },
+    "market": null,
+    "weight": 4,
+    "once": false,
+    "text": "PM 중인데 아이 학예회가 10분 뒤에 시작한대요.",
+    "choices": [
+      { "label": "후배에게 맡기고 달려간다", "effects": { "happiness": 5, "reputation": -1, "trait.work_life": -10, "semi": "PM과 학예회 사이" }, "result": "강당 뒷문으로 들어서자 무대 위 아이가 손을 흔들었어요. 마스크 자국이 남은 얼굴로 같이 흔들었어요." },
+      { "label": "영상으로 찍어 달라고 한다", "effects": { "happiness": -3, "reputation": 1, "trait.work_life": 10, "semi": "PM과 학예회 사이" }, "result": "장비는 제시간에 살아났어요. 영상 속 아이는 객석을 한참 두리번거렸어요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "middle_dorm_ramen",
+    "age": [35, 59],
+    "year": null,
+    "when": { "job": "dorm_manager" },
+    "market": null,
+    "weight": 4,
+    "once": false,
+    "text": "소등 시간이 지났는데 기숙사 방 하나에서 훌쩍이는 소리가 나요. 고향 생각이 났나 봐요.",
+    "choices": [
+      { "label": "라면을 끓여 준다", "effects": { "sociability": 3, "happiness": 3, "semi": "기숙사의 라면 한 냄비" }, "result": "라면 한 냄비에 세 명이 더 모였어요. 소등은 조금 늦어졌어요." },
+      { "label": "조용히 문을 닫아 준다", "effects": { "mental": 1, "trait.conform": 5 }, "result": "다음 날 아침, 그 친구가 먼저 인사를 했어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_first_family_car",
+    "age": [35, 55],
+    "year": [1986, 1995],
+    "when": {},
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "동네에 자가용이 하나둘 늘어요. 할부로 첫 차를 들일까요?",
+    "choices": [
+      { "label": "할부로 산다", "effects": { "happiness": 6, "trait.risk": 5, "debt": "@avg_wage*0.4" }, "result": "첫 주말, 온 가족이 차 안에서 김밥을 먹었어요. 아무 데도 안 갔는데 행복했어요." },
+      { "label": "버스면 충분하다", "effects": { "trait.thrift": 10 }, "result": "정류장에서 새 차를 자랑하는 이웃을 만났어요. 웃으며 축하해 줬어요." }
+    ],
+    "default": 1
+  },
+  {
+    "id": "middle_parents_smartphone",
+    "age": [35, 59],
+    "year": [2010, 2015],
+    "when": { "parents_alive": true },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "부모님께 스마트폰을 사 드렸어요. 하루에 ‘이거 어떻게 하냐’ 전화가 열 번 와요.",
+    "choices": [
+      { "label": "주말에 가서 차근차근 알려 드린다", "effects": { "happiness": 3, "trait.work_life": -5, "cash": "@salary*-0.01" }, "result": "첫 이모티콘이 도착했어요. 엄지 하나였는데 이상하게 뭉클했어요." },
+      { "label": "아이콘 세 개만 남긴다", "effects": { "intelligence": 1, "mental": 1, "cash": "@salary*-0.01" }, "result": "전화, 카메라, 메신저. 세 개면 세상이 충분했어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_video_call_kid",
+    "age": [35, 55],
+    "year": [2020, 2022],
+    "when": { "has_children": true, "job_group": ["현장", "사무", "생태계"] },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "재택 화상 회의 도중 아이가 화면 안으로 뛰어들었어요.",
+    "choices": [
+      { "label": "인사시킨다", "effects": { "happiness": 3, "sociability": 2 }, "result": "회의 분위기가 갑자기 부드러워졌어요. 다음 회의 땐 팀장님이 아이 안부부터 물었어요." },
+      { "label": "음소거하고 수습한다", "effects": { "mental": -1, "trait.work_life": 5 }, "result": "음소거 버튼을 3초 동안 못 찾았어요. 아주 긴 3초였어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "middle_stock_halved",
+    "age": [35, 59],
+    "year": [2005, null],
+    "when": {},
+    "market": { "memory": [-2, -1] },
+    "weight": 3,
+    "once": false,
+    "text": "반도체 불황 뉴스가 연일 나와요. 동료들이 사 둔 반도체주가 반 토막 났대요. 커뮤니티는 ‘물타기’와 ‘손절’이 반반이에요.",
+    "choices": [
+      { "label": "바닥이라 믿고 조금 산다", "effects": { "trait.risk": 10, "trait.outlook": 5, "cash": "@avg_wage*-0.05", "flag": "bought_semi_dip", "semi": "불황에 산 반도체주" }, "result": "주변에서 다들 말렸어요. 몇 년 뒤 이 얘기를 몇 번이나 하게 될지는 아직 몰라요." },
+      { "label": "지켜보기만 한다", "effects": { "mental": -1, "trait.risk": -5 }, "result": "뉴스만 봐도 배가 아팠어요. 사지도 않았는데요." }
+    ],
+    "default": 1
+  }
+]

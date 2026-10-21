@@ -1,0 +1,1103 @@
+{
+  "topic": "패키징·신소재·새 컴퓨팅",
+  "findings": [
+    {
+      "claim_ko": "IBM은 표면 코드 대신 qLDPC 코드와 실시간 디코딩을 쓰는 모듈형 구조로 Loon(2025)·Kookaburra(2026)·Cockatoo(2027)를 거쳐 2029년 뉴욕 포킵시에서 논리 큐비트 200개·1억 회 연산급 오류내성 양자컴퓨터 'Starling'을 가동하겠다는 로드맵을 발표했다.",
+      "timeframe": "2025~2029",
+      "type": "roadmap",
+      "source_title": "IBM Sets 2029 Target for Fault-Tolerant Quantum Computing",
+      "publisher": "HPCwire",
+      "date": "2025-06",
+      "url": "https://www.hpcwire.com/2025/06/10/ibm-sets-2029-target-for-fault-tolerant-quantum-computing/",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "IBM은 Starling 후속으로 논리 큐비트 약 2,000개·10억 회 연산급 'Blue Jay'를 2033년 이후 목표로 제시했다.",
+      "timeframe": "2033~",
+      "type": "roadmap",
+      "source_title": "IBM Charts Roadmap to First Practical Fault-Tolerant Quantum Computer",
+      "publisher": "All About Circuits",
+      "date": "2025-06",
+      "url": "https://www.allaboutcircuits.com/news/ibm-charts-roadmap-to-first-practical-fault-tolerant-quantum-computer/",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "Quantinuum은 2029년 범용 완전 오류내성 양자컴퓨터 'Apollo'를 출시해 2030년까지 범용 FTQC를 달성하겠다는 로드맵을 냈고, 이후 DARPA QBI 2단계 선정과 함께 2033년 유틸리티급 경로 'Lumos'를 제시했다.",
+      "timeframe": "2029~2033",
+      "type": "roadmap",
+      "source_title": "Quantinuum Unveils Accelerated Roadmap to Achieve Universal, Fully Fault-Tolerant Quantum Computing by 2030",
+      "publisher": "Quantinuum",
+      "date": "2024-09",
+      "url": "https://www.quantinuum.com/press-releases/quantinuum-unveils-accelerated-roadmap-to-achieve-universal-fault-tolerant-quantum-computing-by-2030",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "DARPA 양자 벤치마킹 이니셔티브(QBI)는 2033년까지 '비용보다 큰 계산 가치'를 내는 유틸리티급 양자컴이 가능한지 검증하며, 2025년 11월 IBM·IonQ·Quantinuum·QuEra 등 11개사를 2단계(최대 1,500만 달러, 약 1년)로 올렸다.",
+      "timeframe": "2025~2033",
+      "type": "news",
+      "source_title": "DARPA announces 11 companies advancing to second stage of its Quantum Benchmarking Initiative",
+      "publisher": "DatacenterDynamics",
+      "date": "2025-11",
+      "url": "https://www.datacenterdynamics.com/en/news/darpa-announces-11-companies-advancing-to-second-stage-of-it-quantum-benchmarking-initiative/",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "IonQ는 2027년 단일 칩 1만 물리 큐비트, 2028년 칩 2개 연결 2만 큐비트, 2030년 200만 물리 큐비트 이상 시스템을 목표로 하는 공격적 로드맵을 공개했다(회사 전망).",
+      "timeframe": "2027~2030",
+      "type": "roadmap",
+      "source_title": "IonQ's Accelerated Roadmap: Turning Quantum Ambition into Reality",
+      "publisher": "IonQ",
+      "date": "2025-06",
+      "url": "https://www.ionq.com/blog/ionqs-accelerated-roadmap-turning-quantum-ambition-into-reality",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "광자 방식의 PsiQuantum은 2027년 말 브리즈번에 세계 첫 유틸리티급 양자컴퓨터를, 2028년경 시카고 일리노이 양자·마이크로전자 파크에 2호기를 세우겠다고 밝혔지만 브리즈번 일정 지연 보도가 이어진다.",
+      "timeframe": "2027~2028",
+      "type": "roadmap",
+      "source_title": "Chicago to get PsiQuantum's second computer",
+      "publisher": "Forbes Australia",
+      "date": "2024-07",
+      "url": "https://www.forbes.com.au/news/innovation/chicago-to-get-psiquantums-second-computer/",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "구글 Willow(105큐비트)는 물리 큐비트를 늘릴수록 논리 큐비트 오류율이 지수적으로 줄어드는 '임계값 이하' 오류 보정을 처음 보였고, 구글은 2025년 10월 검증 가능한 양자 우위를 주장하며 다음 목표를 '장수명 논리 큐비트'(마일스톤 3)로 잡았다.",
+      "timeframe": "2024~2030",
+      "type": "paper",
+      "source_title": "Google presents new quantum processor \"Willow\"",
+      "publisher": "heise online",
+      "date": "2024-12",
+      "url": "https://heise.de/-10192990",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "마이크로소프트는 2025년 2월 위상 큐비트 8개를 올린(100만 큐비트 수용 설계) Majorana 1을 공개하고 오류내성 프로토타입이 '수십 년이 아닌 수년 내'라고 주장했으나, 외부에서는 Nature 논문이 주장의 일부만 입증했다는 회의론이 나왔다.",
+      "timeframe": "2025~2030s",
+      "type": "news",
+      "source_title": "With Majorana, Microsoft Says Quantum Is Years, Not Decades, Away",
+      "publisher": "The Next Platform",
+      "date": "2025-02",
+      "url": "https://www.nextplatform.com/2025/02/20/with-majorana-microsoft-says-quantum-is-years-not-decades-away/",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "Global Risk Institute의 2025년판 양자 위협 타임라인 조사(전문가 26명)는 RSA를 깰 수 있는 암호해독급 양자컴(CRQC)이 10년 내 등장할 확률을 28~49%, 15년 내 51~70%로 보았으며, 2034년까지 확률이 2022년 17%에서 2024년 34%로 오르는 등 조사 때마다 시점이 앞당겨지고 있다.",
+      "timeframe": "2035~2040",
+      "type": "survey",
+      "source_title": "Quantum Threat Timeline Report 2025",
+      "publisher": "Global Risk Institute / evolutionQ",
+      "date": "2026-03",
+      "url": "https://globalriskinstitute.org/publication/quantum-threat-timeline-report-2025b/",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "구글 Gidney는 2048비트 RSA를 0.1% 게이트 오류·1μs 사이클의 물리 큐비트 100만 개 미만으로 1주 안에 소인수분해할 수 있다고 추정해 2019년 추정(2,000만 큐비트)보다 요구량을 약 20분의 1로 줄였고, 2026년 2월 Iceberg Quantum은 qLDPC로 10만 개 미만까지 낮췄다고 주장했다(동료심사 전).",
+      "timeframe": "2025~2026",
+      "type": "paper",
+      "source_title": "Google Researcher Lowers Quantum Bar to Crack RSA Encryption",
+      "publisher": "The Quantum Insider",
+      "date": "2025-05",
+      "url": "https://thequantuminsider.com/2025/05/24/google-researcher-lowers-quantum-bar-to-crack-rsa-encryption/",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "NIST IR 8547 초안은 RSA-2048·ECC P-256 같은 양자 취약 공개키 알고리즘을 2030년 이후 비권장, 2035년 이후 금지하는 일정을 제시했고 미 연방(OMB)은 2035년을 전면 전환 시한으로 삼았다.",
+      "timeframe": "2030~2035",
+      "type": "roadmap",
+      "source_title": "NIST IR 8547: 2030/2035 Action Plan",
+      "publisher": "Encryption Consulting",
+      "date": "2024-11",
+      "url": "https://www.encryptionconsulting.com/nist-ir-8547-2030-2035-action-plan/",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "맥킨지 Quantum Technology Monitor 2025는 양자컴퓨팅 매출이 2024년 약 40억 달러에서 2035년 280억~720억 달러로, 양자기술(컴퓨팅·통신·센싱) 전체는 약 970억 달러로 커질 수 있다고 전망했다.",
+      "timeframe": "2024~2035",
+      "type": "forecast",
+      "source_title": "The Year of Quantum: From concept to reality in 2025",
+      "publisher": "McKinsey & Company",
+      "date": "2025-06",
+      "url": "https://www.mckinsey.com/capabilities/tech-and-ai/our-takeaways/the-year-of-quantum-from-concept-to-reality-in-2025",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "양자컴 생산의 병목은 웨이퍼 팹보다 희석냉동기·극저온 패키징·헬륨-3에 있으며(Bluefors·Oxford Instruments가 희석냉동기 70% 이상 점유), Bluefors는 2028~2037년 달 채굴 스타트업에서 헬륨-3를 공급받는 계약을 맺었고 미 상무부는 2026년 5월 양자기업 9곳에 20억 달러를 지분 투자했다.",
+      "timeframe": "2026~2037",
+      "type": "news",
+      "source_title": "Will a U.S. Quantum Foundry Leverage $4.6 Billion in New Capital to Become the Next TSMC?",
+      "publisher": "Futurum Group",
+      "date": "2026-06",
+      "url": "https://futurumgroup.com/insights/will-a-u-s-quantum-foundry-leverage-4-6-billion-in-new-capital-to-become-the-next-tsmc/",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "극저온 CMOS 양자 제어 전자 시장은 2025년 약 1,500만 달러에서 2035년 약 4.1억 달러로 커질 것으로 추정되지만 조사기관마다 10배 가까이 차이가 난다.",
+      "timeframe": "2025~2035",
+      "type": "forecast",
+      "source_title": "Cryogenic CMOS Quantum Control Electronics Market",
+      "publisher": "Global Market Insights",
+      "date": "2026",
+      "url": "https://www.gminsights.com/industry-analysis/cryogenic-cmos-quantum-control-electronics-market",
+      "confidence": "low"
+    },
+    {
+      "claim_ko": "과기정통부의 제1차 양자과학기술·양자산업 육성 종합계획(2026년 1월)은 2035년 세계 1위 퀀텀칩 제조국, 양자 인력 1만 명, 양자기업 2,000개를 장기 목표로 제시했다(2023년 전략은 2035년까지 민관 3조 원 투자, 2025년 출범한 총리 주재 양자전략위원회는 1,000큐비트급 개발 추진).",
+      "timeframe": "2026~2035",
+      "type": "roadmap",
+      "source_title": "제1차 양자과학기술 및 양자산업 육성 종합계획 보도",
+      "publisher": "파이낸스스코프",
+      "date": "2026-01",
+      "url": "https://www.finance-scope.com/article/view/scp202601290027",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "TSMC는 2027년 9~9.5 레티클(약 7,722mm²) 크기 CoWoS를 양산해 HBM 12개 이상을 한 패키지에 넣고, SoIC로 1.6nm급 다이를 2nm급 다이 위에 적층할 수 있게 하겠다고 밝혔다.",
+      "timeframe": "2027",
+      "type": "roadmap",
+      "source_title": "TSMC 9x-reticle CoWoS qualification in 2027",
+      "publisher": "DigiTimes",
+      "date": "2024-12",
+      "url": "https://digitimes.com/news/a20241202PD210.html",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "TSMC는 사각 패널 기반 CoPoS 파일럿 라인을 2026년 세우고 2028년 말~2029년 초 자이(AP7) 캠퍼스에서 양산하며 엔비디아가 첫 고객이 될 것으로 보도됐다.",
+      "timeframe": "2026~2029",
+      "type": "news",
+      "source_title": "TSMC's CoPoS: The Revolutionary Shift to Rectangular Panel Packaging",
+      "publisher": "TokenRing (Observer-Reporter 재게재)",
+      "date": "2026-02",
+      "url": "https://stocks.observer-reporter.com/observerreporter/article/tokenring-2026-2-2-tsmcs-copos-the-revolutionary-shift-to-rectangular-panel-packaging",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "Yole는 패널 레벨 패키징 시장이 2024년 1.6억 달러에서 2030년 6.5억 달러로 4배, 패널 물량은 약 22만 장으로 3배 늘고 패널 크기는 310~700mm로 공급자별로 갈린다고 전망했다.",
+      "timeframe": "2024~2030",
+      "type": "forecast",
+      "source_title": "The Rise Of Panel-Level Packaging",
+      "publisher": "Semiconductor Engineering (Yole 인용)",
+      "date": "2025",
+      "url": "https://semiengineering.com/the-rise-of-panel-level-packaging/",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "SKC 자회사 Absolics의 미국 조지아 공장 유리기판 샘플은 대만에서 패키지 신뢰성 평가 중이며, 당초 2024년 상반기였던 양산 목표가 계속 밀려 아직 상용 제품 탑재가 없다.",
+      "timeframe": "2026~2027",
+      "type": "news",
+      "source_title": "Glass substrate roadmaps examined — Absolics in final qualification and a first product that keeps slipping",
+      "publisher": "Tom's Hardware",
+      "date": "2026",
+      "url": "https://tomshardware.com/tech-industry/manufacturing/glass-substrate-roadmap-examined",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "삼성전기는 동우화인켐과 유리코어 합작으로 2027년 하반기 첫 생산을, 삼성은 2028년 유리 인터포저 도입을 목표로 하는 반면 인텔은 자체 도입을 2030년 전후로 늦추고 특허 라이선스로 방향을 틀었다.",
+      "timeframe": "2027~2030",
+      "type": "news",
+      "source_title": "Glass substrates inch closer to commercialization",
+      "publisher": "The Korea Herald",
+      "date": "2025",
+      "url": "https://www.koreaherald.com/article/10497737",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "삼성전자·SK하이닉스는 HBM4에도 TC 본딩을 유지했고 JEDEC 두께 한도 완화(HBM4 775μm, HBM5 최대 1,000μm 논의)로 하이브리드 본딩은 빨라야 16단 HBM4E에서 도입될 전망이며, TrendForce는 20단 HBM5에서는 하이브리드 본딩이 확정적이라고 본다.",
+      "timeframe": "2027~2031",
+      "type": "news",
+      "source_title": "Samsung, SK hynix Reportedly Reconsider Hybrid Bonding Timeline; 16-High HBM4E May Be Earliest Adoption",
+      "publisher": "TrendForce",
+      "date": "2026-07",
+      "url": "https://www.trendforce.com/news/2026/07/07/news-samsung-sk-hynix-reportedly-reconsider-hybrid-bonding-timeline-16-high-hbm4e-may-be-earliest-adoption/",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "UCIe 3.0(2025)은 칩렛 간 데이터 속도를 48/64 GT/s로 두 배 올리면서 하위 호환을 유지해, 서로 다른 회사 칩렛을 섞어 쓰는 생태계와 향후 하이브리드 본딩 3D 연결의 기반을 넓혔다.",
+      "timeframe": "2025~2030",
+      "type": "roadmap",
+      "source_title": "UCIe 3.0: Unlocking the Potential of Multi-Vendor Chiplet Ecosystems",
+      "publisher": "TCS",
+      "date": "2025",
+      "url": "https://www.tcs.com/what-we-do/industries/high-tech/white-paper/ucie-3-0-unlocking-potential-multi-vendor-chiplet-ecosystems",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "MarketsandMarkets는 칩렛 시장이 2025년 520억 달러에서 2030년 1,572억 달러(CAGR 24.8%)로 크리라 보지만 다른 기관은 2030년 3,730억 달러까지 제시해 전망 편차가 매우 크다.",
+      "timeframe": "2025~2030",
+      "type": "forecast",
+      "source_title": "Chiplet Market Size, Share & Future Growth, 2030",
+      "publisher": "MarketsandMarkets",
+      "date": "2025",
+      "url": "https://www.marketsandmarkets.com/ResearchInsight/chiplet-market-growth.asp",
+      "confidence": "low"
+    },
+    {
+      "claim_ko": "엔비디아는 2026년 초 Quantum-X InfiniBand CPO 스위치, 2026년 후반 Spectrum-X Photonics 이더넷 CPO 스위치(최대 409.6Tb/s)를 내놓으며 플러거블 대비 전력효율 3.5배를 내세웠고, 이는 1.6Tb/s 광엔진 → CoWoS 기반 6.4Tb/s CPO → 패키지 내부 12.8Tb/s로 가는 TSMC COUPE 3단계 로드맵을 따른다.",
+      "timeframe": "2026",
+      "type": "roadmap",
+      "source_title": "Nvidia turns to silicon photonics to supercharge next-gen AI clusters",
+      "publisher": "TechSpot",
+      "date": "2025-08",
+      "url": "https://www.techspot.com/news/109190-nvidia-turns-silicon-photonics-supercharge-next-gen-ai.html",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "Cignal AI는 스케일아웃 검증 뒤 GPU 간 스케일업 네트워크에 CPO가 2028년 말~2029년 초 배치될 것으로 보고, IDTechEx는 CPO 시장이 연 37% 성장해 2036년 200억 달러를 넘는다고 전망했다.",
+      "timeframe": "2028~2036",
+      "type": "forecast",
+      "source_title": "Co-Packaged Optics deployment outlook",
+      "publisher": "Cignal AI",
+      "date": "2025",
+      "url": "https://cignal.ai/?p=33678",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "Ayar Labs는 2025년 3월 UCIe 트래픽을 빛으로 나르는 첫 광 칩렛 TeraPHY(양방향 8Tbps)를 발표했고 TSMC COUPE·SoIC 기반 양산 설계를 준비 중이며 2026년 엔비디아·AMD가 참여한 5억 달러를 유치했다.",
+      "timeframe": "2025~2027",
+      "type": "news",
+      "source_title": "Ayar Labs announces first UCIe optical chiplet for AI infrastructure",
+      "publisher": "PIC Magazine",
+      "date": "2025-03",
+      "url": "https://picmagazine.net/article/121495/Ayar_Labs_announces_first_UCIe_optical_chiplet_for_AI_infrastructure",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "2025년 4월 Nature에 광 프로세서가 ResNet·BERT를 전자칩에 가까운 정확도로 실행한 논문(Ahmed 외, 12nm CMOS 제어칩과 3D 집적)과 64×64 광 행렬 가속기(지연 3ns) 논문이 실렸지만, 실용 AI에 필요한 정밀도는 여전히 과제로 남았다.",
+      "timeframe": "2025",
+      "type": "paper",
+      "source_title": "Universal photonic artificial intelligence acceleration (Nature 640)",
+      "publisher": "Nature (RePEc 색인)",
+      "date": "2025-04",
+      "url": "https://ideas.repec.org/a/nat/nature/v640y2025i8058d10.1038_s41586-025-08854-x.html",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "Yole는 전력용 SiC 소자 시장이 자동차 수요 둔화에도 2030년 약 103억 달러에 이르고 200mm 플랫폼이 성장을 이끌며, 300mm SiC 웨이퍼 개발도 진행될 것으로 봤다.",
+      "timeframe": "2025~2030",
+      "type": "forecast",
+      "source_title": "Power silicon carbide device market to exceed 10 billion by 2030",
+      "publisher": "Power Electronics World (Yole)",
+      "date": "2025",
+      "url": "https://powerelectronicsworld.net/video/676/Power_silicon_carbide_device_market_to_exceed_10_billion_by_2030",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "인피니언은 기존 실리콘 양산 팹에서 300mm GaN 전력 웨이퍼를 개발해 2025년 4분기 고객 샘플을 내고, 200mm 대비 칩 수 2.3배로 실리콘과의 원가 동등을 노린다.",
+      "timeframe": "2025~2028",
+      "type": "roadmap",
+      "source_title": "300mm GaN roadmap \"on track\" says Infineon",
+      "publisher": "Compound Semiconductor",
+      "date": "2025-07",
+      "url": "https://compoundsemiconductor.net/article/122057/300mm_GaN_roadmap_%22on_track%22_says_Infineon",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "일본 Novel Crystal Technology는 150mm 산화갈륨 웨이퍼 샘플 출하를 시작했고 2027년 150mm 에피 샘플, 2029년 본격 양산, 2035년 200mm 웨이퍼라는 로드맵이 보도됐다(1차 출처 미확인).",
+      "timeframe": "2027~2035",
+      "type": "roadmap",
+      "source_title": "氧化镓产业报道 (NCT 로드맵 인용)",
+      "publisher": "36Kr",
+      "date": "2026",
+      "url": "https://www.36kr.com/p/3709358914220168",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "일본 오쿠마 다이아몬드 디바이스는 후쿠시마에 2026회계연도 가동 목표로 다이아몬드 반도체 양산 공장을 짓고, 도요타·덴소 합작 Mirai Technologies와 와세다 스핀오프는 2030년대 다이아몬드 전력소자 상용화를 노린다.",
+      "timeframe": "2026~2030s",
+      "type": "news",
+      "source_title": "Japan R&D brings powerful diamond semiconductors closer to reality",
+      "publisher": "KrASIA",
+      "date": "2024-09",
+      "url": "https://kr-asia.com/japan-rd-brings-powerful-diamond-semiconductors-closer-to-reality",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "imec·ASML·TSMC는 VLSI 2026에서 300mm 웨이퍼 위에 MoS2(n형)·WSe2/WS2(p형) 상보형 2D 트랜지스터를 50nm 피치·28nm 채널로 구현하고 94% 동작 수율을 보고했다.",
+      "timeframe": "2026",
+      "type": "paper",
+      "source_title": "imec, ASML and TSMC build complementary 2D material transistors at 50nm pitch on a 300mm wafer",
+      "publisher": "Tom's Hardware",
+      "date": "2026-06",
+      "url": "https://www.tomshardware.com/tech-industry/semiconductors/imec-asml-and-tsmc-build-complementary-2d-material-transistors-at-50nm-pitch-on-a-300mm-wafer",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "imec 로직 로드맵은 A7 노드부터 CFET, A5(2035~36년)·A3(2038년)을 거쳐 A2 노드(2043년)부터 2D 채널 FET, 2046년 sub-A2 노드로 이어지는 것으로 보도됐다(2차 보도).",
+      "timeframe": "2032~2046",
+      "type": "roadmap",
+      "source_title": "Sub-1nm process node technology won't arrive till 2034; logic roadmap 2DFETs sub-0.2nm 2046",
+      "publisher": "Wccftech",
+      "date": "2025",
+      "url": "https://wccftech.com/sub-1nm-process-node-technology-wont-arrive-till-2034-logic-roadmap-2dfets-sub-0-2nm-2046/",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "푸단대는 MoS2 트랜지스터 5,900개로 만든 32비트 RISC-V 프로세서 'WUJI'를 Nature에 발표해 2D 반도체 집적 기록(종전 115개)을 크게 넘어섰다.",
+      "timeframe": "2025",
+      "type": "paper",
+      "source_title": "A RISC-V 32-bit microprocessor based on two-dimensional semiconductors (Nature 640)",
+      "publisher": "Nature (RePEc 색인)",
+      "date": "2025-04",
+      "url": "https://ideas.repec.org/a/nat/nature/v640y2025i8059d10.1038_s41586-025-08759-9.html",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "베이징대 연구진은 탄소나노튜브 트랜지스터 3,000개로 만든 텐서 처리 칩을 Nature Electronics에 보고했으나(MNIST 88%, 295μW), 웨이퍼급 CNT 칩의 상용 양산 일정은 확인되지 않는다.",
+      "timeframe": "2024",
+      "type": "paper",
+      "source_title": "Tensor processor chip based on carbon nanotubes",
+      "publisher": "TechXplore",
+      "date": "2024-08",
+      "url": "https://techxplore.com/news/2024-08-tensor-processor-chip-based-carbon.html",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "23명 연구진의 Nature 리뷰 'Neuromorphic computing at scale'은 뉴로모픽 분야가 딥러닝의 'AlexNet 순간'과 비슷한 전환점에 있으며 대규모 시스템 로드맵이 시급하다고 진단했다.",
+      "timeframe": "2025~2035",
+      "type": "paper",
+      "source_title": "UTSA researchers chart course for neuromorphic computing systems (Nature 637)",
+      "publisher": "UTSA / Nature",
+      "date": "2025-01",
+      "url": "https://news.utsa.edu/2025/01/utsa-researchers-chart-course-for-neuromorphic-computing-systems/",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "인텔은 Loihi 2 칩 1,152개로 뉴런 11.5억 개·최대 2,600W의 세계 최대 뉴로모픽 시스템 Hala Point를 샌디아 연구소에 구축하고 상용화를 다음 과제로 꼽았다.",
+      "timeframe": "2024",
+      "type": "news",
+      "source_title": "Intel Builds World's Largest Neuromorphic System",
+      "publisher": "Intel Newsroom",
+      "date": "2024-04",
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/intel-builds-worlds-largest-neuromorphic-system.html",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "2026년 리뷰는 디지털 뉴로모픽 칩은 상용화에 가까워졌지만 아날로그·크로스바 기반 인메모리 컴퓨팅은 아직 성숙과 거리가 있다고 평가했고, IBM은 14nm에 상변화메모리를 집적한 64코어 아날로그 인메모리 칩(HERMES)으로 종단간 아날로그 추론 방향을 제시한 바 있다.",
+      "timeframe": "2023~2030s",
+      "type": "paper",
+      "source_title": "Neuromorphic Computing for Low-Power Artificial Intelligence",
+      "publisher": "arXiv (2604.04727)",
+      "date": "2026-04",
+      "url": "https://arxiv.org/pdf/2604.04727",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "imec과 TSMC·ITRI는 SRAM 밀도 정체를 대체할 최종단 캐시 후보로 SOT-MRAM을 300mm에서 시연했지만(210ps 스위칭, 내구성 5×10^10회 이상) 아직 초기 시제품 단계라는 평가다.",
+      "timeframe": "2018~2030s",
+      "type": "paper",
+      "source_title": "Why SOT-MRAM can replace SRAM in future cache memories",
+      "publisher": "imec",
+      "date": "2024",
+      "url": "https://imec-int.com/en/articles/bringing-sot-mram-technology-closer-last-level-cache-memory-specifications",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "imec은 2026년 NbTiN 조셉슨 접합 회로를 cm²당 380만 개 밀도·30nm 선폭 배선으로 구현하고, 초전도 디지털 AI 컴퓨터가 CMOS 대비 에너지효율 100배·연산밀도 1,000배를 낼 수 있다는 목표를 제시했다(냉동·메모리·I/O·수율이 난제).",
+      "timeframe": "2026~2030s",
+      "type": "paper",
+      "source_title": "imec scales NbTiN superconducting circuits to 30nm",
+      "publisher": "eeNews Europe",
+      "date": "2026",
+      "url": "https://www.eenewseurope.com/en/imec-scales-nbtin-superconducting-circuits-to-30nm/",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "IEEE Spectrum은 가역 컴퓨팅이 2025년 연구실을 벗어난다며, 스타트업 Vaire가 에너지를 회수하는 단열 회로 첫 칩을 2025년 제작하고 이후 AI 추론용 가역 칩(2027년 목표)을 계획한다고 전했다.",
+      "timeframe": "2025~2027",
+      "type": "news",
+      "source_title": "Reversible Computing Escapes the Lab in 2025",
+      "publisher": "IEEE Spectrum",
+      "date": "2025-01",
+      "url": "https://spectrum.ieee.org/reversible-computing",
+      "confidence": "medium"
+    },
+    {
+      "claim_ko": "Extropic은 상온 확률비트(p-bit) 시제품 X0와 개발 플랫폼 XTR-0를 공개하고 양산형 열역학 샘플링 칩 Z1 얼리액세스를 2026년으로 내걸었지만, 1만 배 효율은 모델 추정치이며 고객·성능 공개는 없다.",
+      "timeframe": "2025~2026",
+      "type": "news",
+      "source_title": "Extropic makes its thermodynamic computing case as AI energy demand rises",
+      "publisher": "Runtime Wire",
+      "date": "2025",
+      "url": "https://runtimewire.com/article/extropic-thermodynamic-computing-ai-energy-pitch",
+      "confidence": "low"
+    },
+    {
+      "claim_ko": "DNA 저장은 쓰기(합성) 비용이 아직 MB당 수천~1만 달러대여서 ARK는 2030년 MB당 5달러 미만을 전망했지만 이는 여전히 TB당 수백만 달러로 테이프·HDD와 격차가 크다.",
+      "timeframe": "2030",
+      "type": "forecast",
+      "source_title": "DNA Storage Solution",
+      "publisher": "ARK Invest",
+      "date": "",
+      "url": "https://www.ark-invest.com/articles/analyst-research/dna-storage-solution",
+      "confidence": "low"
+    },
+    {
+      "claim_ko": "Cortical Labs는 2025년 3월 인간 뉴런 약 20만 개를 칩 위에 배양한 첫 상용 생체 컴퓨터 CL1(대당 약 3.5만 달러, 수명 최대 6개월)을 내놓고 클라우드형 '웨트웨어 서비스'도 계획했다.",
+      "timeframe": "2025",
+      "type": "news",
+      "source_title": "Australian startup Cortical Labs unveils world's first commercial biological computer",
+      "publisher": "DatacenterDynamics",
+      "date": "2025-03",
+      "url": "https://datacenterdynamics.com/en/news/australian-startup-cortical-labs-unveils-worlds-first-commercial-biological-computer",
+      "confidence": "high"
+    },
+    {
+      "claim_ko": "영국 Space Forge의 ForgeStar-1은 2025년 12월 궤도에서 약 1,000°C 플라즈마를 만들어 첫 자유비행 상업용 반도체 제조 장비 가동에 성공했으며, 후속 임무에서 광대역·초광대역 결정 기판 생산과 지구 회수를 시도한다.",
+      "timeframe": "2025~2030s",
+      "type": "news",
+      "source_title": "'A completely new manufacturing frontier': Space Forge fires up 1st commercial semiconductor factory in space",
+      "publisher": "Space.com",
+      "date": "2025-12",
+      "url": "https://space.com/space-exploration/a-completely-new-manufacturing-frontier-space-forge-fires-up-1st-commercial-semiconductor-factory-in-space",
+      "confidence": "medium"
+    }
+  ],
+  "node_candidates": [
+    {
+      "id": "cowos_mega_interposer",
+      "name_ko": "초대형 2.5D 인터포저 패키지(9.5레티클 CoWoS)",
+      "category": "packaging",
+      "earliest_year": 2026,
+      "median_year": 2027,
+      "late_year": 2029,
+      "prereqs": [],
+      "basis_ko": "TSMC가 9~9.5레티클 CoWoS를 2027년 양산한다고 발표(회사 로드맵, 신뢰도 높음). 지연 가능성을 반영해 late 2029.",
+      "market_effects_ko": "패키지당 HBM 12개 이상 탑재로 HBM·인터포저·고급 기판 수요 급증. 패키징 캐파가 AI 가속기 공급 병목이 되어 후공정 투자 사이클이 커짐.",
+      "job_effects_ko": "후공정(OSAT·파운드리 패키징) 공정·설비 엔지니어 수요 급증, 휨(warpage)·열 관리 전문가 부족.",
+      "rnd_skills_ko": [
+        "2.5D 인터포저 설계",
+        "패키지 휨·열 관리"
+      ],
+      "source_urls": [
+        "https://digitimes.com/news/a20241202PD210.html"
+      ]
+    },
+    {
+      "id": "logic_3d_soic",
+      "name_ko": "로직 3D 적층(SoIC, 로직-온-로직)",
+      "category": "packaging",
+      "earliest_year": 2026,
+      "median_year": 2028,
+      "late_year": 2032,
+      "prereqs": [],
+      "basis_ko": "TSMC는 9x레티클 CoWoS 시점(2027)에 SoIC로 1.6nm급 다이를 2nm급 다이 위에 쌓을 수 있다고 밝힘. 엔비디아 CPO 스위치도 SoIC 하이브리드 본딩 사용. 주류화(median 2028) 시점은 자체 추정.",
+      "market_effects_ko": "파운드리가 패키징까지 통합해 지배력 강화. 적층 열 문제로 액침·직접 액체 냉각, 후면전력 공급 수요 증가.",
+      "job_effects_ko": "3D-IC 열설계, 시스템-기술 공동최적화(STCO) 엔지니어 신설 수요.",
+      "rnd_skills_ko": [
+        "3D-IC 설계",
+        "시스템-기술 공동최적화(STCO)",
+        "적층 열 해석"
+      ],
+      "source_urls": [
+        "https://digitimes.com/news/a20241202PD210.html",
+        "https://www.techspot.com/news/109190-nvidia-turns-silicon-photonics-supercharge-next-gen-ai.html"
+      ]
+    },
+    {
+      "id": "hybrid_bonding_hbm",
+      "name_ko": "하이브리드 본딩 HBM(16단 HBM4E~20단 HBM5)",
+      "category": "packaging",
+      "earliest_year": 2027,
+      "median_year": 2029,
+      "late_year": 2032,
+      "prereqs": [],
+      "basis_ko": "TrendForce(2026-07): HBM4는 TC 본딩 유지, JEDEC 두께 완화로 하이브리드 본딩은 빨라야 16단 HBM4E. TrendForce(2024): 20단 HBM5에서는 확정적. 연도는 HBM4E·HBM5 세대 출시 주기에서 자체 추정.",
+      "market_effects_ko": "본딩 장비 교체 사이클(TC 본더→하이브리드 본더), CMP·플라즈마 활성화 장비 수요. 베이스 다이를 파운드리가 만들면서 메모리-파운드리 협업형 HBM 사업 모델로 전환.",
+      "job_effects_ko": "TC 본더 공정 인력이 CMP·표면 처리·초정밀 정렬 엔지니어로 재교육 필요. 메모리 회사 내 로직(베이스 다이) 설계 인력 증가.",
+      "rnd_skills_ko": [
+        "하이브리드 본딩 공정",
+        "CMP·표면 활성화",
+        "다단 적층 수율 관리"
+      ],
+      "source_urls": [
+        "https://www.trendforce.com/news/2026/07/07/news-samsung-sk-hynix-reportedly-reconsider-hybrid-bonding-timeline-16-high-hbm4e-may-be-earliest-adoption/",
+        "https://www.trendforce.com/presscenter/news/20241030-12343.html"
+      ]
+    },
+    {
+      "id": "glass_core_substrate",
+      "name_ko": "유리 코어 기판",
+      "category": "packaging",
+      "earliest_year": 2026,
+      "median_year": 2028,
+      "late_year": 2031,
+      "prereqs": [],
+      "basis_ko": "Absolics(SKC) 2026 상용화 목표지만 2024년부터 반복 지연, 삼성전기 2027 하반기 첫 생산, 삼성 2028 유리 인터포저, 인텔 2030 전후. 업계 전체 2027~2030 양산 전망을 종합.",
+      "market_effects_ko": "AI 가속기용 대형 기판에서 ABF 유기기판 일부 대체. 유리 소재·TGV 레이저 가공 장비 성장, 한국 기판업계(SKC·삼성전기·LG이노텍)에 기회.",
+      "job_effects_ko": "TGV(유리관통전극) 가공·유리 크랙 검사·미세 재배선 엔지니어 수요.",
+      "rnd_skills_ko": [
+        "TGV 가공",
+        "유리 기판 신뢰성",
+        "미세 RDL 형성"
+      ],
+      "source_urls": [
+        "https://tomshardware.com/tech-industry/manufacturing/glass-substrate-roadmap-examined",
+        "https://www.koreaherald.com/article/10497737",
+        "https://techovedas.com/intel-glass-substrate-gamble-the-silent-shift-that-could-redefine-semiconductors-by-2030/"
+      ]
+    },
+    {
+      "id": "panel_level_packaging",
+      "name_ko": "패널 레벨 패키징(CoPoS·FOPLP)",
+      "category": "packaging",
+      "earliest_year": 2027,
+      "median_year": 2029,
+      "late_year": 2032,
+      "prereqs": [
+        "cowos_mega_interposer"
+      ],
+      "basis_ko": "TSMC CoPoS 파일럿 2026, 양산 2028말~2029초(2차 보도, 중간). Yole 2030년 시장 6.5억 달러(소규모). 대형 AI 패키지 주류화는 자체 추정.",
+      "market_effects_ko": "원형 300mm 웨이퍼 대비 면적 효율 상승으로 대형 패키지 원가 하락. 디스플레이 장비·패널 업체의 반도체 후공정 진입 기회.",
+      "job_effects_ko": "디스플레이 공정 인력의 반도체 패키징 전환, 대면적 노광·도금 엔지니어 수요.",
+      "rnd_skills_ko": [
+        "대면적 패널 공정",
+        "패널 휨 제어",
+        "팬아웃 재배선"
+      ],
+      "source_urls": [
+        "https://stocks.observer-reporter.com/observerreporter/article/tokenring-2026-2-2-tsmcs-copos-the-revolutionary-shift-to-rectangular-panel-packaging",
+        "https://semiengineering.com/the-rise-of-panel-level-packaging/"
+      ]
+    },
+    {
+      "id": "ucie_open_chiplet",
+      "name_ko": "개방형 칩렛 생태계(다중 벤더 UCIe 칩렛)",
+      "category": "packaging",
+      "earliest_year": 2027,
+      "median_year": 2030,
+      "late_year": 2036,
+      "prereqs": [],
+      "basis_ko": "UCIe 3.0(2025) 48/64GT/s. 여러 회사 칩렛을 사고파는 '개방형 칩렛 마켓'은 TCS 등 벤더 예측일 뿐 아직 없음 → 연도는 자체 추정(신뢰도 중간 이하). 칩렛 시장 전망도 2030년 1,570억~3,730억 달러로 편차 큼.",
+      "market_effects_ko": "칩 설계 진입장벽 하락으로 팹리스·IP·EDA·테스트 시장 확대, 성숙 공정 칩렛 재활용으로 레거시 팹 가동률 지지.",
+      "job_effects_ko": "칩렛 아키텍트, 다이 간 PHY 설계, KGD(양품 다이) 테스트 엔지니어 증가. 거대 단일 SoC 설계팀 비중 감소.",
+      "rnd_skills_ko": [
+        "칩렛 아키텍처",
+        "다이 간 인터커넥트(UCIe) 설계",
+        "KGD 테스트"
+      ],
+      "source_urls": [
+        "https://www.tcs.com/what-we-do/industries/high-tech/white-paper/ucie-3-0-unlocking-potential-multi-vendor-chiplet-ecosystems",
+        "https://www.marketsandmarkets.com/ResearchInsight/chiplet-market-growth.asp"
+      ]
+    },
+    {
+      "id": "cpo_switch",
+      "name_ko": "CPO 광 스위치(스케일아웃 네트워크)",
+      "category": "packaging",
+      "earliest_year": 2026,
+      "median_year": 2026,
+      "late_year": 2028,
+      "prereqs": [],
+      "basis_ko": "엔비디아 Quantum-X(2026 초)·Spectrum-X Photonics(2026 후반) 출시 로드맵, TSMC COUPE 1·2단계. 회사 로드맵이라 신뢰도 높음.",
+      "market_effects_ko": "플러거블 광트랜시버 일부 잠식, 실리콘 포토닉스 파운드리·외부 레이저 광원·광섬유 정렬 부품 수요 증가. 스위치 전력 3.5배 절감.",
+      "job_effects_ko": "광 패키징·광 정렬·광 테스트 엔지니어 수요 급증, 트랜시버 조립 인력 감소.",
+      "rnd_skills_ko": [
+        "실리콘 포토닉스 설계",
+        "광 패키징·정렬",
+        "광 테스트"
+      ],
+      "source_urls": [
+        "https://www.techspot.com/news/109190-nvidia-turns-silicon-photonics-supercharge-next-gen-ai.html",
+        "https://www.inkl.com/news/nvidia-outlines-plans-for-using-light-for-communication-between-ai-gpus-by-2026-silicon-photonics-and-co-packaged-optics-may-become-mandatory-for-next-gen-ai-data-centers"
+      ]
+    },
+    {
+      "id": "optical_io_scaleup",
+      "name_ko": "패키지 내 광 I/O(GPU 스케일업 CPO)",
+      "category": "packaging",
+      "earliest_year": 2028,
+      "median_year": 2029,
+      "late_year": 2033,
+      "prereqs": [
+        "cpo_switch",
+        "ucie_open_chiplet"
+      ],
+      "basis_ko": "Cignal AI: 스케일업 CPO 2028말~2029초(단일 애널리스트). COUPE 3단계(패키지 내 12.8Tb/s), Ayar Labs UCIe 광 칩렛. IDTechEx CPO 시장 2036년 200억 달러+.",
+      "market_effects_ko": "랙 내부 구리 케이블·전기 SerDes 비중 축소, 수천 GPU 단일 도메인 가능 → AI 클러스터 규모 확대. InP 레이저·박막 리튬니오베이트 변조기 소재 수요.",
+      "job_effects_ko": "광-전 공동설계 엔지니어 신설 수요, 고속 전기 SerDes 설계 수요 일부 감소.",
+      "rnd_skills_ko": [
+        "광 칩렛 설계",
+        "외부 레이저 광원",
+        "광-전 공동설계"
+      ],
+      "source_urls": [
+        "https://cignal.ai/?p=33678",
+        "https://picmagazine.net/article/121495/Ayar_Labs_announces_first_UCIe_optical_chiplet_for_AI_infrastructure",
+        "https://www.onartificialintelligence.com/articles/34181/the-transition-transforming-network-and-ai-architecture"
+      ]
+    },
+    {
+      "id": "photonic_compute",
+      "name_ko": "광 연산 가속기(광 텐서 코어)",
+      "category": "computing",
+      "earliest_year": 2029,
+      "median_year": 2036,
+      "late_year": 2048,
+      "prereqs": [
+        "optical_io_scaleup"
+      ],
+      "basis_ko": "Nature 2025 두 논문(ResNet·BERT 실행, 3ns 지연)이 가능성을 보였으나 논문 스스로 실용 정밀도 부족을 인정. 상용 연도는 자체 외삽(신뢰도 낮음).",
+      "market_effects_ko": "성공 시 AI 추론의 행렬연산 일부를 광으로 대체해 데이터센터 전력 절감, 디지털 가속기 수요 일부 잠식. 실패 시 광은 연결(I/O)에만 쓰임.",
+      "job_effects_ko": "광 신경망·아날로그 광 신호처리 연구자 수요.",
+      "rnd_skills_ko": [
+        "광 신경망",
+        "광 행렬 연산",
+        "광-전 변환 최적화"
+      ],
+      "source_urls": [
+        "https://ideas.repec.org/a/nat/nature/v640y2025i8058d10.1038_s41586-025-08854-x.html"
+      ]
+    },
+    {
+      "id": "sic_200mm",
+      "name_ko": "SiC 200mm 주류화(이후 300mm)",
+      "category": "materials",
+      "earliest_year": 2025,
+      "median_year": 2028,
+      "late_year": 2031,
+      "prereqs": [],
+      "basis_ko": "Yole: 전력 SiC 소자 2030년 약 103억 달러, 200mm 플랫폼이 성장 동력, 300mm 개발 언급. 200mm 주류화 연도는 자체 추정.",
+      "market_effects_ko": "전기차·충전기·태양광·AI 데이터센터 전원 수요. 중국 업체 증설로 웨이퍼 공급 과잉·가격 급락 사이클 가능.",
+      "job_effects_ko": "SiC 결정 성장·에피·모듈 패키징 엔지니어 수요.",
+      "rnd_skills_ko": [
+        "SiC 결정 성장",
+        "SiC 전력 소자·모듈 설계"
+      ],
+      "source_urls": [
+        "https://powerelectronicsworld.net/video/676/Power_silicon_carbide_device_market_to_exceed_10_billion_by_2030"
+      ]
+    },
+    {
+      "id": "gan_300mm",
+      "name_ko": "300mm GaN 전력반도체(실리콘과 원가 동등)",
+      "category": "materials",
+      "earliest_year": 2026,
+      "median_year": 2028,
+      "late_year": 2031,
+      "prereqs": [],
+      "basis_ko": "인피니언 300mm GaN 2025년 4분기 샘플, 칩 수 2.3배, 실리콘 원가 동등 목표(회사 로드맵). 원가 동등 시점은 자체 추정.",
+      "market_effects_ko": "고속 충전기·데이터센터 전원장치(48V)·AI 서버 전력 효율 향상, 기존 실리콘 팹 재활용으로 성숙 팹 가동률 회복.",
+      "job_effects_ko": "GaN-on-Si 에피·전력회로 설계 엔지니어 수요, 실리콘 전력 MOSFET 일부 대체.",
+      "rnd_skills_ko": [
+        "GaN 에피 성장",
+        "GaN 고주파 전력회로 설계"
+      ],
+      "source_urls": [
+        "https://compoundsemiconductor.net/article/122057/300mm_GaN_roadmap_%22on_track%22_says_Infineon"
+      ]
+    },
+    {
+      "id": "ga2o3_power",
+      "name_ko": "산화갈륨(Ga2O3) 전력소자 양산",
+      "category": "materials",
+      "earliest_year": 2027,
+      "median_year": 2030,
+      "late_year": 2036,
+      "prereqs": [],
+      "basis_ko": "NCT 로드맵(2027 150mm 에피 샘플, 2029 양산, 2035 200mm)이 36Kr에 보도됨(1차 출처 미확인). 에피 웨이퍼 공급 부족이 병목.",
+      "market_effects_ko": "수 kV급 초고압(전력망·철도·HVDC)에서 SiC 일부 대체, 용액 성장으로 기판 원가 낮출 잠재력.",
+      "job_effects_ko": "산화물 결정 성장·에피 엔지니어 신규 수요(주로 일본).",
+      "rnd_skills_ko": [
+        "산화갈륨 결정 성장",
+        "초고압 소자 설계"
+      ],
+      "source_urls": [
+        "https://www.36kr.com/p/3709358914220168",
+        "https://www.semiconductor-today.com/news_items/2025/aug/kyma-nct-050825.shtml"
+      ]
+    },
+    {
+      "id": "diamond_power",
+      "name_ko": "다이아몬드 전력·고주파 반도체",
+      "category": "materials",
+      "earliest_year": 2028,
+      "median_year": 2036,
+      "late_year": 2048,
+      "prereqs": [],
+      "basis_ko": "오쿠마 다이아몬드 디바이스 공장 2026회계연도 가동, Mirai Technologies·Power Diamond Systems 2030년대 상용화 목표. 대량 시장 진입 연도는 자체 추정(웨이퍼가 2인치 수준).",
+      "market_effects_ko": "우주·원전 폐로·고온 환경, 고출력 RF 니치 시장. 대구경 다이아몬드 기판이 나오면 SiC·GaN 상위 시장 잠식.",
+      "job_effects_ko": "CVD 다이아몬드 성장·극한환경 소자 엔지니어 수요.",
+      "rnd_skills_ko": [
+        "CVD 다이아몬드 성장",
+        "극한환경 소자"
+      ],
+      "source_urls": [
+        "https://kr-asia.com/japan-rd-brings-powerful-diamond-semiconductors-closer-to-reality",
+        "https://electropages.com/blog/2024/11/japanese-researchers-could-introduce-diamond-semiconductors-2030"
+      ]
+    },
+    {
+      "id": "cfet",
+      "name_ko": "CFET(상보형 적층 트랜지스터)",
+      "category": "logic_process",
+      "earliest_year": 2031,
+      "median_year": 2033,
+      "late_year": 2037,
+      "prereqs": [],
+      "basis_ko": "imec: 포크시트가 A10까지, CFET는 A7부터 도입. A5 2035~36년·A3 2038년(2차 보도). A7 연도는 이 간격에서 역산한 자체 추정.",
+      "market_effects_ko": "증착·식각·웨이퍼 본딩 장비 고도화 사이클, 셀 면적 축소로 로직 원가 개선 재개.",
+      "job_effects_ko": "3D 트랜지스터 집적·순차/본딩 공정 엔지니어 수요.",
+      "rnd_skills_ko": [
+        "CFET 집적",
+        "순차·본딩 3D 공정"
+      ],
+      "source_urls": [
+        "https://www.imec-int.com/en/articles/performance-boosters-scale-monolithic-cfet-across-multiple-logic-technology-nodes",
+        "https://wccftech.com/sub-1nm-process-node-technology-wont-arrive-till-2034-logic-roadmap-2dfets-sub-0-2nm-2046/"
+      ]
+    },
+    {
+      "id": "fet_2d_channel",
+      "name_ko": "2D 채널 트랜지스터(MoS2·WSe2) 로직",
+      "category": "materials",
+      "earliest_year": 2036,
+      "median_year": 2043,
+      "late_year": 2052,
+      "prereqs": [
+        "cfet"
+      ],
+      "basis_ko": "imec 로드맵 A2(2043)부터 2D FET, sub-A2 2046(2차 보도). VLSI 2026 300mm 상보형 2D 94% 수율, 푸단 WUJI 5,900개. imec은 저성능 소자부터 단계 도입 방침이라 earliest 2036은 자체 추정.",
+      "market_effects_ko": "실리콘 채널 이후 첫 소재 전환: 전이금속 칼코게나이드 전구체·MOCVD 장비 신시장, 공정 재편으로 후발 주자 추격 기회.",
+      "job_effects_ko": "2D 소재 성장·원자층 접촉 엔지니어 수요, 실리콘 에피 일부 축소.",
+      "rnd_skills_ko": [
+        "2D 소재 성장(MOCVD)",
+        "원자층 접촉·게이트 스택"
+      ],
+      "source_urls": [
+        "https://wccftech.com/sub-1nm-process-node-technology-wont-arrive-till-2034-logic-roadmap-2dfets-sub-0-2nm-2046/",
+        "https://www.tomshardware.com/tech-industry/semiconductors/imec-asml-and-tsmc-build-complementary-2d-material-transistors-at-50nm-pitch-on-a-300mm-wafer",
+        "https://ideas.repec.org/a/nat/nature/v640y2025i8059d10.1038_s41586-025-08759-9.html"
+      ]
+    },
+    {
+      "id": "cnt_logic",
+      "name_ko": "탄소나노튜브 로직(니치·BEOL 적층)",
+      "category": "materials",
+      "earliest_year": 2032,
+      "median_year": 2042,
+      "late_year": 2060,
+      "prereqs": [],
+      "basis_ko": "베이징대 CNT 텐서칩(3,000개), CNT RISC-V(1.4만 개, 10kHz) 시연뿐이며 상용 양산 일정 근거 없음. 연도는 전부 자체 외삽(신뢰도 낮음).",
+      "market_effects_ko": "성공 시 저온 공정으로 메모리·로직 위에 추가 층을 쌓는 BEOL 3D 로직, 저전력 센서 시장.",
+      "job_effects_ko": "나노소재 정제·정렬 기술자 소규모 수요.",
+      "rnd_skills_ko": [
+        "CNT 정제·정렬",
+        "저온 BEOL 소자"
+      ],
+      "source_urls": [
+        "https://techxplore.com/news/2024-08-tensor-processor-chip-based-carbon.html",
+        "https://hackaday.com/tag/cnfet/"
+      ]
+    },
+    {
+      "id": "sot_mram_cache",
+      "name_ko": "SOT-MRAM 캐시(SRAM 대체)",
+      "category": "memory",
+      "earliest_year": 2028,
+      "median_year": 2032,
+      "late_year": 2038,
+      "prereqs": [],
+      "basis_ko": "imec 300mm SOT-MRAM(210ps, 내구성 5×10^10), TSMC·ITRI IEDM 2023 어레이. SRAM 축소 정체가 동인. 아직 초기 시제품이라 연도는 자체 추정.",
+      "market_effects_ko": "캐시 면적·대기전력 감소로 로직 다이 원가 절감, MTJ 증착·식각 장비와 자성 타깃 소재 수요.",
+      "job_effects_ko": "스핀트로닉스·MTJ 공정 엔지니어 수요 증가.",
+      "rnd_skills_ko": [
+        "스핀트로닉스 소자",
+        "MTJ 공정"
+      ],
+      "source_urls": [
+        "https://imec-int.com/en/articles/bringing-sot-mram-technology-closer-last-level-cache-memory-specifications",
+        "https://www.allaboutcircuits.com/news/sot-mram-may-soon-contend-with-sram-for-cache-memory/"
+      ]
+    },
+    {
+      "id": "analog_imc",
+      "name_ko": "아날로그 인메모리 AI 추론칩",
+      "category": "computing",
+      "earliest_year": 2027,
+      "median_year": 2032,
+      "late_year": 2040,
+      "prereqs": [],
+      "basis_ko": "IBM HERMES(14nm PCM 64코어, 2023), 2026 리뷰는 아날로그 CIM 성숙도 낮다고 평가. 상용 연도는 자체 추정.",
+      "market_effects_ko": "엣지 AI 전력 대폭 절감, PCM·RRAM 등 신메모리 수요. 디지털 NPU와 경쟁.",
+      "job_effects_ko": "혼성신호 AI 회로·소자-알고리즘 공동설계 인력 수요.",
+      "rnd_skills_ko": [
+        "아날로그 인메모리 컴퓨팅",
+        "PCM·RRAM 소자"
+      ],
+      "source_urls": [
+        "https://www.hpcwire.com/off-the-wire/ibm-develops-a-new-64-core-mixed-signal-in-memory-computing-chip/",
+        "https://arxiv.org/pdf/2604.04727"
+      ]
+    },
+    {
+      "id": "neuromorphic_scale",
+      "name_ko": "대규모 뉴로모픽 시스템 상용화",
+      "category": "computing",
+      "earliest_year": 2027,
+      "median_year": 2033,
+      "late_year": 2042,
+      "prereqs": [],
+      "basis_ko": "Nature 2025 리뷰('AlexNet 순간' 전환점), 인텔 Hala Point(11.5억 뉴런), 2026 리뷰: 디지털 뉴로모픽은 상용화 근접. 시장 전망 자료는 찾지 못해 연도는 자체 추정.",
+      "market_effects_ko": "로봇·드론·통신 기지국·이벤트 기반 비전 센서의 초저전력 엣지 시장. 성공 시 데이터센터 AI 전력 위기의 대안 중 하나.",
+      "job_effects_ko": "스파이킹 신경망 알고리즘·이벤트 기반 시스템 엔지니어 수요.",
+      "rnd_skills_ko": [
+        "스파이킹 신경망",
+        "이벤트 기반 센서"
+      ],
+      "source_urls": [
+        "https://news.utsa.edu/2025/01/utsa-researchers-chart-course-for-neuromorphic-computing-systems/",
+        "https://www.intel.com/content/www/us/en/newsroom/news/intel-builds-worlds-largest-neuromorphic-system.html",
+        "https://arxiv.org/pdf/2604.04727"
+      ]
+    },
+    {
+      "id": "cryo_quantum_supply_chain",
+      "name_ko": "양자칩 파운드리·극저온 공급망",
+      "category": "other",
+      "earliest_year": 2026,
+      "median_year": 2029,
+      "late_year": 2034,
+      "prereqs": [],
+      "basis_ko": "Futurum(2026-06): 병목은 희석냉동기·패키징·헬륨-3, 미 상무부 20억 달러 지분투자. Diraq·imec 300mm 산업용 라인 스핀 큐비트. 극저온 CMOS 시장 2035년 4억 달러(편차 큼). 한국 2035 세계 1위 퀀텀칩 제조국 목표.",
+      "market_effects_ko": "기존 팹 일부가 양자 웨이퍼·초전도 공정 수요를 받음, 극저온 CMOS·초전도 케이블·희석냉동기 시장 성장, 헬륨-3 가격 급등 이벤트 가능.",
+      "job_effects_ko": "양자 소자 공정 엔지니어, 극저온 기술자, 극저온 CMOS 설계자 신설 수요. 한국 정부 목표 양자 인력 1만 명.",
+      "rnd_skills_ko": [
+        "극저온 CMOS 설계",
+        "양자 소자 공정",
+        "희석냉동기 운용"
+      ],
+      "source_urls": [
+        "https://futurumgroup.com/insights/will-a-u-s-quantum-foundry-leverage-4-6-billion-in-new-capital-to-become-the-next-tsmc/",
+        "https://postquantum.com/quantum-modalities/silicon-spin-quantum/",
+        "https://www.gminsights.com/industry-analysis/cryogenic-cmos-quantum-control-electronics-market",
+        "https://www.finance-scope.com/article/view/scp202601290027"
+      ]
+    },
+    {
+      "id": "fault_tolerant_qc",
+      "name_ko": "오류 보정 양자컴퓨터(논리 큐비트 100~200개)",
+      "category": "computing",
+      "earliest_year": 2028,
+      "median_year": 2031,
+      "late_year": 2036,
+      "prereqs": [
+        "cryo_quantum_supply_chain"
+      ],
+      "basis_ko": "IBM Starling 2029(200 논리 큐비트), Quantinuum Apollo 2029, 구글 Willow 임계값 이하 달성. 회사 로드맵은 2029년이지만 업계 반복 지연을 반영해 median을 2031년으로 자체 조정.",
+      "market_effects_ko": "양자 클라우드·화학/소재 시뮬레이션 초기 수요, 실시간 오류정정 디코더용 FPGA·ASIC 수요. 맥킨지 2035년 양자컴퓨팅 매출 280억~720억 달러.",
+      "job_effects_ko": "양자 알고리즘, 양자 오류정정 디코더(ASIC) 설계, 양자-HPC 운영 인력 신설.",
+      "rnd_skills_ko": [
+        "양자 오류 정정",
+        "양자 디코더 ASIC",
+        "양자 알고리즘"
+      ],
+      "source_urls": [
+        "https://www.hpcwire.com/2025/06/10/ibm-sets-2029-target-for-fault-tolerant-quantum-computing/",
+        "https://www.quantinuum.com/press-releases/quantinuum-unveils-accelerated-roadmap-to-achieve-universal-fault-tolerant-quantum-computing-by-2030",
+        "https://heise.de/-10192990"
+      ]
+    },
+    {
+      "id": "utility_scale_qc",
+      "name_ko": "유틸리티급 양자컴퓨터(논리 큐비트 1,000개+)",
+      "category": "computing",
+      "earliest_year": 2031,
+      "median_year": 2035,
+      "late_year": 2045,
+      "prereqs": [
+        "fault_tolerant_qc"
+      ],
+      "basis_ko": "IBM Blue Jay 2033+(2,000 논리 큐비트), DARPA QBI 2033 검증 목표, Quantinuum Lumos 2033, IonQ 2030년 200만 물리 큐비트, PsiQuantum 2027~28 주장. 맥킨지 2035 전망과도 맞물림. median은 지연 반영 자체 추정.",
+      "market_effects_ko": "배터리·촉매·신약·반도체 소재 시뮬레이션 가속으로 소재 R&D 주기 단축(간접 효과). 양자 자체의 칩 수요 규모는 메모리·로직 대비 작음.",
+      "job_effects_ko": "양자-HPC 하이브리드 통합, 양자 응용 컨설턴트 수요. 일부 고전 계산화학 업무 대체.",
+      "rnd_skills_ko": [
+        "양자-HPC 하이브리드",
+        "대규모 양자 아키텍처"
+      ],
+      "source_urls": [
+        "https://www.allaboutcircuits.com/news/ibm-charts-roadmap-to-first-practical-fault-tolerant-quantum-computer/",
+        "https://www.datacenterdynamics.com/en/news/darpa-announces-11-companies-advancing-to-second-stage-of-it-quantum-benchmarking-initiative/",
+        "https://www.ionq.com/blog/ionqs-accelerated-roadmap-turning-quantum-ambition-into-reality",
+        "https://www.mckinsey.com/capabilities/tech-and-ai/our-takeaways/the-year-of-quantum-from-concept-to-reality-in-2025"
+      ]
+    },
+    {
+      "id": "crqc_qday",
+      "name_ko": "암호해독급 양자컴퓨터(Q-Day)",
+      "category": "computing",
+      "earliest_year": 2030,
+      "median_year": 2039,
+      "late_year": 2055,
+      "prereqs": [
+        "utility_scale_qc"
+      ],
+      "basis_ko": "GRI 2025 조사: 10년 내 28~49%, 15년 내 51~70% → 50% 지점이 대략 2036~2041로 해석해 median 2039. Gidney(2025) 100만 미만, Iceberg(2026) 10만 미만 물리 큐비트로 요구량 하락. late 2055는 응답 분포의 긴 꼬리를 반영한 자체 판단.",
+      "market_effects_ko": "직전 수년간 보안칩·HSM·스마트카드 교체 수요 정점, 등장 시 암호자산·금융 인프라 충격과 보안 반도체 긴급 교체 수요.",
+      "job_effects_ko": "양자 암호분석·양자보안 감사 전문가 수요 폭증.",
+      "rnd_skills_ko": [
+        "양자 내성 암호 구현",
+        "암호 자산 인벤토리 관리"
+      ],
+      "source_urls": [
+        "https://globalriskinstitute.org/publication/quantum-threat-timeline-report-2025b/",
+        "https://thequantuminsider.com/2025/05/24/google-researcher-lowers-quantum-bar-to-crack-rsa-encryption/",
+        "https://thequantuminsider.com/2026/03/31/q-day-just-got-closer-three-papers-in-three-months-are-rewriting-the-quantum-threat-timeline/"
+      ]
+    },
+    {
+      "id": "pqc_migration",
+      "name_ko": "양자내성암호(PQC) 전환 의무화",
+      "category": "other",
+      "earliest_year": 2027,
+      "median_year": 2030,
+      "late_year": 2035,
+      "prereqs": [],
+      "basis_ko": "NIST IR 8547 초안: 2030 비권장·2035 금지, NSA 2027 신규 조달 요구, OMB 2035 전면 전환(정부 일정이라 신뢰도 높음).",
+      "market_effects_ko": "보안 칩·스마트카드·HSM·네트워크 장비·차량 ECU 교체 사이클, PQC 가속기 IP 시장 형성. 양자컴 실제 등장과 무관하게 발생하는 확실한 수요.",
+      "job_effects_ko": "PQC 하드웨어 설계·사이드채널 검증·보안 인증 인력 수요.",
+      "rnd_skills_ko": [
+        "PQC 하드웨어 가속",
+        "사이드채널 방어"
+      ],
+      "source_urls": [
+        "https://www.encryptionconsulting.com/nist-ir-8547-2030-2035-action-plan/",
+        "https://thequantuminsider.com/2026/05/08/post-quantum-migration-timelines-government-industry-impact/"
+      ]
+    },
+    {
+      "id": "superconducting_digital",
+      "name_ko": "초전도 디지털 AI 컴퓨터",
+      "category": "computing",
+      "earliest_year": 2033,
+      "median_year": 2042,
+      "late_year": 2060,
+      "prereqs": [
+        "cryo_quantum_supply_chain"
+      ],
+      "basis_ko": "imec NbTiN 380만 JJ/cm²·30nm 배선(2026), 목표 효율 100배·밀도 1,000배는 추정치. 냉동·메모리·I/O·수율 난제. 연도는 자체 외삽(신뢰도 낮음).",
+      "market_effects_ko": "성공 시 데이터센터를 극저온 설비 중심으로 재편, 나이오븀 소재·극저온 인프라 수요, CMOS 데이터센터 전력 위기 완화.",
+      "job_effects_ko": "초전도 회로(SFQ) 설계·극저온 시스템 엔지니어 수요.",
+      "rnd_skills_ko": [
+        "초전도 회로(SFQ) 설계",
+        "극저온 시스템"
+      ],
+      "source_urls": [
+        "https://www.eenewseurope.com/en/imec-scales-nbtin-superconducting-circuits-to-30nm/"
+      ]
+    },
+    {
+      "id": "reversible_computing",
+      "name_ko": "가역·단열 컴퓨팅 칩",
+      "category": "computing",
+      "earliest_year": 2027,
+      "median_year": 2040,
+      "late_year": 2065,
+      "prereqs": [],
+      "basis_ko": "IEEE Spectrum(2025): Vaire 첫 단열 칩 2025, AI 추론 가역 칩 2027 계획. 란다우어 한계를 넘는 사실상 유일한 경로라 장기 관심이 크지만 상용 근거는 스타트업 계획뿐 → 연도 자체 외삽(낮음).",
+      "market_effects_ko": "성공 시 연산당 에너지의 단계적 도약으로 전력이 상한인 AI 데이터센터 시장의 판도 변화.",
+      "job_effects_ko": "공진 클럭·단열 회로 설계자, 가역 논리 컴파일러 개발자.",
+      "rnd_skills_ko": [
+        "단열 회로 설계",
+        "가역 논리"
+      ],
+      "source_urls": [
+        "https://spectrum.ieee.org/reversible-computing"
+      ]
+    },
+    {
+      "id": "thermodynamic_computing",
+      "name_ko": "열역학·확률 컴퓨팅(p-bit 칩)",
+      "category": "computing",
+      "earliest_year": 2026,
+      "median_year": 2034,
+      "late_year": 2048,
+      "prereqs": [],
+      "basis_ko": "Extropic X0·XTR-0 시제품, Z1 얼리액세스 2026 주장, 1만 배 효율은 모델치. 연도 자체 외삽(낮음).",
+      "market_effects_ko": "생성 AI 샘플링·최적화·확률 추론 전용칩 니치 시장.",
+      "job_effects_ko": "확률 회로·에너지 기반 모델 연구자 소규모 수요.",
+      "rnd_skills_ko": [
+        "확률적 비트 회로",
+        "에너지 기반 모델"
+      ],
+      "source_urls": [
+        "https://runtimewire.com/article/extropic-thermodynamic-computing-ai-energy-pitch"
+      ]
+    },
+    {
+      "id": "dna_storage",
+      "name_ko": "DNA 아카이브 저장",
+      "category": "memory",
+      "earliest_year": 2030,
+      "median_year": 2042,
+      "late_year": 2065,
+      "prereqs": [],
+      "basis_ko": "현재 KB당 약 1,000달러 상품(TechRadar), ARK 2030년 MB당 5달러 미만 전망(그래도 TB당 수백만 달러), 2019년 'TB당 100달러' 전망은 빗나감. 연도는 자체 외삽(낮음).",
+      "market_effects_ko": "콜드 아카이브(테이프) 일부 대체, 반도체 공정 기반 DNA 합성 칩 수요.",
+      "job_effects_ko": "바이오-반도체 융합 엔지니어(합성 어레이 칩) 수요.",
+      "rnd_skills_ko": [
+        "DNA 합성 칩",
+        "분자 인코딩"
+      ],
+      "source_urls": [
+        "https://www.ark-invest.com/articles/analyst-research/dna-storage-solution",
+        "https://www.techradar.com/pro/dna-storage-finally-reaches-mainstream-well-sort-of-but-it-will-cost-you-a-whopping-dollar1000-per-kb-yes-kilobyte"
+      ]
+    },
+    {
+      "id": "biocomputing_wetware",
+      "name_ko": "생체 뉴런 컴퓨팅(웨트웨어) 실용화",
+      "category": "computing",
+      "earliest_year": 2035,
+      "median_year": 2055,
+      "late_year": 2085,
+      "prereqs": [
+        "neuromorphic_scale"
+      ],
+      "basis_ko": "Cortical Labs CL1(2025, 20만 뉴런·6개월 수명), FinalSpark 오가노이드 월 1,000달러 임대. 실용 연산 근거는 없음 → 연도 전부 자체 외삽(매우 낮음).",
+      "market_effects_ko": "단기: 신약·독성 시험용 다중전극배열(MEA) 칩 수요. 장기: 성공 시 초저전력 학습 기계라는 새 시장과 생명윤리 규제.",
+      "job_effects_ko": "신경-전자 인터페이스 엔지니어, 세포 배양 기술자, 바이오윤리 전문가.",
+      "rnd_skills_ko": [
+        "다중전극배열(MEA) 칩",
+        "신경세포 배양"
+      ],
+      "source_urls": [
+        "https://datacenterdynamics.com/en/news/australian-startup-cortical-labs-unveils-worlds-first-commercial-biological-computer"
+      ]
+    },
+    {
+      "id": "space_crystal_fab",
+      "name_ko": "우주 결정 성장 기판 상용화",
+      "category": "other",
+      "earliest_year": 2030,
+      "median_year": 2040,
+      "late_year": 2060,
+      "prereqs": [],
+      "basis_ko": "Space Forge ForgeStar-1이 2025년 12월 궤도 플라즈마(약 1,000°C) 생성, ForgeStar-2 개발 중이나 회수 능력 미검증. 상용 연도는 자체 외삽(낮음).",
+      "market_effects_ko": "초고순도 광대역(WBG/UWBG) 시드 결정 프리미엄 시장, 지상 결정 성장의 보완재. 발사 비용 하락 시 확대.",
+      "job_effects_ko": "미세중력 재료·궤도 제조·회수 엔지니어 신설 수요.",
+      "rnd_skills_ko": [
+        "미세중력 결정 성장",
+        "궤도 회수 물류"
+      ],
+      "source_urls": [
+        "https://space.com/space-exploration/a-completely-new-manufacturing-frontier-space-forge-fires-up-1st-commercial-semiconductor-factory-in-space",
+        "https://www.spaceforge.com/missions/forgestar-1"
+      ]
+    }
+  ],
+  "beyond_2060_ko": "문헌이 말하는 것: 구체적 연도가 붙은 가장 먼 공식 언급은 imec 로직 로드맵(2D 채널 A2 2043년, sub-A2 2046년, 2차 보도)이고, 양자는 IBM Blue Jay(2033+)·DARPA QBI(2033)·한국 종합계획(2035)·맥킨지(2035) 정도에서 멈춘다. GRI 양자 위협 조사는 30년 시계까지 확률을 묻지만 대부분 전문가가 15년 안쪽에 무게를 둔다. 헬륨-3 달 채굴 공급 계약(2028~2037)처럼 우주 자원이 반도체·양자 공급망에 들어오기 시작했다는 신호, 가역 컴퓨팅이 란다우어 한계(비트당 최소 에너지)를 넘는 사실상 유일한 길이라는 물리적 논거, 초전도 디지털·광 연산·뉴로모픽이 모두 'AI 전력 위기' 해법으로 경쟁한다는 구도는 2060년 이후 시나리오의 실마리가 된다. 문헌이 말하지 않는 것: 2050년 이후 어떤 기술의 시장 규모·양산 연도도 신뢰할 근거가 없고, 실리콘·2D 이후의 채널 소재(원자 단위 소자, 분자 트랜지스터), 양자컴이 범용 연산을 대체할지, 생체·DNA 컴퓨팅이 실용 연산이 될지에 대한 합의도 없다. 게임용 가상 시나리오의 이어붙일 지점: (1) 2D·CFET 이후 '원자 스케일 한계' 도달 → 성능 향상이 3D 적층·광 연결·전용 패러다임(가역·초전도)으로 이동, (2) 극저온 데이터센터와 양자-고전 하이브리드가 표준 인프라화, (3) 달·궤도 소재 채굴과 우주 결정 성장 공장, (4) 생체-실리콘 하이브리드 학습 기계와 그에 따른 윤리 규제, (5) Q-Day 이후 보안 반도체 전면 교체 사이클. 이 모두는 근거 없는 외삽이므로 낮은 신뢰도로 표시해야 한다.",
+  "open_questions_ko": [
+    "하이브리드 본딩 HBM 도입 세대가 16단 HBM4E인지 20단 HBM5인지 아직 확정되지 않음(JEDEC 두께 한도 결정에 좌우).",
+    "유리 코어 기판이 실제로 처음 탑재되는 상용 제품과 시점(Absolics 반복 지연, 인텔 2030 후퇴).",
+    "TSMC CoPoS 양산 시점(2028말~2029초)은 2차 보도뿐이라 공식 확인 필요.",
+    "CPO가 스위치를 넘어 GPU 스케일업까지 2028~2029년에 확산될지, 구리(능동 전기 케이블)가 더 오래 버틸지.",
+    "IBM·Quantinuum·IonQ·PsiQuantum의 2027~2030 로드맵 달성률 — 과거 반복 지연을 고려한 할인율을 게임에서 어떻게 둘지.",
+    "양자컴퓨팅이 반도체 수요에 주는 직접 효과(웨이퍼·극저온 CMOS·냉동기)를 정량화한 신뢰할 만한 전망을 찾지 못함.",
+    "GRI 2025 보고서 발간월(2025년 말 vs 2026년 3월)과 응답 해석에 따른 확률 범위 차이.",
+    "imec 2D 채널 도입 연도(A2 2043 등)가 imec 원문이 아닌 2차 보도에 의존.",
+    "뉴로모픽·아날로그 인메모리 컴퓨팅의 시장 규모 전망 자료를 확보하지 못함.",
+    "산화갈륨 NCT 로드맵(2029 양산, 2035 200mm)의 1차 출처 미확인, 다이아몬드 웨이퍼 대구경화 일정 불명.",
+    "한국 정부(산업부)의 첨단 패키징·유리기판 국가 로드맵 원문을 찾지 못함.",
+    "헬륨-3 공급 제약이 실제로 양자컴 보급 속도를 얼마나 늦출지."
+  ]
+}
