@@ -1,0 +1,2973 @@
+[
+  {
+    "id": "gpt_t09_tech_backside_power",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "backside_power": [
+          0,
+          1
+        ]
+      },
+      "job": "process_engineer"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "오후 5시, 후면 전력 도면 옆에 내 옛 배선표가 놓였어요. 앞면만 보던 검토에 뒷면이 끼어들었어요.",
+    "choices": [
+      {
+        "label": "새 검토 항목을 직접 익혀요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.process_integration": 1,
+          "semi": {
+            "text": "오후 5시, 후면 전력 도면 옆에 내 옛 배선표가 놓였어요",
+            "kind": "school"
+          }
+        },
+        "result": "노트 앞면을 다 쓰고 뒷면을 폈어요. 오늘은 공책도 후면 전력이에요."
+      },
+      {
+        "label": "설계 담당과 검토를 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "담당자가 절반을 가져갔어요. 첫 검토자 칸에는 두 이름이 들어갔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_node_a14",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "node_a14": [
+          0,
+          1
+        ]
+      },
+      "job": "process_engineer"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "퇴근 알림 10분 전, 새 1.4nm 공정 평가표가 왔어요. 첫 Lot 검토 담당에 내 이름이 있어요.",
+    "choices": [
+      {
+        "label": "오늘 첫 비교표까지 채워요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.process_integration": 1,
+          "semi": {
+            "text": "퇴근 알림 10분 전, 새 1.4nm 공정 평가표가 왔어요",
+            "kind": "core"
+          }
+        },
+        "result": "평가표 끝에 내 메모가 붙었어요. 통근버스 출발 알림은 지워졌어요."
+      },
+      {
+        "label": "첫 검토를 선행팀에 부탁해요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1
+        },
+        "result": "선행팀이 파일을 열었어요. 나는 버스 창가에 앉아 어깨를 폈어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_node_a10",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "node_a10": [
+          0,
+          1
+        ]
+      },
+      "job": "device_researcher"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "소자 모형 두 개를 세워 놓고 1nm 구조를 설명해 보래요. 평면 그림에 익숙한 손이 허공에서 멈춰요.",
+    "choices": [
+      {
+        "label": "모형으로 다시 익혀요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.device_physics": 1,
+          "semi": {
+            "text": "소자 모형 두 개를 세워 놓고 1nm 구조를 설명해 보래요",
+            "kind": "school"
+          }
+        },
+        "result": "책상에 모형을 세 번 세웠어요. 소자는 작아졌는데 내 손짓은 커졌어요."
+      },
+      {
+        "label": "모델 담당자와 설명을 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 구조를 짚었어요. 내 이름은 공동 검토란으로 옮겨졌어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_cfet",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "cfet": [
+          0,
+          1
+        ]
+      },
+      "job": "device_researcher",
+      "skill_min": {
+        "device_physics": 3
+      }
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "상용화 발표 20분 전, CFET 단면에 내 평가 그림이 떴어요. 선배가 그 장은 직접 말해 보래요.",
+    "choices": [
+      {
+        "label": "내 평가를 직접 발표해요",
+        "effects": {
+          "reputation": 3,
+          "mental": -2,
+          "skill.device_physics": 1
+        },
+        "result": "위아래 소자를 짚다 물컵을 다 비웠어요. 질문자는 마지막 장까지 남았어요."
+      },
+      {
+        "label": "동료 발표 옆에서 기록을 찾아줘요",
+        "effects": {
+          "friends": 2,
+          "happiness": -1
+        },
+        "result": "동료가 내 기록을 가리켰어요. 끝내 준비한 첫 문장은 수첩에 남았어요."
+      }
+    ],
+    "default": 1,
+    "trigger": "tech_commercialized",
+    "big": true
+  },
+  {
+    "id": "gpt_t09_tech_monolithic_3d_logic",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "monolithic_3d_logic": [
+          0,
+          1
+        ]
+      },
+      "job": "process_engineer"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "다층 로직 회의에 의자 두 개를 더 가져왔어요. 위층 공정이 생기자 아래층 담당도 참석한대요.",
+    "choices": [
+      {
+        "label": "층간 영향 검토를 더 배워요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.process_integration": 1,
+          "semi": {
+            "text": "다층 로직 회의에 의자 두 개를 더 가져왔어요",
+            "kind": "school"
+          }
+        },
+        "result": "층별 기록을 넘기다 저녁 종이 울렸어요. 내 노트는 접을 수 없게 두꺼워졌어요."
+      },
+      {
+        "label": "아래층 담당과 범위를 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "각자 맡은 층에 이름을 붙였어요. 내 단독 검토란은 작아졌어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_node_a3",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "node_a3": [
+          0,
+          1
+        ]
+      },
+      "job": "process_engineer"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "새 0.3nm급 평가표에 빈칸이 7개 생겼어요. 퇴근 전에 예전 공정 Window 표를 덮어야 해요.",
+    "choices": [
+      {
+        "label": "새 표를 직접 익혀 채워요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.process_integration": 1,
+          "semi": {
+            "text": "새 0.3nm급 평가표에 빈칸이 7개 생겼어요",
+            "kind": "core"
+          }
+        },
+        "result": "빈칸이 두 개 남았어요. 종전 양식에는 빈칸이 없던 내 저녁도 남아 있어요."
+      },
+      {
+        "label": "선행팀에 첫 검토를 넘겨요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1
+        },
+        "result": "선행팀이 새 표를 열었어요. 나는 탈의실에서 신발 끈을 풀었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_atomic_2d_cfet",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "atomic_2d_cfet": [
+          0,
+          1
+        ]
+      },
+      "job": "chemist"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "원자층 채널 시료 사진을 세 번 확대했어요. 보고서에 넣을 경계선이 아직 흐릿해요.",
+    "choices": [
+      {
+        "label": "새 분석법부터 익혀요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.novel_channel": 1,
+          "semi": {
+            "text": "원자층 채널 시료 사진을 세 번 확대했어요",
+            "kind": "school"
+          }
+        },
+        "result": "같은 사진 옆에 해석이 한 장 늘었어요. 식당에는 마지막 국통만 남았어요."
+      },
+      {
+        "label": "소자팀과 해석을 같이 맡아요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 다른 경계를 표시했어요. 보고서 첫 줄에 두 팀 이름이 붙었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_high_na_euv",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "high_na_euv": [
+          0,
+          1
+        ]
+      },
+      "job": "field_service"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "출장 가방을 닫는데 High-NA 초기 셋업 요청이 왔어요. 원래 복귀표엔 내일이 적혀 있어요.",
+    "choices": [
+      {
+        "label": "초기 셋업 지원에 남아요",
+        "effects": {
+          "reputation": 3,
+          "health": -2,
+          "skill.litho_process": 1,
+          "semi": {
+            "text": "출장 가방을 닫는데 High-NA 초기 셋업 요청이 왔어요",
+            "kind": "core"
+          }
+        },
+        "result": "가방은 다시 열렸어요. 숙소 주인이 내 방 번호를 먼저 말해요."
+      },
+      {
+        "label": "기존 장비 지원조로 복귀해요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1
+        },
+        "result": "익숙한 공구함을 받았어요. 새 장비 단체사진에는 내 자리가 비었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_hyper_na_euv",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "hyper_na_euv": [
+          0,
+          1
+        ]
+      },
+      "job": "field_service"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "교육실 모형이 커져 첫 줄 의자가 뒤로 밀렸어요. 새 노광 광학계의 부품명도 다시 외워야 해요.",
+    "choices": [
+      {
+        "label": "새 정비 교육을 들어요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.litho_optics": 1,
+          "semi": {
+            "text": "교육실 모형이 커져 첫 줄 의자가 뒤로 밀렸어요",
+            "kind": "core"
+          }
+        },
+        "result": "부품 이름을 읽는 동안 커피가 식었어요. 교육실 밖은 이미 저녁이에요."
+      },
+      {
+        "label": "교육 간 동료의 기존 장비를 맡아요",
+        "effects": {
+          "reputation": 2,
+          "health": -1
+        },
+        "result": "익숙한 알람을 처리했어요. 공구함을 내려놓자 팔에 힘이 풀렸어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_beyond_euv_litho",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "beyond_euv_litho": [
+          0,
+          1
+        ]
+      },
+      "job": "device_researcher"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "학회 복도에서 차세대 광원 발표 줄이 꺾였어요. 내 손에는 질문 번호 18번이 들렸어요.",
+    "choices": [
+      {
+        "label": "질의 시간까지 기다려요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.litho_optics": 1,
+          "semi": {
+            "text": "학회 복도에서 차세대 광원 발표 줄이 꺾였어요",
+            "kind": "school"
+          }
+        },
+        "result": "마이크가 내 차례에 왔어요. 마지막 질문 뒤엔 회의실 정리 소리가 났어요."
+      },
+      {
+        "label": "공동 연구자와 자료를 나눠 봐요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 발표 그림을 펼쳤어요. 질의 기록엔 동료 이름이 먼저 적혔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_hbm4e_custom",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "hbm4e_custom": [
+          0,
+          1
+        ]
+      },
+      "job": "circuit_designer"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "고객 회의 5분 전, 커스텀 HBM 요구표가 또 왔어요. 범용으로 그린 내 회로 옆에 빨간 별이 붙어요.",
+    "choices": [
+      {
+        "label": "인터페이스를 직접 다시 익혀요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.hbm_design": 1,
+          "semi": {
+            "text": "고객 회의 5분 전, 커스텀 HBM 요구표가 또 왔어요",
+            "kind": "school"
+          }
+        },
+        "result": "요구표의 별이 줄었어요. 내 점심 일정에도 별표가 생겼어요."
+      },
+      {
+        "label": "고객 담당과 요구를 나눠 맡아요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 절반을 설명했어요. 내 검토 성과도 절반씩 기록됐어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_hbm5",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "hbm5": [
+          0,
+          1
+        ]
+      },
+      "job": "circuit_designer"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "HBM5 연결 검토가 금요일 저녁으로 당겨졌어요. 내 가방 위에 검증 목록이 놓였어요.",
+    "choices": [
+      {
+        "label": "새 연결 검증을 맡아요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.hbm_design": 1,
+          "semi": {
+            "text": "HBM5 연결 검토가 금요일 저녁으로 당겨졌어요",
+            "kind": "core"
+          }
+        },
+        "result": "목록에 완료 표시가 늘었어요. 가방은 닫힌 채 책상 밑에서 밤을 보냈어요."
+      },
+      {
+        "label": "교육 간 동료의 기존 검증을 맡아요",
+        "effects": {
+          "reputation": 2,
+          "health": -1
+        },
+        "result": "밀린 기존 검토를 끝냈어요. 집에서는 의자에 앉자마자 눈이 감겼어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_hbm6",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "hbm6": [
+          0,
+          1
+        ]
+      },
+      "job": "device_researcher"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "HBM6 검토 탁자에 유리 기판 모형이 놓였어요. 메모리만 보던 내 노트에 패키지 쪽지가 붙어요.",
+    "choices": [
+      {
+        "label": "기판 연결 평가까지 공부해요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.hbm_design": 1,
+          "semi": {
+            "text": "HBM6 검토 탁자에 유리 기판 모형이 놓였어요",
+            "kind": "school"
+          }
+        },
+        "result": "메모리 그림 옆에 기판 그림이 늘었어요. 쉬는 시간 종은 지나갔어요."
+      },
+      {
+        "label": "패키지 연구자와 평가를 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 기판을 맡았어요. 내 이름 옆에는 공동 검토가 적혔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_hbm7",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "hbm7": [
+          0,
+          1
+        ]
+      },
+      "job": "circuit_designer"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "HBM7 도면에 냉각 경로가 들어왔어요. 회의실에는 계산기 두 대가 나란히 놓였어요.",
+    "choices": [
+      {
+        "label": "열설계 검토를 함께 익혀요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.hbm_design": 1,
+          "semi": {
+            "text": "HBM7 도면에 냉각 경로가 들어왔어요",
+            "kind": "core"
+          }
+        },
+        "result": "두 계산기의 단위를 세 번 맞췄어요. 칩보다 내 머리를 먼저 식혀야겠어요."
+      },
+      {
+        "label": "기존 회로 검증을 맡아 팀을 지원해요",
+        "effects": {
+          "reputation": 2,
+          "health": -1
+        },
+        "result": "열설계 동료가 교육을 마쳤어요. 나는 마지막 파형 앞에서 목을 돌렸어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_hbm8",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "hbm8": [
+          0,
+          1
+        ]
+      },
+      "job": "device_researcher"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "신세대 HBM 자료를 받자 비교 시편 상자 하나가 남았어요. 내 연구 일정은 아직 이전 세대예요.",
+    "choices": [
+      {
+        "label": "새 세대 비교 평가를 배워요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.hbm_design": 1,
+          "semi": {
+            "text": "신세대 HBM 자료를 받자 비교 시편 상자 하나가 남았어요",
+            "kind": "school"
+          }
+        },
+        "result": "시편 상자에 새 날짜가 붙었어요. 내 저녁 약속은 다음 칸으로 갔어요."
+      },
+      {
+        "label": "공동 연구자에게 새 비교를 맡겨요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 상자를 가져갔어요. 새 비교표엔 동료 이름이 먼저 올라갔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_dram_4f2_vertical",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "dram_4f2_vertical": [
+          0,
+          1
+        ]
+      },
+      "job": "device_researcher"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "소자 설명회에서 수직채널 모형을 돌려 보래요. 윗면만 그린 내 종이 그림이 책상에 남았어요.",
+    "choices": [
+      {
+        "label": "옆면 평가도 직접 익혀요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.dram_cell": 1,
+          "semi": {
+            "text": "소자 설명회에서 수직채널 모형을 돌려 보래요",
+            "kind": "core"
+          }
+        },
+        "result": "노트에 윗면과 옆면이 나란해졌어요. 교육실 시계는 퇴근을 넘겼어요."
+      },
+      {
+        "label": "교육 간 동료의 기존 평가를 맡아요",
+        "effects": {
+          "reputation": 2,
+          "health": -1
+        },
+        "result": "익숙한 비교표를 끝냈어요. 눈을 감자 단면 그림이 잠깐 남았어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_dram_3d",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "dram_3d": [
+          0,
+          1
+        ]
+      },
+      "job": "process_engineer",
+      "skill_min": {
+        "dram_cell": 3
+      }
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "상용화 발표장 첫 화면에 내가 본 3D D램 층이 떠요. 내 이름표가 발표자석으로 옮겨졌어요.",
+    "choices": [
+      {
+        "label": "층별 평가를 직접 설명해요",
+        "effects": {
+          "reputation": 3,
+          "mental": -2,
+          "skill.dram_cell": 1
+        },
+        "result": "질문이 위층에서 아래층으로 내려왔어요. 자리에 앉자 손바닥이 축축했어요."
+      },
+      {
+        "label": "셀 담당자의 발표를 도와요",
+        "effects": {
+          "friends": 2,
+          "happiness": -1
+        },
+        "result": "동료가 내 공정 이력을 띄웠어요. 내가 준비한 설명은 발표 뒤 대화에 남았어요."
+      }
+    ],
+    "default": 1,
+    "trigger": "tech_commercialized",
+    "big": true
+  },
+  {
+    "id": "gpt_t09_tech_nand_400l_bonded",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "nand_400l_bonded": [
+          0,
+          1
+        ]
+      },
+      "job": "process_engineer"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "본딩 낸드 인계 화면에 담당자가 둘로 늘었어요. 내 수첩엔 아직 한 사람 전화번호만 있어요.",
+    "choices": [
+      {
+        "label": "접합 뒤 평가를 새로 익혀요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.nand_3d": 1,
+          "semi": {
+            "text": "본딩 낸드 인계 화면에 담당자가 둘로 늘었어요",
+            "kind": "core"
+          }
+        },
+        "result": "수첩에 연락처와 질문이 늘었어요. 오늘 제일 많이 이어 붙인 건 내 메모예요."
+      },
+      {
+        "label": "교육 간 동료의 현장 인계를 맡아요",
+        "effects": {
+          "reputation": 2,
+          "health": -1
+        },
+        "result": "인계장을 두 번 읽었어요. 식사 교대 종이 울린 뒤에야 장갑을 벗었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_nand_1000l",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "nand_1000l": [
+          0,
+          1
+        ]
+      },
+      "job": "device_researcher"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "1,000단 낸드 포스터를 보려 의자를 뒤로 뺐어요. 설명지가 내 노트 두 장보다 길어요.",
+    "choices": [
+      {
+        "label": "적층 평가를 직접 공부해요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.nand_3d": 1,
+          "semi": {
+            "text": "1,000단 낸드 포스터를 보려 의자를 뒤로 뺐어요",
+            "kind": "school"
+          }
+        },
+        "result": "질문지가 한 장 더 붙었어요. 학회장 밖에서는 저녁 식사가 시작됐어요."
+      },
+      {
+        "label": "공동 연구자와 질문을 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 위쪽 구조를 맡았어요. 질의 기록에도 두 이름이 붙었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_pim_mainstream",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "pim_mainstream": [
+          0,
+          1
+        ]
+      },
+      "job": "circuit_designer",
+      "skill_min": {
+        "hbm_design": 3
+      }
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "PIM 데모 시작 10분 전, 내 검증 회로가 화면에 떴어요. 진행자가 계산 과정을 설명해 달래요.",
+    "choices": [
+      {
+        "label": "검증 결과를 직접 발표해요",
+        "effects": {
+          "reputation": 3,
+          "mental": -2,
+          "skill.hbm_design": 1
+        },
+        "result": "계산은 화면에서 끝났어요. 내 질의응답은 물컵 두 잔 뒤에 끝났어요."
+      },
+      {
+        "label": "데모 팀 뒤에서 파형을 찾아줘요",
+        "effects": {
+          "friends": 2,
+          "happiness": -1
+        },
+        "result": "동료가 내 쪽에 고개를 끄덕였어요. 내 발표 슬라이드는 열리지 않았어요."
+      }
+    ],
+    "default": 1,
+    "trigger": "tech_commercialized",
+    "big": true
+  },
+  {
+    "id": "gpt_t09_tech_emram_advanced",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "emram_advanced": [
+          0,
+          1
+        ]
+      },
+      "job": "device_researcher"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "MRAM 자료와 예전 평가표를 겹치니 항목이 세 줄 남아요. 회로팀은 오늘 답을 기다려요.",
+    "choices": [
+      {
+        "label": "새 소자 특성을 다시 배워요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.emerging_memory": 1,
+          "semi": {
+            "text": "MRAM 자료와 예전 평가표를 겹치니 항목이 세 줄 남아요",
+            "kind": "school"
+          }
+        },
+        "result": "차이를 표시하다 저녁이 됐어요. 세 줄의 질문이 노트 한 장이 됐어요."
+      },
+      {
+        "label": "회로 연구자와 요구를 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 읽기 항목을 맡았어요. 내 보고서에는 공동 평가가 적혔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_sot_mram_cache",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "sot_mram_cache": [
+          0,
+          1
+        ]
+      },
+      "job": "chemist",
+      "skill_min": {
+        "emerging_memory": 3
+      }
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "SOT-MRAM 발표 순서에 내 재료 평가가 끼었어요. 이름표를 달자 시료 번호부터 떠올라요.",
+    "choices": [
+      {
+        "label": "재료 평가를 직접 발표해요",
+        "effects": {
+          "reputation": 3,
+          "mental": -2,
+          "skill.emerging_memory": 1
+        },
+        "result": "시료 이력이 큰 화면에 떴어요. 발표가 끝난 뒤에야 물병 뚜껑을 열었어요."
+      },
+      {
+        "label": "소자팀 발표 옆에서 자료를 맡아요",
+        "effects": {
+          "friends": 2,
+          "happiness": -1
+        },
+        "result": "소자팀이 필요한 표를 받아 갔어요. 내 이름표는 청중석에 놓였어요."
+      }
+    ],
+    "default": 1,
+    "trigger": "tech_commercialized",
+    "big": true
+  },
+  {
+    "id": "gpt_t09_tech_fefet_fenand",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "fefet_fenand": [
+          0,
+          1
+        ]
+      },
+      "job": "chemist"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "서랍 속 강유전 시료 목록에 새 평가 의뢰가 붙었어요. 예전 계면 사진만으로는 답이 안 나와요.",
+    "choices": [
+      {
+        "label": "새 계면 평가를 공부해요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.emerging_memory": 1,
+          "semi": {
+            "text": "서랍 속 강유전 시료 목록에 새 평가 의뢰가 붙었어요",
+            "kind": "school"
+          }
+        },
+        "result": "사진 옆에 확인 항목이 늘었어요. 창문 밖 복도 불이 꺼졌어요."
+      },
+      {
+        "label": "메모리팀과 해석을 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 소자 쪽 요구를 정리했어요. 내 평가표에는 두 부서 이름이 적혔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_hbm_hybrid_bonding",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "hbm_hybrid_bonding": [
+          0,
+          1
+        ]
+      },
+      "job": "quality_engineer",
+      "skill_min": {
+        "hybrid_bonding": 3
+      }
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "본딩 상용화 발표에 내 검증 사진 두 장이 들어갔어요. 진행자가 접합 전후를 직접 짚어 달래요.",
+    "choices": [
+      {
+        "label": "검증 결과를 직접 설명해요",
+        "effects": {
+          "reputation": 3,
+          "mental": -2,
+          "skill.hybrid_bonding": 1
+        },
+        "result": "두 사진이 번갈아 떴어요. 마지막 질문 뒤 포인터를 내려놓자 손에 힘이 풀렸어요."
+      },
+      {
+        "label": "공정 담당자 옆에서 근거를 찾아줘요",
+        "effects": {
+          "friends": 2,
+          "happiness": -1
+        },
+        "result": "동료가 내가 편 표를 가리켰어요. 준비한 내 첫 문장은 수첩에 남았어요."
+      }
+    ],
+    "default": 1,
+    "trigger": "tech_commercialized",
+    "big": true
+  },
+  {
+    "id": "gpt_t09_tech_glass_core_substrate",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "glass_core_substrate": [
+          0,
+          1
+        ]
+      },
+      "job": "assembler"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "유리 코어 기판 교육에 빈 트레이 두 개가 놓였어요. 익숙한 조립 동작부터 다시 보여 달래요.",
+    "choices": [
+      {
+        "label": "새 기판 취급을 연습해요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.adv_substrate": 1,
+          "semi": {
+            "text": "유리 코어 기판 교육에 빈 트레이 두 개가 놓였어요",
+            "kind": "core"
+          }
+        },
+        "result": "빈 트레이만 열 번 오갔어요. 트레이는 빈칸인데 내 연습표는 만석이에요."
+      },
+      {
+        "label": "기존 라인을 맡아 교육조를 보내요",
+        "effects": {
+          "reputation": 2,
+          "health": -1
+        },
+        "result": "동료 자리에 내가 앉았어요. 교대가 끝나자 손목부터 천천히 폈어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_panel_level_packaging",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "panel_level_packaging": [
+          0,
+          1
+        ]
+      },
+      "job": "process_engineer"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "패널 평가표 모서리에 빈칸이 생겼어요. 원형 웨이퍼 위치표를 그대로 가져왔대요.",
+    "choices": [
+      {
+        "label": "패널용 평가를 다시 익혀요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.adv_substrate": 1,
+          "semi": {
+            "text": "패널 평가표 모서리에 빈칸이 생겼어요",
+            "kind": "core"
+          }
+        },
+        "result": "사각 모서리 네 곳을 채웠어요. 공책까지 사각이라 오늘은 잘 맞네요."
+      },
+      {
+        "label": "기존 평가를 맡고 새 표는 선행팀에 넘겨요",
+        "effects": {
+          "reputation": 2,
+          "health": -1
+        },
+        "result": "내 기존 표는 완료됐어요. 의자에서 일어나니 허리가 묵직했어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_optical_io_scaleup",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "optical_io_scaleup": [
+          0,
+          1
+        ]
+      },
+      "job": "circuit_designer"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "광 I/O 도면을 보는데 배선 자리에 광 엔진이 놓였어요. 오후 리뷰까지 그림을 고쳐야 해요.",
+    "choices": [
+      {
+        "label": "광 연결 설계를 더 배워요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.silicon_photonics": 1,
+          "semi": {
+            "text": "광 I/O 도면을 보는데 배선 자리에 광 엔진이 놓였어요",
+            "kind": "school"
+          }
+        },
+        "result": "노트에 빛이 지날 길이 늘었어요. 내 저녁 퇴근길은 늦어졌어요."
+      },
+      {
+        "label": "광 담당자와 검토를 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 경계선을 맡았어요. 최종 표지에는 공동 검토가 붙었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_ucie_open_chiplet",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "ucie_open_chiplet": [
+          0,
+          1
+        ]
+      },
+      "job": "circuit_designer"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "칩렛 호환표를 펴니 별표가 6개예요. 연결된다는 설명보다 조건 설명이 길어요.",
+    "choices": [
+      {
+        "label": "연결 조건을 직접 검증해요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.chip_architecture": 1,
+          "semi": {
+            "text": "칩렛 호환표를 펴니 별표가 6개예요",
+            "kind": "school"
+          }
+        },
+        "result": "별표마다 확인선을 그었어요. 내 점심시간은 마지막 별표 뒤로 갔어요."
+      },
+      {
+        "label": "파트너 팀과 조건을 나눠 맡아요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료들이 한 칸씩 가져갔어요. 내 검증 보고서는 공동 문서가 됐어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_cmos20_functional_tiers",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "cmos20_functional_tiers": [
+          0,
+          1
+        ]
+      },
+      "job": "process_engineer",
+      "skill_min": {
+        "hybrid_bonding": 3
+      }
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "기능별 적층 발표 화면에 내 본딩 평가가 떴어요. 위층과 아래층 발표자가 내 쪽을 봐요.",
+    "choices": [
+      {
+        "label": "층 연결 결과를 직접 설명해요",
+        "effects": {
+          "reputation": 3,
+          "mental": -2,
+          "skill.hybrid_bonding": 1
+        },
+        "result": "두 팀 사이에 서서 포인터를 들었어요. 오늘 내가 연결한 건 발표 순서도 있어요."
+      },
+      {
+        "label": "설계팀 발표 옆에서 기록을 맡아요",
+        "effects": {
+          "friends": 2,
+          "happiness": -1
+        },
+        "result": "두 화면에 내 기록이 나란히 떴어요. 내 연습 원고는 가방에 남았어요."
+      }
+    ],
+    "default": 1,
+    "trigger": "tech_commercialized",
+    "big": true
+  },
+  {
+    "id": "gpt_t09_tech_wbg_power_mainstream",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "wbg_power_mainstream": [
+          0,
+          1
+        ]
+      },
+      "job": "chemist"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "전력소자 시료함에 SiC와 GaN 표지가 따로 붙었어요. 오늘부터 비교표도 두 벌이래요.",
+    "choices": [
+      {
+        "label": "새 재료 평가를 익혀요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.power_semis": 1,
+          "semi": {
+            "text": "전력소자 시료함에 SiC와 GaN 표지가 따로 붙었어요",
+            "kind": "school"
+          }
+        },
+        "result": "두 표를 대조하다 퇴근 종을 넘겼어요. 장갑 위에 펜 자국이 남았어요."
+      },
+      {
+        "label": "소자 연구자와 요구를 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 소자 항목을 가져갔어요. 표지의 담당자 칸도 둘로 갈렸어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_channel_2d_fet",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "channel_2d_fet": [
+          0,
+          1
+        ]
+      },
+      "job": "chemist",
+      "skill_min": {
+        "novel_channel": 3
+      }
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "2D 채널 상용화 발표장에 내 성장 사진이 걸렸어요. 진행자가 사진 한 장을 직접 풀어 달래요.",
+    "choices": [
+      {
+        "label": "성장 평가를 직접 발표해요",
+        "effects": {
+          "reputation": 3,
+          "mental": -2,
+          "skill.novel_channel": 1
+        },
+        "result": "사진을 가리키는 동안 질문이 이어졌어요. 앉은 뒤에야 손에 쥔 종이를 폈어요."
+      },
+      {
+        "label": "소자팀 발표 뒤에서 자료를 맡아요",
+        "effects": {
+          "friends": 2,
+          "happiness": -1
+        },
+        "result": "소자팀이 필요한 사진을 받아 갔어요. 내 연습 원고는 발표 순서에서 빠졌어요."
+      }
+    ],
+    "default": 1,
+    "trigger": "tech_commercialized",
+    "big": true
+  },
+  {
+    "id": "gpt_t09_tech_agentic_eda",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "agentic_eda": [
+          0,
+          1
+        ]
+      },
+      "job": "circuit_designer",
+      "skill_min": {
+        "eda_ai": 3
+      }
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "설계 에이전트 데모 10분 전, 내 검증 과제가 첫 화면에 떴어요. 진행자는 실패 사례도 물을 거래요.",
+    "choices": [
+      {
+        "label": "검증 결과를 직접 설명해요",
+        "effects": {
+          "reputation": 3,
+          "mental": -2,
+          "skill.eda_ai": 1
+        },
+        "result": "성공 화면 뒤에 실패 기록을 폈어요. 질문이 끝나자 셔츠 등이 축축했어요."
+      },
+      {
+        "label": "동료 시연 옆에서 근거를 찾아줘요",
+        "effects": {
+          "friends": 2,
+          "happiness": -1
+        },
+        "result": "동료가 시연을 끝냈어요. 내가 연습한 설명은 질문 메모 밑에 남았어요."
+      }
+    ],
+    "default": 1,
+    "trigger": "tech_commercialized",
+    "big": true
+  },
+  {
+    "id": "gpt_t09_tech_ai_fab_digital_twin",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "ai_fab_digital_twin": [
+          0,
+          1
+        ]
+      },
+      "job": "yield_engineer"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "트윈 화면의 장비는 퇴근했는데 실제 알람은 3분 뒤에 울렸어요. 시간축 담당이 오늘 자리를 비웠어요.",
+    "choices": [
+      {
+        "label": "데이터 시간축부터 배워 맞춰요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.fab_ai": 1,
+          "semi": {
+            "text": "트윈 화면의 장비는 퇴근했는데 실제 알람은 3분 뒤에 울렸어요",
+            "kind": "school"
+          }
+        },
+        "result": "두 기록이 같은 줄에 놓였어요. 내 손목시계만 아직 퇴근을 가리켜요."
+      },
+      {
+        "label": "설비팀과 각 기록을 나눠 봐요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 현장 시간을 찾아왔어요. 첫 분석자 칸에는 두 이름이 들어갔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_autonomous_fab_l4",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "autonomous_fab_l4": [
+          0,
+          1
+        ]
+      },
+      "job": "operator"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "교대실 화면에서 AI가 Lot을 넘겼어요. 내 차례엔 자동 처리가 멈춘 목록 4줄이 남았어요.",
+    "choices": [
+      {
+        "label": "예외 관제를 새로 익혀요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.fab_ai": 1,
+          "semi": {
+            "text": "교대실 화면에서 AI가 Lot을 넘겼어요",
+            "kind": "core"
+          }
+        },
+        "result": "대기 사유를 한 줄씩 채웠어요. 내 식판 받을 시간은 마지막 줄 뒤에 왔어요."
+      },
+      {
+        "label": "현재 조의 현장 인계를 맡아요",
+        "effects": {
+          "reputation": 2,
+          "health": -1
+        },
+        "result": "관제실로 간 동료 대신 기록을 모았어요. 장갑을 벗자 손에 자국이 남았어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_humanoid_pilot",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "humanoid_pilot": [
+          0,
+          1
+        ]
+      },
+      "job": "assembler"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "로봇 앞에서 늘 하던 조립 동작을 세 조각으로 나눠 보래요. 손은 되는데 입이 자꾸 멈춰요.",
+    "choices": [
+      {
+        "label": "티칭 실습에 직접 들어가요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.robotics": 1,
+          "semi": {
+            "text": "로봇 앞에서 늘 하던 조립 동작을 세 조각으로 나눠 보래요",
+            "kind": "core"
+          }
+        },
+        "result": "첫 동작 설명에 열 문장을 썼어요. 로봇은 아직 첫 문장에 서 있어요."
+      },
+      {
+        "label": "현장 작업 설명을 모아 교육조에 넘겨요",
+        "effects": {
+          "reputation": 2,
+          "health": -1
+        },
+        "result": "동료 설명을 받아 인계표를 마쳤어요. 교대가 끝나니 두 팔이 묵직해요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_humanoid_mass",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "humanoid_mass": [
+          0,
+          1
+        ]
+      },
+      "job": "welder"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "용접 작업표에 로봇 구간과 내 마감 구간이 갈렸어요. 새 교육은 내 휴게 시간과 붙어 있어요.",
+    "choices": [
+      {
+        "label": "로봇 보조 작업을 배워요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.robotics": 1,
+          "semi": {
+            "text": "용접 작업표에 로봇 구간과 내 마감 구간이 갈렸어요",
+            "kind": "core"
+          }
+        },
+        "result": "두 구간에 다른 표시를 붙였어요. 쉬는 물병은 열리지 않은 채예요."
+      },
+      {
+        "label": "기존 마감을 맡아 동료를 교육에 보내요",
+        "effects": {
+          "reputation": 2,
+          "health": -1
+        },
+        "result": "오늘 마감표에 내 이름이 늘었어요. 공구함을 들자 팔이 뻐근했어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_cryo_quantum_supply_chain",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "cryo_quantum_supply_chain": [
+          0,
+          1
+        ]
+      },
+      "job": "equipment_engineer"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "극저온 계통 교육표가 공구함 위에 놓였어요. 익숙한 장비 그림 옆에 냉동 계통 한 장이 붙어요.",
+    "choices": [
+      {
+        "label": "새 계통을 직접 공부해요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.quantum_hw": 1,
+          "semi": {
+            "text": "극저온 계통 교육표가 공구함 위에 놓였어요",
+            "kind": "school"
+          }
+        },
+        "result": "연결선을 따라 노트가 길어졌어요. 퇴근 전까지 공구함은 열리지 않았어요."
+      },
+      {
+        "label": "서비스팀과 역할을 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 냉동 계통을 맡았어요. 내 이력란에는 공동 지원이 적혔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_pqc_migration",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "pqc_migration": [
+          0,
+          1
+        ]
+      },
+      "job": "circuit_designer"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "오래 쓸 칩의 검증표에 새 암호 항목이 붙었어요. 완료 버튼을 누르기엔 시험이 5개 남았어요.",
+    "choices": [
+      {
+        "label": "양자내성암호 검증을 익혀요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.pqc_security": 1,
+          "semi": {
+            "text": "오래 쓸 칩의 검증표에 새 암호 항목이 붙었어요",
+            "kind": "school"
+          }
+        },
+        "result": "다섯 시험을 돌렸어요. 마지막 창이 뜰 때 내 간식도 보존 암호처럼 굳었어요."
+      },
+      {
+        "label": "운영팀과 검증 요구를 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "운영 담당자가 기기 목록을 가져갔어요. 보고서 첫 줄에 두 팀이 적혔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_ai_drug_approval",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "ai_drug_approval": [
+          0,
+          1
+        ]
+      },
+      "job": "professor"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "세미나 뒤 학생이 AI 신약 소식을 수업 자료에 넣어 달래요. 내 강의까지는 30분 남았어요.",
+    "choices": [
+      {
+        "label": "칩 연구와 닿는 부분을 직접 읽어요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.ai_systems": 1,
+          "semi": {
+            "text": "세미나 뒤 학생이 AI 신약 소식을 수업 자료에 넣어 달래요",
+            "kind": "school"
+          }
+        },
+        "result": "강의안 여백에 새 그림이 붙었어요. 출석을 부르며 숨을 한 번 골랐어요."
+      },
+      {
+        "label": "다른 전공 연구자와 설명을 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 참고 그림을 보내 줬어요. 강의안에는 공동 자료가 적혔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_korea_retirement_65",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "korea_retirement_65": [
+          0,
+          1
+        ]
+      },
+      "job": "hr"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "인사 게시판에 65세 정년 공지가 붙었어요. 상담 대기 의자가 복도까지 나왔어요.",
+    "choices": [
+      {
+        "label": "직접 설명회를 열어요",
+        "effects": {
+          "reputation": 3,
+          "mental": -2,
+          "semi": {
+            "text": "인사 게시판에 65세 정년 공지가 붙었어요",
+            "kind": "core"
+          }
+        },
+        "result": "같은 질문을 여덟 번 받았어요. 이제 안내서보다 내 목소리가 먼저 쉬어요."
+      },
+      {
+        "label": "상담 담당들과 일정을 나눠요",
+        "effects": {
+          "friends": 2,
+          "happiness": -1
+        },
+        "result": "복도 줄이 두 방으로 갈렸어요. 내 이름은 공동 안내 담당에 들어갔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_tier_era_logic",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "tier_era_logic": [
+          0,
+          1
+        ]
+      },
+      "job": "process_engineer",
+      "skill_min": {
+        "process_integration": 3
+      },
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "100층 로직 발표 리허설에서 내 연결 평가가 빠졌어요. 발표자는 10분만 더 내 달래요.",
+    "choices": [
+      {
+        "label": "내 평가를 직접 설명해요",
+        "effects": {
+          "reputation": 3,
+          "mental": -2,
+          "skill.process_integration": 1
+        },
+        "result": "층을 넘기며 목차도 넘겼어요. 발표 뒤 내 물컵이 가장 먼저 비었어요."
+      },
+      {
+        "label": "설계팀 발표 옆에서 기록을 맡아요",
+        "effects": {
+          "friends": 2,
+          "happiness": -1
+        },
+        "result": "동료가 내 표를 띄웠어요. 직접 말할 차례는 질의 시간 뒤로 갔어요."
+      }
+    ],
+    "default": 1,
+    "trigger": "tech_commercialized",
+    "big": true
+  },
+  {
+    "id": "gpt_t09_tech_ai_designed_arch",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "ai_designed_arch": [
+          0,
+          1
+        ]
+      },
+      "job": "circuit_designer",
+      "skill_min": {
+        "eda_ai": 3
+      },
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "AI가 그린 아키텍처 마지막 장에 내 승인란이 떠요. 발표 15분 전, 사람이 설명할 차례래요.",
+    "choices": [
+      {
+        "label": "검증 근거를 직접 발표해요",
+        "effects": {
+          "reputation": 3,
+          "mental": -2,
+          "skill.eda_ai": 1
+        },
+        "result": "구조를 한 칸씩 확대했어요. 마지막 질문 뒤 포인터를 놓자 손이 가벼워졌어요."
+      },
+      {
+        "label": "공동 발표자의 질의를 맡아요",
+        "effects": {
+          "friends": 2,
+          "happiness": -1
+        },
+        "result": "동료가 구조를 설명했어요. 내 준비 원고는 질의 메모로 쓰였어요."
+      }
+    ],
+    "default": 1,
+    "trigger": "tech_commercialized",
+    "big": true
+  },
+  {
+    "id": "gpt_t09_tech_memory_compute_fusion",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "memory_compute_fusion": [
+          0,
+          1
+        ]
+      },
+      "job": "circuit_designer",
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "메모리·연산 융합팀 첫 회의에서 명패 두 개를 받았어요. 같은 회로를 어느 팀 항목에 넣을지 묻네요.",
+    "choices": [
+      {
+        "label": "융합 인터페이스를 직접 배워요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.hbm_design": 1,
+          "semi": {
+            "text": "메모리·연산 융합팀 첫 회의에서 명패 두 개를 받았어요",
+            "kind": "school"
+          }
+        },
+        "result": "노트에 팀 이름을 두 번 고쳤어요. 내 저녁 일정은 어느 팀에도 없어요."
+      },
+      {
+        "label": "두 팀과 검토 범위를 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "책상 두 개가 붙었어요. 내 단독 평가표는 공동 문서가 됐어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_compute_dividend",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "compute_dividend": [
+          0,
+          1
+        ]
+      },
+      "job": "official",
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "연산 배당 창구 첫날, 번호표가 42번까지 나갔어요. 맨 앞 주민은 신청 칸부터 낯설대요.",
+    "choices": [
+      {
+        "label": "주민 설명을 직접 맡아요",
+        "effects": {
+          "reputation": 3,
+          "mental": -2,
+          "semi": {
+            "text": "연산 배당 창구 첫날, 번호표가 42번까지 나갔어요",
+            "kind": "core"
+          }
+        },
+        "result": "빈칸 옆에 설명을 적었어요. 창구를 닫자 손목에 힘이 풀렸어요."
+      },
+      {
+        "label": "담당자들과 상담을 나눠요",
+        "effects": {
+          "friends": 2,
+          "happiness": -1
+        },
+        "result": "안내지가 두 창구로 갈렸어요. 내 예약표에는 공동 담당이 적혔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_personal_microfab",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "personal_microfab": [
+          0,
+          1
+        ]
+      },
+      "job": "process_engineer",
+      "skill_min": {
+        "process_integration": 3
+      },
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "미니팹 첫 제작 시연대에 내 공정 평가표가 놓였어요. 주문자는 칩보다 큰 스케치를 들고 왔어요.",
+    "choices": [
+      {
+        "label": "첫 제작 결과를 직접 설명해요",
+        "effects": {
+          "reputation": 3,
+          "mental": -2,
+          "skill.process_integration": 1
+        },
+        "result": "작은 샘플 앞에서 큰 질문을 받았어요. 점심 종은 질의 중에 지나갔어요."
+      },
+      {
+        "label": "설계 의뢰자와 질의를 나눠요",
+        "effects": {
+          "friends": 2,
+          "happiness": -1
+        },
+        "result": "동료가 스케치를 설명했어요. 내 발표 원고는 작업대 끝으로 밀렸어요."
+      }
+    ],
+    "default": 1,
+    "trigger": "tech_commercialized",
+    "big": true
+  },
+  {
+    "id": "gpt_t09_tech_refurb_fab_industry",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "refurb_fab_industry": [
+          0,
+          1
+        ]
+      },
+      "job": "equipment_engineer",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "팹 수명 연장 실사표에 내가 입사하던 해의 장비가 있어요. 보관함에서 이력철 6권을 꺼내야 해요.",
+    "choices": [
+      {
+        "label": "실사조에 들어가요",
+        "effects": {
+          "reputation": 3,
+          "health": -2,
+          "skill.equipment_maint": 1,
+          "semi": {
+            "text": "팹 수명 연장 실사표에 내가 입사하던 해의 장비가 있어요",
+            "kind": "core"
+          }
+        },
+        "result": "이력철을 꺼내자 사각 먼지 자국이 남았어요. 오늘 최신 공구는 종이 넘기는 내 손이에요."
+      },
+      {
+        "label": "익숙한 장비 지원에 남아요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1
+        },
+        "result": "내 공구함은 제자리에 놓였어요. 새 실사 완료표에는 동료 이름이 적혔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_self_repair_tools",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "self_repair_tools": [
+          0,
+          1
+        ]
+      },
+      "job": "facility_manager",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "자가 수리 장비가 완료 알림과 옛 부품 상자를 보냈어요. 내 인계까지는 20분 남았어요.",
+    "choices": [
+      {
+        "label": "로봇 정비 이력을 새로 익혀요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.robotics": 1,
+          "semi": {
+            "text": "자가 수리 장비가 완료 알림과 옛 부품 상자를 보냈어요",
+            "kind": "core"
+          }
+        },
+        "result": "자동 교체 기록 옆에 내 확인란이 찼어요. 쉬는 시간은 인계 뒤로 갔어요."
+      },
+      {
+        "label": "교육 간 동료의 기존 점검을 맡아요",
+        "effects": {
+          "reputation": 2,
+          "health": -1
+        },
+        "result": "구역표가 한 줄 늘었어요. 작업화를 벗자 발이 천천히 펴졌어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_dark_fab_network",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "dark_fab_network": [
+          0,
+          1
+        ]
+      },
+      "job": "operator",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "새벽 2시, 무인 팹 세 곳의 확인 알람이 한 화면에 떴어요. 당직실 의자는 내 것 하나예요.",
+    "choices": [
+      {
+        "label": "세 곳 관제를 직접 익혀 맡아요",
+        "effects": {
+          "reputation": 3,
+          "mental": -3,
+          "skill.fab_ai": 1,
+          "semi": {
+            "text": "새벽 2시, 무인 팹 세 곳의 확인 알람이 한 화면에 떴어요",
+            "kind": "core"
+          }
+        },
+        "result": "커피 세 잔째에 대기 목록이 비었어요. 내가 앉은 의자만 점검 대기예요."
+      },
+      {
+        "label": "다른 팹 당직과 나눠 봐요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1,
+          "mental": 1
+        },
+        "result": "수화기에서 저도 혼자라는 말이 왔어요. 보고서의 담당자는 둘이 됐어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_molecular_switch",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "molecular_switch": [
+          0,
+          1
+        ]
+      },
+      "job": "chemist",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "분자 스위치 시료병의 새 이름이 라벨 두 줄을 채웠어요. 종전 분석표에는 해당 칸이 없어요.",
+    "choices": [
+      {
+        "label": "새 소자 평가를 익혀요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.novel_channel": 1,
+          "semi": {
+            "text": "분자 스위치 시료병의 새 이름이 라벨 두 줄을 채웠어요",
+            "kind": "school"
+          }
+        },
+        "result": "라벨 옆에 분석 항목이 늘었어요. 내 저녁 약속은 다음 줄로 갔어요."
+      },
+      {
+        "label": "소자팀과 요구를 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 사용 조건을 적었어요. 결과표에는 공동 평가가 붙었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_post_silicon_mainstream",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "post_silicon_mainstream": [
+          0,
+          1
+        ]
+      },
+      "job": "device_researcher",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "실리콘 이후 소자 평가 첫날, 옛 모델 파일을 두 번 열었어요. 새 그래프와 맞는 구간이 짧아요.",
+    "choices": [
+      {
+        "label": "새 모델을 직접 배워요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.novel_channel": 1,
+          "semi": {
+            "text": "실리콘 이후 소자 평가 첫날, 옛 모델 파일을 두 번 열었어요",
+            "kind": "school"
+          }
+        },
+        "result": "노트에 지운 선이 쌓였어요. 창밖 복도 불은 먼저 꺼졌어요."
+      },
+      {
+        "label": "기존 모델의 범위를 공동 검토해요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료와 맞는 구간만 골랐어요. 결과표의 책임자 칸도 둘로 나뉘었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_hetero_tile_chip",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "hetero_tile_chip": [
+          0,
+          1
+        ]
+      },
+      "job": "circuit_designer",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "이종 타일 칩 도면에 색이 다섯 개예요. 규격 블록마다 연결할 수 있는 선이 달라요.",
+    "choices": [
+      {
+        "label": "타일 연결 검증을 익혀요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.chip_architecture": 1,
+          "semi": {
+            "text": "이종 타일 칩 도면에 색이 다섯 개예요",
+            "kind": "school"
+          }
+        },
+        "result": "도면보다 범례가 길어졌어요. 오늘 제일 복잡한 칩은 내 색연필 통이에요."
+      },
+      {
+        "label": "파트너 팀과 경계를 나눠 봐요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "각 팀이 자기 선을 가져갔어요. 내 도면에는 공동 검토가 붙었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_cryo_dc_standard",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "cryo_dc_standard": [
+          0,
+          1
+        ]
+      },
+      "job": "equipment_engineer",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "극저온 센터 출장표에 서로 다른 표준 두 벌이 붙었어요. 현지 담당은 오늘 출발해 달래요.",
+    "choices": [
+      {
+        "label": "새 계통 현장 지원에 가요",
+        "effects": {
+          "reputation": 3,
+          "health": -2,
+          "skill.quantum_hw": 1,
+          "semi": {
+            "text": "극저온 센터 출장표에 서로 다른 표준 두 벌이 붙었어요",
+            "kind": "core"
+          }
+        },
+        "result": "가방 절반이 점검표예요. 현지에서 가장 많이 꺼낸 공구도 종이였어요."
+      },
+      {
+        "label": "현재 지역의 설비를 맡아요",
+        "effects": {
+          "mental": 2,
+          "reputation": -1
+        },
+        "result": "익숙한 시설로 출근했어요. 새 센터 지원 완료표에는 동료 이름이 적혔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_photonic_quantum_hybrid",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "photonic_quantum_hybrid": [
+          0,
+          1
+        ]
+      },
+      "job": "device_researcher",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "광·양자 공동 회의에 연결 도면 두 장을 가져왔어요. 블록별 허용 범위가 달라 한 장으로 안 접혀요.",
+    "choices": [
+      {
+        "label": "새 연결 구조를 공부해요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.quantum_hw": 1,
+          "semi": {
+            "text": "광·양자 공동 회의에 연결 도면 두 장을 가져왔어요",
+            "kind": "school"
+          }
+        },
+        "result": "겹친 도면에 설명이 늘었어요. 다음 회의실 예약 종이 먼저 울렸어요."
+      },
+      {
+        "label": "각 팀과 제약 검토를 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료들이 맡은 선을 표시했어요. 내 성과란에는 공동 설계가 적혔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_orbital_materials",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "orbital_materials": [
+          0,
+          1
+        ]
+      },
+      "job": "chemist",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "궤도 소재 상자의 이력표가 세 장으로 왔어요. 시료는 손바닥만 한데 운송 기록은 길어요.",
+    "choices": [
+      {
+        "label": "새 소재 평가를 직접 배워요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.specialty_chem": 1,
+          "semi": {
+            "text": "궤도 소재 상자의 이력표가 세 장으로 왔어요",
+            "kind": "school"
+          }
+        },
+        "result": "시료 번호와 이력을 맞췄어요. 오늘 지구에서 제일 오래 간 건 내 퇴근이에요."
+      },
+      {
+        "label": "공급 담당과 추적을 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 운송 기록을 가져갔어요. 결과표에 공동 확인이 붙었어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_bio_silicon_learning",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "bio_silicon_learning": [
+          0,
+          1
+        ]
+      },
+      "job": "professor",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "생체·실리콘 학습기 공동 수업 자료가 두 벌이에요. 지역별 공개 범위가 달라 같은 그림을 못 쓴대요.",
+    "choices": [
+      {
+        "label": "공개 가능한 연산 연구를 더 읽어요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.novel_compute": 1,
+          "semi": {
+            "text": "생체·실리콘 학습기 공동 수업 자료가 두 벌이에요",
+            "kind": "school"
+          }
+        },
+        "result": "새 강의안에 빈 그림을 채웠어요. 내 휴게 컵은 식었어요."
+      },
+      {
+        "label": "공동 연구자와 설명을 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "공유 가능한 그림만 남겼어요. 강의안 첫 줄에는 공동 작성이 들어갔어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_climate_adapted_fab",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "climate_adapted_fab": [
+          0,
+          1
+        ]
+      },
+      "job": "environment_safety",
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "기후 적응 팹 용수 회의에 지도 두 장이 놓였어요. 공장 경계와 생활권 경계가 겹쳐 있어요.",
+    "choices": [
+      {
+        "label": "새 용수 평가를 익혀요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.specialty_chem": 1,
+          "semi": {
+            "text": "기후 적응 팹 용수 회의에 지도 두 장이 놓였어요",
+            "kind": "core"
+          }
+        },
+        "result": "담당 구역을 나눠 표시했어요. 교대 시계가 퇴근을 넘겼어요."
+      },
+      {
+        "label": "기존 점검을 맡아 교육조를 지원해요",
+        "effects": {
+          "reputation": 2,
+          "health": -1
+        },
+        "result": "동료가 새 교육을 마쳤어요. 나는 마지막 구역에서 작업화를 내려다봤어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_energy_node_race",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "energy_node_race": [
+          0,
+          1
+        ]
+      },
+      "job": "circuit_designer",
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "칩 비교표의 첫 칸이 성능에서 소비 에너지로 바뀌었어요. 어제 1등이 오늘은 중간에 있어요.",
+    "choices": [
+      {
+        "label": "에너지 평가를 직접 배워요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.novel_compute": 1,
+          "semi": {
+            "text": "칩 비교표의 첫 칸이 성능에서 소비 에너지로 바뀌었어요",
+            "kind": "school"
+          }
+        },
+        "result": "조건을 맞추니 순위가 또 바뀌었어요. 내 저녁 순서만 계속 뒤로 가요."
+      },
+      {
+        "label": "시스템팀과 평가 조건을 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 사용 조건을 맡았어요. 보고서 담당자 칸도 둘이 됐어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_atomic_precision_mfg",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "atomic_precision_mfg": [
+          0,
+          1
+        ]
+      },
+      "job": "process_engineer",
+      "skill_min": {
+        "process_integration": 3
+      },
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "원자 정밀 제조 발표에 내 구조 평가가 마지막 장으로 들어갔어요. 포인터로 짚을 선은 하나예요.",
+    "choices": [
+      {
+        "label": "내 평가를 직접 설명해요",
+        "effects": {
+          "reputation": 3,
+          "mental": -2,
+          "skill.process_integration": 1
+        },
+        "result": "선 하나 앞에서 질문은 열 개가 나왔어요. 작은 구조일수록 마이크는 무거워요."
+      },
+      {
+        "label": "재료팀 발표 옆에서 시료 기록을 맡아요",
+        "effects": {
+          "friends": 2,
+          "happiness": -1
+        },
+        "result": "동료가 내 표를 넘겼어요. 연습한 내 설명은 수첩 안에 남았어요."
+      }
+    ],
+    "default": 1,
+    "trigger": "tech_commercialized",
+    "big": true
+  },
+  {
+    "id": "gpt_t09_tech_fusion_grid",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "fusion_grid": [
+          0,
+          1
+        ]
+      },
+      "job": "electrician",
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "전기실 공급 경로도에 새 발전원이 붙었어요. 내 인계표도 한 장 더 받으래요.",
+    "choices": [
+      {
+        "label": "새 계통 교육을 들어요",
+        "effects": {
+          "dexterity": 2,
+          "mental": -2,
+          "skill.power_cooling": 1,
+          "semi": {
+            "text": "전기실 공급 경로도에 새 발전원이 붙었어요",
+            "kind": "core"
+          }
+        },
+        "result": "기존 배전도 옆에 새 도면을 폈어요. 복도에서는 퇴근 발소리가 났어요."
+      },
+      {
+        "label": "현재 설비를 맡아 교육조를 보내요",
+        "effects": {
+          "reputation": 2,
+          "health": -1
+        },
+        "result": "교육 간 동료의 구역을 돌았어요. 손전등을 내려놓자 팔이 뻐근했어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_tech_medical_bci",
+    "age": [
+      20,
+      85
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "tech_since": {
+        "medical_bci": [
+          0,
+          1
+        ]
+      },
+      "job": "device_researcher",
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 3,
+    "once": true,
+    "text": "의료용 신경 칩 평가표에 병원 질문이 별도로 왔어요. 내 소자 결과만으로 채울 수 없는 칸이에요.",
+    "choices": [
+      {
+        "label": "인터페이스 평가를 더 배워요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -2,
+          "skill.novel_compute": 1,
+          "semi": {
+            "text": "의료용 신경 칩 평가표에 병원 질문이 별도로 왔어요",
+            "kind": "school"
+          }
+        },
+        "result": "공개 가능한 사용 범위를 적었어요. 연구실 밖 저녁 소리가 멀어졌어요."
+      },
+      {
+        "label": "의료 연구자와 요구를 나눠요",
+        "effects": {
+          "friends": 2,
+          "reputation": -1
+        },
+        "result": "동료가 임상 쪽 질문을 맡았어요. 결과표 첫 줄에 공동 평가가 적혔어요."
+      }
+    ],
+    "default": 1
+  }
+]
