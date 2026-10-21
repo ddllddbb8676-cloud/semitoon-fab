@@ -140,12 +140,29 @@ world      seed, market{year: {cycle, memory, logic_foundry, equipment, korea}},
 | 시황·거시 | `market{cycle\|memory\|logic_foundry\|equipment\|korea: 범위}`, `macro`(범위), `kospi_change`, `base_rate`, `house_change` |
 | 돈 | `cash_min`(토큰 가능), `networth_min`, `networth_max`, `debt_min`, `asset_grade_min`, `asset_grade_max`, `credit`, `house_tenure`, `has_house`, `has_loan`, `holds_stock`(회사 id·`any`·`my_company`), `stock_ret`, `concentration_min`, `holds_coin`, `coin_ret` |
 
+## 미래 (2027~2150, `FUTURE.md`)
+| 종류 | 이름 | 뜻 |
+|---|---|---|
+| 상태 | `career.skills[] = {id, level}` | R&D 스킬 (id 목록은 `future_tech.json`의 `skills`) |
+| 상태 | `world.future = {seed, arrivals{node: 연도}, fired[{id, year}], paths[{year, path}]}` | 미래 세계 |
+| when | `tech`(모두 등장) · `tech_any` · `not_tech` · `tech_since{node: 범위}` | 그 해까지 등장한 기술 노드 |
+| when | `scenario`(발동한 적 있음) · `scenario_active`(효과 기간 중) · `scenario_since{id: 범위}` | 시나리오 |
+| when | `world_path` | 2060년 이후 세계 경로 |
+| when | `skill_min{skill: 레벨}` · `skill_value_min{skill: v}` · `skill_value_max{skill: v}` | 스킬 레벨·가치 |
+| when | `job_demand_min{job: x}` · `job_demand_max{job: x}` · `future`(bool, 2027년 이후) | 직업 수요 변화 |
+| effects | `skill.<id>` | 그 스킬에 포인트 |
+| do | `skill:retrain:<from>:<to>` · `skill:focus:<id>` | 재교육, 주력 스킬 |
+| 트리거 | `tech_commercialized`, `skill_obsolete`, `job_shrinking`, `tech_news`, `world_path` | `FUTURE.md` 9.6 · 9.7 · 8.1 · 3.3 · 6.2 |
+| 예약 플래그 | `my_research_commercialized`, `retrained`, `master_craftsman` | |
+
+2027년 이후 시황 행은 `market_history.json`과 같은 키 + `fiction`, `sales_basis: "model"`. 확인: `node life/tools/future_sim.mjs <seed>`.
+
 ## 자리표시 (문장 안)
-`{name}`, `{company}`, `{rival}`, `{acquirer}`, `{client}`, `{region}`, `{partner}`, `{child}`, `{offer1}`, `{offer2}`, `{offer3}` — 되돌아보기 문구용은 `T07` 지시서 목록.
+`{name}`, `{company}`, `{rival}`, `{acquirer}`, `{client}`, `{region}`, `{partner}`, `{child}`, `{offer1}`, `{offer2}`, `{offer3}`, `{tech}`(기술 노드 이름), `{skill}`(스킬 이름) — 되돌아보기 문구용은 `T07` 지시서 목록.
 
 ## 플래그·이름 규칙
 - `is_` 접두 = 엔진이 상태에 맞춰 붙이고 떼는 플래그 (`SYSTEMS.md` 1.6). 그 밖의 플래그는 지우지 않음.
-- 엔진 예약 플래그: `had_job`, `semi_touched`, `parent_semi`, `credit_default`, `personal_rehab`, `bankrupt`, `margin_call`, `delisted_loss`, `jeonse_fraud_victim`, `house_poor`, `first_house`.
+- 엔진 예약 플래그: `had_job`, `semi_touched`, `parent_semi`, `credit_default`, `personal_rehab`, `bankrupt`, `margin_call`, `delisted_loss`, `jeonse_fraud_victim`, `house_poor`, `first_house`, `my_research_commercialized`, `retrained`, `master_craftsman`.
 - 반도체 순간 kind: `core` 현장 · `near` 주변 · `eco` 생태계 · `family` 가족 · `money` 돈 · `school` 학교 · `place` 동네 · `history` 뉴스 · `everyday` 일상.
 - 1~5 등급은 모두 5가 최상위 (`school_tier`, 회사 특성, `wealth`).
 

@@ -27,5 +27,6 @@
 | T10 | `T10_design_review.md` | 기획 문서 전체 검토 | `SYSTEMS.md`, `ECONOMY.md`가 올라온 뒤 |
 | T11 | `T11_job_matrix_text.md` | 세부 직업 설명·현업 호칭, 직업 2,000개 이상으로 확장 | 지금 |
 | T12 | `T12_dim_events.md` | 직업 축별 사건 약 270개 | T11 머지 후 (먼저 해도 되지만 T11 값은 못 씀) |
+| T13 | `T13_future_world.md` | 2027~2150 세계관 서사, 미래 뉴스, 미래 직업 설명 | `FUTURE.md`가 올라온 뒤 |
 
 T01~T07, T11은 서로 겹치지 않아 동시에 해도 됩니다.
