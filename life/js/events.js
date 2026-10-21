@@ -1,7 +1,7 @@
 // 사건 추첨·보여 주기·선택 처리 (담당: Claude, DOM 없음) — SYSTEMS 1.3·1.4·7장
 // 한 해의 사건은 큐(s.turn.queue)에 { uid, id, at(0~1 진행률), big, ctx, trigger, syn? }로 들어갑니다.
 
-import { clamp, inRange, hasTrait, stageOf, addLog, STAT_NAMES } from './core.js';
+import { clamp, inRange, hasTrait, stageOf, addLog, asArray, STAT_NAMES } from './core.js';
 import { matchWhen, matchMarket } from './conditions.js';
 import { applyEffects, checkChance } from './effects.js';
 import { fill } from './text.js';
@@ -29,6 +29,23 @@ const STAT_KEYS = ['health', 'intelligence', 'dexterity', 'sociability', 'mental
 let uidSeq = 0;
 const newUid = () => `e${Date.now().toString(36)}${(uidSeq++).toString(36)}`;
 
+// 반복 규칙 (SPEC 사건 필드 repeatable·repeat_gap): 기본은 한 인생에 한 번.
+// 시스템 트리거에 묶인 사건(결혼·출산·구직·스카우트처럼 상태가 다시 만들어 주는 것)은 트리거가 생길 때마다 뜹니다.
+// again:n(do)·goto 재요청은 opts.again으로 다시 열립니다.
+// 같은 질문을 조르는 트리거(프러포즈·출산·집·스카우트)는 같은 사건이 3년 안에 다시 뜨지 않게
+const NAG_TRIGGERS = { proposal: 3, baby_chance: 3, house_chance: 3, scout: 4 };
+export function repeatOk(L, ev, opts = {}) {
+  const s = L.s;
+  const seen = s.seen[ev.id];
+  if (seen === undefined || opts.requeue) return true;
+  // again:n 다시 묻기: 조르는 질문(결혼·출산·집)은 한 번까지만, 재수 같은 진로 흐름은 그대로
+  if (opts.again) return !!ev.repeatable || !NAG_TRIGGERS[ev.trigger] || (s.seen_n?.[ev.id] ?? 1) < 2;
+  if (ev.once) return false;
+  if (ev.repeatable) return s.year - seen >= (ev.repeat_gap ?? 10);
+  if (!ev.trigger || ev.repeatable === false) return false;
+  return s.year - seen >= (NAG_TRIGGERS[ev.trigger] ?? 0);
+}
+
 export function visibleChoices(L, ev) {
   return ev.choices.map((c, i) => ({ c, i })).filter(({ c }) => matchWhen(L, c.when));
 }
@@ -40,7 +57,7 @@ export function eligible(L, ev, opts = {}) {
   const age = s.age;
   if (ev.age && !inRange(age, opts.grace ? [ev.age[0], (ev.age[1] ?? 999) + 1] : ev.age)) return false;
   if (ev.year && !inRange(s.year, ev.year)) return false;
-  if (ev.once && s.seen[ev.id] !== undefined && !opts.again) return false;
+  if (!repeatOk(L, ev, opts)) return false;
   if (s.again[ev.id] !== undefined && s.again[ev.id] > s.year) return false;
   if (!matchWhen(L, ev.when) || !matchMarket(L, ev.market)) return false;
   const vis = visibleChoices(L, ev).length;
@@ -70,10 +87,10 @@ function weightOf(L, ev) {
     if (!hasTrait(s, axis, sign)) continue;
     for (const t of ev.tags ?? []) if (mults[t]) T *= mults[t];
   }
-  // R: 같은 사건이 몇 해 만에 또 뜨면 어색하니 6년 안에는 막고, 12년 안에는 ×0.3
+  // 반복 가능한 사건이 다시 열린 직후(간격의 2배 안)에는 덜 뜨게, GPT 공식형 두 갈래 사건은 ×0.4 (손으로 쓴 사건이 이기게)
   const ago = s.seen[ev.id] !== undefined ? s.year - s.seen[ev.id] : 99;
-  const R = ev.once ? 1 : ago < 6 ? 0 : ago < 12 ? 0.3 : 1;
-  return (ev.weight ?? 1) * B * T * semiMult(L, ev) * R;
+  const R = ev.repeatable && ago < 2 * (ev.repeat_gap ?? 10) ? 0.5 : 1;
+  return (ev.weight ?? 1) * B * T * semiMult(L, ev) * R * (ev._formulaic ? 0.4 : 1);
 }
 
 // 트리거에 맞는 데이터 사건이 없을 때 엔진 기본 동작
@@ -122,6 +139,17 @@ export function buildQueue(L, triggers) {
     used.add(id);
     forced.push({ ev, ctx: prepareCtx(L, ev, { ...ctx }), trigger });
   };
+  // 나중에 돌아오는 결과 (SPEC effects.later): 정한 해가 되면 가중치와 상관없이 강제로. 조건이 안 맞으면 3년까지 기다림
+  s.later = (s.later ?? []).filter((x) => {
+    if (x.year > s.year) return true;
+    const ev = D.eventById.get(x.id);
+    if (!ev || !repeatOk(L, ev)) return false;
+    if (eligible(L, ev, { triggered: true, grace: true, later: true })) {
+      push(ev, { ...(x.ctx ?? {}), later: { year: x.made, from: x.from, pick: x.pick ?? null } }, 'later');
+      return false;
+    }
+    return s.year - x.year < 3;
+  });
   // 지난해 넘친 큰 사건
   for (const d of s.deferred ?? []) {
     const ev = D.eventById.get(d.id);
@@ -171,15 +199,24 @@ export function buildQueue(L, triggers) {
   let r = rng.next();
   let N = 0;
   while (N < 3 && r >= dist[N]) { r -= dist[N]; N++; }
-  let slots = Math.max(0, Math.min(3, Math.max(N, chosen.length)) - chosen.length);
   const tagCount = {};
   for (const f of chosen) { const t = f.ev.tags?.[0]; if (t) tagCount[t] = (tagCount[t] ?? 0) + 1; }
-  const pool = D.events.filter((ev) => !ev.trigger && !ev.forced && (ev.weight ?? 0) > 0 && !used.has(ev.id) && eligible(L, ev)).concat(againPool);
+  // 비슷한 사건 막기: 최근 5년 안에 뜬 사건과 문장 앞 12글자가 같거나 선택지 이름이 똑같으면 후보에서 뺌
+  const heads = new Set();
+  const labelSets = new Set();
+  const mark = (ev) => { if (ev._head) heads.add(ev._head); if (ev._labels) labelSets.add(ev._labels); };
+  for (const [id, y] of Object.entries(s.seen)) if (s.year - y < 5) { const e = D.eventById.get(id); if (e) mark(e); }
+  for (const f of chosen) mark(f.ev);
+  const similar = (ev) => heads.has(ev._head) || labelSets.has(ev._labels);
+  const pool = D.events.filter((ev) => !ev.trigger && !ev.forced && (ev.weight ?? 0) > 0 && !used.has(ev.id) && !similar(ev) && eligible(L, ev)).concat(againPool);
+  // 후보가 넉넉한 해(6개↑)는 35% 확률로 한 자리 더 (v0.2: 한 번씩만 뜨는 사건을 나이대가 지나기 전에 쓰게)
+  if (pool.length >= 6 && N < 3 && rng.chance(0.35)) N++;
+  let slots = Math.max(0, Math.min(3, Math.max(N, chosen.length)) - chosen.length);
   const lottery = [];
   const reserveSemi = !s.semi.length && (s.age === 35 || s.age === 50);
   let lotteryBig = s.year - (s.lastLotteryBig ?? -99) <= 2 ? 1 : 0;
   while (slots > 0 && pool.length) {
-    const cand = pool.filter((ev) => (!ev.big || lotteryBig === 0) && (!ev.tags?.[0] || (tagCount[ev.tags[0]] ?? 0) < 2));
+    const cand = pool.filter((ev) => (!ev.big || lotteryBig === 0) && (!ev.tags?.[0] || (tagCount[ev.tags[0]] ?? 0) < 2) && (againPool.includes(ev) || !similar(ev)));
     const semiOnly = reserveSemi && !lottery.length ? cand.filter((ev) => ev._semi) : [];
     const ev = rng.weighted(semiOnly.length ? semiOnly : cand, (e) => weightOf(L, e));
     if (!ev) break;
@@ -187,6 +224,7 @@ export function buildQueue(L, triggers) {
     if (ev.big) { lotteryBig++; s.lastLotteryBig = s.year; }
     if (ev.tags?.[0]) tagCount[ev.tags[0]] = (tagCount[ev.tags[0]] ?? 0) + 1;
     used.add(ev.id);
+    mark(ev);
     lottery.push({ ev, ctx: prepareCtx(L, ev, {}), trigger: null });
     slots--;
   }
@@ -211,8 +249,12 @@ export function present(L, inst) {
   if (!vis.length || (vis.length < 2 && !ev.trigger && !ev.forced && !inst.syn && !inst.trigger)) return null;
   let def = ev.default ?? 0;
   if (!vis.some((v) => v.i === def)) def = vis[0].i;
+  // 나중에 돌아온 결과면 "그때 그 선택…" 꼬리표 (그 해·그때 고른 선택지)
+  const lt = ctx.later ?? null;
+  const later = lt ? { year: lt.year ?? null, pick: lt.pick ?? null } : null;
+  const kicker = later ? `그때 그 선택…${later.year ? ` (${later.year}년${later.pick ? ` · ${later.pick}` : ''})` : ''}` : ev.big ? '인생의 갈림길' : '';
   return {
-    uid: inst.uid, id: ev.id, big: !!ev.big, text: fill(L, ev.text, ctx),
+    uid: inst.uid, id: ev.id, big: !!ev.big, kicker, later, text: fill(L, ev.text, ctx),
     choices: vis.map(({ c, i }) => {
       const p = c.check ? checkChance(L, c) : null;
       const what = c.check?.stat ? STAT_NAMES[c.check.stat] : c.check?.trait ? '성향' : '';
@@ -220,6 +262,18 @@ export function present(L, inst) {
     }),
     defaultIndex: def,
   };
+}
+
+// 연표용 질문 요약: recap이 있으면 그것, 없으면 text 첫 문장 (30자 안팎)
+export function recapOf(L, ev, ctx = {}) {
+  const raw = ev.recap ? fill(L, ev.recap, ctx) : fill(L, ev.text, ctx);
+  let t = String(raw).replace(/\s+/g, ' ').trim();
+  if (!ev.recap) {
+    const m = /^(.+?[.!?…])(?=\s|$)/.exec(t);
+    if (m) t = m[1];
+    t = t.replace(/[.!?]+$/, '');
+  }
+  return t.length > 32 ? `${t.slice(0, 30).trimEnd()}…` : t;
 }
 
 // 선택 처리 → { result, chips, goto }
@@ -240,25 +294,32 @@ export function choose(L, inst, index) {
     }
   }
   s.seen[ev.id] = s.year;
+  (s.seen_n ??= {})[ev.id] = (s.seen_n[ev.id] ?? 0) + 1;
+  const label = fill(L, ch.label, ctx);
+  const recap = recapOf(L, ev, ctx);
   ctx.notes = [];
   ctx.fill = (t) => fill(L, t, ctx);
+  ctx.pick = label;
+  const at = s.log.length;
   const out = applyEffects(L, eff, ctx, ev);
   delete ctx.fill;
   // {child} 같은 자리표시는 효과 뒤에 채움 (child:add 뒤 새 아이 이름)
   const text = [fill(L, result, ctx), ...ctx.notes].filter(Boolean).join(' ');
-  const label = fill(L, ch.label, ctx);
-  if (ev.big) addLog(L, text.startsWith(label) ? text : `${label} — ${text}`, 3, 'choice', ev.id);
-  else if (text) addLog(L, text, 1, 'event', ev.id);
+  // 연표: "질문 요약 → 내 선택 → 결과" (결과가 선택지 이름을 되풀이하면 그 부분은 뺌)
+  const res = text.startsWith(label) ? text.slice(label.length).replace(/^[\s.,!?…]+/, '') : text;
+  const line = `${recap} → ${label}${res ? ` → ${res}` : ''}`;
+  addLog(L, line, ev.big ? 3 : 1, ev.big ? 'choice' : 'event', ev.id, { q: recap, pick: label, res, later: ctx.later ? (ctx.later.year ?? true) : null });
+  // 선택 줄이 그 선택으로 생긴 일(입사·결혼 등)보다 먼저 오게
+  if (s.log.length - 1 > at) s.log.splice(at, 0, s.log.pop());
   L.emit?.('choice', { id: ev.id, index, failed });
   delete ctx.notes;
   // goto: 이어지는 사건을 바로 다음에 (사건 수에 안 셈)
   let follow = null;
   if (out.goto) {
     const nx = D.eventById.get(out.goto);
-    if (nx && eligible(L, nx, { triggered: true, again: out.goto === ev.id })) {
-      follow = { uid: newUid(), id: nx.id, at: 0, big: !!nx.big, ctx: prepareCtx(L, nx, { ...ctx }), trigger: 'goto', syn: null };
+    if (nx && eligible(L, nx, { triggered: true, requeue: out.goto === ev.id })) {
+      follow = { uid: newUid(), id: nx.id, at: 0, big: !!nx.big, ctx: prepareCtx(L, nx, { ...ctx, later: undefined }), trigger: 'goto', syn: null };
     }
   }
-  return { result: text, chips: out.chips, failed, follow };
+  return { result: text, chips: out.chips, failed, follow, recap, label };
 }
-

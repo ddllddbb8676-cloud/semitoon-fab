@@ -9,9 +9,11 @@ import { warnOnce } from './core.js';
 const REQUIRED = {
   character: 'character.json', jobs: 'jobs.json', companies: 'companies.json', matrix: 'job_matrix.json',
   market: 'market_history.json', economy: 'economy_history.json', family: 'family_policy.json', nameMap: 'name_map.json',
-  tech: 'future_tech.json', scen: 'future_scenarios.json',
+  tech: 'future_tech.json', scen: 'future_scenarios.json', coin: 'coin_history.json',
 };
 const STAGE_FILES = ['infant', 'child', 'teen', 'young', 'middle', 'senior', 'major'].map((n) => `events/${n}.json`);
+// 사건 폴더의 그 밖의 Claude 사건 파일 (있을 때만). 목록을 못 얻으면 이 이름만 시도합니다.
+const EXTRA_EVENT_FILES = ['events/drama.json'];
 // GPT 콘텐츠: 있으면 쓰고, 없으면 건너뜁니다 (AGENTS.md 역할표)
 const OPTIONAL = {
   names: 'names.json', news: 'news_general.json', review: 'review_text.json', achievements: 'achievements.json',
@@ -38,11 +40,14 @@ export async function loadData(read, list = async () => null) {
   await Promise.all(Object.entries(OPTIONAL).map(async ([k, f]) => { raw[k] = present(f) ? await read(f) : null; }));
 
   let gptFiles = GPT_EVENT_FILES;
+  let extraFiles = EXTRA_EVENT_FILES;
   if (rootList) {
     const evList = rootList.includes('events/') ? await safeList(list, 'events/') : null;
     const gptList = evList?.includes('gpt/') ? await safeList(list, 'events/gpt/') : [];
     gptFiles = (gptList ?? []).filter((f) => f.endsWith('.json')).map((f) => `events/gpt/${f}`);
+    extraFiles = (evList ?? []).filter((f) => f.endsWith('.json') && !STAGE_FILES.includes(`events/${f}`)).map((f) => `events/${f}`);
   }
+  raw.extraEvents = (await Promise.all(extraFiles.map(async (f) => ({ file: f, list: await read(f) })))).filter((x) => Array.isArray(x.list));
   raw.gptEvents = (await Promise.all(gptFiles.map(async (f) => ({ file: f, list: await read(f) })))).filter((x) => Array.isArray(x.list));
   return buildData(raw);
 }
@@ -134,18 +139,27 @@ export function buildData(raw) {
         continue;
       }
       if (D.eventById.has(ev.id)) { warnOnce(`dup-${ev.id}`, `사건 id 중복: ${ev.id} (${file})`); continue; }
-      const e = { ...ev, _file: file, _source: source, _semi: ev.choices.some((c) => c.effects?.semi || c.fail?.effects?.semi) };
+      const labels = ev.choices.map((c) => String(c.label ?? '').trim());
+      const e = {
+        ...ev, _file: file, _source: source, _semi: ev.choices.some((c) => c.effects?.semi || c.fail?.effects?.semi),
+        // 비슷한 사건 막기용 (events.js): 문장 앞 12글자, 선택지 이름 묶음
+        _head: ev.text.replace(/\s+/g, ' ').trim().slice(0, 12), _labels: labels.join('|'),
+        // GPT 공식형 사건 ("…해요 / …쉬어요" 두 갈래)은 가중치를 낮춤
+        _formulaic: source === 'gpt' && labels.length === 2 && labels.some((l) => /쉬어|쉬고/.test(l)),
+      };
       D.events.push(e);
       D.eventById.set(e.id, e);
     }
   };
   for (const { file, list } of raw.stageEvents) addEvents(file, list, 'claude');
+  for (const { file, list } of raw.extraEvents ?? []) addEvents(file, list, 'claude');
   for (const { file, list } of raw.gptEvents ?? []) addEvents(file, list, 'gpt');
 
   D.names = raw.names ?? null;
   D.newsByYear = new Map((raw.news?.years ?? []).map((r) => [r.year, r]));
   D.review = raw.review ?? null;
   D.achievements = Array.isArray(raw.achievements?.items) ? raw.achievements.items.filter((a) => a && a.id && a.when) : [];
-  D.optionalLoaded = Object.keys(OPTIONAL).filter((k) => raw[k]).concat((raw.gptEvents ?? []).map((x) => x.file));
+  D.coin = raw.coin ?? null;
+  D.optionalLoaded = Object.keys(OPTIONAL).filter((k) => raw[k]).concat((raw.extraEvents ?? []).map((x) => x.file), (raw.gptEvents ?? []).map((x) => x.file));
   return D;
 }

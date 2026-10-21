@@ -115,10 +115,12 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; }
 .hud__age { color: var(--fg); }
 .progress { height: 6px; background: var(--surface-2); border-radius: 99px; overflow: hidden; margin: 6px 0 8px; }
 .progress__bar { display: block; height: 100%; width: calc(var(--p) * 100%); background: var(--accent); }
-.speed { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.speed { display: grid; grid-template-columns: 1.3fr repeat(5, 1fr); gap: 6px; }
 .speed-btn { padding: 6px 0; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; }
 .speed-btn[data-active="true"] { background: var(--accent); color: var(--accent-fg); border-color: transparent; }
 body[data-paused="true"] .progress__bar { opacity: .5; }
+.skip-btn { display: block; width: 100%; margin-top: 6px; padding: 6px 0; border-radius: 10px; border: 1px dashed var(--line); background: transparent; color: var(--muted); cursor: pointer; font-size: 14px; }
+.skip-btn:hover { color: var(--fg); border-color: var(--accent); }
 
 .headline { margin: 4px 0 10px; padding: 8px 10px; font-size: 14px; background: var(--surface); border-radius: 10px; border-left: 3px solid var(--semi); }
 .headline:empty { display: none; }
@@ -167,6 +169,12 @@ body[data-paused="true"] .progress__bar { opacity: .5; }
 .feed-item[data-importance="3"] { font-weight: 700; }
 .feed-item[data-kind="semi"] { color: var(--semi); }
 .feed-item[data-new="true"] { animation: feed-in .5s ease; }
+.feed-item[data-kind="world"] { color: var(--muted); }
+.feed-item__q { color: var(--muted); }
+.feed-item__arrow { color: var(--muted); }
+.feed-item__pick { font-weight: 700; }
+.feed-item[data-importance="3"] .feed-item__q, .feed-item[data-importance="3"] .feed-item__res { font-weight: 400; }
+.feed-item__tag { display: inline-block; margin-right: 6px; padding: 0 6px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 @keyframes feed-in { from { background: var(--accent-soft); } to { background: transparent; } }
 
 /* 사건 카드 */
@@ -183,6 +191,7 @@ body[data-event="big"] .event-layer { align-items: center; background: rgba(20, 
 .event-card[data-size="big"] { border: 2px solid var(--big); }
 .event-card__kicker { margin: 0 0 6px; font-family: var(--font-display); color: var(--big); }
 .event-card__kicker:empty { display: none; }
+.event-card[data-later="true"] .event-card__kicker { color: var(--accent); font-size: 14px; }
 .event-card__text { margin: 0 0 12px; font-size: 16px; }
 .event-card__choices { display: grid; gap: 8px; }
 .choice {
@@ -201,11 +210,15 @@ body[data-event="big"] .event-layer { align-items: center; background: rgba(20, 
 .chip[data-tone="good"] { color: var(--good); }
 .chip[data-tone="bad"] { color: var(--bad); }
 .chip[data-tone="semi"] { background: var(--semi-soft); color: var(--semi); }
+.chip[data-tone="trait"] { background: var(--accent-soft); color: var(--accent); }
+.chip[data-tone="money"] { color: var(--semi); }
+.chips[hidden] { display: none; }
 
 /* 토스트 */
 .toasts { position: fixed; top: 10px; left: 0; right: 0; z-index: 30; display: grid; justify-items: center; gap: 6px; pointer-events: none; padding: 0 16px; }
 .toast { max-width: 448px; width: 100%; padding: 8px 12px; border-radius: 12px; background: var(--fg); color: var(--bg); font-size: 14px; box-shadow: var(--shadow); animation: toast-in .25s ease; }
 .toast[data-tone="semi"] { background: var(--semi); color: #241a00; }
+.toast[data-tone="achievement"] { background: var(--big); color: #fff; }
 @keyframes toast-in { from { transform: translateY(-8px); opacity: 0; } to { transform: none; opacity: 1; } }
 
 /* 엔딩 */
@@ -233,4 +246,8 @@ body[data-event="big"] .event-layer { align-items: center; background: rgba(20, 
 .numbers { display: grid; grid-template-columns: 6em 1fr; gap: 4px 10px; font-size: 14px; }
 .numbers dt { color: var(--muted); }
 .numbers dd { margin: 0; }
+.ach-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: 14px; }
+.ach { padding: 6px 10px; border-radius: 10px; background: var(--surface); }
+.ach__when { color: var(--muted); font-size: 12px; margin-right: 6px; }
+.ach--none { color: var(--muted); }
 .ending__seed { color: var(--muted); font-size: 12px; text-align: center; margin-top: 12px; }

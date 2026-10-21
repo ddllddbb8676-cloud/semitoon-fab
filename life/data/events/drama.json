@@ -111,7 +111,7 @@
     "id": "drama_scout_mentor",
     "age": [28, 50], "year": [1990, null],
     "when": { "job_group": ["현장", "사무"], "employment": "regular", "career_years_min": 3, "flag": "is_employed" },
-    "weight": 3, "once": true, "big": true, "tags": ["work", "risk"],
+    "weight": 3, "once": true, "big": false, "tags": ["work", "risk"],
     "recap": "옛 사수의 스카우트",
     "text": "퇴근길 정문 앞, {rival}로 먼저 옮긴 옛 사수가 차 창문을 내려요. “사이닝 보너스 얹어 줄게. 이번 주까지만 답 줘.”",
     "choices": [
@@ -183,7 +183,7 @@
     "id": "drama_vendor_interlock",
     "age": [23, 50], "year": [1995, null],
     "when": { "job": ["field_service", "equipment_engineer"], "sector": ["equipment_global", "equipment_korea"], "flag": "is_employed" },
-    "weight": 6, "once": true, "big": true, "tags": ["work", "conflict"],
+    "weight": 6, "once": true, "big": false, "tags": ["work", "conflict"],
     "recap": "인터락 풀라는 원청",
     "text": "밤 11시, {client} 팹 장비 셋업 현장이에요. 원청 담당자가 “아침까지 안 끝나면 다음 분기 PO 없어요” 하며 인터락을 잠깐 풀고 하래요.",
     "choices": [
@@ -281,7 +281,7 @@
     "id": "drama_gate_xray",
     "age": [22, 65], "year": [2000, null],
     "when": { "job": "security_gate", "flag": "is_employed" },
-    "weight": 8, "once": true, "big": true, "tags": ["work", "conflict"],
+    "weight": 8, "once": true, "big": false, "tags": ["work", "conflict"],
     "recap": "검색대의 저장장치",
     "text": "아침 7시 출근 러시, X-ray 화면 속 도시락 가방 바닥에 손톱만 한 저장장치가 보여요. 가방 주인은 매일 “수고하세요” 해 주던 차장님이에요.",
     "choices": [
@@ -323,7 +323,7 @@
     "id": "drama_site_scaffold",
     "age": [20, 60], "year": [1985, null],
     "when": { "job": ["welder", "pipefitter", "electrician", "duct_worker", "scaffolder", "crane_operator", "site_manager"], "flag": "is_employed" },
-    "weight": 5, "once": true, "big": true, "tags": ["work", "risk"],
+    "weight": 5, "once": true, "big": false, "tags": ["work", "risk"],
     "recap": "비계 위의 신입",
     "text": "공기 단축 지시가 내려온 오후 4시, 7층 비계 위에서 신입이 안전고리를 풀고 배관을 끌어요. 반장님은 “오늘 이 구간 무조건 끝낸다”고 했어요.",
     "choices": [
@@ -362,7 +362,7 @@
     "id": "drama_expat_tf",
     "age": [30, 50], "year": [1996, null],
     "when": { "job_group": ["현장", "사무"], "sector": ["memory", "foundry", "packaging", "equipment_global", "equipment_korea"], "employment": "regular", "has_partner": true, "flag": "is_employed" },
-    "weight": 4, "once": true, "big": true, "tags": ["work", "family"],
+    "weight": 4, "once": true, "big": false, "tags": ["work", "family"],
     "recap": "해외 신규 팹 파견",
     "text": "해외 신규 팹 셋업 TF 명단에 내 이름이 올랐어요. 2년 파견, 수당이 꽤 붙는대요. 저녁 식탁에서 {partner}가 젓가락을 내려놔요.",
     "choices": [
@@ -402,7 +402,7 @@
     "id": "drama_layoff_hand",
     "age": [40, 58], "year": [1997, null],
     "when": { "job_group": ["현장", "사무"], "company_state": [-2, -1], "flag": "is_employed" },
-    "weight": 6, "once": true, "big": true, "tags": ["work", "social"],
+    "weight": 6, "once": true, "big": false, "tags": ["work", "social"],
     "recap": "동기 대신 희망퇴직",
     "text": "희망퇴직 면담 날, 회의실 앞 복도에 입사 동기와 나란히 앉았어요. 동기가 휴대폰 속 둘째 사진을 보다가 화면을 꺼요.",
     "choices": [
@@ -443,7 +443,7 @@
     "id": "drama_esop",
     "age": [25, 55], "year": [1990, null],
     "when": { "job_group": ["현장", "사무"], "sector": ["memory", "foundry", "packaging", "equipment_korea", "materials"], "employment": "regular", "flag": "is_employed" },
-    "weight": 4, "once": true, "big": true, "tags": ["invest", "risk"], "bias": { "trait.risk": 0.5 },
+    "weight": 4, "once": true, "big": false, "tags": ["invest", "risk"], "bias": { "trait.risk": 0.5 },
     "recap": "우리사주 몰빵",
     "text": "사내 게시판에 우리사주 청약 공지가 떴어요. 사내 대출까지 끼면 연봉 한 해치를 살 수 있대요. 동기 단톡방은 벌써 ‘영끌’ 얘기뿐이에요.",
     "choices": [
@@ -530,7 +530,7 @@
     "id": "drama_fab_blackout",
     "age": [22, 55], "year": [1990, null],
     "when": { "job": ["equipment_engineer", "process_engineer", "operator", "yield_engineer"], "sector": ["memory", "foundry"], "flag": "is_employed" },
-    "weight": 3, "once": true, "big": true, "tags": ["work"],
+    "weight": 3, "once": true, "big": false, "tags": ["work"],
     "recap": "팹 정전 비상",
     "text": "새벽 4시, 순간 정전으로 팹 전체가 깜깜해졌어요. 비상등 아래 장비 알람이 한꺼번에 울리고, 챔버 안 웨이퍼는 그대로 멈췄어요.",
     "choices": [
@@ -544,7 +544,7 @@
     "id": "drama_audit_vs_child",
     "age": [27, 39], "year": [1995, null],
     "when": { "job_group": ["현장", "사무"], "has_children": true, "flag": "is_employed" },
-    "weight": 5, "once": true, "big": true, "tags": ["work", "family"],
+    "weight": 5, "once": true, "big": false, "tags": ["work", "family"],
     "recap": "감사 날 아픈 아이",
     "text": "고객사 품질 감사 날 아침 7시, 어린이집에서 전화가 왔어요. {child}가 열이 39도래요. 감사 발표 자료는 내 노트북에만 있어요.",
     "choices": [
@@ -558,7 +558,7 @@
     "id": "drama_coin_2017",
     "age": [20, 60], "year": [2017, 2017],
     "when": { "flag": "is_employed" },
-    "weight": 8, "once": true, "big": true, "tags": ["invest", "risk"], "bias": { "trait.risk": 0.5 },
+    "weight": 8, "once": true, "big": false, "tags": ["invest", "risk"], "bias": { "trait.risk": 0.5 },
     "recap": "2017 코인 광풍",
     "text": "12월, 통근버스 안 휴대폰 화면이 전부 빨간 차트예요. 옆자리 동료가 “오늘 사면 내일 두 배”라며 거래소 앱을 깔아 줬어요.",
     "choices": [
@@ -572,7 +572,7 @@
     "id": "drama_coin_2021",
     "age": [20, 60], "year": [2020, 2021],
     "when": { "flag": "is_employed" },
-    "weight": 8, "once": true, "big": true, "tags": ["invest", "risk"], "bias": { "trait.risk": 0.5 },
+    "weight": 8, "once": true, "big": false, "tags": ["invest", "risk"], "bias": { "trait.risk": 0.5 },
     "recap": "코인 불장 탑승",
     "text": "점심시간 식판 앞에서 동기가 수익률 화면을 내밀어요. ‘+340%’. “너만 안 하고 있어. 이번 불장은 진짜야.”",
     "choices": [
@@ -625,7 +625,7 @@
     "id": "drama_stock_peak",
     "age": [22, 60], "year": [1990, null],
     "when": { "cash_min": "@salary*0.3", "trait_min": { "risk": 0 } },
-    "market": { "cycle": [2, 2] }, "weight": 1.5, "once": true, "big": true, "tags": ["invest", "risk"], "bias": { "trait.risk": 0.5 },
+    "market": { "cycle": [2, 2] }, "weight": 1.5, "once": true, "big": false, "tags": ["invest", "risk"], "bias": { "trait.risk": 0.5 },
     "recap": "호황 꼭지 반도체주",
     "text": "신문 1면에 ‘반도체 슈퍼 사이클’이 걸렸어요. 증권사 다니는 친구가 “신용 끼면 수익이 두 배야” 하며 계좌 개설 링크를 보내요.",
     "choices": [
@@ -710,7 +710,7 @@
     "id": "drama_jeonse_villa",
     "age": [26, 42], "year": [2019, 2023],
     "when": { "has_house": false },
-    "weight": 6, "once": true, "big": true, "tags": ["money", "risk"],
+    "weight": 6, "once": true, "big": false, "tags": ["money", "risk"],
     "recap": "신축 빌라 전세",
     "text": "신축 빌라 전세가 매매가의 95%래요. 공인중개사가 “집주인이 수백 채 가진 분이라 오히려 안전해요” 하며 계약서를 내밀어요.",
     "choices": [
@@ -750,7 +750,7 @@
     "id": "drama_parent_debt",
     "age": [30, 48], "year": [1980, null],
     "when": { "parents_alive": true },
-    "weight": 1, "once": true, "big": true, "tags": ["family", "money"],
+    "weight": 1, "once": true, "big": false, "tags": ["family", "money"],
     "recap": "부모님의 빚",
     "text": "명절 설거지를 끝내자 부모님이 은행 독촉장을 식탁에 내려놓으세요. 지인 사업에 보탠 돈이 빚이 돼 돌아왔대요.",
     "choices": [
@@ -790,7 +790,7 @@
     "id": "drama_yeongkkeul",
     "age": [27, 45], "year": [2020, 2021],
     "when": { "has_house": false, "flag": "is_employed" },
-    "weight": 6, "once": true, "big": true, "tags": ["money", "risk"],
+    "weight": 6, "once": true, "big": false, "tags": ["money", "risk"],
     "recap": "영끌 내 집 마련",
     "text": "아파트 단지 단톡방에 ‘오늘도 신고가’ 알림이 울려요. 대출 상담사가 계산기를 두드리며 말해요. “신용대출까지 영끌하면 딱 돼요.”",
     "choices": [
@@ -817,7 +817,7 @@
     "id": "drama_blind_date_rival",
     "age": [24, 38], "year": [1990, null],
     "when": { "has_partner": false, "job_group": ["현장", "사무"], "flag": "is_employed" },
-    "weight": 8, "once": true, "big": true, "tags": ["romance", "work"],
+    "weight": 8, "once": true, "big": false, "tags": ["romance", "work"],
     "recap": "소개팅 상대는 옆 부서",
     "text": "소개팅 카페, 상대 가방 끈에 낯익은 사원증 목걸이가 걸려 있어요. 하필 매주 회의에서 우리 팀과 부딪치는 옆 부서래요.",
     "choices": [
@@ -879,7 +879,7 @@
     "id": "drama_leave_debate",
     "age": [26, 40], "year": [2001, 2023],
     "when": { "flag": ["is_married", "is_employed"], "has_children": true, "employment": ["regular", "contract"] },
-    "weight": 6, "once": true, "big": true, "tags": ["family", "work"],
+    "weight": 6, "once": true, "big": false, "tags": ["family", "work"],
     "recap": "육아휴직 누가 쓸까",
     "text": "{child} 어린이집 대기 번호가 석 달째 87번이에요. 양가 부모님은 KTX로 두 시간 거리예요. {partner}와 식탁에 달력을 펼쳐요.",
     "choices": [
@@ -893,7 +893,7 @@
     "id": "drama_leave_debate_66",
     "age": [26, 40], "year": [2024, null],
     "when": { "flag": ["is_married", "is_employed"], "has_children": true, "employment": ["regular", "contract"] },
-    "weight": 6, "once": true, "big": true, "tags": ["family", "work"],
+    "weight": 6, "once": true, "big": false, "tags": ["family", "work"],
     "recap": "6+6 육아휴직",
     "text": "6+6 부모육아휴직제가 생겼어요. 둘이 같이 쓰면 첫 6개월 급여가 확 늘어난대요. 그런데 팀 달력엔 내 이름 옆 ‘양산 일정’이 빨갛게 칠해져 있어요.",
     "choices": [
@@ -937,7 +937,7 @@
     "id": "drama_child_semi_major",
     "age": [38, 75], "year": [1990, null],
     "when": { "has_children": true, "flag_any": ["pushed_child_medic", "child_free_choice"], "not_flag": "pushed_child_semi" },
-    "weight": 8, "once": true, "big": true, "tags": ["family"],
+    "weight": 8, "once": true, "big": false, "tags": ["family"],
     "recap": "반도체학과만 쓴 진로표",
     "text": "{child}가 진로 상담 결과지를 식탁에 펼쳤어요. 희망 학과 1지망부터 6지망까지 전부 반도체 관련 학과예요. “요즘 반도체 모르면 간첩이래.”",
     "choices": [
@@ -977,7 +977,7 @@
     "id": "drama_care_vs_promo",
     "age": [40, 58], "year": [1990, null],
     "when": { "job_group": ["현장", "사무"], "parents_alive": true, "flag": "is_employed" },
-    "weight": 3, "once": true, "big": true, "tags": ["family", "work"],
+    "weight": 3, "once": true, "big": false, "tags": ["family", "work"],
     "recap": "간병과 승진 사이",
     "text": "승진 심사를 두 달 앞둔 월요일, 어머니가 계단에서 넘어져 고관절 수술을 받으셨대요. 재활에만 반년이 걸린대요.",
     "choices": [
@@ -1018,7 +1018,7 @@
     "id": "drama_friend_shop",
     "age": [32, 58], "year": [1985, null],
     "when": { "sector": ["memory", "foundry", "packaging"], "flag": "is_employed" },
-    "weight": 3, "once": true, "big": true, "tags": ["social", "risk"],
+    "weight": 3, "once": true, "big": false, "tags": ["social", "risk"],
     "recap": "친구의 동업 제안",
     "text": "20년 지기 친구가 {company} 정문 앞 상가 1층 계약서를 들고 왔어요. “교대 끝나는 시간에 맞춘 치킨집. 너랑 나랑 반반.”",
     "choices": [
@@ -1063,7 +1063,7 @@
     "id": "drama_marriage_crisis",
     "age": [32, 62], "year": [1980, null],
     "when": { "flag": "is_married" },
-    "weight": 1, "once": true, "big": true, "tags": ["family", "conflict"], "bias": { "trait.work_life": 0.8 },
+    "weight": 1, "once": true, "big": false, "tags": ["family", "conflict"], "bias": { "trait.work_life": 0.8 },
     "recap": "이혼 위기",
     "text": "결혼기념일 밤 11시, 현관에 들어서니 식탁 위 케이크 초가 다 녹아 있어요. {partner}가 조용히 말해요. “우리, 얘기 좀 해.”",
     "choices": [

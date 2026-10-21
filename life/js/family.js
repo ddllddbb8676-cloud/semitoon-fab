@@ -67,11 +67,11 @@ export function familyYearStart(L, triggers) {
     if (rng.chance(p)) newPartner(L, s.age >= M - 4 && y < 1990 && rng.chance(0.5) ? 'matchmaking' : 'life');
   }
   const pt = rel.partner;
-  // 프러포즈 (8.4)
-  if (pt && !pt.married && y - pt.met_year >= 1 && s.age >= 20 && pt.love >= 60) {
+  // 프러포즈 (8.4) — 같은 연인에게는 두 번까지만 묻습니다 (v0.2: 같은 질문 반복 줄이기)
+  if (pt && !pt.married && y - pt.met_year >= 1 && s.age >= 20 && pt.love >= 60 && (pt.asked ?? 0) < 2) {
     const M = lerpTable(MARRY_AGE[s.profile.gender], Math.min(y, 2026));
     const p = 0.05 + 0.35 * Math.exp(-(((s.age - M) / 6) ** 2));
-    if (rng.chance(p)) triggers.set('proposal', {});
+    if (rng.chance(p)) { triggers.set('proposal', {}); pt.asked = (pt.asked ?? 0) + 1; }
   }
   // 출산 기회 (8.5)
   if (pt?.married && !s.flags.childfree && !s.flags.family_complete) {

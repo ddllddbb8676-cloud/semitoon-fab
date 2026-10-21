@@ -1,7 +1,7 @@
 // 화면 그리기 (담당: Claude)
 // index.html의 계약된 요소(docs/UI_CONTRACT.md)에 글자와 data-속성만 채웁니다. 모양은 전부 CSS 몫입니다.
 
-import { won, scoreWord } from './format.js';
+import { won, wonSigned, scoreWord } from './format.js';
 import { STATS, AXES, TRAIT_NAMES, KIND_NAMES, stageName, statusOf, activeTraits, clamp } from './core.js';
 import { jobName, rankName } from './career.js';
 import { stageLabel, TRACK_NAMES } from './school.js';
@@ -26,7 +26,9 @@ export function showScreen(name) {
 export function toast(text, tone = '') {
   const t = el('div', 'toast', text);
   t.dataset.tone = tone;
-  $('toast-stack').append(t);
+  const stack = $('toast-stack');
+  stack.append(t);
+  while (stack.children.length > 2) stack.firstElementChild.remove(); // 빨리 넘길 때 화면을 덮지 않게 2개까지만
   setTimeout(() => t.remove(), 3500);
 }
 export function showTitle({ save, error }) {
@@ -85,7 +87,7 @@ export function renderHud(L, speed, paused) {
   document.body.dataset.stage = s.stage ?? '';
   document.body.dataset.speed = String(speed);
   document.body.dataset.paused = String(paused);
-  for (const b of document.querySelectorAll('.speed-btn')) b.dataset.active = String(Number(b.dataset.speed) === speed);
+  for (const b of document.querySelectorAll('.speed-btn')) b.dataset.active = String(b.dataset.speed === String(speed));
 }
 export function renderProgress(p) { $('year-progress').style.setProperty('--p', clamp(p, 0, 1).toFixed(3)); }
 export function renderHeadline(text) { $('headline').textContent = text ? `뉴스 · ${text}` : ''; }
@@ -123,6 +125,8 @@ export function renderStatus(L) {
   if (m.debt > 0) parts.push(`빚 ${won(m.debt, y)}`);
   if (m.houses.length) parts.push(`집 ${m.houses.length}채`);
   if (stocks > 0) parts.push(`주식 ${won(stocks, y)}`);
+  const coins = Object.values(m.coins ?? {}).reduce((a, v) => a + v, 0);
+  if (coins > 0) parts.push(`코인 ${won(coins, y)}`);
   const co = W.co(s.career.company);
   if (co && s.career.job) parts.push(`회사 실적 ${scoreWord(co.c)}`);
   if (!(s.age < 15 && m.cash < 1 && !m.debt)) $('money-line').textContent = parts.join(' · ');
@@ -141,16 +145,25 @@ export function renderFeed(L, reset = false) {
   const log = L.s.log;
   if (reset || feedCount > log.length) { ol.replaceChildren(); feedCount = Math.max(0, log.length - 150); }
   const items = log.slice(feedCount);
-  for (const x of items) {
-    const li = el('li', 'feed-item');
-    li.dataset.importance = String(x.importance);
-    li.dataset.kind = x.kind ?? '';
-    li.dataset.new = String(!reset);
-    li.append(el('span', 'feed-item__when', `${x.year} · ${x.age}세`), x.text);
-    ol.prepend(li);
-  }
+  for (const x of items) ol.prepend(feedItem(x, !reset));
   feedCount = log.length;
   while (ol.children.length > 200) ol.lastChild.remove();
+}
+
+// 연표 한 줄. 사건 선택이면 "질문 요약 → 내 선택 → 결과"를 나눠 그림
+function feedItem(x, isNew) {
+  const li = el('li', 'feed-item');
+  li.dataset.importance = String(x.importance);
+  li.dataset.kind = x.kind ?? '';
+  li.dataset.new = String(isNew);
+  if (x.later) li.dataset.later = 'true';
+  li.append(el('span', 'feed-item__when', `${x.year} · ${x.age}세`));
+  if (x.q !== undefined && x.pick !== undefined) {
+    if (x.later) li.append(el('span', 'feed-item__tag', typeof x.later === 'number' ? `그때 그 선택… ${x.later}` : '그때 그 선택…'));
+    li.append(el('span', 'feed-item__q', x.q), el('span', 'feed-item__arrow', ' → '), el('b', 'feed-item__pick', x.pick));
+    if (x.res) li.append(el('span', 'feed-item__arrow', ' → '), el('span', 'feed-item__res', x.res));
+  } else li.append(x.text);
+  return li;
 }
 
 export function selectTab(tab) {
@@ -180,7 +193,7 @@ function panelMe(L) {
     ['태어난 곳', `${D.regions.get(s.profile.birth_region)?.name ?? ''} (${s.profile.birth_year}년)`],
     ['사는 곳', `${D.regions.get(s.profile.region)?.name ?? ''}${W.nearFab(s.profile.region, s.year) ? ' · 공장 동네' : ''}`],
     ['집안 형편', WEALTH[s.profile.family.wealth]],
-    ['학력', `${e.level}${e.stage ? ` (${stageLabel(e.stage, s.year, e.track)} 다니는 중)` : e.track ? ` · ${TRACK_NAMES[e.track]}` : ''}${e.major ? ` · ${D.majors.find((m) => m.id === e.major)?.name ?? ''}` : ''}`],
+    ['학력', `${e.level}${e.stage ? ` (${stageLabel(e.stage, s.year, e.track)} 다니는 중)` : e.track ? ` · ${TRACK_NAMES[e.track]}` : ''}${e.major ? ` · ${D.majors.find((m) => m.id === e.major)?.name ?? ''}` : ''}${e.specialty_name ? ` · ${e.specialty_name} 전공` : ''}`],
     ['병역', s.profile.gender === 'm' ? ({ none: '아직', serving: '복무 중', done: '마침', exempt: '면제', deferred: '연기', officer_pending: '졸업 뒤 장교' }[s.military.status] ?? '') : null],
     ['숨은 재능', s.talent?.revealed ? talent?.name : '???'],
     ['건강', s.condition.length ? s.condition.map((c) => ({ hypertension: '고혈압', diabetes: '당뇨', cancer: '암', heart: '심혈관 질환', back_pain: '허리 디스크', depression: '우울증', dementia: '치매', injury: '부상' }[c.id])).join(', ') : '건강해요'],
@@ -238,7 +251,8 @@ function panelWork(L) {
     ['현금', won(m.cash, y)],
     ['빚', m.debt > 0 ? won(m.debt, y) : '없음'],
     ['집', m.houses.length ? m.houses.map((h) => `${D.regions.get(h.region)?.name ?? ''} ${won(h.value, y)}`).join(', ') : '없음'],
-    ['주식', Object.keys(m.stocks).length ? Object.entries(m.stocks).map(([id, h]) => `${id === 'semi_index' ? '반도체 지수' : id === 'index' ? '코스피' : W.companyName(id)} ${won(h.value, y)}`).join(', ') : '없음'],
+    ['주식', Object.keys(m.stocks).length ? Object.entries(m.stocks).map(([id, h]) => `${id === 'semi_index' ? '반도체 지수' : id === 'index' ? '코스피' : W.companyName(id)} ${won(h.value, y)}${h.cost > 0 ? ` (${h.value >= h.cost ? '+' : '−'}${Math.abs(Math.round(100 * (h.value / h.cost - 1)))}%)` : ''}`).join(', ') : '없음'],
+    ['코인', Object.values(m.coins ?? {}).some((v) => v > 0) ? `${Object.entries(m.coins).filter(([, v]) => v > 0).map(([k, v]) => `${{ btc: '비트코인', alt: '알트코인', meme: '잡코인' }[k] ?? k} ${won(v, y)}`).join(', ')}${m.coin_cost > 0 ? ` (넣은 돈 ${won(m.coin_cost, y)})` : ''}` : null],
     ['지난해 수입', m.last ? won(m.last.income, y - 1) : null],
     ['지난해 지출', m.last ? won(m.last.spend, y - 1) : null],
     ['순자산', won(m.networth ?? 0, y)],
@@ -315,7 +329,8 @@ export function showEvent(view) {
   card.dataset.phase = 'choose';
   card.dataset.id = view.id;
   document.body.dataset.event = view.big ? 'big' : 'small';
-  $('event-kicker').textContent = view.big ? '인생의 갈림길' : '';
+  card.dataset.later = String(!!view.later);
+  $('event-kicker').textContent = view.kicker ?? (view.big ? '인생의 갈림길' : '');
   $('event-text').textContent = view.text;
   const box = $('event-choices');
   box.replaceChildren();
@@ -340,10 +355,11 @@ export function showResult(out, year) {
   const chips = $('event-chips');
   chips.replaceChildren();
   for (const c of out.chips ?? []) {
-    const sp = el('span', 'chip', c.money !== undefined ? `${c.label} ${c.money > 0 && c.label === '돈' ? '+' : ''}${won(c.money, year)}` : c.label);
+    const sp = el('span', 'chip', c.money !== undefined ? `${c.label} ${wonSigned(c.money, year)}` : c.label);
     sp.dataset.tone = c.tone ?? '';
     chips.append(sp);
   }
+  chips.hidden = !(out.chips ?? []).length;
   $('event-ok').focus({ preventScroll: true });
 }
 export function hideEvent() {
@@ -390,6 +406,13 @@ export function renderEnding(rv) {
   $('ending-timeline').replaceChildren(...rv.timeline.map(tlItem));
   $('ending-industry').replaceChildren(...rv.industry.map((t) => tlItem({ ...t, text: t.text.replace(/^\d{4}년 /, '') })));
   $('ending-numbers').replaceChildren(...rv.numbers.flatMap((n) => [el('dt', null, n.label), el('dd', null, n.value)]));
+  const ach = rv.achievements ?? [];
+  $('ending-achievements').replaceChildren(...(ach.length ? ach.map((a) => {
+    const li = el('li', 'ach');
+    li.dataset.id = a.id;
+    li.append(el('span', 'ach__when', `${a.year} · ${a.age}세`), el('span', 'ach__name', a.name));
+    return li;
+  }) : [el('li', 'ach ach--none', '이번 인생에서는 업적이 없었어요')]));
   $('ending-epitaph').hidden = !rv.epitaph;
   $('ending-epitaph').textContent = rv.epitaph ? `“${rv.epitaph}”` : '';
   $('ending-seed').textContent = `세계 시드 ${rv.seed}`;

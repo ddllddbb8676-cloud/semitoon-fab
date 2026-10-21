@@ -127,9 +127,11 @@ export function addFlag(s, f) {
 
 // ---------- 기록 ----------
 
-export function addLog(L, text, importance = 1, kind = 'life', eventId = null) {
+// extra: 사건 선택이면 { q: 질문 요약, pick: 내 선택, res: 결과, later: 그때 그 해 } (화면이 나눠 그림)
+export function addLog(L, text, importance = 1, kind = 'life', eventId = null, extra = null) {
   const s = L.s;
   const item = { year: s.year, age: s.age, text, importance, kind, event_id: eventId };
+  if (extra) for (const [k, v] of Object.entries(extra)) if (v !== undefined && v !== null) item[k] = v;
   s.log.push(item);
   L.emit?.('log', item);
   return item;

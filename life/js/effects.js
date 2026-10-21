@@ -1,9 +1,9 @@
 // 선택지 효과 적용 (담당: Claude, DOM 없음) — SPEC "effects 키", SYSTEMS 1.4 순서
 // 순서: do → 능력치·성향·행복·평판·친구 → cash/debt → flag → semi → title_progress → goto
 
-import { STATS, STAT_NAMES, AXES, clamp, hasTrait, addFlag, addLog, addSemi, asArray, warnOnce } from './core.js';
+import { STATS, STAT_NAMES, AXES, TRAIT_NAMES, clamp, hasTrait, addFlag, addLog, addSemi, asArray, warnOnce, josa } from './core.js';
 import { plasticity, revealTalent, DISEASES } from './health.js';
-import { resolveMoney, doHouse, doInvest } from './money.js';
+import { resolveMoney, doHouse, doInvest, doCoin, doStock, doIndex, investValue } from './money.js';
 import { hire, hireDirect, clearJob, retireNow, workRegion, moveTo, jobName } from './career.js';
 import { doSchool, doMajor, doMilitary } from './school.js';
 import { doPartner, doChild, surnameOf } from './family.js';
@@ -29,14 +29,58 @@ export function checkChance(L, choice) {
   return clamp(0.5 + (v - (ck.dc ?? 50)) / 50 + b, 0.1, 0.9);
 }
 
+// 효과 전후 상태를 비교해 결과 카드 칩을 만듭니다 (do 동작이 바꾼 것까지 한 번에)
+function snap(L) {
+  const { s } = L;
+  const m = s.money;
+  const c = s.career;
+  return {
+    stats: { ...s.stats }, happiness: s.happiness, rep: c.reputation, friends: s.relations.friends, traits: { ...s.traits },
+    cash: m.cash, debt: m.debt, inv: investValue(L), houses: m.houses.length,
+    partner: s.relations.partner?.name ?? null, married: !!s.relations.partner?.married, kids: s.relations.children.length,
+    job: c.job ? `${c.job}|${c.company}|${c.employment}` : null, rank: c.rank, smod: c.salary_mod ?? 0,
+  };
+}
+const num = (label, v, unit = '') => ({ label: `${label} ${v > 0 ? '+' : '−'}${Math.abs(v)}${unit}`, tone: v > 0 ? 'good' : 'bad' });
+export function diffChips(L, a, b) {
+  const { s } = L;
+  const out = [];
+  for (const k of STATS) { const v = Math.round(b.stats[k] - a.stats[k]); if (v) out.push(num(STAT_NAMES[k], v)); }
+  const h = Math.round(b.happiness - a.happiness); if (h) out.push(num('행복', h));
+  const r = Math.round(b.rep - a.rep); if (r && a.job === b.job) out.push(num('평판', r));
+  const f = Math.round(b.friends - a.friends); if (f) out.push(num('친구', f));
+  for (const ax of AXES) {
+    const d = b.traits[ax] - a.traits[ax];
+    if (Math.abs(d) < 2) continue;
+    out.push({ label: `${TRAIT_NAMES[ax][d > 0 ? 1 : 0]} ${Math.abs(d) >= 8 ? '↑↑' : '↑'}`, tone: 'trait' });
+  }
+  const dc = b.cash - a.cash;
+  const dInv = b.inv - a.inv;
+  const dd = b.debt - a.debt;
+  if (Math.abs(dc) >= 1) out.push({ label: '현금', money: dc, tone: dc > 0 ? 'good' : 'bad' });
+  if (Math.abs(dInv) >= 1) out.push({ label: '투자', money: dInv, tone: 'money' });
+  if (Math.abs(dd) >= 1) out.push({ label: '빚', money: dd, tone: dd > 0 ? 'bad' : 'good' });
+  if (b.houses !== a.houses) out.push({ label: b.houses > a.houses ? '내 집 +1' : '집 −1', tone: b.houses > a.houses ? 'good' : 'bad' });
+  if (!a.partner && b.partner) out.push({ label: `연인 · ${b.partner}`, tone: 'good' });
+  else if (a.partner && !b.partner) out.push({ label: a.married ? '이혼' : '이별', tone: 'bad' });
+  else if (!a.married && b.married) out.push({ label: '결혼', tone: 'good' });
+  if (b.kids > a.kids) out.push({ label: `아이 +${b.kids - a.kids}`, tone: 'good' });
+  if (a.job !== b.job) out.push({ label: b.job ? (a.job ? '새 직장' : '취업') : '퇴사', tone: b.job ? 'good' : 'bad' });
+  else if (b.job && b.rank > a.rank) out.push({ label: '직급 ↑', tone: 'good' });
+  const sm = Math.round(100 * (b.smod - a.smod)); if (sm && a.job === b.job) out.push(num('연봉', sm, '%'));
+  void s;
+  return out;
+}
+
 // effects 하나를 적용하고 변화 칩 목록을 돌려줍니다. ctx: 사건 맥락(라이벌·제안·아이 이름 등) + notes/cancelGoto/requeue
 export function applyEffects(L, eff, ctx, ev) {
   const { s } = L;
-  const chips = [];
   ctx.notes ??= [];
   ctx.semiAdded = !!eff.semi;
   ctx.eventId = ev?.id ?? null;
   const tags = ev?.tags ?? [];
+  const before = snap(L);
+  const extra = [];
 
   for (const act of asArray(eff.do)) doAction(L, String(act), ctx);
 
@@ -44,7 +88,6 @@ export function applyEffects(L, eff, ctx, ev) {
     if (STATS.includes(k)) {
       const v = Number(raw) || 0;
       s.stats[k] = clamp(s.stats[k] + v, 0, 100);
-      if (v) chips.push({ label: `${STAT_NAMES[k]} ${v > 0 ? '+' : '−'}${Math.abs(v)}`, tone: v > 0 ? 'good' : 'bad' });
     } else if (k.startsWith('trait.')) {
       const axis = k.slice(6);
       if (!AXES.includes(axis)) { warnOnce(`trait-${axis}`, `알 수 없는 성향 축: ${axis}`); continue; }
@@ -53,17 +96,12 @@ export function applyEffects(L, eff, ctx, ev) {
       let v = Number(raw) || 0;
       if (v < 0) v *= (hasTrait(s, 'diligence', '-') ? 0.8 : 1) * (hasTrait(s, 'outlook', '+') ? 0.7 : 1) * (hasTrait(s, 'outlook', '-') ? 1.3 : 1);
       if (v > 0 && tags.includes('family') && hasTrait(s, 'work_life', '-')) v *= 1.2;
-      v = Math.round(v);
-      s.happiness = clamp(s.happiness + v, 0, 100);
-      if (v) chips.push({ label: `행복 ${v > 0 ? '+' : '−'}${Math.abs(v)}`, tone: v > 0 ? 'good' : 'bad' });
+      s.happiness = clamp(s.happiness + Math.round(v), 0, 100);
     } else if (k === 'reputation') {
       const v = Math.round((Number(raw) || 0) * (hasTrait(s, 'work_life', '+') ? 1.2 : 1));
       s.career.reputation = clamp(s.career.reputation + v, 0, 100);
-      if (v) chips.push({ label: `평판 ${v > 0 ? '+' : '−'}${Math.abs(v)}`, tone: v > 0 ? 'good' : 'bad' });
     } else if (k === 'friends') {
-      const v = Number(raw) || 0;
-      s.relations.friends = clamp(s.relations.friends + v, 0, 100);
-      if (v) chips.push({ label: `친구 ${v > 0 ? '+' : '−'}${Math.abs(v)}`, tone: v > 0 ? 'good' : 'bad' });
+      s.relations.friends = clamp(s.relations.friends + (Number(raw) || 0), 0, 100);
     }
   }
 
@@ -76,7 +114,6 @@ export function applyEffects(L, eff, ctx, ev) {
       }
       s.money.cash += v;
       if (s.money.cash < 0) { s.money.debt += -s.money.cash; s.money.cash = 0; }
-      if (v) chips.push({ label: '돈', money: v, tone: v > 0 ? 'good' : 'bad' });
     }
   }
   if (eff.debt !== undefined) {
@@ -85,7 +122,6 @@ export function applyEffects(L, eff, ctx, ev) {
       const before = s.money.debt;
       s.money.debt = Math.max(0, before + v);
       if (v < 0 && -v > before) s.money.cash += -v - before; // 갚고 남은 돈은 현금으로
-      if (v) chips.push({ label: v > 0 ? '빚' : '빚 상환', money: Math.abs(v), tone: v > 0 ? 'bad' : 'good' });
     }
   }
   for (const f of asArray(eff.flag)) addFlag(s, f);
@@ -93,11 +129,29 @@ export function applyEffects(L, eff, ctx, ev) {
     const text = typeof eff.semi === 'string' ? eff.semi : eff.semi.text;
     const kind = typeof eff.semi === 'object' && eff.semi.kind ? eff.semi.kind : guessKind(L, tags);
     const filled = ctx.fill ? ctx.fill(text) : text;
-    if (addSemi(L, filled, kind, ev?.id)) chips.push({ label: '반도체 순간', tone: 'semi', text: filled });
+    if (addSemi(L, filled, kind, ev?.id)) extra.push({ label: '반도체 순간', tone: 'semi', text: filled });
   }
   if (eff.title_progress) for (const t of asArray(eff.title_progress)) s.titles[t] = (s.titles[t] ?? 0) + (hasTrait(s, 'conform', '-') && t === '소신 엔지니어' ? 2 : 1);
+  if (eff.later) for (const l of asArray(eff.later)) scheduleLater(L, l, ev, ctx);
   const gotoId = ctx.cancelGoto ? null : eff.goto ?? null;
-  return { chips, goto: ctx.requeue ?? gotoId };
+  return { chips: [...diffChips(L, before, snap(L)), ...extra], goto: ctx.requeue ?? gotoId };
+}
+
+// 나중에 돌아오는 결과 (SPEC effects.later): 해를 정해 s.later에 넣어 두면 events.buildQueue가 그 해에 강제로 띄웁니다
+const LATER_CTX = ['company', 'rival', 'acquirer', 'client', 'region', 'child', 'tech', 'skill'];
+export function scheduleLater(L, l, ev, ctx = {}) {
+  const { s, rng, D } = L;
+  if (!l || typeof l.event !== 'string') return;
+  if (!D.eventById.has(l.event)) { warnOnce(`later-${l.event}`, `later 대상 사건이 없어요: ${l.event}`); return; }
+  if (!rng.chance(l.chance ?? 1)) return;
+  const [a, b] = Array.isArray(l.years) ? l.years : [1, 3];
+  const lo = Math.max(1, Number(a) || 1);
+  const hi = Math.max(lo, Number(b ?? a) || lo);
+  const keep = {};
+  for (const k of LATER_CTX) if (ctx[k] !== undefined && ctx[k] !== null) keep[k] = ctx[k];
+  s.later ??= [];
+  s.later_n = (s.later_n ?? 0) + 1;
+  s.later.push({ id: l.event, year: s.year + rng.int(lo, hi), made: s.year, from: ev?.id ?? null, pick: ctx.pick ?? null, ctx: keep });
 }
 
 // semi 효과가 글자만이면 kind 추정: 지금 직종 touch → 사건 tags → place (SYSTEMS 7)
@@ -111,7 +165,7 @@ function guessKind(L, tags) {
 }
 
 // ---------- do 동작 ----------
-const SUPPORTED_NOTE = 'school·major·military·job·salary_mod·bonus·partner·child·house·invest·move·wealth·habit·cond·talent·skill_point·again·loan·repay';
+const SUPPORTED_NOTE = 'school·major·military·job·salary_mod·salary_mult·bonus·partner·child·house·invest·stock·index·coin·move·wealth·habit·cond·talent·skill_point·again·loan·repay';
 export function doAction(L, act, ctx) {
   const { s } = L;
   const [verb, ...args] = act.split(':');
@@ -126,6 +180,29 @@ export function doAction(L, act, ctx) {
     case 'child': return doChild(L, args[0], ctx);
     case 'house': return doHouse(L, args[0]);
     case 'invest': return doInvest(L, args, ctx);
+    case 'coin': return doCoin(L, args);
+    case 'tenure': {
+      // 사는 형태 (간단형): 연말 주거비 배율만 바꿈 — money.settleYear
+      if (['jeonse', 'monthly', 'parents', 'dorm'].includes(args[0])) s.money.tenure = args[0];
+      else if (args[0] === 'own') { if (s.money.houses.length) s.money.tenure = null; }
+      else warnOnce(`do-tenure-${args[0]}`, `지원하지 않는 do: tenure:${args[0]}`);
+      return;
+    }
+    case 'leave': {
+      // 육아휴직·출산휴가 (간단형): 그 해 기본급 75%, 평판 조금 (family_policy.json 상세 규칙은 다음 판)
+      if (!s.career.job || !['parental', 'maternity'].includes(args[0])) return;
+      s.career.parental = { year: s.year, type: args[0] };
+      s.career.reputation = clamp(s.career.reputation - (s.year < 2010 ? 4 : 2), 0, 100);
+      addFlag(s, args[0] === 'parental' ? 'used_parental_leave' : 'used_maternity_leave');
+      return;
+    }
+    case 'stock': return doStock(L, args, ctx);
+    case 'index': return doIndex(L, args);
+    case 'salary_mult': {
+      const x = Number(args[0]);
+      if (x > 0) s.career.salary_mult = { x, until: s.year + Math.max(1, Number(args[1]) || 1) - 1 };
+      return;
+    }
     case 'move': return doMove(L, args);
     case 'wealth': s.profile.family.wealth = clamp(s.profile.family.wealth + (Number(args[0]) || 0), 1, 5); return;
     case 'habit': {
@@ -187,7 +264,7 @@ function doJob(L, args, ctx) {
     }
     case 'stay': case 'wait': return;
     case 'quit':
-      if (c.job) { addLog(L, `${W.companyName(c.company) || jobName(L)}을 떠났어요`, 2, 'work'); clearJob(L, 'quit'); }
+      if (c.job) { addLog(L, `${josa(W.companyName(c.company) || jobName(L), '을', '를')} 떠났어요`, 2, 'work'); clearJob(L, 'quit'); }
       return;
     case 'rest': s.rest_year = s.year + 1; if (c.job && ctx.eventId === 'company_bankrupt') clearJob(L, 'rest'); return;
     case 'search':

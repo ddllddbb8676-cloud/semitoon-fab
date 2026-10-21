@@ -17,8 +17,12 @@ const BAK_KEY = 'semilife.save.bak';
 const ARCHIVE_KEY = 'semilife.archive.v1';
 const SETTINGS_KEY = 'semilife.settings.v1';
 const YEAR_MS = 60_000;          // 1배속 = 1년 60초 (SPEC)
+const AUTO_YEAR_MS = 600;        // '자동' 배속: 사건 없는 해는 0.6초, 사건이 있으면 카드에서 기다림 (v0.2 기본)
 const SMALL_EVENT_MS = 15_000;   // 작은 사건은 실제 시간 15초 안에 안 고르면 default
-const RESULT_MS = 5_000;         // 작은 사건 결과는 5초 뒤 저절로 닫힘
+const RESULT_MS = 5_000;         // 작은 사건 결과는 5초 뒤 저절로 닫힘 (자동은 4초)
+const AUTO_RESULT_MS = 4_000;
+const SAVE_GAP_MS = 3_000;       // 자동 배속에서 해마다 저장하면 너무 잦아 3초에 한 번만 (큰 사건·멈춤·창 숨김 때는 바로)
+const SPEEDS = ['auto', 0, 1, 2, 4, 8];
 
 // localStorage가 막혀 있어도 게임은 돌아갑니다
 const store = {
@@ -30,7 +34,7 @@ const store = {
 
 let D = null;
 let L = null;
-const game = { speed: 4, progress: 0, card: null, lastTs: 0, tab: 'feed', worldSeed: null, year: null };
+const game = { speed: 'auto', progress: 0, card: null, lastTs: 0, tab: 'feed', worldSeed: null, year: null, lastSave: 0 };
 const create = { name: '', year: 1985, candidates: [], selected: -1, rerolls: 3, rng: null };
 
 // ---------- 엔진 → 화면·연출 ----------
@@ -41,7 +45,7 @@ function emit(type, detail = {}) {
     case 'trait': if (detail.gained) ui.toast(`특징이 생겼어요 · ${detail.name}`); break;
     case 'promo': ui.toast(`${ro(detail.name)} 승진했어요`); break;
     case 'talent': ui.toast(`숨은 재능을 찾았어요 · ${detail.name}`); break;
-    case 'achievement': ui.toast(`업적 · ${detail.name}`); break;
+    case 'achievement': ui.toast(`업적 달성 · ${detail.name}`, 'achievement'); break;
     default: break;
   }
 }
@@ -68,6 +72,7 @@ async function list(dir) {
 // ---------- 저장 (SYSTEMS 12장) ----------
 function save() {
   if (!L || L.s.dead) return;
+  game.lastSave = performance.now();
   if (L.s.turn) L.s.turn.progress = game.progress;
   const json = JSON.stringify(snapshot(L));
   const prev = store.raw(SAVE_KEY);
@@ -176,11 +181,12 @@ function refresh(yearChanged = false) {
   ui.renderPanel(L, game.tab);
 }
 const isPaused = () => game.speed === 0 || !!game.card?.big;
+const isAuto = () => game.speed === 'auto';
 
 function setSpeed(v) {
-  game.speed = v;
-  store.set(SETTINGS_KEY, { v: 1, speed: v });
-  if (v === 0) save();
+  game.speed = SPEEDS.includes(v) ? v : 'auto';
+  store.set(SETTINGS_KEY, { v: 2, speed: game.speed });
+  if (game.speed === 0) save();
   if (L) ui.renderHud(L, game.speed, isPaused());
 }
 
@@ -197,7 +203,7 @@ function pick(index) {
   if (!card || card.phase !== 'choose') return;
   const out = chooseEvent(L, card.inst, index);
   card.phase = 'result';
-  card.left = RESULT_MS;
+  card.left = isAuto() ? AUTO_RESULT_MS : RESULT_MS;
   ui.showResult(out, L.s.year);
   refresh();
   if (card.big) save();
@@ -220,25 +226,49 @@ function endYear() {
     game.worldSeed = L.s.seed;
     ui.renderEnding(rv);
     ui.showScreen('ending');
-    return;
+    return true;
   }
   beginYear(L);
   game.progress = 0;
-  save();
+  if (!isAuto() || performance.now() - game.lastSave >= SAVE_GAP_MS) save();
   refresh(true);
+  return false;
+}
+
+// "다음 사건까지 ▶▶": 열린 결과 카드를 닫고, 사건 카드가 열릴 때까지 해를 넘김 (한 번에 최대 40년)
+function skipToEvent() {
+  if (!L || L.s.dead) return;
+  if (game.card) {
+    if (game.card.phase !== 'result') return;
+    closeCard();
+  }
+  for (let i = 0; i < 200 && !game.card; i++) {
+    const inst = nextEvent(L, 1);
+    if (inst) { game.progress = Math.max(game.progress, inst.at); openCard(inst); continue; }
+    if (L.s.turn?.queue.length) continue;
+    if (L.s.year - (game.skipFrom ?? L.s.year) >= 40) break;
+    game.skipFrom ??= L.s.year;
+    if (endYear()) return;
+  }
+  game.skipFrom = null;
+  save();
+  ui.renderProgress(game.progress);
 }
 
 // ---------- 시계 ----------
 function tick(dt) {
   const card = game.card;
-  if (card && !card.big && game.speed > 0) {   // 플레이어가 멈춤을 누르면 읽을 시간을 줍니다
+  if (card && !card.big && game.speed !== 0) {   // 플레이어가 멈춤을 누르면 읽을 시간을 줍니다 (자동 포함)
     card.left -= dt;
     if (card.phase === 'choose') {
       ui.setTimer(card.left / SMALL_EVENT_MS);
       if (card.left <= 0) pick(card.view.defaultIndex);
     } else if (card.left <= 0) closeCard();
   }
-  if (!isPaused()) game.progress = Math.min(1, game.progress + dt / (YEAR_MS / game.speed / yearSpeedMult(L.s)));
+  if (!isPaused()) {
+    const yearMs = isAuto() ? AUTO_YEAR_MS : YEAR_MS / game.speed / yearSpeedMult(L.s);
+    game.progress = Math.min(1, game.progress + dt / yearMs);
+  }
   if (!game.card) {
     const inst = nextEvent(L, game.progress);
     if (inst) openCard(inst);
@@ -279,8 +309,9 @@ function bind() {
   });
   on('speed-controls', 'click', (e) => {
     const b = e.target.closest('.speed-btn');
-    if (b) setSpeed(Number(b.dataset.speed));
+    if (b) setSpeed(b.dataset.speed === 'auto' ? 'auto' : Number(b.dataset.speed));
   });
+  on('btn-skip', 'click', () => { try { skipToEvent(); } catch (err) { console.error(err); setSpeed(0); ui.toast('문제가 생겨 잠시 멈췄어요'); } });
   on('tabs', 'click', (e) => {
     const b = e.target.closest('.tab');
     if (!b) return;
@@ -302,7 +333,8 @@ function bind() {
 async function boot() {
   bind();
   const st = store.get(SETTINGS_KEY);
-  if (st && [0, 1, 2, 4, 8].includes(st.speed)) game.speed = st.speed || 4;
+  // v0 설정(v: 1, 기본 4배)은 무시하고 v0.2 기본 '자동'으로 시작
+  if (st?.v === 2 && SPEEDS.includes(st.speed)) game.speed = st.speed === 0 ? 'auto' : st.speed;
   try {
     D = await loadData(read, list);
   } catch (e) {

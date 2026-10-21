@@ -120,6 +120,33 @@ export class World {
     return this._jobMult.get(y)[jobId] ?? 1;
   }
 
+  // 비트코인 연 수익률: 2026년까지 coin_history.json 연말 시세, 그 뒤는 cycle_after_2026 규칙 (판 시드마다 같은 값)
+  btcReturn(y) {
+    const C = this.D.coin;
+    if (!C) return 0;
+    if (!this._btc) this._btc = new Map(C.years.map((r) => [r.year, r.btc_usd]));
+    const last = Math.max(...this._btc.keys());
+    if (y <= last) {
+      const a = this._btc.get(y);
+      const b = this._btc.get(y - 1);
+      return a && b ? a / b - 1 : 0;
+    }
+    if (!this._btcFut) {
+      const R = C.cycle_after_2026;
+      const rng = new Rng(streamSeed(this.ws.seed, 13));
+      this._btcFut = new Map();
+      for (let yy = last + 1; yy <= WORLD_END; yy++) {
+        const k = Math.max(0, Math.floor((yy - R.halving_years_from) / R.halving_every));
+        const ph = (((yy - R.halving_years_from) % R.halving_every) + R.halving_every) % R.halving_every;
+        const span = ph === 1 ? R.boom_return : ph === 2 ? R.bust_return : R.flat_return;
+        let r = rng.float(span[0], span[1]) * Math.pow(R.amplitude_decay_per_cycle, k);
+        if (rng.chance(R.collapse_chance)) r = R.collapse_return;
+        this._btcFut.set(yy, r);
+      }
+    }
+    return this._btcFut.get(Math.min(y, WORLD_END)) ?? 0;
+  }
+
   // 미래 의료 기술 (FUTURE 7.2): {life_d_bonus, cure_mult}
   medical(y) {
     if (y <= HISTORY_END) return { life_d_bonus: 0, cure_mult: 1 };
