@@ -1,0 +1,2442 @@
+[
+  {
+    "id": "gpt_t09_life_child_01",
+    "age": [
+      7,
+      12
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "child",
+      "tech": "ai_tutor_mainstream"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "교실 태블릿의 AI 선생님이 같은 힌트를 세 번 보여 줘요. 친구는 옆에서 종이를 뒤집고 있어요.",
+    "choices": [
+      {
+        "label": "AI 힌트를 더 풀어 봐요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1
+        },
+        "result": "쉬는 시간 종이 울려요. 이번엔 답보다 왜 같은 힌트였는지가 궁금해요."
+      },
+      {
+        "label": "친구와 종이에 풀어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "둘이 그린 도형의 모양이 달라요. 서로 종이를 돌리다 같이 웃어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_child_02",
+    "age": [
+      7,
+      12
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "child",
+      "tech": "robotaxi_korea"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "학교 앞 자율 셔틀이 경유 정류장을 보여 줘요. 친구는 한 정거장 먼저 내려 걷재요.",
+    "choices": [
+      {
+        "label": "친구와 먼저 내려요",
+        "effects": {
+          "health": 1,
+          "friends": 1,
+          "mental": -1
+        },
+        "result": "걸으며 오늘 시험 얘기를 해요. 교문에 닿자 셔틀이 뒤에서 따라와요."
+      },
+      {
+        "label": "집 앞까지 타고 가요",
+        "effects": {
+          "mental": 2,
+          "cash": "-@allowance*0.01"
+        },
+        "result": "창밖의 친구에게 손을 흔들어요. 집 앞 정류장 화면에 내 이름이 떠요.",
+        "when": {
+          "cash_min": "@allowance*0.01"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_child_03",
+    "age": [
+      7,
+      12
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "child",
+      "tech": "household_robot"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "거실 로봇이 내 종이 칩 모형을 정리함에 넣었어요. 숙제에 붙일 모형을 다시 찾아야 해요.",
+    "choices": [
+      {
+        "label": "보관함을 직접 고쳐요",
+        "effects": {
+          "dexterity": 2,
+          "health": -1
+        },
+        "result": "모형 칸에 이름표를 붙여요. 로봇이 이름표까지 다시 읽고 있어요."
+      },
+      {
+        "label": "도움 서비스를 불러요",
+        "effects": {
+          "mental": 1,
+          "cash": "-@allowance*0.02"
+        },
+        "result": "간식 살 돈을 조금 덜 남겼어요. 화면 속 안내자가 보관함을 같이 열어 줘요.",
+        "when": {
+          "cash_min": "@allowance*0.02"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_child_04",
+    "age": [
+      7,
+      12
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "child",
+      "region": "rural"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "작은 학교의 식판 수가 작년보다 줄었어요. 점심 뒤엔 다른 반과 운동장을 함께 쓴대요.",
+    "choices": [
+      {
+        "label": "다른 반 놀이에 끼어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "새 친구의 이름을 세 번 물었어요. 내 공도 그 친구 쪽으로 굴러가요."
+      },
+      {
+        "label": "혼자 그늘에서 쉬어요",
+        "effects": {
+          "mental": 2,
+          "trait.social": -3
+        },
+        "result": "운동장 소리를 들으며 그림을 그려요. 공이 오면 발로 살짝 돌려줘요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_teen_05",
+    "age": [
+      13,
+      19
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "teen",
+      "tech": "ai_tutor_mainstream"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "자습실 AI 튜터가 오늘 문제를 더 추천해요. 가방 위에는 동아리 신청서가 놓여 있어요.",
+    "choices": [
+      {
+        "label": "추천 문제를 더 풀어요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1
+        },
+        "result": "동아리 시작 알림을 넘겼어요. 풀이 화면 끝에 빈칸 하나가 남아요."
+      },
+      {
+        "label": "오늘은 화면을 닫아요",
+        "effects": {
+          "mental": 2,
+          "trait.diligence": -2
+        },
+        "result": "신청서를 넣고 자리에서 일어나요. 화면이 내일 같은 자리에서 이어 준대요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_teen_06",
+    "age": [
+      13,
+      19
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "teen",
+      "tech": "ucie_open_chiplet"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "학교 실습 책상에 칩렛 블록 모형이 놓였어요. 발표까지 남은 시간에 연결도를 바꿀 수 있어요.",
+    "choices": [
+      {
+        "label": "새 연결도를 만들어 봐요",
+        "effects": {
+          "dexterity": 2,
+          "health": -1
+        },
+        "result": "종이 블록이 책상 밖으로 길어져요. 마지막엔 공책을 다리처럼 받쳐요."
+      },
+      {
+        "label": "팀 발표 연습을 도와요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "내가 질문자 역할을 맡아요. 팀원이 준비한 답보다 웃음이 먼저 나와요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_teen_07",
+    "age": [
+      13,
+      19
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "teen",
+      "tech": "robotaxi_korea"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "도서관 앞 자율 셔틀의 다음 차가 늦어져요. 친구는 강변길로 걸어가자고 해요.",
+    "choices": [
+      {
+        "label": "친구와 걸어가요",
+        "effects": {
+          "health": 1,
+          "friends": 1,
+          "mental": -1
+        },
+        "result": "가방을 바꿔 메며 걸어요. 집 앞에서는 다음 차보다 먼저 도착했어요."
+      },
+      {
+        "label": "예약 차량을 기다려요",
+        "effects": {
+          "mental": 2,
+          "cash": "-@allowance*0.01"
+        },
+        "result": "용돈을 조금 더 썼어요. 차에 앉자 빌린 책이 무릎에서 펴져요.",
+        "when": {
+          "cash_min": "@allowance*0.01"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_teen_08",
+    "age": [
+      13,
+      19
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "teen",
+      "region": "rural"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "옛 학교 전시실에 졸업사진이 놓였어요. 우리 반이 사라진 교실의 지도를 만드는 중이에요.",
+    "choices": [
+      {
+        "label": "옛 교실 지도를 그려요",
+        "effects": {
+          "intelligence": 1,
+          "dexterity": 1,
+          "mental": -1
+        },
+        "result": "사진 속 칠판 위치를 표시해요. 현재 지도와 맞추니 문 하나가 남아요."
+      },
+      {
+        "label": "졸업생에게 이야기를 들어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "졸업생이 빈 문 자리를 가리켜요. 거기가 매점이었다며 웃어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_young_09",
+    "age": [
+      20,
+      34
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "young",
+      "tech": "on_device_ai"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "휴대폰이 집을 고르는 조건을 자동으로 묶었어요. 추천 목록에서 내 오래된 통학길은 빠졌어요.",
+    "choices": [
+      {
+        "label": "추천 조건을 직접 고쳐요",
+        "effects": {
+          "intelligence": 1,
+          "dexterity": 1,
+          "mental": -1
+        },
+        "result": "지도에 길을 다시 그어요. 제일 익숙한 길이 화면 아래로 올라와요."
+      },
+      {
+        "label": "먼저 동네를 걸어 봐요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "집 앞 편의점에서 길을 물어요. 휴대폰에는 없던 지름길 얘기를 들어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_young_10",
+    "age": [
+      20,
+      34
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "young",
+      "near_fab": true
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "산업단지 버스 정류장에 새 셔틀 노선표가 붙었어요. 환승을 줄이면 동네 친구와 탈 시간이 달라져요.",
+    "choices": [
+      {
+        "label": "친구와 환승해서 가요",
+        "effects": {
+          "health": 1,
+          "friends": 1,
+          "mental": -1
+        },
+        "result": "환승 계단에서 이야기가 길어져요. 도착 알림을 둘이 동시에 봐요."
+      },
+      {
+        "label": "직행 셔틀을 예약해요",
+        "effects": {
+          "mental": 2,
+          "cash": "-@avg_wage_month*0.01"
+        },
+        "result": "교통비를 조금 더 썼어요. 버스 안에서 처음으로 책 한 장을 끝까지 읽어요.",
+        "when": {
+          "cash_min": "@avg_wage_month*0.01"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_young_11",
+    "age": [
+      20,
+      34
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "young",
+      "scenario_active": "pandemic_supply_shock"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "동네 지원센터의 창구가 예약제로 바뀌었어요. 공급 차질 안내문 앞에 이웃이 서 있어요.",
+    "choices": [
+      {
+        "label": "이웃의 예약을 같이 도와요",
+        "effects": {
+          "friends": 2,
+          "mental": -2
+        },
+        "result": "접수 번호를 적어 건네요. 내 차례가 와서야 의자에 앉아요."
+      },
+      {
+        "label": "내 지원 상담부터 받아요",
+        "effects": {
+          "mental": 2,
+          "happiness": -1
+        },
+        "result": "내 예약 시간에 창구로 들어가요. 이웃에게는 상담 창구 번호를 적어 전해요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_young_12",
+    "age": [
+      20,
+      34
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "young",
+      "tech": "household_robot"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "공유 주방의 가사 로봇이 내 도시락통을 못 찾아요. 배달 앱은 이미 저녁 메뉴를 띄웠어요.",
+    "choices": [
+      {
+        "label": "수납 위치를 직접 바꿔요",
+        "effects": {
+          "dexterity": 2,
+          "health": -1
+        },
+        "result": "도시락통 칸에 그림을 붙여요. 다음엔 내 통이 제일 먼저 나와요."
+      },
+      {
+        "label": "오늘은 도움을 요청해요",
+        "effects": {
+          "mental": 1,
+          "cash": "-@avg_wage_month*0.02"
+        },
+        "result": "서비스 비용을 내고 잠시 앉아요. 도시락통보다 내 양말부터 쉬고 있어요.",
+        "when": {
+          "cash_min": "@avg_wage_month*0.02"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_middle_13",
+    "age": [
+      35,
+      59
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "middle",
+      "tech": "ai_tutor_mainstream"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "저녁 교육실 AI 화면에 다음 단원이 열렸어요. 달력에는 오래 미룬 쉬는 날이 표시돼 있어요.",
+    "choices": [
+      {
+        "label": "다음 단원까지 배워요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1
+        },
+        "result": "달력의 약속을 한 칸 옮겨요. 노트 끝에 새 용어가 줄을 서요."
+      },
+      {
+        "label": "오늘 배운 데서 멈춰요",
+        "effects": {
+          "mental": 2,
+          "trait.diligence": -2
+        },
+        "result": "화면을 닫고 집으로 가요. 가방 안 노트가 오늘은 가볍게 느껴져요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_middle_14",
+    "age": [
+      35,
+      59
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "middle",
+      "tech": "household_robot"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "아파트 공용 주방에 로봇 요리 시연 안내가 붙었어요. 집에는 혼자 데워 먹을 저녁도 있어요.",
+    "choices": [
+      {
+        "label": "이웃과 시연을 봐요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "로봇이 그릇을 놓을 때 모두 앞으로 몸을 기울여요. 맛보기 줄이 생겨요."
+      },
+      {
+        "label": "집에서 조용히 먹어요",
+        "effects": {
+          "mental": 2,
+          "trait.social": -3
+        },
+        "result": "내 그릇에 먹을 만큼만 담아요. 영상은 나중에 볼 목록에 넣어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_middle_15",
+    "age": [
+      35,
+      59
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "middle",
+      "scenario_active": "energy_crunch"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "아파트 게시판에 전력 수요가 몰리는 시간 안내가 붙었어요. 세탁기 예약 화면 앞에서 손이 멈춰요.",
+    "choices": [
+      {
+        "label": "기기 사용 시간을 조정해요",
+        "effects": {
+          "intelligence": 1,
+          "dexterity": 1,
+          "mental": -1
+        },
+        "result": "세탁 알림이 평소보다 늦게 와요. 다 마른 수건을 자정 전에 개요."
+      },
+      {
+        "label": "이웃과 공동 이용을 맞춰요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "세탁 시간표에 각자 이름을 적어요. 비어 있던 칸 하나를 같이 찾아요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_middle_16",
+    "age": [
+      35,
+      59
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "middle",
+      "tech": "korea_aged_40pct"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "동네 병원 버스가 복지관을 경유하게 됐어요. 걸으면 빠른데 책을 같이 읽는 이웃이 차를 기다려요.",
+    "choices": [
+      {
+        "label": "이웃과 걸어가요",
+        "effects": {
+          "health": 1,
+          "friends": 1,
+          "mental": -1
+        },
+        "result": "쉬는 의자에서 책 얘기를 해요. 병원 간판이 골목 끝에 보여요."
+      },
+      {
+        "label": "예약 차량을 이용해요",
+        "effects": {
+          "mental": 2,
+          "cash": "-@avg_wage_month*0.01"
+        },
+        "result": "교통비를 조금 더 썼어요. 대기실에서 외투를 벗고 숨을 돌려요.",
+        "when": {
+          "cash_min": "@avg_wage_month*0.01"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_senior_17",
+    "age": [
+      60,
+      110
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "senior",
+      "tech": "korea_aged_40pct"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "복지관 탁자에 새 생활권 지도가 놓였어요. 자주 가던 병원의 접수 창구가 다른 건물로 옮겼대요.",
+    "choices": [
+      {
+        "label": "지도를 직접 고쳐 적어요",
+        "effects": {
+          "intelligence": 1,
+          "dexterity": 1,
+          "mental": -1
+        },
+        "result": "수첩에 정류장과 입구를 그려요. 다음 쪽까지 화살표가 이어져요."
+      },
+      {
+        "label": "이웃과 길을 같이 알아봐요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "둘이 건물 앞을 한 바퀴 돌아요. 입구가 반대쪽이라 동시에 멈춰요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_senior_18",
+    "age": [
+      60,
+      110
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "senior",
+      "tech": "on_device_ai"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "휴대폰이 사진첩의 칩 공장 사진을 여행으로 분류했어요. 동네 수업에서 분류를 고치는 법을 배운대요.",
+    "choices": [
+      {
+        "label": "기기 사용 수업에 가요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1
+        },
+        "result": "사진 아래에 직접 설명을 붙여요. 같은 사진이 이제 내 기록함에 있어요."
+      },
+      {
+        "label": "이웃에게 같이 보자고 해요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "사진을 넘기다 옛 버스 얘기까지 나와요. 휴대폰 화면이 먼저 어두워져요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_senior_19",
+    "age": [
+      60,
+      110
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "senior",
+      "tech": "ai_drug_approval"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "병원 대기실에 AI 신약 설명 자료가 놓였어요. 옆자리 사람이 안내문의 어려운 말을 가리켜요.",
+    "choices": [
+      {
+        "label": "함께 설명 창구에 가요",
+        "effects": {
+          "friends": 2,
+          "mental": -2
+        },
+        "result": "번호표를 두 장 들고 기다려요. 상담자는 두 사람에게 따로 설명해 줘요."
+      },
+      {
+        "label": "내 상담 시간에 먼저 물어요",
+        "effects": {
+          "mental": 2,
+          "happiness": -1
+        },
+        "result": "내 번호가 뜨자 진료실로 들어가요. 수첩에 물을 질문을 다시 펼쳐요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_senior_20",
+    "age": [
+      60,
+      110
+    ],
+    "year": [
+      2027,
+      2059
+    ],
+    "when": {
+      "future": true,
+      "stage": "senior",
+      "tech": "robotaxi_korea"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "복지관 앞 자율 셔틀이 새 정류장을 안내해요. 산책 친구는 한 정거장을 걸어 보재요.",
+    "choices": [
+      {
+        "label": "친구와 천천히 걸어요",
+        "effects": {
+          "health": 1,
+          "friends": 1,
+          "mental": -1
+        },
+        "result": "그늘 의자에 앉아 물을 마셔요. 다음 셔틀이 지나갈 때 손을 흔들어요."
+      },
+      {
+        "label": "집 앞 정류장까지 타요",
+        "effects": {
+          "mental": 2,
+          "cash": "-@avg_wage_month*0.01"
+        },
+        "result": "차 안에서 다리를 쉬어요. 집 앞 화면에 도착 안내가 떠요.",
+        "when": {
+          "cash_min": "@avg_wage_month*0.01"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_child_21",
+    "age": [
+      7,
+      12
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "child",
+      "tech": "household_robot",
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 집의 가사 로봇이 내 블록 도시를 청소하려고 해요. 아직 다리 하나를 더 놓고 싶어요.",
+    "choices": [
+      {
+        "label": "블록 보관 구역을 만들어요",
+        "effects": {
+          "dexterity": 2,
+          "health": -1
+        },
+        "result": "상자에 도시라고 적어요. 로봇은 도시 입구에서 잠깐 멈춰요."
+      },
+      {
+        "label": "도움 화면을 열어요",
+        "effects": {
+          "mental": 1,
+          "cash": "-@allowance*0.02"
+        },
+        "result": "용돈 일부로 설정 도움을 받아요. 다리를 놓는 동안 바닥은 반짝여요.",
+        "when": {
+          "cash_min": "@allowance*0.02"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_child_22",
+    "age": [
+      7,
+      12
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "child",
+      "tech": "ai_tutor_mainstream",
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 학교 공동 연산실에서 AI가 칩 그림을 만들어 줬어요. 내 그림 속 웨이퍼에는 고양이 귀가 달렸어요.",
+    "choices": [
+      {
+        "label": "그림을 직접 고쳐 봐요",
+        "effects": {
+          "dexterity": 2,
+          "health": -1
+        },
+        "result": "귀를 지우다 동그라미도 지웠어요. 마지막엔 친구가 접시 같대요."
+      },
+      {
+        "label": "친구들과 설명을 만들어 봐요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "우리는 고양이 칩의 쓰임을 발표해요. 질문 시간에 손이 제일 많이 올라와요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_child_23",
+    "age": [
+      7,
+      12
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "child",
+      "region": "rural",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 학교 운동장의 옛 출입문은 잠겨 있어요. 다른 반 친구가 새로 생긴 공동 교실을 구경하재요.",
+    "choices": [
+      {
+        "label": "같이 교실을 구경해요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "책상에 다른 학년 이름표가 붙어 있어요. 내 의자에도 선배의 스티커가 남아 있어요."
+      },
+      {
+        "label": "그늘에서 내 지도를 그려요",
+        "effects": {
+          "mental": 2,
+          "trait.social": -3
+        },
+        "result": "잠긴 문 대신 열린 문을 색칠해요. 지도 끝에 오늘 앉은 그늘도 그려요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_child_24",
+    "age": [
+      7,
+      12
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "child",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 학교 태블릿의 충전 단자가 헐거워졌어요. 오늘 만든 회로 그림은 아직 기기 안에 있어요.",
+    "choices": [
+      {
+        "label": "수리 체험실에 가져가요",
+        "effects": {
+          "dexterity": 2,
+          "health": -1
+        },
+        "result": "선생님과 이름표를 붙여 맡겨요. 접수표에 내 태블릿 별명을 적었어요."
+      },
+      {
+        "label": "도움 서비스를 신청해요",
+        "effects": {
+          "mental": 1,
+          "cash": "-@allowance*0.02"
+        },
+        "result": "용돈을 조금 덜 남겼어요. 빌린 기기에 내 그림이 다시 열려요.",
+        "when": {
+          "cash_min": "@allowance*0.02"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_child_25",
+    "age": [
+      7,
+      12
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "child",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 교실 책상에 서로 다른 단자의 모형이 놓였어요. 짝이 가져온 연결선은 내 판에 안 맞아요.",
+    "choices": [
+      {
+        "label": "맞는 연결 모형을 만들어요",
+        "effects": {
+          "dexterity": 2,
+          "health": -1
+        },
+        "result": "종이 단자를 잘라 끼워 봐요. 진짜 전기 대신 손전등 그림을 붙여요."
+      },
+      {
+        "label": "짝과 역할을 나눠 설명해요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "한 명은 기기 역할 한 명은 연결선 역할이에요. 발표 때 몸이 꼬여 둘 다 웃어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_child_26",
+    "age": [
+      7,
+      12
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "child",
+      "tech": "ai_tutor_mainstream",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 학교 AI 자료실에서 다른 지역 교재의 그림이 안 열려요. 친구가 같은 문제를 종이에 그려 왔어요.",
+    "choices": [
+      {
+        "label": "열리는 자료로 다시 배워요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1
+        },
+        "result": "문제의 모양을 노트에 옮겨요. 답 아래에는 새로 그린 그림이 남아요."
+      },
+      {
+        "label": "친구의 종이를 같이 봐요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "각자 본 그림이 달라서 말을 맞춰요. 지우개가 책상 사이를 오가요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_child_27",
+    "age": [
+      7,
+      12
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "child",
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 학교 앞 길의 그늘 지도가 바뀌었어요. 친구는 새 나무 쪽으로 돌아가자고 해요.",
+    "choices": [
+      {
+        "label": "친구와 그늘길로 가요",
+        "effects": {
+          "health": 1,
+          "friends": 1,
+          "mental": -1
+        },
+        "result": "정류장까지 조금 더 걸어요. 나무 아래서 어깨의 열이 식어요."
+      },
+      {
+        "label": "예약 셔틀을 타요",
+        "effects": {
+          "mental": 2,
+          "cash": "-@allowance*0.01"
+        },
+        "result": "용돈 일부로 이동권을 써요. 창문 너머 새 나무의 이름표를 읽어요.",
+        "when": {
+          "cash_min": "@allowance*0.01"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_child_28",
+    "age": [
+      7,
+      12
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "child",
+      "tech": "climate_adapted_fab",
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 학교 수업에서 공장과 동네의 물 지도를 받아요. 내 집 수도꼭지를 어디에 그릴지 고민돼요.",
+    "choices": [
+      {
+        "label": "지도를 직접 그려 봐요",
+        "effects": {
+          "intelligence": 1,
+          "dexterity": 1,
+          "mental": -1
+        },
+        "result": "파란 선이 공책 밖으로 이어져요. 선생님이 종이를 한 장 더 붙여 줘요."
+      },
+      {
+        "label": "친구와 쓰는 물을 비교해요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "서로의 하루를 말하며 스티커를 붙여요. 우리 둘 다 씻는 칸을 두 번 골랐어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_teen_29",
+    "age": [
+      13,
+      19
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "teen",
+      "tech": "personal_microfab",
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 동네 미니팹 체험실에 작은 칩 설계판이 놓였어요. 친구는 발표를 맡을지 제작을 맡을지 물어요.",
+    "choices": [
+      {
+        "label": "모형 제작을 맡아요",
+        "effects": {
+          "dexterity": 2,
+          "health": -1
+        },
+        "result": "모형 케이스가 손바닥에 올라와요. 친구가 만든 이름표가 칩보다 커요."
+      },
+      {
+        "label": "발표와 질문을 맡아요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "제작한 친구를 불러 답을 보태요. 질문 카드가 내 주머니를 채워요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_teen_30",
+    "age": [
+      13,
+      19
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "teen",
+      "tech": "ai_tutor_mainstream",
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 도서관 AI 과제 화면이 다음 단계를 열어 줘요. 옆방에는 사람이 하는 합주 모임이 시작됐어요.",
+    "choices": [
+      {
+        "label": "과제를 한 단계 더 해요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1
+        },
+        "result": "합주 소리가 문 너머로 들려요. 새 결과를 저장하고 이어폰을 벗어요."
+      },
+      {
+        "label": "오늘은 과제를 닫아요",
+        "effects": {
+          "mental": 2,
+          "trait.diligence": -2
+        },
+        "result": "악기 가방을 들고 옆방으로 가요. 첫 박자가 내 발보다 빨라요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_teen_31",
+    "age": [
+      13,
+      19
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "teen",
+      "region": "rural",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 학교 실습실의 오래된 장비에 졸업생 이름이 적혀 있어요. 설명서를 다시 만드는 과제를 받았어요.",
+    "choices": [
+      {
+        "label": "내가 사용 지도를 그려요",
+        "effects": {
+          "intelligence": 1,
+          "dexterity": 1,
+          "mental": -1
+        },
+        "result": "빠진 버튼 이름을 찾아 적어요. 지운 자리에 옛 이름이 다시 비쳐요."
+      },
+      {
+        "label": "졸업생에게 사용법을 물어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "졸업생이 장비 앞에서 잠깐 멈춰요. 손부터 예전 위치를 찾아가요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_teen_32",
+    "age": [
+      13,
+      19
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "teen",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 공동 교실의 실습 시간이 끝났어요. 다른 동네 친구가 다음 셔틀 전까지 회로 모형을 같이 보재요.",
+    "choices": [
+      {
+        "label": "친구와 모형을 더 봐요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "셋이 앉아 연결을 바꿔요. 다음 셔틀 알림이 거의 동시에 울려요."
+      },
+      {
+        "label": "조용히 내 노트를 정리해요",
+        "effects": {
+          "mental": 2,
+          "trait.social": -3
+        },
+        "result": "남은 질문을 수첩에 적어요. 버스 창가에서 첫 줄을 다시 읽어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_teen_33",
+    "age": [
+      13,
+      19
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "teen",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 기술 수업의 같은 부품에 이름표가 두 개 붙었어요. 보고서에는 어느 말을 쓸지 정해야 해요.",
+    "choices": [
+      {
+        "label": "이름의 차이를 조사해요",
+        "effects": {
+          "intelligence": 1,
+          "dexterity": 1,
+          "mental": -1
+        },
+        "result": "표의 왼쪽과 오른쪽이 꽉 차요. 맨 아래에 같은 그림을 그렸어요."
+      },
+      {
+        "label": "다른 반의 설명을 들어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "각 반이 쓰던 말을 칠판에 적어요. 선생님이 분필을 한 번 더 가져와요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_teen_34",
+    "age": [
+      13,
+      19
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "teen",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 집에서 만든 모형의 연결 부품이 다른 규격이에요. 동아리 발표까지 새 부품을 구할지 고민돼요.",
+    "choices": [
+      {
+        "label": "맞는 부품을 직접 찾아요",
+        "effects": {
+          "dexterity": 2,
+          "health": -1
+        },
+        "result": "수리 모임에서 호환표를 넘겨요. 찾은 부품은 생각보다 작은 봉투에 들어 있어요."
+      },
+      {
+        "label": "도움 서비스를 신청해요",
+        "effects": {
+          "mental": 1,
+          "cash": "-@allowance*0.02"
+        },
+        "result": "용돈 일부로 부품 확인을 맡겨요. 발표 전날 배송 알림이 떠요.",
+        "when": {
+          "cash_min": "@allowance*0.02"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_teen_35",
+    "age": [
+      13,
+      19
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "teen",
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 학교 작업대에 오래된 전력계 모형이 놓였어요. 같은 과제를 덜 쓰고 하는 발표를 준비해요.",
+    "choices": [
+      {
+        "label": "직접 비교 모형을 만들어요",
+        "effects": {
+          "dexterity": 2,
+          "health": -1
+        },
+        "result": "스위치를 움직이면 종이 막대가 올라가요. 친구가 손으로 전력을 연기해요."
+      },
+      {
+        "label": "팀 발표의 질문을 맡아요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "비교한 조건을 친구에게 다시 물어요. 대답을 듣다 발표문을 한 줄 고쳤어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_teen_36",
+    "age": [
+      13,
+      19
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "teen",
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 기술 교실 견학 날 통학 셔틀이 우회한대요. 친구들은 그늘길을 먼저 걸어가자고 해요.",
+    "choices": [
+      {
+        "label": "친구들과 걸어가요",
+        "effects": {
+          "health": 1,
+          "friends": 1,
+          "mental": -1
+        },
+        "result": "전시관 앞 벤치에서 물을 마셔요. 가방 속 공책 모서리가 땀에 눅눅해요."
+      },
+      {
+        "label": "예약 이동편을 타요",
+        "effects": {
+          "mental": 2,
+          "cash": "-@allowance*0.01"
+        },
+        "result": "용돈 일부로 이동권을 써요. 창밖 지도의 길을 손가락으로 따라가요.",
+        "when": {
+          "cash_min": "@allowance*0.01"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_young_37",
+    "age": [
+      20,
+      34
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "young",
+      "tech": "compute_dividend",
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 주민센터 화면에 연산 배당 신청 항목이 떠요. 안내문을 읽다 생활비 수첩을 꺼냈어요.",
+    "choices": [
+      {
+        "label": "조건과 가계부를 비교해요",
+        "effects": {
+          "intelligence": 1,
+          "dexterity": 1,
+          "mental": -1
+        },
+        "result": "수첩에 예상과 확인한 값을 따로 적어요. 연필 끝이 짧아져요."
+      },
+      {
+        "label": "상담 창구에서 같이 물어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "담당자가 항목을 하나씩 짚어요. 내 질문 옆에 다른 질문이 더 붙어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_young_38",
+    "age": [
+      20,
+      34
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "young",
+      "tech": "household_robot",
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 공유 주방의 가사 보조가 식탁을 비웠어요. 이웃은 같이 요리할지 혼자 먹을지 묻네요.",
+    "choices": [
+      {
+        "label": "이웃과 직접 요리해요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "그릇을 꺼내다 서로 같은 걸 잡아요. 상 위에 비슷한 반찬이 두 접시 놓여요."
+      },
+      {
+        "label": "내 식탁에서 조용히 먹어요",
+        "effects": {
+          "mental": 2,
+          "trait.social": -3
+        },
+        "result": "창문을 조금 열고 그릇을 놓아요. 먹고 싶은 순서대로 천천히 집어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_young_39",
+    "age": [
+      20,
+      34
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "young",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 빌린 집의 조명 연결이 오래된 규격이에요. 중고 장터와 수리점 지도를 번갈아 봐요.",
+    "choices": [
+      {
+        "label": "수리 모임에 가져가요",
+        "effects": {
+          "dexterity": 2,
+          "health": -1
+        },
+        "result": "부품 이름을 배우며 상자를 열어요. 모임 끝에 내 손에도 이름표가 붙었어요."
+      },
+      {
+        "label": "수리점에 맡겨요",
+        "effects": {
+          "mental": 1,
+          "cash": "-@avg_wage_month*0.02"
+        },
+        "result": "생활비 수첩에 수리비를 적어요. 집으로 돌아와 잠깐 낮잠을 자요.",
+        "when": {
+          "cash_min": "@avg_wage_month*0.02"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_young_40",
+    "age": [
+      20,
+      34
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "young",
+      "region": "rural",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 지역 교육센터의 셔틀이 병원 정류장을 경유해요. 걷는 길은 짧지만 같이 가는 동료가 있어요.",
+    "choices": [
+      {
+        "label": "동료와 걸어가요",
+        "effects": {
+          "health": 1,
+          "friends": 1,
+          "mental": -1
+        },
+        "result": "빈 가게 앞에서 교육 얘기를 해요. 쉬는 벤치에서 공책을 같이 펼쳐요."
+      },
+      {
+        "label": "예약 차량을 이용해요",
+        "effects": {
+          "mental": 2,
+          "cash": "-@avg_wage_month*0.01"
+        },
+        "result": "교통비를 조금 더 썼어요. 교육실 문이 열릴 때 먼저 도착해 있어요.",
+        "when": {
+          "cash_min": "@avg_wage_month*0.01"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_young_41",
+    "age": [
+      20,
+      34
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "young",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 이사 상자를 풀자 다른 지역 규격의 충전기가 나왔어요. 가전 목록의 단자를 다시 적어야 해요.",
+    "choices": [
+      {
+        "label": "호환 목록을 직접 만들어요",
+        "effects": {
+          "intelligence": 1,
+          "dexterity": 1,
+          "mental": -1
+        },
+        "result": "상자마다 맞는 표시를 붙여요. 열어 본 상자가 복도에 줄을 서요."
+      },
+      {
+        "label": "지역 수리 모임에 물어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "이웃이 자기 호환표를 보여 줘요. 내 목록 끝에 새 주소도 생겨요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_young_42",
+    "age": [
+      20,
+      34
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "young",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 온라인 취미방에 다른 표준의 친구가 들어왔어요. 오늘은 음성만 연결된대요.",
+    "choices": [
+      {
+        "label": "음성 모임에 참여해요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "화면 없이 같은 리듬을 두드려요. 박자는 자꾸 늦지만 웃음은 같이 와요."
+      },
+      {
+        "label": "오늘은 혼자 기록을 정리해요",
+        "effects": {
+          "mental": 2,
+          "trait.social": -3
+        },
+        "result": "낮에 찍은 사진에 설명을 붙여요. 나중에 보낼 파일이 폴더에 쌓여요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_young_43",
+    "age": [
+      20,
+      34
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "young",
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 주택 안내실에 팹 이전 도시의 생활 지도가 놓였어요. 싼 방과 가까운 병원이 서로 다른 쪽이에요.",
+    "choices": [
+      {
+        "label": "지도를 직접 비교해요",
+        "effects": {
+          "intelligence": 1,
+          "dexterity": 1,
+          "mental": -1
+        },
+        "result": "방과 병원과 정류장을 다른 색으로 칠해요. 공책 첫 장이 지도처럼 변해요."
+      },
+      {
+        "label": "현지 주민에게 길을 물어요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "주민이 자주 쉬는 벤치까지 알려 줘요. 지도에 없던 점이 하나 더 찍혀요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_young_44",
+    "age": [
+      20,
+      34
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "young",
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 동네 저녁 수리 모임이 공용 그늘 아래서 열려요. 집에는 조용히 손볼 작은 기기도 있어요.",
+    "choices": [
+      {
+        "label": "모임에 기기를 가져가요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "내 차례를 기다리며 공구 이름을 배워요. 고친 뒤에도 이야기가 한참 이어져요."
+      },
+      {
+        "label": "집에서 천천히 손봐요",
+        "effects": {
+          "mental": 2,
+          "trait.social": -3
+        },
+        "result": "작업등 아래에 부품을 놓아요. 하나씩 정리하니 책상 한쪽이 비어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_middle_45",
+    "age": [
+      35,
+      59
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "middle",
+      "tech": "compute_dividend",
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 생활비 수첩 옆에 연산 배당 설명서가 놓였어요. 동네 수업의 다음 단원도 오늘 열려요.",
+    "choices": [
+      {
+        "label": "설명서와 수업을 더 봐요",
+        "effects": {
+          "intelligence": 2,
+          "mental": -1
+        },
+        "result": "질문을 적다 저녁 차가 식어요. 수첩 끝에 접어 둔 페이지가 늘어요."
+      },
+      {
+        "label": "오늘은 수첩을 덮어요",
+        "effects": {
+          "mental": 2,
+          "trait.diligence": -2
+        },
+        "result": "창밖을 보고 차를 다시 따라요. 설명서는 책갈피를 꽂아 책상에 남겨요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_middle_46",
+    "age": [
+      35,
+      59
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "middle",
+      "tech": "household_robot",
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 가사 보조가 주말 식탁 예약을 물어봐요. 이웃의 공동 요리 안내도 화면에 떠 있어요.",
+    "choices": [
+      {
+        "label": "공동 요리에 참여해요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "도마 앞에서 다른 집 레시피를 들어요. 내 양념통이 옆집 손으로 건너가요."
+      },
+      {
+        "label": "내 집에서 조용히 쉬어요",
+        "effects": {
+          "mental": 2,
+          "trait.social": -3
+        },
+        "result": "먹을 만큼만 간단히 준비해요. 소파에 앉자 주방 소리가 잦아들어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_middle_47",
+    "age": [
+      35,
+      59
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "middle",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 지역 상담실에 재고용과 돌봄 시간표가 놓였어요. 내 달력에서 겹치는 칸을 찾아야 해요.",
+    "choices": [
+      {
+        "label": "일정표를 직접 맞춰요",
+        "effects": {
+          "intelligence": 1,
+          "dexterity": 1,
+          "mental": -1
+        },
+        "result": "달력에 지운 자국이 늘어요. 한 칸을 비우자 숨이 조금 놓여요."
+      },
+      {
+        "label": "상담 담당과 함께 맞춰요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "각 일정의 이동 시간부터 적어요. 내가 빼놓은 버스 시간이 끼어들어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_middle_48",
+    "age": [
+      35,
+      59
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "middle",
+      "region": "rural",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 복지관의 공동 진료 안내가 새로 붙었어요. 이웃이 신청 창구를 못 찾고 서 있어요.",
+    "choices": [
+      {
+        "label": "이웃과 창구를 찾아요",
+        "effects": {
+          "friends": 2,
+          "mental": -2
+        },
+        "result": "안내문 아래의 작은 화살표를 따라가요. 이웃과 같은 의자 줄에 앉아요."
+      },
+      {
+        "label": "내 예약 상담부터 받아요",
+        "effects": {
+          "mental": 2,
+          "happiness": -1
+        },
+        "result": "내 번호표를 들고 상담실로 들어가요. 나오며 창구 위치를 이웃에게 알려요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_middle_49",
+    "age": [
+      35,
+      59
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "middle",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 집의 화상 통화 기기가 다른 지역과 연결을 못 해요. 안내 화면에는 변환 장치를 확인하래요.",
+    "choices": [
+      {
+        "label": "호환 장치를 직접 찾아요",
+        "effects": {
+          "dexterity": 2,
+          "health": -1
+        },
+        "result": "수리 모임에서 연결표를 대조해요. 가방 속 작은 장치가 하나 늘었어요."
+      },
+      {
+        "label": "확인 서비스를 맡겨요",
+        "effects": {
+          "mental": 1,
+          "cash": "-@avg_wage_month*0.02"
+        },
+        "result": "서비스 비용을 내고 기기를 놓아요. 저녁엔 오래 묵힌 책을 펼쳐요.",
+        "when": {
+          "cash_min": "@avg_wage_month*0.02"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_middle_50",
+    "age": [
+      35,
+      59
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "middle",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 파견지에 놀러 가는 모임의 집합 시간이 바뀌었어요. 함께 타는 차와 조용히 가는 예약편이 있어요.",
+    "choices": [
+      {
+        "label": "모임 차를 같이 타요",
+        "effects": {
+          "health": 1,
+          "friends": 1,
+          "mental": -1
+        },
+        "result": "차 안에서 서로 다른 지역의 말을 배워요. 정류장 이름을 따라 읽다 웃어요."
+      },
+      {
+        "label": "예약편으로 따로 가요",
+        "effects": {
+          "mental": 2,
+          "cash": "-@avg_wage_month*0.01"
+        },
+        "result": "교통비를 조금 더 썼어요. 혼자 앉아 내 일정표를 천천히 읽어요.",
+        "when": {
+          "cash_min": "@avg_wage_month*0.01"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_middle_51",
+    "age": [
+      35,
+      59
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "middle",
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 공동 주택의 냉방 시간표가 게시판에 붙었어요. 내 생활 시간과 다른 칸이 보여요.",
+    "choices": [
+      {
+        "label": "사용 기록을 정리해요",
+        "effects": {
+          "intelligence": 1,
+          "dexterity": 1,
+          "mental": -1
+        },
+        "result": "수첩에 실제 쓴 시간을 적어요. 내 기억과 숫자가 한 칸 어긋나 있어요."
+      },
+      {
+        "label": "이웃과 시간을 조율해요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "게시판 앞에 각자 색 펜을 가져와요. 비어 있던 칸에 새 약속이 적혀요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_middle_52",
+    "age": [
+      35,
+      59
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "middle",
+      "tech": "climate_adapted_fab",
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 동네 난방 안내실에 팹 폐열 연결 모형이 놓였어요. 주민 발표에서 지도를 맡을 사람이 필요해요.",
+    "choices": [
+      {
+        "label": "생활 지도를 만들어 봐요",
+        "effects": {
+          "dexterity": 2,
+          "health": -1
+        },
+        "result": "집과 공장 사이에 선을 그어요. 지도 끝에 작은 휴게 공간도 표시해요."
+      },
+      {
+        "label": "주민들의 질문을 모아요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "같은 연결을 두고 집마다 다른 질문이 나와요. 내 수첩에 방 이름이 늘어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_senior_53",
+    "age": [
+      60,
+      110
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "senior",
+      "tech": "compute_dividend",
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 주민센터 연산 배당 화면의 글씨가 바뀌었어요. 내 수첩의 항목과 이름이 조금 달라요.",
+    "choices": [
+      {
+        "label": "사용 안내를 직접 읽어요",
+        "effects": {
+          "intelligence": 1,
+          "dexterity": 1,
+          "mental": -1
+        },
+        "result": "바뀐 이름 옆에 옛 이름을 적어요. 수첩 한쪽이 작은 사전이 돼요."
+      },
+      {
+        "label": "상담 창구에서 함께 봐요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "담당자와 한 항목씩 짚어요. 뒤에 기다리던 이웃도 같은 곳을 묻네요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_senior_54",
+    "age": [
+      60,
+      110
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "senior",
+      "world_path": "abundance"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 복지관의 느린 산책 모임이 출발을 기다려요. 집의 창가에는 읽다 만 책이 놓여 있어요.",
+    "choices": [
+      {
+        "label": "산책 모임에 가요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "마지막 벤치에서 모두 한 번 더 앉아요. 책 얘기가 걷는 얘기보다 길어요."
+      },
+      {
+        "label": "집에서 조용히 읽어요",
+        "effects": {
+          "mental": 2,
+          "trait.social": -3
+        },
+        "result": "책갈피를 옆으로 옮겨요. 창밖의 발걸음이 지나가고 방 안이 조용해져요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_senior_55",
+    "age": [
+      60,
+      110
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "senior",
+      "region": "rural",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 진료를 받으러 가는 공동 셔틀이 시간이 바뀌었어요. 이웃은 정류장 한 곳을 걸어 보재요.",
+    "choices": [
+      {
+        "label": "이웃과 천천히 걸어요",
+        "effects": {
+          "health": 1,
+          "friends": 1,
+          "mental": -1
+        },
+        "result": "낮은 담 옆에서 잠깐 쉬어요. 길 끝에 셔틀 정류장이 보여요."
+      },
+      {
+        "label": "예약 이동편을 타요",
+        "effects": {
+          "mental": 2,
+          "cash": "-@avg_wage_month*0.01"
+        },
+        "result": "교통비를 조금 더 썼어요. 차에 앉아 진료 수첩을 다시 펼쳐요.",
+        "when": {
+          "cash_min": "@avg_wage_month*0.01"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_senior_56",
+    "age": [
+      60,
+      110
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "senior",
+      "world_path": "stagnation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 집의 오래된 라디오가 잠깐씩 소리를 놓쳐요. 수리 모임은 오늘 처음 와도 된대요.",
+    "choices": [
+      {
+        "label": "수리 모임에 가져가요",
+        "effects": {
+          "dexterity": 2,
+          "health": -1
+        },
+        "result": "뚜껑에 내 이름을 붙여요. 옆자리 사람의 라디오도 비슷한 소리를 내요."
+      },
+      {
+        "label": "수리점에 맡겨요",
+        "effects": {
+          "mental": 1,
+          "cash": "-@avg_wage_month*0.02"
+        },
+        "result": "수리비를 적고 가벼운 가방을 들어요. 집에서는 오랜만에 조용히 차를 마셔요.",
+        "when": {
+          "cash_min": "@avg_wage_month*0.02"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_senior_57",
+    "age": [
+      60,
+      110
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "senior",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 병원 접수대에서 다른 지역의 기록 파일을 확인해 달래요. 동의할 항목을 수첩에 적어 왔어요.",
+    "choices": [
+      {
+        "label": "내 파일 목록을 정리해요",
+        "effects": {
+          "intelligence": 1,
+          "dexterity": 1,
+          "mental": -1
+        },
+        "result": "이름이 다른 같은 검사를 찾아 표시해요. 종이 맨 아래까지 손가락이 내려가요."
+      },
+      {
+        "label": "기록 상담 담당과 함께 봐요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "설명을 듣고 한 칸씩 표시해요. 내 수첩의 물음표가 하나씩 줄어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_senior_58",
+    "age": [
+      60,
+      110
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "senior",
+      "world_path": "fragmentation"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 동네 모임 화면에 먼 지역 친구의 음성만 떠요. 오늘은 사진 없이 옛 칩 얘기를 한대요.",
+    "choices": [
+      {
+        "label": "음성 모임에 들어가요",
+        "effects": {
+          "friends": 2,
+          "mental": -1
+        },
+        "result": "한 사람이 기기 소리를 흉내 내요. 얼굴은 안 보여도 웃는 소리는 들려요."
+      },
+      {
+        "label": "혼자 사진을 골라 둬요",
+        "effects": {
+          "mental": 2,
+          "trait.social": -3
+        },
+        "result": "옛 사진에 날짜를 적어요. 다음에 보낼 폴더에 한 장씩 넣어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t09_life_senior_59",
+    "age": [
+      60,
+      110
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "senior",
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 그늘 지도에 오늘 쉬어 갈 공간이 표시돼 있어요. 산책 친구는 한 구간만 걸어 보재요.",
+    "choices": [
+      {
+        "label": "친구와 한 구간 걸어요",
+        "effects": {
+          "health": 1,
+          "friends": 1,
+          "mental": -1
+        },
+        "result": "시원한 의자에서 물을 마셔요. 지도 위의 작은 그늘이 실제로는 꽤 넓어요."
+      },
+      {
+        "label": "예약 셔틀을 타요",
+        "effects": {
+          "mental": 2,
+          "cash": "-@avg_wage_month*0.01"
+        },
+        "result": "이동 비용을 조금 더 냈어요. 차창 너머 친구에게 손을 흔들어요.",
+        "when": {
+          "cash_min": "@avg_wage_month*0.01"
+        }
+      }
+    ],
+    "default": 0
+  },
+  {
+    "id": "gpt_t09_life_senior_60",
+    "age": [
+      60,
+      110
+    ],
+    "year": [
+      2060,
+      2150
+    ],
+    "when": {
+      "future": true,
+      "stage": "senior",
+      "tech": "medical_bci",
+      "world_path": "transition"
+    },
+    "market": null,
+    "weight": 2,
+    "once": false,
+    "text": "(가상) 병원 상담실 앞에 신경 인터페이스 칩 안내가 놓였어요. 함께 기다리는 이웃이 설명 창구를 찾고 있어요.",
+    "choices": [
+      {
+        "label": "이웃과 안내 창구에 가요",
+        "effects": {
+          "friends": 2,
+          "mental": -2
+        },
+        "result": "각자 번호표를 뽑고 앉아요. 상담자가 두 사람에게 따로 설명해 줘요."
+      },
+      {
+        "label": "내 진료 상담부터 받아요",
+        "effects": {
+          "mental": 2,
+          "happiness": -1
+        },
+        "result": "내 이름이 뜨자 문 안으로 들어가요. 준비한 질문지를 무릎 위에 펴요."
+      }
+    ],
+    "default": 1
+  }
+]
