@@ -2,10 +2,11 @@
 // 키 목록은 life/docs/SPEC.md와 같아야 한다. SPEC이 바뀌면 여기도 고친다.
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { loadMatrix, expandJobs } from './jobs_expand.mjs';
 import { loadData as loadFuture, validate as validateFuture } from './future_sim.mjs';
 
-const ROOT = new URL('../', import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const DATA = join(ROOT, 'data');
 
 const STATS = ['health', 'intelligence', 'dexterity', 'sociability', 'mental', 'looks'];

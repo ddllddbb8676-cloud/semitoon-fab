@@ -164,6 +164,7 @@ world      seed, market{year: {cycle, memory, logic_foundry, equipment, korea}},
 - `is_` 접두 = 엔진이 상태에 맞춰 붙이고 떼는 플래그 (`SYSTEMS.md` 1.6). 그 밖의 플래그는 지우지 않음.
 - 엔진 예약 플래그: `had_job`, `semi_touched`, `parent_semi`, `credit_default`, `personal_rehab`, `bankrupt`, `margin_call`, `delisted_loss`, `jeonse_fraud_victim`, `house_poor`, `first_house`, `my_research_commercialized`, `retrained`, `master_craftsman`.
 - 반도체 순간 kind: `core` 현장 · `near` 주변 · `eco` 생태계 · `family` 가족 · `money` 돈 · `school` 학교 · `place` 동네 · `history` 뉴스 · `everyday` 일상.
+- 실제 역사 데이터(`market_history.json`, `news_general.json`)는 사실대로 두고, **화면에 낼 때 `name_map.json`으로 패러디 이름으로 바꿈**. 사건 문장은 처음부터 패러디 이름이나 `{company}`만.
 - 1~5 등급은 모두 5가 최상위 (`school_tier`, 회사 특성, `wealth`).
 
 ## 데이터 파일
@@ -173,6 +174,7 @@ world      seed, market{year: {cycle, memory, logic_foundry, equipment, korea}},
 | `economy_history.json` | 1940~2026 물가·임금·집값·금리·KOSPI | Claude |
 | `family_policy.json` | 출산휴가·육아휴직 제도와 사용률 | Claude |
 | `coin_history.json` | 코인 시세와 투자 습관 규칙 | Claude |
+| `name_map.json` | 실제 역사 문장을 화면에 낼 때 회사·경영인 이름을 패러디로 바꾸는 표 | Claude |
 | `companies.json`, `jobs.json`, `character.json` | 회사·기본 직업·캐릭터 만들기 | Claude |
 | `job_matrix.json` | 세부 직업 조합표 (`node life/tools/jobs_expand.mjs`) | Claude |
 | `future_tech.json`, `future_scenarios.json` | 2027~2150 기술·시나리오 (`FUTURE.md`) | Claude |

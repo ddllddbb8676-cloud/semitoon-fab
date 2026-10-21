@@ -11,9 +11,10 @@
 // 규칙 설명은 life/docs/FUTURE.md. 이 파일이 규칙의 기준 구현이며 게임 엔진(life/js/)은 같은 난수 순서로 옮긴다.
 // 데이터 오류(선행 노드 누락, 연도 순서, 키 오류 등)가 있으면 오류를 출력하고 종료 코드 1.
 import { readFileSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = new URL('../', import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const DATA = join(ROOT, 'data');
 const SECTORS = ['cycle', 'memory', 'logic_foundry', 'equipment', 'korea'];
 const SHORT = { cycle: 'C', memory: 'M', logic_foundry: 'L', equipment: 'E', korea: 'K' };
@@ -693,7 +694,7 @@ function median(D) {
 }
 
 // ───────────────────────── 실행 ─────────────────────────
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
   const args = process.argv.slice(2);
   const D = loadData();
   const { errors, warnings } = validate(D);
