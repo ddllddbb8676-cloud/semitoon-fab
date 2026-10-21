@@ -1,0 +1,257 @@
+{
+  "_note": "코인(가상자산) 시세와 투자 규칙. btc_usd는 연말 종가(달러, 거래소마다 몇 % 차이). 2026은 10월 중순 시세(잠정). 국내 투자는 2013년(국내 거래소 등장)부터, 그 전은 '인터넷에서 들은 이야기' 사건으로만. 알트·밈코인은 실제 종목이 아니라 비트코인 수익률에 배수와 폭락 확률을 붙인 묶음. behavior는 성향 축에 따라 수익을 깎는 규칙이며 node life/tools/coin_sim.mjs 로 성향별 수익 확률을 확인한다. 2027년 이후 시세는 cycle_after_2026 규칙(약 4년 주기)으로 만든다.",
+  "years": [
+    {
+      "year": 2010,
+      "btc_usd": 0.3,
+      "events_ko": [
+        "피자 두 판을 1만 비트코인에 산 이야기"
+      ],
+      "confidence": "low"
+    },
+    {
+      "year": 2011,
+      "btc_usd": 4.7,
+      "events_ko": [],
+      "confidence": "low"
+    },
+    {
+      "year": 2012,
+      "btc_usd": 13.5,
+      "events_ko": [
+        "첫 반감기"
+      ],
+      "confidence": "low"
+    },
+    {
+      "year": 2013,
+      "btc_usd": 755,
+      "events_ko": [
+        "국내 첫 코인 거래소 등장",
+        "한 해 100배 가까이 급등"
+      ],
+      "confidence": "medium",
+      "entry_weight": 0.3
+    },
+    {
+      "year": 2014,
+      "btc_usd": 320,
+      "events_ko": [
+        "해외 대형 거래소 해킹·파산으로 폭락"
+      ],
+      "confidence": "medium",
+      "entry_weight": 0.2
+    },
+    {
+      "year": 2015,
+      "btc_usd": 430,
+      "events_ko": [],
+      "confidence": "medium",
+      "entry_weight": 0.2
+    },
+    {
+      "year": 2016,
+      "btc_usd": 965,
+      "events_ko": [
+        "두 번째 반감기"
+      ],
+      "confidence": "medium",
+      "entry_weight": 0.5
+    },
+    {
+      "year": 2017,
+      "btc_usd": 14155,
+      "events_ko": [
+        "코인 광풍, 김치 프리미엄",
+        "연말 최고가 약 2만 달러"
+      ],
+      "confidence": "medium",
+      "entry_weight": 6
+    },
+    {
+      "year": 2018,
+      "btc_usd": 3740,
+      "events_ko": [
+        "거래 실명제 등 정부 규제",
+        "고점 대비 80% 넘게 폭락"
+      ],
+      "confidence": "medium",
+      "entry_weight": 2
+    },
+    {
+      "year": 2019,
+      "btc_usd": 7195,
+      "events_ko": [],
+      "confidence": "medium",
+      "entry_weight": 0.8
+    },
+    {
+      "year": 2020,
+      "btc_usd": 29000,
+      "events_ko": [
+        "세 번째 반감기",
+        "코로나 유동성 장세"
+      ],
+      "confidence": "medium",
+      "entry_weight": 3
+    },
+    {
+      "year": 2021,
+      "btc_usd": 46306,
+      "events_ko": [
+        "불장, 최고가 약 6만9천 달러",
+        "특정금융정보법 시행, 거래소 정리"
+      ],
+      "confidence": "medium",
+      "entry_weight": 8
+    },
+    {
+      "year": 2022,
+      "btc_usd": 16548,
+      "events_ko": [
+        "국산 코인 루나·테라 붕괴",
+        "대형 거래소 FTX 파산"
+      ],
+      "confidence": "medium",
+      "entry_weight": 2
+    },
+    {
+      "year": 2023,
+      "btc_usd": 42265,
+      "events_ko": [],
+      "confidence": "medium",
+      "entry_weight": 1.5
+    },
+    {
+      "year": 2024,
+      "btc_usd": 93429,
+      "events_ko": [
+        "미국 비트코인 현물 ETF 승인",
+        "가상자산이용자보호법 시행",
+        "네 번째 반감기"
+      ],
+      "confidence": "medium",
+      "entry_weight": 4
+    },
+    {
+      "year": 2025,
+      "btc_usd": 87580,
+      "events_ko": [
+        "10월 사상 최고가 후 하락"
+      ],
+      "confidence": "medium",
+      "entry_weight": 3
+    },
+    {
+      "year": 2026,
+      "btc_usd": 81000,
+      "events_ko": [
+        "8만 달러 선 공방 (10월 기준, 잠정)"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "korea_since": 2013,
+  "assets": {
+    "btc": {
+      "name_ko": "비트코인",
+      "beta": 1.0,
+      "noise_sd": 0.0
+    },
+    "alt": {
+      "name_ko": "알트코인",
+      "beta": 1.5,
+      "noise_sd": 0.4,
+      "crash_chance": 0.15,
+      "crash_return": -0.9
+    },
+    "meme": {
+      "name_ko": "잡코인",
+      "beta": 2.0,
+      "noise_sd": 0.8,
+      "crash_chance": 0.4,
+      "crash_return": -0.95,
+      "moon_chance": 0.05,
+      "moon_return": 9.0
+    }
+  },
+  "behavior": {
+    "_note_ko": "성향 축(-100~100)이 투자 습관을 정한다. 사건 선택지로 그해만 바꿀 수 있다.",
+    "allocation": "btc 비중 = clamp(0.45 - risk/200, 0.1, 0.8). 나머지의 70%는 alt, 30%는 meme (개인은 알트 비중이 큼)",
+    "friction_per_year": -0.12,
+    "kimchi_premium": {
+      "years": [
+        2017,
+        2018,
+        2021
+      ],
+      "buy_penalty": -0.15
+    },
+    "fomo": {
+      "when": "conform > 20 또는 risk > 30",
+      "trigger": "보유 중 광풍 해(entry_weight ≥ 3)가 오면 고점에서 추가 매수",
+      "add_amount": 1.0,
+      "entry_penalty": -0.5
+    },
+    "panic_sell": {
+      "when": "outlook < -20",
+      "trigger": "그해 내 수익률 < -35%",
+      "effect": "바닥에서 팔고 다음 해 반등을 놓침"
+    },
+    "leverage": {
+      "when": "risk > 40",
+      "liquidation_chance": 0.3,
+      "loss": -0.5
+    },
+    "take_profit": {
+      "when": "thrift > 30",
+      "trigger": "그해 수익률 > +100%",
+      "sell_share": 0.4
+    },
+    "late_entry": {
+      "_note_ko": "소문이 돈 해(그해 많이 오른 해)에 들어오고, 첫해는 고점 근처에서 산 셈 → 첫해 수익 = 그해 수익×0.3 - 0.25",
+      "gain_factor": 0.3,
+      "penalty": -0.25
+    },
+    "_note_friction_ko": "수수료·잦은 매매·나쁜 타이밍을 합친 연간 손실",
+    "capitulation": {
+      "_note_ko": "그해 -40% 넘게 빠지면 이 확률로 손절하고 코인을 접는다",
+      "base": 0.45,
+      "outlook_minus": 0.35,
+      "outlook_plus": -0.3,
+      "conform_plus": 0.15
+    },
+    "hold_years": [
+      1,
+      6
+    ],
+    "entry_hype_weight": "진입 연도는 years[].entry_weight 비율로 고른다 (국내 개인 투자자 유입 규모를 대략 근사한 추정값: 2017·2021 광풍, 2024 ETF 장세에 몰림)",
+    "target_win_rate_ko": "보통 성향 수익 확률 약 20~30% 목표 (BIS 2023: 2015~2022년 개인 투자자 73~81% 손실 추정). coin_sim.mjs 결과를 FUTURE·ECONOMY 문서에 기록"
+  },
+  "cycle_after_2026": {
+    "_note_ko": "2027년 이후 가상 시세. 반감기 다음 해 급등, 그다음 해 폭락이 반복되고 진폭은 서서히 줄어든다. 해마다 1% 확률로 규제·붕괴 시나리오(-80%).",
+    "halving_years_from": 2028,
+    "halving_every": 4,
+    "boom_return": [
+      0.6,
+      2.5
+    ],
+    "bust_return": [
+      -0.75,
+      -0.4
+    ],
+    "flat_return": [
+      -0.25,
+      0.4
+    ],
+    "amplitude_decay_per_cycle": 0.85,
+    "collapse_chance": 0.01,
+    "collapse_return": -0.8
+  },
+  "sources": [
+    "https://www.hokanews.com/2025/12/bitcoins-new-years-eve-prices-tell-wild.html",
+    "https://www.demandsage.com/bitcoin-price-history/",
+    "https://www.blockmedia.co.kr/archives/1152184",
+    "https://www.bis.org/publ/bisbull69.htm"
+  ]
+}

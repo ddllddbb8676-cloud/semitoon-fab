@@ -1,0 +1,4533 @@
+{
+ "_note": "세미툰 라이프 2026~2150 업계 테크트리. 판마다 각 노드의 등장 연도를 (earliest_year, median_year, late_year) 2조각 삼각분포로 뽑고 선행 노드 등장 다음 해 이후로 보정한다(FUTURE.md 3장). fiction=true 노드는 2060년 이후 근거를 이어 붙인 가상이다. effects.market의 delta는 시황 점수 단위(1 = 한 칸)이고 years 동안 적용, lag가 있으면 등장 후 lag년 뒤 시작. effects.jobs 값이 숫자면 영구 수요 배율(ramp_years에 걸쳐 서서히), {mult, years}면 일시 배율. effects.skills는 R&D 스킬 가치의 영구 증감, world_path는 2060·2100년 세계 경로 판정 가중치. requires_flags는 시나리오 플래그가 켜져야 등장(조건부), trigger는 시황 모델 매출이 기준을 넘는 해에 등장, p_never는 그 판에서 끝내 안 나올 확률. rnd_skill이 null인 노드는 기술이 아닌 사회·시장 이정표다. headline_ko의 {company}는 company_sector 분야의 회사로 채운다. 출처는 life/research/future/F1~F4의 URL.",
+ "skill_groups": [
+  {
+   "id": "process_device",
+   "name_ko": "공정·소자"
+  },
+  {
+   "id": "lithography",
+   "name_ko": "리소그래피"
+  },
+  {
+   "id": "memory",
+   "name_ko": "메모리"
+  },
+  {
+   "id": "packaging",
+   "name_ko": "패키징"
+  },
+  {
+   "id": "design",
+   "name_ko": "회로·설계"
+  },
+  {
+   "id": "materials",
+   "name_ko": "소재"
+  },
+  {
+   "id": "facility",
+   "name_ko": "장비·설비"
+  },
+  {
+   "id": "ai",
+   "name_ko": "AI"
+  },
+  {
+   "id": "quantum",
+   "name_ko": "양자·보안"
+  },
+  {
+   "id": "automation",
+   "name_ko": "자동화·로봇"
+  }
+ ],
+ "skills": [
+  {
+   "id": "device_physics",
+   "name_ko": "소자 물리·3D 트랜지스터",
+   "group": "process_device",
+   "desc_ko": "GAA·포크시트·CFET 같은 트랜지스터 구조를 설계하고 시뮬레이션해요.",
+   "jobs": [
+    "device_researcher",
+    "professor"
+   ],
+   "technician": false,
+   "adjacent": [
+    "process_integration",
+    "novel_channel"
+   ]
+  },
+  {
+   "id": "process_integration",
+   "name_ko": "공정 통합·원자층 공정",
+   "group": "process_device",
+   "desc_ko": "수백 개 공정 단계를 엮어 수율을 내고, ALD·ALE 같은 원자층 공정을 다뤄요.",
+   "jobs": [
+    "process_engineer",
+    "yield_engineer",
+    "device_researcher"
+   ],
+   "technician": false,
+   "adjacent": [
+    "device_physics",
+    "litho_process",
+    "fab_ai"
+   ]
+  },
+  {
+   "id": "litho_process",
+   "name_ko": "노광 공정·계산 리소그래피",
+   "group": "lithography",
+   "desc_ko": "EUV·High-NA 노광 조건과 OPC(광근접보정)를 맞춰요.",
+   "jobs": [
+    "process_engineer",
+    "equipment_engineer",
+    "field_service"
+   ],
+   "technician": false,
+   "adjacent": [
+    "litho_optics",
+    "process_integration"
+   ]
+  },
+  {
+   "id": "litho_optics",
+   "name_ko": "노광 광학·차세대 광원",
+   "group": "lithography",
+   "desc_ko": "반사 미러·마스크·자유전자레이저 같은 노광기의 빛 자체를 다뤄요.",
+   "jobs": [
+    "device_researcher",
+    "field_service",
+    "professor"
+   ],
+   "technician": false,
+   "adjacent": [
+    "litho_process",
+    "silicon_photonics"
+   ]
+  },
+  {
+   "id": "dram_cell",
+   "name_ko": "D램 셀·3D D램",
+   "group": "memory",
+   "desc_ko": "커패시터·수직 트랜지스터·적층 셀로 D램을 더 촘촘하게 만들어요.",
+   "jobs": [
+    "process_engineer",
+    "device_researcher",
+    "yield_engineer"
+   ],
+   "technician": false,
+   "adjacent": [
+    "nand_3d",
+    "hbm_design",
+    "emerging_memory"
+   ]
+  },
+  {
+   "id": "nand_3d",
+   "name_ko": "3D 낸드 적층",
+   "group": "memory",
+   "desc_ko": "수백~천 단의 낸드를 쌓고 고종횡비 식각과 웨이퍼 본딩을 다뤄요.",
+   "jobs": [
+    "process_engineer",
+    "device_researcher"
+   ],
+   "technician": false,
+   "adjacent": [
+    "dram_cell",
+    "emerging_memory"
+   ]
+  },
+  {
+   "id": "hbm_design",
+   "name_ko": "HBM·메모리 인터페이스 설계",
+   "group": "memory",
+   "desc_ko": "HBM 베이스 다이, PIM, CXL처럼 메모리와 연산을 잇는 회로를 설계해요.",
+   "jobs": [
+    "circuit_designer",
+    "device_researcher"
+   ],
+   "technician": false,
+   "adjacent": [
+    "chip_architecture",
+    "hybrid_bonding",
+    "dram_cell"
+   ]
+  },
+  {
+   "id": "emerging_memory",
+   "name_ko": "신메모리(MRAM·강유전체)",
+   "group": "memory",
+   "desc_ko": "MRAM·FeFET·DNA 저장처럼 기존과 다른 원리의 메모리를 개발해요.",
+   "jobs": [
+    "device_researcher",
+    "chemist"
+   ],
+   "technician": false,
+   "adjacent": [
+    "dram_cell",
+    "nand_3d",
+    "novel_compute"
+   ]
+  },
+  {
+   "id": "hybrid_bonding",
+   "name_ko": "하이브리드 본딩·3D 적층",
+   "group": "packaging",
+   "desc_ko": "범프 없이 구리끼리 붙여 칩과 웨이퍼를 쌓아요. 조립 현장 기술자도 익힐 수 있어요.",
+   "jobs": [
+    "process_engineer",
+    "quality_engineer",
+    "assembler",
+    "equipment_engineer"
+   ],
+   "technician": true,
+   "adjacent": [
+    "adv_substrate",
+    "hbm_design"
+   ]
+  },
+  {
+   "id": "adv_substrate",
+   "name_ko": "인터포저·유리기판·패널 패키징",
+   "group": "packaging",
+   "desc_ko": "대형 인터포저, 유리 코어 기판, 패널 레벨 패키지를 만들고 휨을 잡아요.",
+   "jobs": [
+    "process_engineer",
+    "quality_engineer",
+    "assembler"
+   ],
+   "technician": true,
+   "adjacent": [
+    "hybrid_bonding",
+    "silicon_photonics"
+   ]
+  },
+  {
+   "id": "silicon_photonics",
+   "name_ko": "실리콘 포토닉스·광 I/O",
+   "group": "packaging",
+   "desc_ko": "칩 사이를 빛으로 잇는 광 엔진과 광 연산 소자를 설계·조립해요.",
+   "jobs": [
+    "circuit_designer",
+    "device_researcher",
+    "process_engineer"
+   ],
+   "technician": false,
+   "adjacent": [
+    "adv_substrate",
+    "litho_optics",
+    "chip_architecture"
+   ]
+  },
+  {
+   "id": "chip_architecture",
+   "name_ko": "칩 아키텍처·칩렛",
+   "group": "design",
+   "desc_ko": "AI 가속기·칩렛·SoC 구조를 정하고 성능과 전력을 맞춰요.",
+   "jobs": [
+    "circuit_designer",
+    "professor"
+   ],
+   "technician": false,
+   "adjacent": [
+    "eda_ai",
+    "hbm_design",
+    "novel_compute"
+   ]
+  },
+  {
+   "id": "eda_ai",
+   "name_ko": "AI 설계 자동화·검증",
+   "group": "design",
+   "desc_ko": "AI 설계 에이전트를 부리고 검증 결과에 책임 서명을 해요.",
+   "jobs": [
+    "circuit_designer",
+    "patent"
+   ],
+   "technician": false,
+   "adjacent": [
+    "chip_architecture",
+    "ai_systems"
+   ]
+  },
+  {
+   "id": "novel_compute",
+   "name_ko": "신개념 연산(뉴로모픽·인메모리·가역)",
+   "group": "design",
+   "desc_ko": "뉴로모픽·아날로그 인메모리·가역·생체 컴퓨팅 회로를 연구해요.",
+   "jobs": [
+    "device_researcher",
+    "circuit_designer",
+    "professor"
+   ],
+   "technician": false,
+   "adjacent": [
+    "chip_architecture",
+    "emerging_memory",
+    "quantum_hw"
+   ]
+  },
+  {
+   "id": "power_semis",
+   "name_ko": "전력반도체 소재(SiC·GaN·Ga2O3)",
+   "group": "materials",
+   "desc_ko": "넓은 밴드갭 결정을 키우고 전력 소자·모듈을 만들어요.",
+   "jobs": [
+    "chemist",
+    "device_researcher",
+    "process_engineer"
+   ],
+   "technician": false,
+   "adjacent": [
+    "novel_channel",
+    "power_cooling"
+   ]
+  },
+  {
+   "id": "novel_channel",
+   "name_ko": "2D·신소재 채널",
+   "group": "materials",
+   "desc_ko": "MoS2·WSe2·탄소나노튜브·분자 소자처럼 실리콘 다음 채널 소재를 다뤄요.",
+   "jobs": [
+    "chemist",
+    "device_researcher"
+   ],
+   "technician": false,
+   "adjacent": [
+    "device_physics",
+    "power_semis"
+   ]
+  },
+  {
+   "id": "specialty_chem",
+   "name_ko": "특수가스·화학·초순수",
+   "group": "materials",
+   "desc_ko": "헬륨·네온 같은 특수가스, 전구체, 초순수와 용수 재이용을 다뤄요. 가스 배관 기술자도 익혀요.",
+   "jobs": [
+    "chemist",
+    "environment_safety",
+    "quality_engineer",
+    "pipefitter"
+   ],
+   "technician": true,
+   "adjacent": [
+    "power_semis",
+    "uhp_piping"
+   ]
+  },
+  {
+   "id": "equipment_maint",
+   "name_ko": "장비 정비·예지정비",
+   "group": "facility",
+   "desc_ko": "노광·식각·증착 장비를 셋업하고 고장을 미리 잡아요. 오퍼레이터에서 올라오는 길이 있어요.",
+   "jobs": [
+    "equipment_engineer",
+    "field_service",
+    "operator",
+    "facility_manager"
+   ],
+   "technician": true,
+   "adjacent": [
+    "robotics",
+    "fab_ai",
+    "litho_process"
+   ]
+  },
+  {
+   "id": "uhp_piping",
+   "name_ko": "초고순도 배관·클린룸 시공",
+   "group": "facility",
+   "desc_ko": "팹·데이터센터의 초고순도 가스·약액 배관, 오비탈 용접, 덕트·클린룸 시공을 해요.",
+   "jobs": [
+    "welder",
+    "pipefitter",
+    "duct_worker",
+    "site_manager"
+   ],
+   "technician": true,
+   "adjacent": [
+    "power_cooling",
+    "specialty_chem",
+    "robotics"
+   ]
+  },
+  {
+   "id": "power_cooling",
+   "name_ko": "전력·냉각 설비",
+   "group": "facility",
+   "desc_ko": "변전·배전, 액체냉각, SMR 연계처럼 팹과 AI 데이터센터의 전기와 열을 다뤄요.",
+   "jobs": [
+    "electrician",
+    "facility_manager",
+    "equipment_engineer",
+    "site_manager",
+    "pipefitter"
+   ],
+   "technician": true,
+   "adjacent": [
+    "uhp_piping",
+    "power_semis",
+    "equipment_maint"
+   ]
+  },
+  {
+   "id": "fab_ai",
+   "name_ko": "팹 데이터·수율 AI",
+   "group": "ai",
+   "desc_ko": "가상 계측, 디지털 트윈, 자율 디스패칭으로 팹을 AI와 함께 돌려요. 오퍼레이터가 관제사로 크는 길이에요.",
+   "jobs": [
+    "yield_engineer",
+    "process_engineer",
+    "equipment_engineer",
+    "quality_engineer",
+    "operator"
+   ],
+   "technician": true,
+   "adjacent": [
+    "equipment_maint",
+    "ai_systems",
+    "process_integration"
+   ]
+  },
+  {
+   "id": "ai_systems",
+   "name_ko": "AI 시스템·감독",
+   "group": "ai",
+   "desc_ko": "대규모 학습, AI 에이전트 감독, AI 안전·규제 대응을 맡아요.",
+   "jobs": [
+    "circuit_designer",
+    "professor",
+    "patent"
+   ],
+   "technician": false,
+   "adjacent": [
+    "eda_ai",
+    "fab_ai"
+   ]
+  },
+  {
+   "id": "quantum_hw",
+   "name_ko": "양자 소자·극저온",
+   "group": "quantum",
+   "desc_ko": "큐비트 소자, 극저온 CMOS, 희석냉동기, 초전도 회로를 다뤄요.",
+   "jobs": [
+    "device_researcher",
+    "field_service",
+    "equipment_engineer"
+   ],
+   "technician": false,
+   "adjacent": [
+    "novel_compute",
+    "power_cooling",
+    "pqc_security"
+   ]
+  },
+  {
+   "id": "pqc_security",
+   "name_ko": "보안 하드웨어·양자내성암호",
+   "group": "quantum",
+   "desc_ko": "양자내성암호 가속기와 사이드채널 방어 회로를 설계·검증해요.",
+   "jobs": [
+    "circuit_designer",
+    "patent"
+   ],
+   "technician": false,
+   "adjacent": [
+    "quantum_hw",
+    "chip_architecture"
+   ]
+  },
+  {
+   "id": "robotics",
+   "name_ko": "로봇 정비·티칭",
+   "group": "automation",
+   "desc_ko": "휴머노이드·클린룸 로봇을 고치고 일을 가르쳐요. 기능직·오퍼레이터가 옮겨 가기 좋은 길이에요.",
+   "jobs": [
+    "equipment_engineer",
+    "field_service",
+    "operator",
+    "assembler",
+    "welder",
+    "facility_manager",
+    "electrician"
+   ],
+   "technician": true,
+   "adjacent": [
+    "equipment_maint",
+    "fab_ai",
+    "power_cooling"
+   ]
+  }
+ ],
+ "skill_rules": {
+  "_note": "FUTURE.md 7장의 상수. SYSTEMS 5.11의 포인트(career.skill_points)를 그대로 화폐로 쓴다. career.skills = [{id, level}].",
+  "points": {
+   "research_job_year": 1,
+   "technician_job_year": 1,
+   "master": 2,
+   "phd": 4,
+   "study_action": 1
+  },
+  "level_cost": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "edu_cap": {
+   "무관": 3,
+   "고졸": 3,
+   "전문대졸": 4,
+   "대졸": 4,
+   "석사": 5,
+   "박사": 5
+  },
+  "technician_master_flag": "master_craftsman",
+  "technician_master_cap": 4,
+  "fit": {
+   "base": 0.3,
+   "per_level_value": 0.1,
+   "off_job_weight": 0.6
+  },
+  "commercialize_min_level": 3,
+  "commercialize_reward": {
+   "3": {
+    "reputation": 8,
+    "bonus": "@salary*0.2",
+    "promo_p": 0.15,
+    "scout_years": 2
+   },
+   "4": {
+    "reputation": 12,
+    "bonus": "@salary*0.5",
+    "promo_p": 0.25,
+    "scout_years": 3
+   },
+   "5": {
+    "reputation": 18,
+    "bonus": "@salary*1.0",
+    "promo_p": 0.35,
+    "scout_years": 3
+   }
+  },
+  "hot_years": 5,
+  "hot_bonus": 0.25,
+  "hot_cap": 0.5,
+  "fade_after_years": 15,
+  "fade_per_year": 0.02,
+  "fade_floor": 0.8,
+  "value_min": 0.5,
+  "value_max": 1.6,
+  "obsolete_below": 0.75,
+  "retrain": {
+   "transfer": 0.5,
+   "bonus_points": 1,
+   "cost": "@salary*0.15",
+   "max_age": 55,
+   "years": 1
+  }
+ },
+ "nodes": [
+  {
+   "id": "gaa_nanosheet",
+   "name_ko": "GAA 나노시트 트랜지스터(2nm급)",
+   "desc_ko": "게이트가 채널을 사방에서 감싸는 2nm급 트랜지스터예요. 2026년까지 이미 양산에 들어간 출발점이에요.",
+   "category": "logic_process",
+   "earliest_year": 2025,
+   "median_year": 2025,
+   "late_year": 2026,
+   "prereqs": [],
+   "confidence": "high",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_gaa_nanosheet"
+   },
+   "rnd_skill": "device_physics",
+   "headline_ko": "2nm GAA 양산 본격화…'나노시트 시대' 열렸다",
+   "sources": [
+    "https://www.eenewseurope.com/en/intel-18a-anchors-intels-panther-lake-and-xeon-6-platforms",
+    "https://www.hwcooling.net/en/tsmcs-1-6nm-chips-will-be-unprecedentedly-expensive/"
+   ]
+  },
+  {
+   "id": "cpo_optics",
+   "name_ko": "공동 패키징 광학(CPO) 스위치",
+   "desc_ko": "스위치 칩 바로 옆에 광 엔진을 붙여 전기 대신 빛으로 데이터를 보내요.",
+   "category": "packaging",
+   "earliest_year": 2026,
+   "median_year": 2026,
+   "late_year": 2028,
+   "prereqs": [],
+   "confidence": "high",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {
+     "assembler": 0.97
+    },
+    "new_jobs_ko": [
+     "광 패키징·정렬 엔지니어"
+    ],
+    "flag": "tech_cpo_optics"
+   },
+   "rnd_skill": "silicon_photonics",
+   "headline_ko": "데이터센터 스위치에 빛이 들어왔다…CPO 본격 출하",
+   "sources": [
+    "https://www.techspot.com/news/109190-nvidia-turns-silicon-photonics-supercharge-next-gen-ai.html",
+    "https://www.inkl.com/news/nvidia-outlines-plans-for-using-light-for-communication-between-ai-gpus-by-2026-silicon-photonics-and-co-packaged-optics-may-become-mandatory-for-next-gen-ai-data-centers",
+    "https://arxiv.org/pdf/2608.28048",
+    "https://technews.tw/2026/03/18/nvidia-gtc-2026-chips/"
+   ]
+  },
+  {
+   "id": "backside_power",
+   "name_ko": "후면 전력 공급(BSPDN)",
+   "desc_ko": "전력 배선을 웨이퍼 뒷면으로 옮겨 앞면을 신호선에 양보해요.",
+   "category": "logic_process",
+   "earliest_year": 2025,
+   "median_year": 2027,
+   "late_year": 2029,
+   "prereqs": [
+    "gaa_nanosheet"
+   ],
+   "confidence": "high",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 2
+     },
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "process_engineer": 1.03
+    },
+    "new_jobs_ko": [
+     "후면 전력망(PDN) 설계 엔지니어",
+     "웨이퍼 박막화·본딩 엔지니어"
+    ],
+    "flag": "tech_backside_power"
+   },
+   "rnd_skill": "process_integration",
+   "headline_ko": "칩 뒷면으로 전기를 넣는다…{company}, 후면 전력 공정 양산",
+   "sources": [
+    "https://www.trendforce.com/news/2026/04/23/news-tsmc-unveils-latest-roadmap-a12-a13-set-for-2029-without-high-na-euv-a16-volume-production-delayed-to-2027/",
+    "https://heise.de/-9764429",
+    "https://imec-int.com/en/articles/backside-power-delivery-options-dtco-study"
+   ],
+   "company_sector": "foundry"
+  },
+  {
+   "id": "hbm4e_custom",
+   "name_ko": "HBM4E·커스텀 HBM",
+   "desc_ko": "고객사 맞춤 로직 베이스 다이를 얹은 HBM이에요. 메모리 회사가 로직 설계까지 해요.",
+   "category": "memory",
+   "earliest_year": 2026,
+   "median_year": 2027,
+   "late_year": 2028,
+   "prereqs": [],
+   "confidence": "high",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "circuit_designer": 1.08
+    },
+    "new_jobs_ko": [
+     "HBM 베이스 다이 설계자",
+     "고객 공동설계 엔지니어"
+    ],
+    "flag": "tech_hbm4e_custom"
+   },
+   "rnd_skill": "hbm_design",
+   "headline_ko": "맞춤형 HBM 시대…{company}, 고객 로직 얹은 HBM4E 첫 출하",
+   "sources": [
+    "https://www.trendforce.com/news/2026/01/23/news-samsungs-custom-hbm4e-design-reportedly-aimed-for-mid-2026-parallels-sk-hynix-and-micron/",
+    "https://www.trendforce.com/news/2025/11/13/news-hbm4e-seen-hitting-40-of-2027-market-samsung-sk-hynix-reportedly-aim-for-1h26-completion/"
+   ],
+   "company_sector": "memory"
+  },
+  {
+   "id": "nand_400l_bonded",
+   "name_ko": "400단급 본딩 낸드",
+   "desc_ko": "셀과 주변회로를 다른 웨이퍼에서 만들어 붙인 400단 안팎의 낸드예요.",
+   "category": "memory",
+   "earliest_year": 2026,
+   "median_year": 2027,
+   "late_year": 2030,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": 0.5,
+      "years": 1
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_nand_400l_bonded"
+   },
+   "rnd_skill": "nand_3d",
+   "headline_ko": "낸드 400단 시대…AI 데이터센터 SSD 주문 밀려",
+   "sources": [
+    "https://www.trendforce.com/news/2026/06/12/news-the-race-to-400-layer-nand-roadmaps-and-key-technologies-driving-samsung-sk-hynix-and-kioxia/",
+    "https://www.tweaktown.com/news/108634/sk-hynix-hbm-roadmap-teases-hbm5-hbm5e-gddr7-next-ddr6-400-layer-4d-nand-in-2029-2031/index.html"
+   ]
+  },
+  {
+   "id": "emram_advanced",
+   "name_ko": "첨단 임베디드 MRAM",
+   "desc_ko": "자동차·MCU 칩의 내장 플래시를 자성 메모리(MRAM)가 대신해요.",
+   "category": "memory",
+   "earliest_year": 2026,
+   "median_year": 2027,
+   "late_year": 2029,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_emram_advanced"
+   },
+   "rnd_skill": "emerging_memory",
+   "headline_ko": "자동차 칩 메모리, 플래시 대신 MRAM으로",
+   "sources": [
+    "https://borecraft.com/2026/06/16/samsung-secures-a-5nm-mram-cell-barely-four-months-after-its-8nm-first/",
+    "https://amp.kedglobal.com/newsAmp/ked202310190019",
+    "https://www.yolegroup.com/product/report/emerging-non-volatile-memory-2026/"
+   ]
+  },
+  {
+   "id": "cowos_mega_interposer",
+   "name_ko": "초대형 2.5D 인터포저 패키지",
+   "desc_ko": "레티클 9장 크기 인터포저에 HBM 12개 이상을 올리는 AI 가속기 패키지예요.",
+   "category": "packaging",
+   "earliest_year": 2026,
+   "median_year": 2027,
+   "late_year": 2029,
+   "prereqs": [],
+   "confidence": "high",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {
+     "assembler": 1.08,
+     "quality_engineer": 1.05
+    },
+    "new_jobs_ko": [
+     "패키지 휨(warpage) 관리 엔지니어"
+    ],
+    "flag": "tech_cowos_mega_interposer"
+   },
+   "rnd_skill": "adv_substrate",
+   "headline_ko": "패키징이 병목이다…초대형 인터포저 양산, 후공정 투자 사상 최대",
+   "sources": [
+    "https://digitimes.com/news/a20241202PD210.html"
+   ]
+  },
+  {
+   "id": "cxl_pooling",
+   "name_ko": "CXL 메모리 풀링",
+   "desc_ko": "서버마다 따로 쓰던 D램을 랙 단위로 모아 나눠 써요. D램 낭비가 줄어요.",
+   "category": "computing",
+   "earliest_year": 2025,
+   "median_year": 2027,
+   "late_year": 2030,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [
+     "CXL 컨트롤러 설계자"
+    ],
+    "flag": "tech_cxl_pooling"
+   },
+   "rnd_skill": "hbm_design",
+   "headline_ko": "D램도 나눠 쓴다…CXL 메모리 풀, 데이터센터 표준으로",
+   "sources": [
+    "https://247wallst.com/investing/2026/10/13/the-memory-bottleneck-made-investors-rich-for-3-years-now-cxl-looks-like-the-next-play/",
+    "https://www.yolegroup.com/?p=219032"
+   ]
+  },
+  {
+   "id": "humanoid_pilot",
+   "name_ko": "휴머노이드·서비스 로봇 시범 투입",
+   "desc_ko": "사람 모양 로봇이 조립 라인에서 시범 근무하고, 순찰·청소·조리 로봇이 현장에 들어와요.",
+   "category": "automation",
+   "earliest_year": 2025,
+   "median_year": 2027,
+   "late_year": 2030,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {
+     "security_gate": 0.85,
+     "janitor": 0.85,
+     "cook": 0.95,
+     "part_timer": 0.95,
+     "factory_worker": 0.95
+    },
+    "new_jobs_ko": [
+     "로봇 티칭 기술자"
+    ],
+    "flag": "tech_humanoid_pilot"
+   },
+   "rnd_skill": "robotics",
+   "headline_ko": "로봇 동료가 출근했다…휴머노이드, 조립 라인 시범 근무",
+   "sources": [
+    "https://interestingengineering.com/research/the-humanoid-robot-reality-check",
+    "https://alexcloudstar.com/blog/humanoid-robots-shipping-2026/",
+    "https://www.bostonglobe.com/2026/03/04/business/robots-hyundai-atlas-musk-optimus/",
+    "https://theguru.co.kr/news/article.html?no=105850",
+    "https://thenextweb.com/news/security-guard-turnover-robots-drones-asylon-patrol",
+    "https://m.seoul.co.kr/news/2025/12/01/20251201500278",
+    "https://www.heraldk.com/article/2026022423543824730",
+    "https://www.segye.com/newsView/20260818508007"
+   ]
+  },
+  {
+   "id": "gigawatt_ai_campus",
+   "name_ko": "기가와트급 AI 캠퍼스",
+   "desc_ko": "원전 한 기 분량 전력을 쓰는 AI 데이터센터가 줄지어 서고, 빅테크 연간 설비투자가 1조 달러를 넘어요.",
+   "category": "industry",
+   "earliest_year": 2026,
+   "median_year": 2027,
+   "late_year": 2030,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": 0.5,
+      "years": 1
+     },
+     "memory": {
+      "delta": 0.5,
+      "years": 1
+     }
+    },
+    "jobs": {
+     "electrician": {
+      "mult": 1.4,
+      "years": 6
+     },
+     "pipefitter": {
+      "mult": 1.3,
+      "years": 6
+     },
+     "welder": {
+      "mult": 1.25,
+      "years": 6
+     },
+     "site_manager": {
+      "mult": 1.2,
+      "years": 6
+     },
+     "crane_operator": {
+      "mult": 1.15,
+      "years": 6
+     },
+     "scaffolder": {
+      "mult": 1.15,
+      "years": 6
+     }
+    },
+    "new_jobs_ko": [
+     "AI 데이터센터 운영 기술자"
+    ],
+    "flag": "tech_gigawatt_ai_campus"
+   },
+   "rnd_skill": "power_cooling",
+   "headline_ko": "빅테크 AI 투자 연 1조 달러…원전 한 기 쓰는 데이터센터 착공 러시",
+   "sources": [
+    "https://epoch.ai/blog/can-ai-scaling-continue-through-2030",
+    "https://epoch.ai/topics/data-centers",
+    "https://www.hankyung.com/article/2026062586031",
+    "https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-cost-of-compute-a-7-trillion-dollar-race-to-scale-data-centers",
+    "https://finance.yahoo.com/markets/article/magnificent-7-earnings-rush-reveals-ai-spending-surge-with-hyperscaler-capex-set-to-reach-725-billion-in-2026-224901707.html",
+    "https://www.oecd.org/en/about/news/press-releases/2023/07/oecd-job-markets-remain-tight-though-inflation-is-hitting-real-wages.html",
+    "https://view.asiae.co.kr/article/2026062615040366040",
+    "https://www.iea.org/reports/energy-and-ai/executive-summary"
+   ]
+  },
+  {
+   "id": "market_2t",
+   "name_ko": "세계 반도체 시장 2조 달러",
+   "desc_ko": "세계 반도체 매출이 한 해 2조 달러를 넘어요. 시황 모델의 매출이 기준을 넘는 해에 등장해요.",
+   "category": "industry",
+   "earliest_year": 2027,
+   "median_year": 2027,
+   "late_year": 2031,
+   "prereqs": [],
+   "confidence": "high",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_market_2t"
+   },
+   "rnd_skill": null,
+   "headline_ko": "세계 반도체 시장 2조 달러 돌파…역대급 성과급 시즌",
+   "sources": [
+    "https://www.wsts.org/esraCMS/extension/media/f/WST/7745/WSTS-Q2-Release-2026-08-06.pdf",
+    "https://techinsights.com/ja/node/61840"
+   ],
+   "trigger": {
+    "sales_busd_min": 2000
+   }
+  },
+  {
+   "id": "yongin_first_fab",
+   "name_ko": "용인 클러스터 첫 메모리 팹",
+   "desc_ko": "용인 일반산단에 첫 메모리 팹이 클린룸을 열어요.",
+   "category": "industry",
+   "earliest_year": 2027,
+   "median_year": 2027,
+   "late_year": 2028,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "welder": {
+      "mult": 1.3,
+      "years": 5
+     },
+     "pipefitter": {
+      "mult": 1.3,
+      "years": 5
+     },
+     "duct_worker": {
+      "mult": 1.3,
+      "years": 5
+     },
+     "electrician": {
+      "mult": 1.24,
+      "years": 5
+     },
+     "scaffolder": {
+      "mult": 1.21,
+      "years": 5
+     },
+     "crane_operator": {
+      "mult": 1.2,
+      "years": 5
+     },
+     "cook": {
+      "mult": 1.1,
+      "years": 5
+     },
+     "security_gate": {
+      "mult": 1.1,
+      "years": 5
+     },
+     "landlord": {
+      "mult": 1.15,
+      "years": 8
+     },
+     "chicken_shop": {
+      "mult": 1.1,
+      "years": 8
+     }
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_yongin_first_fab",
+    "region": {
+     "yongin": 1
+    }
+   },
+   "rnd_skill": "uhp_piping",
+   "headline_ko": "{company} 용인 1기 팹 클린룸 열었다…원삼면 밤하늘에 불 켜져",
+   "sources": [
+    "https://www.trendforce.com/news/2026/07/14/news-sk-hynix-reportedly-starts-yongin-y1-equipment-orders-moves-up-phase-1-opening-to-feb-2027/"
+   ],
+   "company_sector": "memory"
+  },
+  {
+   "id": "ai_regulation_regime",
+   "name_ko": "고위험 AI 규제 본격 시행",
+   "desc_ko": "채용·의료·에너지 같은 고영향 AI에 위험관리와 신고 의무가 붙어요.",
+   "category": "society",
+   "earliest_year": 2026,
+   "median_year": 2027,
+   "late_year": 2029,
+   "prereqs": [],
+   "confidence": "high",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {
+     "hr": 1.03
+    },
+    "new_jobs_ko": [
+     "AI 감사·컴플라이언스 담당"
+    ],
+    "flag": "tech_ai_regulation_regime"
+   },
+   "rnd_skill": "ai_systems",
+   "headline_ko": "고위험 AI 규제 계도기간 끝…채용 AI·의료 AI 줄줄이 재심사",
+   "sources": [
+    "https://www.segye.com/newsView/20260121516550",
+    "https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/"
+   ]
+  },
+  {
+   "id": "node_a14",
+   "name_ko": "1.4nm급 공정",
+   "desc_ko": "2세대 나노시트로 만드는 1.4nm급 로직 공정이에요. 기가팹 투자가 몰려요.",
+   "category": "logic_process",
+   "earliest_year": 2028,
+   "median_year": 2028,
+   "late_year": 2030,
+   "prereqs": [
+    "gaa_nanosheet"
+   ],
+   "confidence": "high",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 2
+     },
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "yield_engineer": 1.05,
+     "field_service": {
+      "mult": 1.2,
+      "years": 4
+     },
+     "pipefitter": {
+      "mult": 1.15,
+      "years": 4
+     },
+     "electrician": {
+      "mult": 1.15,
+      "years": 4
+     },
+     "welder": {
+      "mult": 1.1,
+      "years": 4
+     }
+    },
+    "new_jobs_ko": [
+     "DTCO(설계-공정 공동 최적화) 엔지니어"
+    ],
+    "flag": "tech_node_a14"
+   },
+   "rnd_skill": "process_integration",
+   "headline_ko": "1.4나노 시대 개막…{company}, 기가팹에 장비 반입 시작",
+   "sources": [
+    "https://www.inkl.com/news/tsmc-unveils-process-technology-roadmap-through-2029-a12-a13-n2u-announced-a16-slips-to-2027",
+    "https://www.trendforce.com/news/2026/06/30/news-samsung-reportedly-restarts-1-4nm-push-targets-2029-mass-production-to-close-gap-with-tsmc-intel/",
+    "https://www.igorslab.de/en/semi-expects-record-investments-in-300-mm-fabs-the-ai-boom-is-now-finally-making-its-way-into-factory-planning/"
+   ],
+   "company_sector": "foundry"
+  },
+  {
+   "id": "high_na_euv",
+   "name_ko": "High-NA EUV 양산 적용",
+   "desc_ko": "렌즈 개구수 0.55의 노광기가 양산 라인에 들어와 더 가는 선을 한 번에 그려요.",
+   "category": "lithography",
+   "earliest_year": 2027,
+   "median_year": 2028,
+   "late_year": 2030,
+   "prereqs": [],
+   "confidence": "high",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "field_service": 1.08
+    },
+    "new_jobs_ko": [
+     "High-NA 장비 현장 정비 기술자",
+     "애너모픽 마스크 엔지니어"
+    ],
+    "flag": "tech_high_na_euv"
+   },
+   "rnd_skill": "litho_process",
+   "headline_ko": "대당 5천억 원 노광기, 드디어 양산 라인에…장비주 들썩",
+   "sources": [
+    "https://www.trendforce.com/news/2025/12/16/news-intel-completes-first-2nd-gen-high-na-euv-acceptance-testing-asml-eyes-2027-28-mass-production/",
+    "https://www.trendforce.com/news/2026/02/16/news-asmls-high-na-euv-for-2027-28-which-giants-are-betting-big-intel-samsung-sk-hynix-or-tsmc/",
+    "https://www.trendforce.com/news/2025/10/16/news-samsung-reportedly-purchasing-two-asml-high-na-euv-tools-for-mass-production-by-1h26/"
+   ]
+  },
+  {
+   "id": "pim_mainstream",
+   "name_ko": "PIM(메모리 내 연산) 보급",
+   "desc_ko": "메모리 안에서 간단한 연산을 처리해 데이터 이동을 줄여요. 모바일 AI부터 쓰여요.",
+   "category": "memory",
+   "earliest_year": 2026,
+   "median_year": 2028,
+   "late_year": 2031,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": 0.5,
+      "years": 1
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "PIM 컴파일러·런타임 개발자"
+    ],
+    "flag": "tech_pim_mainstream"
+   },
+   "rnd_skill": "hbm_design",
+   "headline_ko": "메모리가 계산도 한다…PIM 표준 D램 스마트폰에 탑재",
+   "sources": [
+    "https://www.hpcwire.com/off-the-wire/jedec-previews-lpddr6-roadmap-expanding-lpddr-into-data-centers-and-processing-in-memory/",
+    "https://en.fnnews.com/news/202608260930347718",
+    "https://www.trendforce.com/news/2024/12/02/news-samsung-and-sk-hynix-reportedly-unite-to-standardize-lpddr6-pim-for-on-device-ai/"
+   ]
+  },
+  {
+   "id": "logic_3d_soic",
+   "name_ko": "로직 3D 적층(로직-온-로직)",
+   "desc_ko": "1.6nm급 다이를 2nm급 다이 위에 바로 붙여 쌓아요. 파운드리가 패키징까지 쥐어요.",
+   "category": "packaging",
+   "earliest_year": 2026,
+   "median_year": 2028,
+   "late_year": 2032,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [
+     "3D-IC 열설계 엔지니어"
+    ],
+    "flag": "tech_logic_3d_soic"
+   },
+   "rnd_skill": "hybrid_bonding",
+   "headline_ko": "칩 위에 칩…로직 3D 적층이 AI 가속기 표준으로",
+   "sources": [
+    "https://digitimes.com/news/a20241202PD210.html",
+    "https://www.techspot.com/news/109190-nvidia-turns-silicon-photonics-supercharge-next-gen-ai.html"
+   ]
+  },
+  {
+   "id": "glass_core_substrate",
+   "name_ko": "유리 코어 기판",
+   "desc_ko": "휘지 않는 유리로 만든 대형 패키지 기판이에요. 국내 기판 업계에 기회가 와요.",
+   "category": "packaging",
+   "earliest_year": 2026,
+   "median_year": 2028,
+   "late_year": 2031,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "TGV(유리관통전극) 가공 엔지니어"
+    ],
+    "flag": "tech_glass_core_substrate"
+   },
+   "rnd_skill": "adv_substrate",
+   "headline_ko": "AI 칩 기판, 플라스틱에서 유리로…국내 기판업계 증설 경쟁",
+   "sources": [
+    "https://tomshardware.com/tech-industry/manufacturing/glass-substrate-roadmap-examined",
+    "https://www.koreaherald.com/article/10497737",
+    "https://techovedas.com/intel-glass-substrate-gamble-the-silent-shift-that-could-redefine-semiconductors-by-2030/"
+   ]
+  },
+  {
+   "id": "on_device_ai",
+   "name_ko": "온디바이스 AI 보편화",
+   "desc_ko": "스마트폰·PC 대부분이 기기 안 NPU로 생성형 AI를 돌려요.",
+   "category": "computing",
+   "earliest_year": 2025,
+   "median_year": 2028,
+   "late_year": 2030,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": 0.5,
+      "years": 1
+     }
+    },
+    "jobs": {
+     "hr": 0.95,
+     "purchasing": 0.92,
+     "office_worker": 0.95
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_on_device_ai"
+   },
+   "rnd_skill": "chip_architecture",
+   "headline_ko": "폰 10대 중 7대가 'AI폰'…모바일 D램 용량 두 배로",
+   "sources": [
+    "https://www.itreseller.ch/Artikel/101398/2028_70_Prozent_der_verkauften_Smartphones_sind_GenAI-faehig",
+    "https://counterpointresearch.com/insight/post-insight-research-notes-blogs-the-ecosystem-driving-ais-democratization-in-smartphones"
+   ]
+  },
+  {
+   "id": "rack_600kw_3d_accelerator",
+   "name_ko": "600kW 랙·3D 적층 AI 가속기",
+   "desc_ko": "랙 하나가 600kW를 쓰는 액체냉각 AI 서버와 3D 적층 가속기 세대예요.",
+   "category": "computing",
+   "earliest_year": 2027,
+   "median_year": 2028,
+   "late_year": 2030,
+   "prereqs": [
+    "gigawatt_ai_campus"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": 0.5,
+      "years": 1
+     }
+    },
+    "jobs": {
+     "pipefitter": {
+      "mult": 1.1,
+      "years": 3
+     },
+     "welder": {
+      "mult": 1.1,
+      "years": 3
+     }
+    },
+    "new_jobs_ko": [
+     "액체냉각 배관 기술자"
+    ],
+    "flag": "tech_rack_600kw_3d_accelerator"
+   },
+   "rnd_skill": "chip_architecture",
+   "headline_ko": "랙 하나에 600kW…AI 서버, 물로 식히는 시대",
+   "sources": [
+    "https://www.theregister.com/2025/03/19/nvidia_charts_course_for_600kw",
+    "https://www.trendforce.com/news/2025/03/19/news-gtc-2025-nvidia-unveils-more-on-rubin-gpus-announces-feynman-for-2028-in-roadmap-update/",
+    "https://www.gartner.com/en/newsroom/press-releases/2026-08-24-gartner-forecasts-worldwide-semiconductor-revenue-to-reach-1-trillion-dollars-in-2026"
+   ]
+  },
+  {
+   "id": "wbg_power_mainstream",
+   "name_ko": "SiC·GaN 전력반도체 주류화",
+   "desc_ko": "200mm SiC와 300mm GaN이 주류가 되어 전기차·데이터센터 전원이 효율적이 돼요.",
+   "category": "materials",
+   "earliest_year": 2025,
+   "median_year": 2028,
+   "late_year": 2031,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [
+     "SiC 결정 성장 엔지니어"
+    ],
+    "flag": "tech_wbg_power_mainstream"
+   },
+   "rnd_skill": "power_semis",
+   "headline_ko": "전력반도체 세대교체…SiC·GaN 라인에 옛 실리콘 팹 재가동",
+   "sources": [
+    "https://powerelectronicsworld.net/video/676/Power_silicon_carbide_device_market_to_exceed_10_billion_by_2030",
+    "https://compoundsemiconductor.net/article/122057/300mm_GaN_roadmap_%22on_track%22_says_Infineon"
+   ]
+  },
+  {
+   "id": "data_wall",
+   "name_ko": "인간 텍스트 데이터 고갈",
+   "desc_ko": "AI 학습에 쓸 사람의 글이 바닥나요. 합성 데이터와 전문가 피드백이 귀해져요.",
+   "category": "ai",
+   "earliest_year": 2026,
+   "median_year": 2028,
+   "late_year": 2032,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [
+     "AI 학습 데이터 전문가(부업)"
+    ],
+    "flag": "tech_data_wall"
+   },
+   "rnd_skill": "ai_systems",
+   "headline_ko": "인터넷의 글을 다 읽었다…AI 업계 '데이터 벽' 비상, 전문가 피드백 부업 인기",
+   "sources": [
+    "https://epoch.ai/blog/can-ai-scaling-continue-through-2030"
+   ]
+  },
+  {
+   "id": "ai_fab_digital_twin",
+   "name_ko": "AI 팹 디지털 트윈·예지정비",
+   "desc_ko": "팹 전체를 가상으로 복제해 고장을 미리 알고, AI가 이상을 잡아내요.",
+   "category": "automation",
+   "earliest_year": 2025,
+   "median_year": 2028,
+   "late_year": 2032,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 1
+     }
+    },
+    "jobs": {
+     "operator": 0.9,
+     "quality_engineer": 0.8,
+     "equipment_engineer": 1.1,
+     "process_engineer": 0.95
+    },
+    "new_jobs_ko": [
+     "팹 데이터 엔지니어"
+    ],
+    "flag": "tech_ai_fab_digital_twin",
+    "skills": {
+     "fab_ai": 0.2
+    }
+   },
+   "rnd_skill": "fab_ai",
+   "headline_ko": "팹이 고장을 예언한다…디지털 트윈 예지정비, 전 라인 확대",
+   "sources": [
+    "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-and-Samsung-Build-AI-Factory-to-Transform-Global-Intelligent-Manufacturing/",
+    "https://www.trendforce.com/news/2026/08/13/news-ai-agents-enter-chipmaking-sk-hynix-tests-back-end-deployment-samsung-cuts-soc-verification-to-2-days/",
+    "https://www.marketsandmarkets.com/Market-Reports/ai-semiconductor-equipment-automation-market-35974497.html",
+    "https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure"
+   ]
+  },
+  {
+   "id": "china_dram_share_17",
+   "name_ko": "중국 D램 점유율 17%",
+   "desc_ko": "중국 신흥 D램 회사들이 세계 점유율 17%까지 올라와 범용 D램 값을 누르기 시작해요.",
+   "category": "industry",
+   "earliest_year": 2027,
+   "median_year": 2028,
+   "late_year": 2031,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": -0.5,
+      "years": 2
+     },
+     "korea": {
+      "delta": -0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_china_dram_share_17",
+    "skills": {
+     "dram_cell": -0.1,
+     "hbm_design": 0.1
+    }
+   },
+   "rnd_skill": null,
+   "headline_ko": "중국 D램 점유율 17%…범용 D램 값 하락 압력 커져",
+   "sources": [
+    "https://www.digitaltoday.co.kr/en/view/96439/cxmt-ymtc-supply-push-may-reshape-dram-nand-market"
+   ]
+  },
+  {
+   "id": "hbm5",
+   "name_ko": "HBM5",
+   "desc_ko": "2nm 베이스 다이와 차세대 D램으로 만드는 HBM 5세대예요. HBM 시장이 1000억 달러를 넘어요.",
+   "category": "memory",
+   "earliest_year": 2028,
+   "median_year": 2029,
+   "late_year": 2031,
+   "prereqs": [
+    "hbm4e_custom"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": 0.5,
+      "years": 2
+     },
+     "korea": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_hbm5"
+   },
+   "rnd_skill": "hbm_design",
+   "headline_ko": "HBM 시장 1000억 달러…HBM5 양산 경쟁 불붙었다",
+   "sources": [
+    "https://www.tweaktown.com/news/108634/sk-hynix-hbm-roadmap-teases-hbm5-hbm5e-gddr7-next-ddr6-400-layer-4d-nand-in-2029-2031/index.html",
+    "https://blocksandfiles.com/2025/06/26/four-more-hbm-generations/",
+    "https://wccftech.com/samsung-targets-late-2027-for-1d-dram-mass-production-racing-to-power-next-gen-hbm5-ai-memory/",
+    "https://blocksandfiles.com/2026/01/21/the-memory-supercycle/",
+    "https://www.3dtested.com/tech-industry/sk-hynix-projects-hbm-market-to-be-worth-tens-of-billions-of-dollars-by-2030-says-ai-memory-industry-will-expand-30-percent-annually-over-five-years"
+   ]
+  },
+  {
+   "id": "dram_4f2_vertical",
+   "name_ko": "4F² 수직채널 D램",
+   "desc_ko": "트랜지스터를 세워 셀 면적을 30% 줄인 D램이에요. 비트가 쏟아져 공급 과잉 위험도 커져요.",
+   "category": "memory",
+   "earliest_year": 2027,
+   "median_year": 2029,
+   "late_year": 2032,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": -0.5,
+      "years": 2
+     },
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "수직 트랜지스터 소자 엔지니어"
+    ],
+    "flag": "tech_dram_4f2_vertical"
+   },
+   "rnd_skill": "dram_cell",
+   "headline_ko": "D램 셀 30% 작아졌다…'공급 과잉' 경고등도 켜져",
+   "sources": [
+    "https://www.storagenewsletter.com/2025/06/10/ieee-vlsi-2025-sk-hynix-presents-future-dram-technology-roadmap/",
+    "https://files.futurememorystorage.com/proceedings/2025/20250807_DRAM-304-1_Jeongdong-Choe_Short-version.pdf",
+    "https://www.trendforce.com/news/2025/10/16/news-samsung-reportedly-purchasing-two-asml-high-na-euv-tools-for-mass-production-by-1h26/"
+   ]
+  },
+  {
+   "id": "panel_level_packaging",
+   "name_ko": "패널 레벨 패키징",
+   "desc_ko": "둥근 웨이퍼 대신 네모난 패널 위에서 패키지를 만들어 면적 낭비를 줄여요.",
+   "category": "packaging",
+   "earliest_year": 2027,
+   "median_year": 2029,
+   "late_year": 2032,
+   "prereqs": [
+    "cowos_mega_interposer"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {
+     "assembler": 1.05
+    },
+    "new_jobs_ko": [
+     "대면적 패널 공정 엔지니어"
+    ],
+    "flag": "tech_panel_level_packaging"
+   },
+   "rnd_skill": "adv_substrate",
+   "headline_ko": "웨이퍼 말고 패널로…디스플레이 장비가 반도체 후공정에",
+   "sources": [
+    "https://stocks.observer-reporter.com/observerreporter/article/tokenring-2026-2-2-tsmcs-copos-the-revolutionary-shift-to-rectangular-panel-packaging",
+    "https://semiengineering.com/the-rise-of-panel-level-packaging/"
+   ]
+  },
+  {
+   "id": "optical_io_scaleup",
+   "name_ko": "패키지 내 광 I/O",
+   "desc_ko": "AI 가속기 패키지 안까지 광 연결이 들어와 수천 개 칩이 한 몸처럼 묶여요.",
+   "category": "packaging",
+   "earliest_year": 2028,
+   "median_year": 2029,
+   "late_year": 2033,
+   "prereqs": [
+    "cpo_optics"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "광-전 공동설계 엔지니어"
+    ],
+    "flag": "tech_optical_io_scaleup"
+   },
+   "rnd_skill": "silicon_photonics",
+   "headline_ko": "구리선 퇴장…AI 가속기끼리 빛으로 대화한다",
+   "sources": [
+    "https://cignal.ai/?p=33678",
+    "https://picmagazine.net/article/121495/Ayar_Labs_announces_first_UCIe_optical_chiplet_for_AI_infrastructure",
+    "https://www.onartificialintelligence.com/articles/34181/the-transition-transforming-network-and-ai-architecture",
+    "https://arxiv.org/pdf/2608.28048",
+    "https://technews.tw/2026/03/18/nvidia-gtc-2026-chips/"
+   ]
+  },
+  {
+   "id": "cryo_quantum_supply_chain",
+   "name_ko": "양자칩 파운드리·극저온 공급망",
+   "desc_ko": "기존 팹 일부가 양자 웨이퍼를 만들고 희석냉동기·극저온 부품 산업이 커져요.",
+   "category": "computing",
+   "earliest_year": 2026,
+   "median_year": 2029,
+   "late_year": 2034,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {
+     "device_researcher": 1.03
+    },
+    "new_jobs_ko": [
+     "극저온 기술자",
+     "양자 소자 공정 엔지니어"
+    ],
+    "flag": "tech_cryo_quantum_supply_chain",
+    "new_sector": {
+     "id": "quantum",
+     "name_ko": "양자",
+     "market_mix": {
+      "logic_foundry": 0.5,
+      "cycle": 0.5
+     }
+    }
+   },
+   "rnd_skill": "quantum_hw",
+   "headline_ko": "양자칩도 파운드리로…국내 첫 양자 웨이퍼 라인 가동",
+   "sources": [
+    "https://futurumgroup.com/insights/will-a-u-s-quantum-foundry-leverage-4-6-billion-in-new-capital-to-become-the-next-tsmc/",
+    "https://postquantum.com/quantum-modalities/silicon-spin-quantum/",
+    "https://www.gminsights.com/industry-analysis/cryogenic-cmos-quantum-control-electronics-market",
+    "https://www.finance-scope.com/article/view/scp202601290027"
+   ]
+  },
+  {
+   "id": "agentic_eda",
+   "name_ko": "자율 AI 칩 설계 에이전트",
+   "desc_ko": "AI 에이전트가 RTL 작성·검증·디버그를 스스로 돌려요. 맞춤형 칩이 폭증해요.",
+   "category": "ai",
+   "earliest_year": 2026,
+   "median_year": 2029,
+   "late_year": 2034,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "circuit_designer": 0.9,
+     "patent": 0.95
+    },
+    "new_jobs_ko": [
+     "AI 검증 에이전트 운영자"
+    ],
+    "flag": "tech_agentic_eda",
+    "skills": {
+     "eda_ai": 0.2
+    }
+   },
+   "rnd_skill": "eda_ai",
+   "headline_ko": "칩 검증 두 달→이틀…AI 설계 에이전트, 신입 검증 업무 대체",
+   "sources": [
+    "https://futurumgroup.com/insights/synopsys-cadence-and-siemens-take-agentic-chip-design-autonomous-at-dac/",
+    "https://www.futurumgroup.com/insights/cadence-and-synopsys-accelerate-agentic-eda-race-at-computex",
+    "https://www.trendforce.com/news/2026/08/13/news-ai-agents-enter-chipmaking-sk-hynix-tests-back-end-deployment-samsung-cuts-soc-verification-to-2-days/",
+    "https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/compute-power-ai.html"
+   ]
+  },
+  {
+   "id": "yongin_power_lng_3gw",
+   "name_ko": "용인 클러스터 3GW 발전·송전 1단계",
+   "desc_ko": "용인 반도체 클러스터에 전기를 대는 3GW 발전소와 송전선 1단계가 준공돼요.",
+   "category": "energy",
+   "earliest_year": 2027,
+   "median_year": 2029,
+   "late_year": 2033,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": 0.5,
+      "years": 1
+     }
+    },
+    "jobs": {
+     "electrician": {
+      "mult": 1.2,
+      "years": 4
+     }
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_yongin_power_lng_3gw",
+    "region": {
+     "yongin": 1
+    }
+   },
+   "rnd_skill": "power_cooling",
+   "headline_ko": "용인에 3GW 전기 들어온다…송전탑 갈등 속 1단계 준공",
+   "sources": [
+    "https://www.digitaltoday.co.kr/en/view/88183/semiconductor-fab-buildout-accelerates-power-grid-supply-a-variable",
+    "https://www.kukinews.com/article/view/kuk202601290259"
+   ]
+  },
+  {
+   "id": "yongin_national_fab1",
+   "name_ko": "용인 국가산단 1호 팹",
+   "desc_ko": "용인 국가산단에 들어설 팹 여섯 기 가운데 첫 팹이 가동돼요.",
+   "category": "industry",
+   "earliest_year": 2028,
+   "median_year": 2029,
+   "late_year": 2031,
+   "prereqs": [
+    "yongin_power_lng_3gw"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "welder": {
+      "mult": 1.25,
+      "years": 5
+     },
+     "pipefitter": {
+      "mult": 1.25,
+      "years": 5
+     },
+     "duct_worker": {
+      "mult": 1.25,
+      "years": 5
+     },
+     "electrician": {
+      "mult": 1.2,
+      "years": 5
+     },
+     "scaffolder": {
+      "mult": 1.18,
+      "years": 5
+     },
+     "landlord": {
+      "mult": 1.1,
+      "years": 8
+     }
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_yongin_national_fab1",
+    "region": {
+     "yongin": 1
+    }
+   },
+   "rnd_skill": "uhp_piping",
+   "headline_ko": "{company} 용인 국가산단 첫 팹 가동…신도시 분양에 사람 몰려",
+   "sources": [
+    "https://www.khaleejtimes.com/business/tech/samsung-electronics-to-advance-start-of-chip-factory-in-yongin-to-2029"
+   ],
+   "company_sector": "memory"
+  },
+  {
+   "id": "hbm_hybrid_bonding",
+   "name_ko": "HBM 하이브리드 본딩",
+   "desc_ko": "범프 없이 구리끼리 직접 붙여 16단 이상 쌓아요. 본딩 장비가 통째로 바뀌어요.",
+   "category": "packaging",
+   "earliest_year": 2027,
+   "median_year": 2030,
+   "late_year": 2033,
+   "prereqs": [
+    "hbm4e_custom"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "assembler": 0.95
+    },
+    "new_jobs_ko": [
+     "하이브리드 본딩 공정 엔지니어",
+     "표면 활성화·CMP 엔지니어"
+    ],
+    "flag": "tech_hbm_hybrid_bonding",
+    "skills": {
+     "hybrid_bonding": 0.2
+    }
+   },
+   "rnd_skill": "hybrid_bonding",
+   "headline_ko": "범프가 사라졌다…HBM 하이브리드 본딩 양산, 본더 교체 사이클",
+   "sources": [
+    "https://www.3dincites.com/2025/07/iftle-635-kaist-tera-hbm-roadmap/",
+    "https://ai2.work/blog/hot-chips-samsung-sk-hynix-and-micron-chart-the-post-hbm4-roadmap",
+    "https://www.trendforce.com/news/2026/07/07/news-samsung-sk-hynix-reportedly-reconsider-hybrid-bonding-timeline-16-high-hbm4e-may-be-earliest-adoption/",
+    "https://www.trendforce.com/presscenter/news/20241030-12343.html"
+   ]
+  },
+  {
+   "id": "ucie_open_chiplet",
+   "name_ko": "개방형 칩렛 생태계",
+   "desc_ko": "여러 회사의 칩렛을 레고처럼 사고팔아 한 패키지에 조립해요.",
+   "category": "packaging",
+   "earliest_year": 2027,
+   "median_year": 2030,
+   "late_year": 2036,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 1
+     }
+    },
+    "jobs": {
+     "circuit_designer": 1.05
+    },
+    "new_jobs_ko": [
+     "칩렛 아키텍트",
+     "KGD(양품 다이) 테스트 엔지니어"
+    ],
+    "flag": "tech_ucie_open_chiplet"
+   },
+   "rnd_skill": "chip_architecture",
+   "headline_ko": "칩도 레고처럼…개방형 칩렛 장터 열렸다",
+   "sources": [
+    "https://www.tcs.com/what-we-do/industries/high-tech/white-paper/ucie-3-0-unlocking-potential-multi-vendor-chiplet-ecosystems",
+    "https://www.marketsandmarkets.com/ResearchInsight/chiplet-market-growth.asp"
+   ]
+  },
+  {
+   "id": "ga2o3_power",
+   "name_ko": "산화갈륨 전력소자",
+   "desc_ko": "수 kV급 초고압 송전·철도용 전력소자를 산화갈륨으로 만들어요.",
+   "category": "materials",
+   "earliest_year": 2027,
+   "median_year": 2030,
+   "late_year": 2036,
+   "prereqs": [],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_ga2o3_power"
+   },
+   "rnd_skill": "power_semis",
+   "headline_ko": "송전망에 산화갈륨 칩…초고압 전력소자 양산 시작",
+   "sources": [
+    "https://www.36kr.com/p/3709358914220168",
+    "https://www.semiconductor-today.com/news_items/2025/aug/kyma-nct-050825.shtml"
+   ],
+   "p_never": 0.2
+  },
+  {
+   "id": "training_2e29",
+   "name_ko": "초대형 AI 학습(10²⁹ FLOP급)",
+   "desc_ko": "2023년 최고 모델보다 약 1만 배 많은 연산으로 AI를 학습시켜요. 칩 수천만 개가 한 모델에 들어가요.",
+   "category": "ai",
+   "earliest_year": 2028,
+   "median_year": 2030,
+   "late_year": 2034,
+   "prereqs": [
+    "gigawatt_ai_campus"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": 0.5,
+      "years": 2
+     },
+     "memory": {
+      "delta": 0.5,
+      "years": 1
+     }
+    },
+    "jobs": {
+     "hr": 0.92,
+     "purchasing": 0.88,
+     "analyst": 0.9,
+     "office_worker": 0.9,
+     "developer": 0.9
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_training_2e29"
+   },
+   "rnd_skill": "ai_systems",
+   "headline_ko": "AI 한 번 학습에 수백억 달러…'1만 배 모델' 공개",
+   "sources": [
+    "https://epoch.ai/blog/can-ai-scaling-continue-through-2030",
+    "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models"
+   ]
+  },
+  {
+   "id": "robotaxi_korea",
+   "name_ko": "한국 레벨4 자율주행 상용화",
+   "desc_ko": "운전자 없는 택시·셔틀이 정해진 노선과 도시에서 요금을 받고 달려요.",
+   "category": "ai",
+   "earliest_year": 2027,
+   "median_year": 2030,
+   "late_year": 2035,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {
+     "shuttle_driver": 0.5,
+     "driver": 0.5
+    },
+    "new_jobs_ko": [
+     "자율주행 원격 관제사"
+    ],
+    "flag": "tech_robotaxi_korea",
+    "jobs_ramp": 12
+   },
+   "rnd_skill": "chip_architecture",
+   "headline_ko": "운전석이 비었다…레벨4 자율주행 셔틀, 산단 출퇴근길에",
+   "sources": [
+    "https://www.imaeil.com/page/view/2026022608442160713",
+    "https://electrek.co/2026/07/08/waymo-driverless-las-vegas-four-new-cities/",
+    "https://www.oecd.org/en/about/news/press-releases/2023/07/oecd-job-markets-remain-tight-though-inflation-is-hitting-real-wages.html"
+   ]
+  },
+  {
+   "id": "pqc_migration",
+   "name_ko": "양자내성암호(PQC) 전환 의무화",
+   "desc_ko": "옛 암호를 쓰는 보안 칩·장비를 양자내성암호로 바꾸라는 규제가 시행돼요.",
+   "category": "industry",
+   "earliest_year": 2027,
+   "median_year": 2030,
+   "late_year": 2035,
+   "prereqs": [],
+   "confidence": "high",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "PQC 하드웨어 검증 엔지니어"
+    ],
+    "flag": "tech_pqc_migration"
+   },
+   "rnd_skill": "pqc_security",
+   "headline_ko": "옛 암호 칩 퇴출 시한 확정…보안 반도체 교체 특수",
+   "sources": [
+    "https://www.encryptionconsulting.com/nist-ir-8547-2030-2035-action-plan/",
+    "https://thequantuminsider.com/2026/05/08/post-quantum-migration-timelines-government-industry-impact/"
+   ]
+  },
+  {
+   "id": "ai_tutor_mainstream",
+   "name_ko": "AI 튜터 일상화",
+   "desc_ko": "학생 대부분이 개인 AI 튜터와 공부해요. 학원 강사 수요가 줄어요.",
+   "category": "society",
+   "earliest_year": 2026,
+   "median_year": 2030,
+   "late_year": 2036,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {
+     "academy_teacher": 0.8,
+     "teacher": 0.95
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_ai_tutor_mainstream"
+   },
+   "rnd_skill": "ai_systems",
+   "headline_ko": "학원 대신 AI 선생님…초등생 절반이 AI 튜터와 숙제",
+   "sources": [
+    "https://www.khan.co.kr/article/202508041631001",
+    "https://counterpointresearch.com/insight/post-insight-research-notes-blogs-the-ecosystem-driving-ais-democratization-in-smartphones",
+    "https://www.segye.com/newsView/20260818508007"
+   ]
+  },
+  {
+   "id": "ai_drug_approval",
+   "name_ko": "AI 발견 신약 첫 허가",
+   "desc_ko": "AI가 표적과 분자를 찾은 신약이 처음으로 허가를 받아요.",
+   "category": "society",
+   "earliest_year": 2028,
+   "median_year": 2030,
+   "late_year": 2034,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_ai_drug_approval",
+    "medical": {
+     "life_d": 0.5,
+     "cure_mult": 1.1
+    }
+   },
+   "rnd_skill": "ai_systems",
+   "headline_ko": "AI가 찾은 신약 첫 허가…바이오 투자 붐",
+   "sources": [
+    "https://www.news-medical.net/news/20260907/AI-designed-drug-candidate-reverses-biological-age-in-clinical-study.aspx",
+    "https://radiologybusiness.com/topics/artificial-intelligence/radiology-gets-68-new-fda-cleared-algorithms"
+   ]
+  },
+  {
+   "id": "node_a10",
+   "name_ko": "1nm급 공정(포크시트)",
+   "desc_ko": "나노시트 사이에 절연 벽을 세운 포크시트와 High-NA 노광으로 1nm급에 들어서요.",
+   "category": "logic_process",
+   "earliest_year": 2029,
+   "median_year": 2031,
+   "late_year": 2034,
+   "prereqs": [
+    "node_a14",
+    "backside_power",
+    "high_na_euv"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     },
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "process_engineer": 1.03,
+     "device_researcher": 1.05
+    },
+    "new_jobs_ko": [
+     "배선 신소재(루테늄·몰리브덴) 엔지니어"
+    ],
+    "flag": "tech_node_a10"
+   },
+   "rnd_skill": "device_physics",
+   "headline_ko": "'1나노' 벽 넘었다…선단 파운드리는 이제 세 곳뿐",
+   "sources": [
+    "https://www.trendforce.com/news/2026/06/30/news-samsung-reportedly-restarts-1-4nm-push-targets-2029-mass-production-to-close-gap-with-tsmc-intel/",
+    "https://technews.tw/2026/07/01/imec-roadmap-chip-density-drivers-cfet-vertical-integration-advanced-packaging-a3-process-2038/",
+    "https://www.all-about-industries.com/tsmc-plans-construction-start-of-14nm-fab-on-november-5-a-69f2066fec0cee4271be9c85fffeab4f/",
+    "https://www.imec-int.com/en/articles/performance-boosters-scale-monolithic-cfet-across-multiple-logic-technology-nodes"
+   ]
+  },
+  {
+   "id": "nand_1000l",
+   "name_ko": "1,000단 낸드",
+   "desc_ko": "웨이퍼 여러 장을 붙여 1,000단을 넘긴 낸드예요. 층당 원가 절감은 갈수록 줄어요.",
+   "category": "memory",
+   "earliest_year": 2030,
+   "median_year": 2031,
+   "late_year": 2035,
+   "prereqs": [
+    "nand_400l_bonded"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "다중 웨이퍼 정렬·수율 엔지니어"
+    ],
+    "flag": "tech_nand_1000l"
+   },
+   "rnd_skill": "nand_3d",
+   "headline_ko": "낸드 1000단 돌파…'층수 경쟁 끝이 어디냐'",
+   "sources": [
+    "https://www.trendforce.com/news/2025/02/26/news-samsung-reportedly-targets-1000-layer-nand-by-2030-rolls-out-wafer-bonding-at-400-layers/",
+    "https://www.guru3d.com/story/kioxia-1000layer-3d-nand-ambition-by-2027"
+   ]
+  },
+  {
+   "id": "cmos20_functional_tiers",
+   "name_ko": "CMOS 2.0 기능별 웨이퍼 적층",
+   "desc_ko": "로직·캐시·전력·I/O를 각자 맞는 공정으로 만든 뒤 웨이퍼째 붙여 쌓아요.",
+   "category": "packaging",
+   "earliest_year": 2028,
+   "median_year": 2031,
+   "late_year": 2035,
+   "prereqs": [
+    "backside_power"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "다층 칩 분할 설계자"
+    ],
+    "flag": "tech_cmos20_functional_tiers"
+   },
+   "rnd_skill": "hybrid_bonding",
+   "headline_ko": "칩을 층별로 나눠 만든다…'CMOS 2.0' 첫 제품, 전·후공정 경계 무너져",
+   "sources": [
+    "https://www.imec-int.com/en/articles/path-high-density-front-and-backside-wafer-connectivity",
+    "https://spectrum.ieee.org/stco-system-technology-cooptimization"
+   ]
+  },
+  {
+   "id": "fault_tolerant_qc",
+   "name_ko": "오류 보정 양자컴퓨터",
+   "desc_ko": "논리 큐비트 100~200개로 오류를 고치며 계산하는 첫 실용 양자컴퓨터예요.",
+   "category": "computing",
+   "earliest_year": 2028,
+   "median_year": 2031,
+   "late_year": 2036,
+   "prereqs": [
+    "cryo_quantum_supply_chain"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [
+     "양자 오류정정 디코더 설계자",
+     "양자 알고리즘 개발자"
+    ],
+    "flag": "tech_fault_tolerant_qc"
+   },
+   "rnd_skill": "quantum_hw",
+   "headline_ko": "오류 고치는 양자컴퓨터 첫 가동…'양자 실용 시대' 개막",
+   "sources": [
+    "https://www.hpcwire.com/2025/06/10/ibm-sets-2029-target-for-fault-tolerant-quantum-computing/",
+    "https://www.quantinuum.com/press-releases/quantinuum-unveils-accelerated-roadmap-to-achieve-universal-fault-tolerant-quantum-computing-by-2030",
+    "https://heise.de/-10192990"
+   ]
+  },
+  {
+   "id": "superhuman_coder",
+   "name_ko": "초인적 AI 코더·연구 자동화",
+   "desc_ko": "AI가 최고 수준 개발자보다 코딩을 잘하고 연구 실험까지 자동으로 돌려요.",
+   "category": "ai",
+   "earliest_year": 2029,
+   "median_year": 2031,
+   "late_year": 2040,
+   "prereqs": [
+    "training_2e29"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "circuit_designer": 0.8,
+     "hr": 0.85,
+     "purchasing": 0.8,
+     "analyst": 0.8,
+     "patent": 0.85,
+     "academy_teacher": 0.88,
+     "journalist": 0.9,
+     "office_worker": 0.85,
+     "developer": 0.6
+    },
+    "new_jobs_ko": [
+     "AI 에이전트 감독관"
+    ],
+    "flag": "tech_superhuman_coder"
+   },
+   "rnd_skill": "ai_systems",
+   "headline_ko": "AI가 개발자를 앞질렀다…신입 개발자 채용 절반으로",
+   "sources": [
+    "https://arxiv.org/html/2503.14499v1",
+    "https://futuresearch.ai/blog/ai-2027-one-year-later/",
+    "https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine"
+   ]
+  },
+  {
+   "id": "dc_power_1000twh",
+   "name_ko": "데이터센터 전력 1,000TWh",
+   "desc_ko": "세계 데이터센터가 한 해 1,000TWh를 넘게 써요. 전력이 AI 칩 수요의 상한이 돼요.",
+   "category": "energy",
+   "earliest_year": 2029,
+   "median_year": 2031,
+   "late_year": 2035,
+   "prereqs": [
+    "gigawatt_ai_campus"
+   ],
+   "confidence": "high",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {
+     "electrician": 1.1
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_dc_power_1000twh",
+    "skills": {
+     "power_cooling": 0.2,
+     "power_semis": 0.1
+    },
+    "world_path": {
+     "transition": 0.05
+    }
+   },
+   "rnd_skill": "power_cooling",
+   "headline_ko": "데이터센터 전기 1000TWh…'칩보다 전기가 귀하다'",
+   "sources": [
+    "https://www.iea.org/reports/energy-and-ai/executive-summary",
+    "https://www.hankyung.com/article/2026062586031"
+   ]
+  },
+  {
+   "id": "us_japan_advanced_logic",
+   "name_ko": "미·일 첨단 파운드리 생산 확대",
+   "desc_ko": "미국 첨단로직 생산 비중이 28%로 오르고 일본 신생 파운드리도 2nm를 양산해요. 대만 집중이 줄어요.",
+   "category": "industry",
+   "earliest_year": 2027,
+   "median_year": 2031,
+   "late_year": 2036,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     },
+     "korea": {
+      "delta": -0.5,
+      "years": 1
+     }
+    },
+    "jobs": {
+     "field_service": 1.05,
+     "process_engineer": 1.03
+    },
+    "new_jobs_ko": [
+     "해외 팹 셋업 파견 엔지니어"
+    ],
+    "flag": "tech_us_japan_advanced_logic",
+    "world_path": {
+     "fragmentation": 0.05
+    }
+   },
+   "rnd_skill": null,
+   "headline_ko": "첨단 칩 '메이드 인 USA' 28%…일본도 2nm 양산, 파운드리 지도 다시 그려져",
+   "sources": [
+    "https://www.semiconductors.org/america-projected-to-triple-semiconductor-manufacturing-capacity-by-2032-the-largest-rate-of-growth-in-the-world/",
+    "https://www.theregister.com/2026/04/14/japan_semiconductor_industry_comeback_rapidus/",
+    "https://www.theregister.com/2026/02/27/rapidus_funding/"
+   ]
+  },
+  {
+   "id": "hbm6",
+   "name_ko": "HBM6",
+   "desc_ko": "유리·실리콘 능동 인터포저 위에 올리는 HBM 6세대예요. 스택 하나가 100GB 안팎이에요.",
+   "category": "memory",
+   "earliest_year": 2031,
+   "median_year": 2032,
+   "late_year": 2035,
+   "prereqs": [
+    "hbm5",
+    "hbm_hybrid_bonding"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "유리 인터포저 설계 엔지니어"
+    ],
+    "flag": "tech_hbm6"
+   },
+   "rnd_skill": "hbm_design",
+   "headline_ko": "HBM이 D램 매출 절반 넘본다…HBM6 양산",
+   "sources": [
+    "https://blocksandfiles.com/2025/06/26/four-more-hbm-generations/",
+    "https://www.bloomberg.com/company/press/high-bandwidth-memory-chip-market-could-grow-to-130-billion-by-2033-according-to-bloomberg-intelligence"
+   ]
+  },
+  {
+   "id": "sot_mram_cache",
+   "name_ko": "SOT-MRAM 캐시",
+   "desc_ko": "더 줄어들지 않는 SRAM 캐시를 자성 메모리가 대신해 칩 면적과 대기전력을 줄여요.",
+   "category": "memory",
+   "earliest_year": 2028,
+   "median_year": 2032,
+   "late_year": 2038,
+   "prereqs": [
+    "emram_advanced"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [
+     "MTJ 공정 엔지니어"
+    ],
+    "flag": "tech_sot_mram_cache"
+   },
+   "rnd_skill": "emerging_memory",
+   "headline_ko": "캐시 메모리 반세기 만의 교체…SRAM 자리에 MRAM",
+   "sources": [
+    "https://imec-int.com/en/articles/bringing-sot-mram-technology-closer-last-level-cache-memory-specifications",
+    "https://www.allaboutcircuits.com/news/sot-mram-may-soon-contend-with-sram-for-cache-memory/"
+   ],
+   "p_never": 0.2
+  },
+  {
+   "id": "analog_imc",
+   "name_ko": "아날로그 인메모리 AI 칩",
+   "desc_ko": "메모리 소자에 저장된 값으로 바로 곱셈을 해 엣지 AI 전력을 크게 줄여요.",
+   "category": "computing",
+   "earliest_year": 2027,
+   "median_year": 2032,
+   "late_year": 2040,
+   "prereqs": [],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [
+     "혼성신호 AI 회로 설계자"
+    ],
+    "flag": "tech_analog_imc"
+   },
+   "rnd_skill": "novel_compute",
+   "headline_ko": "배터리 1년 가는 AI 칩…아날로그 인메모리 칩 상용화",
+   "sources": [
+    "https://www.hpcwire.com/off-the-wire/ibm-develops-a-new-64-core-mixed-signal-in-memory-computing-chip/",
+    "https://arxiv.org/pdf/2604.04727"
+   ],
+   "p_never": 0.2
+  },
+  {
+   "id": "dram_3d",
+   "name_ko": "3D 적층 D램",
+   "desc_ko": "D램도 낸드처럼 셀을 층층이 쌓아요. 고종횡비 식각·증착 장비 투자가 몰려요.",
+   "category": "memory",
+   "earliest_year": 2030,
+   "median_year": 2033,
+   "late_year": 2038,
+   "prereqs": [
+    "dram_4f2_vertical"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     },
+     "memory": {
+      "delta": -0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "process_engineer": 1.05
+    },
+    "new_jobs_ko": [
+     "산화물(IGZO) 반도체 엔지니어",
+     "3D 셀 설계자"
+    ],
+    "flag": "tech_dram_3d"
+   },
+   "rnd_skill": "dram_cell",
+   "headline_ko": "D램도 쌓는다…{company}, 3D D램 첫 양산",
+   "sources": [
+    "https://www.kedglobal.com/newsView/ked202404020016",
+    "https://www.digitimes.com/news/a20240528PD209.html",
+    "https://www.imec-int.com/en/articles/disrupting-dram-roadmap-capacitor-less-igzo-dram-technology"
+   ],
+   "company_sector": "memory"
+  },
+  {
+   "id": "neuromorphic_scale",
+   "name_ko": "대규모 뉴로모픽 시스템",
+   "desc_ko": "뇌처럼 스파이크 신호로 움직이는 칩이 로봇·센서에 대규모로 쓰여요.",
+   "category": "computing",
+   "earliest_year": 2027,
+   "median_year": 2033,
+   "late_year": 2042,
+   "prereqs": [],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [
+     "스파이킹 신경망 엔지니어"
+    ],
+    "flag": "tech_neuromorphic_scale"
+   },
+   "rnd_skill": "novel_compute",
+   "headline_ko": "뇌를 닮은 칩, 로봇 눈에 들어갔다…뉴로모픽 상용화",
+   "sources": [
+    "https://news.utsa.edu/2025/01/utsa-researchers-chart-course-for-neuromorphic-computing-systems/",
+    "https://www.intel.com/content/www/us/en/newsroom/news/intel-builds-worlds-largest-neuromorphic-system.html",
+    "https://arxiv.org/pdf/2604.04727"
+   ]
+  },
+  {
+   "id": "autonomous_fab_l4",
+   "name_ko": "AI 자율 운영 팹",
+   "desc_ko": "생산 계획·결함 탐지·정비 일정을 AI가 정하고 사람은 예외만 맡아요.",
+   "category": "automation",
+   "earliest_year": 2030,
+   "median_year": 2034,
+   "late_year": 2042,
+   "prereqs": [
+    "ai_fab_digital_twin"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": 0.5,
+      "years": 2
+     },
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "operator": 0.55,
+     "process_engineer": 0.78,
+     "quality_engineer": 0.7,
+     "yield_engineer": 0.85,
+     "equipment_engineer": 0.88,
+     "cleanroom_laundry": 0.85
+    },
+    "new_jobs_ko": [
+     "AI 공정 관제사"
+    ],
+    "flag": "tech_autonomous_fab_l4"
+   },
+   "rnd_skill": "fab_ai",
+   "headline_ko": "AI가 라인을 돌린다…{company}, 첫 자율 운영 팹 선언",
+   "sources": [
+    "https://cleanroomtechnology.com/sk-hynix-to-build-ai-driven-autonomous-fab-by",
+    "https://www.semiconwest.org/programs/call-for-abstracts/smart-manufacturing-2026",
+    "https://biz.newdaily.co.kr/site/data/html/2024/06/24/2024062400063.html",
+    "https://www.segye.com/newsView/20231116521119",
+    "https://www.trendforce.com/news/2026/08/13/news-ai-agents-enter-chipmaking-sk-hynix-tests-back-end-deployment-samsung-cuts-soc-verification-to-2-days/",
+    "https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine"
+   ],
+   "company_sector": "memory"
+  },
+  {
+   "id": "cfet",
+   "name_ko": "CFET(상보형 적층 트랜지스터)",
+   "desc_ko": "n형과 p형 트랜지스터를 위아래로 쌓아 셀 면적을 크게 줄여요.",
+   "category": "logic_process",
+   "earliest_year": 2032,
+   "median_year": 2035,
+   "late_year": 2039,
+   "prereqs": [
+    "node_a10",
+    "backside_power"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 2
+     },
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "device_researcher": 1.1,
+     "process_engineer": 1.05
+    },
+    "new_jobs_ko": [
+     "3D 셀 라이브러리 설계자",
+     "선택적 식각 공정 엔지니어"
+    ],
+    "flag": "tech_cfet"
+   },
+   "rnd_skill": "device_physics",
+   "headline_ko": "트랜지스터도 2층 시대…{company}, CFET 양산 선언",
+   "sources": [
+    "https://spectrum.ieee.org/semiconductor-technology-roadmap",
+    "https://www.profesionalreview.com/2026/05/03/imec-chips-sub-1-nm-llegaran-2034/amp/",
+    "https://www.eenewseurope.com/en/iedm-cfets-make-progress-at-5nm-and-7angstrom/",
+    "https://eu.36kr.com/en/p/3591866293289217",
+    "https://www.imec-int.com/en/articles/performance-boosters-scale-monolithic-cfet-across-multiple-logic-technology-nodes",
+    "https://wccftech.com/sub-1nm-process-node-technology-wont-arrive-till-2034-logic-roadmap-2dfets-sub-0-2nm-2046/"
+   ],
+   "company_sector": "foundry"
+  },
+  {
+   "id": "hbm7",
+   "name_ko": "HBM7(칩 내장 냉각)",
+   "desc_ko": "24단으로 쌓고 칩 안에 냉각 유로를 넣은 HBM 7세대예요.",
+   "category": "memory",
+   "earliest_year": 2034,
+   "median_year": 2035,
+   "late_year": 2039,
+   "prereqs": [
+    "hbm6"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "칩 내장 냉각 열유체 엔지니어"
+    ],
+    "flag": "tech_hbm7"
+   },
+   "rnd_skill": "hbm_design",
+   "headline_ko": "메모리 안에 냉각수가 흐른다…HBM7 등장",
+   "sources": [
+    "https://blocksandfiles.com/2025/06/26/four-more-hbm-generations/"
+   ]
+  },
+  {
+   "id": "fefet_fenand",
+   "name_ko": "강유전체 FeFET·3D FeNAND",
+   "desc_ko": "강유전체 박막으로 낮은 전압에 저장하는 메모리예요. 낸드 일부와 AI 가중치 저장을 노려요.",
+   "category": "memory",
+   "earliest_year": 2030,
+   "median_year": 2035,
+   "late_year": 2045,
+   "prereqs": [],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [
+     "강유전 소재·계면 엔지니어"
+    ],
+    "flag": "tech_fefet_fenand"
+   },
+   "rnd_skill": "emerging_memory",
+   "headline_ko": "저전력 '강유전체 낸드' 첫 양산…스토리지 판도 바뀌나",
+   "sources": [
+    "https://www.imec-int.com/en/imec-magazine/imec-magazine-october-2017/the-vertical-ferroelectric-fet-a-new-contender-for-3d-nand-flash-memory-and-machine-learning",
+    "https://semiengineering.com/a-new-memory-contender",
+    "https://www.gminsights.com/industry-analysis/ferroelectric-ram-market"
+   ],
+   "p_never": 0.3
+  },
+  {
+   "id": "utility_scale_qc",
+   "name_ko": "유틸리티급 양자컴퓨터",
+   "desc_ko": "논리 큐비트 1,000개 이상으로 소재·신약 시뮬레이션에 실제로 쓰여요.",
+   "category": "computing",
+   "earliest_year": 2031,
+   "median_year": 2035,
+   "late_year": 2045,
+   "prereqs": [
+    "fault_tolerant_qc"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {
+     "chemist": 1.05
+    },
+    "new_jobs_ko": [
+     "양자-HPC 통합 엔지니어"
+    ],
+    "flag": "tech_utility_scale_qc"
+   },
+   "rnd_skill": "quantum_hw",
+   "headline_ko": "양자컴퓨터로 새 배터리 소재 찾았다…소재 개발 주기 절반으로",
+   "sources": [
+    "https://www.allaboutcircuits.com/news/ibm-charts-roadmap-to-first-practical-fault-tolerant-quantum-computer/",
+    "https://www.datacenterdynamics.com/en/news/darpa-announces-11-companies-advancing-to-second-stage-of-it-quantum-benchmarking-initiative/",
+    "https://www.ionq.com/blog/ionqs-accelerated-roadmap-turning-quantum-ambition-into-reality",
+    "https://www.mckinsey.com/capabilities/tech-and-ai/our-takeaways/the-year-of-quantum-from-concept-to-reality-in-2025"
+   ]
+  },
+  {
+   "id": "hyper_na_euv",
+   "name_ko": "Hyper-NA EUV(NA 0.75)",
+   "desc_ko": "개구수를 0.75까지 올린 차세대 노광기예요. 5nm 폭 패턴을 그려요.",
+   "category": "lithography",
+   "earliest_year": 2033,
+   "median_year": 2036,
+   "late_year": 2040,
+   "prereqs": [
+    "high_na_euv"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "고NA 반사 미러 정밀가공 기술자"
+    ],
+    "flag": "tech_hyper_na_euv"
+   },
+   "rnd_skill": "litho_optics",
+   "headline_ko": "노광기 한 대 값이 팹 한 동 값…Hyper-NA 첫 출하",
+   "sources": [
+    "https://www.thestar.com.my/tech/tech-news/2026/10/08/asml-zeiss-say-next-generation-chipmaking-technology-may-be-ready-in-10-years",
+    "https://www.techzine.eu/news/infrastructure/144861/asml-next-generation-chip-machine-hyper-na-in-ten-years/"
+   ]
+  },
+  {
+   "id": "photonic_compute",
+   "name_ko": "광 연산 가속기",
+   "desc_ko": "행렬 곱셈 일부를 빛으로 계산해 AI 추론 전력을 줄여요.",
+   "category": "computing",
+   "earliest_year": 2029,
+   "median_year": 2036,
+   "late_year": 2048,
+   "prereqs": [
+    "optical_io_scaleup"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "광 신경망 엔지니어"
+    ],
+    "flag": "tech_photonic_compute"
+   },
+   "rnd_skill": "silicon_photonics",
+   "headline_ko": "빛으로 계산하는 AI 칩, 데이터센터에 첫 상용 투입",
+   "sources": [
+    "https://ideas.repec.org/a/nat/nature/v640y2025i8058d10.1038_s41586-025-08854-x.html"
+   ],
+   "p_never": 0.2
+  },
+  {
+   "id": "diamond_power",
+   "name_ko": "다이아몬드 반도체",
+   "desc_ko": "다이아몬드 기판으로 고온·고출력·방사선 환경에서도 버티는 소자를 만들어요.",
+   "category": "materials",
+   "earliest_year": 2028,
+   "median_year": 2036,
+   "late_year": 2048,
+   "prereqs": [],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_diamond_power"
+   },
+   "rnd_skill": "power_semis",
+   "headline_ko": "보석이 칩이 됐다…다이아몬드 반도체, 우주·원전용 첫 양산",
+   "sources": [
+    "https://kr-asia.com/japan-rd-brings-powerful-diamond-semiconductors-closer-to-reality",
+    "https://electropages.com/blog/2024/11/japanese-researchers-could-introduce-diamond-semiconductors-2030"
+   ],
+   "p_never": 0.2
+  },
+  {
+   "id": "yongin_general_full",
+   "name_ko": "용인 일반산단 팹 4기 완공",
+   "desc_ko": "용인 일반산단의 팹 네 기가 모두 완공돼 세계 최대 메모리 단지가 돼요.",
+   "category": "industry",
+   "earliest_year": 2033,
+   "median_year": 2036,
+   "late_year": 2046,
+   "prereqs": [
+    "yongin_first_fab",
+    "yongin_power_lng_3gw"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "landlord": 1.1
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_yongin_general_full",
+    "region": {
+     "yongin": 1
+    }
+   },
+   "rnd_skill": "uhp_piping",
+   "headline_ko": "용인 일반산단 팹 4기 완공…세계 최대 메모리 단지 탄생",
+   "sources": [
+    "https://en.fnnews.com/news/202607121819129148",
+    "https://www.trendforce.com/news/2026/07/14/news-sk-hynix-reportedly-starts-yongin-y1-equipment-orders-moves-up-phase-1-opening-to-feb-2027/"
+   ]
+  },
+  {
+   "id": "southwest_cluster_fab1",
+   "name_ko": "서남권 반도체 클러스터 첫 팹",
+   "desc_ko": "호남 서남권에 재생에너지로 돌리는 'RE100 팹'이 처음 가동돼요. 판에 따라 무산될 수도 있어요.",
+   "category": "industry",
+   "earliest_year": 2032,
+   "median_year": 2036,
+   "late_year": 2042,
+   "prereqs": [],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "welder": {
+      "mult": 1.2,
+      "years": 4
+     },
+     "pipefitter": {
+      "mult": 1.2,
+      "years": 4
+     },
+     "duct_worker": {
+      "mult": 1.2,
+      "years": 4
+     },
+     "electrician": {
+      "mult": 1.16,
+      "years": 4
+     },
+     "scaffolder": {
+      "mult": 1.14,
+      "years": 4
+     }
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_southwest_cluster_fab1",
+    "world_path": {
+     "transition": 0.05
+    },
+    "region": {
+     "gwangju_jn": 1
+    }
+   },
+   "rnd_skill": "uhp_piping",
+   "headline_ko": "서남권 첫 RE100 팹 가동…'반도체는 수도권' 공식 깨지나",
+   "sources": [
+    "https://www.koreatimes.co.kr/business/companies/20260703/drought-risk-missing-in-water-supply-plan-for-new-chip-cluster",
+    "https://www.hankyung.com/article/2026062949757",
+    "https://news.mtn.co.kr/news-detail/2026073116400448666"
+   ],
+   "p_never": 0.35
+  },
+  {
+   "id": "china_chip_selfsufficiency_80",
+   "name_ko": "중국 반도체 자급률 80%",
+   "desc_ko": "중국이 쓰는 칩의 80%를 스스로 만들어요. 중국 시장이 한국 칩에 닫혀요.",
+   "category": "industry",
+   "earliest_year": 2030,
+   "median_year": 2036,
+   "late_year": 2045,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": -0.5,
+      "years": 3
+     },
+     "equipment": {
+      "delta": -0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_china_chip_selfsufficiency_80",
+    "world_path": {
+     "fragmentation": 0.1
+    }
+   },
+   "rnd_skill": null,
+   "headline_ko": "중국 칩 자급률 80%…'중국 특수' 완전히 끝났다",
+   "sources": [
+    "https://www.trendforce.com/news/2026/03/31/news-china-reportedly-targets-80-chip-self-sufficiency-by-2030-eyes-domestic-7nm-line/",
+    "https://observatorioglobal.udlap.mx/?p=11066"
+   ]
+  },
+  {
+   "id": "monolithic_3d_logic",
+   "name_ko": "모놀리식 3D 다층 로직",
+   "desc_ko": "한 웨이퍼 위에 트랜지스터 층을 여러 번 쌓아 올려요. 로직도 '층수 경쟁'이 시작돼요.",
+   "category": "logic_process",
+   "earliest_year": 2033,
+   "median_year": 2037,
+   "late_year": 2045,
+   "prereqs": [
+    "cfet",
+    "cmos20_functional_tiers"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "저온 공정 엔지니어",
+     "3D 열 해석 엔지니어"
+    ],
+    "flag": "tech_monolithic_3d_logic"
+   },
+   "rnd_skill": "process_integration",
+   "headline_ko": "로직도 층층이 쌓는다…저온 증착 장비 주문 몰려",
+   "sources": [
+    "https://publications.rwth-aachen.de/record/998965/files/998965.pdf",
+    "https://www.imec-int.com/en/imec-magazine/imec-magazine-june-2018/the-potential-of-sequential-3d-integration-for-advanced-semiconductor-scaling"
+   ]
+  },
+  {
+   "id": "korea_retirement_65",
+   "name_ko": "법정 정년 65세",
+   "desc_ko": "법정 정년이 단계적으로 늘어 65세가 돼요. 국민연금 받는 나이와 맞춰져요.",
+   "category": "society",
+   "earliest_year": 2033,
+   "median_year": 2037,
+   "late_year": 2041,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_korea_retirement_65"
+   },
+   "rnd_skill": null,
+   "headline_ko": "정년 65세 완성…임금피크·청년 채용 논쟁은 계속",
+   "sources": [
+    "https://weekly.khan.co.kr/article/202608291624001",
+    "https://v.daum.net/v/20260612083502501"
+   ]
+  },
+  {
+   "id": "hbm8",
+   "name_ko": "HBM8",
+   "desc_ko": "스택 하나가 200GB를 넘는 HBM 8세대예요. 메모리 대역폭이 연산 칩 설계를 좌우해요.",
+   "category": "memory",
+   "earliest_year": 2037,
+   "median_year": 2038,
+   "late_year": 2043,
+   "prereqs": [
+    "hbm7"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": 0.5,
+      "years": 2
+     },
+     "korea": {
+      "delta": 0.5,
+      "years": 1
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_hbm8"
+   },
+   "rnd_skill": "hbm_design",
+   "headline_ko": "메모리가 갑이다…HBM8, AI 칩 설계 주도권 쥐었다",
+   "sources": [
+    "https://blocksandfiles.com/2025/06/26/four-more-hbm-generations/",
+    "https://en.gamegpu.com/news/zhelezo/hbm8-obespechit-do-64-tb-s-propusknoj-sposobnosti-opublikovana-dorozhnaya-karta-pamyati-do-2038-goda"
+   ]
+  },
+  {
+   "id": "humanoid_mass",
+   "name_ko": "산업용 휴머노이드 대량 보급",
+   "desc_ko": "로봇 값이 떨어져 공장·건설·경비·청소 현장에 대량으로 들어와요.",
+   "category": "automation",
+   "earliest_year": 2032,
+   "median_year": 2038,
+   "late_year": 2048,
+   "prereqs": [
+    "humanoid_pilot"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": 0.5,
+      "years": 3
+     },
+     "memory": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "assembler": 0.6,
+     "welder": 0.7,
+     "scaffolder": 0.75,
+     "pipefitter": 0.85,
+     "electrician": 0.88,
+     "duct_worker": 0.8,
+     "janitor": 0.6,
+     "cleanroom_laundry": 0.8,
+     "security_gate": 0.65,
+     "cook": 0.7,
+     "equipment_engineer": 0.92,
+     "factory_worker": 0.6,
+     "part_timer": 0.7,
+     "farmer": 0.85
+    },
+    "new_jobs_ko": [
+     "로봇 정비사"
+    ],
+    "flag": "tech_humanoid_mass",
+    "skills": {
+     "robotics": 0.3
+    },
+    "new_sector": {
+     "id": "robotics",
+     "name_ko": "로봇",
+     "market_mix": {
+      "cycle": 0.6,
+      "memory": 0.2,
+      "korea": 0.2
+     }
+    }
+   },
+   "rnd_skill": "robotics",
+   "headline_ko": "로봇이 스마트폰·자동차 다음 반도체 수요처로…휴머노이드 대량 보급",
+   "sources": [
+    "https://www.nasdaq.com/articles/hyundai-and-boston-dynamics-push-humanoid-robots-forward",
+    "https://developer.tenten.co/morgan-stanleys-bold-prediction-humanoid-robots-will-create-a-5-trillion-market-by-2050",
+    "https://www.oecd.org/en/about/news/press-releases/2023/07/oecd-job-markets-remain-tight-though-inflation-is-hitting-real-wages.html",
+    "https://view.asiae.co.kr/article/2026062615040366040",
+    "https://www.iea.org/reports/energy-and-ai/executive-summary",
+    "https://www.theregister.com/2025/03/19/nvidia_charts_course_for_600kw",
+    "https://theguru.co.kr/mobile/article.html?no=103013",
+    "https://interestingengineering.com/research/the-humanoid-robot-reality-check",
+    "https://weforum.org/press/2025/01/future-of-jobs-report-2025-78-million-new-job-opportunities-by-2030-but-urgent-upskilling-needed-to-prepare-workforces/"
+   ]
+  },
+  {
+   "id": "korea_smr_first",
+   "name_ko": "국내 첫 SMR 상업운전",
+   "desc_ko": "소형모듈원전(SMR)이 처음 상업운전을 시작해 팹·데이터센터에 무탄소 전기를 대요.",
+   "category": "energy",
+   "earliest_year": 2035,
+   "median_year": 2038,
+   "late_year": 2043,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": 0.5,
+      "years": 1
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "SMR 운전원"
+    ],
+    "flag": "tech_korea_smr_first",
+    "world_path": {
+     "transition": 0.05
+    }
+   },
+   "rnd_skill": "power_cooling",
+   "headline_ko": "국산 소형원전 첫 상업운전…팹 옆 '전용 발전소' 시대",
+   "sources": [
+    "https://asiae.co.kr/en/article/2025031717174507098",
+    "https://www.neimagazine.com/news/south-korea-unveils-nuclear-development-plan/"
+   ]
+  },
+  {
+   "id": "crqc_qday",
+   "name_ko": "암호해독급 양자컴퓨터(Q-데이)",
+   "desc_ko": "양자컴퓨터가 지금 쓰는 공개키 암호를 풀 수 있게 돼요. 보안 칩 긴급 교체가 벌어져요.",
+   "category": "computing",
+   "earliest_year": 2032,
+   "median_year": 2039,
+   "late_year": 2055,
+   "prereqs": [
+    "utility_scale_qc"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": -0.5,
+      "years": 1
+     },
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "양자 암호분석가",
+     "양자보안 감사관"
+    ],
+    "flag": "tech_crqc_qday",
+    "skills": {
+     "pqc_security": 0.3
+    }
+   },
+   "rnd_skill": "pqc_security",
+   "headline_ko": "'Q-데이' 왔다…양자컴이 옛 암호 풀어, 보안 칩 긴급 교체",
+   "sources": [
+    "https://globalriskinstitute.org/publication/quantum-threat-timeline-report-2025b/",
+    "https://thequantuminsider.com/2025/05/24/google-researcher-lowers-quantum-bar-to-crack-rsa-encryption/",
+    "https://thequantuminsider.com/2026/03/31/q-day-just-got-closer-three-papers-in-three-months-are-rewriting-the-quantum-threat-timeline/"
+   ]
+  },
+  {
+   "id": "node_a3",
+   "name_ko": "0.3nm급 공정(성숙 CFET)",
+   "desc_ko": "CFET이 무르익고 Hyper-NA가 쓰이는 0.3nm급 공정이에요. 팹 하나가 국가 예산급이에요.",
+   "category": "logic_process",
+   "earliest_year": 2037,
+   "median_year": 2040,
+   "late_year": 2045,
+   "prereqs": [
+    "cfet",
+    "hyper_na_euv"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 2
+     },
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "process_engineer": 0.97
+    },
+    "new_jobs_ko": [
+     "원자층 공정(ALD/ALE) 전문가"
+    ],
+    "flag": "tech_node_a3"
+   },
+   "rnd_skill": "process_integration",
+   "headline_ko": "A3 공정 돌입…팹 한 곳에 수백조 원, '컨소시엄 팹' 등장",
+   "sources": [
+    "https://technews.tw/2026/07/01/imec-roadmap-chip-density-drivers-cfet-vertical-integration-advanced-packaging-a3-process-2038/",
+    "https://www.tomshardware.com/tech-industry/semiconductors/imecs-2026-roadmap-details-0-3nm-nodes-by-2038-cfet-transistors-become-viable-at-0-7nm-company-redefines-moores-law-as-cell-sizes-gain-importance-for-density"
+   ]
+  },
+  {
+   "id": "reversible_computing",
+   "name_ko": "가역·열역학 컴퓨팅 칩",
+   "desc_ko": "에너지를 버리지 않고 되돌려 쓰는 회로와 확률 비트 칩이 전력 한계를 넘어요.",
+   "category": "computing",
+   "earliest_year": 2027,
+   "median_year": 2040,
+   "late_year": 2065,
+   "prereqs": [],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 1
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "단열·가역 회로 설계자"
+    ],
+    "flag": "tech_reversible_computing",
+    "world_path": {
+     "transition": 0.05
+    }
+   },
+   "rnd_skill": "novel_compute",
+   "headline_ko": "버리는 열을 되살린다…가역 컴퓨팅 칩, AI 서버에 첫 탑재",
+   "sources": [
+    "https://spectrum.ieee.org/reversible-computing",
+    "https://runtimewire.com/article/extropic-thermodynamic-computing-ai-energy-pitch"
+   ],
+   "p_never": 0.3
+  },
+  {
+   "id": "space_crystal_fab",
+   "name_ko": "우주 결정 성장 기판",
+   "desc_ko": "미세중력 궤도 공장에서 키운 초고순도 결정을 지상 팹이 씨앗 결정으로 써요.",
+   "category": "materials",
+   "earliest_year": 2030,
+   "median_year": 2040,
+   "late_year": 2060,
+   "prereqs": [],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [
+     "궤도 제조·회수 엔지니어"
+    ],
+    "flag": "tech_space_crystal_fab"
+   },
+   "rnd_skill": "power_semis",
+   "headline_ko": "우주에서 키운 결정 귀환…궤도 공장 기판, 첫 상업 공급",
+   "sources": [
+    "https://space.com/space-exploration/a-completely-new-manufacturing-frontier-space-forge-fires-up-1st-commercial-semiconductor-factory-in-space",
+    "https://www.spaceforge.com/missions/forgestar-1"
+   ],
+   "p_never": 0.3
+  },
+  {
+   "id": "dna_storage",
+   "name_ko": "DNA 아카이브 저장",
+   "desc_ko": "데이터를 DNA 염기서열로 바꿔 수백 년 보관해요. 반도체 공정으로 만든 합성 칩이 쓰여요.",
+   "category": "memory",
+   "earliest_year": 2030,
+   "median_year": 2042,
+   "late_year": 2065,
+   "prereqs": [],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [
+     "바이오-반도체 융합 엔지니어"
+    ],
+    "flag": "tech_dna_storage"
+   },
+   "rnd_skill": "emerging_memory",
+   "headline_ko": "테이프 대신 DNA…'천 년 가는 저장장치' 데이터센터에 첫 도입",
+   "sources": [
+    "https://www.ark-invest.com/articles/analyst-research/dna-storage-solution",
+    "https://www.techradar.com/pro/dna-storage-finally-reaches-mainstream-well-sort-of-but-it-will-cost-you-a-whopping-dollar1000-per-kb-yes-kilobyte"
+   ],
+   "p_never": 0.3
+  },
+  {
+   "id": "superconducting_digital",
+   "name_ko": "초전도 디지털 AI 컴퓨터",
+   "desc_ko": "극저온에서 저항 없이 움직이는 초전도 회로로 AI 연산 전력을 크게 줄여요.",
+   "category": "computing",
+   "earliest_year": 2033,
+   "median_year": 2042,
+   "late_year": 2060,
+   "prereqs": [
+    "cryo_quantum_supply_chain"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 1
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "초전도 회로(SFQ) 설계자"
+    ],
+    "flag": "tech_superconducting_digital",
+    "world_path": {
+     "abundance": 0.05
+    }
+   },
+   "rnd_skill": "quantum_hw",
+   "headline_ko": "얼음보다 차가운 데이터센터…초전도 AI 컴퓨터 첫 가동",
+   "sources": [
+    "https://www.eenewseurope.com/en/imec-scales-nbtin-superconducting-circuits-to-30nm/"
+   ],
+   "p_never": 0.3
+  },
+  {
+   "id": "channel_2d_fet",
+   "name_ko": "2D 채널 트랜지스터",
+   "desc_ko": "실리콘 대신 원자 세 겹 두께의 MoS2·WSe2를 채널로 써요. 탄소나노튜브 소자도 틈새에서 따라와요.",
+   "category": "materials",
+   "earliest_year": 2037,
+   "median_year": 2043,
+   "late_year": 2051,
+   "prereqs": [
+    "cfet"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "2D 소재 성장(MOCVD) 엔지니어"
+    ],
+    "flag": "tech_channel_2d_fet",
+    "skills": {
+     "novel_channel": 0.2
+    }
+   },
+   "rnd_skill": "novel_channel",
+   "headline_ko": "실리콘 채널 첫 교체…2D 반도체 트랜지스터 양산",
+   "sources": [
+    "https://bits-chips.com/article/asml-tsmc-and-imec-scale-2d-transistors-to-50nm-pitch-on-300mm-wafers/",
+    "https://www.semiconductor-today.com/features/PDF/semiconductor-today-feb-2026-imec.pdf",
+    "https://www.imec-int.com/en/articles/introducing-2d-material-based-devices-logic-scaling-roadmap",
+    "https://wccftech.com/sub-1nm-process-node-technology-wont-arrive-till-2034-logic-roadmap-2dfets-sub-0-2nm-2046/",
+    "https://www.tomshardware.com/tech-industry/semiconductors/imec-asml-and-tsmc-build-complementary-2d-material-transistors-at-50nm-pitch-on-a-300mm-wafer",
+    "https://ideas.repec.org/a/nat/nature/v640y2025i8059d10.1038_s41586-025-08759-9.html",
+    "https://techxplore.com/news/2024-08-tensor-processor-chip-based-carbon.html",
+    "https://hackaday.com/tag/cnfet/"
+   ]
+  },
+  {
+   "id": "beyond_euv_litho",
+   "name_ko": "차세대 광원 리소그래피",
+   "desc_ko": "자유전자레이저·X선처럼 더 짧은 파장의 빛으로 노광해요. 노광 장비 판도가 흔들려요.",
+   "category": "lithography",
+   "earliest_year": 2034,
+   "median_year": 2045,
+   "late_year": 2058,
+   "prereqs": [
+    "hyper_na_euv"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "가속기 광원 엔지니어",
+     "X선 마스크 엔지니어"
+    ],
+    "flag": "tech_beyond_euv_litho",
+    "skills": {
+     "litho_optics": 0.2
+    }
+   },
+   "rnd_skill": "litho_optics",
+   "headline_ko": "노광 광원이 '입자가속기'로…노광 장비 독점 깨지나",
+   "sources": [
+    "https://www.thestar.com.my/tech/tech-news/2026/10/08/asml-zeiss-say-next-generation-chipmaking-technology-may-be-ready-in-10-years",
+    "https://www.trendforce.com/news/2025/10/29/news-u-s-startup-substrate-unveils-x-ray-lithography-to-rival-asml-eyes-tsmc-next/"
+   ],
+   "p_never": 0.25
+  },
+  {
+   "id": "lights_out_fab",
+   "name_ko": "무인 팹(라이트아웃)",
+   "desc_ko": "불을 꺼도 돌아가는 팹이에요. 정비·예외 처리까지 로봇과 원격 운영이 맡아요.",
+   "category": "automation",
+   "earliest_year": 2035,
+   "median_year": 2045,
+   "late_year": 2060,
+   "prereqs": [
+    "autonomous_fab_l4",
+    "humanoid_mass"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     },
+     "korea": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "operator": 0.45,
+     "equipment_engineer": 0.8,
+     "quality_engineer": 0.7,
+     "cleanroom_laundry": 0.4,
+     "janitor": 0.5,
+     "security_gate": 0.7,
+     "cook": 0.75,
+     "dietitian": 0.75,
+     "dorm_manager": 0.6,
+     "shuttle_driver": 0.85
+    },
+    "new_jobs_ko": [
+     "원격 팹 운영자",
+     "클린룸 로봇 정비사"
+    ],
+    "flag": "tech_lights_out_fab",
+    "skills": {
+     "equipment_maint": -0.15,
+     "robotics": 0.3
+    },
+    "world_path": {
+     "abundance": 0.1
+    }
+   },
+   "rnd_skill": "robotics",
+   "headline_ko": "불 꺼진 클린룸, 웨이퍼는 돈다…국내 첫 무인 팹 가동",
+   "sources": [
+    "https://apps.digitimes.com/news/a20250912PR202/semiconductor-industry-nvidia.html?chid=9",
+    "https://www.semiconwest.org/programs/call-for-abstracts/smart-manufacturing-2026",
+    "https://www.oecd.org/en/about/news/press-releases/2023/07/oecd-job-markets-remain-tight-though-inflation-is-hitting-real-wages.html"
+   ]
+  },
+  {
+   "id": "household_robot",
+   "name_ko": "가정·돌봄 로봇 보급",
+   "desc_ko": "집안일과 돌봄 보조를 하는 로봇이 가정에 들어와요.",
+   "category": "automation",
+   "earliest_year": 2035,
+   "median_year": 2045,
+   "late_year": 2060,
+   "prereqs": [
+    "humanoid_mass"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "nurse": 0.9
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_household_robot"
+   },
+   "rnd_skill": "robotics",
+   "headline_ko": "설거지는 로봇이…가정용 로봇 보급률 10% 돌파",
+   "sources": [
+    "https://www.segye.com/newsView/20260818508007",
+    "https://developer.tenten.co/morgan-stanleys-bold-prediction-humanoid-robots-will-create-a-5-trillion-market-by-2050"
+   ]
+  },
+  {
+   "id": "half_work_automated",
+   "name_ko": "업무 시간 절반 자동화",
+   "desc_ko": "지금 사람이 하는 업무 시간의 절반을 AI와 로봇이 대신해요.",
+   "category": "automation",
+   "earliest_year": 2030,
+   "median_year": 2045,
+   "late_year": 2060,
+   "prereqs": [
+    "superhuman_coder"
+   ],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {
+     "hr": 0.55,
+     "purchasing": 0.5,
+     "sales": 0.85,
+     "patent": 0.7,
+     "analyst": 0.65,
+     "journalist": 0.75,
+     "official": 0.85,
+     "academy_teacher": 0.75,
+     "recruiter": 0.7,
+     "shuttle_driver": 0.5,
+     "circuit_designer": 0.8,
+     "process_engineer": 0.85,
+     "quality_engineer": 0.9,
+     "office_worker": 0.5,
+     "developer": 0.75,
+     "civil_servant": 0.85,
+     "driver": 0.5,
+     "shopkeeper": 0.9
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_half_work_automated",
+    "world_path": {
+     "abundance": 0.1
+    }
+   },
+   "rnd_skill": "ai_systems",
+   "headline_ko": "일하는 시간 절반을 AI가…주 4일제 논쟁 본격화",
+   "sources": [
+    "https://www.mckinsey.com/mgi/our-research/the-economic-potential-of-generative-ai-the-next-productivity-frontier",
+    "https://www.nber.org/papers/w32487",
+    "https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure",
+    "https://www.fnnews.com/news/202504130614538690",
+    "https://weforum.org/press/2025/01/future-of-jobs-report-2025-78-million-new-job-opportunities-by-2030-but-urgent-upskilling-needed-to-prepare-workforces/"
+   ]
+  },
+  {
+   "id": "yongin_cluster_full",
+   "name_ko": "용인 메가클러스터 완공",
+   "desc_ko": "국가산단·일반산단 팹 열여섯 기와 소부장 생태계가 경기 남부에 모두 들어서요.",
+   "category": "industry",
+   "earliest_year": 2040,
+   "median_year": 2047,
+   "late_year": 2052,
+   "prereqs": [
+    "yongin_national_fab1",
+    "yongin_general_full"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": 1,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "landlord": 1.1,
+     "chicken_shop": 1.1
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_yongin_cluster_full",
+    "region": {
+     "yongin": 1
+    }
+   },
+   "rnd_skill": "fab_ai",
+   "headline_ko": "용인 메가클러스터 완공…팹 16기, 반도체 도시 완성",
+   "sources": [
+    "https://weekly.khan.co.kr/article/202601120600021",
+    "https://www.khan.co.kr/article/202601110900031",
+    "https://www.motie.go.kr"
+   ]
+  },
+  {
+   "id": "atomic_2d_cfet",
+   "name_ko": "원자층 2D CFET(A2 미만)",
+   "desc_ko": "원자 몇 겹 두께의 2D 채널을 위아래로 쌓은 마지막 세대 축소 트랜지스터예요.",
+   "category": "logic_process",
+   "earliest_year": 2044,
+   "median_year": 2048,
+   "late_year": 2056,
+   "prereqs": [
+    "channel_2d_fet",
+    "node_a3"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "원자 단위 계측·결함 분석가"
+    ],
+    "flag": "tech_atomic_2d_cfet"
+   },
+   "rnd_skill": "novel_channel",
+   "headline_ko": "원자 몇 겹짜리 트랜지스터…마지막 '노드 축소' 경쟁",
+   "sources": [
+    "https://www.profesionalreview.com/2026/05/03/imec-chips-sub-1-nm-llegaran-2034/amp/",
+    "https://arxiv.org/pdf/2607.12707",
+    "https://wccftech.com/sub-1nm-process-node-technology-wont-arrive-till-2034-logic-roadmap-2dfets-sub-0-2nm-2046/"
+   ]
+  },
+  {
+   "id": "market_5t",
+   "name_ko": "세계 반도체 시장 5조 달러",
+   "desc_ko": "세계 반도체 매출이 한 해 5조 달러를 넘어요. F3 추세 모델로는 2050년 전후예요.",
+   "category": "industry",
+   "earliest_year": 2040,
+   "median_year": 2050,
+   "late_year": 2065,
+   "prereqs": [
+    "market_2t"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_market_5t"
+   },
+   "rnd_skill": null,
+   "headline_ko": "세계 반도체 시장 5조 달러…'모든 산업이 칩 산업'",
+   "sources": [
+    "https://www.wsts.org/esraCMS/extension/media/f/WST/7745/WSTS-Q2-Release-2026-08-06.pdf",
+    "https://www.mckinsey.com/industries/semiconductors/our-insights/the-semiconductor-decade-a-trillion-dollar-industry"
+   ],
+   "trigger": {
+    "sales_busd_min": 5000
+   }
+  },
+  {
+   "id": "korea_aged_40pct",
+   "name_ko": "고령인구 40%",
+   "desc_ko": "국민 열 명 중 네 명이 65세 이상이에요. 팹 현장 평균 나이도 올라가요.",
+   "category": "society",
+   "earliest_year": 2046,
+   "median_year": 2050,
+   "late_year": 2055,
+   "prereqs": [],
+   "confidence": "high",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {
+     "nurse": 1.3,
+     "teacher": 0.85
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_korea_aged_40pct",
+    "skills": {
+     "robotics": 0.1
+    }
+   },
+   "rnd_skill": null,
+   "headline_ko": "65세 이상 40% 돌파…'로봇 없인 공장 못 돌린다'",
+   "sources": [
+    "https://www.newsis.com/view/NISX20231214_0002558157"
+   ]
+  },
+  {
+   "id": "scaling_end_atomic_limit",
+   "name_ko": "치수 축소의 원자 한계",
+   "desc_ko": "트랜지스터를 더 작게 만들 수 없는 원자 한계에 닿아요. 성능은 이제 적층과 설계에서 나와요.",
+   "category": "logic_process",
+   "earliest_year": 2045,
+   "median_year": 2052,
+   "late_year": 2060,
+   "prereqs": [
+    "atomic_2d_cfet"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": -1,
+      "years": 3
+     }
+    },
+    "jobs": {
+     "device_researcher": 0.9
+    },
+    "new_jobs_ko": [
+     "시스템-기술 공동최적화(STCO) 엔지니어"
+    ],
+    "flag": "tech_scaling_end_atomic_limit",
+    "skills": {
+     "litho_process": -0.2,
+     "device_physics": -0.15,
+     "chip_architecture": 0.2
+    },
+    "world_path": {
+     "stagnation": 0.1
+    }
+   },
+   "rnd_skill": "chip_architecture",
+   "headline_ko": "'노드 숫자' 시대 끝났다…성능은 이제 층과 설계에서",
+   "sources": [
+    "https://ideas.repec.org/a/nat/nature/v603y2022i7900d10.1038_s41586-021-04323-3.html",
+    "https://Irds.Ieee.Org/images/files/pdf/2016_MM.pdf",
+    "https://technews.tw/2026/07/01/imec-roadmap-chip-density-drivers-cfet-vertical-integration-advanced-packaging-a3-process-2038/"
+   ]
+  },
+  {
+   "id": "biocomputing_wetware",
+   "name_ko": "생체 뉴런 컴퓨팅",
+   "desc_ko": "배양한 신경세포를 칩 위에서 학습시켜 연산에 써요. 생명윤리 논쟁이 따라와요.",
+   "category": "computing",
+   "earliest_year": 2035,
+   "median_year": 2055,
+   "late_year": 2085,
+   "prereqs": [
+    "neuromorphic_scale"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [
+     "신경-전자 인터페이스 엔지니어",
+     "바이오윤리 심의관"
+    ],
+    "flag": "tech_biocomputing_wetware"
+   },
+   "rnd_skill": "novel_compute",
+   "headline_ko": "살아 있는 뉴런으로 계산한다…생체 컴퓨터 첫 상용 서비스",
+   "sources": [
+    "https://datacenterdynamics.com/en/news/australian-startup-cortical-labs-unveils-worlds-first-commercial-biological-computer"
+   ],
+   "p_never": 0.4
+  },
+  {
+   "id": "ai_longevity_claims",
+   "name_ko": "AI 가속 수명 연장 논란",
+   "desc_ko": "AI가 노화 연구를 앞당겼다는 주장이 쏟아져요. 실제 효과는 기대수명 몇 년 수준이에요.",
+   "category": "society",
+   "earliest_year": 2040,
+   "median_year": 2060,
+   "late_year": 2100,
+   "prereqs": [
+    "ai_drug_approval"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_ai_longevity_claims",
+    "medical": {
+     "life_d": 2
+    }
+   },
+   "rnd_skill": "ai_systems",
+   "headline_ko": "'노화 시계 되돌렸다'…AI 수명 연장 치료 첫 허가, 효과 논쟁도",
+   "sources": [
+    "https://www.darioamodei.com/essay/machines-of-loving-grace",
+    "https://www.news-medical.net/news/20260907/AI-designed-drug-candidate-reverses-biological-age-in-clinical-study.aspx"
+   ],
+   "requires_flags": [
+    "scen_agi_arrival"
+   ]
+  },
+  {
+   "id": "pension_fund_depletion",
+   "name_ko": "국민연금 기금 소진",
+   "desc_ko": "쌓아 둔 연금 기금이 바닥나 그해 걷은 보험료로 연금을 주는 방식으로 바뀌어요.",
+   "category": "society",
+   "earliest_year": 2058,
+   "median_year": 2064,
+   "late_year": 2071,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": -0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_pension_fund_depletion",
+    "world_path": {
+     "stagnation": 0.1
+    }
+   },
+   "rnd_skill": null,
+   "headline_ko": "국민연금 기금 바닥…보험료 20%대 인상안에 세대 갈등",
+   "sources": [
+    "https://mobile.newsis.com/view/NISX20250320_0003107056",
+    "https://kyeonggi.com/article/20260707580013"
+   ]
+  },
+  {
+   "id": "refurb_fab_industry",
+   "name_ko": "리퍼브 팹 산업",
+   "desc_ko": "축소가 멈춘 뒤 팹을 30년 넘게 고쳐 쓰는 산업이 커져요.",
+   "category": "industry",
+   "earliest_year": 2056,
+   "median_year": 2064,
+   "late_year": 2078,
+   "prereqs": [
+    "scaling_end_atomic_limit"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": -0.5,
+      "years": 3
+     }
+    },
+    "jobs": {
+     "equipment_engineer": 1.1,
+     "field_service": 1.15
+    },
+    "new_jobs_ko": [
+     "팹 수명 연장 컨설턴트"
+    ],
+    "flag": "tech_refurb_fab_industry",
+    "skills": {
+     "equipment_maint": 0.2
+    }
+   },
+   "rnd_skill": "equipment_maint",
+   "headline_ko": "새 팹 대신 고쳐 쓴다…'리퍼브 팹' 수주 사상 최대",
+   "sources": [],
+   "basis_ko": "F1 beyond_2060 (f) '장비 교체 수요 둔화로 팹 수명 30년+ 리퍼브 팹 산업' 외삽"
+  },
+  {
+   "id": "tier_era_logic",
+   "name_ko": "층수 시대 로직(100층 적층)",
+   "desc_ko": "로직 트랜지스터를 100층 넘게 쌓고 '몇 층 공정'이 노드 이름을 대신해요.",
+   "category": "logic_process",
+   "earliest_year": 2058,
+   "median_year": 2066,
+   "late_year": 2085,
+   "prereqs": [
+    "monolithic_3d_logic",
+    "scaling_end_atomic_limit"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 1,
+      "years": 2
+     },
+     "equipment": {
+      "delta": 1,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "층간 배선 설계자"
+    ],
+    "flag": "tech_tier_era_logic"
+   },
+   "rnd_skill": "process_integration",
+   "headline_ko": "'200층 공정' 양산…노드 이름 대신 층수로 부른다",
+   "sources": [],
+   "p_never": 0.1,
+   "basis_ko": "F1 beyond_2060 (a) '층수 시대: 로직이 10→100 tier로 쌓이며 층 수가 새 노드 이름이 됨' 외삽"
+  },
+  {
+   "id": "ai_designed_arch",
+   "name_ko": "AI가 설계한 아키텍처 주류화",
+   "desc_ko": "사람이 읽기 어려운 AI 설계 칩이 성능 순위를 휩쓸고, 사람은 사양과 책임 서명을 맡아요.",
+   "category": "ai",
+   "earliest_year": 2058,
+   "median_year": 2066,
+   "late_year": 2085,
+   "prereqs": [
+    "agentic_eda"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "circuit_designer": 0.7
+    },
+    "new_jobs_ko": [
+     "칩 사양 책임자"
+    ],
+    "flag": "tech_ai_designed_arch",
+    "skills": {
+     "eda_ai": 0.2,
+     "chip_architecture": -0.1
+    }
+   },
+   "rnd_skill": "eda_ai",
+   "headline_ko": "사람이 못 읽는 설계도…AI 설계 칩, 성능 순위 휩쓸어",
+   "sources": [],
+   "requires_flags": [
+    "scen_agi_arrival"
+   ],
+   "basis_ko": "F4 job_outlook '설계 엔지니어 2050: 사람은 사양 정의·책임 서명 위주' 외삽"
+  },
+  {
+   "id": "self_repair_tools",
+   "name_ko": "자가 수리 장비",
+   "desc_ko": "장비가 스스로 고장을 진단하고 망가진 모듈을 로봇 팔로 갈아 끼워요.",
+   "category": "automation",
+   "earliest_year": 2058,
+   "median_year": 2067,
+   "late_year": 2085,
+   "prereqs": [
+    "lights_out_fab",
+    "humanoid_mass"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {},
+    "jobs": {
+     "equipment_engineer": 0.7,
+     "field_service": 0.7
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_self_repair_tools",
+    "skills": {
+     "robotics": 0.2,
+     "equipment_maint": -0.2
+    }
+   },
+   "rnd_skill": "robotics",
+   "headline_ko": "장비가 스스로 고친다…자가 수리 모듈 표준화, 정비 출동 크게 줄어",
+   "sources": [],
+   "basis_ko": "F4 lights_out_fab R&D 스킬 '장비 자가 진단·자가 교체 모듈' 외삽"
+  },
+  {
+   "id": "korea_workforce_half",
+   "name_ko": "생산연령인구 절반으로",
+   "desc_ko": "일할 나이 인구가 2022년의 절반 아래로 줄어요. 국내 팹보다 해외 생산·무인화가 유리해져요.",
+   "category": "society",
+   "earliest_year": 2062,
+   "median_year": 2068,
+   "late_year": 2075,
+   "prereqs": [],
+   "confidence": "medium",
+   "fiction": false,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": -0.5,
+      "years": 3
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_korea_workforce_half",
+    "world_path": {
+     "stagnation": 0.1
+    }
+   },
+   "rnd_skill": null,
+   "headline_ko": "일할 사람이 반으로…생산연령인구 1800만 명 아래로",
+   "sources": [
+    "https://www.newsis.com/view/NISX20231214_0002558157",
+    "https://m.seoul.co.kr/news/2023/12/04/20231204002003"
+   ]
+  },
+  {
+   "id": "dark_fab_network",
+   "name_ko": "무인 팹 네트워크",
+   "desc_ko": "대부분의 팹에 사람이 들어가지 않고, 여러 팹을 한 관제실에서 원격으로 돌려요.",
+   "category": "automation",
+   "earliest_year": 2058,
+   "median_year": 2068,
+   "late_year": 2090,
+   "prereqs": [
+    "lights_out_fab"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": 0.5,
+      "years": 1
+     }
+    },
+    "jobs": {
+     "operator": 0.5,
+     "security_gate": 0.7,
+     "cook": 0.7,
+     "janitor": 0.6,
+     "shuttle_driver": 0.7,
+     "dorm_manager": 0.5,
+     "cleanroom_laundry": 0.5
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_dark_fab_network"
+   },
+   "rnd_skill": "fab_ai",
+   "headline_ko": "팹 열 곳을 한 방에서…무인 팹 네트워크가 표준이 됐다",
+   "sources": [],
+   "path_year_shift": {
+    "abundance": -5,
+    "stagnation": 8
+   },
+   "basis_ko": "F3 korea_society '2060년 이후 무인 팹과 해외 생산이 표준' + F4 lights_out_fab 외삽"
+  },
+  {
+   "id": "hetero_tile_chip",
+   "name_ko": "이종 타일 하이브리드 칩",
+   "desc_ko": "실리콘 층 사이에 광·스핀·뉴로모픽 타일을 끼워 한 칩에서 섞어 써요.",
+   "category": "computing",
+   "earliest_year": 2058,
+   "median_year": 2068,
+   "late_year": 2090,
+   "prereqs": [
+    "cmos20_functional_tiers",
+    "photonic_compute",
+    "neuromorphic_scale"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 1,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_hetero_tile_chip"
+   },
+   "rnd_skill": "chip_architecture",
+   "headline_ko": "빛·자기·뉴런이 한 칩에…이종 타일 칩이 표준으로",
+   "sources": [],
+   "basis_ko": "F1 beyond_2060 (d) '스핀·광·뉴로모픽 이종 타일을 CMOS 2.0 층에 끼워 넣는 하이브리드 칩' 외삽"
+  },
+  {
+   "id": "climate_adapted_fab",
+   "name_ko": "기후 적응형 팹",
+   "desc_ko": "물을 100% 재순환하고 폐열을 지역 난방으로 돌리는 팹이 표준이 돼요.",
+   "category": "industry",
+   "earliest_year": 2058,
+   "median_year": 2070,
+   "late_year": 2090,
+   "prereqs": [],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "korea": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {
+     "environment_safety": 1.2
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_climate_adapted_fab",
+    "skills": {
+     "specialty_chem": 0.2
+    },
+    "world_path": {
+     "transition": 0.05
+    }
+   },
+   "rnd_skill": "specialty_chem",
+   "headline_ko": "물 한 방울 안 버리는 팹…용수 100% 재순환 의무화",
+   "sources": [],
+   "path_year_shift": {
+    "transition": -8
+   },
+   "basis_ko": "F3 findings(iScience 물 스트레스, S&P 용수 리스크, 2050년 이후 가뭄 빈도 1.5배 제안) 외삽"
+  },
+  {
+   "id": "memory_compute_fusion",
+   "name_ko": "메모리-연산 융합 소자",
+   "desc_ko": "메모리와 연산의 경계가 사라진 소자가 나와 메모리 회사와 파운드리가 한 판에서 싸워요.",
+   "category": "memory",
+   "earliest_year": 2060,
+   "median_year": 2072,
+   "late_year": 2095,
+   "prereqs": [
+    "pim_mainstream",
+    "analog_imc",
+    "dram_3d"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "memory": {
+      "delta": 1,
+      "years": 2
+     },
+     "korea": {
+      "delta": 1,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_memory_compute_fusion",
+    "skills": {
+     "hbm_design": 0.2,
+     "dram_cell": -0.2
+    }
+   },
+   "rnd_skill": "hbm_design",
+   "headline_ko": "메모리가 곧 프로세서…메모리·파운드리 경계 무너졌다",
+   "sources": [],
+   "path_year_shift": {
+    "abundance": -5,
+    "stagnation": 8
+   },
+   "basis_ko": "F1 beyond_2060 (e) 'PIM의 극한인 메모리-연산 융합 소자로 메모리·파운드리 산업 합병' 외삽"
+  },
+  {
+   "id": "energy_node_race",
+   "name_ko": "에너지 노드 경쟁",
+   "desc_ko": "칩 세대를 선폭 대신 '비트당 에너지'로 부르고, 가역·극저온 칩이 표준이 돼요.",
+   "category": "computing",
+   "earliest_year": 2060,
+   "median_year": 2074,
+   "late_year": 2100,
+   "prereqs": [
+    "reversible_computing",
+    "superconducting_digital"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_energy_node_race",
+    "world_path": {
+     "transition": 0.05
+    }
+   },
+   "rnd_skill": "novel_compute",
+   "headline_ko": "'비트당 에너지' 경쟁…칩 세대를 에너지로 부른다",
+   "sources": [],
+   "p_never": 0.2,
+   "basis_ko": "F1 beyond_2060 (c) '가역·단열 컴퓨팅과 극저온 CMOS로 란다우어 한계에 접근하는 에너지 노드 경쟁' 외삽"
+  },
+  {
+   "id": "cryo_dc_standard",
+   "name_ko": "극저온 데이터센터 표준화",
+   "desc_ko": "초전도·양자 칩을 함께 쓰는 극저온 데이터센터가 대형 연산의 표준이 돼요.",
+   "category": "computing",
+   "earliest_year": 2060,
+   "median_year": 2075,
+   "late_year": 2100,
+   "prereqs": [
+    "superconducting_digital",
+    "utility_scale_qc"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "극저온 데이터센터 운영자"
+    ],
+    "flag": "tech_cryo_dc_standard"
+   },
+   "rnd_skill": "quantum_hw",
+   "headline_ko": "데이터센터가 영하 270도로…극저온 연산 표준 시대",
+   "sources": [],
+   "basis_ko": "F2 beyond_2060 (2) '극저온 데이터센터와 양자-고전 하이브리드가 표준 인프라화' 외삽"
+  },
+  {
+   "id": "atomic_precision_mfg",
+   "name_ko": "원자 정밀 제조",
+   "desc_ko": "노광 대신 선택적 원자층 공정과 자기조립으로 원자를 하나씩 놓아 회로를 만들어요.",
+   "category": "lithography",
+   "earliest_year": 2062,
+   "median_year": 2078,
+   "late_year": 2105,
+   "prereqs": [
+    "scaling_end_atomic_limit",
+    "beyond_euv_litho"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 1,
+      "years": 3
+     }
+    },
+    "jobs": {
+     "device_researcher": 1.1
+    },
+    "new_jobs_ko": [
+     "원자 배치 공정 엔지니어"
+    ],
+    "flag": "tech_atomic_precision_mfg",
+    "skills": {
+     "litho_process": -0.3,
+     "litho_optics": -0.3,
+     "process_integration": 0.2
+    }
+   },
+   "rnd_skill": "process_integration",
+   "headline_ko": "빛 없이 원자를 쌓는다…원자 정밀 제조 라인 첫 가동, 노광기 시대 저물어",
+   "sources": [],
+   "p_never": 0.2,
+   "path_year_shift": {
+    "abundance": -8,
+    "stagnation": 12
+   },
+   "basis_ko": "F1 beyond_2060 (b) '원자 정밀 제조(선택적 ALD/ALE, 자기조립, 탐침 기반 조립)로 노광 의존 탈피' 외삽"
+  },
+  {
+   "id": "fusion_grid",
+   "name_ko": "핵융합 전력 상용 보급",
+   "desc_ko": "핵융합 발전소가 전력망에 들어와 팹·데이터센터의 전기 걱정이 줄어요.",
+   "category": "energy",
+   "earliest_year": 2058,
+   "median_year": 2080,
+   "late_year": 2120,
+   "prereqs": [
+    "korea_smr_first"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": 0.5,
+      "years": 3
+     }
+    },
+    "jobs": {
+     "electrician": 1.1
+    },
+    "new_jobs_ko": [
+     "핵융합 발전 운전원"
+    ],
+    "flag": "tech_fusion_grid",
+    "trend": {
+     "pct": 0.5,
+     "years": 15
+    },
+    "world_path": {
+     "transition": 0.1,
+     "abundance": 0.1
+    }
+   },
+   "rnd_skill": "power_cooling",
+   "headline_ko": "핵융합 전기, 송전망에 들어왔다…'전력이 AI의 상한' 공식 깨지나",
+   "sources": [],
+   "p_never": 0.35,
+   "path_year_shift": {
+    "abundance": -10,
+    "transition": -8,
+    "stagnation": 15
+   },
+   "basis_ko": "F3·F4 전력 전망(IEA 2035, 한국 전력계획 2038에서 끝남) 이후 무탄소 전원 확대 추세 외삽"
+  },
+  {
+   "id": "photonic_quantum_hybrid",
+   "name_ko": "광-양자 하이브리드 컴퓨터",
+   "desc_ko": "광 연산과 양자 연산을 한 시스템에서 나눠 맡는 컴퓨터가 무르익어요.",
+   "category": "computing",
+   "earliest_year": 2065,
+   "median_year": 2082,
+   "late_year": 2115,
+   "prereqs": [
+    "photonic_compute",
+    "utility_scale_qc"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "logic_foundry": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_photonic_quantum_hybrid"
+   },
+   "rnd_skill": "quantum_hw",
+   "headline_ko": "빛과 큐비트가 손잡았다…광-양자 하이브리드 컴퓨터 상용화",
+   "sources": [],
+   "p_never": 0.25,
+   "basis_ko": "F2 beyond_2060 광 연산·양자 로드맵 끝점(2035~2045) 외삽"
+  },
+  {
+   "id": "medical_bci",
+   "name_ko": "의료용 뇌-컴퓨터 인터페이스 보편화",
+   "desc_ko": "마비·청각·기억 장애 치료에 뇌에 심는 저전력 칩이 널리 쓰여요.",
+   "category": "society",
+   "earliest_year": 2062,
+   "median_year": 2085,
+   "late_year": 2120,
+   "prereqs": [
+    "neuromorphic_scale",
+    "ai_drug_approval"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "cycle": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "신경 인터페이스 칩 설계자"
+    ],
+    "flag": "tech_medical_bci",
+    "medical": {
+     "life_d": 0.5,
+     "cure_mult": 1.05
+    }
+   },
+   "rnd_skill": "novel_compute",
+   "headline_ko": "뇌에 심는 칩, 건강보험 적용…뇌-컴퓨터 인터페이스 대중화",
+   "sources": [],
+   "basis_ko": "F2 뉴로모픽·생체 뉴런 인터페이스(MEA 칩) + F4 의료 AI 확산 추세 외삽"
+  },
+  {
+   "id": "compute_dividend",
+   "name_ko": "연산 배당·기본소득",
+   "desc_ko": "AI·로봇이 번 돈의 일부를 국민에게 나눠 주는 제도가 자리 잡아요.",
+   "category": "society",
+   "earliest_year": 2062,
+   "median_year": 2088,
+   "late_year": 2135,
+   "prereqs": [
+    "half_work_automated"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_compute_dividend",
+    "world_path": {
+     "abundance": 0.1
+    }
+   },
+   "rnd_skill": null,
+   "headline_ko": "'연산 배당' 첫 지급…AI가 번 돈, 국민 통장으로",
+   "sources": [],
+   "requires_flags": [
+    "scen_agi_arrival"
+   ],
+   "path_year_shift": {
+    "abundance": -15,
+    "stagnation": 20
+   },
+   "basis_ko": "F4 full_labor_automation '노동 소득 급감, 기본소득·로봇세 정책 이벤트' 외삽"
+  },
+  {
+   "id": "orbital_materials",
+   "name_ko": "달·궤도 소재 공급",
+   "desc_ko": "달의 헬륨-3와 궤도 공장의 결정이 반도체·양자 공급망에 정식으로 들어와요.",
+   "category": "materials",
+   "earliest_year": 2068,
+   "median_year": 2090,
+   "late_year": 2125,
+   "prereqs": [
+    "space_crystal_fab"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [
+     "우주 소재 물류 관리자"
+    ],
+    "flag": "tech_orbital_materials",
+    "skills": {
+     "specialty_chem": 0.1
+    }
+   },
+   "rnd_skill": "specialty_chem",
+   "headline_ko": "달에서 온 헬륨-3…양자칩 냉각 가스 걱정 덜었다",
+   "sources": [],
+   "p_never": 0.3,
+   "path_year_shift": {
+    "abundance": -10,
+    "fragmentation": 10,
+    "stagnation": 20
+   },
+   "basis_ko": "F2 beyond_2060 '헬륨-3 달 채굴 공급 계약(2028~2037)' 신호와 우주 결정 성장 외삽"
+  },
+  {
+   "id": "bio_silicon_learning",
+   "name_ko": "생체-실리콘 하이브리드 학습기",
+   "desc_ko": "배양 뉴런과 실리콘 칩을 묶은 초저전력 학습 기계가 쓰이고, 생명윤리 규제가 생겨요.",
+   "category": "computing",
+   "earliest_year": 2068,
+   "median_year": 2092,
+   "late_year": 2130,
+   "prereqs": [
+    "biocomputing_wetware"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [
+     "바이오칩 윤리 심사관"
+    ],
+    "flag": "tech_bio_silicon_learning"
+   },
+   "rnd_skill": "novel_compute",
+   "headline_ko": "뉴런과 칩이 함께 배운다…생체-실리콘 학습기 허가, 윤리위 상설화",
+   "sources": [],
+   "p_never": 0.3,
+   "path_year_shift": {
+    "stagnation": 15
+   },
+   "basis_ko": "F2 beyond_2060 (4) '생체-실리콘 하이브리드 학습 기계와 윤리 규제' 외삽"
+  },
+  {
+   "id": "personal_microfab",
+   "name_ko": "주문형 미니팹",
+   "desc_ko": "책상 몇 개 크기의 미니팹이 동네 공방처럼 소량 맞춤 칩을 찍어 내요.",
+   "category": "industry",
+   "earliest_year": 2075,
+   "median_year": 2095,
+   "late_year": 2135,
+   "prereqs": [
+    "atomic_precision_mfg"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     },
+     "logic_foundry": {
+      "delta": -0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "마이크로팹 운영자"
+    ],
+    "flag": "tech_personal_microfab"
+   },
+   "rnd_skill": "process_integration",
+   "headline_ko": "동네에 칩 공방이…주문형 미니팹 1000곳 돌파",
+   "sources": [],
+   "p_never": 0.3,
+   "path_year_shift": {
+    "abundance": -10,
+    "stagnation": 15
+   },
+   "basis_ko": "F2 개방형 칩렛·F4 에이전트 EDA의 소량 다품종 수요 + 원자 정밀 제조 외삽"
+  },
+  {
+   "id": "full_labor_automation",
+   "name_ko": "모든 직업 자동화 가능",
+   "desc_ko": "기술로는 거의 모든 일을 기계가 사람보다 싸게 해요. 사람이 해 주길 원하는 일만 남아요.",
+   "category": "automation",
+   "earliest_year": 2045,
+   "median_year": 2100,
+   "late_year": 2150,
+   "prereqs": [
+    "half_work_automated",
+    "humanoid_mass"
+   ],
+   "confidence": "low",
+   "fiction": false,
+   "effects": {
+    "market": {},
+    "jobs": {
+     "operator": 0.5,
+     "assembler": 0.5,
+     "process_engineer": 0.6,
+     "equipment_engineer": 0.6,
+     "yield_engineer": 0.6,
+     "circuit_designer": 0.6,
+     "quality_engineer": 0.5,
+     "welder": 0.6,
+     "pipefitter": 0.6,
+     "electrician": 0.6,
+     "hr": 0.5,
+     "purchasing": 0.5,
+     "analyst": 0.5,
+     "factory_worker": 0.5,
+     "office_worker": 0.6,
+     "developer": 0.6
+    },
+    "new_jobs_ko": [],
+    "flag": "tech_full_labor_automation",
+    "world_path": {
+     "abundance": 0.2
+    }
+   },
+   "rnd_skill": "ai_systems",
+   "headline_ko": "'일은 선택' 시대…모든 직업 자동화 가능 선언, 기본소득 논쟁 정점",
+   "sources": [
+    "https://jair.org/index.php/jair/article/view/19087"
+   ],
+   "requires_flags": [
+    "scen_agi_arrival"
+   ]
+  },
+  {
+   "id": "market_20t",
+   "name_ko": "세계 반도체 시장 20조 달러",
+   "desc_ko": "세계 반도체 매출이 한 해 20조 달러를 넘어요. 시황 모델의 매출이 기준을 넘는 해에 등장해요.",
+   "category": "industry",
+   "earliest_year": 2080,
+   "median_year": 2100,
+   "late_year": 2140,
+   "prereqs": [
+    "market_5t"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {},
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_market_20t"
+   },
+   "rnd_skill": null,
+   "headline_ko": "세계 반도체 시장 20조 달러…칩이 곧 인프라",
+   "sources": [],
+   "trigger": {
+    "sales_busd_min": 20000
+   },
+   "basis_ko": "F3 cycle_model 추세(2060년 이후 명목 연 2.5%) 외삽"
+  },
+  {
+   "id": "molecular_switch",
+   "name_ko": "분자 스위치 소자",
+   "desc_ko": "분자 하나가 스위치 역할을 하는 소자가 틈새 제품에 처음 쓰여요.",
+   "category": "materials",
+   "earliest_year": 2080,
+   "median_year": 2105,
+   "late_year": 2145,
+   "prereqs": [
+    "atomic_precision_mfg",
+    "channel_2d_fet"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 0.5,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [
+     "분자 소자 합성 엔지니어"
+    ],
+    "flag": "tech_molecular_switch"
+   },
+   "rnd_skill": "novel_channel",
+   "headline_ko": "분자 하나가 트랜지스터…분자 스위치 메모리 첫 출시",
+   "sources": [],
+   "p_never": 0.3,
+   "basis_ko": "F2 beyond_2060 '원자 단위 소자, 분자 트랜지스터' 언급 외삽"
+  },
+  {
+   "id": "post_silicon_mainstream",
+   "name_ko": "실리콘 이후 주류 소자",
+   "desc_ko": "2D·스핀·광·분자 소자가 섞인 '실리콘 이후' 칩이 주류가 돼요.",
+   "category": "materials",
+   "earliest_year": 2085,
+   "median_year": 2110,
+   "late_year": 2148,
+   "prereqs": [
+    "molecular_switch",
+    "hetero_tile_chip"
+   ],
+   "confidence": "low",
+   "fiction": true,
+   "effects": {
+    "market": {
+     "equipment": {
+      "delta": 1,
+      "years": 3
+     },
+     "logic_foundry": {
+      "delta": 1,
+      "years": 2
+     }
+    },
+    "jobs": {},
+    "new_jobs_ko": [],
+    "flag": "tech_post_silicon_mainstream",
+    "skills": {
+     "novel_channel": 0.3,
+     "device_physics": -0.2
+    }
+   },
+   "rnd_skill": "novel_channel",
+   "headline_ko": "실리콘 왕좌 내려왔다…새 소재 칩 출하량, 실리콘 추월",
+   "sources": [],
+   "basis_ko": "F1·F2 beyond_2060 실리콘 이후 주류 스위치 후보(2D·스핀·광·분자) 외삽"
+  }
+ ]
+}
