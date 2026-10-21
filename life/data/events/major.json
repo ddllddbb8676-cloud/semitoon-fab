@@ -184,7 +184,7 @@
       { "label": "아직은 이르다", "effects": { "do": ["partner:wait", "again:2"], "happiness": -2 }, "result": "아무 말 없이 가게 앞을 지나쳤어요. {partner}도 아무 말 하지 않았어요." },
       { "label": "헤어진다", "effects": { "do": "partner:breakup", "happiness": -8, "trait.social": -3 }, "result": "마지막 인사는 생각보다 짧았어요." }
     ],
-    "default": 1
+    "default": 0
   },
   {
     "id": "childbirth",
@@ -197,7 +197,7 @@
       { "label": "조금 더 미룬다", "effects": { "do": "again:2", "trait.risk": -2 }, "result": "'내년에 다시 얘기하자.' 둘 다 고개를 끄덕였어요." },
       { "label": "둘이서 살기로 한다", "effects": { "flag": "childfree", "happiness": 2, "trait.social": -2 }, "result": "둘만의 여행 계획을 짜기 시작했어요. 이것도 우리 가족의 모양이에요." }
     ],
-    "default": 1
+    "default": 0
   },
   {
     "id": "childbirth_more",

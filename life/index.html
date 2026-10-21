@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>세미툰 라이프</title>
+  <meta name="description" content="누구로 태어나든 한 번은 반도체와 만나는 한국형 인생 시뮬레이션">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap">
+  <!-- 임시 스타일 (Claude). 디자인 담당(GPT)이 css/tokens.css + css/style.css로 바꿉니다. -->
+  <link rel="stylesheet" href="css/proto.css">
+  <!-- GPT 연출 파일(js/fx.js)을 만들면 여기에: <script type="module" src="js/fx.js"></script> -->
+</head>
+<body data-screen="loading" data-stage="" data-speed="4" data-paused="false" data-event="">
+  <!--
+    id / class / data-속성은 js/ui.js가 읽고 씁니다. 목록과 뜻: docs/UI_CONTRACT.md
+    장식 요소는 자유롭게 추가해도 되지만, 계약된 id·class는 지우거나 이름을 바꾸지 마세요.
+  -->
+  <main id="app">
+
+    <section id="screen-loading" class="screen screen--loading">
+      <p class="loading__text">세상을 준비하고 있어요…</p>
+    </section>
+
+    <!-- 타이틀 -->
+    <section id="screen-title" class="screen screen--title" hidden>
+      <div class="title__brand">
+        <p class="title__kicker">세미툰</p>
+        <h1 class="title__name">세미툰 라이프</h1>
+        <p class="title__tagline">누구로 태어나든, 한 번은 반도체와 만나요.</p>
+      </div>
+      <div class="title__actions">
+        <p id="continue-info" class="title__continue" hidden></p>
+        <button id="btn-continue" class="btn btn--primary" type="button" hidden>이어 하기</button>
+        <button id="btn-new" class="btn" type="button">새 인생</button>
+      </div>
+      <p id="title-error" class="title__error" hidden></p>
+    </section>
+
+    <!-- 캐릭터 만들기 -->
+    <section id="screen-create" class="screen screen--create" hidden>
+      <div id="create-step1" class="create__step">
+        <h2 class="create__title">어떤 사람으로 태어날까요?</h2>
+        <label class="field">
+          <span class="field__label">이름</span>
+          <input id="input-name" class="field__input" type="text" maxlength="8" autocomplete="off" placeholder="김세미">
+        </label>
+        <label class="field">
+          <span class="field__label">태어난 해 <b id="year-value">1985</b></span>
+          <input id="input-year" class="field__range" type="range" min="1940" max="2026" step="1" value="1985">
+        </label>
+        <p class="create__headline-label">그 해 업계 뉴스</p>
+        <p id="create-headline" class="create__headline"></p>
+        <p id="create-world" class="create__world" hidden></p>
+        <button id="btn-roll" class="btn btn--primary" type="button">주사위 굴리기</button>
+        <button id="btn-create-back" class="btn btn--ghost" type="button">처음으로</button>
+      </div>
+      <div id="create-step2" class="create__step" hidden>
+        <h2 class="create__title">마음에 드는 시작을 골라 주세요</h2>
+        <ul id="candidate-list" class="candidates"></ul>
+        <div class="create__actions">
+          <button id="btn-reroll" class="btn" type="button">다시 굴리기 (<span id="reroll-left">3</span>)</button>
+          <button id="btn-start" class="btn btn--primary" type="button" disabled>이 인생으로 시작</button>
+          <button id="btn-back" class="btn btn--ghost" type="button">이름·연도 바꾸기</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 메인 (인생 진행) -->
+    <section id="screen-main" class="screen screen--main" hidden>
+      <header id="hud" class="hud">
+        <div class="hud__who">
+          <span id="life-name" class="hud__name"></span>
+          <span id="life-age" class="hud__age"></span>
+          <span id="life-year" class="hud__year"></span>
+          <span id="life-stage" class="hud__stage"></span>
+        </div>
+        <div id="year-progress" class="progress" style="--p: 0"><span class="progress__bar"></span></div>
+        <div id="speed-controls" class="speed" role="group" aria-label="배속">
+          <button class="speed-btn" type="button" data-speed="0" aria-label="일시정지">멈춤</button>
+          <button class="speed-btn" type="button" data-speed="1">1×</button>
+          <button class="speed-btn" type="button" data-speed="2">2×</button>
+          <button class="speed-btn" type="button" data-speed="4">4×</button>
+          <button class="speed-btn" type="button" data-speed="8">8×</button>
+        </div>
+      </header>
+
+      <p id="headline" class="headline"></p>
+
+      <section id="status-panel" class="status">
+        <p id="status-line" class="status__line"></p>
+        <p id="money-line" class="status__money"></p>
+        <ul id="stat-list" class="stats">
+          <li class="stat" data-stat="health"><span class="stat__name">체력</span><span class="stat__bar" style="--v: 50"></span><span class="stat__value">50</span></li>
+          <li class="stat" data-stat="intelligence"><span class="stat__name">지능</span><span class="stat__bar" style="--v: 50"></span><span class="stat__value">50</span></li>
+          <li class="stat" data-stat="dexterity"><span class="stat__name">손재주</span><span class="stat__bar" style="--v: 50"></span><span class="stat__value">50</span></li>
+          <li class="stat" data-stat="sociability"><span class="stat__name">사교성</span><span class="stat__bar" style="--v: 50"></span><span class="stat__value">50</span></li>
+          <li class="stat" data-stat="mental"><span class="stat__name">멘탈</span><span class="stat__bar" style="--v: 50"></span><span class="stat__value">50</span></li>
+          <li class="stat" data-stat="looks"><span class="stat__name">외모</span><span class="stat__bar" style="--v: 50"></span><span class="stat__value">50</span></li>
+          <li class="stat stat--happiness" data-stat="happiness"><span class="stat__name">행복</span><span class="stat__bar" style="--v: 50"></span><span class="stat__value">50</span></li>
+        </ul>
+      </section>
+
+      <nav id="tabs" class="tabs" role="tablist">
+        <button class="tab" type="button" role="tab" data-tab="feed" aria-selected="true">연표</button>
+        <button class="tab" type="button" role="tab" data-tab="me" aria-selected="false">나</button>
+        <button class="tab" type="button" role="tab" data-tab="work" aria-selected="false">일·돈</button>
+        <button class="tab" type="button" role="tab" data-tab="family" aria-selected="false">관계</button>
+        <button class="tab" type="button" role="tab" data-tab="industry" aria-selected="false">업계</button>
+      </nav>
+      <section id="panel-feed" class="panel" data-tab="feed"><ol id="feed" class="feed"></ol></section>
+      <section id="panel-me" class="panel" data-tab="me" hidden></section>
+      <section id="panel-work" class="panel" data-tab="work" hidden></section>
+      <section id="panel-family" class="panel" data-tab="family" hidden></section>
+      <section id="panel-industry" class="panel" data-tab="industry" hidden></section>
+    </section>
+
+    <!-- 엔딩·되돌아보기 -->
+    <section id="screen-ending" class="screen screen--ending" hidden>
+      <p id="ending-line" class="ending__line"></p>
+      <p id="ending-cause" class="ending__cause" hidden></p>
+      <div class="ending__titlebox">
+        <p class="ending__label">인생 칭호</p>
+        <h2 id="ending-title" class="ending__title"></h2>
+        <ul id="ending-ribbons" class="ribbons"></ul>
+      </div>
+      <p id="ending-summary" class="ending__summary" hidden></p>
+      <div class="ending__scorebox">
+        <p class="ending__label">인생 점수</p>
+        <p id="ending-score" class="ending__score"></p>
+        <ul id="score-bars" class="bars"></ul>
+      </div>
+      <h3 class="ending__h">특징</h3>
+      <ul id="ending-traits" class="trait-badges"></ul>
+      <p id="ending-trait-lines" class="ending__note" hidden></p>
+      <h3 class="ending__h">내 인생의 반도체 순간</h3>
+      <ul id="ending-semi" class="semi-cards"></ul>
+      <h3 class="ending__h">연표</h3>
+      <ol id="ending-timeline" class="timeline"></ol>
+      <h3 class="ending__h">업계 연표</h3>
+      <ol id="ending-industry" class="timeline timeline--industry"></ol>
+      <h3 class="ending__h">숫자로 본 인생</h3>
+      <dl id="ending-numbers" class="numbers"></dl>
+      <p id="ending-epitaph" class="ending__epitaph" hidden></p>
+      <div class="ending__actions">
+        <button id="btn-again-same" class="btn btn--primary" type="button">같은 세계에서 새 인생</button>
+        <button id="btn-again-new" class="btn" type="button">새 인생</button>
+      </div>
+      <p id="ending-seed" class="ending__seed"></p>
+    </section>
+  </main>
+
+  <!-- 사건 카드: 작은 사건(data-size="small", 15초 타이머) · 큰 사건(data-size="big", 인생의 갈림길) -->
+  <div id="event-layer" class="event-layer" hidden>
+    <article id="event-card" class="event-card" data-size="small" data-phase="choose">
+      <p id="event-kicker" class="event-card__kicker"></p>
+      <p id="event-text" class="event-card__text"></p>
+      <div id="event-choices" class="event-card__choices"></div>
+      <div id="event-timer" class="event-card__timer" style="--t: 1"><span></span></div>
+      <div id="event-result" class="event-card__result" hidden>
+        <p id="event-result-text" class="event-card__result-text"></p>
+        <div id="event-chips" class="chips"></div>
+        <button id="event-ok" class="btn btn--primary" type="button">확인</button>
+      </div>
+    </article>
+  </div>
+
+  <div id="toast-stack" class="toasts" aria-live="polite"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
