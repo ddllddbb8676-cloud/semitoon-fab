@@ -67,7 +67,8 @@ log        연도별 연표 항목
 `stage`, `age`, `year`, `job`, `job_group`, `sector`, `employment`, `region`, `stat_min{}`, `trait_min{}`, `trait_max{}`, `wealth_min`, `cash_min`, `has_partner`, `has_children`, `has_house`, `flag`, `not_flag`, `company_state` (내 회사 실적 -2~2), `market{}` (market_history의 그 해 점수 범위), `near_fab` (사는 지역의 `fab_since` ≤ 올해), `parents_alive`, `semi_max` (반도체 접점 기록이 이 개수 이하)
 
 - 값이 배열이면 "그중 하나". `age`, `year`, `company_state`, `market.*`는 `[최소, 최대]` (`null`은 제한 없음).
-- `"job": "none"`은 무직.
+- `"job": "none"`은 무직. `job`에는 기본 직업 id(`jobs.json`, 그 아래 세부 직업 전부 포함)나 세부 직업 id(`fab_pe.dram.euv`)를 쓸 수 있음.
+- `job_role`: 세부 직무 id (`job_matrix.json`의 roles, 예: `fab_pe`). `job_dim`: 직업 축 값 (예: `{ "process": ["litho", "euv"] }`, `{ "product": ["hbm"] }`). 축별 사건을 쓰면 그 축의 모든 세부 직업에 뜸.
 - `market`은 사건 맨 위에 둬도 되고 `when` 안에 둬도 됨.
 - 음수 금액은 `"@salary*-0.1"`처럼 씀.
 - `parent_semi` flag는 엔진이 출생 때 부모 직업이 반도체(`semi: true`)면 붙임.
@@ -78,4 +79,5 @@ log        연도별 연표 항목
 | `life/data/market_history.json` | 업계 역사 고증 |
 | `life/data/economy_history.json` | 업계 역사 고증 |
 | `life/data/companies.json`, `jobs.json`, `character.json` | 시스템 설계 |
+| `life/data/job_matrix.json` | 세부 직업 조합표 (직무 × 축). 펼치기: `node life/tools/jobs_expand.mjs` |
 | `life/data/events/<stage>.json`, `events/major.json` | 이벤트 작가 |

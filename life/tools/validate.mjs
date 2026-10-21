@@ -2,6 +2,7 @@
 // 키 목록은 life/docs/SPEC.md와 같아야 한다. SPEC이 바뀌면 여기도 고친다.
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
+import { loadMatrix, expandJobs } from './jobs_expand.mjs';
 
 const ROOT = new URL('../', import.meta.url).pathname;
 const DATA = join(ROOT, 'data');
@@ -14,7 +15,8 @@ const EFFECT_KEYS = new Set([...STATS, ...AXES.map((a) => `trait.${a}`),
   'happiness', 'cash', 'debt', 'reputation', 'friends', 'flag', 'semi', 'goto', 'title_progress']);
 const WHEN_KEYS = new Set(['stage', 'age', 'year', 'job', 'job_group', 'sector', 'employment', 'region',
   'stat_min', 'trait_min', 'trait_max', 'wealth_min', 'cash_min', 'has_partner', 'has_children',
-  'has_house', 'flag', 'not_flag', 'company_state', 'market', 'near_fab', 'parents_alive', 'semi_max']);
+  'has_house', 'flag', 'not_flag', 'company_state', 'market', 'near_fab', 'parents_alive', 'semi_max',
+  'job_role', 'job_dim']);
 const EVENT_KEYS = new Set(['id', 'age', 'year', 'when', 'market', 'weight', 'once', 'text', 'choices', 'default']);
 const PLACEHOLDERS = new Set(['name', 'birth_year', 'death_year', 'age', 'region', 'main_job', 'main_company',
   'career_years', 'trait_top', 'trait_second', 'children', 'semi_count', 'best_year', 'worst_year', 'title',
@@ -46,10 +48,24 @@ const jobsExtra = existsSync(join(DATA, 'jobs_extra.json')) ? load(join(DATA, 'j
 const sectors = new Set(companies?.sectors.map((s) => s.id) ?? []);
 const regions = new Set([...(character?.regions ?? []), ...(character?.work_only_regions ?? [])].map((r) => r.id));
 const allJobs = [...(jobsBase?.jobs ?? []), ...(jobsExtra?.jobs ?? [])];
-const jobIds = new Set(allJobs.map((j) => j.id));
+const matrix = loadMatrix();
+const matrixJobs = expandJobs(matrix);
+const jobIds = new Set([...allJobs, ...matrixJobs].map((j) => j.id));
+const roleIds = new Set(matrix.roles.map((r) => r.id));
 const jobGroups = new Set(allJobs.map((j) => j.group));
 const employment = new Set(jobsBase?.employment_types.map((e) => e.id) ?? []);
 const education = new Set(jobsBase?.education_levels ?? []);
+const MX = join(DATA, 'job_matrix.json');
+{
+  const seen = new Set();
+  for (const j of matrixJobs) {
+    if (seen.has(j.id)) err(MX, `세부 직업 id 중복 ${j.id}`);
+    seen.add(j.id);
+    if (!allJobs.some((b) => b.id === j.parent)) err(MX, `${j.role}: 없는 parent ${j.parent}`);
+    for (const s of j.sectors) if (!sectors.has(s)) err(MX, `${j.role}: 없는 분야 ${s}`);
+    for (const e of j.employment) if (!employment.has(e)) err(MX, `${j.role}: 없는 고용형태 ${e}`);
+  }
+}
 
 for (const c of companies?.sectors.flatMap((s) => s.companies) ?? []) {
   for (const r of c.regions) if (!regions.has(r)) err(join(DATA, 'companies.json'), `${c.id}: 없는 지역 ${r}`);
@@ -76,6 +92,12 @@ function checkWhen(file, id, when) {
     if (!WHEN_KEYS.has(k)) { err(file, `${id}: 없는 조건 키 ${k}`); continue; }
     const vals = [v].flat();
     if (k === 'job') vals.forEach((x) => x === 'none' || jobIds.has(x) || err(file, `${id}: 없는 직업 ${x}`));
+    if (k === 'job_role') vals.forEach((x) => roleIds.has(x) || err(file, `${id}: 없는 세부 직무 ${x}`));
+    if (k === 'job_dim') for (const [d, ids] of Object.entries(v)) {
+      const known = new Set((matrix.dimensions[d] ?? []).map((x) => x.id));
+      if (!matrix.dimensions[d]) err(file, `${id}: 없는 직업 축 ${d}`);
+      else [ids].flat().forEach((x) => known.has(x) || err(file, `${id}: 축 ${d}에 없는 값 ${x}`));
+    }
     if (k === 'job_group') vals.forEach((x) => jobGroups.has(x) || err(file, `${id}: 없는 직업 그룹 ${x}`));
     if (k === 'sector') vals.forEach((x) => sectors.has(x) || err(file, `${id}: 없는 분야 ${x}`));
     if (k === 'region') vals.forEach((x) => regions.has(x) || err(file, `${id}: 없는 지역 ${x}`));
@@ -170,5 +192,5 @@ for (const file of walk(DATA)) load(file);
 
 for (const w of warnings) console.log(`경고  ${w}`);
 for (const e of errors) console.log(`오류  ${e}`);
-console.log(`\n사건 ${eventIds.size}개, 직업 ${jobIds.size}개 검사 — 오류 ${errors.length}개, 경고 ${warnings.length}개`);
+console.log(`\n사건 ${eventIds.size}개, 직업 ${jobIds.size}개(세부 ${matrixJobs.length}) 검사 — 오류 ${errors.length}개, 경고 ${warnings.length}개`);
 process.exit(errors.length ? 1 : 0);
