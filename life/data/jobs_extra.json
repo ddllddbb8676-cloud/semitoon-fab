@@ -1,0 +1,1257 @@
+{
+  "_note": "T06 추가 직업 60개예요. id 접두사 semi 20개·era 25개·general 15개로 나눴어요. 현재 기본 직업 50개 및 세부 조합표의 동일 직무명·id와 중복하지 않게 구성했어요. stats·education·needs_wealth·since·until은 게임용 지원 문턱과 등장 구간이에요. since는 대한민국의 직업 최초 탄생 연도를 뜻하지 않으며, 1940 이전부터 있던 일은 시뮬레이션 시작 범위인 1940으로 잘랐어요. until은 그해에 신규 제시를 끝내는 게임 설정이에요. 직업이 전국 모든 지역·업체에서 완전히 없어졌다고 단정하지 않아요. 별도 근거가 없는 등장·종료 연도는 low 수준의 시대 연출 추정값이며 일괄 해고나 즉시 전직을 뜻하지 않아요. 면허·자격이 필요한 일은 education과 능력치만으로 자격 취득을 대신하지 않아요. 직업명·group은 선택지의 명칭이고 desc_ko·touch_ko는 화면 설명이에요. touch=none의 touch_ko는 가능한 인연만 설명하며, 그 직업에 취업하는 것만으로 반도체 순간을 자동 부여하지 않아요. sectors가 없는 반도체 연관 외부 업체는 serves로 팹 또는 팹 지역과 연결했어요. 원청이 있는 파견·도급 관계는 고용주와 원청을 구분해요.",
+  "jobs": [
+    {
+      "id": "semi_filter_technician",
+      "name": "클린룸 필터 교체 기사",
+      "group": "기능직",
+      "touch": "near",
+      "stats": {
+        "dexterity": 55,
+        "health": 50
+      },
+      "education": "고졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1983,
+      "ladder": "craft",
+      "desc_ko": "교체 계획에 맞춰 클린룸 필터를 바꾸고 작업 기록을 남겨요.",
+      "touch_ko": "팹 공조 담당과 함께 필터 교체와 작업 구역 인계를 해요.",
+      "serves": "fab"
+    },
+    {
+      "id": "semi_cleanroom_tester",
+      "name": "클린룸 성능 측정 기사",
+      "group": "기능직",
+      "touch": "near",
+      "stats": {
+        "intelligence": 55,
+        "dexterity": 45
+      },
+      "education": "전문대졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1983,
+      "ladder": "craft",
+      "desc_ko": "입자와 풍속 등을 측정하고 클린룸 성능 확인 기록을 정리해요.",
+      "touch_ko": "새 클린룸을 쓰기 전이나 설비 변경 뒤에 측정 업무로 팹을 찾아가요.",
+      "serves": "fab"
+    },
+    {
+      "id": "semi_wafer_reclaim",
+      "name": "재생 웨이퍼 가공원",
+      "group": "현장",
+      "touch": "core",
+      "stats": {
+        "dexterity": 55,
+        "mental": 45
+      },
+      "education": "고졸",
+      "sectors": [
+        "materials"
+      ],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1990,
+      "ladder": "production",
+      "desc_ko": "사용한 테스트 웨이퍼를 검사하고 재생 가공 단계로 보내요.",
+      "touch_ko": "재생 가능한 웨이퍼를 공급해 팹의 테스트용 웨이퍼 수요와 닿아요."
+    },
+    {
+      "id": "semi_quartz_repair",
+      "name": "석영 부품 수리 기사",
+      "group": "기능직",
+      "touch": "near",
+      "stats": {
+        "dexterity": 65,
+        "mental": 50
+      },
+      "education": "고졸",
+      "sectors": [
+        "equipment_korea"
+      ],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1985,
+      "ladder": "craft",
+      "desc_ko": "석영 부품의 손상 상태를 살피고 수리한 부품을 검사해요.",
+      "touch_ko": "반도체 장비에서 분리한 석영 부품을 전문 작업장에서 다뤄요."
+    },
+    {
+      "id": "semi_pump_overhaul",
+      "name": "진공펌프 오버홀 기사",
+      "group": "기능직",
+      "touch": "near",
+      "stats": {
+        "dexterity": 60,
+        "health": 50
+      },
+      "education": "고졸",
+      "sectors": [
+        "equipment_korea"
+      ],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1985,
+      "ladder": "craft",
+      "desc_ko": "분리된 진공펌프를 분해 정비하고 재조립 뒤 상태를 확인해요.",
+      "touch_ko": "팹에서 회수한 펌프를 정비해 장비 서비스 업체에 인계해요."
+    },
+    {
+      "id": "semi_parts_cleaning",
+      "name": "장비 부품 정밀세정원",
+      "group": "기능직",
+      "touch": "near",
+      "stats": {
+        "dexterity": 50,
+        "mental": 50
+      },
+      "education": "고졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1985,
+      "ladder": "craft",
+      "desc_ko": "분리된 장비 부품을 정해진 세정 절차에 따라 처리하고 이력을 남겨요.",
+      "touch_ko": "PM 때 회수한 부품이 다시 현장으로 돌아가기 전의 세정 업무를 맡아요.",
+      "serves": "fab"
+    },
+    {
+      "id": "semi_hazmat_storekeeper",
+      "name": "특수가스·약품 창고 관리원",
+      "group": "기능직",
+      "touch": "near",
+      "stats": {
+        "mental": 60,
+        "health": 50
+      },
+      "education": "고졸",
+      "sectors": [
+        "materials"
+      ],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1983,
+      "ladder": "craft",
+      "desc_ko": "용기와 포장 상태를 확인하고 입출고 기록과 보관 구역을 관리해요.",
+      "touch_ko": "팹에 공급할 자재를 운송 담당에게 인계하기 전까지 관리해요."
+    },
+    {
+      "id": "semi_fab_firefighter",
+      "name": "반도체 공장 소방대원",
+      "group": "서비스",
+      "touch": "near",
+      "stats": {
+        "health": 65,
+        "mental": 60
+      },
+      "education": "고졸",
+      "sectors": [
+        "memory",
+        "foundry"
+      ],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1983,
+      "ladder": "service",
+      "desc_ko": "사업장 소방대에서 예방 순찰과 훈련을 하고 비상 대응을 준비해요.",
+      "touch_ko": "소방 설비 정비 기사와 구분되는 현장 대응 인력으로 팹에서 일해요.",
+      "shift": true
+    },
+    {
+      "id": "semi_daycare_teacher",
+      "name": "사내 어린이집 교사",
+      "group": "서비스",
+      "touch": "near",
+      "stats": {
+        "sociability": 60,
+        "mental": 55
+      },
+      "education": "전문대졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1995,
+      "ladder": "teacher",
+      "desc_ko": "아이들의 하루를 돌보고 보호자와 생활 기록을 나눠요.",
+      "touch_ko": "팹 근무자의 자녀가 다니는 직장 어린이집에서 만나요.",
+      "serves": "fab"
+    },
+    {
+      "id": "semi_occupational_physician",
+      "name": "공장 건강관리 의사",
+      "group": "서비스",
+      "touch": "near",
+      "stats": {
+        "intelligence": 80,
+        "sociability": 50
+      },
+      "education": "대졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1990,
+      "ladder": "service",
+      "desc_ko": "근로자의 건강 상담과 업무 복귀 상담을 하고 필요한 진료로 연결해요.",
+      "touch_ko": "반도체 사업장 건강관리실을 방문하는 근무자들과 만나요.",
+      "serves": "fab"
+    },
+    {
+      "id": "semi_workplace_counselor",
+      "name": "사업장 심리상담사",
+      "group": "서비스",
+      "touch": "near",
+      "stats": {
+        "sociability": 65,
+        "mental": 60
+      },
+      "education": "석사",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 2000,
+      "ladder": "service",
+      "desc_ko": "예약한 사람의 이야기를 듣고 생활과 일의 어려움을 함께 정리해요.",
+      "touch_ko": "팹 근무자 지원 프로그램에서 교대 생활과 직장 적응 상담을 해요.",
+      "serves": "fab"
+    },
+    {
+      "id": "semi_sign_interpreter",
+      "name": "사업장 수어 통역사",
+      "group": "서비스",
+      "touch": "near",
+      "stats": {
+        "sociability": 60,
+        "dexterity": 55
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 2000,
+      "ladder": "service",
+      "desc_ko": "회의와 교육에서 수어와 음성언어 사이의 의사소통을 도와요.",
+      "touch_ko": "팹의 채용 설명회나 안전교육에 참여한 청각장애인과 만나요.",
+      "serves": "fab"
+    },
+    {
+      "id": "semi_technical_translator",
+      "name": "반도체 기술 번역가",
+      "group": "생태계",
+      "touch": "eco",
+      "stats": {
+        "intelligence": 65,
+        "mental": 50
+      },
+      "education": "대졸",
+      "sectors": [],
+      "employment": [
+        "contract",
+        "owner"
+      ],
+      "since": 1990,
+      "ladder": "none",
+      "desc_ko": "기술 문서의 용어와 문맥을 확인하며 다른 언어로 옮겨요.",
+      "touch_ko": "장비 매뉴얼과 공개 기술 자료를 번역하면서 업계와 닿아요.",
+      "serves": "fab_region"
+    },
+    {
+      "id": "semi_patent_attorney",
+      "name": "반도체 전문 변리사",
+      "group": "생태계",
+      "touch": "eco",
+      "stats": {
+        "intelligence": 80,
+        "sociability": 50
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "owner"
+      ],
+      "since": 1985,
+      "ladder": "corporate",
+      "desc_ko": "발명자와 기술 내용을 정리하고 특허 출원과 권리 검토를 도와요.",
+      "touch_ko": "회사 내부 특허 담당과 별도로 외부 전문 사무소에서 의뢰를 받아요.",
+      "serves": "fab_region"
+    },
+    {
+      "id": "semi_customs_broker",
+      "name": "반도체 장비·소재 관세사",
+      "group": "생태계",
+      "touch": "eco",
+      "stats": {
+        "intelligence": 65,
+        "mental": 55
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "owner"
+      ],
+      "since": 1985,
+      "ladder": "corporate",
+      "desc_ko": "수출입 서류와 물품 정보를 확인하고 통관 업무를 대리해요.",
+      "touch_ko": "장비와 소재를 들여오는 업체의 통관 의뢰를 받아요.",
+      "serves": "fab_region"
+    },
+    {
+      "id": "semi_waste_recycling",
+      "name": "반도체 폐자재 재활용 작업원",
+      "group": "기능직",
+      "touch": "near",
+      "stats": {
+        "health": 55,
+        "mental": 55
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1990,
+      "ladder": "craft",
+      "desc_ko": "인계받은 폐자재를 종류에 맞게 분류하고 재활용 공정으로 보내요.",
+      "touch_ko": "팹에서 적법한 처리 경로로 반출한 자재를 외부 처리장에서 다뤄요.",
+      "serves": "fab_region"
+    },
+    {
+      "id": "semi_shipping_container_washer",
+      "name": "웨이퍼 운송용기 세척원",
+      "group": "기능직",
+      "touch": "near",
+      "stats": {
+        "dexterity": 50,
+        "mental": 50
+      },
+      "education": "고졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1995,
+      "ladder": "craft",
+      "desc_ko": "반납된 운송용기를 세척하고 건조·검사 이력을 남겨요.",
+      "touch_ko": "웨이퍼 공급업체와 팹 사이를 오가는 재사용 용기를 관리해요.",
+      "serves": "fab"
+    },
+    {
+      "id": "semi_clean_packout",
+      "name": "반도체 출하 포장원",
+      "group": "현장",
+      "touch": "core",
+      "stats": {
+        "dexterity": 50,
+        "mental": 45
+      },
+      "education": "고졸",
+      "sectors": [
+        "packaging",
+        "materials"
+      ],
+      "employment": [
+        "regular",
+        "contract",
+        "dispatch"
+      ],
+      "since": 1974,
+      "ladder": "production",
+      "desc_ko": "출하 품목과 라벨을 대조하고 포장 순서에 맞춰 제품을 준비해요.",
+      "touch_ko": "검사가 끝난 반도체나 웨이퍼가 고객에게 가는 마지막 출하 단계에 있어요."
+    },
+    {
+      "id": "semi_exhibition_planner",
+      "name": "반도체 전시회 기획자",
+      "group": "생태계",
+      "touch": "eco",
+      "stats": {
+        "sociability": 65,
+        "mental": 50
+      },
+      "education": "대졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1995,
+      "ladder": "corporate",
+      "desc_ko": "참가 업체와 일정을 조율하고 전시 공간과 발표 프로그램을 준비해요.",
+      "touch_ko": "장비·소재 업체와 엔지니어가 만나는 산업 전시회를 운영해요.",
+      "serves": "fab_region"
+    },
+    {
+      "id": "semi_calibration_technician",
+      "name": "계측기 교정 기사",
+      "group": "기능직",
+      "touch": "near",
+      "stats": {
+        "intelligence": 55,
+        "dexterity": 55
+      },
+      "education": "전문대졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1985,
+      "ladder": "craft",
+      "desc_ko": "기준기와 계측기 값을 비교하고 교정 결과와 이력을 기록해요.",
+      "touch_ko": "팹과 장비 업체에서 사용하는 계측기를 외부 교정 기관에서 다뤄요.",
+      "serves": "fab_region"
+    },
+    {
+      "id": "era_bus_conductor",
+      "name": "버스 차장·안내원",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "health": 50,
+        "sociability": 50
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular"
+      ],
+      "since": 1961,
+      "ladder": "service",
+      "desc_ko": "요금을 받고 정류장과 승하차를 안내해요.",
+      "touch_ko": "산업단지로 출퇴근하는 승객을 노선에서 만날 수 있어요.",
+      "until": 1989
+    },
+    {
+      "id": "era_tram_conductor",
+      "name": "서울 노면전차 차장",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "mental": 50,
+        "sociability": 45
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular"
+      ],
+      "since": 1940,
+      "ladder": "service",
+      "desc_ko": "전차 안에서 표를 확인하고 승객의 승하차를 도와요.",
+      "touch_ko": "승객이나 가족의 훗날 전자산업 취업을 통해 인연이 이어질 수 있어요.",
+      "until": 1968
+    },
+    {
+      "id": "era_manual_switchboard",
+      "name": "수동 전화 교환원",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 50,
+        "mental": 55
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular"
+      ],
+      "since": 1940,
+      "ladder": "service",
+      "desc_ko": "교환대에서 회선을 연결해 떨어진 두 사람의 통화를 이어줘요.",
+      "touch_ko": "전자 부품을 쓰는 통신 설비와 공장 간 업무 전화를 통해 닿을 수 있어요.",
+      "until": 1987,
+      "shift": true
+    },
+    {
+      "id": "era_office_typist",
+      "name": "문서 타자수",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 60,
+        "mental": 45
+      },
+      "education": "고졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1950,
+      "ladder": "service",
+      "desc_ko": "원고를 읽고 타자기로 문서를 가지런히 옮겨요.",
+      "touch_ko": "전자공장 협력사의 주문서나 납품 문서를 타이핑할 수 있어요.",
+      "until": 2000
+    },
+    {
+      "id": "era_mimeograph",
+      "name": "등사 인쇄원",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 50
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "owner"
+      ],
+      "since": 1940,
+      "ladder": "craft",
+      "desc_ko": "등사 원지를 준비하고 손으로 돌리는 인쇄기로 여러 장을 찍어요.",
+      "touch_ko": "공장과 기술학교의 안내문 제작 의뢰를 받을 수 있어요.",
+      "until": 1995
+    },
+    {
+      "id": "era_letterpress_typesetter",
+      "name": "활판 식자공",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 60,
+        "mental": 50
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular"
+      ],
+      "since": 1940,
+      "ladder": "craft",
+      "desc_ko": "원고에 맞는 활자를 골라 인쇄할 판을 짜요.",
+      "touch_ko": "전자산업을 소개하는 책자나 사내 소식지 제작으로 닿을 수 있어요.",
+      "until": 2000
+    },
+    {
+      "id": "era_cafe_dj",
+      "name": "다방 음악 DJ",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "sociability": 60
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1970,
+      "ladder": "service",
+      "desc_ko": "신청곡 사연을 읽고 음반을 골라 손님에게 들려줘요.",
+      "touch_ko": "산업단지 근처 다방에서 쉬어 가는 근무자를 만날 수 있어요.",
+      "until": 1995
+    },
+    {
+      "id": "era_video_rental",
+      "name": "비디오 대여점 사장",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "sociability": 45
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "owner"
+      ],
+      "since": 1985,
+      "ladder": "owner",
+      "desc_ko": "대여와 반납을 기록하고 손님이 찾는 비디오를 골라줘요.",
+      "touch_ko": "공장 기숙사 손님들이 쉬는 날 볼 영화를 빌리러 올 수 있어요.",
+      "until": 2015,
+      "needs_wealth": 2
+    },
+    {
+      "id": "era_pager_dealer",
+      "name": "삐삐 대리점 운영자",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "sociability": 55
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "owner"
+      ],
+      "since": 1990,
+      "ladder": "owner",
+      "desc_ko": "무선호출기 가입을 안내하고 단말기와 연락 번호를 관리해요.",
+      "touch_ko": "긴급 연락을 기다리는 장비 서비스 기사에게 호출기를 안내할 수 있어요.",
+      "until": 2005,
+      "needs_wealth": 2
+    },
+    {
+      "id": "era_pc_cafe",
+      "name": "PC방 사장",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "mental": 50,
+        "sociability": 45
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "owner"
+      ],
+      "since": 1998,
+      "ladder": "owner",
+      "desc_ko": "좌석과 컴퓨터 상태를 살피고 손님이 편하게 쓰도록 관리해요.",
+      "touch_ko": "메모리와 그래픽카드를 교체할 때 반도체 제품과 닿을 수 있어요.",
+      "needs_wealth": 3
+    },
+    {
+      "id": "era_briquette_delivery",
+      "name": "연탄 배달원",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "health": 60,
+        "dexterity": 40
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "daily",
+        "owner"
+      ],
+      "since": 1955,
+      "ladder": "craft",
+      "desc_ko": "주문한 집까지 연탄을 나르고 보관할 자리에 차곡차곡 쌓아요.",
+      "touch_ko": "옛 산업단지 근처 근로자 주택에 난방용 연탄을 배달할 수 있어요."
+    },
+    {
+      "id": "era_water_carrier",
+      "name": "물지게꾼",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "health": 65
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "daily",
+        "owner"
+      ],
+      "since": 1940,
+      "ladder": "craft",
+      "desc_ko": "물을 길어 지게로 나르고 집집마다 필요한 물을 전해요.",
+      "touch_ko": "직접적인 업무 접점 없이 자녀나 이웃의 전자공장 취업으로 이어질 수 있어요.",
+      "until": 1970
+    },
+    {
+      "id": "era_radio_repair",
+      "name": "라디오 수리점 운영자",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 60,
+        "intelligence": 45
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "owner"
+      ],
+      "since": 1955,
+      "ladder": "owner",
+      "desc_ko": "소리가 나지 않는 라디오를 살피고 부품을 점검해 수리해요.",
+      "touch_ko": "트랜지스터와 전자 부품을 구하고 교체하는 일로 닿을 수 있어요.",
+      "needs_wealth": 2
+    },
+    {
+      "id": "era_film_lab",
+      "name": "필름 현상소 기사",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 55,
+        "mental": 45
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "owner"
+      ],
+      "since": 1960,
+      "ladder": "craft",
+      "desc_ko": "맡긴 필름을 현상하고 인화 사진을 정리해 손님에게 전해요.",
+      "touch_ko": "공장 행사 사진을 맡거나 디지털 카메라의 보급으로 업계 변화를 체감할 수 있어요."
+    },
+    {
+      "id": "era_film_projectionist",
+      "name": "35mm 필름 영사기사",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 55,
+        "mental": 55
+      },
+      "education": "고졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1950,
+      "ladder": "craft",
+      "desc_ko": "필름을 점검하고 영사기를 다뤄 정해진 시간에 영화를 틀어요.",
+      "touch_ko": "영상 장비가 디지털로 바뀌면서 반도체를 쓰는 새 장비를 접할 수 있어요.",
+      "until": 2015
+    },
+    {
+      "id": "era_record_shop",
+      "name": "음반 가게 운영자",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "sociability": 50
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "owner"
+      ],
+      "since": 1960,
+      "ladder": "owner",
+      "desc_ko": "음반을 정리하고 손님이 찾는 음악을 함께 골라요.",
+      "touch_ko": "재생 기기가 바뀌는 모습을 보며 메모리 기반 음악 기기와 닿을 수 있어요.",
+      "needs_wealth": 2
+    },
+    {
+      "id": "era_shoe_shiner",
+      "name": "구두 미화원",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 50
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "owner",
+        "daily"
+      ],
+      "since": 1950,
+      "ladder": "craft",
+      "desc_ko": "손님의 구두를 닦고 마감하며 작은 손질을 해요.",
+      "touch_ko": "출장 온 반도체 영업 담당이나 면접을 앞둔 손님을 만날 수 있어요."
+    },
+    {
+      "id": "era_watch_repair",
+      "name": "시계 수리공",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 65,
+        "mental": 50
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "owner"
+      ],
+      "since": 1940,
+      "ladder": "craft",
+      "desc_ko": "작은 부품을 살피며 시계의 움직임과 시간을 맞춰요.",
+      "touch_ko": "쿼츠 시계와 전자시계를 수리하며 IC가 들어간 제품을 만질 수 있어요."
+    },
+    {
+      "id": "era_newspaper_vendor",
+      "name": "신문 가판대 운영자",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "sociability": 40
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "owner"
+      ],
+      "since": 1940,
+      "ladder": "owner",
+      "desc_ko": "그날의 신문과 잡지를 펴 놓고 지나가는 손님을 맞아요.",
+      "touch_ko": "산업면의 반도체 소식을 읽거나 출근길 업계 종사자와 만날 수 있어요."
+    },
+    {
+      "id": "era_rice_mill",
+      "name": "동네 정미소 운영자",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 50,
+        "health": 50
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "owner"
+      ],
+      "since": 1940,
+      "ladder": "owner",
+      "desc_ko": "맡긴 곡물을 도정하고 손님별로 나눠 돌려줘요.",
+      "touch_ko": "자동 제어기가 붙은 새 도정 기계를 들이면서 전자 부품과 닿을 수 있어요.",
+      "needs_wealth": 3
+    },
+    {
+      "id": "era_public_bath",
+      "name": "목욕탕 관리원",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "health": 50,
+        "mental": 45
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1955,
+      "ladder": "service",
+      "desc_ko": "탕과 탈의 공간을 살피고 손님이 쓰는 시설을 정돈해요.",
+      "touch_ko": "교대 일을 마치고 들른 산업단지 근무자와 인사를 나눌 수 있어요."
+    },
+    {
+      "id": "era_soda_fountain",
+      "name": "동네 얼음·음료 가게 사장",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "sociability": 45,
+        "health": 45
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "owner"
+      ],
+      "since": 1940,
+      "ladder": "owner",
+      "desc_ko": "얼음을 준비하고 더위를 피해 온 손님에게 시원한 음료를 내줘요.",
+      "touch_ko": "근처 전자공장 사람들의 쉬는 시간 간식을 준비할 수 있어요.",
+      "until": 1985,
+      "needs_wealth": 2
+    },
+    {
+      "id": "era_sewing_piecework",
+      "name": "가내 봉제공",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 60,
+        "mental": 45
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "contract",
+        "owner"
+      ],
+      "since": 1960,
+      "ladder": "craft",
+      "desc_ko": "맡은 옷감과 부자재로 옷을 만들고 납품할 수량을 정리해요.",
+      "touch_ko": "공장 작업복의 봉제 의뢰를 받으면 의류 공급망으로 닿을 수 있어요."
+    },
+    {
+      "id": "era_public_phone_attendant",
+      "name": "동네 전화방 관리인",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "sociability": 50,
+        "mental": 45
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "owner"
+      ],
+      "since": 1940,
+      "ladder": "owner",
+      "desc_ko": "공용 전화를 쓰러 온 이웃을 안내하고 연락 온 사람을 불러줘요.",
+      "touch_ko": "전자공장에 간 가족과 고향 집의 통화를 이어줄 수 있어요.",
+      "until": 1990
+    },
+    {
+      "id": "era_photo_studio",
+      "name": "동네 사진관 사진사",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 55,
+        "sociability": 50
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "owner"
+      ],
+      "since": 1940,
+      "ladder": "owner",
+      "desc_ko": "증명사진과 가족사진을 찍고 손님이 고른 사진을 보정해요.",
+      "touch_ko": "반도체 회사 입사 사진을 찍거나 이미지센서가 들어간 카메라를 써요.",
+      "needs_wealth": 2
+    },
+    {
+      "id": "general_pharmacist",
+      "name": "약사",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "intelligence": 70,
+        "mental": 50
+      },
+      "education": "대졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "owner"
+      ],
+      "since": 1940,
+      "ladder": "service",
+      "desc_ko": "처방과 약 정보를 확인하고 복약 방법을 안내해요.",
+      "touch_ko": "교대 근무자의 처방을 조제하거나 산업단지 근처 약국에서 만날 수 있어요."
+    },
+    {
+      "id": "general_physiotherapist",
+      "name": "물리치료사",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 55,
+        "sociability": 55
+      },
+      "education": "전문대졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1965,
+      "ladder": "service",
+      "desc_ko": "평가와 치료 계획에 맞춰 움직임 회복을 돕고 경과를 기록해요.",
+      "touch_ko": "근골격계 불편으로 병원을 찾은 공장 근무자의 회복을 도울 수 있어요."
+    },
+    {
+      "id": "general_bank_teller",
+      "name": "은행 창구 직원",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "mental": 55,
+        "sociability": 55
+      },
+      "education": "고졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1940,
+      "ladder": "corporate",
+      "desc_ko": "계좌와 거래 내용을 확인하며 손님의 은행 업무를 도와요.",
+      "touch_ko": "반도체 회사 근무자의 급여 계좌나 생활 금융 업무로 만날 수 있어요."
+    },
+    {
+      "id": "general_accountant",
+      "name": "회계사",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "intelligence": 70,
+        "mental": 55
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "owner"
+      ],
+      "since": 1950,
+      "ladder": "corporate",
+      "desc_ko": "회계 기록을 검토하고 재무 정보가 맞게 작성됐는지 확인해요.",
+      "touch_ko": "반도체 협력사의 외부 감사나 회계 자문을 맡을 수 있어요."
+    },
+    {
+      "id": "general_postal_worker",
+      "name": "우편 배달원",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "health": 55,
+        "mental": 50
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1940,
+      "ladder": "service",
+      "desc_ko": "배달할 우편물을 나누고 수취인에게 안전하게 전달해요.",
+      "touch_ko": "산업단지의 회사와 기숙사에 우편물을 배달하며 닿을 수 있어요."
+    },
+    {
+      "id": "general_hairdresser",
+      "name": "미용사",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 60,
+        "sociability": 55
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "owner"
+      ],
+      "since": 1940,
+      "ladder": "service",
+      "desc_ko": "원하는 머리 모양을 상담하고 손질한 뒤 관리 방법을 알려줘요.",
+      "touch_ko": "방진모를 오래 쓰는 손님이 들르는 동네 미용실에서 만날 수 있어요."
+    },
+    {
+      "id": "general_baker",
+      "name": "제빵사",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 55,
+        "health": 50
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "owner"
+      ],
+      "since": 1950,
+      "ladder": "craft",
+      "desc_ko": "반죽과 굽는 시간을 살피며 그날 팔 빵을 준비해요.",
+      "touch_ko": "교대 출근길에 들르는 손님이나 공장 행사 간식 주문으로 닿을 수 있어요."
+    },
+    {
+      "id": "general_hotel_receptionist",
+      "name": "호텔 프런트 직원",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "sociability": 65,
+        "mental": 50
+      },
+      "education": "고졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1955,
+      "ladder": "service",
+      "desc_ko": "예약과 객실을 확인하고 묵는 동안 필요한 안내를 해요.",
+      "touch_ko": "장비 셋업이나 학회 참석으로 출장 온 반도체 종사자를 맞을 수 있어요.",
+      "shift": true
+    },
+    {
+      "id": "general_auto_mechanic",
+      "name": "자동차 정비사",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 60,
+        "intelligence": 45
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "owner"
+      ],
+      "since": 1950,
+      "ladder": "craft",
+      "desc_ko": "차량 상태를 점검하고 필요한 수리와 정비 내역을 설명해요.",
+      "touch_ko": "차량용 반도체가 들어간 제어 장치를 진단하며 접점을 가질 수 있어요."
+    },
+    {
+      "id": "general_carpenter",
+      "name": "목수",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 60,
+        "health": 55
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "daily",
+        "owner"
+      ],
+      "since": 1940,
+      "ladder": "craft",
+      "desc_ko": "도면에 맞춰 나무를 가공하고 공간에 필요한 구조물을 만들어요.",
+      "touch_ko": "산업단지 근처 주거 공간이나 사무실 내부 공사를 맡을 수 있어요."
+    },
+    {
+      "id": "general_graphic_designer",
+      "name": "시각 디자이너",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 55,
+        "intelligence": 50
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract",
+        "owner"
+      ],
+      "since": 1980,
+      "ladder": "corporate",
+      "desc_ko": "전하려는 내용을 글자와 그림으로 정리하고 시안을 다듬어요.",
+      "touch_ko": "반도체 전시 자료나 공개 채용 안내물의 디자인을 맡을 수 있어요."
+    },
+    {
+      "id": "general_social_worker",
+      "name": "사회복지사",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "sociability": 65,
+        "mental": 55
+      },
+      "education": "전문대졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1970,
+      "ladder": "service",
+      "desc_ko": "도움이 필요한 사람과 상담하고 지역의 서비스로 연결해요.",
+      "touch_ko": "산업단지 근로자 가족의 돌봄 상담이나 지역 지원 업무로 만날 수 있어요."
+    },
+    {
+      "id": "general_librarian",
+      "name": "사서",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "intelligence": 55,
+        "sociability": 50
+      },
+      "education": "전문대졸",
+      "sectors": [],
+      "employment": [
+        "regular",
+        "contract"
+      ],
+      "since": 1965,
+      "ladder": "service",
+      "desc_ko": "자료를 정리하고 이용자가 필요한 책과 정보를 찾도록 도와요.",
+      "touch_ko": "반도체 입문서를 찾는 학생이나 은퇴한 근무자를 도서관에서 만날 수 있어요."
+    },
+    {
+      "id": "general_florist",
+      "name": "꽃집 운영자",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "dexterity": 55,
+        "sociability": 50
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "owner",
+        "regular"
+      ],
+      "since": 1950,
+      "ladder": "owner",
+      "desc_ko": "꽃의 상태를 살피고 선물할 사람에게 맞게 꽃다발을 만들어요.",
+      "touch_ko": "입사와 퇴직, 가족 기념일을 축하하는 공장 근무자의 주문을 받을 수 있어요."
+    },
+    {
+      "id": "general_insurance_agent",
+      "name": "보험 설계사",
+      "group": "일반",
+      "touch": "none",
+      "stats": {
+        "sociability": 65,
+        "mental": 50
+      },
+      "education": "무관",
+      "sectors": [],
+      "employment": [
+        "contract"
+      ],
+      "since": 1960,
+      "ladder": "corporate",
+      "desc_ko": "고객의 상황을 듣고 상품 조건과 보장 범위를 설명해요.",
+      "touch_ko": "반도체 업계에서 일하는 손님과 가족의 생활 설계를 상담할 수 있어요."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://opengov.seoul.go.kr/sites/default/files/seoul/seoul_bus_history.pdf",
+      "scope_ko": "서울시 버스 역사에서 안내양 도입 1961년을 확인했어요. era_bus_conductor의 since 참고이며 전국 최초 직업 발생이라는 뜻은 아니에요."
+    },
+    {
+      "url": "https://www.kriti.re.kr/bbs_sun/files/bus/201909090927581.pdf",
+      "scope_ko": "운수산업연구원 버스 역사에서 1989년 안내양 승무 의무 조항 삭제를 확인했어요. until=1989는 이를 참고한 신규 제시 종료 설정이며 전국 마지막 종사자의 퇴직 연도는 아니에요."
+    },
+    {
+      "url": "https://archives.seoul.go.kr/contents/railcar",
+      "scope_ko": "서울기록원이 설명한 1968년 노면전차 퇴장을 참고했어요. 서울 노면전차 차장으로 범위를 한정했으며 미래 트램의 종사자까지 없어진다는 뜻은 아니에요."
+    },
+    {
+      "url": "https://www.archives.go.kr/archivesdata/upFile/palgan/1404351179163.pdf",
+      "scope_ko": "국가기록원이 설명한 1987년 전국 시외전화 자동화 완료를 참고했어요. 수동 전화 교환원의 게임 종료 구간 근거이며 구내 교환·안내 업무 전체가 사라진다는 뜻은 아니에요."
+    }
+  ]
+}
