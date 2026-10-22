@@ -56,7 +56,7 @@ const stats = {
   crashes: [], lives: 0, years: 0, events: 0, big: 0, eventCount: {}, semiAny: 0, semiReal: 0, firstSemiAge: [], lifespan: {},
   firstJobGroup: {}, firstJobTouch: {}, at40: 0, at40n: 0, unemployedYears: [], married: {}, titles: {}, scores: [], saveBytes: 0,
   deathCause: {}, world26: [], world27: [], everEmployed: 0, rescue: 0, exec: 0, engineers: 0, bujang: 0, traitAt40: 0, traitAt40n: 0,
-  bigBy: {}, pay: [], repeatViol: {}, repeatTrig: 0, laterMade: 0, laterFired: 0, meaningful: 0, meaningfulN: 0, meaningfulNoWorld: 0,
+  bigBy: {}, bigId: {}, pay: [], repeatViol: {}, repeatTrig: 0, laterMade: 0, laterFired: 0, meaningful: 0, meaningfulN: 0, meaningfulNoWorld: 0,
   engGrad: 0, engGradSemi: 0, phd: 0, phdRnd: 0, mismatch: [],
   // 속도·밀도 (v0.3): 단계별 큰 줄기 사건, 6~80세 해마다 사건·의미 있는 줄, 큰 사건 수
   msStage: {}, srcBy: {}, cover: 0, coverN: 0, coverNoWorld: 0, coverEvent: 0, msEvents: 0, msLife: {}, perLife: [], bigLife: [],
@@ -111,7 +111,7 @@ function runLife(i) {
         stats.msEvents++;
         if (!msSeen.has(view.id)) { msSeen.add(view.id); stats.msLife[view.id] = (stats.msLife[view.id] ?? 0) + 1; }
       }
-      if (view.big) { stats.big++; const k = inst.trigger === 'later' ? 'later' : inst.trigger ? '트리거' : D.eventById.get(view.id)?.forced ? '강제' : '추첨'; stats.bigBy[k] = (stats.bigBy[k] ?? 0) + 1; }
+      if (view.big) { stats.big++; const k = inst.trigger === 'later' ? 'later' : inst.trigger ? '트리거' : D.eventById.get(view.id)?.forced ? '강제' : '추첨'; stats.bigBy[k] = (stats.bigBy[k] ?? 0) + 1; stats.bigId[view.id] = (stats.bigId[view.id] ?? 0) + 1; }
       stats.eventCount[view.id] = (stats.eventCount[view.id] ?? 0) + 1;
       if (inst.trigger === 'later') stats.laterFired++;
       // 반복 검사: 트리거에 묶이지 않은 사건이 again·goto 없이 두 번 뜨면 위반 (repeatable 제외)
@@ -223,6 +223,7 @@ for (let i = 0; i < N; i++) {
   stats.married[cohort] ??= [0, 0];
   stats.married[cohort][1]++;
   if (s.flags.married_once) stats.married[cohort][0]++;
+  if (s.flags.married_once) { stats.widowN = (stats.widowN ?? 0) + 1; if (s.flags.widowed) stats.widow = (stats.widow ?? 0) + 1; if (s.flags.widowed && s.relations.partner) stats.rewed = (stats.rewed ?? 0) + 1; }
   stats.titles[rv.title] = (stats.titles[rv.title] ?? 0) + 1;
   stats.scores.push(rv.score);
   stats.deathCause[s.dead?.cause ?? '살아 있음'] = (stats.deathCause[s.dead?.cause ?? '살아 있음'] ?? 0) + 1;
@@ -300,7 +301,7 @@ console.log(`  첫 순간: 30세까지 ${pct(fs.filter((a) => a <= 30).length, s
 console.log('\n평균 수명 (태어난 연대별, 목표 1940 76 · 1960 80 · 1980 84 · 2000 87 · 2020 89)');
 for (const k of Object.keys(stats.lifespan).sort()) console.log(`  ${k}  ${avg(stats.lifespan[k]).toFixed(1)}세  (${stats.lifespan[k].length}명)`);
 console.log(`\n6~75세 중 의미 있는 줄(사건·연봉·가족·업황 등)이 있는 해: ${pct(stats.meaningful, stats.meaningfulN)} (세상 소식 줄을 빼면 ${pct(stats.meaningfulNoWorld, stats.meaningfulN)})`);
-console.log(`\n한 해 평균 사건 ${(stats.events / stats.years).toFixed(2)}개 · 인생당 사건 ${(stats.events / stats.lives).toFixed(1)}개 (큰 사건 ${(stats.big / stats.lives).toFixed(1)}개)  (v0.3 목표 40~60 / 10~16)`);
+console.log(`\n한 해 평균 사건 ${(stats.events / stats.years).toFixed(2)}개 · 인생당 사건 ${(stats.events / stats.lives).toFixed(1)}개 (큰 사건 ${(stats.big / stats.lives).toFixed(1)}개)  (v0.3 목표 40~60 / 14~20: 결혼·출산·첫 직장·진학 같은 진짜 갈림길이라 줄이지 않음)`);
 {
   const q = (arr, p) => { const a = [...arr].sort((x, y) => x - y); return a.length ? a[Math.min(a.length - 1, Math.floor(p * a.length))] : 0; };
   console.log(`  사건 출처(인생당): ${Object.entries(stats.srcBy).sort((a, b) => b[1] - a[1]).map(([k, n]) => `${k} ${(n / Math.max(1, stats.lives)).toFixed(1)}`).join(' · ')}`);
@@ -314,6 +315,7 @@ console.log(`\n한 해 평균 사건 ${(stats.events / stats.years).toFixed(2)}�
   }
 }
 console.log(`  큰 사건 출처(인생당): ${Object.entries(stats.bigBy).sort((a, b) => b[1] - a[1]).map(([k, n]) => `${k} ${(n / Math.max(1, stats.lives)).toFixed(1)}`).join(' · ')}`);
+console.log(`  큰 사건 많이 뜬 것(인생당): ${Object.entries(stats.bigId).sort((a, b) => b[1] - a[1]).slice(0, 12).map(([k, n]) => `${k} ${(n / Math.max(1, stats.lives)).toFixed(2)}`).join(' · ')}`);
 console.log(`\n첫 직장 (일해 본 사람 ${pct(stats.everEmployed, stats.lives)})`);
 for (const [g, n] of Object.entries(stats.firstJobGroup).sort((a, b) => b[1] - a[1])) console.log(`  ${g.padEnd(4)} ${pct(n, stats.everEmployed)}`);
 console.log(`  반도체 접점: ${Object.entries(stats.firstJobTouch).sort((a, b) => b[1] - a[1]).map(([t, n]) => `${t} ${pct(n, stats.everEmployed)}`).join(' · ')}`);
@@ -323,6 +325,7 @@ console.log(`공대 대졸↑ 졸업 뒤 첫 직장이 반도체 현장·연구�
 if (stats.mismatch.length) console.log(`  석사↑ 공대생이 다른 길로 간 예: ${stats.mismatch.join(' / ')}`);
 console.log(`대졸 회사원·연구원 부장↑ ${pct(stats.bujang, stats.engineers)} · 임원 ${pct(stats.exec, stats.engineers)} (목표 30~45% / 3~8%)`);
 console.log(`결혼: ${Object.entries(stats.married).map(([k, [a, b]]) => `${k} ${pct(a, b)}`).join(' · ')}`);
+console.log(`  사별: 결혼한 사람 중 배우자를 먼저 보낸 비율 ${pct(stats.widow ?? 0, stats.widowN ?? 0)} · 그중 새 인연 ${pct(stats.rewed ?? 0, stats.widow ?? 0)}`);
 console.log(`인생 점수 평균 ${avg(stats.scores).toFixed(0)} · 가장 큰 저장본 ${(stats.saveBytes / 1024).toFixed(0)}KB`);
 const w26 = (i) => avg(stats.world26.map((x) => x[i])).toFixed(2);
 const w27 = (i) => avg(stats.world27.map((x) => x[i])).toFixed(2);

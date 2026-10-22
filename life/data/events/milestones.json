@@ -944,5 +944,39 @@
       { "label": "병원 가까운 도시에 남는다", "effects": { "mental": 2, "happiness": -3, "trait.risk": -10 }, "result": "사진을 냉장고에 붙여만 뒀어요. 대학병원까지 버스로 15분이에요." }
     ],
     "default": 2
+  },
+  {
+    "id": "ms_spouse_farewell", "trigger": "spouse_died", "priority": 8, "age": [30, 110], "year": [1940, null], "when": {}, "weight": 3, "once": true, "big": true, "tags": ["family"],
+    "recap": "배우자와의 이별",
+    "text": "조문객이 다 돌아간 새벽이에요. 신발을 정리하다 {partner}의 낡은 구두가 눈에 걸려요. 영정 사진은 결혼식 날 사진관에서 찍은 그 웃음이에요.",
+    "choices": [
+      { "label": "집을 그대로 둔다", "effects": { "mental": -6, "happiness": -4, "trait.outlook": -15, "flag": "kept_their_things", "later": { "event": "ms_spouse_first_memorial", "years": [1, 1] } }, "result": "칫솔도 안경도 제자리에 뒀어요. 저녁마다 수저를 두 벌 꺼냈다가 한 벌을 다시 넣어요." },
+      { "label": "자식들 곁으로 집을 옮긴다", "when": { "has_children": true }, "effects": { "cash": "-@avg_wage*0.3", "friends": -6, "happiness": 4, "mental": 3, "later": { "event": "ms_spouse_first_memorial", "years": [1, 1] } }, "result": "사십 년 산 동네를 떠났어요. 이삿짐 맨 위에 {partner }의 화분 하나를 실었어요." },
+      { "label": "일에 더 매달린다", "when": { "flag": "is_employed" }, "effects": { "reputation": 6, "health": -6, "mental": -5, "trait.work_life": 15, "later": { "event": "ms_spouse_first_memorial", "years": [1, 1] } }, "result": "장례 다음 주 월요일에 출근했어요. 퇴근 시간이 매일 한 시간씩 늦어졌어요." },
+      { "label": "둘이 가기로 했던 곳에 혼자 간다", "effects": { "cash": "-@avg_wage*0.1", "mental": 6, "happiness": -2, "trait.risk": 15, "later": { "event": "ms_spouse_first_memorial", "years": [1, 1] } }, "result": "제주 바닷가 식당에서 2인분 메뉴를 시켰어요. 반은 남겼고, 사진은 두 장 찍었어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "ms_spouse_first_memorial", "age": [31, 111], "year": [1941, null], "when": { "flag": "widowed" }, "weight": 0, "once": true, "big": false, "tags": ["family"],
+    "recap": "첫 기일",
+    "text": "{partner}의 첫 기일이에요. 납골당 유리 칸 앞에 국화 한 송이와, {partner}가 좋아하던 믹스커피 한 봉을 놓아요.",
+    "choices": [
+      { "label": "한 해 동안 있었던 일을 소리 내 말해 준다", "effects": { "mental": 8, "happiness": 6, "trait.outlook": 10 }, "result": "손주가 걷기 시작했다는 얘기에서 목이 메었어요. 커피는 식었지만 끝까지 다 말했어요." },
+      { "label": "복지관 수업에 등록한다", "effects": { "friends": 10, "sociability": 5, "happiness": 5, "flag": "senior_center", "later": { "event": "ms_late_love", "years": [1, 4], "chance": 0.5 } }, "result": "요일마다 갈 곳이 생겼어요. 월요일은 스마트폰, 수요일은 노래 교실이에요." },
+      { "label": "혼자 사는 법을 익힌다", "effects": { "health": 5, "dexterity": 4, "mental": 4, "trait.diligence": 10 }, "result": "된장찌개를 처음 끓였어요. 간이 안 맞았는데, 세 번째에는 {partner } 맛이 났어요." }
+    ],
+    "default": 0
+  },
+  {
+    "id": "ms_late_love", "age": [40, 95], "year": [1960, null], "when": { "flag": "widowed", "has_partner": false }, "weight": 0, "once": true, "big": true, "tags": ["romance"],
+    "recap": "황혼의 인연",
+    "text": "노래 교실에서 늘 옆자리에 앉는 분이 있어요. 오늘은 귤 두 개를 말없이 내 쪽으로 밀어 주셨어요.",
+    "choices": [
+      { "label": "끝나고 같이 걷자고 한다", "effects": { "do": "partner:new", "happiness": 10, "friends": -3, "trait.risk": 10 }, "result": "공원 한 바퀴가 두 바퀴가 됐어요. 자식들 반응은 반반이에요." },
+      { "label": "좋은 친구로 지낸다", "effects": { "friends": 8, "happiness": 4 }, "result": "귤은 다음 주에 내가 샀어요. 둘이 노래 교실 반장과 총무를 맡았어요." },
+      { "label": "마음 한쪽이 아직 그 사람 자리라고 말한다", "effects": { "mental": 4, "happiness": -2, "trait.outlook": -10 }, "result": "그분이 고개를 끄덕였어요. “저도 그래요.” 그날부터 귤은 한 개씩만 오가요." }
+    ],
+    "default": 1
   }
 ]

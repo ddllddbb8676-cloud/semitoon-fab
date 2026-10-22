@@ -52,6 +52,20 @@ export function familyYearStart(L, triggers) {
       if (rel.parents.every((x) => !x.alive)) inherit(L);
     }
   }
+  // 배우자 사별 (v0.3): 부모와 같은 사망표에 배우자 체력 보정. 이혼·이별과 달리 late_spouse로 남기고 spouse_died 트리거
+  const sp = rel.partner;
+  if (sp?.married) {
+    const Fh = 1.3 - 0.6 * (sp.stats?.health ?? 50) / 100;
+    if (rng.chance(Math.min(1, parentDeathQ(L, y - sp.birth_year, y) * Fh))) {
+      rel.late_spouse = { name: sp.name, birth_year: sp.birth_year, married_year: sp.married_year ?? null, death_year: y, semi: !!sp.semi };
+      rel.partner = null;
+      addFlag(s, 'widowed');
+      addLog(L, `${y}년, ${sp.gender === 'f' ? '아내' : '남편'} ${josa(sp.name, '이', '가')} 세상을 떠났어요`, 3, 'family');
+      s.happiness = clamp(s.happiness - 25, 0, 100);
+      triggers.set('spouse_died', { partner: sp.name });
+      if (sp.semi) addSemi(L, `${sp.name}의 사원증을 정리했어요`, 'family');
+    }
+  }
   // 부모 직업이 반도체면 8세까지 순간이 없을 때 자동 기록 (SYSTEMS 7)
   if (s.age === 8 && s.flags.parent_semi && !s.semi.some((m) => m.kind === 'family')) {
     const p = rel.parents.find((x) => x.semi);

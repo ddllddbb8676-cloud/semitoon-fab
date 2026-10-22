@@ -138,7 +138,7 @@ export function applyEffects(L, eff, ctx, ev) {
 }
 
 // 나중에 돌아오는 결과 (SPEC effects.later): 해를 정해 s.later에 넣어 두면 events.buildQueue가 그 해에 강제로 띄웁니다
-const LATER_CTX = ['company', 'rival', 'acquirer', 'client', 'region', 'child', 'tech', 'skill'];
+const LATER_CTX = ['company', 'rival', 'acquirer', 'client', 'region', 'child', 'tech', 'skill', 'partner'];
 export function scheduleLater(L, l, ev, ctx = {}) {
   const { s, rng, D } = L;
   if (!l || typeof l.event !== 'string') return;

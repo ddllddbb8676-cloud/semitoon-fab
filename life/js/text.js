@@ -19,7 +19,7 @@ export function placeholder(L, key, ctx = {}) {
     case 'acquirer': return W.companyName(ctx.acquirer) || '새 회사';
     case 'client': return W.companyName(ctx.client ?? s.career.client) || W.nearbyFab(s.profile.region)?.name || '원청';
     case 'region': return D.regions.get(ctx.region ?? s.profile.region)?.name ?? '';
-    case 'partner': return s.relations.partner?.name ?? '연인';
+    case 'partner': return ctx.partner ?? s.relations.partner?.name ?? s.relations.late_spouse?.name ?? '연인';
     case 'child': return ctx.child ?? youngestChild(s)?.name ?? '아이';
     case 'offer1': case 'offer2': case 'offer3': return ctx.offers?.[Number(key.slice(-1)) - 1]?.label ?? '';
     case 'tech': return ctx.tech ?? W.latestTech(s.year)?.name_ko ?? '새 기술';
