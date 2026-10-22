@@ -2,6 +2,7 @@
 // SYSTEMS 5장과 ECONOMY 3장을 줄인 간단형입니다. 숫자는 문서 값을 그대로 쓰고, 빠진 규칙은 docs/UI_CONTRACT.md 끝에 적었습니다.
 
 import { clamp, logistic, eduIdx, hasTrait, addFlag, addLog, addSemi, josa, endsWithRieul, statusOf } from './core.js';
+import { won } from './format.js';
 
 // ---------- ECONOMY 3.2 표 ----------
 const JOB_MULT = {
@@ -117,7 +118,9 @@ export function updateSalary(L) {
   const fresh = !prev || c.salary_key !== key;
   const co = W.co(c.company);
   const crisis = !!co && (co.c <= -1.5 || (W.marketKey('korea', s.year) <= -2 && co.c <= -1));
-  const next = fresh || t >= prev ? t : crisis ? Math.max(t, prev * 0.9) : prev;
+  // 은퇴 뒤 재취업은 평균 임금 상승률만큼만 (깎이지도, 협상으로 뛰지도 않음)
+  const next = c.bridge && !fresh ? prev * Math.max(1, W.econ(s.year).avg_wage / W.econ(s.year - 1).avg_wage)
+    : fresh || t >= prev ? t : crisis ? Math.max(t, prev * 0.9) : prev;
   const promoted = !fresh && c.rank > (c.salary_rank ?? c.rank);
   const moved = !fresh && (c.region === 'overseas') !== (c.salary_region === 'overseas');
   Object.assign(c, { salary: next, salary_key: key, salary_rank: c.rank, salary_region: c.region });
@@ -281,12 +284,17 @@ export function postings(L) {
 }
 
 const keyOf = (o) => `${o.job}|${o.company}|${o.employment}|${o.role ?? ''}`;
+// 은퇴 뒤 재취업 (한 번 은퇴한 55세↑, 또는 60세↑에 새로 들어간 자리): 정규직 자리여도 계약직으로, 승진 없이 평균 임금만 따라가는 연봉 (bridge)
+const isBridge = (L, employment) => employment !== 'owner' && ((!!L.s.flags.retired_once && L.s.age >= 55) || L.s.age >= 60);
+
 export function offerLabel(L, o) {
   const j = L.D.jobById.get(o.job);
   const co = L.W.co(o.company);
   const where = o.role === 'eco_gov_lab' ? '국책연구소' : co ? co.name : L.D.regions.get(o.region)?.name ?? '동네';
   const title = (o.sub && L.D.subById.get(o.sub)?.name) || j?.name || o.job;
-  return `${where} · ${title} (${L.D.employmentNames[o.employment] ?? o.employment})`;
+  const emp = isBridge(L, o.employment) && o.employment === 'regular' ? 'contract' : o.employment;
+  const pay = emp === 'owner' ? '' : ` · 연봉 약 ${won(baseSalary(L, { ...o, employment: emp }), L.s.year)}`;
+  return `${where} · ${title} (${L.D.employmentNames[o.employment] ?? o.employment})${pay}`;
 }
 
 // 붙은 곳 고르기: first면 5.3 슬롯(연봉·가까움·다른 길), 아니면 연락 온 곳 최대 3개
@@ -402,7 +410,9 @@ export function hire(L, o, opts = {}) {
   const hadJob = !!s.flags.had_job;
   const prevRep = prev.reputation ?? 50;
   if (prev.job) clearJob(L, 'move');
-  const employment = o.employment ?? j.employment?.[0] ?? 'contract';
+  const bridge = isBridge(L, o.employment);
+  let employment = o.employment ?? j.employment?.[0] ?? 'contract';
+  if (bridge && employment === 'regular') employment = 'contract';
   const ladder = employment === 'owner' ? (j.ladder === 'creator' ? 'creator' : 'owner') : j.ladder;
   const lad = D.ladders[ladder];
   let rank = 0;
@@ -421,7 +431,7 @@ export function hire(L, o, opts = {}) {
     client: j.serves === 'fab' ? W.nearbyFab(region)?.id ?? null : pickClient(L, co, region),
     reputation: hadJob ? 50 + 0.5 * (prevRep - 50) : 50 + (s.flags.served_officer ? 5 : 0),
     salary_mod: opts.salaryMod ?? (opts.keepRank ? c.salary_mod : 0), since: s.year, tries: 0, plateau: false, exec: !!opts.exec,
-    exec_pending: false, leave: false, military_job: opts.military ?? null, contract_years: 0, founder: !!opts.founder,
+    exec_pending: false, leave: false, military_job: opts.military ?? null, contract_years: 0, founder: !!opts.founder, bridge,
   });
   if (employment === 'owner') c.business = { score: 0, stage: 0, up: 0, down: 0 };
   c.salary = targetSalary(L, c);
@@ -659,7 +669,8 @@ export function careerYearEnd(L) {
       return;
     }
   }
-  // 승진 판정
+  // 승진 판정 — 은퇴 뒤 재취업이나 정년 1년 전부터는 승진하지 않아요 (정년 없는 직업은 60세 기준)
+  if (c.bridge || s.age >= (retireAge(L) ?? 60) - 1) return;
   const r = c.rank;
   const minY = lad.min_years?.[r];
   const base = lad.promo_base?.[r];

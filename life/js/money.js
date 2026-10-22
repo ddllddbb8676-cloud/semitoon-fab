@@ -3,7 +3,7 @@
 import { clamp, hasTrait, addFlag, addLog, addSemi, statusOf, warnOnce, josa } from './core.js';
 import { yearIncome, baseSalary, updateSalary, rankName } from './career.js';
 import { wealthGrade } from './health.js';
-import { won } from './format.js';
+import { won, nowPay } from './format.js';
 
 // ---------- 상대값 토큰 (SPEC 돈 상대값, ECONOMY 1절) ----------
 export function roundMoney(x) {
@@ -255,12 +255,14 @@ function salaryLines(L, sal, base, bonus) {
   const pick = (arr) => arr[y % arr.length];
   if (sal && !sal.fresh) {
     const wg = W.econ(y).avg_wage / W.econ(y - 1).avg_wage - 1;
-    const pay = won(sal.next, y);
+    const pay = `${won(sal.next, y)}${nowPay(W, sal.next, y)}`;
     const p = pctText(sal.change);
     // 눈에 띄는 인상(평균 임금 상승률 +3%p 이상, 5% 이상)은 3년에 한 번까지, 15% 넘게 오르면 늘
     const big = sal.change >= Math.max(0.05, wg + 0.03) && (y - (c.salary_line_year ?? -99) >= 3 || sal.change >= 0.15);
     let line = null;
-    if (sal.promoted && sal.change > 0.005) line = `${rankName(L)} 승진 뒤 첫 연봉: ${p} (${pay})`;
+    // 은퇴 뒤 재취업(bridge)은 물가만 따라가요 — 승진·연봉 협상·삭감 줄을 쓰지 않음
+    if (c.bridge) line = null;
+    else if (sal.promoted && sal.change > 0.005) line = `${rankName(L)} 승진 뒤 첫 연봉: ${p} (${pay})`;
     else if (sal.moved && Math.abs(sal.change) > 0.005) line = `${sal.abroad ? '해외 근무 수당이 붙어' : '해외 근무를 마치며'} 연봉이 ${p} (${pay})`;
     else if (big) line = pick([`연봉 협상: ${p} (${pay})`, `올해 연봉이 ${p} 올라 ${pay}이 됐어요`, `인사 평가를 잘 받아 연봉 ${p} (${pay})`]);
     else if (sal.change < -0.005) line = `회사가 어려워 연봉이 ${p} 깎였어요 (${pay})`;
