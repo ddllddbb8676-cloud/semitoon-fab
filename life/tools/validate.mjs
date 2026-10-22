@@ -218,6 +218,25 @@ for (const file of walk(join(DATA, 'events'))) {
 }
 for (const [file, id, target] of gotos) if (!eventIds.has(target)) warn(file, `${id}: goto 대상 ${target} 없음`);
 
+// 쓰지 않는 사건 목록 (event_curation.json, life/tools/curate.mjs가 만듦): 끈 id가 실제로 있고, 큰 줄기 파일이 아니고, 켜진 사건이 부르지 않는지
+const CUR = join(DATA, 'event_curation.json');
+if (existsSync(CUR)) {
+  const cur = load(CUR);
+  const off = new Set();
+  const PROTECTED = ['events/major.json', 'events/drama.json', 'events/milestones.json'];
+  for (const x of cur?.disabled ?? []) {
+    if (!x?.id) { err(CUR, 'disabled 항목에 id가 없음'); continue; }
+    if (off.has(x.id)) err(CUR, `${x.id}: disabled에 두 번 있음`);
+    off.add(x.id);
+    const at = eventIds.get(x.id);
+    if (!at) { warn(CUR, `${x.id}: 지워진 사건이 꺼진 목록에 남아 있음 (node life/tools/curate.mjs로 다시 만들기)`); continue; }
+    const rel = relative(DATA, at).replace(/\\/g, '/');
+    if (x.file && x.file !== rel) err(CUR, `${x.id}: file이 ${x.file}인데 실제로는 ${rel}`);
+    if (PROTECTED.includes(rel)) err(CUR, `${x.id}: ${rel}의 사건은 끌 수 없음 (큰 줄기 파일)`);
+  }
+  for (const [file, id, target] of gotos) if (off.has(target) && !off.has(id)) err(file, `${id}: 꺼진 사건 ${target}을 later·goto로 부름`);
+}
+
 // GPT 작업 결과물 (있을 때만)
 const ach = join(DATA, 'achievements.json');
 if (existsSync(ach)) {

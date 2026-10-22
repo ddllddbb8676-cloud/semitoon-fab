@@ -7,6 +7,7 @@
 //   node life/tools/life_sim.mjs --birth 1960-1969   태어난 해 범위
 //   node life/tools/life_sim.mjs --data <dir>     다른 데이터 폴더(예: GPT 콘텐츠를 얹은 사본)로
 //   node life/tools/life_sim.mjs --default        무작위 대신 늘 기본 선택(default)
+//   node life/tools/life_sim.mjs --ms             인생에 남는 사건(major·drama·milestones)마다 뜬 인생 비율 (가중치 다듬기용)
 //
 // 목표치는 life/docs/SYSTEMS.md 14장. 엔진이 터지면(crash) 종료 코드 1.
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
@@ -28,6 +29,11 @@ const SEED = Number(opt('--seed', 1));
 const DATA = resolve(opt('--data', fileURLToPath(new URL('../data/', import.meta.url))));
 const [B0, B1] = opt('--birth', '1940-2026').split('-').map(Number);
 const STORY = args.includes('--story');
+const MS_REPORT = args.includes('--ms');
+// 인생에 남는 사건 = 큰 줄기 파일의 사건 (생애 단계별 개수를 셈)
+const MILESTONE_FILES = new Set(['events/major.json', 'events/drama.json', 'events/milestones.json']);
+const STAGE_RANGES = [['infant', '유아', 1, 6], ['child', '어린이', 7, 12], ['teen', '청소년', 13, 19], ['young', '청년', 20, 34], ['middle', '중년', 35, 59], ['senior', '노년', 60, 999]];
+const stageAt = (age) => STAGE_RANGES.find(([, , a, b]) => age >= a && age <= b)?.[0] ?? 'infant';
 const DEFAULT = args.includes('--default');
 
 const read = async (p) => { const f = join(DATA, p); return existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : null; };
@@ -52,6 +58,8 @@ const stats = {
   deathCause: {}, world26: [], world27: [], everEmployed: 0, rescue: 0, exec: 0, engineers: 0, bujang: 0, traitAt40: 0, traitAt40n: 0,
   bigBy: {}, pay: [], repeatViol: {}, repeatTrig: 0, laterMade: 0, laterFired: 0, meaningful: 0, meaningfulN: 0, meaningfulNoWorld: 0,
   engGrad: 0, engGradSemi: 0, phd: 0, phdRnd: 0, mismatch: [],
+  // 속도·밀도 (v0.3): 단계별 큰 줄기 사건, 6~80세 해마다 사건·의미 있는 줄, 큰 사건 수
+  msStage: {}, srcBy: {}, cover: 0, coverN: 0, coverNoWorld: 0, coverEvent: 0, msEvents: 0, msLife: {}, perLife: [], bigLife: [],
 };
 const SEMI_SECTORS = ['memory', 'foundry', 'fabless', 'equipment_global', 'equipment_korea', 'materials', 'packaging'];
 const RND_ROLES = ['fab_td', 'rnd_adv', 'rnd_future', 'rnd_adv_pkg', 'rnd_future_mat', 'eco_gov_lab', 'eco_prof', 'mat_rnd', 'des_arch', 'eq_proc', 'eq_app'];
@@ -79,6 +87,10 @@ function runLife(i) {
   let L = attach(D, s, () => {});
   const story = [];
   const occ = {};
+  const ms = {};      // 단계 → 큰 줄기 사건 수
+  const msSeen = new Set();
+  let nEv = 0;
+  let nBig = 0;
   for (let guard = 0; guard < 140; guard++) {
     beginYear(L);
     for (let k = 0; k < 12; k++) {
@@ -89,6 +101,16 @@ function runLife(i) {
       const pick = DEFAULT ? view.defaultIndex : view.choices[Math.floor(rng.next() * view.choices.length)].index;
       const out = chooseEvent(L, inst, pick);
       stats.events++;
+      nEv++;
+      if (view.big) nBig++;
+      { const k = inst.trigger === 'later' ? 'later' : inst.trigger === 'goto' ? 'goto' : inst.trigger === 'again' ? 'again' : inst.trigger ? '트리거' : D.eventById.get(view.id)?.forced ? '강제' : '추첨'; stats.srcBy[k] = (stats.srcBy[k] ?? 0) + 1; }
+      const evFile = D.eventById.get(view.id)?._file;
+      if (MILESTONE_FILES.has(evFile)) {
+        const st = stageAt(L.s.age);
+        ms[st] = (ms[st] ?? 0) + 1;
+        stats.msEvents++;
+        if (!msSeen.has(view.id)) { msSeen.add(view.id); stats.msLife[view.id] = (stats.msLife[view.id] ?? 0) + 1; }
+      }
       if (view.big) { stats.big++; const k = inst.trigger === 'later' ? 'later' : inst.trigger ? '트리거' : D.eventById.get(view.id)?.forced ? '강제' : '추첨'; stats.bigBy[k] = (stats.bigBy[k] ?? 0) + 1; }
       stats.eventCount[view.id] = (stats.eventCount[view.id] ?? 0) + 1;
       if (inst.trigger === 'later') stats.laterFired++;
@@ -115,6 +137,15 @@ function runLife(i) {
       if (hasMeaningful(L.s)) stats.meaningful++;
       if (L.s.log.some((x) => x.year === L.s.year && x.importance >= 1 && x.kind !== 'quiet' && x.kind !== 'world')) stats.meaningfulNoWorld++;
     }
+    // 6~80세: 사건이 있었던 해 / 사건이나 의미 있는 시스템 줄(가족·근속·재산·업황·진학 등)이 있는 해
+    if (L.s.age >= 6 && L.s.age <= 80) {
+      const yl = L.s.log.filter((x) => x.year === L.s.year);
+      const hadEvent = yl.some((x) => x.kind === 'event' || x.kind === 'choice');
+      stats.coverN++;
+      if (hadEvent) stats.coverEvent++;
+      if (hasMeaningful(L.s)) stats.cover++;
+      if (hadEvent || yl.some((x) => x.importance >= 1 && !['quiet', 'world'].includes(x.kind))) stats.coverNoWorld++;
+    }
     // 가끔 저장·불러오기 왕복 (이어 하기 검사)
     if (i % 25 === 0 && L.s.age % 17 === 0) {
       const json = JSON.stringify(snapshot(L));
@@ -123,6 +154,14 @@ function runLife(i) {
     }
     if (dead || L.s.year >= 2150) break;
   }
+  // 단계를 끝까지 산 인생만 그 단계 통계에 넣음 (노년은 75세까지 산 인생)
+  const lastAge = L.s.dead?.age ?? L.s.age;
+  for (const [st, , , b] of STAGE_RANGES) {
+    if (lastAge < Math.min(b, 75)) continue;
+    (stats.msStage[st] ??= []).push(ms[st] ?? 0);
+  }
+  stats.perLife.push(nEv);
+  stats.bigLife.push(nBig);
   return { L, story };
 }
 
@@ -261,7 +300,19 @@ console.log(`  첫 순간: 30세까지 ${pct(fs.filter((a) => a <= 30).length, s
 console.log('\n평균 수명 (태어난 연대별, 목표 1940 76 · 1960 80 · 1980 84 · 2000 87 · 2020 89)');
 for (const k of Object.keys(stats.lifespan).sort()) console.log(`  ${k}  ${avg(stats.lifespan[k]).toFixed(1)}세  (${stats.lifespan[k].length}명)`);
 console.log(`\n6~75세 중 의미 있는 줄(사건·연봉·가족·업황 등)이 있는 해: ${pct(stats.meaningful, stats.meaningfulN)} (세상 소식 줄을 빼면 ${pct(stats.meaningfulNoWorld, stats.meaningfulN)})`);
-console.log(`\n한 해 평균 사건 ${(stats.events / stats.years).toFixed(2)}개 · 인생당 사건 ${(stats.events / stats.lives).toFixed(1)}개 (큰 사건 ${(stats.big / stats.lives).toFixed(1)}개)  (목표 80~120 / 10~16)`);
+console.log(`\n한 해 평균 사건 ${(stats.events / stats.years).toFixed(2)}개 · 인생당 사건 ${(stats.events / stats.lives).toFixed(1)}개 (큰 사건 ${(stats.big / stats.lives).toFixed(1)}개)  (v0.3 목표 40~60 / 10~16)`);
+{
+  const q = (arr, p) => { const a = [...arr].sort((x, y) => x - y); return a.length ? a[Math.min(a.length - 1, Math.floor(p * a.length))] : 0; };
+  console.log(`  사건 출처(인생당): ${Object.entries(stats.srcBy).sort((a, b) => b[1] - a[1]).map(([k, n]) => `${k} ${(n / Math.max(1, stats.lives)).toFixed(1)}`).join(' · ')}`);
+  console.log(`  인생당 사건 분포: 하위 10% ${q(stats.perLife, 0.1)} · 중앙 ${q(stats.perLife, 0.5)} · 상위 10% ${q(stats.perLife, 0.9)} · 큰 사건 중앙 ${q(stats.bigLife, 0.5)}`);
+  console.log(`  6~80세 중 사건이 있는 해 ${pct(stats.coverEvent, stats.coverN)} · 사건이나 의미 있는 시스템 줄이 있는 해 ${pct(stats.coverNoWorld, stats.coverN)} (세상 소식까지 ${pct(stats.cover, stats.coverN)})`);
+  console.log(`  인생에 남는 사건(major·drama·milestones) 인생당 ${(stats.msEvents / Math.max(1, stats.lives)).toFixed(1)}개 — 단계를 끝까지 산 인생 기준 (목표 단계마다 2~3개↑)`);
+  for (const [st, name] of STAGE_RANGES) {
+    const arr = stats.msStage[st] ?? [];
+    if (!arr.length) continue;
+    console.log(`    ${name.padEnd(4)} 평균 ${avg(arr).toFixed(1)}개 · 2개↑ ${pct(arr.filter((n) => n >= 2).length, arr.length)} · 0개 ${pct(arr.filter((n) => !n).length, arr.length)} (${arr.length}명)`);
+  }
+}
 console.log(`  큰 사건 출처(인생당): ${Object.entries(stats.bigBy).sort((a, b) => b[1] - a[1]).map(([k, n]) => `${k} ${(n / Math.max(1, stats.lives)).toFixed(1)}`).join(' · ')}`);
 console.log(`\n첫 직장 (일해 본 사람 ${pct(stats.everEmployed, stats.lives)})`);
 for (const [g, n] of Object.entries(stats.firstJobGroup).sort((a, b) => b[1] - a[1])) console.log(`  ${g.padEnd(4)} ${pct(n, stats.everEmployed)}`);
@@ -310,6 +361,11 @@ const viol = Object.entries(stats.repeatViol).sort((a, b) => b[1] - a[1]);
 console.log(`\n반복 검사: repeatable 아닌 사건이 한 인생에 두 번 이상 뜬 경우 ${viol.reduce((a, [, n]) => a + n, 0)}건${viol.length ? ` — ${viol.slice(0, 8).map(([id, n]) => `${id} ${n}`).join(', ')}` : ''} (트리거 사건 재발생 ${stats.repeatTrig}건은 허용)`);
 console.log(`나중에 돌아오는 결과(later): 예약 ${stats.laterMade}건 · 발동 ${stats.laterFired}건 (인생당 ${(stats.laterFired / Math.max(1, stats.lives)).toFixed(2)}건)`);
 
+if (MS_REPORT) {
+  console.log('\n인생에 남는 사건별 — 한 번이라도 뜬 인생 비율 (milestones.json)');
+  const rows = D.events.filter((e) => e._file === 'events/milestones.json').map((e) => [e.id, stats.msLife[e.id] ?? 0, e.weight ?? 0, e.trigger ?? '']);
+  for (const [id, n, w, t] of rows.sort((a, b) => b[1] - a[1])) console.log(`  ${pct(n, stats.lives).padStart(6)}  ${id}${w ? ` (w${w})` : ''}${t ? ` [${t}]` : ''}`);
+}
 console.log('\n가장 자주 뜬 사건 10');
 for (const [id, n] of Object.entries(stats.eventCount).sort((a, b) => b[1] - a[1]).slice(0, 10)) console.log(`  ${String(n).padStart(6)}  ${id}`);
 const w = warnedKeys();
