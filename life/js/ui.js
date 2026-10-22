@@ -1,7 +1,7 @@
 // 화면 그리기 (담당: Claude)
 // index.html의 계약된 요소(docs/UI_CONTRACT.md)에 글자와 data-속성만 채웁니다. 모양은 전부 CSS 몫입니다.
 
-import { won, wonSigned, scoreWord } from './format.js';
+import { won, wonSigned, scoreWord, nowPay } from './format.js';
 import { STATS, AXES, TRAIT_NAMES, KIND_NAMES, stageName, statusOf, activeTraits, clamp } from './core.js';
 import { jobName, rankName } from './career.js';
 import { stageLabel, TRACK_NAMES } from './school.js';
@@ -122,6 +122,9 @@ export function renderStatus(L) {
   const stocks = Object.values(m.stocks).reduce((a, h) => a + h.value, 0);
   if (s.age < 15 && m.cash < 1 && !m.debt) { $('money-line').textContent = '용돈은 부모님이 챙겨 주세요'; }
   const parts = [`현금 ${won(m.cash, y)}`];
+  // 연봉은 맨 앞에, 그 해 평균 임금 대비 배율과 함께 (옛날·먼 미래 금액도 수준이 보이게)
+  const c = s.career;
+  if (c.job && c.salary && !c.leave && c.employment !== 'owner') parts.unshift(`연봉 ${won(c.salary, y)} (평균의 ${(c.salary / W.econ(y).avg_wage).toFixed(1)}배)`);
   if (m.debt > 0) parts.push(`빚 ${won(m.debt, y)}`);
   if (m.houses.length) parts.push(`집 ${m.houses.length}채`);
   if (stocks > 0) parts.push(`주식 ${won(stocks, y)}`);
@@ -240,7 +243,7 @@ function panelWork(L) {
       ['직급', rankName(L) || null],
       ['근속', `${c.years}년 (총 경력 ${c.total_years ?? 0}년)`],
       ['평판', Math.round(c.reputation)],
-      ['연봉', c.salary ? won(c.salary, y) : null],
+      ['연봉', c.salary ? `${won(c.salary, y)} (평균의 ${(c.salary / W.econ(y).avg_wage).toFixed(1)}배${nowPay(W, c.salary, y)})` : null],
       ['회사 실적', co ? `${scoreWord(co.c)} · 최근 ${co.hist.slice(-5).map(([, v]) => (v > 0 ? '+' : '') + v.toFixed(1)).join(' ')}` : null],
       ['부업', c.side_jobs.map((j) => D.jobById.get(j)?.name).join(', ') || null],
     ]));
