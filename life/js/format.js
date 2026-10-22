@@ -22,6 +22,14 @@ export function won(amount, year = 2026) {
   else out = a >= 10 ? Math.round(a).toLocaleString('ko-KR') : String(Math.round(a * 100) / 100);
   return `${neg ? '−' : ''}${out}${/[만억조]$/.test(out) ? ' ' : ''}${unit}`;
 }
+// 그 시대 연봉을 지금(2026년) 감각으로: 그 해 평균 임금 대비 배율 × 2026년 평균 임금 (물가가 아니라 임금 기준이라 '그때 그 정도 벌이'가 보여요).
+// 2026년에서 10년 넘게 떨어진 해에만 붙입니다. → ' · 지금 기준 약 6,200만 원'
+export function nowPay(W, amount, year) {
+  if (!amount || Math.abs(year - 2026) < 10) return '';
+  const a = W.econ(year)?.avg_wage;
+  const b = W.econ(2026)?.avg_wage;
+  return a && b ? ` · 지금 기준 약 ${won(amount * b / a, 2026)}` : '';
+}
 // 부호를 붙인 돈: '+120만 원', '−3,000원'
 export const wonSigned = (amount, year) => `${amount > 0 ? '+' : ''}${won(amount, year)}`;
 
