@@ -14,6 +14,10 @@ const N_DIST = {
   young: [0.1, 0.4, 0.35, 0.15], middle: [0.15, 0.45, 0.3, 0.1], senior: [0.25, 0.5, 0.2, 0.05],
 };
 const PLACES = [[], [0.4], [0.25, 0.65], [0.15, 0.45, 0.75]];
+// 조용한 자리 가중치 (v0.3 인생에 남는 사건만): 추첨 자리마다 "아무 일 없음"이 이 가중치로 후보에 끼어요.
+// 소소한 사건을 끈 뒤 후보가 적어 나이대 안에서 모든 사건이 다 뜨던 것을 막고, 사건 weight가 실제 확률처럼 작동하게 합니다.
+// (자리 하나에서 사건이 뜰 확률 = 후보 가중치 합 / (합 + 이 값). life_sim으로 인생당 사건 40~60개에 맞춘 값)
+const QUIET_W = { infant: 5, child: 4, teen: 7, young: 34, middle: 30, senior: 14 };
 // 3.4 특징 → 사건 tags 가중치
 const TAG_MULT = [
   ['diligence', '+', { study: 1.3, work: 1.2 }], ['diligence', '-', { study: 0.7, leisure: 1.3 }],
@@ -218,7 +222,14 @@ export function buildQueue(L, triggers) {
   while (slots > 0 && pool.length) {
     const cand = pool.filter((ev) => (!ev.big || lotteryBig === 0) && (!ev.tags?.[0] || (tagCount[ev.tags[0]] ?? 0) < 2) && (againPool.includes(ev) || !similar(ev)));
     const semiOnly = reserveSemi && !lottery.length ? cand.filter((ev) => ev._semi) : [];
-    const ev = rng.weighted(semiOnly.length ? semiOnly : cand, (e) => weightOf(L, e));
+    const list = semiOnly.length ? semiOnly : cand;
+    // 조용한 자리: 반도체 보장 자리가 아니면 후보 가중치 합과 QUIET_W를 겨뤄 이번 자리를 비울 수 있어요
+    const quiet = semiOnly.length ? 0 : QUIET_W[stageOf(s.age)] ?? 0;
+    if (quiet > 0) {
+      const total = list.reduce((a, e) => a + Math.max(0, weightOf(L, e) || 0), 0);
+      if (rng.next() * (total + quiet) >= total) { slots--; continue; }
+    }
+    const ev = rng.weighted(list, (e) => weightOf(L, e));
     if (!ev) break;
     pool.splice(pool.indexOf(ev), 1);
     if (ev.big) { lotteryBig++; s.lastLotteryBig = s.year; }

@@ -181,6 +181,7 @@ world      seed, market{year: {cycle, memory, logic_foundry, equipment, korea}},
 | `companies.json`, `jobs.json`, `character.json` | 회사·기본 직업·캐릭터 만들기 | Claude |
 | `job_matrix.json` | 세부 직업 조합표 (`node life/tools/jobs_expand.mjs`) | Claude |
 | `future_tech.json`, `future_scenarios.json` | 2027~2150 기술·시나리오 (`FUTURE.md`) | Claude |
-| `events/<stage>.json`, `events/major.json` | 생애 단계 사건, 갈림길 | Claude |
+| `events/<stage>.json`, `events/major.json`, `events/drama.json`, `events/milestones.json` | 생애 단계 사건, 갈림길, 이어지는 사건, 인생의 큰 고비 | Claude |
+| `event_curation.json` | 쓰지 않는 사건 목록, 지우지 않고 끔 (`disabled[{id, file, reason}]`, `life/tools/curate.mjs`가 만들고 엔진이 그 id를 읽지 않음) | Claude |
 | `events/gpt/`, `achievements.json`, `names.json`, `news_general.json`, `jobs_extra.json`, `review_text.json`, `job_matrix_text.json`, `job_matrix_extra.json` | 콘텐츠 | GPT |
 | `rules.json`, `titles.json`, `economy_rules.json` | 문서의 상수표를 데이터로 (예정) | Claude |

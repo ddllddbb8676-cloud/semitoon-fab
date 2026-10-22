@@ -13,7 +13,9 @@ const REQUIRED = {
 };
 const STAGE_FILES = ['infant', 'child', 'teen', 'young', 'middle', 'senior', 'major'].map((n) => `events/${n}.json`);
 // 사건 폴더의 그 밖의 Claude 사건 파일 (있을 때만). 목록을 못 얻으면 이 이름만 시도합니다.
-const EXTRA_EVENT_FILES = ['events/drama.json'];
+const EXTRA_EVENT_FILES = ['events/drama.json', 'events/milestones.json'];
+// 쓰지 않는 사건 목록 (life/tools/curate.mjs가 만듦). 지우지 않고 끕니다 — 여기 있는 id는 사건 목록에 넣지 않습니다.
+const CURATION_FILE = 'event_curation.json';
 // GPT 콘텐츠: 있으면 쓰고, 없으면 건너뜁니다 (AGENTS.md 역할표)
 const OPTIONAL = {
   names: 'names.json', news: 'news_general.json', review: 'review_text.json', achievements: 'achievements.json',
@@ -38,6 +40,7 @@ export async function loadData(read, list = async () => null) {
   const rootList = await safeList(list, '');
   const present = (f) => !rootList || rootList.includes(f);
   await Promise.all(Object.entries(OPTIONAL).map(async ([k, f]) => { raw[k] = present(f) ? await read(f) : null; }));
+  raw.curation = present(CURATION_FILE) ? await read(CURATION_FILE) : null;
 
   let gptFiles = GPT_EVENT_FILES;
   let extraFiles = EXTRA_EVENT_FILES;
@@ -130,10 +133,14 @@ export function buildData(raw) {
   });
 
   // 사건: 단계 파일 + major + GPT. id가 겹치면 먼저 읽은 것을 씁니다.
+  // event_curation.json의 disabled(인생에 영향 없는 소소한 사건)는 건너뜁니다 — 엔진은 그 사건을 모르는 것처럼 굴어요.
   D.events = [];
   D.eventById = new Map();
+  D.disabledIds = new Set((raw.curation?.disabled ?? []).map((x) => x?.id).filter(Boolean));
+  D.disabledCount = 0;
   const addEvents = (file, list, source) => {
     for (const ev of list ?? []) {
+      if (ev && D.disabledIds.has(ev.id)) { D.disabledCount++; continue; }
       if (!ev || typeof ev.id !== 'string' || !Array.isArray(ev.choices) || !ev.choices.length || typeof ev.text !== 'string') {
         warnOnce(`bad-event-${file}`, `${file}: 형식이 맞지 않는 사건을 건너뛰었어요`);
         continue;
@@ -160,6 +167,6 @@ export function buildData(raw) {
   D.review = raw.review ?? null;
   D.achievements = Array.isArray(raw.achievements?.items) ? raw.achievements.items.filter((a) => a && a.id && a.when) : [];
   D.coin = raw.coin ?? null;
-  D.optionalLoaded = Object.keys(OPTIONAL).filter((k) => raw[k]).concat((raw.extraEvents ?? []).map((x) => x.file), (raw.gptEvents ?? []).map((x) => x.file));
+  D.optionalLoaded = Object.keys(OPTIONAL).filter((k) => raw[k]).concat((raw.extraEvents ?? []).map((x) => x.file), (raw.gptEvents ?? []).map((x) => x.file), raw.curation ? [`${CURATION_FILE}(끈 사건 ${D.disabledCount})`] : []);
   return D;
 }
