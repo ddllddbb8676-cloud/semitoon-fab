@@ -140,6 +140,7 @@ R = 0.25           … once가 아닌 사건이 최근 5년 안에 떴으면, �
 | `house_chance` | 15장 | house_buy |
 | `child_17` | 자녀가 17세가 되는 해 | child_career |
 | `parent_died` | 부모 사망 (8.1) | (엔진 알림 + 작가용) |
+| `spouse_died` | 배우자 사망 (8.1, v0.3) — ctx `partner`에 고인 이름 | `ms_spouse_farewell` |
 | `talent_found` | 숨은 재능 발견 (2.4) | (엔진 알림 + 작가용) |
 | `disease:<id>` | 질병 진단 (9.3) | (작가용: 치료 선택) |
 | `shop_closed` | 자영업 폐업 (5.8) | (작가용) |
@@ -715,6 +716,7 @@ kind: `founded` 설립 · `leader` 1위 교체 · `acquired` 인수 · `bankrupt
 - 내가 태어날 때 부모 나이 = `character.json family.parent_age` 범위에서 균등. 상태 `relations.parents = [{role, birth_year, alive, job, semi}]` (SPEC의 `parents_alive`는 여기서 계산: 살아 계신 분이 있으면 true).
 - 매년 부모 각각 사망 판정 = 9.2 공식 (체력 = H_exp, 습관·질병 없음, 경제력 = 가정 경제력).
 - 돌아가시면 `parent_died` 트리거, 알림 "{year}년, 아버지(어머니)가 세상을 떠나셨어요.", 행복 −15 (화목도 ≥ 60이면 −20). 두 분 다 돌아가시면 상속 = 경제 모듈 `inheritance(wealth, siblings, year)`. 부모 직업이 반도체였으면 순간 후보 "아버지(어머니)의 사원증을 정리했어요" (family).
+- **배우자 사별 (v0.3)**: 결혼한 배우자도 매년 부모와 같은 사망표(`parentDeathQ`)로 판정하고 배우자 체력으로 보정합니다 (×0.73~1.27). 돌아가시면 알림 "{year}년, 아내(남편) {이름}이 세상을 떠났어요", 행복 −25, 플래그 `widowed`, `relations.late_spouse`에 기록하고 `spouse_died` 트리거. 이혼·이별과 달리 결과 칩에 '이혼'이 뜨지 않아요. 자리표시 `{partner}`는 ctx → 지금 배우자 → 고인 순으로 채웁니다. 결혼한 사람의 약 40%가 배우자를 먼저 보냅니다 (`life_sim.mjs`).
 - 가정 경제력은 어린 시절 사건 `do: "wealth:±1"`로 바뀝니다.
 
 ### 8.2 친구 (`friends` 0~100)
