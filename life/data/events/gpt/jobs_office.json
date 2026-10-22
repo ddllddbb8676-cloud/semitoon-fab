@@ -1,6 +1,10 @@
 [
   {
-    "id": "job_hr_first_badge",
+    "id": "gpt_t16_hr_layoff",
+    "age": [
+      22,
+      59
+    ],
     "year": [
       1965,
       null
@@ -8,253 +12,195 @@
     "when": {
       "job": "hr"
     },
-    "weight": 2,
+    "weight": 1.5,
     "once": true,
-    "text": "신입 사원증 봉투가 책상 위에 쌓였어요. 이름과 교대조를 처음 맞춰 봐요.",
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "명단의무게",
+    "text": "퇴직 면담실에 들어온 동료가 나를 알아보고 웃다 말아요. “우리 어제도 같이 점심 먹었는데요.”",
     "choices": [
       {
-        "label": "발령표까지 함께 대조해요",
+        "label": "동료들 면담을 직접 맡아요",
         "effects": {
-          "intelligence": 2,
-          "mental": -1,
-          "trait.diligence": 5,
-          "semi": "신입 사원증 봉투가 책상 위에 쌓였어요"
+          "do": "bonus:@salary*0.2",
+          "mental": -8,
+          "friends": -5,
+          "later": {
+            "event": "gpt_t16_hr_names",
+            "years": [
+              1,
+              3
+            ],
+            "chance": 1
+          },
+          "flag": "gpt_t16_hr_names_ready",
+          "semi": {
+            "text": "보상안에 서명했어요. 한 사람씩 돌아간 면담실에 빈 물컵이 남았어요.",
+            "kind": "core"
+          }
         },
-        "result": "봉투 줄이 반듯해졌어요. 내 이름 봉투는 맨 밑에서 나왔어요."
+        "result": "동료가 끝내 내 눈을 보지 않았어요. 보상금은 들어왔고 복도에서 먼저 인사하던 사람이 줄었어요."
       },
       {
-        "label": "오늘 배부할 봉투부터 익혀요",
+        "label": "교육 전환 쪽을 맡아요",
         "effects": {
-          "mental": 2,
-          "reputation": -1,
-          "trait.work_life": -5,
-          "semi": "신입 사원증 봉투가 책상 위에 쌓였어요"
+          "mental": 5,
+          "semi": {
+            "text": "감액된 인사평가를 받았어요. 퇴직 명단 옆에 재교육 신청표를 새로 폈어요.",
+            "kind": "core"
+          },
+          "do": "salary_mod:-0.04"
         },
-        "result": "오늘 몫에 표시를 했어요. 나머지 명단은 선배에게 돌아갔어요."
+        "result": "강사 앞에 앉은 동료들이 처음엔 말을 아꼈어요. 내 급여는 줄었지만 같은 방에서 다시 질문이 나왔어요."
       }
     ],
-    "default": 0
+    "default": 1,
+    "market": {
+      "cycle": [
+        -2,
+        -1
+      ]
+    }
   },
   {
-    "id": "job_hr_shift_calendar",
+    "id": "gpt_t16_hr_names",
+    "age": [
+      22,
+      70
+    ],
     "year": [
       1965,
       null
     ],
     "when": {
-      "job": "hr"
+      "flag": "gpt_t16_hr_names_ready"
     },
-    "weight": 1,
-    "once": false,
-    "text": "교대 근무표에 교육 시간이 겹쳤어요. 모든 조에 다시 연락하면 퇴근이 늦어져요.",
+    "weight": 0,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "명단뒤안부",
+    "text": "그때 면담했던 동료가 새 직장 모임에 초대해요. “이번엔 제 얘기부터 해도 되죠?”",
     "choices": [
       {
-        "label": "조별 시간을 다시 맞춰요",
+        "label": "내 비용으로 옛 동료를 만나요",
         "effects": {
-          "reputation": 2,
-          "mental": -2,
-          "trait.diligence": 5,
-          "semi": "교대 근무표에 교육 시간이 겹쳤어요"
+          "cash": "-@avg_wage*0.08",
+          "friends": 10,
+          "mental": -4
         },
-        "result": "빈 교육실에 새 명단이 붙었어요. 내 저녁 시간이 뒤로 갔어요."
+        "result": "옛 동료가 자리를 비워 뒀어요. 비용을 치르고 앉자 그날 못 들었던 말이 길게 이어졌어요."
       },
       {
-        "label": "겹친 조를 표시해 담당자에게 넘겨요",
+        "label": "지원금만 보내요",
         "effects": {
-          "mental": 2,
-          "reputation": -1,
-          "trait.work_life": -5,
-          "semi": "교대 근무표에 교육 시간이 겹쳤어요"
+          "cash": "-@avg_wage*0.05",
+          "mental": 5,
+          "friends": -3
         },
-        "result": "근무표가 조 담당자 손에 들어갔어요. 나는 먼저 책상을 비웠어요."
+        "result": "동료가 짧게 고맙다고 답했어요. 비용을 보태고 마음을 쉬었지만 얼굴을 마주하진 못했어요."
       }
     ],
-    "default": 0
+    "default": 1
   },
   {
-    "id": "job_hr_privacy_form",
-    "year": [
-      1965,
-      null
+    "id": "gpt_t16_hr_rotation",
+    "age": [
+      22,
+      59
     ],
-    "when": {
-      "job": "hr"
-    },
-    "weight": 1,
-    "once": false,
-    "text": "인사 서류 양식에 업무와 무관한 질문이 있어요. 오래 쓰던 칸이라 그냥 두자고 해요.",
-    "choices": [
-      {
-        "label": "필요한 항목만 남기자고 해요",
-        "effects": {
-          "reputation": 2,
-          "friends": -1,
-          "trait.conform": -5
-        },
-        "result": "양식에서 한 칸이 빠졌어요. 검토자는 펜을 오래 굴렸어요."
-      },
-      {
-        "label": "별도 검토를 요청하고 현행 업무부터 해요",
-        "effects": {
-          "friends": 2,
-          "reputation": -1,
-          "trait.conform": 5
-        },
-        "result": "검토 요청서에 도장이 찍혔어요. 오늘 개정 완료 칸은 비었어요."
-      }
-    ],
-    "default": 0
-  },
-  {
-    "id": "job_hr_career_talk",
-    "year": [
-      1965,
-      null
-    ],
-    "when": {
-      "job": "hr"
-    },
-    "weight": 1,
-    "once": false,
-    "text": "상담실에서 교대 직원이 교육 시간을 묻고 있어요. 내 점심 약속이 곧 시작돼요.",
-    "choices": [
-      {
-        "label": "근무표를 펴고 같이 찾아요",
-        "effects": {
-          "friends": 2,
-          "mental": -1,
-          "trait.social": 5,
-          "semi": "상담실에서 교대 직원이 교육 시간을 묻고 있어요"
-        },
-        "result": "직원이 교육 날짜에 동그라미를 쳤어요. 내 점심 자리는 먼저 찼어요."
-      },
-      {
-        "label": "가능한 시간을 적어 주고 후속 상담을 잡아요",
-        "effects": {
-          "mental": 2,
-          "friends": -1,
-          "trait.social": -5,
-          "semi": "상담실에서 교대 직원이 교육 시간을 묻고 있어요"
-        },
-        "result": "직원이 메모를 접었어요. 나는 약속한 식당 문을 열었어요."
-      }
-    ],
-    "default": 0
-  },
-  {
-    "id": "job_hr_boom_hiring",
     "year": [
       1965,
       null
     ],
     "when": {
       "job": "hr",
-      "market": {
-        "cycle": [
-          1,
-          2
-        ]
-      }
+      "career_years_min": 4
     },
-    "weight": 1,
-    "once": false,
-    "text": "호황이라 채용 서류가 접수함을 넘었어요. 이번 주 면접 진행을 더 맡아 달래요.",
-    "choices": [
-      {
-        "label": "추가 면접을 맡아요",
-        "effects": {
-          "reputation": 2,
-          "health": -1,
-          "trait.work_life": 5,
-          "semi": "호황이라 채용 서류가 접수함을 넘었어요"
-        },
-        "result": "면접표에 내 이름이 늘었어요. 퇴근 버스에서는 바로 잠들었어요."
-      },
-      {
-        "label": "기존 일정만 맡아요",
-        "effects": {
-          "health": 1,
-          "reputation": -1,
-          "trait.work_life": -5,
-          "semi": "호황이라 채용 서류가 접수함을 넘었어요"
-        },
-        "result": "빈 시간에 산책을 했어요. 새 면접표에는 동료 이름이 적혔어요."
-      }
-    ],
-    "default": 0
-  },
-  {
-    "id": "job_hr_name_memory",
-    "year": [
-      1965,
-      null
-    ],
-    "when": {
-      "job": "hr"
-    },
-    "weight": 1,
-    "once": false,
-    "text": "면접 연습 때 지원자 이름 대신 부서명을 불렀어요. 동료가 내 역할극을 멈춰요.",
-    "choices": [
-      {
-        "label": "동료에게 다시 지원자가 돼 달래요",
-        "effects": {
-          "happiness": 2,
-          "reputation": -1,
-          "trait.conform": -5
-        },
-        "result": "이번엔 이름을 맞혔어요. 동료가 입사 의향은 없다고 해요."
-      },
-      {
-        "label": "대본에 이름을 표시하고 끝내요",
-        "effects": {
-          "reputation": 1,
-          "happiness": -1,
-          "trait.conform": 5
-        },
-        "result": "대본 첫 줄이 진해졌어요. 동료는 자기 책상으로 돌아갔어요."
-      }
-    ],
-    "default": 0
-  },
-  {
-    "id": "job_purchasing_first_part",
-    "year": [
-      1974,
-      null
-    ],
-    "when": {
-      "job": "purchasing"
-    },
-    "weight": 2,
+    "weight": 1.5,
     "once": true,
-    "text": "구매 요청서의 부품 이름이 세 줄이에요. 견적서에는 약자로 한 줄만 적혀 있어요.",
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "인사전근",
+    "text": "해외 사업장 책임자가 직원들을 보여 주며 말해요. “2년간 이 사람들 문제를 같이 풀어주세요.”",
     "choices": [
       {
-        "label": "규격과 옵션을 끝까지 맞춰요",
+        "label": "해외 인사팀에 가요",
         "effects": {
-          "intelligence": 2,
-          "mental": -1,
-          "trait.diligence": 5,
-          "semi": "구매 요청서의 부품 이름이 세 줄이에요"
+          "do": [
+            "move:overseas:2",
+            "salary_mod:0.08"
+          ],
+          "friends": -8
         },
-        "result": "약자가 풀리자 종이가 두 장 됐어요. 짧은 이름은 짧은 일이 아니에요."
+        "result": "현지 직원이 자기 이름 발음부터 알려 줬어요. 급여는 올랐고 오래 알던 사람들과는 자주 못 만났어요."
       },
       {
-        "label": "오늘 발주 품목부터 익혀요",
+        "label": "국내 상담을 이어가요",
         "effects": {
-          "mental": 2,
-          "reputation": -1,
-          "trait.work_life": -5,
-          "semi": "구매 요청서의 부품 이름이 세 줄이에요"
+          "mental": 5,
+          "do": "salary_mod:-0.03"
         },
-        "result": "첫 품목에 확인선을 그었어요. 나머지 견적은 선배에게 갔어요."
+        "result": "상담하러 온 직원이 내 얼굴을 보고 안심했어요. 파견 수당은 줄었지만 익숙한 사람들 곁에 남았어요."
       }
     ],
-    "default": 0
+    "default": 1
   },
   {
-    "id": "job_purchasing_quote_compare",
+    "id": "gpt_t16_hr_care",
+    "age": [
+      25,
+      45
+    ],
+    "year": [
+      2000,
+      null
+    ],
+    "when": {
+      "job": "hr",
+      "has_children": true
+    },
+    "weight": 1.5,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work",
+      "family"
+    ],
+    "recap": "인사와육아",
+    "text": "아이를 맡아 주던 사람이 더는 시간을 못 맞춘대요. 동료가 “마감 책임은 네가 꼭 해야 하니?” 물어요.",
+    "choices": [
+      {
+        "label": "돌봄에 맞춰 일을 줄여요",
+        "effects": {
+          "happiness": 10,
+          "do": "salary_mod:-0.06"
+        },
+        "result": "아이가 현관에서 내 발소리를 알아챘어요. 줄어든 급여를 보고도 같이 신발을 벗었어요."
+      },
+      {
+        "label": "마감할 때까지 일을 이어요",
+        "effects": {
+          "do": "bonus:@salary*0.15",
+          "happiness": -8
+        },
+        "result": "아이가 다녀온 얘기를 짧게 끝냈어요. 추가 보상은 받았지만 약속한 날을 또 미뤘어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t16_purchasing_supplier",
+    "age": [
+      22,
+      59
+    ],
     "year": [
       1974,
       null
@@ -262,35 +208,100 @@
     "when": {
       "job": "purchasing"
     },
-    "weight": 1,
-    "once": false,
-    "text": "견적 두 장의 가격은 비슷해요. 한쪽만 운송 조건이 따로 붙어 있어요.",
+    "weight": 1.5,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "발주의갈림",
+    "text": "단종 부품을 들고 온 현장 기사가 내게 물어요. “이번 것까지 쓰면 다음 고장은 뭘로 막아요?”",
     "choices": [
       {
-        "label": "포함 비용까지 다시 대조해요",
+        "label": "다른 공급망을 찾아요",
         "effects": {
-          "reputation": 2,
-          "mental": -2,
-          "trait.diligence": 5,
-          "semi": "견적 두 장의 가격은 비슷해요"
+          "cash": "-@salary*0.06",
+          "reputation": 6,
+          "mental": -5,
+          "later": {
+            "event": "gpt_t16_purchasing_supply",
+            "years": [
+              1,
+              3
+            ],
+            "chance": 1
+          },
+          "flag": "gpt_t16_purchasing_supply_ready",
+          "semi": {
+            "text": "성과 정산을 미루고 검증 요청서를 보냈어요. 부품함에 샘플 꼬리표가 늘었어요.",
+            "kind": "core"
+          }
         },
-        "result": "비교표 아래 칸이 늘었어요. 내 점심시간은 줄었어요."
+        "result": "기사가 새 샘플을 조심히 만졌어요. 성과금은 줄었고 서로 다른 업체에 같은 질문을 여러 번 했어요."
       },
       {
-        "label": "차이를 적어 기술 검토자에게 넘겨요",
+        "label": "확정한 물량만 맡아요",
         "effects": {
-          "mental": 2,
-          "reputation": -1,
-          "trait.work_life": -5,
-          "semi": "견적 두 장의 가격은 비슷해요"
+          "mental": 5,
+          "semi": {
+            "text": "공급 범위를 줄인 계약서에 서명했어요. 회의실 화면에서 내 발주액이 작아졌어요.",
+            "kind": "core"
+          },
+          "do": "salary_mod:-0.04"
         },
-        "result": "검토자가 두 장을 들고 갔어요. 나는 식당 줄 맨 끝에 섰어요."
+        "result": "기사가 남은 부품을 세었어요. 내 급여와 책임 범위가 줄어든 자리에서 더는 큰 납기를 약속하지 않았어요."
       }
     ],
-    "default": 0
+    "default": 1
   },
   {
-    "id": "job_purchasing_delivery_note",
+    "id": "gpt_t16_purchasing_supply",
+    "age": [
+      22,
+      70
+    ],
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "flag": "gpt_t16_purchasing_supply_ready"
+    },
+    "weight": 0,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "돌아온부품",
+    "text": "그때 부품을 기다리던 기사가 급한 전화를 해요. “당신이 찾은 쪽이 이번에도 길을 열어줬어요.”",
+    "choices": [
+      {
+        "label": "보상과 관리 책임을 받아요",
+        "effects": {
+          "cash": "@avg_wage*0.2",
+          "mental": -6
+        },
+        "result": "기사가 밤에도 내 이름을 불렀어요. 정산금은 들어왔고 휴대폰을 놓는 시간이 늦어졌어요."
+      },
+      {
+        "label": "내 몫을 줄여 함께 맡아요",
+        "effects": {
+          "cash": "@avg_wage*0.08",
+          "friends": 8,
+          "reputation": -3
+        },
+        "result": "여러 담당자가 서로 번호를 저장했어요. 내 정산금은 줄었지만 혼자 받던 질문을 나눴어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t16_purchasing_downturn",
+    "age": [
+      22,
+      59
+    ],
     "year": [
       1974,
       null
@@ -298,181 +309,91 @@
     "when": {
       "job": "purchasing"
     },
-    "weight": 1,
-    "once": false,
-    "text": "납품서 날짜와 발주서 날짜가 달라요. 현장은 오늘 입고 표시부터 달라고 해요.",
+    "weight": 1.5,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "발주감축",
+    "text": "감산 얘기를 들은 거래처 사람이 한참 말을 못 해요. “우리 쪽도 이번 물량이 마지막 희망이었어요.”",
     "choices": [
       {
-        "label": "확인될 때까지 일정을 다시 잡아요",
+        "label": "절감 협상을 맡아요",
         "effects": {
-          "reputation": 2,
-          "friends": -1,
-          "trait.conform": -5
+          "do": "bonus:@salary*0.18",
+          "friends": -8,
+          "mental": -5
         },
-        "result": "일정표에 확인 대기가 적혔어요. 현장 담당자는 시계를 봤어요."
+        "result": "거래처 사람이 통화를 먼저 끊었어요. 보상은 받았지만 자주 웃던 목소리들이 멀어졌어요."
       },
       {
-        "label": "입고 담당에게 차이를 넘겨 확인받아요",
+        "label": "감액 교육으로 빠져요",
         "effects": {
-          "friends": 2,
-          "reputation": -1,
-          "trait.conform": 5
+          "intelligence": 5,
+          "mental": 3,
+          "do": "salary_mult:0.85:1"
         },
-        "result": "담당자가 서류를 맞댔어요. 내 완료 도장은 다음 칸으로 갔어요."
+        "result": "강사가 내가 오래 산 부품을 낯선 말로 설명했어요. 월급은 줄었고 다시 질문할 일이 많아졌어요."
       }
     ],
-    "default": 0
+    "default": 1,
+    "market": {
+      "cycle": [
+        -2,
+        -1
+      ]
+    }
   },
   {
-    "id": "job_purchasing_vendor_call",
-    "year": [
-      1974,
-      null
+    "id": "gpt_t16_purchasing_vendor_job",
+    "age": [
+      22,
+      59
     ],
-    "when": {
-      "job": "purchasing"
-    },
-    "weight": 1,
-    "once": false,
-    "text": "협력사 담당자가 견적 항목을 같이 봐 달래요. 내 휴게 시간이 막 시작됐어요.",
-    "choices": [
-      {
-        "label": "전화로 항목을 하나씩 맞춰요",
-        "effects": {
-          "friends": 2,
-          "mental": -1,
-          "trait.social": 5,
-          "semi": "협력사 담당자가 견적 항목을 같이 봐 달래요"
-        },
-        "result": "담당자 쪽에서도 종이 넘기는 소리가 났어요. 내 차는 식었어요."
-      },
-      {
-        "label": "질문 목록을 보내고 통화 시간을 잡아요",
-        "effects": {
-          "mental": 2,
-          "friends": -1,
-          "trait.social": -5,
-          "semi": "협력사 담당자가 견적 항목을 같이 봐 달래요"
-        },
-        "result": "질문지가 발송함에 놓였어요. 나는 먼저 의자를 뒤로 밀었어요."
-      }
-    ],
-    "default": 0
-  },
-  {
-    "id": "job_purchasing_boom_leadtime",
     "year": [
       1974,
       null
     ],
     "when": {
       "job": "purchasing",
-      "market": {
-        "equipment": [
-          1,
-          2
-        ]
-      }
+      "career_years_min": 4
     },
-    "weight": 1,
-    "once": false,
-    "text": "부품 납기표가 장비 호황으로 길어졌어요. 추가 발주 추적을 맡아 달래요.",
-    "choices": [
-      {
-        "label": "추가 품목까지 따라가요",
-        "effects": {
-          "reputation": 2,
-          "health": -1,
-          "trait.work_life": 5,
-          "semi": "부품 납기표가 장비 호황으로 길어졌어요"
-        },
-        "result": "납기표에 확인 날짜가 찼어요. 귀갓길 어깨가 자꾸 내려가요."
-      },
-      {
-        "label": "현재 품목까지만 맡아요",
-        "effects": {
-          "health": 1,
-          "reputation": -1,
-          "trait.work_life": -5,
-          "semi": "부품 납기표가 장비 호황으로 길어졌어요"
-        },
-        "result": "내 추적표를 덮었어요. 새 품목표에는 동료 이름이 붙었어요."
-      }
-    ],
-    "default": 0
-  },
-  {
-    "id": "job_purchasing_home_quote",
-    "year": [
-      1974,
-      null
-    ],
-    "when": {
-      "job": "purchasing"
-    },
-    "weight": 1,
-    "once": false,
-    "text": "점심 메뉴판에서 세트 포함 내역부터 읽었어요. 동료가 밥도 입찰하냐고 해요.",
-    "choices": [
-      {
-        "label": "국 포함 여부까지 비교해요",
-        "effects": {
-          "happiness": 2,
-          "reputation": -1,
-          "trait.conform": -5
-        },
-        "result": "최종 비교표는 머릿속에 남았어요. 동료는 벌써 한 숟갈 떴어요."
-      },
-      {
-        "label": "아무 메뉴나 정하고 앉아요",
-        "effects": {
-          "reputation": 1,
-          "happiness": -1,
-          "trait.conform": 5
-        },
-        "result": "메뉴판을 내려놓았어요. 반찬 추가 비용은 계산대에서 알았어요."
-      }
-    ],
-    "default": 0
-  },
-  {
-    "id": "job_sales_first_catalog",
-    "year": [
-      1974,
-      null
-    ],
-    "when": {
-      "job": "sales"
-    },
-    "weight": 2,
+    "weight": 1.5,
     "once": true,
-    "text": "제품 카탈로그에 비슷한 부품 이름이 이어져요. 첫 상담 전에 차이를 짚어야 해요.",
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "공급사제안",
+    "text": "오래 거래한 담당자가 자기 팀으로 와 보라며 커피를 사요. “물건 사는 쪽 말고 만드는 쪽은 어때요?”",
     "choices": [
       {
-        "label": "기술 담당자와 옵션까지 확인해요",
+        "label": "담당을 빼고 면담해요",
         "effects": {
-          "intelligence": 2,
-          "mental": -1,
-          "trait.diligence": 5,
-          "semi": "제품 카탈로그에 비슷한 부품 이름이 이어져요"
+          "do": "job:look",
+          "reputation": -5,
+          "mental": -4
         },
-        "result": "질문지가 한 장 늘었어요. 예상 질문보다 내 질문이 더 많아요."
+        "result": "동료가 내 거래처 전화를 대신 받았어요. 빈 담당 자리에서 공개 경력만 골라 새 일을 알아봤어요."
       },
       {
-        "label": "오늘 제안할 품목부터 익혀요",
+        "label": "지금 공급 책임에 남아요",
         "effects": {
-          "mental": 2,
-          "reputation": -1,
-          "trait.work_life": -5,
-          "semi": "제품 카탈로그에 비슷한 부품 이름이 이어져요"
+          "do": "salary_mod:0.05",
+          "mental": -6
         },
-        "result": "제품 한 칸에 표시를 했어요. 나머지 상담은 선배가 맡았어요."
+        "result": "현장 기사가 급할 때 나부터 찾았어요. 급여는 올랐지만 늦은 전화도 내게 먼저 왔어요."
       }
     ],
-    "default": 0
+    "default": 1
   },
   {
-    "id": "job_sales_time_zone",
+    "id": "gpt_t16_sales_relocation",
+    "age": [
+      22,
+      59
+    ],
     "year": [
       1974,
       null
@@ -480,35 +401,103 @@
     "when": {
       "job": "sales"
     },
-    "weight": 1,
-    "once": false,
-    "text": "해외 고객과 통화할 시각이 늦은 저녁이에요. 다음 업무 시간으로 옮길 수도 있대요.",
+    "weight": 1.5,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "해외거점",
+    "text": "해외 고객이 내 자리까지 식당을 예약해 보여 줘요. “3년만 가까이 있어요. 화면으론 얘기가 다 안 돼요.”",
     "choices": [
       {
-        "label": "오늘 통화에 맞춰 기다려요",
+        "label": "고객 거점으로 가요",
         "effects": {
-          "reputation": 2,
-          "health": -1,
-          "trait.work_life": 5,
-          "semi": "해외 고객과 통화할 시각이 늦은 저녁이에요"
+          "do": [
+            "move:overseas:3",
+            "salary_mod:0.08"
+          ],
+          "friends": -8,
+          "later": {
+            "event": "gpt_t16_sales_client",
+            "years": [
+              2,
+              4
+            ],
+            "chance": 1
+          },
+          "flag": "gpt_t16_sales_client_ready",
+          "semi": {
+            "text": "상주 주소를 적었어요. 작별 모임의 단체 사진이 여권 케이스에 들어갔어요.",
+            "kind": "core"
+          }
         },
-        "result": "고객이 통화 끝에 인사를 남겼어요. 창밖 상점들은 불을 껐어요."
+        "result": "고객이 처음엔 매일 점심을 챙겼어요. 급여는 올랐지만 옛 친구들과 밥 먹는 날이 드물어졌어요."
       },
       {
-        "label": "다음 업무 시간으로 조정해요",
+        "label": "국내 고객 곁에 남아요",
         "effects": {
-          "health": 1,
-          "reputation": -1,
-          "trait.work_life": -5,
-          "semi": "해외 고객과 통화할 시각이 늦은 저녁이에요"
+          "happiness": 8,
+          "semi": {
+            "text": "해외 수당을 내려놓았어요. 익숙한 식탁에 다음 주 약속을 적었어요.",
+            "kind": "core"
+          },
+          "do": "salary_mod:-0.05"
         },
-        "result": "내 책상이 제시간에 비었어요. 고객의 답은 하루 뒤에 왔어요."
+        "result": "국내 담당자가 다음 약속을 잡았어요. 상주 수당을 포기하고 익숙한 사람들 사이에 남았어요."
       }
     ],
-    "default": 0
+    "default": 1
   },
   {
-    "id": "job_sales_quote_scope",
+    "id": "gpt_t16_sales_client",
+    "age": [
+      22,
+      72
+    ],
+    "year": [
+      1974,
+      null
+    ],
+    "when": {
+      "flag": "gpt_t16_sales_client_ready"
+    },
+    "weight": 0,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "바다건넌연락",
+    "text": "당시 해외 고객이 독립했다며 전화를 걸어요. “이번엔 내가 공항에 마중 나갈게요.”",
+    "choices": [
+      {
+        "label": "여비를 내고 고객을 찾아가요",
+        "effects": {
+          "cash": "-@avg_wage*0.15",
+          "friends": 10,
+          "mental": -4
+        },
+        "result": "고객이 출구에서 내 이름을 크게 불렀어요. 자비로 먼 길을 온 피로가 그제야 다리로 내려왔어요."
+      },
+      {
+        "label": "통역을 구해 원격으로 만나요",
+        "effects": {
+          "mental": 6,
+          "friends": -4,
+          "cash": "-@avg_wage*0.05"
+        },
+        "result": "고객이 화면 밖 빈 의자를 한번 봤어요. 통역비는 들었지만 이동 대신 내 생활을 지켰어요."
+      }
+    ],
+    "default": 1
+  },
+  {
+    "id": "gpt_t16_sales_orders",
+    "age": [
+      22,
+      59
+    ],
     "year": [
       1974,
       null
@@ -516,181 +505,94 @@
     "when": {
       "job": "sales"
     },
-    "weight": 1,
-    "once": false,
-    "text": "견적서의 기본 구성에 옵션이 섞여 있어요. 고객은 한 장으로 줄여 달래요.",
+    "weight": 1.5,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "주문과실적",
+    "text": "취소 주문을 전하던 고객이 끝에 미안하다고 해요. 팀장님은 적어진 급여로 계정을 지킬 사람을 찾아요.",
     "choices": [
       {
-        "label": "옵션을 나눠 다시 설명해요",
+        "label": "감액을 감수하고 남아요",
         "effects": {
-          "reputation": 2,
-          "friends": -1,
-          "trait.conform": -5
+          "reputation": 5,
+          "mental": -6,
+          "do": "salary_mult:0.75:1"
         },
-        "result": "고객이 옵션표를 따로 접었어요. 회의실 시계가 한 칸 더 갔어요."
+        "result": "고객이 다음 통화에서도 내 이름을 확인했어요. 급여는 줄었고 다시 받을 주문은 아직 없었어요."
       },
       {
-        "label": "기술 부록을 붙이고 상담을 이어 가요",
+        "label": "정산금을 받고 떠나요",
         "effects": {
-          "friends": 2,
-          "reputation": -1,
-          "trait.conform": 5
+          "do": [
+            "bonus:@salary*0.3",
+            "job:quit"
+          ],
+          "mental": 5,
+          "happiness": -5
         },
-        "result": "서류는 한 묶음이 됐어요. 세부 항목 질문이 기술 담당자에게 갔어요."
+        "result": "동료가 남은 고객들 얘기를 조용히 물었어요. 돈은 받았지만 다음 방문을 약속할 자리는 사라졌어요."
       }
     ],
-    "default": 0
+    "default": 1,
+    "market": {
+      "cycle": [
+        -2,
+        -1
+      ]
+    }
   },
   {
-    "id": "job_sales_translation",
-    "year": [
-      1974,
-      null
+    "id": "gpt_t16_sales_family",
+    "age": [
+      22,
+      59
     ],
-    "when": {
-      "job": "sales"
-    },
-    "weight": 1,
-    "once": false,
-    "text": "고객 상담에서 장비 용어가 자꾸 엇갈려요. 기술 동료가 설명을 같이 맞추자고 해요.",
-    "choices": [
-      {
-        "label": "종료 뒤 동료와 용어표를 만들어요",
-        "effects": {
-          "friends": 2,
-          "mental": -1,
-          "trait.social": 5,
-          "semi": "고객 상담에서 장비 용어가 자꾸 엇갈려요"
-        },
-        "result": "둘의 펜이 같은 종이를 채웠어요. 내 휴게 시간은 사라졌어요."
-      },
-      {
-        "label": "확인할 말만 적어 전달해요",
-        "effects": {
-          "mental": 2,
-          "friends": -1,
-          "trait.social": -5,
-          "semi": "고객 상담에서 장비 용어가 자꾸 엇갈려요"
-        },
-        "result": "동료가 메모를 가져갔어요. 나는 상담실 밖에서 숨을 돌렸어요."
-      }
-    ],
-    "default": 0
-  },
-  {
-    "id": "job_sales_slow_orders",
     "year": [
       1974,
       null
     ],
     "when": {
       "job": "sales",
-      "market": {
-        "cycle": [
-          -2,
-          -1
-        ]
-      }
+      "has_partner": true
     },
-    "weight": 1,
-    "once": false,
-    "text": "업황이 식어 주문 전화가 뜸해졌어요. 기존 고객별 제안을 손볼 시간이 났어요.",
-    "choices": [
-      {
-        "label": "용도별 제안서를 다시 짜요",
-        "effects": {
-          "reputation": 2,
-          "mental": -2,
-          "trait.risk": 5,
-          "semi": "업황이 식어 주문 전화가 뜸해졌어요"
-        },
-        "result": "새 제안서가 발송함에 쌓였어요. 내 오후 쉬는 칸은 비었어요."
-      },
-      {
-        "label": "기존 문의만 처리하고 쉬어요",
-        "effects": {
-          "mental": 2,
-          "reputation": -1,
-          "trait.risk": -5,
-          "semi": "업황이 식어 주문 전화가 뜸해졌어요"
-        },
-        "result": "문의 장부를 덮었어요. 새 제안 칸에는 날짜만 남았어요."
-      }
-    ],
-    "default": 0
-  },
-  {
-    "id": "job_sales_phone_greeting",
-    "year": [
-      1974,
-      null
-    ],
-    "when": {
-      "job": "sales"
-    },
-    "weight": 1,
-    "once": false,
-    "text": "사내 식당에서 여보세요 대신 제품명을 말했어요. 동료가 주문 수량을 되물어요.",
-    "choices": [
-      {
-        "label": "반찬은 기본 구성이라고 받아쳐요",
-        "effects": {
-          "happiness": 2,
-          "reputation": -1,
-          "trait.conform": -5
-        },
-        "result": "동료가 김치를 옵션에 넣었어요. 내 영업 구역이 식판까지 넓어졌어요."
-      },
-      {
-        "label": "웃고 수저를 들어요",
-        "effects": {
-          "reputation": 1,
-          "happiness": -1,
-          "trait.conform": 5
-        },
-        "result": "제품 얘기는 접혔어요. 동료가 먼저 식사를 마쳤어요."
-      }
-    ],
-    "default": 0
-  },
-  {
-    "id": "job_patent_first_claim",
-    "year": [
-      1983,
-      null
-    ],
-    "when": {
-      "job": "patent"
-    },
-    "weight": 2,
+    "weight": 1.5,
     "once": true,
-    "text": "특허 도면 옆에 청구항 초안을 받았어요. 한 문장이 종이 절반을 차지해요.",
+    "big": true,
+    "tags": [
+      "work",
+      "family"
+    ],
+    "recap": "출장과약속",
+    "text": "{partner}가 여행 가방을 꺼내다 내 전화를 들어요. “이번에도 고객이 먼저야?”",
     "choices": [
       {
-        "label": "구성 요소를 하나씩 표시해요",
+        "label": "고객 협상을 맡아요",
         "effects": {
-          "intelligence": 2,
-          "mental": -1,
-          "trait.diligence": 5,
-          "semi": "특허 도면 옆에 청구항 초안을 받았어요"
+          "do": "bonus:@salary*0.2",
+          "happiness": -10
         },
-        "result": "한 문장이 다섯 색이 됐어요. 마침표만 여전히 멀어요."
+        "result": "{partner}가 혼자 가방을 다시 넣었어요. 수당이 들어온 날에도 그 소리가 생각났어요."
       },
       {
-        "label": "핵심 구성부터 익혀요",
+        "label": "협상을 맡기고 함께 떠나요",
         "effects": {
-          "mental": 2,
-          "reputation": -1,
-          "trait.work_life": -5,
-          "semi": "특허 도면 옆에 청구항 초안을 받았어요"
+          "happiness": 10,
+          "do": "salary_mod:-0.04"
         },
-        "result": "도면 한쪽에 번호를 적었어요. 나머지 문장은 선배 펜으로 넘어갔어요."
+        "result": "{partner}가 공항에서 내 손을 잡았어요. 담당 수입은 줄었지만 둘이 같은 비행기에 올랐어요."
       }
     ],
-    "default": 0
+    "default": 1
   },
   {
-    "id": "job_patent_prior_art",
+    "id": "gpt_t16_patent_claim",
+    "age": [
+      22,
+      59
+    ],
     "year": [
       1983,
       null
@@ -698,217 +600,185 @@
     "when": {
       "job": "patent"
     },
-    "weight": 1,
-    "once": false,
-    "text": "선행 문헌의 도면이 발명 설명과 닮았어요. 범위까지 확인하면 퇴근이 늦어져요.",
+    "weight": 1.5,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "청구항축소",
+    "text": "연구원이 새 결과라며 설명하다 대답을 멈춰요. “이 청구항까지는 아직 실험을 못 했어요.”",
     "choices": [
       {
-        "label": "청구 범위를 끝까지 대조해요",
+        "label": "보완 실험까지 기다려요",
         "effects": {
-          "reputation": 2,
-          "mental": -2,
-          "trait.diligence": 5,
-          "semi": "선행 문헌의 도면이 발명 설명과 닮았어요"
+          "reputation": 6,
+          "mental": -6,
+          "cash": "-@salary*0.05",
+          "later": {
+            "event": "gpt_t16_patent_license",
+            "years": [
+              2,
+              5
+            ],
+            "chance": 1
+          },
+          "flag": "gpt_t16_patent_license_ready",
+          "semi": {
+            "text": "마감 변경 사유를 적었어요. 연구팀에서 돌아온 추가 자료가 책상에 쌓였어요.",
+            "kind": "core"
+          }
         },
-        "result": "다른 부분에 밑줄이 남았어요. 사무실 복도는 조용해졌어요."
+        "result": "연구원이 다시 실험실로 돌아갔어요. 내 성과금은 줄었고 밤 통화에서 실패 얘기를 더 들었어요."
       },
       {
-        "label": "검토 지점을 적어 담당자에게 넘겨요",
+        "label": "검증한 범위로 줄여요",
         "effects": {
-          "mental": 2,
-          "reputation": -1,
-          "trait.work_life": -5,
-          "semi": "선행 문헌의 도면이 발명 설명과 닮았어요"
+          "mental": 5,
+          "semi": {
+            "text": "청구항을 줄여 제출했어요. 짧아진 문서 옆에 축소된 성과표가 놓였어요.",
+            "kind": "core"
+          },
+          "do": "salary_mod:-0.03"
         },
-        "result": "담당자가 문헌을 펼쳤어요. 나는 정시에 서류함을 닫았어요."
+        "result": "연구원이 작아진 제목을 오래 봤어요. 급여 보정은 내려갔지만 설명할 수 있는 부분만 남겼어요."
       }
     ],
-    "default": 0
+    "default": 1
   },
   {
-    "id": "job_patent_review_deadline",
+    "id": "gpt_t16_patent_license",
+    "age": [
+      22,
+      74
+    ],
     "year": [
       1983,
       null
     ],
     "when": {
-      "job": "patent"
+      "flag": "gpt_t16_patent_license_ready"
     },
-    "weight": 1,
-    "once": false,
-    "text": "출원 일정표에 검토가 몰렸어요. 발명자는 문구를 그대로 보내자고 해요.",
+    "weight": 0,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "특허의재방문",
+    "text": "그때 보완했던 연구원이 기술 계약 얘기를 꺼내요. “이번엔 그때 왜 기다렸는지 알겠어요.”",
     "choices": [
       {
-        "label": "검토 시간을 따로 요청해요",
+        "label": "유료 검토 자문을 맡아요",
         "effects": {
-          "reputation": 2,
-          "friends": -1,
-          "trait.conform": -5
+          "cash": "@avg_wage*0.18",
+          "mental": -6
         },
-        "result": "일정표에 검토 칸이 생겼어요. 발명자의 손가락이 탁자를 두드렸어요."
+        "result": "연구원이 밤늦게도 새 질문을 보냈어요. 자문료는 들어왔고 옛 실험을 다시 떠올리느라 잠이 줄었어요."
       },
       {
-        "label": "분담 검토를 요청해 넘겨요",
+        "label": "공동 설명회를 도와요",
         "effects": {
-          "friends": 2,
-          "reputation": -1,
-          "trait.conform": 5
+          "cash": "-@avg_wage*0.05",
+          "friends": 10
         },
-        "result": "동료가 초안 절반을 가져갔어요. 내 단독 완료 칸은 비었어요."
+        "result": "옛 연구자들이 서로의 실패를 기억했어요. 비용을 나눠 내고 함께 질문을 받았어요."
       }
     ],
-    "default": 0
+    "default": 1
   },
   {
-    "id": "job_patent_inventor_words",
-    "year": [
-      1983,
-      null
+    "id": "gpt_t16_patent_dispute",
+    "age": [
+      22,
+      59
     ],
-    "when": {
-      "job": "patent"
-    },
-    "weight": 1,
-    "once": false,
-    "text": "발명자가 장비 옆에서 구조를 손짓으로 설명해요. 정리해 달라는 말이 이어져요.",
-    "choices": [
-      {
-        "label": "남아서 도면에 같이 번호를 달아요",
-        "effects": {
-          "friends": 2,
-          "mental": -1,
-          "trait.social": 5,
-          "semi": "발명자가 장비 옆에서 구조를 손짓으로 설명해요"
-        },
-        "result": "손짓이 도면 위 번호가 됐어요. 내 쉬는 시간은 넘어갔어요."
-      },
-      {
-        "label": "질문을 적고 다음 면담을 잡아요",
-        "effects": {
-          "mental": 2,
-          "friends": -1,
-          "trait.social": -5,
-          "semi": "발명자가 장비 옆에서 구조를 손짓으로 설명해요"
-        },
-        "result": "발명자가 질문지를 접었어요. 나는 사무실 의자에 등을 기댔어요."
-      }
-    ],
-    "default": 0
-  },
-  {
-    "id": "job_patent_boom_filings",
     "year": [
       1983,
       null
     ],
     "when": {
       "job": "patent",
-      "market": {
-        "cycle": [
-          1,
-          2
-        ]
-      }
+      "career_years_min": 4
     },
-    "weight": 1,
-    "once": false,
-    "text": "호황이라 발명 신고서가 서류함을 채웠어요. 검토 한 묶음을 더 맡아 달래요.",
+    "weight": 1.5,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "분쟁전담",
+    "text": "분쟁팀 선배가 내게 다른 나라 시각을 알려 줘요. “저쪽 아침에 맞추면 우리는 밤에 얘기해야 해요.”",
     "choices": [
       {
-        "label": "추가 검토를 맡아요",
+        "label": "분쟁팀의 밤을 함께 맡아요",
         "effects": {
-          "reputation": 2,
-          "health": -1,
-          "trait.work_life": 5,
-          "semi": "호황이라 발명 신고서가 서류함을 채웠어요"
+          "do": "salary_mod:0.08",
+          "mental": -8,
+          "health": -3
         },
-        "result": "검토표에 내 이름이 늘었어요. 버스 창에 비친 눈은 감겨 있어요."
+        "result": "선배가 새벽에도 내 메시지에 답했어요. 급여는 올랐지만 내 밤은 다른 나라 아침이 됐어요."
       },
       {
-        "label": "현재 검토까지만 맡아요",
+        "label": "출원 업무에 남아요",
         "effects": {
-          "health": 1,
-          "reputation": -1,
-          "trait.work_life": -5,
-          "semi": "호황이라 발명 신고서가 서류함을 채웠어요"
+          "mental": 6,
+          "do": "salary_mod:-0.05"
         },
-        "result": "내 서류함이 제시간에 닫혔어요. 추가 묶음은 옆자리로 갔어요."
+        "result": "연구원이 낮에 나를 찾았어요. 전담 수당은 줄었고 퇴근하면 머리를 쉬는 날이 생겼어요."
       }
     ],
-    "default": 0
+    "default": 1
   },
   {
-    "id": "job_patent_precise_menu",
+    "id": "gpt_t16_patent_offer",
+    "age": [
+      22,
+      59
+    ],
     "year": [
       1983,
       null
     ],
     "when": {
-      "job": "patent"
+      "job": "patent",
+      "career_years_min": 5
     },
-    "weight": 1,
-    "once": false,
-    "text": "점심 주문을 쓰다 그리고 또는에 멈췄어요. 동료가 청구항 쓰냐고 물어요.",
-    "choices": [
-      {
-        "label": "반찬 조합의 범위를 설명해요",
-        "effects": {
-          "happiness": 2,
-          "reputation": -1,
-          "trait.conform": -5
-        },
-        "result": "동료가 밥은 필수 구성이라고 해요. 내 국은 그새 식었어요."
-      },
-      {
-        "label": "메뉴 번호만 적어 줘요",
-        "effects": {
-          "reputation": 1,
-          "happiness": -1,
-          "trait.conform": 5
-        },
-        "result": "종이가 바로 주방으로 갔어요. 동료는 더 묻지 않았어요."
-      }
-    ],
-    "default": 0
-  },
-  {
-    "id": "job_environment_safety_first_route",
-    "year": [
-      1974,
-      null
-    ],
-    "when": {
-      "job": "environment_safety"
-    },
-    "weight": 2,
+    "weight": 1.5,
     "once": true,
-    "text": "공장 통로 지도에 점검 동선을 그렸어요. 출입문보다 확인할 표지가 많아요.",
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "특허팀제안",
+    "text": "외부 특허팀 사람이 내가 맡은 기술을 기억해요. “당신 얘기를 듣고 싶은 연구자가 여기에도 있어요.”",
     "choices": [
       {
-        "label": "담당자와 동선 끝까지 돌아요",
+        "label": "외부 면담을 시작해요",
         "effects": {
-          "intelligence": 2,
-          "mental": -1,
-          "trait.diligence": 5,
-          "semi": "공장 통로 지도에 점검 동선을 그렸어요"
+          "do": "job:look",
+          "reputation": -5,
+          "mental": -3
         },
-        "result": "수첩에 표지 위치가 찼어요. 내 걸음 수만 먼저 합격했어요."
+        "result": "동료가 진행 중인 질문을 대신 받았어요. 나는 공개 경력만 챙겨 다른 연구자들을 만났어요."
       },
       {
-        "label": "오늘 맡은 구역부터 익혀요",
+        "label": "지금 팀에 남아요",
         "effects": {
-          "mental": 2,
-          "reputation": -1,
-          "trait.work_life": -5,
-          "semi": "공장 통로 지도에 점검 동선을 그렸어요"
+          "do": "salary_mod:0.05",
+          "happiness": -8
         },
-        "result": "담당 구역에 선을 그었어요. 나머지 지도는 선배 손으로 갔어요."
+        "result": "연구자들이 어려운 질문을 다시 내게 모았어요. 급여는 올랐고 책상 앞에서 쉬는 틈은 줄었어요."
       }
     ],
-    "default": 0
+    "default": 1
   },
   {
-    "id": "job_environment_safety_permit_check",
+    "id": "gpt_t16_environment_safety_shutdown",
+    "age": [
+      22,
+      59
+    ],
     "year": [
       1974,
       null
@@ -916,147 +786,165 @@
     "when": {
       "job": "environment_safety"
     },
-    "weight": 1,
-    "once": false,
-    "text": "작업 허가서의 장소가 현장 표지와 달라요. 확인 연락이 퇴근 무렵 온대요.",
+    "weight": 1.5,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "작업중지",
+    "text": "작업자가 준비가 덜 됐다며 나를 붙잡아요. 공사 담당은 뒤에서 “오늘 꼭 들어가야 해요” 해요.",
     "choices": [
       {
-        "label": "현장 담당자와 끝까지 맞춰요",
+        "label": "작업자를 기다리게 하고 조정해요",
         "effects": {
-          "reputation": 2,
-          "mental": -2,
-          "trait.diligence": 5,
-          "semi": "작업 허가서의 장소가 현장 표지와 달라요"
+          "reputation": 6,
+          "mental": -7,
+          "cash": "-@salary*0.05",
+          "later": {
+            "event": "gpt_t16_environment_safety_review",
+            "years": [
+              1,
+              3
+            ],
+            "chance": 1
+          },
+          "flag": "gpt_t16_environment_safety_review_ready",
+          "semi": {
+            "text": "중지 표찰을 걸었어요. 남은 일정표를 들고 회의실을 세 번 옮겼어요.",
+            "kind": "core"
+          }
         },
-        "result": "확인된 허가서가 게시판에 붙었어요. 내 버스는 다음 편이에요."
+        "result": "작업자가 한 발 물러나 숨을 골랐어요. 내 수당은 줄었고 공사 사람들 사이에서 긴 설명을 했어요."
       },
       {
-        "label": "해당 작업을 대기시키고 인계해요",
+        "label": "작업을 멈추고 다른 팀에 맡겨요",
         "effects": {
-          "mental": 2,
-          "reputation": -1,
-          "trait.work_life": -5,
-          "semi": "작업 허가서의 장소가 현장 표지와 달라요"
+          "mental": 5,
+          "semi": {
+            "text": "작업 보류를 유지하고 담당을 넘겼어요. 내 현장 책임 수당이 줄었어요.",
+            "kind": "core"
+          },
+          "do": "salary_mod:-0.04"
         },
-        "result": "대기 표시가 붙었어요. 나는 교대 담당자에게 수첩을 넘겼어요."
+        "result": "작업자가 누가 다음 담당인지 물었어요. 나는 급여와 책임을 줄이고 현장 앞자리에서 빠졌어요."
       }
     ],
-    "default": 0
+    "default": 1
   },
   {
-    "id": "job_environment_safety_inspection_note",
+    "id": "gpt_t16_environment_safety_review",
+    "age": [
+      22,
+      70
+    ],
     "year": [
       1974,
       null
     ],
     "when": {
-      "job": "environment_safety"
+      "flag": "gpt_t16_environment_safety_review_ready"
     },
-    "weight": 1,
-    "once": false,
-    "text": "점검 회의에서 같은 지적이 다시 나왔어요. 조치 일정은 빈칸이에요.",
+    "weight": 0,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "그날의증언",
+    "text": "당시 작업자가 재발 방지 모임에 같이 가자고 해요. “그날 내가 한 말, 이번엔 다 들려주고 싶어요.”",
     "choices": [
       {
-        "label": "담당과 기한을 회의에서 정해요",
+        "label": "휴가를 내고 함께 가요",
         "effects": {
-          "reputation": 2,
-          "friends": -1,
-          "trait.conform": -5
+          "cash": "-@avg_wage*0.06",
+          "reputation": 6,
+          "mental": -5
         },
-        "result": "게시판에 이름과 날짜가 붙었어요. 회의 뒤 인사는 짧았어요."
+        "result": "작업자가 내 옆에서 당시 상황을 풀었어요. 여비는 들었고 돌아와서도 그 말이 오래 남았어요."
       },
       {
-        "label": "별도 협의 시간을 잡아 넘겨요",
+        "label": "기록으로만 답해요",
         "effects": {
-          "friends": 2,
-          "reputation": -1,
-          "trait.conform": 5
+          "mental": 6,
+          "reputation": -5
         },
-        "result": "협의 일정이 잡혔어요. 오늘 완료 칸에는 대기가 적혔어요."
+        "result": "작업자가 혼자 사람들 앞에 섰어요. 나는 일정을 지켰지만 함께 서지 못한 자리가 남았어요."
       }
     ],
-    "default": 0
+    "default": 1
   },
   {
-    "id": "job_environment_safety_contractor_question",
-    "year": [
-      1974,
-      null
+    "id": "gpt_t16_environment_safety_region",
+    "age": [
+      22,
+      59
     ],
-    "when": {
-      "job": "environment_safety"
-    },
-    "weight": 1,
-    "once": false,
-    "text": "협력사 반장이 허가서 작성법을 더 물어요. 내 휴게 시간이 시작됐어요.",
-    "choices": [
-      {
-        "label": "현장 지도를 펴고 같이 써요",
-        "effects": {
-          "friends": 2,
-          "mental": -1,
-          "trait.social": 5,
-          "semi": "협력사 반장이 허가서 작성법을 더 물어요"
-        },
-        "result": "반장의 서류에 구역명이 채워졌어요. 내 물컵은 그대로 남았어요."
-      },
-      {
-        "label": "안내 양식을 주고 담당 창구를 연결해요",
-        "effects": {
-          "mental": 2,
-          "friends": -1,
-          "trait.social": -5,
-          "semi": "협력사 반장이 허가서 작성법을 더 물어요"
-        },
-        "result": "반장이 창구로 갔어요. 나는 휴게실 의자에 앉았어요."
-      }
-    ],
-    "default": 0
-  },
-  {
-    "id": "job_environment_safety_boom_construction",
     "year": [
-      1974,
+      1990,
       null
     ],
     "when": {
       "job": "environment_safety",
-      "market": {
-        "equipment": [
-          1,
-          2
-        ]
-      }
+      "region": [
+        "seoul",
+        "busan",
+        "daegu",
+        "incheon",
+        "bucheon",
+        "suwon",
+        "giheung",
+        "yongin",
+        "hwaseong",
+        "pyeongtaek",
+        "icheon",
+        "gwangju_gg",
+        "paju",
+        "eumseong",
+        "cheonan",
+        "asan",
+        "gongju",
+        "gwangju_jn",
+        "rural"
+      ]
     },
-    "weight": 1,
-    "once": false,
-    "text": "공사 구역 지도가 장비 호황으로 넓어졌어요. 추가 점검 동선을 맡아 달래요.",
+    "weight": 1.5,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work"
+    ],
+    "recap": "현장장기상주",
+    "text": "청주 현장 담당자가 마을을 보여 주며 부탁해요. “여기서 살아 봐야 주민들 얘기도 들려요.”",
     "choices": [
       {
-        "label": "새 구역까지 맡아요",
+        "label": "청주에서 상주해요",
         "effects": {
-          "reputation": 2,
-          "health": -1,
-          "trait.work_life": 5,
-          "semi": "공사 구역 지도가 장비 호황으로 넓어졌어요"
+          "do": [
+            "move:cheongju",
+            "salary_mod:0.07"
+          ],
+          "friends": -8
         },
-        "result": "지도에 내 동선이 한 줄 늘었어요. 퇴근길 발바닥이 묵직해요."
+        "result": "새 이웃이 자기 동네 이야기를 먼저 꺼냈어요. 급여는 올랐고 옛 모임에서는 내 자리가 비었어요."
       },
       {
-        "label": "기존 구역까지만 맡아요",
+        "label": "현재 지역에 남아요",
         "effects": {
-          "health": 1,
-          "reputation": -1,
-          "trait.work_life": -5,
-          "semi": "공사 구역 지도가 장비 호황으로 넓어졌어요"
+          "happiness": 8,
+          "do": "salary_mod:-0.04"
         },
-        "result": "점검화를 벗고 발을 폈어요. 새 구역표에는 동료 이름이 붙었어요."
+        "result": "익숙한 현장 사람이 다시 말을 걸었어요. 상주 수당을 줄이고 늘 걷던 길로 돌아왔어요."
       }
     ],
-    "default": 0
+    "default": 1
   },
   {
-    "id": "job_environment_safety_exit_sign",
+    "id": "gpt_t16_environment_safety_roster",
+    "age": [
+      22,
+      59
+    ],
     "year": [
       1974,
       null
@@ -1064,197 +952,32 @@
     "when": {
       "job": "environment_safety"
     },
-    "weight": 1,
-    "once": false,
-    "text": "식당에서 자꾸 비상구 위치부터 찾아요. 동료가 자리보다 출구를 먼저 고른대요.",
+    "weight": 1.5,
+    "once": true,
+    "big": true,
+    "tags": [
+      "work",
+      "health"
+    ],
+    "recap": "안전당직",
+    "text": "야간 호출을 마치니 동료가 의자에서 졸고 있어요. “다음 달도 우리 둘이면 버틸 수 있겠어요?”",
     "choices": [
       {
-        "label": "출구 보이는 자리를 고집해요",
+        "label": "동료와 당직을 더 나눠요",
         "effects": {
-          "happiness": 2,
-          "reputation": -1,
-          "trait.conform": -5
+          "do": "bonus:@salary*0.2",
+          "health": -5,
+          "mental": -6
         },
-        "result": "동료가 내 자리에 안내석 이름을 붙였어요. 배식대는 제일 멀어요."
+        "result": "동료가 잠깐 눈을 붙였어요. 보상은 늘었지만 내 몸은 쉬는 날에도 쉽게 풀리지 않았어요."
       },
       {
-        "label": "동료가 고른 자리에 앉아요",
+        "label": "당직을 줄이고 회복해요",
         "effects": {
-          "reputation": 1,
-          "happiness": -1,
-          "trait.conform": 5
+          "mental": 6,
+          "do": "salary_mod:-0.06"
         },
-        "result": "식판을 바로 내려놓았어요. 출구는 고개를 돌려야 보여요."
-      }
-    ],
-    "default": 0
-  },
-  {
-    "id": "job_hr_first_hello",
-    "year": [
-      1965,
-      null
-    ],
-    "when": {
-      "job": "hr"
-    },
-    "weight": 1,
-    "once": false,
-    "text": "신입이 사원증 목걸이 방향을 물어요. 뒤집힐 때마다 자기 사진과 눈이 마주친대요.",
-    "choices": [
-      {
-        "label": "함께 끈 길이를 맞춰 줘요",
-        "effects": {
-          "friends": 2,
-          "mental": -1,
-          "trait.social": 5
-        },
-        "result": "사진이 앞으로 돌아왔어요. 내 휴게 시간은 뒤로 밀렸어요."
-      },
-      {
-        "label": "지급 안내를 짚고 먼저 쉬어요",
-        "effects": {
-          "mental": 2,
-          "friends": -1,
-          "trait.social": -5
-        },
-        "result": "신입은 거울 앞에 섰어요. 나는 휴게실 끝 의자에 앉았어요."
-      }
-    ],
-    "default": 1
-  },
-  {
-    "id": "job_purchasing_receipt_choice",
-    "year": [
-      1974,
-      null
-    ],
-    "when": {
-      "job": "purchasing"
-    },
-    "weight": 1,
-    "once": false,
-    "text": "신입이 부품 견적 비교표를 한 장으로 줄이고 싶대요. 운송비 칸을 어디 넣을지 묻네요.",
-    "choices": [
-      {
-        "label": "같이 포함 범위를 다시 나눠요",
-        "effects": {
-          "friends": 2,
-          "mental": -1,
-          "trait.social": 5
-        },
-        "result": "비교표 아래 별도 칸이 생겼어요. 내 쉬는 시간은 끝났어요."
-      },
-      {
-        "label": "기존 양식을 주고 쉬어요",
-        "effects": {
-          "mental": 2,
-          "friends": -1,
-          "trait.social": -5
-        },
-        "result": "신입은 새 종이를 폈어요. 나는 빈 의자에 앉았어요."
-      }
-    ],
-    "default": 1
-  },
-  {
-    "id": "job_sales_weekend_call",
-    "year": [
-      1974,
-      null
-    ],
-    "when": {
-      "job": "sales"
-    },
-    "weight": 1,
-    "once": false,
-    "text": "상담실에서 후배가 카탈로그 펼치는 순서를 물어요. 앞장부터 읽으면 상담이 길어진대요.",
-    "choices": [
-      {
-        "label": "고객 질문 순서로 같이 접어요",
-        "effects": {
-          "friends": 2,
-          "mental": -1,
-          "trait.social": 5
-        },
-        "result": "카탈로그에 색종이가 붙었어요. 내 쉬는 시간은 접혔어요."
-      },
-      {
-        "label": "기존 예시를 건네고 쉬어요",
-        "effects": {
-          "mental": 2,
-          "friends": -1,
-          "trait.social": -5
-        },
-        "result": "후배는 빈 상담실로 갔어요. 나는 창가 의자에 앉았어요."
-      }
-    ],
-    "default": 1
-  },
-  {
-    "id": "job_patent_book_question",
-    "year": [
-      1983,
-      null
-    ],
-    "when": {
-      "job": "patent"
-    },
-    "weight": 1,
-    "once": false,
-    "text": "발명자가 청구항의 및을 또는으로 바꿔도 되냐고 해요. 종이엔 한 글자 차이예요.",
-    "choices": [
-      {
-        "label": "도면과 범위를 같이 짚어요",
-        "effects": {
-          "intelligence": 2,
-          "mental": -1,
-          "trait.diligence": 5
-        },
-        "result": "두 초안 옆에 구성도가 붙었어요. 내 커피는 식었어요."
-      },
-      {
-        "label": "검토 질문으로 남기고 다음 차례에 봐요",
-        "effects": {
-          "mental": 2,
-          "reputation": -1,
-          "trait.work_life": -5
-        },
-        "result": "질문지가 검토철에 들어갔어요. 나는 복도 끝 의자에 앉았어요."
-      }
-    ],
-    "default": 1
-  },
-  {
-    "id": "job_environment_safety_walk_question",
-    "year": [
-      1974,
-      null
-    ],
-    "when": {
-      "job": "environment_safety"
-    },
-    "weight": 1,
-    "once": false,
-    "text": "점검 가방 앞에서 후배가 지도 접는 법을 물어요. 담당 구역이 접힌 선에 걸린대요.",
-    "choices": [
-      {
-        "label": "같이 구역이 보이게 접어요",
-        "effects": {
-          "friends": 2,
-          "mental": -1,
-          "trait.social": 5
-        },
-        "result": "지도에 오늘 동선이 드러났어요. 내 휴게 시간은 끝났어요."
-      },
-      {
-        "label": "예시 지도를 주고 쉬어요",
-        "effects": {
-          "mental": 2,
-          "friends": -1,
-          "trait.social": -5
-        },
-        "result": "후배는 빈 책상으로 갔어요. 나는 잠깐 눈을 감았어요."
+        "result": "동료가 혼자 남을 날을 세었어요. 급여는 줄었지만 밤에 연락 소리를 기다리는 시간이 줄었어요."
       }
     ],
     "default": 1
